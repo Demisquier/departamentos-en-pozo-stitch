@@ -80,7 +80,7 @@ export default async function NovedadesPage() {
               {/* Main Featured Card */}
               {featured && (
                 <article className="md:col-span-8 group">
-                  <Link href={`/novedades/${featured.slug}/`} className="block cursor-pointer">
+                  <Link href={`/${featured.slug}/`} className="block cursor-pointer">
                     <div className="relative overflow-hidden aspect-[16/9] mb-6">
                       {featuredImage(featured) ? (
                         <img
@@ -119,7 +119,7 @@ export default async function NovedadesPage() {
               <div className="md:col-span-4 flex flex-col gap-gutter">
                 {sidebar.map((post) => (
                   <article key={post.id} className="group">
-                    <Link href={`/novedades/${post.slug}/`} className="block cursor-pointer">
+                    <Link href={`/${post.slug}/`} className="block cursor-pointer">
                       <div className="aspect-[4/3] overflow-hidden mb-4">
                         {featuredImage(post) ? (
                           <img
@@ -148,7 +148,7 @@ export default async function NovedadesPage() {
               {/* Regular Grid Rows */}
               {rest.map((post) => (
                 <div key={post.id} className="md:col-span-4 group mt-8">
-                  <Link href={`/novedades/${post.slug}/`} className="block cursor-pointer">
+                  <Link href={`/${post.slug}/`} className="block cursor-pointer">
                     <div className="aspect-[4/3] overflow-hidden mb-4">
                       {featuredImage(post) ? (
                         <img
