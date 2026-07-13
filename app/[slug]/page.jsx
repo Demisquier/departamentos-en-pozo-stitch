@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema } from "../../lib/wp";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema, getRankMathSchema, fixImgs } from "../../lib/wp";
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -45,7 +45,11 @@ export default async function SinglePage({ params }) {
   const { node, type } = r;
   const img = featuredImage(node);
   const title = node.title?.rendered || "";
-  const content = node.content?.rendered || "";
+  const content = fixImgs(node.content?.rendered || "");
+
+  // Schema JSON-LD de RankMath (FAQPage, ItemList, BreadcrumbList, etc.). Aditivo:
+  // se suma al Article básico existente. Devuelve [] si el endpoint no responde.
+  const rmSchema = await getRankMathSchema(`/${params.slug}/`);
 
   return (
     <article>
@@ -55,6 +59,13 @@ export default async function SinglePage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(node, `/${params.slug}/`)) }}
         />
       )}
+      {rmSchema.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
       <header className="bg-primary-container text-on-primary">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
           {type === "post" && node.date && (
