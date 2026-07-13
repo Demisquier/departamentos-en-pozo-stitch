@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // Página de Contacto — diseño Stitch portado fielmente (hero + bloque 2 columnas).
@@ -12,8 +12,19 @@ export default function ContactoPage() {
     email: "",
     whatsapp: "",
     mensaje: "",
+    proyecto: "",
+    origen: "web",
+    _gotcha: "", // honeypot anti-spam (debe quedar vacío)
   });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  // Captura el proyecto desde la URL (?proyecto=slug) que pasan los CTA de las fichas.
+  useEffect(() => {
+    try {
+      const p = new URLSearchParams(window.location.search).get("proyecto");
+      if (p) setForm((prev) => ({ ...prev, proyecto: p, origen: "ficha:" + p }));
+    } catch {}
+  }, []);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -31,7 +42,7 @@ export default function ContactoPage() {
       });
       if (!res.ok) throw new Error("bad response");
       setStatus("sent");
-      setForm({ nombre: "", apellido: "", email: "", whatsapp: "", mensaje: "" });
+      setForm((prev) => ({ nombre: "", apellido: "", email: "", whatsapp: "", mensaje: "", proyecto: prev.proyecto, origen: prev.origen, _gotcha: "" }));
       setTimeout(() => setStatus("idle"), 4000);
     } catch (err) {
       setStatus("error");
@@ -70,6 +81,17 @@ export default function ContactoPage() {
               </p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot: oculto para humanos, los bots lo rellenan */}
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form._gotcha}
+                onChange={handleChange}
+                className="hidden"
+                aria-hidden="true"
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="font-label-caps text-on-surface-variant uppercase" htmlFor="nombre">
