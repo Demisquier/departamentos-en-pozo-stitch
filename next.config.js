@@ -22,8 +22,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Plantilla de redirect 301 (agregar acá cualquier URL que se renombre):
-      // { source: "/url-vieja/", destination: "/url-nueva/", permanent: true },
+      // Los posts viven en la raíz (como en WordPress). Si algún link viejo apunta a
+      // /novedades/{slug}, lo mandamos con 301 a /{slug} para no duplicar contenido.
+      { source: "/novedades/:slug", destination: "/:slug", permanent: true },
     ];
   },
 };
