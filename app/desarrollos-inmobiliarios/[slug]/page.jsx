@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf } from '../../../lib/wp';
+import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE } from '../../../lib/wp';
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -29,6 +29,29 @@ function parseAmenities(raw) {
     .split(/[,\n;]/)
     .map((s) => s.trim())
     .filter(Boolean);
+}
+
+// Prueba varias claves ACF y devuelve el primer valor no vacío (o null).
+function acfAny(node, keys) {
+  for (const k of keys) {
+    const v = acf(node, k);
+    if (v != null && String(v).trim() !== '') return v;
+  }
+  return null;
+}
+
+// ¿El valor contiene markup HTML? (decide dangerouslySetInnerHTML vs párrafo).
+function looksLikeHtml(v) {
+  return typeof v === 'string' && /<[a-z][\s\S]*>/i.test(v);
+}
+
+// Extrae un porcentaje 0-100 de un valor de avance de obra (número, "45", "45%", "45,5%").
+function toPercent(v) {
+  if (v == null) return null;
+  const s = String(v).replace('%', '').replace(',', '.').trim();
+  const n = parseFloat(s);
+  if (!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
 }
 
 export async function generateMetadata({ params }) {
@@ -65,12 +88,45 @@ export default async function FichaProyecto({ params }) {
   const imagen = featuredImage(d);
   const contenido = d.content?.rendered || '';
 
+  // --- Campos nuevos (se muestran solo si existen) ---
+  const legal = acfAny(d, ['legal', 'confianza_legal', 'estructura_legal']);
+  const obra = acfAny(d, ['obra', 'avance_obra', 'estado_obra', 'avance']);
+  const obraPct = toPercent(obra);
+  const rentabilidad = acfAny(d, ['rentabilidad', 'renta', 'proyeccion_renta', 'roi']);
+
+  // --- JSON-LD (Product/Offer) para la ficha ---
+  const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
+  const schema = { '@context': 'https://schema.org', '@type': 'Product', name: nombre };
+  if (descLimpia) schema.description = descLimpia.slice(0, 300);
+  if (imagen) schema.image = imagen;
+  {
+    const address = {};
+    if (direccion) address.streetAddress = direccion;
+    if (barrio) address.addressLocality = barrio;
+    address.addressRegion = 'Buenos Aires';
+    address.addressCountry = 'AR';
+    if (Object.keys(address).length) schema.address = { '@type': 'PostalAddress', ...address };
+  }
+  if (precioNum) {
+    schema.offers = {
+      '@type': 'Offer',
+      price: precioNum,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/PreOrder',
+      url: `${SITE}/desarrollos-inmobiliarios/${d.slug}/`,
+    };
+  }
+
   // Mapa: usamos Google Maps embed con lat/lng si están, si no con la dirección.
   const mapQuery = lat && lng ? `${lat},${lng}` : encodeURIComponent(`${direccion}`);
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
         {/* Header Section */}
         <header className="flex flex-col md:flex-row md:items-baseline justify-between mb-10 gap-4">
@@ -241,6 +297,75 @@ export default async function FichaProyecto({ params }) {
             </div>
           </aside>
         </div>
+
+        {/* Confianza / Obra / Rentabilidad — se renderiza solo lo que tenga dato */}
+        {(legal || obra || rentabilidad) && (
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+            {/* Estructura legal y seguridad */}
+            {legal && (
+              <section className="md:col-span-4">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-link-gold">verified_user</span>
+                  Estructura legal y seguridad
+                </h2>
+                {looksLikeHtml(legal) ? (
+                  <div
+                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
+                    dangerouslySetInnerHTML={{ __html: legal }}
+                  />
+                ) : (
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{legal}</p>
+                )}
+              </section>
+            )}
+
+            {/* Avance de obra */}
+            {obra && (
+              <section className="md:col-span-4">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-link-gold">construction</span>
+                  Avance de obra
+                </h2>
+                {obraPct != null ? (
+                  <div className="bg-surface-container border border-outline-variant p-6">
+                    <div className="flex justify-between items-baseline mb-3">
+                      <span className="font-label-caps text-label-caps text-on-surface-variant">PROGRESO</span>
+                      <span className="font-headline-sm text-headline-sm text-primary">{obraPct}%</span>
+                    </div>
+                    <div className="w-full h-2 bg-surface-container-high overflow-hidden">
+                      <div className="h-full bg-link-gold" style={{ width: `${obraPct}%` }} />
+                    </div>
+                  </div>
+                ) : looksLikeHtml(obra) ? (
+                  <div
+                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
+                    dangerouslySetInnerHTML={{ __html: obra }}
+                  />
+                ) : (
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{obra}</p>
+                )}
+              </section>
+            )}
+
+            {/* Proyección de rentabilidad */}
+            {rentabilidad && (
+              <section className="md:col-span-4">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
+                  <span className="material-symbols-outlined text-link-gold">trending_up</span>
+                  Proyección de rentabilidad
+                </h2>
+                {looksLikeHtml(rentabilidad) ? (
+                  <div
+                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
+                    dangerouslySetInnerHTML={{ __html: rentabilidad }}
+                  />
+                ) : (
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{rentabilidad}</p>
+                )}
+              </section>
+            )}
+          </div>
+        )}
 
         {/* Location Section */}
         <section className="mb-24">
