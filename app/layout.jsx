@@ -14,12 +14,12 @@ export const metadata = {
   },
   description:
     "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA. Compará desarrolladoras, precios y potencial de ganancia barrio por barrio.",
-  alternates: { canonical: "https://departamentosenpozo.com.ar/" },
+  // NO canonical global acá: cada página setea el suyo (buildMeta). Un canonical fijo
+  // a la home se aplicaba a todas las páginas y hacía que Google las consolidara mal.
   openGraph: {
     type: "website",
     siteName: "Departamentos en Pozo",
     locale: "es_AR",
-    url: "https://departamentosenpozo.com.ar/",
   },
   robots: { index: true, follow: true },
 };
