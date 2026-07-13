@@ -25,6 +25,14 @@ const nextConfig = {
       // Los posts viven en la raíz (como en WordPress). Si algún link viejo apunta a
       // /novedades/{slug}, lo mandamos con 301 a /{slug} para no duplicar contenido.
       { source: "/novedades/:slug", destination: "/:slug", permanent: true },
+
+      // --- Redirects legacy del WordPress viejo (evitan 404) ---
+      // NOTA: /feed/ y /comments/feed/ NO se redirigen: /feed/ sirve RSS real
+      // (Route Handler en app/feed/route.js).
+      // Páginas de autor: no existen en el front nuevo → home.
+      { source: "/author/:slug", destination: "/", permanent: true },
+      // Archivos de tag: no hay páginas de tag → índice de novedades.
+      { source: "/tag/:slug", destination: "/novedades/", permanent: true },
     ];
   },
   // Proxy: las imágenes/archivos de WordPress siguen viviendo en el hosting (cms.*).
