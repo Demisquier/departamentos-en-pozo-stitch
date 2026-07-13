@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Utilidades custom del export Stitch (idénticas al code.html) */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.duotone-navy {
+  filter: grayscale(100%) contrast(120%) brightness(80%) sepia(50%) hue-rotate(190deg) saturate(300%);
+}
+.hero-gradient {
+  background: linear-gradient(rgba(11, 26, 52, 0.7), rgba(11, 26, 52, 0.9));
+}
