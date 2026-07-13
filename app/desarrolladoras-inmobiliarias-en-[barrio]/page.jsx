@@ -21,6 +21,7 @@ export function generateStaticParams() {
 
 // Deriva el nombre visible del barrio a partir del slug.
 function barrioNombre(slug) {
+  if (!slug) return "Buenos Aires";
   const casos = {
     nunez: "Núñez",
     "puerto-madero": "Puerto Madero",
