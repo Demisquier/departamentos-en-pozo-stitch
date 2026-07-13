@@ -27,6 +27,15 @@ const nextConfig = {
       { source: "/novedades/:slug", destination: "/:slug", permanent: true },
     ];
   },
+  // Proxy: las imágenes/archivos de WordPress siguen viviendo en el hosting (cms.*).
+  // Cualquier request a /wp-content o /wp-includes en el dominio nuevo se sirve desde WP.
+  // Esto cubre las imágenes inline viejas que quedaron con URL del dominio raíz.
+  async rewrites() {
+    return [
+      { source: "/wp-content/:path*", destination: `https://${WP_HOST}/wp-content/:path*` },
+      { source: "/wp-includes/:path*", destination: `https://${WP_HOST}/wp-includes/:path*` },
+    ];
+  },
 };
 
 module.exports = nextConfig;
