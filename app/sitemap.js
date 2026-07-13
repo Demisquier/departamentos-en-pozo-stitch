@@ -14,7 +14,7 @@ export default async function sitemap() {
   try {
     const [pages, posts, desa] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(100)]);
     for (const p of pages || []) out.push({ url: BASE + rel(p.link), lastModified: new Date() });
-    for (const p of posts || []) out.push({ url: BASE + `/novedades/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
+    for (const p of posts || []) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
   } catch (e) {
     // WP no disponible en build: devolvemos al menos las rutas fijas
