@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage } from "../../lib/wp";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema } from "../../lib/wp";
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -35,9 +35,8 @@ async function resolve(slug) {
 
 export async function generateMetadata({ params }) {
   const r = await resolve(params.slug);
-  if (!r) return { title: "No encontrado" };
-  const title = (r.node.title?.rendered || "").replace(/<[^>]+>/g, "");
-  return { title: `${title} | Departamentos en Pozo` };
+  if (!r) return { title: "No encontrado", robots: { index: false, follow: false } };
+  return buildMeta(r.node, `/${params.slug}/`, r.type === "post" ? "article" : "website");
 }
 
 export default async function SinglePage({ params }) {
@@ -50,6 +49,12 @@ export default async function SinglePage({ params }) {
 
   return (
     <article>
+      {type === "post" && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(node, `/${params.slug}/`)) }}
+        />
+      )}
       <header className="bg-primary-container text-on-primary">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
           {type === "post" && node.date && (
