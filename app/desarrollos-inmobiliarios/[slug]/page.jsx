@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE } from '../../../lib/wp';
+import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -86,7 +86,7 @@ export default async function FichaProyecto({ params }) {
   const anticipoLabel = anticipo ? anticipo.toLocaleString('es-AR') : 'Consultar';
 
   const imagen = featuredImage(d);
-  const contenido = d.content?.rendered || '';
+  const contenido = fixImgs(d.content?.rendered || '');
 
   // --- Campos nuevos (se muestran solo si existen) ---
   const legal = acfAny(d, ['legal', 'confianza_legal', 'estructura_legal']);
