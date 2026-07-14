@@ -24,10 +24,6 @@ export default function TocNav() {
       if (present.length || n > 40) {
         clearInterval(id);
         setItems(present);
-        // Reparar ancla muerta: #comparativa (comparativa de 9 barrios) → catálogo por barrio.
-        document.querySelectorAll('a[href$="#comparativa"], a[href="#comparativa"]').forEach((a) => {
-          if (!document.getElementById("comparativa")) a.setAttribute("href", "/desarrollos-inmobiliarios/");
-        });
       }
     }, 150);
     return () => clearInterval(id);
