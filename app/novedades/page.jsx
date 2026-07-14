@@ -1,5 +1,17 @@
 import Link from "next/link";
-import { getPosts, featuredImage } from "../../lib/wp";
+import { getPosts, getCategories, featuredImage } from "../../lib/wp";
+
+export const revalidate = 600;
+
+// Placeholder branded para posts sin imagen destacada (evita la caja gris vacía).
+function Ph({ label }) {
+  return (
+    <div className="w-full h-full bg-primary-container flex flex-col items-center justify-center gap-2 text-on-primary">
+      <span className="material-symbols-outlined text-secondary-fixed text-4xl">apartment</span>
+      {label ? <span className="font-label-caps text-label-caps text-secondary-fixed uppercase opacity-90">{label}</span> : null}
+    </div>
+  );
+}
 
 export const metadata = {
   title: "Guías y Novedades — Departamentos en Pozo",
@@ -45,6 +57,12 @@ export default async function NovedadesPage() {
   } catch (e) {
     posts = [];
   }
+  let cats = [];
+  try {
+    cats = (await getCategories()).filter((c) => c.count > 0 && c.slug !== "uncategorized" && c.slug !== "sin-categoria");
+  } catch (e) {
+    cats = [];
+  }
 
   const featured = posts[0] || null;
   const sidebar = posts.slice(1, 3);
@@ -67,6 +85,19 @@ export default async function NovedadesPage() {
             Información estratégica y análisis profundo para el inversor sofisticado en el mercado de
             real estate premium.
           </p>
+          {cats.length > 0 && (
+            <div className="flex flex-wrap gap-2.5 mt-6">
+              {cats.map((c) => (
+                <Link
+                  key={c.id}
+                  href={`/category/${c.slug}/`}
+                  className="px-3.5 py-1.5 border border-outline-variant rounded-full text-[13px] text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                >
+                  {c.name} <span className="opacity-60">({c.count})</span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {posts.length === 0 ? (
@@ -89,7 +120,7 @@ export default async function NovedadesPage() {
                           alt={title(featured)}
                         />
                       ) : (
-                        <div className="w-full h-full bg-surface-container" />
+                        <Ph />
                       )}
                       {categoria(featured) && (
                         <div className="absolute top-4 left-4">
@@ -128,7 +159,7 @@ export default async function NovedadesPage() {
                             alt={title(post)}
                           />
                         ) : (
-                          <div className="w-full h-full bg-surface-container" />
+                          <Ph />
                         )}
                       </div>
                       {categoria(post) && (
@@ -157,7 +188,7 @@ export default async function NovedadesPage() {
                           alt={title(post)}
                         />
                       ) : (
-                        <div className="w-full h-full bg-surface-container" />
+                        <Ph />
                       )}
                     </div>
                     <time className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
