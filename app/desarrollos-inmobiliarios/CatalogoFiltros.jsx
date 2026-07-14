@@ -10,19 +10,27 @@ function MapaListado({ items }) {
 
   useEffect(() => {
     let cancel = false;
+    const loadCSS = (id, href) => {
+      if (document.getElementById(id)) return;
+      const l = document.createElement('link');
+      l.id = id; l.rel = 'stylesheet'; l.href = href;
+      document.head.appendChild(l);
+    };
+    const loadJS = (src) => new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = res; s.onerror = rej; document.body.appendChild(s);
+    });
     async function ensureL() {
-      if (window.L) return window.L;
-      if (!document.getElementById('leaflet-css')) {
-        const l = document.createElement('link');
-        l.id = 'leaflet-css'; l.rel = 'stylesheet';
-        l.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-        document.head.appendChild(l);
+      if (!window.L) {
+        loadCSS('leaflet-css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+        await loadJS('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
       }
-      await new Promise((res, rej) => {
-        const s = document.createElement('script');
-        s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-        s.onload = res; s.onerror = rej; document.body.appendChild(s);
-      });
+      // Plugin de clustering para pines superpuestos (mismo barrio/dirección cercana).
+      if (window.L && !window.L.markerClusterGroup) {
+        loadCSS('mcluster-css', 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css');
+        loadCSS('mcluster-css-def', 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css');
+        try { await loadJS('https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js'); } catch {}
+      }
       return window.L;
     }
     ensureL().then((L) => {
@@ -35,7 +43,11 @@ function MapaListado({ items }) {
       }
       const map = mapRef.current;
       if (map._layer) map.removeLayer(map._layer);
-      const layer = L.layerGroup().addTo(map); map._layer = layer;
+      // Si el plugin cargó, agrupamos; si no, caemos a layerGroup normal.
+      const layer = L.markerClusterGroup
+        ? L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 46, spiderfyOnMaxZoom: true })
+        : L.layerGroup();
+      layer.addTo(map); map._layer = layer;
       const pts = [];
       items.forEach((i) => {
         if (i.lat == null || i.lng == null) return;
