@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 
 export const dynamicParams = !process.env.EXPORT;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const all = await getDesarrollos();
