@@ -17,8 +17,12 @@ export default function Header() {
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-4">
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-0 max-w-container-max mx-auto">
-        <Link href="/" className="text-headline-sm font-headline-md font-bold tracking-tight text-primary uppercase">
-          Departamentos en Pozo
+        <Link href="/" className="flex items-center" aria-label="Departamentos en Pozo — Inicio">
+          <img
+            src="/wp-content/uploads/2026/05/Logo-depatamentos-en-pozo.png"
+            alt="Departamentos en Pozo"
+            className="h-11 md:h-14 w-auto"
+          />
         </Link>
         <button className="md:hidden p-2 text-primary" onClick={() => setOpen(!open)} aria-label="Menú">
           <span className="material-symbols-outlined">menu</span>
