@@ -1,8 +1,12 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
+import Galeria from './Galeria';
+import AccionesFicha from './AccionesFicha';
+import Descripcion from './Descripcion';
 
 export const dynamicParams = !process.env.EXPORT;
+// ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
@@ -176,15 +180,6 @@ export default async function FichaProyecto({ params }) {
   const mapQuery = lat && lng ? `${lat},${lng}` : encodeURIComponent(`${direccion}`);
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 
-  const Tile = ({ src, alt, className }) =>
-    src ? (
-      <img src={src} alt={alt} className={`w-full h-full object-cover ${className || ''}`} />
-    ) : (
-      <div className={`w-full h-full bg-surface-container-high flex items-center justify-center ${className || ''}`}>
-        <span className="material-symbols-outlined text-outline-variant text-4xl">image</span>
-      </div>
-    );
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -199,22 +194,8 @@ export default async function FichaProyecto({ params }) {
           <span className="text-primary">{nombre}</span>
         </nav>
 
-        {/* Galería mosaico (estilo Zillow) */}
-        <section className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 mb-6 rounded-xl overflow-hidden relative" style={{ minHeight: '340px' }}>
-          <div className="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto relative">
-            <Tile src={gallery[0]} alt={nombre} />
-          </div>
-          <div className="hidden md:block relative"><Tile src={gallery[1]} alt={`${nombre} 2`} /></div>
-          <div className="hidden md:block relative"><Tile src={gallery[2]} alt={`${nombre} 3`} /></div>
-          <div className="hidden md:block relative"><Tile src={gallery[3]} alt={`${nombre} 4`} /></div>
-          <div className="hidden md:block relative"><Tile src={gallery[4]} alt={`${nombre} 5`} /></div>
-          {gallery.length > 0 && (
-            <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[18px] text-primary">photo_library</span>
-              <span className="text-[13px] font-medium text-primary">{gallery.length} foto{gallery.length > 1 ? 's' : ''}</span>
-            </div>
-          )}
-        </section>
+        {/* Galería mosaico + lightbox con zoom (client) */}
+        <Galeria images={gallery} nombre={nombre} />
 
         {/* Layout 2 columnas */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -255,18 +236,6 @@ export default async function FichaProyecto({ params }) {
                 </div>
               </div>
             )}
-
-            {/* Descripción */}
-            <div className="mb-8">
-              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Sobre este desarrollo</h2>
-              {contenido ? (
-                <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none" dangerouslySetInnerHTML={{ __html: contenido }} />
-              ) : (
-                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                  {nombre} es un desarrollo en pozo en {barrio}. Cargá la descripción, el render y los datos comerciales para completar esta ficha.
-                </p>
-              )}
-            </div>
 
             {/* Datos y características (Facts & features estilo Zillow) */}
             <div className="mb-8">
@@ -334,6 +303,18 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
+            {/* Descripción (texto, después de los datos rápidos; colapsable para no saturar) */}
+            <div className="mb-8">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Sobre este desarrollo</h2>
+              {contenido ? (
+                <Descripcion html={contenido} />
+              ) : (
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  {nombre} es un desarrollo en pozo en {barrio}. Cargá la descripción, el render y los datos comerciales para completar esta ficha.
+                </p>
+              )}
+            </div>
+
             {/* Legal / Rentabilidad (prose, solo si hay dato) */}
             {legal && (
               <div className="mb-8">
@@ -376,67 +357,22 @@ export default async function FichaProyecto({ params }) {
             </p>
           </div>
 
-          {/* Sidebar sticky: contacto + inversión (estilo Zillow) */}
+          {/* Sidebar: contacto (modal) + calculadora de inversión + barra móvil (client) */}
           <aside className="lg:col-span-1">
-            <div className="lg:sticky lg:top-24 border border-outline-variant rounded-xl p-6 bg-surface shadow-sm">
-              <p className="font-label-caps text-label-caps text-on-surface-variant">DESDE</p>
-              <p className="font-headline-md text-headline-md text-primary mb-1">
-                {precioLabel}{precioNum && <span className="text-body-md text-on-surface-variant"> /m²</span>}
-              </p>
-
-              <dl className="space-y-2 py-4 my-4 border-y border-outline-variant text-[14px]">
-                {anticipoLabel && (
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-on-surface-variant">Anticipo</dt>
-                    <dd className="text-primary font-medium">{anticipoLabel}</dd>
-                  </div>
-                )}
-                {entrega && (
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-on-surface-variant">Entrega</dt>
-                    <dd className="text-primary font-medium">{entrega}</dd>
-                  </div>
-                )}
-                {(cuotas || ajuste) && (
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-on-surface-variant">Cuotas</dt>
-                    <dd className="text-primary font-medium text-right">{cuotas || `Ajuste ${ajuste}`}</dd>
-                  </div>
-                )}
-              </dl>
-
-              <Link
-                href={`/contacto/?proyecto=${d.slug}`}
-                className="w-full py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all flex justify-center items-center gap-2 mb-3"
-              >
-                SOLICITAR COTIZACIÓN
-              </Link>
-              <Link
-                href={`/contacto/?proyecto=${d.slug}`}
-                className="w-full py-3.5 border border-primary text-primary rounded-lg font-label-caps text-label-caps tracking-widest hover:bg-surface-container transition-all flex justify-center items-center gap-2"
-              >
-                AGENDAR VISITA
-              </Link>
-
-              <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
-                <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
-                Cuotas en pesos ajustables. Consultá descuentos por pago contado y disponibilidad de unidades.
-              </p>
-            </div>
+            <AccionesFicha
+              slug={d.slug}
+              nombre={nombre}
+              precioLabel={precioLabel}
+              precioNum={precioNum}
+              anticipoLabel={anticipoLabel}
+              entrega={entrega}
+              cuotas={cuotas}
+              ajuste={ajuste}
+              comparableNum={comparableNum}
+            />
           </aside>
         </div>
       </main>
-
-      {/* Bottom Action Bar (CTA fija móvil) */}
-      <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
-        <Link
-          href={`/contacto/?proyecto=${d.slug}`}
-          className="w-full px-8 py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3"
-        >
-          QUIERO MÁS INFORMACIÓN
-          <span className="material-symbols-outlined fill-icon">send</span>
-        </Link>
-      </div>
     </>
   );
 }
