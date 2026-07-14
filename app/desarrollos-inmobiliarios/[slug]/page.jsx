@@ -45,7 +45,7 @@ function looksLikeHtml(v) {
   return typeof v === 'string' && /<[a-z][\s\S]*>/i.test(v);
 }
 
-// Extrae un porcentaje 0-100 de un valor de avance de obra (número, "45", "45%", "45,5%").
+// Extrae un porcentaje 0-100 de un valor de avance de obra.
 function toPercent(v) {
   if (v == null) return null;
   const s = String(v).replace('%', '').replace(',', '.').trim();
@@ -73,9 +73,10 @@ export async function generateMetadata({ params }) {
   const d = await getDesarrolloBySlug(params.slug);
   if (!d) return { title: 'Proyecto no encontrado' };
   const nombre = (d.title?.rendered || 'Proyecto').split('—')[0].trim();
+  const barrio = (d.title?.rendered || '').split('—')[1]?.trim() || '';
   return {
-    title: `${nombre} - Departamentos en Pozo`,
-    description: `Ficha del desarrollo ${nombre}. Precios, financiación, amenities y ubicación.`,
+    title: `${nombre}${barrio ? ' — ' + barrio : ''} | Departamentos en Pozo`,
+    description: `Ficha del desarrollo ${nombre}${barrio ? ' en ' + barrio : ''}: desarrolladora, precio por m², financiación, avance de obra, amenities y ubicación. Análisis independiente.`,
   };
 }
 
@@ -88,34 +89,67 @@ export default async function FichaProyecto({ params }) {
   const nombre = tituloRaw.split('—')[0].trim() || tituloRaw;
   const barrio = (tituloRaw.split('—')[1] || '').trim() || acf(d, 'barrio') || 'Buenos Aires';
   const direccion = acfAny(d, ['direccion', 'direccion_completa']) || `${barrio}, CABA`;
-  // Claves ACF REALES del CPT: desarrolladora, fecha_entrega, tipologias, precio_m2, anticipo, esquema_cuotas, comparable_terminado, avance_obra.
-  const entrega = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega'])) || 'Consultar';
-  const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes'])) || 'Consultar';
-  const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']) || 'Índice CAC';
-  const constructora = acfAny(d, ['desarrolladora', 'constructora']) || null;
+
+  const entrega = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega']));
+  const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes']));
+  const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
+  const constructora = acfAny(d, ['desarrolladora', 'constructora']);
+  const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
   const amenities = parseAmenities(acf(d, 'amenities'));
 
   const precioNum = toNumber(acfAny(d, ['precio_m2', 'precio_desde']));
-  const precioLabel = precioNum ? `USD ${precioNum.toLocaleString('es-AR')} /m²` : 'Consultar';
-  // Anticipo: campo real si existe; si no, "Consultar" (no inventamos %).
+  const precioLabel = precioNum ? `USD ${precioNum.toLocaleString('es-AR')}` : 'Consultar';
   const anticipoRaw = acfAny(d, ['anticipo']);
   const anticipoNum = toNumber(anticipoRaw);
-  const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : 'Consultar');
+  const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : null);
   const cuotas = acfAny(d, ['esquema_cuotas']);
   const comparableNum = toNumber(acf(d, 'comparable_terminado'));
 
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
 
-  // --- Campos nuevos (se muestran solo si existen) ---
+  // Galería: featured + imágenes del contenido (ya con URLs relativas), únicas, hasta 5.
+  const contentImgs = [...contenido.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)].map((m) => m[1]);
+  const gallery = [imagen, ...contentImgs].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 5);
+
+  // Campos que se muestran solo si existen.
   const legal = acfAny(d, ['legal', 'confianza_legal', 'estructura_legal']);
   const obra = acfAny(d, ['obra', 'avance_obra', 'estado_obra', 'avance']);
   const obraPct = toPercent(obra);
   const rentabilidad = acfAny(d, ['rentabilidad', 'renta', 'proyeccion_renta', 'roi']);
 
-  // --- JSON-LD (Product/Offer) para la ficha ---
+  // --- Facts & features (estilo Zillow), solo filas con dato real ---
+  const grupoDesarrollo = [
+    ['Desarrolladora', constructora],
+    ['Entrega estimada', entrega || null],
+    ['Tipologías', ambientes || null],
+    ['Avance de obra', obraPct != null ? `${obraPct}%` : (obra && !looksLikeHtml(obra) ? obra : null)],
+    ['Estado', estado || null],
+  ].filter(([, v]) => v);
+
+  const grupoFinanciacion = [
+    ['Precio desde', precioNum ? `${precioLabel} /m²` : null],
+    ['Anticipo', anticipoLabel],
+    ['Esquema de cuotas', cuotas || null],
+    ['Ajuste de cuotas', ajuste || null],
+    ['Comparable (usado terminado)', comparableNum ? `USD ${comparableNum.toLocaleString('es-AR')} /m²` : null],
+  ].filter(([, v]) => v);
+
+  const grupoUbicacion = [
+    ['Dirección', direccion || null],
+    ['Barrio', barrio || null],
+  ].filter(([, v]) => v);
+
+  // Resumen tipo Zillow (bd | ba | sqft) adaptado a pozo.
+  const resumen = [
+    ambientes ? { icon: 'apartment', label: ambientes } : null,
+    entrega ? { icon: 'event_available', label: `Entrega ${entrega}` } : null,
+    { icon: 'location_on', label: barrio },
+  ].filter(Boolean);
+
+  // --- JSON-LD (Product/Offer) ---
   const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
   const schema = { '@context': 'https://schema.org', '@type': 'Product', name: nombre };
   if (descLimpia) schema.description = descLimpia.slice(0, 300);
@@ -126,7 +160,7 @@ export default async function FichaProyecto({ params }) {
     if (barrio) address.addressLocality = barrio;
     address.addressRegion = 'Buenos Aires';
     address.addressCountry = 'AR';
-    if (Object.keys(address).length) schema.address = { '@type': 'PostalAddress', ...address };
+    schema.address = { '@type': 'PostalAddress', ...address };
   }
   if (precioNum) {
     schema.offers = {
@@ -138,288 +172,269 @@ export default async function FichaProyecto({ params }) {
     };
   }
 
-  // Mapa: usamos Google Maps embed con lat/lng si están, si no con la dirección.
   const mapQuery = lat && lng ? `${lat},${lng}` : encodeURIComponent(`${direccion}`);
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 
+  const Tile = ({ src, alt, className }) =>
+    src ? (
+      <img src={src} alt={alt} className={`w-full h-full object-cover ${className || ''}`} />
+    ) : (
+      <div className={`w-full h-full bg-surface-container-high flex items-center justify-center ${className || ''}`}>
+        <span className="material-symbols-outlined text-outline-variant text-4xl">image</span>
+      </div>
+    );
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
-        {/* Header Section */}
-        <header className="flex flex-col md:flex-row md:items-baseline justify-between mb-10 gap-4">
-          <div>
-            <span className="font-label-caps text-label-caps text-secondary mb-2 block">
-              {barrio.toUpperCase()}, BUENOS AIRES
-            </span>
-            <h1 className="font-display-lg text-display-lg text-primary">{nombre}</h1>
-          </div>
-          <div className="flex flex-col md:items-end">
-            <span className="font-label-caps text-label-caps text-on-surface-variant">DESDE</span>
-            <span className="font-headline-md text-headline-md text-primary">{precioLabel}</span>
-          </div>
-        </header>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
-        {/* Gallery Grid 4:3 — usamos la imagen destacada de WP como fachada principal */}
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-12">
-          <div className="md:col-span-8 aspect-[4/3] relative overflow-hidden group">
-            {imagen ? (
-              <img
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                src={imagen}
-                alt={nombre}
-              />
-            ) : (
-              <div className="w-full h-full bg-surface-container-high" />
-            )}
-            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1">
-              <span className="font-label-caps text-[10px] tracking-widest text-primary">FACHADA PRINCIPAL</span>
-            </div>
+      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 md:py-8 pb-28">
+        {/* Breadcrumb */}
+        <nav className="text-[13px] text-on-surface-variant mb-4 flex flex-wrap items-center gap-1.5">
+          <Link href="/" className="hover:text-link-gold">Inicio</Link>
+          <span>/</span>
+          <Link href="/desarrollos-inmobiliarios/" className="hover:text-link-gold">Proyectos en pozo</Link>
+          <span>/</span>
+          <span className="text-primary">{nombre}</span>
+        </nav>
+
+        {/* Galería mosaico (estilo Zillow) */}
+        <section className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 mb-6 rounded-xl overflow-hidden relative" style={{ minHeight: '340px' }}>
+          <div className="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto relative">
+            <Tile src={gallery[0]} alt={nombre} />
           </div>
-          <div className="md:col-span-4 flex flex-col gap-gutter">
-            <div className="aspect-[4/3] relative overflow-hidden group">
-              {imagen ? (
-                <img
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  src={imagen}
-                  alt={nombre}
-                />
-              ) : (
-                <div className="w-full h-full bg-surface-container-high" />
-              )}
+          <div className="hidden md:block relative"><Tile src={gallery[1]} alt={`${nombre} 2`} /></div>
+          <div className="hidden md:block relative"><Tile src={gallery[2]} alt={`${nombre} 3`} /></div>
+          <div className="hidden md:block relative"><Tile src={gallery[3]} alt={`${nombre} 4`} /></div>
+          <div className="hidden md:block relative"><Tile src={gallery[4]} alt={`${nombre} 5`} /></div>
+          {gallery.length > 0 && (
+            <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow flex items-center gap-1.5">
+              <span className="material-symbols-outlined text-[18px] text-primary">photo_library</span>
+              <span className="text-[13px] font-medium text-primary">{gallery.length} foto{gallery.length > 1 ? 's' : ''}</span>
             </div>
-            <div className="aspect-[4/3] relative overflow-hidden group">
-              {imagen ? (
-                <img
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  src={imagen}
-                  alt={nombre}
-                />
-              ) : (
-                <div className="w-full h-full bg-surface-container-high" />
-              )}
-            </div>
-          </div>
+          )}
         </section>
 
-        {/* Quick Info Row */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 border-y border-outline-variant py-8 mb-12 gap-8">
-          <div className="flex items-center gap-4">
-            <span className="material-symbols-outlined text-link-gold text-3xl">calendar_today</span>
-            <div>
-              <p className="font-label-caps text-label-caps text-on-surface-variant">ENTREGA</p>
-              <p className="font-body-lg text-body-lg text-primary font-medium">{entrega}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 border-x-0 sm:border-x border-outline-variant sm:px-8">
-            <span className="material-symbols-outlined text-link-gold text-3xl">payments</span>
-            <div>
-              <p className="font-label-caps text-label-caps text-on-surface-variant">FINANCIACIÓN</p>
-              <p className="font-body-lg text-body-lg text-primary font-medium">40% Anticipo + Cuotas</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 sm:pl-8">
-            <span className="material-symbols-outlined text-link-gold text-3xl">apartment</span>
-            <div>
-              <p className="font-label-caps text-label-caps text-on-surface-variant">AMBIENTES</p>
-              <p className="font-body-lg text-body-lg text-primary font-medium">{ambientes}</p>
-            </div>
-          </div>
-        </section>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-          {/* Details Column */}
-          <div className="md:col-span-7">
-            <h2 className="font-headline-sm text-headline-sm text-primary mb-6">
-              Un desarrollo de diseño atemporal
-            </h2>
-            {contenido ? (
-              <div
-                className="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed prose max-w-none"
-                dangerouslySetInnerHTML={{ __html: contenido }}
-              />
-            ) : (
-              <p className="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
-                {nombre} redefine el estándar de vida en {barrio}. Un desarrollo pensado para inversores exigentes y
-                para quienes buscan un hogar en una de las zonas más prestigiosas de la ciudad.
+        {/* Layout 2 columnas */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Columna principal */}
+          <div className="lg:col-span-2">
+            {/* Precio + resumen */}
+            <div className="border-b border-outline-variant pb-6 mb-6">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="font-display-lg text-display-lg text-primary leading-none">{precioLabel}</span>
+                {precioNum && <span className="text-body-lg text-on-surface-variant">/m²</span>}
+              </div>
+              <h1 className="font-headline-sm text-headline-sm text-primary mt-2">{nombre}</h1>
+              <p className="text-body-md text-on-surface-variant flex items-center gap-1.5 mt-1">
+                <span className="material-symbols-outlined text-[18px] text-link-gold">location_on</span>
+                {direccion}
               </p>
-            )}
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4">
+                {resumen.map((r, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[20px] text-link-gold">{r.icon}</span>
+                    <span className="text-body-md text-primary font-medium">{r.label}</span>
+                    {i < resumen.length - 1 && <span className="text-outline-variant ml-3 hidden sm:inline">|</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
 
+            {/* Lo destacado (amenities) */}
             {amenities.length > 0 && (
-              <>
-                <h3 className="font-label-caps text-label-caps text-primary mb-6 border-b border-outline-variant pb-2 inline-block">
-                  AMENITIES EXCLUSIVOS
-                </h3>
-                <div className="flex flex-wrap gap-3">
+              <div className="mb-8">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Lo destacado</h2>
+                <div className="flex flex-wrap gap-2.5">
                   {amenities.map((a, idx) => (
-                    <span
-                      key={idx}
-                      className="px-4 py-2 bg-surface-container border border-outline-variant text-label-caps text-[11px] flex items-center gap-2"
-                    >
-                      <span className="material-symbols-outlined text-[16px]">check</span> {a.toUpperCase()}
+                    <span key={idx} className="px-3.5 py-2 bg-surface-container border border-outline-variant rounded-full text-[13px] flex items-center gap-1.5 text-primary">
+                      <span className="material-symbols-outlined text-[16px] text-link-gold">check_circle</span> {a}
                     </span>
                   ))}
                 </div>
-              </>
-            )}
-
-            {constructora && (
-              <p className="mt-8 font-body-md text-body-md text-on-surface-variant">
-                <span className="font-label-caps text-label-caps text-primary">DESARROLLADORA:</span> {constructora}
-              </p>
-            )}
-          </div>
-
-          {/* Payment Plan Card (sticky) */}
-          <aside className="md:col-span-5">
-            <div className="md:sticky md:top-24 bg-primary-container p-8 text-on-primary border border-primary-container shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-link-gold/10 rounded-full -mr-16 -mt-16"></div>
-              <h3 className="font-headline-sm text-headline-sm text-on-primary mb-6">Plan de Inversión</h3>
-              <div className="space-y-6">
-                <div className="flex justify-between items-end border-b border-on-primary-container/30 pb-4">
-                  <div>
-                    <p className="font-label-caps text-label-caps text-on-primary-container">ANTICIPO</p>
-                    <p className="font-headline-sm text-headline-sm text-on-primary">40%</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-label-caps text-label-caps text-on-primary-container">USD</p>
-                    <p className="font-body-lg text-body-lg">{anticipoLabel}</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-end border-b border-on-primary-container/30 pb-4">
-                  <div>
-                    <p className="font-label-caps text-label-caps text-on-primary-container">ENTREGA</p>
-                    <p className="font-headline-sm text-headline-sm text-on-primary">{entrega}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-label-caps text-label-caps text-on-primary-container">AJUSTE</p>
-                    <p className="font-body-lg text-body-lg text-secondary-fixed">{ajuste}</p>
-                  </div>
-                </div>
-                <div className="bg-on-primary-fixed-variant/20 p-4 rounded-sm">
-                  <div className="flex items-start gap-3">
-                    <span className="material-symbols-outlined text-secondary-fixed">info</span>
-                    <p className="text-[13px] font-body-md text-on-primary-container leading-relaxed">
-                      Las cuotas en pesos se ajustan mensualmente según el índice informado por la desarrolladora.
-                      Consulte por descuentos por pago contado.
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href={`/contacto/?proyecto=${d.slug}`}
-                  className="w-full py-4 bg-link-gold text-white font-label-caps text-label-caps tracking-[0.2em] hover:brightness-110 transition-all flex justify-center items-center gap-2"
-                >
-                  SOLICITAR COTIZACIÓN <span className="material-symbols-outlined">trending_flat</span>
-                </Link>
               </div>
-            </div>
-          </aside>
-        </div>
-
-        {/* Confianza / Obra / Rentabilidad — se renderiza solo lo que tenga dato */}
-        {(legal || obra || rentabilidad) && (
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-            {/* Estructura legal y seguridad */}
-            {legal && (
-              <section className="md:col-span-4">
-                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
-                  <span className="material-symbols-outlined text-link-gold">verified_user</span>
-                  Estructura legal y seguridad
-                </h2>
-                {looksLikeHtml(legal) ? (
-                  <div
-                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
-                    dangerouslySetInnerHTML={{ __html: legal }}
-                  />
-                ) : (
-                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{legal}</p>
-                )}
-              </section>
             )}
 
-            {/* Avance de obra */}
-            {obra && (
-              <section className="md:col-span-4">
-                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
-                  <span className="material-symbols-outlined text-link-gold">construction</span>
-                  Avance de obra
-                </h2>
-                {obraPct != null ? (
-                  <div className="bg-surface-container border border-outline-variant p-6">
-                    <div className="flex justify-between items-baseline mb-3">
-                      <span className="font-label-caps text-label-caps text-on-surface-variant">PROGRESO</span>
+            {/* Descripción */}
+            <div className="mb-8">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Sobre este desarrollo</h2>
+              {contenido ? (
+                <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none" dangerouslySetInnerHTML={{ __html: contenido }} />
+              ) : (
+                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  {nombre} es un desarrollo en pozo en {barrio}. Cargá la descripción, el render y los datos comerciales para completar esta ficha.
+                </p>
+              )}
+            </div>
+
+            {/* Datos y características (Facts & features estilo Zillow) */}
+            <div className="mb-8">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Datos y características</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {grupoDesarrollo.length > 0 && (
+                  <div className="border border-outline-variant rounded-xl p-5">
+                    <h3 className="font-label-caps text-label-caps text-primary mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px] text-link-gold">apartment</span> Desarrollo
+                    </h3>
+                    <dl className="space-y-2">
+                      {grupoDesarrollo.map(([k, v]) => (
+                        <div key={k} className="flex justify-between gap-4 text-[14px]">
+                          <dt className="text-on-surface-variant">{k}</dt>
+                          <dd className="text-primary font-medium text-right">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
+                {grupoFinanciacion.length > 0 && (
+                  <div className="border border-outline-variant rounded-xl p-5">
+                    <h3 className="font-label-caps text-label-caps text-primary mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px] text-link-gold">payments</span> Financiación
+                    </h3>
+                    <dl className="space-y-2">
+                      {grupoFinanciacion.map(([k, v]) => (
+                        <div key={k} className="flex justify-between gap-4 text-[14px]">
+                          <dt className="text-on-surface-variant">{k}</dt>
+                          <dd className="text-primary font-medium text-right">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
+                {grupoUbicacion.length > 0 && (
+                  <div className="border border-outline-variant rounded-xl p-5">
+                    <h3 className="font-label-caps text-label-caps text-primary mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px] text-link-gold">location_on</span> Ubicación
+                    </h3>
+                    <dl className="space-y-2">
+                      {grupoUbicacion.map(([k, v]) => (
+                        <div key={k} className="flex justify-between gap-4 text-[14px]">
+                          <dt className="text-on-surface-variant">{k}</dt>
+                          <dd className="text-primary font-medium text-right">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                )}
+                {obraPct != null && (
+                  <div className="border border-outline-variant rounded-xl p-5">
+                    <h3 className="font-label-caps text-label-caps text-primary mb-3 flex items-center gap-2">
+                      <span className="material-symbols-outlined text-[18px] text-link-gold">construction</span> Avance de obra
+                    </h3>
+                    <div className="flex justify-between items-baseline mb-2">
+                      <span className="text-[14px] text-on-surface-variant">Progreso</span>
                       <span className="font-headline-sm text-headline-sm text-primary">{obraPct}%</span>
                     </div>
-                    <div className="w-full h-2 bg-surface-container-high overflow-hidden">
+                    <div className="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
                       <div className="h-full bg-link-gold" style={{ width: `${obraPct}%` }} />
                     </div>
                   </div>
-                ) : looksLikeHtml(obra) ? (
-                  <div
-                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
-                    dangerouslySetInnerHTML={{ __html: obra }}
-                  />
-                ) : (
-                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{obra}</p>
                 )}
-              </section>
-            )}
+              </div>
+            </div>
 
-            {/* Proyección de rentabilidad */}
+            {/* Legal / Rentabilidad (prose, solo si hay dato) */}
+            {legal && (
+              <div className="mb-8">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-link-gold">verified_user</span> Estructura legal y seguridad
+                </h2>
+                {looksLikeHtml(legal) ? (
+                  <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none" dangerouslySetInnerHTML={{ __html: legal }} />
+                ) : (
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{legal}</p>
+                )}
+              </div>
+            )}
             {rentabilidad && (
-              <section className="md:col-span-4">
-                <h2 className="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
-                  <span className="material-symbols-outlined text-link-gold">trending_up</span>
-                  Proyección de rentabilidad
+              <div className="mb-8">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-link-gold">trending_up</span> Proyección de rentabilidad
                 </h2>
                 {looksLikeHtml(rentabilidad) ? (
-                  <div
-                    className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none"
-                    dangerouslySetInnerHTML={{ __html: rentabilidad }}
-                  />
+                  <div className="font-body-md text-body-md text-on-surface-variant leading-relaxed prose max-w-none" dangerouslySetInnerHTML={{ __html: rentabilidad }} />
                 ) : (
                   <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">{rentabilidad}</p>
                 )}
-              </section>
+              </div>
             )}
-          </div>
-        )}
 
-        {/* Location Section */}
-        <section className="mb-24">
-          <div className="flex items-baseline justify-between mb-8">
-            <h2 className="font-headline-sm text-headline-sm text-primary">Ubicación Estratégica</h2>
-            <p className="font-body-md text-on-surface-variant flex items-center gap-2">
-              <span className="material-symbols-outlined text-link-gold">location_on</span> {direccion}
+            {/* Mapa */}
+            <div className="mb-4">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Ubicación</h2>
+              <div className="h-[380px] rounded-xl overflow-hidden border border-outline-variant">
+                <iframe title={`Mapa de ${nombre}`} src={mapSrc} className="w-full h-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              </div>
+            </div>
+
+            {/* Disclaimer independencia (E-E-A-T / YMYL) */}
+            <p className="text-[12px] text-on-surface-variant leading-relaxed border-t border-outline-variant pt-4 mt-6">
+              Análisis independiente con fines informativos. Los datos son de fuentes públicas y de la comercializadora,
+              pueden variar y no constituyen asesoramiento financiero ni oferta comercial. Verificá precios, plazos y
+              condiciones legales antes de invertir.
             </p>
           </div>
-          <div className="h-[450px] bg-surface-container-high relative border border-outline-variant">
-            {/* Mapa embebido (lat/lng si existen, si no por dirección) */}
-            <iframe
-              title={`Mapa de ${nombre}`}
-              src={mapSrc}
-              className="w-full h-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </section>
+
+          {/* Sidebar sticky: contacto + inversión (estilo Zillow) */}
+          <aside className="lg:col-span-1">
+            <div className="lg:sticky lg:top-24 border border-outline-variant rounded-xl p-6 bg-surface shadow-sm">
+              <p className="font-label-caps text-label-caps text-on-surface-variant">DESDE</p>
+              <p className="font-headline-md text-headline-md text-primary mb-1">
+                {precioLabel}{precioNum && <span className="text-body-md text-on-surface-variant"> /m²</span>}
+              </p>
+
+              <dl className="space-y-2 py-4 my-4 border-y border-outline-variant text-[14px]">
+                {anticipoLabel && (
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-on-surface-variant">Anticipo</dt>
+                    <dd className="text-primary font-medium">{anticipoLabel}</dd>
+                  </div>
+                )}
+                {entrega && (
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-on-surface-variant">Entrega</dt>
+                    <dd className="text-primary font-medium">{entrega}</dd>
+                  </div>
+                )}
+                {(cuotas || ajuste) && (
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-on-surface-variant">Cuotas</dt>
+                    <dd className="text-primary font-medium text-right">{cuotas || `Ajuste ${ajuste}`}</dd>
+                  </div>
+                )}
+              </dl>
+
+              <Link
+                href={`/contacto/?proyecto=${d.slug}`}
+                className="w-full py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all flex justify-center items-center gap-2 mb-3"
+              >
+                SOLICITAR COTIZACIÓN
+              </Link>
+              <Link
+                href={`/contacto/?proyecto=${d.slug}`}
+                className="w-full py-3.5 border border-primary text-primary rounded-lg font-label-caps text-label-caps tracking-widest hover:bg-surface-container transition-all flex justify-center items-center gap-2"
+              >
+                AGENDAR VISITA
+              </Link>
+
+              <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
+                <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
+                Cuotas en pesos ajustables. Consultá descuentos por pago contado y disponibilidad de unidades.
+              </p>
+            </div>
+          </aside>
+        </div>
       </main>
 
-      {/* Bottom Action Bar (CTA fija) */}
-      <div className="fixed bottom-0 left-0 w-full z-[60] p-4 md:px-margin-desktop md:py-6 bg-surface/80 backdrop-blur-md md:bg-transparent md:pointer-events-none">
-        <div className="max-w-container-max mx-auto flex justify-center md:justify-end">
-          <Link
-            href={`/contacto/?proyecto=${d.slug}`}
-            className="w-full md:w-auto px-8 py-4 bg-link-gold text-white font-label-caps text-label-caps tracking-[0.2em] shadow-2xl hover:scale-105 active:scale-95 transition-all pointer-events-auto flex items-center justify-center gap-4"
-          >
-            QUIERO MÁS INFORMACIÓN
-            <span className="material-symbols-outlined fill-icon">send</span>
-          </Link>
-        </div>
+      {/* Bottom Action Bar (CTA fija móvil) */}
+      <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
+        <Link
+          href={`/contacto/?proyecto=${d.slug}`}
+          className="w-full px-8 py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3"
+        >
+          QUIERO MÁS INFORMACIÓN
+          <span className="material-symbols-outlined fill-icon">send</span>
+        </Link>
       </div>
     </>
   );
