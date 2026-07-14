@@ -11,6 +11,9 @@ export const metadata = {
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
 };
 
+// Coordenadas por proyecto (geocodificadas de la dirección real, dentro de CABA).
+const COORDS = {"newbery-place-colegiales":[-34.573241,-58.441764],"via-cramer-colegiales":[-34.573406,-58.447746],"live-belgrano-colegiales":[-34.569116,-58.455134],"virrey-aviles-2805-colegiales":[-34.569336,-58.455507],"bawilsa-36-villa-urquiza":[-34.579258,-58.490431],"smart-point-villa-urquiza-villa-urquiza":[-34.569996,-58.488349],"ando-villa-urquiza":[-34.579169,-58.486792],"rivera-mystic-villa-urquiza":[-34.570823,-58.485885],"osten-tower-i-puerto-madero":[-34.620011,-58.360436],"sofitel-residences-madero-puerto-madero":[-34.603236,-58.364129],"be-boulevard-puerto-madero":[-34.612292,-58.361931],"unica-puerto-madero":[-34.619691,-58.362627],"osten-tower-ii-puerto-madero":[-34.619400,-58.361100],"paz-boulevard-nunez":[-34.551649,-58.467854],"amenna-nunez":[-34.552498,-58.468283],"altos-de-ruiz-huidobro-nunez":[-34.544298,-58.471130],"aura-nunez-nunez":[-34.541053,-58.471047],"sucre-garden-belgrano":[-34.562115,-58.451882],"novo-belgrano-belgrano":[-34.556286,-58.463094],"aurea-belgrano":[-34.561270,-58.458929],"zeta-belgrano":[-34.564399,-58.444149],"neuhaus-directorio-caballito":[-34.627698,-58.431634],"life-caballito-caballito":[-34.616648,-58.438650],"suka-caballito":[-34.620590,-58.441392],"met-alto-residences-caballito":[-34.621500,-58.439000],"vera-lyria-caballito":[-34.622901,-58.434450],"vera-nubia-caballito":[-34.626906,-58.437654],"rio4-caballito":[-34.619800,-58.442500],"donna-grigia-caballito":[-34.629360,-58.450402],"donna-ambra-caballito":[-34.625048,-58.440463],"donna-salvia-caballito":[-34.626354,-58.451107],"donna-zaffira-caballito":[-34.626458,-58.449669],"donna-gioia-caballito":[-34.625278,-58.427522],"nice-cordoba-palermo":[-34.580336,-58.424524],"nice-hollywood-palermo-hollywood":[-34.581699,-58.434498],"paseo-plaza-thames-palermo-soho":[-34.588986,-58.432717],"piet-gascon-palermo-soho":[-34.594599,-58.423026],"casa-aer-palermo-soho":[-34.591659,-58.425841],"haaus-palermo-soho":[-34.592601,-58.432262],"central-acuna-palermo":[-34.596014,-58.421586],"nice-plaza-palermo-botanico":[-34.580402,-58.408713],"humboldt-1545-palermo-hollywood":[-34.586103,-58.436686],"haaus-ii-palermo-soho":[-34.592727,-58.432129],"tenca-palermo-hollywood":[-34.575787,-58.434386],"palacio-cabrera-palermo-hollywood":[-34.585241,-58.438609],"sens-luxury-homes-palermo-hollywood":[-34.583567,-58.429509]};
+
 function toNumber(v) {
   if (v == null) return null;
   if (typeof v === 'number') return v;
@@ -55,9 +58,12 @@ export default async function CatalogoPage() {
     const desarrolladora = acfAny(node, ['desarrolladora', 'constructora']) || '';
     const etapaRaw = acfAny(node, ['estado_obra', 'obra', 'pozo_estado']) || '';
     const etapa = /construc/i.test(String(etapaRaw)) ? 'En construcción' : 'En pozo';
+    const coord = COORDS[node.slug] || null;
 
     return {
       slug: node.slug,
+      lat: coord ? coord[0] : null,
+      lng: coord ? coord[1] : null,
       nombre,
       barrio,
       direccion,
