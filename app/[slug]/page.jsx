@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema, getRankMathSchema, fixImgs } from "../../lib/wp";
 
 export const dynamicParams = !process.env.EXPORT;
@@ -68,6 +69,13 @@ export default async function SinglePage({ params }) {
       ))}
       <header className="bg-primary-container text-on-primary">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+          {type === "post" && (
+            <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-primary-fixed-variant mb-6">
+              <Link href="/" className="hover:text-link-gold">Inicio</Link>
+              <span>/</span>
+              <Link href="/novedades/" className="hover:text-link-gold">Guías</Link>
+            </nav>
+          )}
           {type === "post" && node.date && (
             <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">
               {new Date(node.date).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}
@@ -90,6 +98,19 @@ export default async function SinglePage({ params }) {
         className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
         dangerouslySetInnerHTML={{ __html: content }}
       />
+
+      {type === "post" && (
+        <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop pb-16">
+          <div className="border-t border-outline-variant pt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <Link href="/novedades/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-link-gold transition-colors">
+              <span className="material-symbols-outlined text-[18px]">arrow_back</span> Volver a Guías
+            </Link>
+            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-2 bg-link-gold text-primary-container px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all">
+              Ver proyectos en pozo <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      )}
     </article>
   );
 }
