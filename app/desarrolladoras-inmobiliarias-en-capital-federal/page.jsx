@@ -1,5 +1,6 @@
 import { getPageBySlug, getRankMathSchema } from "../../lib/wp";
 import DirEnhancer from "./DirEnhancer";
+import TocNav from "./TocNav";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -21,6 +22,8 @@ export default async function HubDesarrolladorasPage() {
       {rmSchema.map((s, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
+
+      <TocNav />
 
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
         {page?.content?.rendered ? (
