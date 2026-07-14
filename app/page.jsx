@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getDesarrollos, featuredImage, acf } from "./lib/wp";
+import { getDesarrollos, featuredImage, acf } from "../lib/wp";
 
 export const revalidate = 600;
 
