@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { getPageBySlug } from "../../lib/wp";
+import { getPageBySlug, getRankMathSchema, getDesarrollos, featuredImage, acf } from "../../lib/wp";
+import CalcInversion from "./CalcInversion";
 
 export const dynamicParams = !process.env.EXPORT;
+export const revalidate = 600;
 
 const BARRIOS = [
   "palermo",
@@ -19,7 +21,6 @@ export function generateStaticParams() {
   return BARRIOS.map((barrio) => ({ barrio }));
 }
 
-// Deriva el nombre visible del barrio a partir del slug.
 function barrioNombre(slug) {
   if (!slug) return "Buenos Aires";
   const casos = {
@@ -36,58 +37,51 @@ function barrioNombre(slug) {
     .join(" ");
 }
 
+// Base de matcheo (primer token del barrio, sin acentos) para filtrar proyectos reales.
+function barrioBase(slug) {
+  const first = (slug || "").split("-")[0];
+  const map = { nunez: "nunez", puerto: "puerto madero", villa: "villa urquiza", colegiales: "colegiales", saavedra: "saavedra" };
+  return (map[first] || first).toLowerCase();
+}
+const deaccent = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+function num(v) {
+  if (v == null) return null;
+  const n = parseInt(String(v).replace(/[^\d]/g, ""), 10);
+  return Number.isFinite(n) ? n : null;
+}
+
+// Quita del HTML de WP lo que rompe o no aplica en headless: <script>, <iframe>, descargas .pdf.
+function sanitizeWp(html) {
+  if (!html) return "";
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/<a[^>]*href=["'][^"']*\.pdf[^"']*["'][^>]*>[\s\S]*?<\/a>/gi, "")
+    .replace(/<[^>]*class=["'][^"']*(calculadora|calculator|descargar-pdf|pdf-download)[^"']*["'][\s\S]*?<\/[^>]+>/gi, "");
+}
+
 const HERO_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAuiEC2Dyv8drYP2sOhcV_Hghkm4wCHq8Ppo4MTGGsKAFyM9KXxd5xSLg0vNA4MK-jNMXAvN5EI59V5a99GV_YD4JHygK3X9YF7x1uTQYv6ukmQxZAe0YReMqQjaUpEvEWKeF4tdecIXHHdlItxrpfbAh6lKYVKA9QFzFs6HqsfCxdJIpcZaCZipJvk0vPd2OyV30OGoZJ6Aiu1d-RuPl-16aIQmCR9qVxEQR2goVP0uib3qtKbyEtFFw";
-
-// TODO: precios reales por barrio (datos del cliente). Placeholders "[cargar]".
-const ZONAS_M2 = [
-  { zona: "[cargar]", valor: "[cargar]", tendencia: "[cargar]" },
-  { zona: "[cargar]", valor: "[cargar]", tendencia: "[cargar]" },
-  { zona: "[cargar]", valor: "[cargar]", tendencia: "[cargar]" },
-  { zona: "[cargar]", valor: "[cargar]", tendencia: "[cargar]" },
-];
-
-const PROYECTOS = [
-  {
-    dev: "North Atlantic Corp",
-    nombre: "The Heritage Residences",
-    desc: "Ubicado en el corazón de Soho, este proyecto integra arte y habitabilidad con amenities de clase mundial.",
-    desde: "DESDE USD 280.000",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAOEdlFbfXBUEguw8PFlhYVuJn6M2ExitDtMxNxED1J-iECOb1jHdQX3xQgDFlRQqvzRRBnFoI7SrcXwk4UdtGcF5ono4vRIQq65Y6RTA7AHqMzf4WGnK40sEkjPrNN2km0GnRKWk_CffLJaDoJnEnwDnzqkDBAuuBpgnAK4sC7LoVISI-mUFTMaNDUbHrbNB_kJqnREmCP0dH27nFbyn4VzZNb84Knit8fQLsQYfNduiyhnQVLcd2vgw",
-  },
-  {
-    dev: "Studio Urbano",
-    nombre: "Iconic Tower Palermo",
-    desc: "Una torre de 35 pisos con vistas panorámicas al río y acabados importados de la más alta gama.",
-    desde: "DESDE USD 450.000",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCkhYmBJm7VyHrqDF-boxXXjqcFuKm8lnKk0NJ5TbMiryvbBJtZ_6NTMbaYNsTmvLSRazvzLzUDkVNLjiWI6FaJwbqjjdUmGWF5BwfW7j8uyDfdqS6o4S8C2GnpxRSF-3jLIrlDkSWPfYP6rcSt_MF4Wb1D6_6DcQ1usqIk5hTzjvQ7YY453c1XNxumZs8T2LjHCDUN2w_AoI6ZiJ7c1UYZclSZiunArSeHCCmVZaARQjfpwvWr4Yltpg",
-  },
-  {
-    dev: "Eco-Developments",
-    nombre: "Vertex Boutique",
-    desc: "Arquitectura sostenible en una calle arbolada, diseñado para el inversor joven.",
-    desde: "DESDE USD 195.000",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCnWREh074or1S0Rf4RWHHeVk-7bVTAq33Wl1eQFFSX-TjC8s8MA6JysDSKKLcmifFsh1eCG9_gw9WAglagbweIvLWymymlONfn-NlbYsMHJjEvQ2REKj3HM2L_j1sMgj2nugmDW6dIBjQrNE5l5BxtIxEVmDLpHHZQOpFJ53vfpiLwSpmbeQwVsk0LMH9NMliNtkcywufhtNnIFNI1Sdv3bd5nQGSmcIK3-oq1A3gKDfmtR91BUOuDTg",
-  },
-];
 
 const FAQ = [
   {
     q: "¿Cuál es el beneficio de comprar en preventa hoy?",
-    a: 'Comprar en la etapa de "pozo" permite acceder a valores entre un 15% y 20% inferiores al valor de mercado terminado. Dada la constante valorización del suelo, esta brecha suele ampliarse hacia la entrega de la unidad.',
-  },
-  {
-    q: "¿Qué micro-barrio ofrece mayor retorno por alquiler?",
-    a: "Las zonas con mayor oferta gastronómica y comercial lideran el mercado de alquiler temporario (Airbnb). Para alquileres a largo plazo de alta gama, las áreas residenciales premium ofrecen los yields más estables con inquilinos corporativos.",
+    a: 'Comprar en la etapa de "pozo" permite acceder a valores por debajo del valor de mercado terminado. Dada la valorización del suelo, esa brecha suele ampliarse hacia la entrega de la unidad, aunque no está garantizada.',
   },
   {
     q: "¿Cómo es la financiación estándar?",
-    a: "La mayoría de los proyectos requieren un anticipo del 30% al 40% en dólares, y el saldo se pesifica y se ajusta mensualmente por el Índice de la Cámara Argentina de la Construcción (CAC) hasta la entrega de la llave.",
+    a: "La mayoría de los proyectos requieren un anticipo del 30% al 40% en dólares, y el saldo se pesifica y se ajusta mensualmente por el Índice de la Cámara Argentina de la Construcción (CAC) hasta la entrega.",
+  },
+  {
+    q: "¿Qué conviene verificar antes de invertir en pozo?",
+    a: "El track record de la desarrolladora, la estructura legal (fideicomiso al costo, escritura), el avance de obra real y el precio por m² comparado con el usado terminado de la zona.",
   },
 ];
 
 export default async function GuiaBarrioPage({ params }) {
   const barrio = barrioNombre(params.barrio);
+  const base = barrioBase(params.barrio);
 
   let page = null;
   try {
@@ -95,34 +89,50 @@ export default async function GuiaBarrioPage({ params }) {
   } catch (e) {
     page = null;
   }
-  const title = page?.title?.rendered || `${barrio}: El Epicentro de la Plusvalía Inmobiliaria`;
+  const title = page?.title?.rendered || `${barrio}: proyectos en pozo y desarrolladoras`;
+  const rmSchema = await getRankMathSchema(`/desarrolladoras-inmobiliarias-en-${params.barrio}/`);
+
+  // Proyectos REALES del barrio (desde el CPT, mismo criterio que el catálogo).
+  let items = [];
+  try { items = await getDesarrollos(); } catch (e) { items = []; }
+  const proyectos = (items || [])
+    .map((n) => {
+      const t = (n.title?.rendered || "Proyecto").replace(/&amp;/g, "&");
+      const nombre = t.split("—")[0].trim() || t;
+      const barrioProj = (t.split("—")[1] || "").trim();
+      return { slug: n.slug, nombre, barrio: barrioProj, precio: num(acf(n, "precio_m2")), img: featuredImage(n) };
+    })
+    .filter((p) => deaccent(p.barrio).includes(base));
+
+  const precios = proyectos.map((p) => p.precio).filter(Boolean);
+  const minP = precios.length ? Math.min(...precios) : null;
+  const maxP = precios.length ? Math.max(...precios) : null;
+  const avgP = precios.length ? Math.round(precios.reduce((a, b) => a + b, 0) / precios.length) : null;
+  const fmt = (n) => (n ? "USD " + n.toLocaleString("es-AR") : "Consultar");
+
+  const destacados = proyectos.filter((p) => p.img).slice(0, 6);
+  const contenido = sanitizeWp(page?.content?.rendered);
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-end">
+      {rmSchema.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
+
+      {/* Hero */}
+      <section className="relative h-[70vh] flex items-end">
         <div className="absolute inset-0 z-0">
-          <div
-            className="w-full h-full bg-cover bg-center transition-transform duration-1000 hover:scale-105"
-            style={{ backgroundImage: `url('${HERO_IMG}')` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 to-transparent" />
+          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${HERO_IMG}')` }} />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-container/85 to-transparent" />
         </div>
-        <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop pb-20 max-w-container-max mx-auto text-on-primary">
+        <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop pb-16 max-w-container-max mx-auto text-on-primary">
           <div className="max-w-3xl">
-            <span className="text-label-caps text-secondary-fixed mb-4 block">GUÍA DE MERCADO</span>
-            <h1
-              className="text-display-lg-mobile md:text-display-lg font-display-lg mb-6 leading-tight"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
+            <span className="text-label-caps text-secondary-fixed mb-4 block">GUÍA DE MERCADO · {barrio.toUpperCase()}</span>
+            <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg mb-5 leading-tight" dangerouslySetInnerHTML={{ __html: title }} />
             <p className="text-body-lg mb-8 opacity-90 max-w-xl">
-              Descubrí por qué {barrio} continúa liderando el mercado de proyectos en pozo, combinando lifestyle
-              cosmopolita con una rentabilidad sostenida.
+              Análisis independiente de {proyectos.length} proyecto{proyectos.length === 1 ? "" : "s"} en pozo en {barrio}: precio por m², desarrolladora y financiación.
             </p>
-            <Link
-              href="/desarrollos-inmobiliarios/"
-              className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3"
-            >
+            <Link href="/desarrollos-inmobiliarios/?barrio=" className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
               Ver proyectos en {barrio}
               <span className="material-symbols-outlined">arrow_forward</span>
             </Link>
@@ -130,126 +140,71 @@ export default async function GuiaBarrioPage({ params }) {
         </div>
       </section>
 
-      {/* Market Insight Section */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-          <div className="lg:col-span-5">
-            <span className="text-label-caps text-secondary mb-4 block">ANÁLISIS ESTRATÉGICO</span>
-            <h2 className="text-headline-md font-headline-md mb-6">
-              Un mercado impulsado por la escasez y el prestigio.
-            </h2>
-            {page?.content?.rendered ? (
-              <div
-                className="prose max-w-none text-body-md text-on-surface-variant mb-8 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-              />
-            ) : (
-              <p className="text-body-md text-on-surface-variant mb-8 leading-relaxed">
-                {barrio} no es solo un barrio; es un ecosistema financiero. Con una demanda constante de perfiles
-                internacionales y ejecutivos locales, las unidades en pozo en esta zona aseguran una liquidez
-                excepcional.
-              </p>
-            )}
-            <div className="flex flex-wrap gap-8">
-              <div>
-                <span className="block text-headline-sm font-headline-sm text-primary">4.8%</span>
-                <span className="text-label-caps text-on-surface-variant">Yield Promedio Anual</span>
-              </div>
-              <div>
-                <span className="block text-headline-sm font-headline-sm text-primary">+12%</span>
-                <span className="text-label-caps text-on-surface-variant">Plusvalía en Pozo</span>
-              </div>
+      {/* Barra de datos reales */}
+      <section className="bg-surface-container-low border-b border-outline-variant py-8">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div><span className="block text-headline-sm font-headline-sm text-primary">{proyectos.length}</span><span className="text-label-caps text-on-surface-variant">Proyectos relevados</span></div>
+          <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(minP)}</span><span className="text-label-caps text-on-surface-variant">Precio/m² desde</span></div>
+          <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(avgP)}</span><span className="text-label-caps text-on-surface-variant">Promedio /m²</span></div>
+          <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(maxP)}</span><span className="text-label-caps text-on-surface-variant">Máximo /m²</span></div>
+        </div>
+      </section>
+
+      {/* Análisis (contenido WP saneado) */}
+      {contenido && (
+        <section className="py-16 md:py-20 px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
+          <span className="text-label-caps text-secondary mb-3 block">ANÁLISIS DEL BARRIO</span>
+          <div className="prose max-w-none text-body-md text-on-surface-variant leading-relaxed" dangerouslySetInnerHTML={{ __html: contenido }} />
+        </section>
+      )}
+
+      {/* Proyectos reales del barrio */}
+      {destacados.length > 0 && (
+        <section className="bg-primary-container py-20">
+          <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div className="mb-12 text-center">
+              <span className="text-label-caps text-secondary-fixed mb-3 block">PROYECTOS EN POZO</span>
+              <h2 className="text-headline-md font-headline-md text-on-primary">Desarrollos en {barrio}</h2>
             </div>
-          </div>
-          <div className="lg:col-start-7 lg:col-span-6">
-            <div className="bg-surface-container-low border border-outline-variant p-8">
-              <h3 className="text-label-caps mb-6 text-primary border-b border-outline-variant pb-4">
-                TABLA DE VALORES M² POR ZONA
-              </h3>
-              {/* TODO: precios reales por barrio (datos del cliente) */}
-              <div className="space-y-4">
-                {ZONAS_M2.map((z, i) => (
-                  <div
-                    key={i}
-                    className={
-                      i < ZONAS_M2.length - 1
-                        ? "flex justify-between items-center py-2 border-b border-outline-variant/30"
-                        : "flex justify-between items-center py-2"
-                    }
-                  >
-                    <span className="font-medium">{z.zona}</span>
-                    <div className="text-right">
-                      <span className="block text-body-md font-bold">{z.valor}</span>
-                      <span className="text-label-caps text-secondary">Tendencia: {z.tendencia}</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+              {destacados.map((p) => (
+                <Link key={p.slug} href={`/desarrollos-inmobiliarios/${p.slug}/`} className="group bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src={p.img} alt={`${p.nombre} — ${p.barrio}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span className="absolute top-3 left-3 bg-primary/90 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 uppercase">En pozo</span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-headline-sm font-headline-sm mb-1 leading-tight">{p.nombre}</h3>
+                    <p className="text-[13px] text-on-surface-variant flex items-center gap-1 mb-4"><span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{p.barrio}</p>
+                    <div className="flex justify-between items-end pt-4 border-t border-outline-variant">
+                      <div><span className="block text-[10px] uppercase tracking-widest text-on-surface-variant">Desde</span><span className="font-bold text-primary">{p.precio ? `USD ${p.precio.toLocaleString("es-AR")}/m²` : "Consultar"}</span></div>
+                      <span className="text-link-gold text-label-caps flex items-center gap-1 group-hover:gap-2 transition-all">Ver <span className="material-symbols-outlined text-sm">chevron_right</span></span>
                     </div>
                   </div>
-                ))}
-              </div>
-              <p className="mt-6 text-xs text-on-surface-variant italic font-light">
-                *Valores promedio de unidades en etapa de preventa avanzada.
-              </p>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
+      )}
+
+      {/* Calculadora funcional */}
+      <section className="py-16 md:py-20 px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
+        <CalcInversion precioM2Default={avgP || 2500} barrio={barrio} />
       </section>
 
-      {/* Developers Bento Grid */}
-      <section className="bg-primary-container py-24">
-        <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-label-caps text-secondary-fixed mb-4 block">FIRMAS DE AUTOR</span>
-            <h2 className="text-headline-md font-headline-md text-on-primary">Desarrolladoras que definen {barrio}</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {PROYECTOS.map((p) => (
-              <div key={p.nombre} className="bg-white p-1 rounded-xl overflow-hidden group">
-                <div className="h-64 overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${p.img}')` }}
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white text-[10px] font-bold tracking-[0.2em] px-3 py-1 uppercase">
-                      {p.dev}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-headline-sm font-headline-sm mb-2">{p.nombre}</h3>
-                  <p className="text-body-md text-on-surface-variant mb-4">{p.desc}</p>
-                  <div className="flex justify-between items-center pt-4 border-t border-outline-variant">
-                    <span className="text-label-caps font-bold">{p.desde}</span>
-                    <Link
-                      className="text-link-gold text-label-caps flex items-center gap-1 hover:gap-2 transition-all"
-                      href="/desarrollos-inmobiliarios/"
-                    >
-                      Explorar <span className="material-symbols-outlined text-sm">chevron_right</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="text-label-caps text-secondary mb-4 block">PREGUNTAS FRECUENTES</span>
+      {/* FAQ */}
+      <section className="pb-20 px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="text-label-caps text-secondary mb-3 block">PREGUNTAS FRECUENTES</span>
           <h2 className="text-headline-md font-headline-md">Invertir en {barrio}</h2>
         </div>
         <div className="space-y-4">
           {FAQ.map((f) => (
-            <details
-              key={f.q}
-              className="group bg-surface-container-low border border-outline-variant rounded-lg p-6 [&_summary::-webkit-details-marker]:hidden"
-            >
+            <details key={f.q} className="group bg-surface-container-low border border-outline-variant rounded-lg p-6 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex items-center justify-between cursor-pointer">
                 <h4 className="text-body-lg font-semibold text-primary">{f.q}</h4>
-                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">
-                  expand_more
-                </span>
+                <span className="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
               </summary>
               <div className="mt-4 text-on-surface-variant leading-relaxed">{f.a}</div>
             </details>
@@ -257,17 +212,12 @@ export default async function GuiaBarrioPage({ params }) {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="bg-primary-container text-on-primary py-20">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
           <h2 className="text-headline-md font-headline-md mb-6">¿Querés invertir en {barrio}?</h2>
-          <p className="text-body-lg opacity-80 max-w-xl mx-auto mb-8">
-            Accedé a un análisis independiente de los proyectos en pozo del barrio, sin costo para el inversor.
-          </p>
-          <Link
-            href="/contacto/"
-            className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3"
-          >
+          <p className="text-body-lg opacity-80 max-w-xl mx-auto mb-8">Accedé a un análisis independiente de los proyectos en pozo del barrio, sin costo para el inversor.</p>
+          <Link href="/contacto/" className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
             Quiero más información
             <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
