@@ -1,16 +1,78 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-// Recibe items ya mapeados desde WP (server). Filtra/ordena en cliente.
-// item: { slug, nombre, barrio, direccion, precio, precioLabel, ambientes, ambientesNums, entrega, desarrolladora, etapa, imagen }
+// --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
+function MapaListado({ items }) {
+  const ref = useRef(null);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    let cancel = false;
+    async function ensureL() {
+      if (window.L) return window.L;
+      if (!document.getElementById('leaflet-css')) {
+        const l = document.createElement('link');
+        l.id = 'leaflet-css'; l.rel = 'stylesheet';
+        l.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(l);
+      }
+      await new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+        s.onload = res; s.onerror = rej; document.body.appendChild(s);
+      });
+      return window.L;
+    }
+    ensureL().then((L) => {
+      if (cancel || !ref.current) return;
+      if (!mapRef.current) {
+        mapRef.current = L.map(ref.current, { scrollWheelZoom: false }).setView([-34.6, -58.44], 12);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19,
+        }).addTo(mapRef.current);
+      }
+      const map = mapRef.current;
+      if (map._layer) map.removeLayer(map._layer);
+      const layer = L.layerGroup().addTo(map); map._layer = layer;
+      const pts = [];
+      items.forEach((i) => {
+        if (i.lat == null || i.lng == null) return;
+        const label = i.precio ? 'USD ' + Math.round(i.precio / 100) / 10 + 'k' : 'Consultar';
+        const icon = L.divIcon({
+          className: '',
+          html: `<div style="background:#1b2a4a;color:#fff;border-radius:14px;padding:3px 9px;font:600 12px/1 Work Sans,sans-serif;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35);border:1.5px solid #fff">${i.precio ? '$' + Math.round(i.precio / 1000) + 'k' : '•'}</div>`,
+          iconSize: [48, 22], iconAnchor: [24, 22],
+        });
+        const m = L.marker([i.lat, i.lng], { icon }).addTo(layer);
+        m.bindPopup(
+          `<a href="/desarrollos-inmobiliarios/${i.slug}/" style="text-decoration:none;color:#1b2a4a;display:block;width:210px">
+            ${i.imagen ? `<img src="${i.imagen}" style="width:210px;height:118px;object-fit:cover;border-radius:6px" loading="lazy"/>` : ''}
+            <div style="padding:7px 2px 2px"><strong style="font:600 15px/1.2 Libre Caslon Text,serif">${i.nombre}</strong>
+            <div style="color:#667;font-size:12px;margin:2px 0">${i.barrio || ''}${i.ambientes ? ' · ' + i.ambientes : ''}</div>
+            <strong style="color:#A68966;font-size:14px">${label !== 'Consultar' && i.precio ? 'USD ' + i.precio.toLocaleString('es-AR') + ' /m²' : 'Consultar'}</strong></div></a>`,
+          { minWidth: 210 }
+        );
+        pts.push([i.lat, i.lng]);
+      });
+      if (pts.length) map.fitBounds(pts, { padding: [45, 45], maxZoom: 14 });
+      setTimeout(() => map.invalidateSize(), 100);
+    }).catch(() => {});
+    return () => { cancel = true; };
+  }, [items]);
+
+  return <div ref={ref} className="w-full h-[560px] md:h-[640px] rounded-xl overflow-hidden border border-outline-variant bg-surface-container-high" />;
+}
+
+// item: { slug, nombre, barrio, direccion, precio, precioLabel, ambientes, ambientesNums, entrega, desarrolladora, etapa, imagen, lat, lng }
 export default function CatalogoFiltros({ items }) {
   const [barrio, setBarrio] = useState('');
-  const [amb, setAmb] = useState('');          // '' | '1' | '2' | '3' | '4+'
-  const [precio, setPrecio] = useState('todos'); // todos | hasta3000 | 3000a4500 | mas4500
+  const [amb, setAmb] = useState('');
+  const [precio, setPrecio] = useState('todos');
   const [etapa, setEtapa] = useState('');
   const [orden, setOrden] = useState('destacados');
+  const [vista, setVista] = useState('lista'); // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
 
   const barrios = useMemo(
@@ -36,10 +98,9 @@ export default function CatalogoFiltros({ items }) {
       if (etapa && (i.etapa || '').toLowerCase() !== etapa) return false;
       return true;
     });
-
     const entregaKey = (s) => {
       const m = String(s || '').match(/(\d{2})\/(\d{4})/);
-      return m ? Number(m[2]) * 100 + Number(m[1]) : 999999; // sin fecha al final
+      return m ? Number(m[2]) * 100 + Number(m[1]) : 999999;
     };
     if (orden === 'precio_asc') out = [...out].sort((a, b) => (a.precio ?? Infinity) - (b.precio ?? Infinity));
     else if (orden === 'precio_desc') out = [...out].sort((a, b) => (b.precio ?? -Infinity) - (a.precio ?? -Infinity));
@@ -55,13 +116,12 @@ export default function CatalogoFiltros({ items }) {
 
   const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); };
   const hayFiltros = barrio || amb || precio !== 'todos' || etapa;
+  const conCoord = filtered.filter((i) => i.lat != null).length;
 
   return (
     <>
-      {/* Barra de filtros */}
       <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Barrio */}
           <div className="relative">
             <button
               onClick={() => setBarrioOpen((o) => !o)}
@@ -73,28 +133,20 @@ export default function CatalogoFiltros({ items }) {
             </button>
             {barrioOpen && (
               <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
-                <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">
-                  Todos los barrios
-                </button>
+                <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
                 {barrios.map((b) => (
-                  <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-link-gold font-medium' : ''}`}>
-                    {b}
-                  </button>
+                  <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-link-gold font-medium' : ''}`}>{b}</button>
                 ))}
               </div>
             )}
           </div>
 
           <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-
-          {/* Ambientes */}
           {['1', '2', '3', '4+'].map((a) => (
             <button key={a} className={chip(amb === a)} onClick={() => setAmb(amb === a ? '' : a)}>{a} amb</button>
           ))}
 
           <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-
-          {/* Precio /m² */}
           <button className={chip(precio === 'hasta3000')} onClick={() => setPrecio(precio === 'hasta3000' ? 'todos' : 'hasta3000')}>Hasta USD 3.000/m²</button>
           <button className={chip(precio === '3000a4500')} onClick={() => setPrecio(precio === '3000a4500' ? 'todos' : '3000a4500')}>3.000–4.500/m²</button>
           <button className={chip(precio === 'mas4500')} onClick={() => setPrecio(precio === 'mas4500' ? 'todos' : 'mas4500')}>+4.500/m²</button>
@@ -104,91 +156,90 @@ export default function CatalogoFiltros({ items }) {
           )}
         </div>
 
-        {/* Contador + orden */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
           <p className="text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
             {filtered.length !== items.length && <span> de {items.length}</span>}
           </p>
-          <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
-            Ordenar por
-            <select value={orden} onChange={(e) => setOrden(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-1.5 text-[13px] text-primary bg-surface">
-              <option value="destacados">Destacados</option>
-              <option value="precio_asc">Precio/m² ↑</option>
-              <option value="precio_desc">Precio/m² ↓</option>
-              <option value="entrega">Entrega más próxima</option>
-              <option value="nombre">Nombre (A–Z)</option>
-            </select>
-          </label>
+          <div className="flex items-center gap-4">
+            {/* Toggle Lista / Mapa */}
+            <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden">
+              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'lista' ? 'bg-primary text-white' : 'text-primary hover:bg-surface-container'}`}>
+                <span className="material-symbols-outlined text-[16px]">grid_view</span>Lista
+              </button>
+              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'mapa' ? 'bg-primary text-white' : 'text-primary hover:bg-surface-container'}`}>
+                <span className="material-symbols-outlined text-[16px]">map</span>Mapa
+              </button>
+            </div>
+            {vista === 'lista' && (
+              <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
+                Ordenar por
+                <select value={orden} onChange={(e) => setOrden(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-1.5 text-[13px] text-primary bg-surface">
+                  <option value="destacados">Destacados</option>
+                  <option value="precio_asc">Precio/m² ↑</option>
+                  <option value="precio_desc">Precio/m² ↓</option>
+                  <option value="entrega">Entrega más próxima</option>
+                  <option value="nombre">Nombre (A–Z)</option>
+                </select>
+              </label>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Grid de cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
-        {filtered.map((i) => (
-          <Link
-            key={i.slug}
-            href={`/desarrollos-inmobiliarios/${i.slug}/`}
-            className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
-          >
-            <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
-              {i.imagen ? (
-                <img
-                  src={i.imagen}
-                  alt={`${i.nombre} — ${i.barrio}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="material-symbols-outlined text-outline-variant text-4xl">image</span>
-                </div>
-              )}
-              <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">
-                {(i.etapa || 'EN POZO').toUpperCase()}
-              </span>
-            </div>
-
-            <div className="p-5 flex flex-col flex-1">
-              <h3 className="serif text-headline-sm text-primary leading-tight">{i.nombre}</h3>
-              <p className="text-on-surface-variant text-[13px] flex items-center gap-1 mt-1">
-                <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>
-                {i.barrio || i.direccion}
-              </p>
-
-              {(i.ambientes || i.entrega) && (
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-[12.5px] text-on-surface-variant">
-                  {i.ambientes && (
-                    <span className="flex items-center gap-1"><span className="material-symbols-outlined text-[15px]">apartment</span>{i.ambientes}</span>
-                  )}
-                  {i.entrega && (
-                    <span className="flex items-center gap-1"><span className="material-symbols-outlined text-[15px]">event_available</span>Entrega {i.entrega}</span>
-                  )}
-                </div>
-              )}
-
-              <div className="mt-4 pt-4 border-t border-outline-variant flex items-end justify-between">
-                <div>
-                  <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
-                  {i.precio ? (
-                    <span className="text-primary font-headline-sm text-headline-sm">USD {i.precio.toLocaleString('es-AR')}<span className="text-[13px] text-on-surface-variant"> /m²</span></span>
-                  ) : (
-                    <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
-                  )}
-                </div>
-                <span className="text-link-gold font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">
-                  VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </span>
+      {vista === 'mapa' ? (
+        <div>
+          <MapaListado items={filtered} />
+          <p className="mt-3 text-[12px] text-on-surface-variant">
+            Mostrando {conCoord} de {filtered.length} en el mapa. Ubicaciones aproximadas según la dirección del proyecto — verificá la ubicación exacta en cada ficha.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          {filtered.map((i) => (
+            <Link
+              key={i.slug}
+              href={`/desarrollos-inmobiliarios/${i.slug}/`}
+              className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
+                {i.imagen ? (
+                  <img src={i.imagen} alt={`${i.nombre} — ${i.barrio}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-outline-variant text-4xl">image</span></div>
+                )}
+                <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(i.etapa || 'EN POZO').toUpperCase()}</span>
               </div>
-              {i.desarrolladora && (
-                <p className="text-[11px] text-on-surface-variant mt-2 truncate">Desarrolla: {i.desarrolladora}</p>
-              )}
-            </div>
-          </Link>
-        ))}
-      </div>
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="serif text-headline-sm text-primary leading-tight">{i.nombre}</h3>
+                <p className="text-on-surface-variant text-[13px] flex items-center gap-1 mt-1">
+                  <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{i.barrio || i.direccion}
+                </p>
+                {(i.ambientes || i.entrega) && (
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-[12.5px] text-on-surface-variant">
+                    {i.ambientes && (<span className="flex items-center gap-1"><span className="material-symbols-outlined text-[15px]">apartment</span>{i.ambientes}</span>)}
+                    {i.entrega && (<span className="flex items-center gap-1"><span className="material-symbols-outlined text-[15px]">event_available</span>Entrega {i.entrega}</span>)}
+                  </div>
+                )}
+                <div className="mt-4 pt-4 border-t border-outline-variant flex items-end justify-between">
+                  <div>
+                    <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
+                    {i.precio ? (
+                      <span className="text-primary font-headline-sm text-headline-sm">USD {i.precio.toLocaleString('es-AR')}<span className="text-[13px] text-on-surface-variant"> /m²</span></span>
+                    ) : (
+                      <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
+                    )}
+                  </div>
+                  <span className="text-link-gold font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
+                </div>
+                {i.desarrolladora && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">Desarrolla: {i.desarrolladora}</p>)}
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
-      {filtered.length === 0 && (
+      {vista === 'lista' && filtered.length === 0 && (
         <div className="mt-10 text-center">
           <p className="text-on-surface-variant font-body-md text-body-md">No hay proyectos que coincidan con los filtros.</p>
           <button onClick={limpiar} className="mt-3 text-link-gold underline underline-offset-4 text-[14px]">Limpiar filtros</button>
