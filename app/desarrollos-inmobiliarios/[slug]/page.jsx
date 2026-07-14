@@ -54,10 +54,25 @@ function toPercent(v) {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
+// Formatea fecha_entrega "20270901" -> "09/2027".
+function fmtFecha(v) {
+  const s = String(v || '');
+  if (/^\d{8}$/.test(s)) return `${s.slice(4, 6)}/${s.slice(0, 4)}`;
+  return v ? String(v) : '';
+}
+// Formatea tipologias ["1_ambiente","2_ambientes","4_mas"] -> "1, 2, 4+ amb".
+function fmtTipologias(v) {
+  if (!v) return '';
+  const arr = Array.isArray(v) ? v : String(v).split(',');
+  const map = { '1_ambiente': '1', '2_ambientes': '2', '3_ambientes': '3', '4_ambientes': '4', '4_mas': '4+', '5_mas': '5+' };
+  const nums = arr.map((x) => map[String(x).trim()] || String(x).replace(/_/g, ' ').trim()).filter(Boolean);
+  return nums.length ? nums.join(', ') + ' amb' : '';
+}
+
 export async function generateMetadata({ params }) {
   const d = await getDesarrolloBySlug(params.slug);
   if (!d) return { title: 'Proyecto no encontrado' };
-  const nombre = d.title?.rendered || 'Proyecto';
+  const nombre = (d.title?.rendered || 'Proyecto').split('—')[0].trim();
   return {
     title: `${nombre} - Departamentos en Pozo`,
     description: `Ficha del desarrollo ${nombre}. Precios, financiación, amenities y ubicación.`,
@@ -68,22 +83,28 @@ export default async function FichaProyecto({ params }) {
   const d = await getDesarrolloBySlug(params.slug);
   if (!d) notFound();
 
-  const nombre = d.title?.rendered || 'Proyecto';
-  const barrio = acf(d, 'barrio') || 'Buenos Aires';
-  const direccion = acf(d, 'direccion') || `${barrio}, CABA`;
-  const entrega = acf(d, 'entrega') || 'Consultar';
-  const ambientes = acf(d, 'ambientes') || 'Consultar';
-  const ajuste = acf(d, 'ajuste') || 'Índice CAC';
-  const constructora = acf(d, 'constructora') || null; // fallback: no se muestra si falta
-  const lat = acf(d, 'lat') || acf(d, 'latitud') || null;
-  const lng = acf(d, 'lng') || acf(d, 'longitud') || null;
+  // El título viene "Nombre — Barrio"; separamos ambos.
+  const tituloRaw = d.title?.rendered || 'Proyecto';
+  const nombre = tituloRaw.split('—')[0].trim() || tituloRaw;
+  const barrio = (tituloRaw.split('—')[1] || '').trim() || acf(d, 'barrio') || 'Buenos Aires';
+  const direccion = acfAny(d, ['direccion', 'direccion_completa']) || `${barrio}, CABA`;
+  // Claves ACF REALES del CPT: desarrolladora, fecha_entrega, tipologias, precio_m2, anticipo, esquema_cuotas, comparable_terminado, avance_obra.
+  const entrega = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega'])) || 'Consultar';
+  const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes'])) || 'Consultar';
+  const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']) || 'Índice CAC';
+  const constructora = acfAny(d, ['desarrolladora', 'constructora']) || null;
+  const lat = acfAny(d, ['lat', 'latitud']);
+  const lng = acfAny(d, ['lng', 'longitud']);
   const amenities = parseAmenities(acf(d, 'amenities'));
 
-  const precioNum = toNumber(acf(d, 'precio_desde'));
-  const precioLabel = precioNum ? `USD ${precioNum.toLocaleString('es-AR')}` : 'Consultar';
-  // Anticipo estimado 40% (mismo criterio del diseño) si hay precio numérico.
-  const anticipo = precioNum ? Math.round(precioNum * 0.4) : null;
-  const anticipoLabel = anticipo ? anticipo.toLocaleString('es-AR') : 'Consultar';
+  const precioNum = toNumber(acfAny(d, ['precio_m2', 'precio_desde']));
+  const precioLabel = precioNum ? `USD ${precioNum.toLocaleString('es-AR')} /m²` : 'Consultar';
+  // Anticipo: campo real si existe; si no, "Consultar" (no inventamos %).
+  const anticipoRaw = acfAny(d, ['anticipo']);
+  const anticipoNum = toNumber(anticipoRaw);
+  const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : 'Consultar');
+  const cuotas = acfAny(d, ['esquema_cuotas']);
+  const comparableNum = toNumber(acf(d, 'comparable_terminado'));
 
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
