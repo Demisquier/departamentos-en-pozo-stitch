@@ -27,11 +27,19 @@ export default function Footer() {
             ["Desarrolladoras", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
           ]} />
 
+          {/* Las 9 páginas de barrio, todas. Patrón Zonaprop: el bloque de links de barrio
+              al pie es el activo SEO real del directorio (facetas indexables), no el listado.
+              Acá viven todas para que ninguna quede huérfana aunque salgan del menú. */}
           <FootCol title="Por barrio" links={[
             ["Palermo", "/desarrolladoras-inmobiliarias-en-palermo/"],
             ["Belgrano", "/desarrolladoras-inmobiliarias-en-belgrano/"],
             ["Caballito", "/desarrolladoras-inmobiliarias-en-caballito/"],
+            ["Núñez", "/desarrolladoras-inmobiliarias-en-nunez/"],
             ["Puerto Madero", "/desarrolladoras-inmobiliarias-en-puerto-madero/"],
+            ["Recoleta", "/desarrolladoras-inmobiliarias-en-recoleta/"],
+            ["Villa Urquiza", "/desarrolladoras-inmobiliarias-en-villa-urquiza/"],
+            ["Colegiales y Chacarita", "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/"],
+            ["Saavedra y Coghlan", "/desarrolladoras-inmobiliarias-en-saavedra-coghlan/"],
           ]} />
 
           <FootCol title="Contacto" links={[
