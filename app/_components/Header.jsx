@@ -7,32 +7,18 @@ const NAV = [
   { label: "PROYECTOS EN POZO", href: "/desarrollos-inmobiliarios/" },
 ];
 
-// Barrios con página propia de desarrolladoras. Las 9 existentes van todas acá:
-// dejarlas fuera del menú las deja sin links de navegación (eran 4 huérfanas).
-// "Todos los barrios" apunta a la guía comparativa, NO al hub de desarrolladoras
-// (ese ya tiene su propio item en NAV_END y se duplicaba).
-const BARRIOS = [
-  { label: "Todos los barrios", href: "/desarrollos-en-pozo-por-barrio/" },
-  { label: "Palermo", href: "/desarrolladoras-inmobiliarias-en-palermo/" },
-  { label: "Belgrano", href: "/desarrolladoras-inmobiliarias-en-belgrano/" },
-  { label: "Caballito", href: "/desarrolladoras-inmobiliarias-en-caballito/" },
-  { label: "Núñez", href: "/desarrolladoras-inmobiliarias-en-nunez/" },
-  { label: "Puerto Madero", href: "/desarrolladoras-inmobiliarias-en-puerto-madero/" },
-  { label: "Recoleta", href: "/desarrolladoras-inmobiliarias-en-recoleta/" },
-  { label: "Villa Urquiza", href: "/desarrolladoras-inmobiliarias-en-villa-urquiza/" },
-  { label: "Colegiales y Chacarita", href: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/" },
-  { label: "Saavedra y Coghlan", href: "/desarrolladoras-inmobiliarias-en-saavedra-coghlan/" },
-];
-
+// Las 9 páginas de barrio salieron del menú (decisión de producto: el header queda
+// para los dos verticales, desarrolladoras e inmobiliarias). Viven en el footer y en
+// el índice de Guías, así que ninguna queda huérfana.
 const NAV_END = [
   { label: "DESARROLLADORAS", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
+  { label: "INMOBILIARIAS", href: "/mejores-inmobiliarias-caba/" },
   { label: "GUÍAS", href: "/novedades/" },
   { label: "NOSOTROS", href: "/sobre-nosotros/" },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [barrioOpen, setBarrioOpen] = useState(false);
 
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-4">
@@ -60,29 +46,6 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* POR BARRIO — desplegable */}
-          <div className="relative" onMouseEnter={() => setBarrioOpen(true)} onMouseLeave={() => setBarrioOpen(false)}>
-            <button className="flex items-center gap-1 text-on-surface-variant text-label-caps font-label-caps hover:text-link-gold transition-colors duration-300">
-              POR BARRIO
-              <span className="material-symbols-outlined text-[18px]">expand_more</span>
-            </button>
-            {barrioOpen && (
-              <div className="absolute left-0 top-full pt-2 w-56">
-                <div className="bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
-                  {BARRIOS.map((b) => (
-                    <Link
-                      key={b.href}
-                      href={b.href}
-                      className="block px-4 py-2 text-[14px] text-primary hover:bg-surface-container hover:text-link-gold transition-colors"
-                    >
-                      {b.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
           {NAV_END.map((n) => (
             <Link
               key={n.label}
@@ -109,16 +72,6 @@ export default function Header() {
               {n.label}
             </Link>
           ))}
-          <div>
-            <p className="text-on-surface-variant text-[11px] mb-2">POR BARRIO</p>
-            <div className="pl-3 space-y-2">
-              {BARRIOS.map((b) => (
-                <Link key={b.href} href={b.href} className="block text-[13px]" onClick={() => setOpen(false)}>
-                  {b.label}
-                </Link>
-              ))}
-            </div>
-          </div>
           {NAV_END.map((n) => (
             <Link key={n.label} href={n.href} className="block" onClick={() => setOpen(false)}>
               {n.label}
