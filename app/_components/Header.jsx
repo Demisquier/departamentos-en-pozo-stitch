@@ -7,14 +7,21 @@ const NAV = [
   { label: "PROYECTOS EN POZO", href: "/desarrollos-inmobiliarios/" },
 ];
 
-// Barrios con página propia de desarrolladoras.
+// Barrios con página propia de desarrolladoras. Las 9 existentes van todas acá:
+// dejarlas fuera del menú las deja sin links de navegación (eran 4 huérfanas).
+// "Todos los barrios" apunta a la guía comparativa, NO al hub de desarrolladoras
+// (ese ya tiene su propio item en NAV_END y se duplicaba).
 const BARRIOS = [
-  { label: "Todos (Capital Federal)", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
+  { label: "Todos los barrios", href: "/desarrollos-en-pozo-por-barrio/" },
   { label: "Palermo", href: "/desarrolladoras-inmobiliarias-en-palermo/" },
   { label: "Belgrano", href: "/desarrolladoras-inmobiliarias-en-belgrano/" },
   { label: "Caballito", href: "/desarrolladoras-inmobiliarias-en-caballito/" },
   { label: "Núñez", href: "/desarrolladoras-inmobiliarias-en-nunez/" },
   { label: "Puerto Madero", href: "/desarrolladoras-inmobiliarias-en-puerto-madero/" },
+  { label: "Recoleta", href: "/desarrolladoras-inmobiliarias-en-recoleta/" },
+  { label: "Villa Urquiza", href: "/desarrolladoras-inmobiliarias-en-villa-urquiza/" },
+  { label: "Colegiales y Chacarita", href: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/" },
+  { label: "Saavedra y Coghlan", href: "/desarrolladoras-inmobiliarias-en-saavedra-coghlan/" },
 ];
 
 const NAV_END = [
