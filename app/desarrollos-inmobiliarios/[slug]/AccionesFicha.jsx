@@ -50,8 +50,8 @@ export default function AccionesFicha({
           </p>
         </div>
 
-        {/* Calculadora de inversión */}
-        <Calculadora precioNum={precioNum} comparableNum={comparableNum} />
+        {/* La calculadora salió de acá: competía con el CTA. Ahora se renderiza en el
+            cuerpo principal (ver page.jsx). El sidebar queda solo con precio + contacto. */}
       </div>
 
       {/* Barra fija móvil */}
@@ -70,7 +70,7 @@ export default function AccionesFicha({
   );
 }
 
-function Calculadora({ precioNum, comparableNum }) {
+export function Calculadora({ precioNum, comparableNum }) {
   const [sup, setSup] = useState(40);
   const [precioM2, setPrecioM2] = useState(precioNum || 2500);
   const [antPct, setAntPct] = useState(30);

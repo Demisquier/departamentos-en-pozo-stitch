@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import Galeria from './Galeria';
-import AccionesFicha from './AccionesFicha';
+import AccionesFicha, { Calculadora } from './AccionesFicha';
 import Descripcion from './Descripcion';
 
 export const dynamicParams = !process.env.EXPORT;
@@ -223,6 +223,28 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
+            {/* BRECHA POZO vs TERMINADO — el dato diferencial del sitio, como conclusión
+                y no como herramienta. Se lee sin tocar nada. Solo se muestra si ambos
+                valores existen; nunca se estima. */}
+            {precioNum && comparableNum && comparableNum > precioNum ? (
+              <div className="mb-8 rounded-xl border border-link-gold/40 bg-link-gold/[0.06] p-6">
+                <p className="font-label-caps text-label-caps text-on-surface-variant mb-2">
+                  COMPRANDO EN POZO
+                </p>
+                <p className="font-headline-md text-headline-md text-primary leading-tight">
+                  Pagás {Math.round(((comparableNum - precioNum) / comparableNum) * 100)}% menos
+                  que un terminado comparable de la zona
+                </p>
+                <p className="text-body-md text-on-surface-variant mt-3">
+                  USD {precioNum.toLocaleString('es-AR')}/m² en pozo contra USD {comparableNum.toLocaleString('es-AR')}/m² terminado
+                  {' '}— una diferencia de <strong className="text-primary">USD {(comparableNum - precioNum).toLocaleString('es-AR')} por m²</strong>.
+                </p>
+                <p className="text-[12px] text-on-surface-variant mt-3">
+                  La brecha es la contrapartida del riesgo de obra: se cobra al entregar, no al firmar.
+                </p>
+              </div>
+            ) : null}
+
             {/* Lo destacado (amenities) */}
             {amenities.length > 0 && (
               <div className="mb-8">
@@ -348,6 +370,15 @@ export default async function FichaProyecto({ params }) {
                 <iframe title={`Mapa de ${nombre}`} src={mapSrc} className="w-full h-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>
             </div>
+
+            {/* Calculadora: bajó del sidebar al cuerpo. Acá es "ajustá los supuestos",
+                el titular ya lo dio el bloque de brecha más arriba. */}
+            {precioNum && comparableNum ? (
+              <div className="mb-4">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Simulá tu inversión</h2>
+                <Calculadora precioNum={precioNum} comparableNum={comparableNum} />
+              </div>
+            ) : null}
 
             {/* Disclaimer independencia (E-E-A-T / YMYL) */}
             <p className="text-[12px] text-on-surface-variant leading-relaxed border-t border-outline-variant pt-4 mt-6">
