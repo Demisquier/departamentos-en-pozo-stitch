@@ -11,6 +11,7 @@ const EXPLICIT = new Set([
   "sobre-nosotros",
   "novedades",
   "desarrolladoras-inmobiliarias-en-capital-federal",
+  "mejores-inmobiliarias-caba",
   "guia-invertir-departamentos-en-pozo-argentina",
   "indice-precios-pozo-caballito-2026",
   "desarrollos-inmobiliarios",
