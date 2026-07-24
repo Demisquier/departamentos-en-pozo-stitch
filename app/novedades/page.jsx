@@ -151,7 +151,8 @@ export default async function NovedadesPage() {
                 {sidebar.map((post) => (
                   <article key={post.id} className="group">
                     <Link href={`/${post.slug}/`} className="block cursor-pointer">
-                      <div className="aspect-[4/3] overflow-hidden mb-4">
+                      {/* 16:9 = mismo ratio de los masters (1280×720). Evita el crop del 4:3. */}
+                      <div className="aspect-[16/9] overflow-hidden mb-4">
                         {featuredImage(post) ? (
                           <img
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -180,7 +181,7 @@ export default async function NovedadesPage() {
               {rest.map((post) => (
                 <div key={post.id} className="md:col-span-4 group mt-8">
                   <Link href={`/${post.slug}/`} className="block cursor-pointer">
-                    <div className="aspect-[4/3] overflow-hidden mb-4">
+                    <div className="aspect-[16/9] overflow-hidden mb-4">
                       {featuredImage(post) ? (
                         <img
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -204,6 +205,36 @@ export default async function NovedadesPage() {
             </div>
           </>
         )}
+
+        {/* Explorá por barrio: da hogar navegable a las 9 páginas de barrio
+            (además del footer) y refuerza el interlinking hacia esos directorios. */}
+        <div className="mt-16 pt-10 border-t border-outline-variant">
+          <h2 className="font-headline-sm text-headline-sm text-primary mb-2">Explorá desarrolladoras por barrio</h2>
+          <p className="text-on-surface-variant mb-6 max-w-2xl">
+            Análisis de las desarrolladoras activas en pozo, barrio por barrio de CABA.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              ["Palermo", "palermo"],
+              ["Belgrano", "belgrano"],
+              ["Caballito", "caballito"],
+              ["Núñez", "nunez"],
+              ["Puerto Madero", "puerto-madero"],
+              ["Recoleta", "recoleta"],
+              ["Villa Urquiza", "villa-urquiza"],
+              ["Colegiales y Chacarita", "colegiales-chacarita"],
+              ["Saavedra y Coghlan", "saavedra-coghlan"],
+            ].map(([label, slug]) => (
+              <Link
+                key={slug}
+                href={`/desarrolladoras-inmobiliarias-en-${slug}/`}
+                className="px-4 py-2 rounded-full border border-outline-variant text-[14px] text-primary hover:border-link-gold hover:text-link-gold transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );
