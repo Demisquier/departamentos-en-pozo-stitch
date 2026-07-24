@@ -1,12 +1,16 @@
-import { getPageBySlug, getRankMathSchema } from "../../lib/wp";
+import { getPageBySlug, getRankMathSchema, getDesarrolladoras } from "../../lib/wp";
+import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
 
-// Hub de desarrolladoras: el contenido autoritativo vive en WordPress (Top 13 con
-// datos sourced, directorio +200, tabla, checklist, FAQ y recursos). Acá solo lo
-// renderizamos + reactivamos sus filtros (DirEnhancer). Sin directorios duplicados.
+// Hub de desarrolladoras. El contenido editorial (intro, tabla, checklist, FAQ, recursos)
+// vive en WordPress. El DIRECTORIO en sí ahora sale del CPT `desarrolladora` renderizado
+// server-side (DirectorioDevs). En el contenido WP dejamos el marcador <!--DIRECTORIO-->
+// donde antes estaban los dos listados viejos; acá lo reemplazamos por el componente.
+const MARKER = "<!--DIRECTORIO-->";
+
 export default async function HubDesarrolladorasPage() {
   let page = null;
   try {
@@ -16,6 +20,20 @@ export default async function HubDesarrolladorasPage() {
   }
   const rmSchema = await getRankMathSchema("/desarrolladoras-inmobiliarias-en-capital-federal/");
 
+  let devs = [];
+  try {
+    devs = await getDesarrolladoras();
+  } catch (e) {
+    devs = [];
+  }
+
+  const html = page?.content?.rendered || "";
+  // Si el contenido WP tiene el marcador Y hay datos en el CPT, partimos y montamos el
+  // directorio nuevo en el medio. Si no, renderizamos el contenido completo (fallback
+  // seguro: nunca dejamos la página sin su directorio).
+  const useCpt = html.includes(MARKER) && devs.length > 0;
+  const [before, after] = useCpt ? html.split(MARKER) : [html, ""];
+
   return (
     <>
       {rmSchema.map((s, i) => (
@@ -23,11 +41,20 @@ export default async function HubDesarrolladorasPage() {
       ))}
 
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
-        {page?.content?.rendered ? (
-          <div
-            className="wp-content prose max-w-none text-body-md text-on-surface-variant"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-          />
+        {html ? (
+          <>
+            <div
+              className="wp-content prose max-w-none text-body-md text-on-surface-variant"
+              dangerouslySetInnerHTML={{ __html: before }}
+            />
+            {useCpt && <DirectorioDevs devs={devs} />}
+            {after && (
+              <div
+                className="wp-content prose max-w-none text-body-md text-on-surface-variant"
+                dangerouslySetInnerHTML={{ __html: after }}
+              />
+            )}
+          </>
         ) : (
           <div className="text-center py-24">
             <h1 className="font-headline-md text-headline-md text-primary mb-3">Desarrolladoras en Capital Federal</h1>
@@ -41,7 +68,9 @@ export default async function HubDesarrolladorasPage() {
         )}
       </main>
 
-      <DirEnhancer />
+      {/* Mientras no exista el marcador en WP, se sigue mostrando el directorio viejo:
+          reactivamos sus filtros. Una vez que el directorio nuevo toma el control, no. */}
+      {!useCpt && <DirEnhancer />}
     </>
   );
 }
