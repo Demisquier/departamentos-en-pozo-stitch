@@ -1,8 +1,24 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema, getRankMathSchema, fixImgs } from "../../lib/wp";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, articleSchema, getRankMathSchema, fixImgs, getDesarrolladoras } from "../../lib/wp";
+import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
 
 export const dynamicParams = !process.env.EXPORT;
+
+// Páginas de barrio (/desarrolladoras-inmobiliarias-en-{barrio}/): Next NO soporta rutas
+// dinámicas con prefijo (en-[barrio]), así que estas URLs las sirve ESTE handler [slug].
+// Para los barrios con desarrolladoras cargadas mostramos el directorio del hub
+// pre-filtrado (misma card, misma fuente) en vez del contenido WP viejo.
+const BARRIO_CPT = {
+  palermo: "palermo", belgrano: "belgrano", caballito: "caballito", nunez: "nunez",
+  "puerto-madero": "puerto-madero", recoleta: "recoleta", "villa-urquiza": "villa-urquiza",
+  "colegiales-chacarita": "colegiales", "saavedra-coghlan": "saavedra",
+};
+const BARRIO_NOMBRE = {
+  palermo: "Palermo", belgrano: "Belgrano", caballito: "Caballito", nunez: "Núñez",
+  "puerto-madero": "Puerto Madero", recoleta: "Recoleta", "villa-urquiza": "Villa Urquiza",
+  "colegiales-chacarita": "Colegiales y Chacarita", "saavedra-coghlan": "Saavedra y Coghlan",
+};
 
 // Slugs con ruta propia (NO los maneja este handler raíz)
 const EXPLICIT = new Set([
@@ -48,6 +64,21 @@ export default async function SinglePage({ params }) {
   const img = featuredImage(node);
   const title = node.title?.rendered || "";
   const content = fixImgs(node.content?.rendered || "");
+
+  // ¿Es una página de barrio con desarrolladoras cargadas? Si sí, mostramos el directorio
+  // pre-filtrado en vez del contenido WP viejo. Si no (o barrio sin devs), contenido normal.
+  const barrioMatch = params.slug.match(/^desarrolladoras-inmobiliarias-en-(.+)$/);
+  const barrioSlug = barrioMatch && barrioMatch[1] !== "capital-federal" ? barrioMatch[1] : null;
+  let devsBarrio = [];
+  let barrioKey = null;
+  if (barrioSlug) {
+    barrioKey = BARRIO_CPT[barrioSlug] || barrioSlug.split("-")[0];
+    try {
+      const all = await getDesarrolladoras();
+      devsBarrio = (all || []).filter((d) => (d.barriosKey || "").split(/\s+/).includes(barrioKey));
+    } catch (e) { devsBarrio = []; }
+  }
+  const usaDirectorioBarrio = devsBarrio.length > 0;
 
   // Schema JSON-LD de RankMath (FAQPage, ItemList, BreadcrumbList, etc.). Aditivo:
   // se suma al Article básico existente. Devuelve [] si el endpoint no responde.
@@ -120,10 +151,16 @@ export default async function SinglePage({ params }) {
         </div>
       )}
 
-      <div
-        className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      {usaDirectorioBarrio ? (
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <DirectorioDevs devs={devsBarrio} barrioFijo={barrioKey} tituloBarrio={BARRIO_NOMBRE[barrioSlug] || barrioSlug} />
+        </div>
+      ) : (
+        <div
+          className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      )}
 
       {type === "post" && (
         <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop pb-16">
