@@ -53,15 +53,9 @@ const nextConfig = {
       { source: "/barrio/colegiales/", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
     ];
   },
-  // Proxy: las imágenes/archivos de WordPress siguen viviendo en el hosting (cms.*).
-  // Cualquier request a /wp-content o /wp-includes en el dominio nuevo se sirve desde WP.
-  // Esto cubre las imágenes inline viejas que quedaron con URL del dominio raíz.
-  async rewrites() {
-    return [
-      { source: "/wp-content/:path*", destination: `https://${WP_HOST}/wp-content/:path*` },
-      { source: "/wp-includes/:path*", destination: `https://${WP_HOST}/wp-includes/:path*` },
-    ];
-  },
+  // MIGRACIÓN COMPLETA: las imágenes ahora viven en /public/wp-content del repo.
+  // Se quitó el proxy a WordPress (cms.*) — el sitio ya no depende del hosting de WP.
+  // Verificado: 0 referencias a cms., 0 a /wp-includes, 80/80 imágenes locales.
 };
 
 module.exports = nextConfig;
