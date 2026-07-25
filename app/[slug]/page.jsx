@@ -86,6 +86,9 @@ export default async function SinglePage({ params }) {
   const MARKER_BARRIO = "<!--DIRECTORIO-->";
   const conMarcador = content.includes(MARKER_BARRIO);
   const [barrioBefore, barrioAfter] = conMarcador ? content.split(MARKER_BARRIO) : [content, ""];
+  // Algunos barrios (template nuevo) no traen H1 en el contenido. Como sacamos el banner,
+  // quedarían sin H1: en ese caso el componente renderiza uno con el título de la página.
+  const contenidoTieneH1 = /<h1[\s>]/i.test(content);
 
   // Schema JSON-LD de RankMath (FAQPage, ItemList, BreadcrumbList, etc.). Aditivo:
   // se suma al Article básico existente. Devuelve [] si el endpoint no responde.
@@ -167,6 +170,12 @@ export default async function SinglePage({ params }) {
         // marcador → directorio pre-filtrado (cards del hub) → contenido después. Si no
         // hay directorio (barrio sin devs) se muestra el contenido completo, igual de ancho.
         <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
+          {!contenidoTieneH1 && (
+            <h1
+              className="font-headline-md text-headline-md md:font-headline-lg md:text-headline-lg text-primary mb-8"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+          )}
           <div
             className="wp-content prose max-w-none text-body-md text-on-surface-variant"
             dangerouslySetInnerHTML={{ __html: usaDirectorioBarrio ? barrioBefore : content }}
