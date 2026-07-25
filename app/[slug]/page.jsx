@@ -173,11 +173,22 @@ export default async function SinglePage({ params }) {
         // marcador → directorio pre-filtrado (cards del hub) → contenido después. Si no
         // hay directorio (barrio sin devs) se muestra el contenido completo, igual de ancho.
         <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
+          {/* Header estilo hub + chip de filtro: la página de barrio se siente el mismo
+              hub con un filtro aplicado, fácil de volver a "todas". */}
           {!contenidoTieneH1 && (
-            <h1
-              className="font-headline-md text-headline-md md:font-headline-lg md:text-headline-lg text-primary mb-8"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
+            <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-5">
+              Desarrolladoras en {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
+            </h1>
+          )}
+          {usaDirectorioBarrio && (
+            <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-outline-variant">
+              <span className="text-[12px] font-label-caps uppercase tracking-wider text-on-surface-variant">Filtrando por barrio</span>
+              <span className="inline-flex items-center gap-2 bg-primary-container text-on-primary rounded-full pl-4 pr-1.5 py-1.5 text-[14px] font-medium">
+                {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
+                <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" aria-label="Quitar filtro, ver todas las desarrolladoras" className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/25 hover:bg-white/45 transition-colors leading-none">✕</Link>
+              </span>
+              <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-[14px] text-link-gold hover:underline">Ver todas las desarrolladoras de CABA</Link>
+            </div>
           )}
           <div
             className="wp-content prose max-w-none text-body-md text-on-surface-variant"
