@@ -39,7 +39,7 @@ function Card({ d }) {
 
       {(d.espec || d.avisos || d.sucursales) && (
         <dl className="mt-4 space-y-2.5 text-[14px]">
-          {d.espec && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Especialización en pozo</dt><dd className="text-primary">{d.espec}</dd></div>)}
+          {d.espec && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Especialidad</dt><dd className="text-primary">{d.espec}</dd></div>)}
           {d.avisos && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Avisos activos</dt><dd className="text-primary">{d.avisos}</dd></div>)}
           {d.sucursales && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Estructura</dt><dd className="text-primary">{d.sucursales}</dd></div>)}
         </dl>

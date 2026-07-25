@@ -29,6 +29,9 @@ export default async function CategoryPage({ params }) {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
           <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">Categoría</p>
           <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg" dangerouslySetInnerHTML={{ __html: cat.name }} />
+          {cat.description && (
+            <p className="text-on-primary-fixed-variant text-body-lg max-w-2xl mt-5 leading-relaxed">{cat.description}</p>
+          )}
         </div>
       </header>
 
