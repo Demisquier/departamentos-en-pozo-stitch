@@ -62,7 +62,7 @@ export default function ContactoPage() {
             Tu próxima inversión comienza aquí
           </span>
           <h2 className="text-display-lg-mobile md:text-display-lg font-display-lg text-white max-w-2xl mx-auto">
-            Hablemos de su futuro patrimonio
+            Hablemos de tu próxima inversión
           </h2>
         </div>
       </section>
@@ -74,10 +74,10 @@ export default function ContactoPage() {
           <div className="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm rounded-lg border border-outline-variant">
             <div className="mb-10">
               <h3 className="text-headline-sm font-headline-sm text-primary mb-2">
-                Solicitar Asesoramiento Personalizado
+                Escribinos
               </h3>
               <p className="text-on-surface-variant text-body-md">
-                Complete el formulario y un especialista Senior se contactará con usted en menos de 24hs.
+                Completá el formulario y te respondemos en menos de 24 hs.
               </p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -204,7 +204,7 @@ export default function ContactoPage() {
                 )}
               </div>
               <p className="text-center text-[12px] text-on-surface-variant italic">
-                Garantizamos la confidencialidad absoluta de sus datos bajo normativas de privacidad internacionales.
+                Cuidamos la confidencialidad de tus datos. No los compartimos ni los vendemos.
               </p>
             </form>
             <div className="mt-12 pt-8 border-t border-outline-variant flex flex-col md:flex-row items-center justify-between gap-6">
@@ -217,7 +217,7 @@ export default function ContactoPage() {
                   <p className="font-bold text-primary">Chat vía WhatsApp</p>
                 </div>
               </div>
-              <a className="inline-flex items-center gap-2 text-link-gold font-bold hover:underline" href="#">
+              <a className="inline-flex items-center gap-2 text-link-gold font-bold hover:underline" href="https://wa.me/5491134502704?text=Hola,%20quiero%20consultar%20sobre%20un%20proyecto%20en%20pozo" target="_blank" rel="noopener">
                 Contactar por WhatsApp Directo
                 <span className="material-symbols-outlined">open_in_new</span>
               </a>
@@ -235,9 +235,9 @@ export default function ContactoPage() {
                   <div className="flex gap-6">
                     <span className="material-symbols-outlined text-secondary-fixed text-[32px]">payments</span>
                     <div>
-                      <h5 className="font-bold text-body-lg mb-2">Sin costo para el comprador</h5>
+                      <h5 className="font-bold text-body-lg mb-2">Sin costo y sin comisiones</h5>
                       <p className="text-on-primary-container text-body-md">
-                        Nuestros honorarios los cubren los desarrolladores. Usted recibe asesoría experta sin sobrecostos.
+                        No cobramos por aparecer ni vendemos posiciones en el ranking. Accedés al análisis completo sin costo.
                       </p>
                     </div>
                   </div>
@@ -246,7 +246,7 @@ export default function ContactoPage() {
                     <div>
                       <h5 className="font-bold text-body-lg mb-2">Análisis independiente</h5>
                       <p className="text-on-primary-container text-body-md">
-                        25+ proyectos analizados en 9 barrios de CABA, con criterio propio y sin ataduras a una sola marca.
+                        46 proyectos analizados en 9 barrios de CABA, con criterio propio y sin ataduras a una sola marca.
                       </p>
                     </div>
                   </div>
