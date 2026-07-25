@@ -4,6 +4,9 @@ import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, bui
 import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
 
 export const dynamicParams = !process.env.EXPORT;
+// Revalidación ISR: las páginas servidas por este route (barrios, posts, páginas WP)
+// se refrescan solos desde WordPress cada 10 min, sin depender de un deploy con código.
+export const revalidate = 600;
 
 // Páginas de barrio (/desarrolladoras-inmobiliarias-en-{barrio}/): Next NO soporta rutas
 // dinámicas con prefijo (en-[barrio]), así que estas URLs las sirve ESTE handler [slug].
