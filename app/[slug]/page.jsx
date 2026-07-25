@@ -80,6 +80,13 @@ export default async function SinglePage({ params }) {
   }
   const usaDirectorioBarrio = devsBarrio.length > 0;
 
+  // Igual que el hub: el contenido WP trae el marcador <!--DIRECTORIO--> donde antes
+  // estaba la lista vieja de desarrolladoras. Lo partimos y montamos el directorio
+  // pre-filtrado en el medio, con el MISMO layout ancho que el hub (sin banner oscuro).
+  const MARKER_BARRIO = "<!--DIRECTORIO-->";
+  const conMarcador = content.includes(MARKER_BARRIO);
+  const [barrioBefore, barrioAfter] = conMarcador ? content.split(MARKER_BARRIO) : [content, ""];
+
   // Schema JSON-LD de RankMath (FAQPage, ItemList, BreadcrumbList, etc.). Aditivo:
   // se suma al Article básico existente. Devuelve [] si el endpoint no responde.
   const rmSchema = await getRankMathSchema(`/${params.slug}/`);
@@ -124,45 +131,62 @@ export default async function SinglePage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
         />
       ))}
-      <header className="bg-primary-container text-on-primary">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
-          {type === "post" && (
-            <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-primary-fixed-variant mb-6">
-              <Link href="/" className="hover:text-link-gold">Inicio</Link>
-              <span>/</span>
-              <Link href="/novedades/" className="hover:text-link-gold">Guías</Link>
-            </nav>
-          )}
-          {type === "post" && node.date && (
-            <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">
-              {new Date(node.date).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}
-            </p>
-          )}
-          <h1
-            className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-4xl"
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
-        </div>
-      </header>
+      {/* Banner oscuro sólo para posts y páginas comunes. Las páginas de barrio traen
+          su propio hero en el contenido WP y se renderizan como el hub (sin banner). */}
+      {!barrioSlug && (
+        <header className="bg-primary-container text-on-primary">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+            {type === "post" && (
+              <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-primary-fixed-variant mb-6">
+                <Link href="/" className="hover:text-link-gold">Inicio</Link>
+                <span>/</span>
+                <Link href="/novedades/" className="hover:text-link-gold">Guías</Link>
+              </nav>
+            )}
+            {type === "post" && node.date && (
+              <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">
+                {new Date(node.date).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}
+              </p>
+            )}
+            <h1
+              className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-4xl"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+          </div>
+        </header>
+      )}
 
-      {img && (
+      {img && !barrioSlug && (
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <img src={img} alt="" className="w-full aspect-[16/9] object-cover rounded shadow-xl -mt-8 relative z-10" />
         </div>
       )}
 
-      {/* Página de barrio con datos: directorio pre-filtrado (cards del hub) ARRIBA +
-          TODO el contenido editorial de la página debajo (es el que trae tráfico, se
-          conserva íntegro). El directorio no reemplaza el contenido: lo encabeza. */}
-      {usaDirectorioBarrio && (
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <DirectorioDevs devs={devsBarrio} barrioFijo={barrioKey} tituloBarrio={BARRIO_NOMBRE[barrioSlug] || barrioSlug} />
-        </div>
+      {barrioSlug ? (
+        // Página de barrio: MISMO layout que el hub (ancho, prose). Contenido antes del
+        // marcador → directorio pre-filtrado (cards del hub) → contenido después. Si no
+        // hay directorio (barrio sin devs) se muestra el contenido completo, igual de ancho.
+        <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
+          <div
+            className="wp-content prose max-w-none text-body-md text-on-surface-variant"
+            dangerouslySetInnerHTML={{ __html: usaDirectorioBarrio ? barrioBefore : content }}
+          />
+          {usaDirectorioBarrio && (
+            <DirectorioDevs devs={devsBarrio} barrioFijo={barrioKey} tituloBarrio={BARRIO_NOMBRE[barrioSlug] || barrioSlug} />
+          )}
+          {usaDirectorioBarrio && barrioAfter && (
+            <div
+              className="wp-content prose max-w-none text-body-md text-on-surface-variant"
+              dangerouslySetInnerHTML={{ __html: barrioAfter }}
+            />
+          )}
+        </main>
+      ) : (
+        <div
+          className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       )}
-      <div
-        className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
 
       {type === "post" && (
         <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop pb-16">
