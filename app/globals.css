@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════════════════════════════
+   UNIFICACIÓN DE DISEÑO — un solo look & feel en todo el sitio
+   El contenido de barrio trae un CSS propio (pozo-*) con variables propias
+   (Inter, navy/gold distintos, radios más redondeados). Redefinimos esas
+   variables sobre .barrio-guide (gana por proximidad sobre el :root del bloque)
+   para alinearlo a los tokens del sistema: Work Sans + navy #0c1b35 + bronce.
+   ══════════════════════════════════════════════════════════════════════ */
+.barrio-guide {
+  --font-stack: "Work Sans", system-ui, sans-serif; /* fin del leak de Inter */
+  --c-primary: #0c1b35;   /* navy del sistema (era #0a2540) */
+  --c-accent: #a68966;    /* bronce del sistema (era #f5b800 amarillo) */
+  --c-text: #191c1d;
+  --c-muted: #45474d;
+  --c-border: #e1e3e4;
+  --c-surface-alt: #f3f4f5;
+  --r-sm: 4px;            /* radios más sobrios, alineados al sistema */
+  --r-md: 8px;
+  --r-lg: 12px;
+}
+/* Títulos del contenido en Libre Caslon (serif del sistema), body en Work Sans. */
+.barrio-guide h1,
+.barrio-guide h2,
+.barrio-guide h3,
+.barrio-guide h4,
+.wp-content h1 {
+  font-family: "Libre Caslon Text", Georgia, serif;
+  color: #0b1a34;
+}
+/* Fix del leak: el CSS de barrio define un `h1` global que pisaba el H1 del
+   componente. Lo devolvemos al serif del sistema en todas las páginas. */
+main h1 {
+  font-family: "Libre Caslon Text", Georgia, serif;
+}
+.wp-content h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
 /* Utilidades custom del export Stitch (idénticas al code.html) */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
