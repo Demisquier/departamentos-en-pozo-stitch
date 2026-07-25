@@ -10,16 +10,16 @@
    para alinearlo a los tokens del sistema: Work Sans + navy #0c1b35 + bronce.
    ══════════════════════════════════════════════════════════════════════ */
 .barrio-guide {
-  --font-stack: "Work Sans", system-ui, sans-serif; /* fin del leak de Inter */
-  --c-primary: #0c1b35;   /* navy del sistema (era #0a2540) */
-  --c-accent: #a68966;    /* bronce del sistema (era #f5b800 amarillo) */
-  --c-text: #191c1d;
-  --c-muted: #45474d;
-  --c-border: #e1e3e4;
-  --c-surface-alt: #f3f4f5;
-  --r-sm: 4px;            /* radios más sobrios, alineados al sistema */
-  --r-md: 8px;
-  --r-lg: 12px;
+  --font-stack: "Work Sans", system-ui, sans-serif !important; /* fin del leak de Inter */
+  --c-primary: #0c1b35 !important;   /* navy del sistema (era #0a2540) */
+  --c-accent: #a68966 !important;    /* bronce del sistema (era #f5b800 amarillo) */
+  --c-text: #191c1d !important;
+  --c-muted: #45474d !important;
+  --c-border: #e1e3e4 !important;
+  --c-surface-alt: #f3f4f5 !important;
+  --r-sm: 4px !important;            /* radios más sobrios, alineados al sistema */
+  --r-md: 8px !important;
+  --r-lg: 12px !important;
 }
 /* Títulos del contenido en Libre Caslon (serif del sistema), body en Work Sans. */
 .barrio-guide h1,
