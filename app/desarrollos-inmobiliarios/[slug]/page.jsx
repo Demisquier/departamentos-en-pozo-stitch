@@ -82,6 +82,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${nombre}${barrio ? ' — ' + barrio : ''} | Departamentos en Pozo`,
     description: `Ficha del desarrollo ${nombre}${barrio ? ' en ' + barrio : ''}: desarrolladora, precio por m², financiación, avance de obra, amenities y ubicación. Análisis independiente.`,
+    alternates: { canonical: `https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/${params.slug}/` },
   };
 }
 

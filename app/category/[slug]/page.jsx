@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const cat = await getCategoryBySlug(params.slug);
-  return { title: cat ? `${cat.name} | Departamentos en Pozo` : "Categoría" };
+  return { title: cat ? `${cat.name} | Departamentos en Pozo` : "Categoría", alternates: { canonical: `https://departamentosenpozo.com.ar/category/${params.slug}/` } };
 }
 
 function clean(html) {

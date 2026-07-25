@@ -3,6 +3,7 @@ import { getPageBySlug } from "../../lib/wp";
 
 export const metadata = {
   title: "Nosotros | Departamentos en Pozo",
+  alternates: { canonical: "https://departamentosenpozo.com.ar/sobre-nosotros/" },
   description:
     "Análisis independiente de inversión en departamentos en pozo en CABA. Conocé nuestra metodología, criterios y por qué no somos una inmobiliaria.",
 };

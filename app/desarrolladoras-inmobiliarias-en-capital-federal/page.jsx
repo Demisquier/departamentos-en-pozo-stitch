@@ -1,9 +1,16 @@
-import { getPageBySlug, getRankMathSchema, getDesarrolladoras } from "../../lib/wp";
+import { getPageBySlug, getRankMathSchema, getDesarrolladoras, buildMeta } from "../../lib/wp";
 import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
+
+// Metadata propia (antes heredaba el título genérico del layout). Usa el título/desc
+// de la página WP + canonical, igual que el resto del sitio.
+export async function generateMetadata() {
+  const page = await getPageBySlug("desarrolladoras-inmobiliarias-en-capital-federal");
+  return buildMeta(page, "/desarrolladoras-inmobiliarias-en-capital-federal/", "website");
+}
 
 // Hub de desarrolladoras. El contenido editorial (intro, tabla, checklist, FAQ, recursos)
 // vive en WordPress. El DIRECTORIO en sí ahora sale del CPT `desarrolladora` renderizado

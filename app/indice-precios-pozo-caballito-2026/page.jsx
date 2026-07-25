@@ -7,7 +7,7 @@ export async function generateMetadata() {
   const clean = (page?.title?.rendered || "Índice de precios Caballito 2026")
     .replace(/<[^>]*>/g, "")
     .replace(/&amp;/g, "&");
-  return { title: `${clean} — Departamentos en Pozo` };
+  return { title: `${clean} — Departamentos en Pozo`, alternates: { canonical: "https://departamentosenpozo.com.ar/indice-precios-pozo-caballito-2026/" } };
 }
 
 export default async function IndicePreciosPage() {

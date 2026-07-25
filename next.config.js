@@ -5,8 +5,6 @@
  *    así que el array está listo para sumar redirects 301 si algo se renombra.
  *  - images.remotePatterns: permite servir las imágenes que hoy viven en tu WordPress.
  */
-const WP_HOST = process.env.WP_HOST || "departamentosenpozo.com.ar";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
@@ -16,8 +14,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [
-      { protocol: "https", hostname: WP_HOST },
-      { protocol: "https", hostname: "lh3.googleusercontent.com" }, // placeholders Stitch (reemplazar)
+      // WordPress eliminado: las imágenes son locales (/public). Sólo queda el host de
+      // placeholders Stitch (a reemplazar por imágenes propias).
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
   },
   async redirects() {

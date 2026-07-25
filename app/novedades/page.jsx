@@ -15,6 +15,7 @@ function Ph({ label }) {
 
 export const metadata = {
   title: "Guías y Novedades — Departamentos en Pozo",
+  alternates: { canonical: "https://departamentosenpozo.com.ar/novedades/" },
   description:
     "Información estratégica y análisis profundo para el inversor sofisticado en el mercado de real estate premium.",
 };

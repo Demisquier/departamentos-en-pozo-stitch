@@ -3,6 +3,23 @@ import { getDesarrollos, featuredImage, acf } from "../lib/wp";
 
 export const revalidate = 600;
 
+// Metadata propia de la home (antes heredaba el título genérico del layout).
+export const metadata = {
+  title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA | Departamentos en Pozo",
+  description:
+    "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías para invertir con criterio.",
+  alternates: { canonical: "https://departamentosenpozo.com.ar/" },
+  openGraph: {
+    type: "website",
+    title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA",
+    description:
+      "Directorio de desarrolladoras, proyectos en pozo, precios por m² y guías. Análisis independiente para inversores.",
+    url: "https://departamentosenpozo.com.ar/",
+    siteName: "Departamentos en Pozo",
+    locale: "es_AR",
+  },
+};
+
 const HERO_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCm7wX467tQZzCnTZFh1bq2QB_-QgICYRg6SajKGUOCcTPQBZNAaFWdTBuLiwg6wlBqotlt40BBjgfjNRdUkMxl2OIgytOQ7pmoJ6ZZukdW10mpZwZiybVWqKGy0UaPiJBcRjvwtoIetg0Owjwx-iOCidVsqKP81usEoMPj0_l4JyZACIKIE_NzgHvVn43cjIRqObxowuaOtGOSYG87fiAWJ2kqD1IGe_6rT8IH-OOiqv614ufMIdNrWw";
 
