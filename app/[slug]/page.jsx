@@ -151,16 +151,18 @@ export default async function SinglePage({ params }) {
         </div>
       )}
 
-      {usaDirectorioBarrio ? (
+      {/* Página de barrio con datos: directorio pre-filtrado (cards del hub) ARRIBA +
+          TODO el contenido editorial de la página debajo (es el que trae tráfico, se
+          conserva íntegro). El directorio no reemplaza el contenido: lo encabeza. */}
+      {usaDirectorioBarrio && (
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <DirectorioDevs devs={devsBarrio} barrioFijo={barrioKey} tituloBarrio={BARRIO_NOMBRE[barrioSlug] || barrioSlug} />
         </div>
-      ) : (
-        <div
-          className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
       )}
+      <div
+        className="wp-content max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-14"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
 
       {type === "post" && (
         <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop pb-16">
