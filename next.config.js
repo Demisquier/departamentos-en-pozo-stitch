@@ -33,6 +33,24 @@ const nextConfig = {
       { source: "/author/:slug", destination: "/", permanent: true },
       // Archivos de tag: no hay páginas de tag → índice de novedades.
       { source: "/tag/:slug", destination: "/novedades/", permanent: true },
+
+      // --- Barrios: las viejas taxonomías /barrio/{x}/ del WP daban 404 en el front
+      // headless pero seguían indexadas y con tráfico en Google. Las mandamos 301 a la
+      // página curada de desarrolladoras de ese barrio (recupera tráfico + link equity). ---
+      { source: "/barrio/palermo", destination: "/desarrolladoras-inmobiliarias-en-palermo/", permanent: true },
+      { source: "/barrio/palermo/", destination: "/desarrolladoras-inmobiliarias-en-palermo/", permanent: true },
+      { source: "/barrio/belgrano", destination: "/desarrolladoras-inmobiliarias-en-belgrano/", permanent: true },
+      { source: "/barrio/belgrano/", destination: "/desarrolladoras-inmobiliarias-en-belgrano/", permanent: true },
+      { source: "/barrio/caballito", destination: "/desarrolladoras-inmobiliarias-en-caballito/", permanent: true },
+      { source: "/barrio/caballito/", destination: "/desarrolladoras-inmobiliarias-en-caballito/", permanent: true },
+      { source: "/barrio/nunez", destination: "/desarrolladoras-inmobiliarias-en-nunez/", permanent: true },
+      { source: "/barrio/nunez/", destination: "/desarrolladoras-inmobiliarias-en-nunez/", permanent: true },
+      { source: "/barrio/puerto-madero", destination: "/desarrolladoras-inmobiliarias-en-puerto-madero/", permanent: true },
+      { source: "/barrio/puerto-madero/", destination: "/desarrolladoras-inmobiliarias-en-puerto-madero/", permanent: true },
+      { source: "/barrio/villa-urquiza", destination: "/desarrolladoras-inmobiliarias-en-villa-urquiza/", permanent: true },
+      { source: "/barrio/villa-urquiza/", destination: "/desarrolladoras-inmobiliarias-en-villa-urquiza/", permanent: true },
+      { source: "/barrio/colegiales", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
+      { source: "/barrio/colegiales/", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
     ];
   },
   // Proxy: las imágenes/archivos de WordPress siguen viviendo en el hosting (cms.*).
