@@ -27,7 +27,7 @@ export default function Header() {
           <img
             src="/wp-content/uploads/2026/05/Logo-depatamentos-en-pozo.png"
             alt="Departamentos en Pozo"
-            className="h-11 md:h-14 w-auto"
+            className="h-14 md:h-20 w-auto"
           />
         </Link>
 
