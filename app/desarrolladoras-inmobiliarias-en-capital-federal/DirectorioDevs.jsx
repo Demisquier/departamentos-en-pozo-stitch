@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 
 // Directorio unificado de desarrolladoras (CPT `desarrolladora`). Server-rendered:
 // el listado sale en el HTML (SEO). Buscador + filtro por barrio = enhancement client.
@@ -11,6 +12,15 @@ const BARRIO_LABEL = {
   "puerto-madero": "Puerto Madero", "puerto madero": "Puerto Madero", recoleta: "Recoleta",
   "villa-urquiza": "Villa Urquiza", "villa urquiza": "Villa Urquiza", colegiales: "Colegiales",
   chacarita: "Chacarita", saavedra: "Saavedra", coghlan: "Coghlan", retiro: "Retiro",
+};
+
+// Barrio (clave) → slug de la página curada. Con esto los chips del hub se vuelven
+// LINKS navegables (filtro = URL propia = indexable), en vez de filtro client-only.
+const BARRIO_URL = {
+  palermo: "palermo", belgrano: "belgrano", caballito: "caballito", nunez: "nunez",
+  "puerto-madero": "puerto-madero", recoleta: "recoleta", "villa-urquiza": "villa-urquiza",
+  colegiales: "colegiales-chacarita", chacarita: "colegiales-chacarita",
+  saavedra: "saavedra-coghlan", coghlan: "saavedra-coghlan",
 };
 
 function Card({ d }) {
@@ -72,9 +82,15 @@ function Card({ d }) {
   );
 }
 
-export default function DirectorioDevs({ devs = [] }) {
+// Props:
+//  - barrioFijo: si viene (ej "palermo"), el directorio arranca pre-filtrado a ese barrio
+//    y oculta los chips (se usa en las páginas de barrio).
+//  - chipsComoLinks: si es true, los chips de barrio son <a> a la página del barrio
+//    (se usa en el hub: filtrar = navegar = URL propia).
+//  - tituloBarrio: nombre lindo del barrio para el encabezado.
+export default function DirectorioDevs({ devs = [], barrioFijo = "", chipsComoLinks = false, tituloBarrio = "" }) {
   const [q, setQ] = useState("");
-  const [barrio, setBarrio] = useState("");
+  const [barrio, setBarrio] = useState(barrioFijo || "");
   const [soloDest, setSoloDest] = useState(false);
 
   // Barrios disponibles (de barriosKey + barrios), ordenados por frecuencia.
@@ -111,9 +127,13 @@ export default function DirectorioDevs({ devs = [] }) {
 
   return (
     <section id="directorio" className="my-12">
-      <h2 className="font-headline-sm text-headline-sm text-primary mb-1">Directorio de desarrolladoras en CABA</h2>
+      <h2 className="font-headline-sm text-headline-sm text-primary mb-1">
+        {barrioFijo ? `Desarrolladoras en ${tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}` : "Directorio de desarrolladoras en CABA"}
+      </h2>
       <p className="text-on-surface-variant mb-6">
-        {devs.length} desarrolladoras activas en pozo. Las {totalDest} destacadas —por trayectoria y volumen entregado— aparecen primero.
+        {barrioFijo
+          ? <>Desarrolladoras con obra activa en pozo en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}. <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-link-gold hover:underline">Ver todas las de CABA →</Link></>
+          : <>{devs.length} desarrolladoras activas en pozo. Las {totalDest} destacadas —por trayectoria y volumen entregado— aparecen primero.</>}
       </p>
 
       <div className="flex flex-col gap-3 mb-6">
@@ -125,15 +145,26 @@ export default function DirectorioDevs({ devs = [] }) {
             {soloDest ? "★ Solo destacadas" : "☆ Solo destacadas"}
           </button>
         </div>
-        {barrios.length > 0 && (
+        {/* En el hub: chips = LINKS a la página del barrio (filtro navegable, URL propia).
+            En la página de barrio: sin chips (ya está pre-filtrado). */}
+        {!barrioFijo && barrios.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setBarrio("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>Todos</button>
-            {barrios.map((b) => (
-              <button key={b} type="button" onClick={() => setBarrio(barrio === b ? "" : b)}
-                className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
-                {BARRIO_LABEL[b] || b}
-              </button>
-            ))}
+            {chipsComoLinks
+              ? barrios.map((b) => (
+                  <Link key={b} href={`/desarrolladoras-inmobiliarias-en-${BARRIO_URL[b] || b}/`}
+                    className="px-3 py-1.5 rounded-full text-[13px] border border-outline-variant text-primary hover:border-link-gold transition-colors">
+                    {BARRIO_LABEL[b] || b}
+                  </Link>
+                ))
+              : (<>
+                  <button type="button" onClick={() => setBarrio("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>Todos</button>
+                  {barrios.map((b) => (
+                    <button key={b} type="button" onClick={() => setBarrio(barrio === b ? "" : b)}
+                      className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
+                      {BARRIO_LABEL[b] || b}
+                    </button>
+                  ))}
+                </>)}
           </div>
         )}
       </div>

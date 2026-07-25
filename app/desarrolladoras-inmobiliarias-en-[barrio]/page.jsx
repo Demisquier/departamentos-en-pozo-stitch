@@ -1,6 +1,14 @@
 import Link from "next/link";
-import { getPageBySlug, getRankMathSchema, getDesarrollos, featuredImage, acf } from "../../lib/wp";
+import { getPageBySlug, getRankMathSchema, getDesarrollos, getDesarrolladoras, featuredImage, acf } from "../../lib/wp";
 import CalcInversion from "./CalcInversion";
+import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
+
+// Barrio de la URL → clave del CPT (barriosKey). Con esto pre-filtramos el directorio.
+const BARRIO_CPT = {
+  palermo: "palermo", belgrano: "belgrano", caballito: "caballito", nunez: "nunez",
+  "puerto-madero": "puerto-madero", recoleta: "recoleta", "villa-urquiza": "villa-urquiza",
+  "colegiales-chacarita": "colegiales", "saavedra-coghlan": "saavedra",
+};
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -113,6 +121,17 @@ export default async function GuiaBarrioPage({ params }) {
   const destacados = proyectos.filter((p) => p.img).slice(0, 6);
   const contenido = sanitizeWp(page?.content?.rendered);
 
+  // Directorio de DESARROLLADORAS del barrio (CPT), pre-filtrado. Reemplaza las listas
+  // hechas a mano SOLO en los barrios que tienen desarrolladoras cargadas; en los que
+  // todavía no (0 devs) se conserva el contenido WP para no dejar la página fina.
+  const cptKey = BARRIO_CPT[params.barrio] || (params.barrio || "").split("-")[0];
+  let devsBarrio = [];
+  try {
+    const all = await getDesarrolladoras();
+    devsBarrio = (all || []).filter((d) => (d.barriosKey || "").split(/\s+/).includes(cptKey));
+  } catch (e) { devsBarrio = []; }
+  const usaDirectorio = devsBarrio.length > 0;
+
   return (
     <main>
       {rmSchema.map((s, i) => (
@@ -150,8 +169,15 @@ export default async function GuiaBarrioPage({ params }) {
         </div>
       </section>
 
-      {/* Análisis (contenido WP saneado) */}
-      {contenido && (
+      {/* Barrios CON desarrolladoras cargadas: directorio pre-filtrado (fuente única = hub). */}
+      {usaDirectorio && (
+        <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+          <DirectorioDevs devs={devsBarrio} barrioFijo={cptKey} tituloBarrio={barrio} />
+        </div>
+      )}
+
+      {/* Barrios SIN desarrolladoras aún: se conserva el análisis WP para no dejar la página fina. */}
+      {!usaDirectorio && contenido && (
         <section className="py-16 md:py-20 px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
           <span className="text-label-caps text-secondary mb-3 block">ANÁLISIS DEL BARRIO</span>
           <div className="prose max-w-none text-body-md text-on-surface-variant leading-relaxed" dangerouslySetInnerHTML={{ __html: contenido }} />

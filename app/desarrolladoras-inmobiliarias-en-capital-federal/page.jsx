@@ -47,7 +47,7 @@ export default async function HubDesarrolladorasPage() {
               className="wp-content prose max-w-none text-body-md text-on-surface-variant"
               dangerouslySetInnerHTML={{ __html: before }}
             />
-            {useCpt && <DirectorioDevs devs={devs} />}
+            {useCpt && <DirectorioDevs devs={devs} chipsComoLinks />}
             {after && (
               <div
                 className="wp-content prose max-w-none text-body-md text-on-surface-variant"
