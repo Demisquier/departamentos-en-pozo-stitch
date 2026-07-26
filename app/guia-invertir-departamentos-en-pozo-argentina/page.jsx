@@ -2,8 +2,8 @@ import { getPageBySlug } from "../../lib/wp";
 
 const SLUG = "guia-invertir-departamentos-en-pozo-argentina";
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAm3I54cCpPCTixFSyjhwytAdCDMhI08nqmH5lK642xLRax8G3CwX7ytsBybz4zC5Nmph6jMUoKLGvYX8XLbGnb8TbE8ehWinWyRb6qAlTAy2nRh5HYmVQGnjKvfoT3uwamMTDLx5oEXyeyprGnoHa1fHqKTtVWJ5SoXJ0C2F_1jV4zTndfXRMZ1uezqQZvsFaqgmb2z0sa0iJXQF9qURH48KkCQ0QE9VPi5ihdwwjZGucgyIbmNJby-A";
+// Imagen real del sitio (antes placeholder de Stitch).
+const HERO_IMG = "/wp-content/uploads/2026/05/invertir-pozo-rentabilidad-hero.jpg";
 
 export async function generateMetadata() {
   const page = await getPageBySlug(SLUG);

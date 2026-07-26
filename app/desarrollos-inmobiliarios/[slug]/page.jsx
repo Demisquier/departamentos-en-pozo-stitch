@@ -59,11 +59,15 @@ function toPercent(v) {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
-// Formatea fecha_entrega "20270901" -> "09/2027".
+// Formatea fecha_entrega "20281201" / "202812" -> "Dic 2028".
 function fmtFecha(v) {
   const s = String(v || '');
-  if (/^\d{8}$/.test(s)) return `${s.slice(4, 6)}/${s.slice(0, 4)}`;
-  return v ? String(v) : '';
+  const MESES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+  let y, m;
+  if (/^\d{8}$/.test(s)) { y = s.slice(0, 4); m = parseInt(s.slice(4, 6), 10); }
+  else if (/^\d{6}$/.test(s)) { y = s.slice(0, 4); m = parseInt(s.slice(4, 6), 10); }
+  else return v ? String(v) : '';
+  return (m >= 1 && m <= 12) ? `${MESES[m - 1]} ${y}` : `${y}`;
 }
 // Formatea tipologias ["1_ambiente","2_ambientes","4_mas"] -> "1, 2, 4+ amb".
 function fmtTipologias(v) {

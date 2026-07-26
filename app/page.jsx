@@ -20,8 +20,8 @@ export const metadata = {
   },
 };
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCm7wX467tQZzCnTZFh1bq2QB_-QgICYRg6SajKGUOCcTPQBZNAaFWdTBuLiwg6wlBqotlt40BBjgfjNRdUkMxl2OIgytOQ7pmoJ6ZZukdW10mpZwZiybVWqKGy0UaPiJBcRjvwtoIetg0Owjwx-iOCidVsqKP81usEoMPj0_l4JyZACIKIE_NzgHvVn43cjIRqObxowuaOtGOSYG87fiAWJ2kqD1IGe_6rT8IH-OOiqv614ufMIdNrWw";
+// Imagen real del sitio (antes era un placeholder de Stitch en lh3.googleusercontent).
+const HERO_IMG = "/wp-content/uploads/2026/05/emprendimientos-pozo-ba-hero.jpg";
 
 // Barrios con página de desarrolladoras (para las tiles).
 const BARRIO_PAGE = {
