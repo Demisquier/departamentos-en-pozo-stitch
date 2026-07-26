@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fuente base: todo Work Sans por defecto (los títulos la sobreescriben a Libre Caslon).
+   Los form controls NO heredan font-family por defecto → aparecía "Inter" en botones/
+   inputs (directorio, filtros, formularios). Se fuerza herencia. */
+body {
+  font-family: "Work Sans", system-ui, sans-serif;
+}
+button,
+input,
+select,
+textarea,
+optgroup {
+  font-family: inherit;
+}
+
 /* ══════════════════════════════════════════════════════════════════════
    UNIFICACIÓN DE DISEÑO — un solo look & feel en todo el sitio
    El contenido de barrio trae un CSS propio (pozo-*) con variables propias
