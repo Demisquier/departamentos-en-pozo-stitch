@@ -176,7 +176,7 @@ export default async function SinglePage({ params }) {
           {/* Header estilo hub + chip de filtro: la página de barrio se siente el mismo
               hub con un filtro aplicado, fácil de volver a "todas". */}
           {!contenidoTieneH1 && (
-            <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-5">
+            <h1 className="font-headline-md text-[1.9rem] md:text-[2.5rem] leading-tight text-primary mb-4">
               Desarrolladoras en {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
             </h1>
           )}

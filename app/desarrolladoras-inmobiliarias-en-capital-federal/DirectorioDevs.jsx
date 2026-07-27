@@ -127,18 +127,14 @@ export default function DirectorioDevs({ devs = [], barrioFijo = "", chipsComoLi
 
   return (
     <section id="directorio" className="my-12">
-      {/* En el hub el H1 de la página ya dice "Directorio de desarrolladoras"; acá el H2
-          va oculto (sr-only) para mantener estructura/a11y sin repetir visualmente. */}
-      {barrioFijo ? (
-        <h2 className="font-headline-sm text-headline-sm text-primary mb-1">
-          Desarrolladoras en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}
-        </h2>
-      ) : (
-        <h2 className="sr-only">Directorio de desarrolladoras en CABA</h2>
-      )}
+      {/* H2 siempre sr-only (el H1 de la página, hub o barrio, ya es el título visible).
+          Así el directorio se ve IDÉNTICO en hub y en barrio: solo cambia el texto. */}
+      <h2 className="sr-only">
+        {barrioFijo ? `Desarrolladoras en ${tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}` : "Directorio de desarrolladoras en CABA"}
+      </h2>
       <p className="text-on-surface-variant mb-6">
         {barrioFijo
-          ? <>Desarrolladoras con obra activa en pozo en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}. <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-secondary underline hover:no-underline">Ver todas las de CABA →</Link></>
+          ? <>{devs.length} desarrolladoras con obra activa en pozo en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}.</>
           : <>{devs.length} desarrolladoras activas en pozo en CABA, GBA e interior.</>}
       </p>
 
