@@ -50,6 +50,19 @@ const nextConfig = {
       { source: "/barrio/villa-urquiza/", destination: "/desarrolladoras-inmobiliarias-en-villa-urquiza/", permanent: true },
       { source: "/barrio/colegiales", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
       { source: "/barrio/colegiales/", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
+
+      // --- Consolidación de guías canibalizadoras (Auditoría-Guias-SEO-2026-07) ---
+      // Guías duplicadas puras: 301 a la guía ganadora para concentrar señal por URL.
+      // 164 → 10 (los tres "cómo elegir proyecto" 8/10/164; 10 es la ganadora del trío).
+      { source: "/como-elegir-un-emprendimiento-en-pozo-guia-completa-para-reducir-riesgo", destination: "/emprendimientos-en-pozo-en-buenos-aires-como-elegir-el-mejor-proyecto-y-no-equivocarte/", permanent: true },
+      // 167 → 192 (dos guías de contrato; 192 tiene mejor cuerpo y es la ganadora).
+      { source: "/contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", destination: "/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/", permanent: true },
+      // 183 → 98 (dos guías "evaluar desarrolladora / red flags"; 98 es la ganadora).
+      { source: "/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags", destination: "/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/", permanent: true },
+
+      // --- Fix link interno roto: el slug real es plural (…vs-usados). Varias guías
+      // enlazan al singular (…vs-usado) → 301 al plural para no generar 404. ---
+      { source: "/comprar-en-pozo-en-caba-vs-usado", destination: "/comprar-en-pozo-en-caba-vs-usados/", permanent: true },
     ];
   },
   // MIGRACIÓN COMPLETA: las imágenes ahora viven en /public/wp-content del repo.

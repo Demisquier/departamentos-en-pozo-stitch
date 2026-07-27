@@ -174,6 +174,17 @@ export default async function SinglePage({ params }) {
               loading="eager"
               className="w-full aspect-[16/9] object-cover rounded shadow-xl -mt-8 relative z-10"
             />
+            {node.meta?.image_credit && (
+              <p className="relative z-10 mt-2 text-[12px] leading-snug text-on-surface-variant">
+                {node.meta.image_credit_url ? (
+                  <Link href={node.meta.image_credit_url} className="hover:text-link-gold transition-colors">
+                    {node.meta.image_credit}
+                  </Link>
+                ) : (
+                  node.meta.image_credit
+                )}
+              </p>
+            )}
           </div>
         )}
 
