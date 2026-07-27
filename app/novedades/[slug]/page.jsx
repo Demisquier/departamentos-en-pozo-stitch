@@ -19,8 +19,11 @@ export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Novedad no encontrada" };
   const clean = (post.title?.rendered || "").replace(/<[^>]*>/g, "").replace(/&amp;/g, "&");
+  // El post canónico vive en la raíz (/{slug}/). Esta ruta secundaria (/novedades/{slug}/)
+  // apunta su canonical allí para no competir por el mismo contenido (evita duplicado SEO).
   return {
     title: `${clean} — Departamentos en Pozo`,
+    alternates: { canonical: `https://departamentosenpozo.com.ar/${params.slug}/` },
   };
 }
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPosts, getCategories, featuredImage } from "../../lib/wp";
+import { getPosts, getCategories, featuredImage, readingTimeMinutes } from "../../lib/wp";
 
 export const revalidate = 600;
 
@@ -41,6 +41,15 @@ function formatDate(dateStr) {
       .toUpperCase();
   } catch {
     return "";
+  }
+}
+
+// Tiempo de lectura del post (min), calculado por longitud del texto.
+function minutos(post) {
+  try {
+    return readingTimeMinutes(post?.content?.rendered || post?.excerpt?.rendered || "");
+  } catch {
+    return null;
   }
 }
 
@@ -119,6 +128,7 @@ export default async function NovedadesPage() {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           src={featuredImage(featured)}
                           alt={title(featured)}
+                          loading="eager"
                         />
                       ) : (
                         <Ph />
@@ -132,9 +142,10 @@ export default async function NovedadesPage() {
                       )}
                     </div>
                     <div>
-                      <time className="font-label-caps text-label-caps text-on-surface-variant mb-3 block">
-                        {formatDate(featured.date)}
-                      </time>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-label-caps text-label-caps text-on-surface-variant mb-3">
+                        <time>{formatDate(featured.date)}</time>
+                        {minutos(featured) && (<><span aria-hidden="true">·</span><span>{minutos(featured)} MIN</span></>)}
+                      </div>
                       <h2
                         className="font-headline-md text-headline-md text-primary mb-4 group-hover:text-link-gold transition-colors"
                         dangerouslySetInnerHTML={{ __html: featured.title?.rendered || "" }}
@@ -159,6 +170,7 @@ export default async function NovedadesPage() {
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             src={featuredImage(post)}
                             alt={title(post)}
+                            loading="lazy"
                           />
                         ) : (
                           <Ph />
@@ -170,9 +182,13 @@ export default async function NovedadesPage() {
                         </span>
                       )}
                       <h3
-                        className="font-headline-sm text-headline-sm text-primary group-hover:text-link-gold transition-colors"
+                        className="font-headline-sm text-headline-sm text-primary group-hover:text-link-gold transition-colors mb-2"
                         dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
                       />
+                      <div className="flex flex-wrap items-center gap-x-2 font-label-caps text-label-caps text-on-surface-variant">
+                        <time>{formatDate(post.date)}</time>
+                        {minutos(post) && (<><span aria-hidden="true">·</span><span>{minutos(post)} MIN</span></>)}
+                      </div>
                     </Link>
                   </article>
                 ))}
@@ -188,18 +204,28 @@ export default async function NovedadesPage() {
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           src={featuredImage(post)}
                           alt={title(post)}
+                          loading="lazy"
                         />
                       ) : (
                         <Ph />
                       )}
                     </div>
-                    <time className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      {formatDate(post.date)}
-                    </time>
+                    {categoria(post) && (
+                      <span className="text-link-gold font-label-caps text-label-caps mb-2 block">
+                        {categoria(post)}
+                      </span>
+                    )}
                     <h3
                       className="font-headline-sm text-headline-sm text-primary mb-2 group-hover:text-link-gold transition-colors"
                       dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
                     />
+                    <p className="text-on-surface-variant font-body-md text-[15px] line-clamp-2 mb-2.5">
+                      {cleanExcerpt(post.excerpt?.rendered, 140)}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-x-2 font-label-caps text-label-caps text-on-surface-variant">
+                      <time>{formatDate(post.date)}</time>
+                      {minutos(post) && (<><span aria-hidden="true">·</span><span>{minutos(post)} MIN</span></>)}
+                    </div>
                   </Link>
                 </div>
               ))}
