@@ -265,6 +265,7 @@
    "precio_desde": "120360",
    "anticipo": "",
    "esquema_cuotas": "Contado desde USD 120.360. Alternativa: 70% de anticipo + cuotas con ajuste del 1% mensual (no CAC).",
+   "esquema_pago": [{"etapa": "Contado", "detalle": "Desde USD 120.360"}, {"etapa": "Financiado", "detalle": "70% de anticipo + cuotas con ajuste del 1% mensual (no CAC)"}],
    "fecha_entrega": "20270301",
    "avance_obra": "",
    "tipologias": [
@@ -643,6 +644,7 @@
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "Plan de financiación en 3 años (detalle a confirmar con la comercializadora).",
+   "esquema_pago": [{"etapa": "Financiación", "detalle": "Plan a 3 años (detalle a confirmar con la comercializadora)"}],
    "fecha_entrega": "2º semestre 2027",
    "avance_obra": "",
    "tipologias": [
@@ -1228,6 +1230,7 @@
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "Anticipo 40% + 30 cuotas + 2 refuerzos.",
+   "esquema_pago": [{"etapa": "Anticipo", "detalle": "40% al boleto"}, {"etapa": "Cuotas", "detalle": "30 cuotas mensuales"}, {"etapa": "Refuerzos", "detalle": "2 refuerzos"}],
    "fecha_entrega": "20280301",
    "avance_obra": "",
    "tipologias": [

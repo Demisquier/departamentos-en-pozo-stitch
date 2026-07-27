@@ -4,6 +4,8 @@ import { toNumber } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
 import Descripcion from './Descripcion';
+import EsquemaPago from './EsquemaPago';
+import TipologiasTabla from './TipologiasTabla';
 import Container from '../../_ui/Container';
 import JsonLd from '../../_ui/JsonLd';
 import Breadcrumb from '../../_ui/Breadcrumb';
@@ -120,6 +122,11 @@ export default async function FichaProyecto({ params }) {
   const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : null);
   const cuotas = acfAny(d, ['esquema_cuotas']);
   const comparableNum = toNumber(acf(d, 'comparable_terminado'));
+  // Plan de pago estructurado (timeline) y tabla de unidades — datos reales; si no hay, degradan solos.
+  const esquemaPasos = acf(d, 'esquema_pago');   // array [{etapa, detalle}]
+  const unidades = acf(d, 'unidades');           // array [{tipologia, sup_total, sup_cubierta, precio, disponibilidad}]
+  // Texto libre del esquema SOLO si aporta info; los placeholders "A consultar…" no arman sección.
+  const cuotasReal = cuotas && !/^\s*(a\s+)?consultar/i.test(String(cuotas)) ? cuotas : null;
 
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
@@ -148,7 +155,6 @@ export default async function FichaProyecto({ params }) {
     ['Valor de referencia', refM2Label],
     ['Cuota estimada', cuotaEstim ? String(cuotaEstim) : null],
     ['Anticipo', anticipoLabel],
-    ['Esquema de cuotas', cuotas || null],
     ['Ajuste de cuotas', ajuste || null],
     ['Comparable (usado terminado)', comparableNum ? `USD ${comparableNum.toLocaleString('es-AR')} /m²` : null],
   ].filter(([, v]) => v);
@@ -346,6 +352,12 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
+            {/* Plan de pago estructurado (diferenciador). Timeline si hay datos; si no, el texto libre. */}
+            <EsquemaPago pasos={esquemaPasos} textoLibre={cuotasReal} />
+
+            {/* Tabla de tipologías/unidades (solo si hay datos por unidad cargados). */}
+            <TipologiasTabla unidades={unidades} />
+
             {/* Descripción (texto, después de los datos rápidos; colapsable para no saturar) */}
             <div className="mb-8">
               <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Sobre este desarrollo</h2>
@@ -420,7 +432,7 @@ export default async function FichaProyecto({ params }) {
               cuotaEstim={cuotaEstim ? String(cuotaEstim) : null}
               anticipoLabel={anticipoLabel}
               entrega={entrega}
-              cuotas={cuotas}
+              cuotas={cuotasReal}
               ajuste={ajuste}
               comparableNum={comparableNum}
             />
