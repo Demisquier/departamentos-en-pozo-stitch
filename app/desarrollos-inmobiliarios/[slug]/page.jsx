@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
+import Link from 'next/link';
+import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import { toNumber } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
@@ -128,6 +129,22 @@ export default async function FichaProyecto({ params }) {
   // Texto libre del esquema SOLO si aporta info; los placeholders "A consultar…" no arman sección.
   const cuotasReal = cuotas && !/^\s*(a\s+)?consultar/i.test(String(cuotas)) ? cuotas : null;
 
+  // Link a la landing de la desarrolladora, si tiene página propia (match por nombre normalizado).
+  let devHref = null;
+  if (constructora) {
+    try {
+      const devs = await getDesarrolladoras();
+      const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+      const t = norm(constructora); // norm quita acentos y no-alfanumérico
+      const hit = (devs || []).find((x) => { const n = norm(x.nombre); return n && (n === t || (n.length > 4 && t.length > 4 && (n.includes(t) || t.includes(n)))); });
+      if (hit && hit.slug) devHref = `/desarrolladoras/${hit.slug}/`;
+    } catch (e) { devHref = null; }
+  }
+
+  // Etapa de obra para el stepper visual (En pozo · Construcción · Terminado).
+  const etapaTxt = String(estado || '').toLowerCase();
+  const etapaIdx = /termin|entreg/.test(etapaTxt) ? 2 : /construc/.test(etapaTxt) ? 1 : 0;
+
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
 
@@ -248,6 +265,21 @@ export default async function FichaProyecto({ params }) {
                   </div>
                 ))}
               </div>
+
+              {/* Stepper de etapa de obra (En pozo · Construcción · Terminado), estilo portal. */}
+              <div className="flex items-center gap-0 mt-5 max-w-md">
+                {['En pozo', 'En construcción', 'Terminado'].map((label, i) => (
+                  <div key={label} className="flex items-center flex-1 last:flex-none">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[13px] ${i <= etapaIdx ? 'bg-link-gold text-primary' : 'bg-surface-container-high text-on-surface-variant'}`}>
+                        {i < etapaIdx ? <span className="material-symbols-outlined text-[15px]">check</span> : i + 1}
+                      </span>
+                      <span className={`text-[11px] whitespace-nowrap ${i === etapaIdx ? 'text-primary font-medium' : 'text-on-surface-variant'}`}>{label}</span>
+                    </div>
+                    {i < 2 && <span className={`h-px flex-1 mx-1 -mt-4 ${i < etapaIdx ? 'bg-link-gold' : 'bg-outline-variant'}`} />}
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* BRECHA POZO vs TERMINADO — el dato diferencial del sitio, como conclusión
@@ -299,7 +331,11 @@ export default async function FichaProyecto({ params }) {
                       {grupoDesarrollo.map(([k, v]) => (
                         <div key={k} className="flex justify-between gap-4 text-[14px]">
                           <dt className="text-on-surface-variant">{k}</dt>
-                          <dd className="text-primary font-medium text-right">{v}</dd>
+                          <dd className="text-primary font-medium text-right">
+                            {k === 'Desarrolladora' && devHref
+                              ? <Link href={devHref} className="text-secondary underline underline-offset-2 hover:text-primary">{v}</Link>
+                              : v}
+                          </dd>
                         </div>
                       ))}
                     </dl>

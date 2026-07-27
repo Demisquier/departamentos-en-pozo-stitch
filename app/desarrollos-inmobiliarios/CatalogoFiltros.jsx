@@ -83,6 +83,8 @@ export default function CatalogoFiltros({ items }) {
   const [amb, setAmb] = useState('');
   const [precio, setPrecio] = useState('todos');
   const [etapa, setEtapa] = useState('');
+  const [entregaMax, setEntregaMax] = useState('');
+  const [fin, setFin] = useState(false);
   const [orden, setOrden] = useState('destacados');
   const [vista, setVista] = useState('lista'); // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
@@ -108,6 +110,8 @@ export default function CatalogoFiltros({ items }) {
         if (precio === 'mas4500' && !(p > 4500)) return false;
       }
       if (etapa && (i.etapa || '').toLowerCase() !== etapa) return false;
+      if (entregaMax && (i.entregaAnio == null || i.entregaAnio > Number(entregaMax))) return false;
+      if (fin && !i.financiacion) return false;
       return true;
     });
     const entregaKey = (s) => {
@@ -119,15 +123,20 @@ export default function CatalogoFiltros({ items }) {
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, etapa, orden]);
+  }, [items, barrio, amb, precio, etapa, entregaMax, fin, orden]);
 
   const chip = (active) =>
     `px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
       active ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'
     }`;
 
-  const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); };
-  const hayFiltros = barrio || amb || precio !== 'todos' || etapa;
+  const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); setEntregaMax(''); setFin(false); };
+  const hayFiltros = barrio || amb || precio !== 'todos' || etapa || entregaMax || fin;
+  // Años de entrega disponibles (para el select), ascendente.
+  const aniosEntrega = useMemo(
+    () => Array.from(new Set(items.map((i) => i.entregaAnio).filter(Boolean))).sort((a, b) => a - b),
+    [items]
+  );
   const conCoord = filtered.filter((i) => i.lat != null).length;
 
   return (
@@ -163,6 +172,11 @@ export default function CatalogoFiltros({ items }) {
           <button className={chip(precio === '3000a4500')} onClick={() => setPrecio(precio === '3000a4500' ? 'todos' : '3000a4500')}>3.000–4.500/m²</button>
           <button className={chip(precio === 'mas4500')} onClick={() => setPrecio(precio === 'mas4500' ? 'todos' : 'mas4500')}>+4.500/m²</button>
 
+          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
+          <button className={chip(etapa === 'en pozo')} onClick={() => setEtapa(etapa === 'en pozo' ? '' : 'en pozo')}>En pozo</button>
+          <button className={chip(etapa === 'en construcción')} onClick={() => setEtapa(etapa === 'en construcción' ? '' : 'en construcción')}>En construcción</button>
+          <button className={chip(fin)} onClick={() => setFin((v) => !v)}>Con financiación</button>
+
           {hayFiltros && (
             <button onClick={limpiar} className="px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar</button>
           )}
@@ -183,6 +197,15 @@ export default function CatalogoFiltros({ items }) {
                 <span className="material-symbols-outlined text-[16px]">map</span>Mapa
               </button>
             </div>
+            {aniosEntrega.length > 0 && (
+              <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
+                Entrega hasta
+                <select value={entregaMax} onChange={(e) => setEntregaMax(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-1.5 text-[13px] text-primary bg-surface">
+                  <option value="">Cualquiera</option>
+                  {aniosEntrega.map((a) => (<option key={a} value={a}>{a}</option>))}
+                </select>
+              </label>
+            )}
             {vista === 'lista' && (
               <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
                 Ordenar por

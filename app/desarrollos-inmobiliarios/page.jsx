@@ -8,7 +8,7 @@ import JsonLd from '../_ui/JsonLd';
 export const revalidate = 600;
 
 export const metadata = {
-  title: 'Departamentos en pozo en CABA: 46 proyectos | Departamentos en Pozo',
+  title: 'Departamentos en pozo en CABA: catálogo de proyectos | Departamentos en Pozo',
   description:
     'Catálogo de departamentos en pozo (preventa) en CABA: precio, financiación, desarrolladora, tipologías, avance y entrega. Compará proyectos por barrio con análisis independiente.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
@@ -58,6 +58,12 @@ export default async function CatalogoPage() {
     const desarrolladora = acfAny(node, ['desarrolladora', 'constructora']) || '';
     const etapaRaw = acfAny(node, ['estado_obra', 'obra', 'pozo_estado']) || '';
     const etapa = /construc/i.test(String(etapaRaw)) ? 'En construcción' : 'En pozo';
+    // Año de entrega (para filtro) y flag de financiación (esquema real, no placeholder).
+    const fechaRaw = String(acfAny(node, ['fecha_entrega', 'entrega']) || '');
+    const entregaAnio = /^\d{6,8}$/.test(fechaRaw) ? Number(fechaRaw.slice(0, 4)) : null;
+    const esqPago = acfAny(node, ['esquema_pago']);
+    const cuotasTxt = acfAny(node, ['esquema_cuotas']);
+    const financiacion = (Array.isArray(esqPago) && esqPago.length > 0) || (cuotasTxt && !/^\s*(a\s+)?consultar/i.test(String(cuotasTxt)));
     const coord = COORDS[node.slug] || null;
 
     return {
@@ -74,6 +80,8 @@ export default async function CatalogoPage() {
       ambientes: tip.label,
       ambientesNums: tip.nums,
       entrega,
+      entregaAnio,
+      financiacion: !!financiacion,
       desarrolladora,
       etapa,
       imagen: featuredImage(node),
