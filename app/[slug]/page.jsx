@@ -187,22 +187,19 @@ export default async function SinglePage({ params }) {
                 {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
                 <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" aria-label="Quitar filtro, ver todas las desarrolladoras" className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/25 hover:bg-white/45 transition-colors leading-none">✕</Link>
               </span>
-              <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-[14px] text-link-gold hover:underline">Ver todas las desarrolladoras de CABA</Link>
+              <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-[14px] text-secondary underline hover:no-underline">Ver todas las desarrolladoras de CABA</Link>
             </div>
           )}
-          <div
-            className="wp-content prose max-w-none text-body-md text-on-surface-variant"
-            dangerouslySetInnerHTML={{ __html: usaDirectorioBarrio ? barrioBefore : content }}
-          />
+          {/* Directorio ARRIBA (igual que el hub): el listado filtrado va justo después
+              del header/chip, y TODO el editorial del barrio queda debajo. Un solo cambio
+              acá deja las 9 páginas de barrio "directory-first", sin salto respecto al hub. */}
           {usaDirectorioBarrio && (
             <DirectorioDevs devs={devsBarrio} barrioFijo={barrioKey} tituloBarrio={BARRIO_NOMBRE[barrioSlug] || barrioSlug} />
           )}
-          {usaDirectorioBarrio && barrioAfter && (
-            <div
-              className="wp-content prose max-w-none text-body-md text-on-surface-variant"
-              dangerouslySetInnerHTML={{ __html: barrioAfter }}
-            />
-          )}
+          <div
+            className="wp-content prose max-w-none text-body-md text-on-surface-variant mt-8"
+            dangerouslySetInnerHTML={{ __html: usaDirectorioBarrio ? (barrioBefore + barrioAfter) : content }}
+          />
         </main>
       ) : (
         <div
