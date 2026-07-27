@@ -26,16 +26,16 @@ const BARRIO_URL = {
 function Card({ d }) {
   const barrios = (d.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);
   return (
-    <li className={`rounded-2xl p-5 bg-surface border ${d.destacada ? "border-link-gold/40" : "border-outline-variant"}`}>
-      <div className="flex items-start gap-4">
+    <li className={`rounded-xl p-4 bg-surface border ${d.destacada ? "border-link-gold/40" : "border-outline-variant"} flex flex-col`}>
+      <div className="flex items-start gap-3">
         {d.iniciales ? (
-          <span className="shrink-0 w-14 h-14 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-[18px] tracking-wide">
+          <span className="shrink-0 w-11 h-11 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-[15px] tracking-wide">
             {d.iniciales}
           </span>
         ) : null}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-headline-sm text-[19px] leading-tight text-primary">{d.nombre}</h3>
+            <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.nombre}</h3>
             {d.badge ? (
               <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-link-gold px-2.5 py-1 rounded-lg">
                 {d.badge}
@@ -49,24 +49,24 @@ function Card({ d }) {
       </div>
 
       {barrios.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-4">
-          {barrios.map((b) => (
-            <span key={b} className="text-[12px] bg-surface-container text-primary rounded-lg px-2.5 py-1">{b}</span>
+        <div className="flex flex-wrap gap-1.5 mt-3">
+          {barrios.slice(0, 4).map((b) => (
+            <span key={b} className="text-[11px] bg-surface-container text-primary rounded-md px-2 py-0.5">{b}</span>
           ))}
         </div>
       )}
 
       {(d.proyecto || d.estructura || d.volumen) && (
-        <dl className="mt-4 space-y-2.5 text-[14px]">
-          {d.proyecto && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Proyecto</dt><dd className="text-primary">{d.proyecto}</dd></div>)}
-          {d.estructura && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Estructura</dt><dd className="text-primary">{d.estructura}</dd></div>)}
-          {d.volumen && (<div><dt className="font-label-caps text-label-caps uppercase text-on-surface-variant text-[11px]">Volumen</dt><dd className="text-primary">{d.volumen}</dd></div>)}
+        <dl className="mt-3 space-y-1.5 text-[13px]">
+          {d.proyecto && (<div className="flex gap-1.5"><dt className="font-label-caps uppercase text-on-surface-variant text-[10px] shrink-0 w-16 pt-0.5">Proyecto</dt><dd className="text-primary flex-1">{d.proyecto}</dd></div>)}
+          {d.estructura && (<div className="flex gap-1.5"><dt className="font-label-caps uppercase text-on-surface-variant text-[10px] shrink-0 w-16 pt-0.5">Estructura</dt><dd className="text-primary flex-1">{d.estructura}</dd></div>)}
+          {d.volumen && (<div className="flex gap-1.5"><dt className="font-label-caps uppercase text-on-surface-variant text-[10px] shrink-0 w-16 pt-0.5">Volumen</dt><dd className="text-primary flex-1">{d.volumen}</dd></div>)}
         </dl>
       )}
 
-      {d.desc && <p className="text-[13px] text-on-surface-variant mt-4 leading-relaxed">{d.desc}</p>}
+      {d.desc && <p className="text-[12.5px] text-on-surface-variant mt-3 leading-relaxed line-clamp-2">{d.desc}</p>}
 
-      <div className="mt-4 pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-5 gap-y-2">
+      <div className="mt-auto pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-4 gap-y-2">
         {d.proyectosSlug && d.proyectosSlug.length > 0 && (
           <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-medium text-link-gold hover:underline">
             Ver {d.proyectosSlug.length} proyecto{d.proyectosSlug.length === 1 ? "" : "s"} →
@@ -171,7 +171,7 @@ export default function DirectorioDevs({ devs = [], barrioFijo = "", chipsComoLi
 
       <p className="text-[13px] text-on-surface-variant mb-4">{filtered.length} resultado{filtered.length === 1 ? "" : "s"}</p>
 
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-stretch">
         {filtered.map((d) => <Card key={d.id} d={d} />)}
       </ul>
 
