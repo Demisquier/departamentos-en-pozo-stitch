@@ -177,7 +177,7 @@ export default async function SinglePage({ params }) {
             {node.meta?.image_credit && (
               <p className="relative z-10 mt-2 text-[12px] leading-snug text-on-surface-variant">
                 {node.meta.image_credit_url ? (
-                  <Link href={node.meta.image_credit_url} className="hover:text-link-gold transition-colors">
+                  <Link href={node.meta.image_credit_url} className="hover:text-secondary transition-colors">
                     {node.meta.image_credit}
                   </Link>
                 ) : (
@@ -197,7 +197,7 @@ export default async function SinglePage({ params }) {
                 <p className="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">En esta guía</p>
                 <nav className="flex flex-col gap-2.5 border-l border-outline-variant pl-4">
                   {toc.map((h) => (
-                    <a key={h.id} href={`#${h.id}`} className="text-[14px] leading-snug text-on-surface-variant hover:text-link-gold transition-colors">
+                    <a key={h.id} href={`#${h.id}`} className="text-[14px] leading-snug text-on-surface-variant hover:text-secondary transition-colors">
                       {h.text}
                     </a>
                   ))}
@@ -215,7 +215,7 @@ export default async function SinglePage({ params }) {
                 </summary>
                 <nav className="flex flex-col gap-2.5 px-5 pb-4 pt-1">
                   {toc.map((h) => (
-                    <a key={h.id} href={`#${h.id}`} className="text-[15px] text-on-surface-variant hover:text-link-gold transition-colors">
+                    <a key={h.id} href={`#${h.id}`} className="text-[15px] text-on-surface-variant hover:text-secondary transition-colors">
                       {h.text}
                     </a>
                   ))}
@@ -241,8 +241,8 @@ export default async function SinglePage({ params }) {
                   ["Proyectos en pozo", "Fichas de emprendimientos con precio, obra y ubicación.", "/desarrollos-inmobiliarios/"],
                   ["Guía para invertir en pozo", "El marco completo para comprar en preventa sin errores.", "/guia-invertir-departamentos-en-pozo-argentina/"],
                 ].map(([t, d, href]) => (
-                  <Link key={href} href={href} className="group block border border-outline-variant rounded-lg p-5 hover:border-link-gold transition-colors">
-                    <span className="font-headline-sm text-[19px] text-primary group-hover:text-link-gold transition-colors flex items-center gap-2">
+                  <Link key={href} href={href} className="group block border border-outline-variant rounded-lg p-5 hover:border-secondary transition-colors">
+                    <span className="font-headline-sm text-[19px] text-primary group-hover:text-secondary transition-colors flex items-center gap-2">
                       {t}
                       <span className="material-symbols-outlined text-[18px] opacity-60 group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
                     </span>
@@ -270,9 +270,9 @@ export default async function SinglePage({ params }) {
                           )}
                         </div>
                         {primaryCategory(p) && (
-                          <span className="text-link-gold font-label-caps text-label-caps mb-1.5 block uppercase">{primaryCategory(p).name}</span>
+                          <span className="text-secondary font-label-caps text-label-caps mb-1.5 block uppercase">{primaryCategory(p).name}</span>
                         )}
-                        <h3 className="font-headline-sm text-[18px] leading-snug text-primary group-hover:text-link-gold transition-colors" dangerouslySetInnerHTML={{ __html: p.title?.rendered || "" }} />
+                        <h3 className="font-headline-sm text-[18px] leading-snug text-primary group-hover:text-secondary transition-colors" dangerouslySetInnerHTML={{ __html: p.title?.rendered || "" }} />
                       </Link>
                     </article>
                   ))}
@@ -282,10 +282,10 @@ export default async function SinglePage({ params }) {
 
             {/* Navegación de cierre */}
             <div className="mt-14 border-t border-outline-variant pt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-              <Link href="/novedades/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-link-gold transition-colors">
+              <Link href="/novedades/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-secondary transition-colors">
                 <span className="material-symbols-outlined text-[18px]">arrow_back</span> Volver a Guías
               </Link>
-              <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-2 bg-link-gold text-primary-container px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all">
+              <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-2 bg-primary-container text-on-primary px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all">
                 Ver proyectos en pozo <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
               </Link>
             </div>
@@ -409,10 +409,10 @@ export default async function SinglePage({ params }) {
       {type === "post" && (
         <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop pb-16">
           <div className="border-t border-outline-variant pt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            <Link href="/novedades/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-link-gold transition-colors">
+            <Link href="/novedades/" className="inline-flex items-center gap-2 text-on-surface-variant hover:text-secondary transition-colors">
               <span className="material-symbols-outlined text-[18px]">arrow_back</span> Volver a Guías
             </Link>
-            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-2 bg-link-gold text-primary-container px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all">
+            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-2 bg-primary-container text-on-primary px-6 py-3 rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all">
               Ver proyectos en pozo <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
             </Link>
           </div>

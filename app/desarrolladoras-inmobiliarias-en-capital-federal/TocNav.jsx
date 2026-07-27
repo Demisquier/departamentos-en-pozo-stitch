@@ -76,7 +76,8 @@ export default function TocNav() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="ml-auto shrink-0 flex items-center gap-1 text-[13px] text-link-gold px-3 py-1.5"
+          aria-label="Volver arriba"
+          className="ml-auto shrink-0 flex items-center gap-1 text-[13px] text-secondary px-3 py-1.5"
         >
           <span className="material-symbols-outlined text-[18px]">arrow_upward</span>
         </a>

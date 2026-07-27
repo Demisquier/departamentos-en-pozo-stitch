@@ -59,7 +59,7 @@ export default async function SobreNosotrosPage() {
               ["100%", "INDEPENDIENTE"],
             ].map(([n, l]) => (
               <div key={l} className="p-8 border border-outline-variant rounded-lg flex flex-col justify-center items-center text-center">
-                <span className="text-link-gold font-display-lg text-display-lg mb-2">{n}</span>
+                <span className="text-secondary font-display-lg text-display-lg mb-2">{n}</span>
                 <span className="font-label-caps text-on-surface-variant text-[12px]">{l}</span>
               </div>
             ))}
@@ -75,7 +75,7 @@ export default async function SobreNosotrosPage() {
               <Marca frase="&laquo;El dato correcto, con su fuente, antes que el dato que conviene.&raquo;" />
             </div>
             <div className="flex-1 space-y-8">
-              <span className="text-link-gold font-label-caps tracking-widest">NUESTRO ADN</span>
+              <span className="text-secondary font-label-caps tracking-widest">NUESTRO ADN</span>
               <h2 className="text-primary font-headline-md text-headline-md">
                 Un portal de análisis, no una inmobiliaria más.
               </h2>
@@ -201,10 +201,10 @@ export default async function SobreNosotrosPage() {
               </p>
             </div>
             <div className="relative z-10 flex flex-wrap gap-4">
-              <Link className="inline-block bg-link-gold text-white px-8 py-4 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-xl" href="/desarrollos-inmobiliarios/">
+              <Link className="inline-block bg-link-gold text-primary-container px-8 py-4 rounded font-bold hover:brightness-110 transition-all shadow-xl" href="/desarrollos-inmobiliarios/">
                 Ver proyectos
               </Link>
-              <Link className="inline-block border border-white/40 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition-all" href="/contacto/">
+              <Link className="inline-block border border-white/40 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all" href="/contacto/">
                 Contacto
               </Link>
             </div>

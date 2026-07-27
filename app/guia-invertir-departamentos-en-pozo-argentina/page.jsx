@@ -47,7 +47,7 @@ export default async function GuiaPillarPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                className="bg-link-gold text-on-primary px-8 py-4 font-label-caps text-label-caps hover:brightness-110 transition-all uppercase"
+                className="bg-link-gold text-primary-container px-8 py-4 rounded font-label-caps text-label-caps hover:brightness-110 transition-all uppercase"
                 href="#contenido"
               >
                 Comenzar Guía
@@ -79,7 +79,7 @@ export default async function GuiaPillarPage() {
             </h3>
             <nav className="flex flex-col gap-4 text-label-md font-label-md border-l border-outline-variant">
               <a
-                className="pl-4 py-1 text-on-surface hover:text-link-gold transition-all border-l-2 border-transparent -ml-[1px]"
+                className="pl-4 py-1 text-on-surface hover:text-secondary transition-all border-l-2 border-transparent -ml-[1px]"
                 href="#contenido"
               >
                 Guía completa
@@ -95,7 +95,7 @@ export default async function GuiaPillarPage() {
               <p className="text-label-md font-label-md text-on-primary-container mb-6">
                 Calcule la rentabilidad neta de su inversión proyectada a 36 meses.
               </p>
-              <button className="w-full py-3 border border-link-gold text-link-gold font-label-caps text-label-caps hover:bg-link-gold hover:text-on-primary transition-all uppercase">
+              <button className="w-full py-3 rounded border border-link-gold text-link-gold font-label-caps text-label-caps hover:bg-link-gold hover:text-primary-container transition-all uppercase">
                 Descargar Gratis
               </button>
             </div>
@@ -111,7 +111,7 @@ export default async function GuiaPillarPage() {
               prose-h2:text-headline-md prose-h2:mt-14 prose-h2:mb-6 prose-h2:scroll-mt-28
               prose-h3:text-headline-sm prose-h3:mt-10 prose-h3:mb-4
               prose-p:font-body-lg prose-p:text-body-lg prose-p:mb-6
-              prose-a:text-link-gold prose-a:no-underline hover:prose-a:underline
+              prose-a:text-secondary prose-a:no-underline hover:prose-a:underline
               prose-strong:text-primary
               prose-blockquote:bg-surface-container prose-blockquote:border-l-4
               prose-blockquote:border-link-gold prose-blockquote:not-italic prose-blockquote:p-8
@@ -138,13 +138,13 @@ export default async function GuiaPillarPage() {
           <div className="flex flex-col md:flex-row justify-center gap-6">
             <a
               href="/desarrollos-inmobiliarios/"
-              className="bg-link-gold text-on-primary px-10 py-5 font-label-caps text-label-caps hover:brightness-110 transition-all uppercase tracking-widest"
+              className="bg-link-gold text-primary-container px-10 py-5 rounded font-label-caps text-label-caps hover:brightness-110 transition-all uppercase tracking-widest"
             >
               Ver Catálogo 2026
             </a>
             <a
               href="/contacto/"
-              className="border border-on-primary text-on-primary px-10 py-5 font-label-caps text-label-caps hover:bg-on-primary hover:text-primary-container transition-all uppercase tracking-widest"
+              className="border border-on-primary text-on-primary px-10 py-5 rounded font-label-caps text-label-caps hover:bg-on-primary hover:text-primary-container transition-all uppercase tracking-widest"
             >
               Hablar con un Experto
             </a>

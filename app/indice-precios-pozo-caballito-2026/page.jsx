@@ -70,7 +70,7 @@ export default async function IndicePreciosPage() {
             prose-h2:text-headline-md prose-h2:mt-14 prose-h2:mb-6
             prose-h3:text-headline-sm prose-h3:mt-10 prose-h3:mb-4
             prose-p:font-body-md prose-p:text-body-md prose-p:mb-6
-            prose-a:text-link-gold prose-a:font-bold prose-a:no-underline hover:prose-a:underline
+            prose-a:text-secondary prose-a:font-bold prose-a:no-underline hover:prose-a:underline
             prose-strong:text-primary
             prose-table:w-full prose-table:text-left prose-table:border-collapse
             prose-table:border prose-table:border-outline-variant prose-table:rounded-xl prose-table:overflow-hidden prose-table:bg-white

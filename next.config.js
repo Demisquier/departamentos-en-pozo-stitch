@@ -63,6 +63,13 @@ const nextConfig = {
       // --- Fix link interno roto: el slug real es plural (…vs-usados). Varias guías
       // enlazan al singular (…vs-usado) → 301 al plural para no generar 404. ---
       { source: "/comprar-en-pozo-en-caba-vs-usado", destination: "/comprar-en-pozo-en-caba-vs-usados/", permanent: true },
+
+      // --- Fusiones de guías (2da tanda, Auditoría-Guias-SEO): absorbida → ganadora ---
+      { source: "/8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados", destination: "/10-desarrolladoras-de-departamentos-en-pozo-con-proyectos-finalizados-en-argentina/", permanent: true },
+      { source: "/mejores-barrios-para-invertir-en-pozo-en-caba-como-elegir-zona-sin-equivocarte", destination: "/desarrollos-en-pozo-por-barrio/", permanent: true },
+      { source: "/tendencias-en-departamentos-en-pozo-tipologias-amenities-y-que-se-vende-mas-facil", destination: "/amenities-y-tipologias-que-mas-se-revenden-y-alquilan-en-pozo/", permanent: true },
+      { source: "/estrategia-alquiler-en-pozo-que-tipologia-comprar-y-como-asegurar-demanda", destination: "/amenities-y-tipologias-que-mas-se-revenden-y-alquilan-en-pozo/", permanent: true },
+      { source: "/estrategia-reventa-en-pozo-cuando-entrar-cuando-salir-y-como-maximizar-ganancia", destination: "/invertir-en-pozo-cuanto-se-gana-y-como-calcular-la-rentabilidad-paso-a-paso/", permanent: true },
     ];
   },
   // MIGRACIÓN COMPLETA: las imágenes ahora viven en /public/wp-content del repo.

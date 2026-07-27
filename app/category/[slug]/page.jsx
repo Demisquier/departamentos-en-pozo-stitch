@@ -64,10 +64,10 @@ export default async function CategoryPage({ params }) {
                       <div className="w-full h-full bg-surface-container" />
                     )}
                   </div>
-                  <p className="text-[11px] font-bold text-link-gold uppercase tracking-widest font-label-caps">
+                  <p className="text-[11px] font-bold text-secondary uppercase tracking-widest font-label-caps">
                     {new Date(p.date).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" })}
                   </p>
-                  <h3 className="font-headline-sm text-headline-sm text-primary group-hover:text-link-gold transition-colors" dangerouslySetInnerHTML={{ __html: p.title.rendered }} />
+                  <h3 className="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors" dangerouslySetInnerHTML={{ __html: p.title.rendered }} />
                   <p className="text-on-surface-variant text-body-md">{clean(p.excerpt?.rendered).slice(0, 140)}…</p>
                 </Link>
               );

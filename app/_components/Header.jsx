@@ -31,7 +31,7 @@ export default function Header() {
           />
         </Link>
 
-        <button className="md:hidden p-2 text-primary" onClick={() => setOpen(!open)} aria-label="Menú">
+        <button className="md:hidden p-2 text-primary" onClick={() => setOpen(!open)} aria-label="Abrir menú" aria-expanded={open} aria-controls="mobile-nav">
           <span className="material-symbols-outlined">menu</span>
         </button>
 
@@ -40,7 +40,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className={`${i === 0 ? "text-link-gold font-bold" : "text-on-surface-variant"} text-label-caps font-label-caps hover:text-link-gold transition-colors duration-300`}
+              className={`${i === 0 ? "text-secondary font-bold" : "text-on-surface-variant"} text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
             >
               {n.label}
             </Link>
@@ -50,7 +50,7 @@ export default function Header() {
             <Link
               key={n.label}
               href={n.href}
-              className="text-on-surface-variant text-label-caps font-label-caps hover:text-link-gold transition-colors duration-300"
+              className="text-on-surface-variant text-label-caps font-label-caps hover:text-secondary transition-colors duration-300"
             >
               {n.label}
             </Link>
@@ -66,7 +66,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-surface border-t border-outline-variant absolute w-full left-0 p-margin-mobile space-y-4 shadow-xl font-label-caps">
+        <div id="mobile-nav" className="md:hidden bg-surface border-t border-outline-variant absolute w-full left-0 p-margin-mobile space-y-4 shadow-xl font-label-caps">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="block" onClick={() => setOpen(false)}>
               {n.label}

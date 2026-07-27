@@ -24,7 +24,7 @@ export default function Descripcion({ html }) {
       )}
       {overflow && (
         <button type="button" onClick={() => setOpen((o) => !o)}
-          className="mt-2 inline-flex items-center gap-1 text-link-gold font-medium text-[14px]">
+          className="mt-2 inline-flex items-center gap-1 text-secondary font-medium text-[14px]">
           {open ? "Ver menos" : "Leer descripción completa"}
           <span className={`material-symbols-outlined text-[18px] transition-transform ${open ? "rotate-180" : ""}`}>expand_more</span>
         </button>

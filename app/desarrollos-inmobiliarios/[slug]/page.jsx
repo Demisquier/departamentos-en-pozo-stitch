@@ -192,9 +192,9 @@ export default async function FichaProyecto({ params }) {
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 md:py-8 pb-28">
         {/* Breadcrumb */}
         <nav className="text-[13px] text-on-surface-variant mb-4 flex flex-wrap items-center gap-1.5">
-          <Link href="/" className="hover:text-link-gold">Inicio</Link>
+          <Link href="/" className="hover:text-secondary">Inicio</Link>
           <span>/</span>
-          <Link href="/desarrollos-inmobiliarios/" className="hover:text-link-gold">Proyectos en pozo</Link>
+          <Link href="/desarrollos-inmobiliarios/" className="hover:text-secondary">Proyectos en pozo</Link>
           <span>/</span>
           <span className="text-primary">{nombre}</span>
         </nav>

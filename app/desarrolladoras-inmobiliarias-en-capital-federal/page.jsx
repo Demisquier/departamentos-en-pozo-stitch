@@ -68,7 +68,7 @@ export default async function HubDesarrolladorasPage() {
             <p className="text-on-surface-variant max-w-xl mx-auto">
               Estamos actualizando este directorio. Mientras tanto, explorá el catálogo de proyectos en pozo por barrio.
             </p>
-            <a href="/desarrollos-inmobiliarios/" className="inline-block mt-5 text-link-gold underline underline-offset-4">
+            <a href="/desarrollos-inmobiliarios/" className="inline-block mt-5 text-secondary underline underline-offset-4">
               Ver catálogo de desarrollos →
             </a>
           </div>

@@ -17,6 +17,24 @@ optgroup {
 }
 
 /* ══════════════════════════════════════════════════════════════════════
+   ACCESIBILIDAD — foco visible por teclado en todos los controles.
+   :focus-visible solo aparece en navegación por teclado (no en click de mouse),
+   así el anillo no molesta al usuario de mouse pero garantiza AA para teclado.
+   Color = secondary (#735a3a, bronce accesible), coherente con la identidad.
+   ══════════════════════════════════════════════════════════════════════ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #735a3a;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
    UNIFICACIÓN DE DISEÑO — un solo look & feel en todo el sitio
    El contenido de barrio trae un CSS propio (pozo-*) con variables propias
    (Inter, navy/gold distintos, radios más redondeados). Redefinimos esas
@@ -105,12 +123,14 @@ main h1 {
 .wp-content li {
   margin: 0.35rem 0;
 }
+/* Links de contenido: bronce accesible (#735a3a = token secondary, AA sobre blanco).
+   Antes #a68966 no cumplía contraste AA como texto de link. */
 .wp-content a {
-  color: #a68966;
+  color: #735a3a;
   text-decoration: underline;
 }
 .wp-content a:hover {
-  color: #735a3a;
+  color: #5f4a2f;
 }
 .wp-content img {
   max-width: 100%;

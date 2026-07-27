@@ -98,7 +98,7 @@ export default function ContactoPage() {
                     Nombre
                   </label>
                   <input
-                    className="w-full border-outline-variant rounded-lg p-3 focus:ring-1 focus:ring-link-gold focus:border-link-gold transition-all"
+                    className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="nombre"
                     name="nombre"
                     placeholder="Ej: Juan"
@@ -113,7 +113,7 @@ export default function ContactoPage() {
                     Apellido
                   </label>
                   <input
-                    className="w-full border-outline-variant rounded-lg p-3 focus:ring-1 focus:ring-link-gold focus:border-link-gold transition-all"
+                    className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="apellido"
                     name="apellido"
                     placeholder="Ej: Perez"
@@ -129,7 +129,7 @@ export default function ContactoPage() {
                   Email
                 </label>
                 <input
-                  className="w-full border-outline-variant rounded-lg p-3 focus:ring-1 focus:ring-link-gold focus:border-link-gold transition-all"
+                  className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                   id="email"
                   name="email"
                   placeholder="juan.perez@email.com"
@@ -148,7 +148,7 @@ export default function ContactoPage() {
                     +54
                   </span>
                   <input
-                    className="w-full border-outline-variant rounded-r-lg p-3 focus:ring-1 focus:ring-link-gold focus:border-link-gold transition-all"
+                    className="w-full border-outline-variant rounded-r-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="whatsapp"
                     name="whatsapp"
                     placeholder="11 1234 5678"
@@ -164,7 +164,7 @@ export default function ContactoPage() {
                   Mensaje
                 </label>
                 <textarea
-                  className="w-full border-outline-variant rounded-lg p-3 focus:ring-1 focus:ring-link-gold focus:border-link-gold transition-all"
+                  className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                   id="mensaje"
                   name="mensaje"
                   placeholder="Contanos qué tipo de inversión estás buscando..."
@@ -175,7 +175,7 @@ export default function ContactoPage() {
               </div>
               <div className="pt-4">
                 <button
-                  className="w-full py-5 rounded-lg font-label-caps text-[14px] tracking-widest uppercase shadow-md flex justify-center items-center gap-2 bg-link-gold text-white hover:bg-secondary transition-all disabled:opacity-70"
+                  className="w-full py-5 rounded font-label-caps text-[14px] tracking-widest uppercase shadow-md flex justify-center items-center gap-2 bg-primary-container text-on-primary hover:opacity-90 transition-all disabled:opacity-70"
                   type="submit"
                   disabled={status === "sending"}
                 >
@@ -217,7 +217,7 @@ export default function ContactoPage() {
                   <p className="font-bold text-primary">Chat vía WhatsApp</p>
                 </div>
               </div>
-              <a className="inline-flex items-center gap-2 text-link-gold font-bold hover:underline" href="https://wa.me/5491134502704?text=Hola,%20quiero%20consultar%20sobre%20un%20proyecto%20en%20pozo" target="_blank" rel="noopener">
+              <a className="inline-flex items-center gap-2 text-secondary font-bold hover:underline" href="https://wa.me/5491134502704?text=Hola,%20quiero%20consultar%20sobre%20un%20proyecto%20en%20pozo" target="_blank" rel="noopener">
                 Contactar por WhatsApp Directo
                 <span className="material-symbols-outlined">open_in_new</span>
               </a>
@@ -285,13 +285,13 @@ export default function ContactoPage() {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              className="px-8 py-3 bg-primary text-white font-label-caps uppercase tracking-widest hover:bg-on-primary-fixed-variant transition-all"
+              className="px-8 py-3 rounded bg-primary-container text-on-primary font-label-caps uppercase tracking-widest hover:opacity-90 transition-all"
               href="/desarrollos-inmobiliarios"
             >
               Ver Proyectos
             </Link>
             <Link
-              className="px-8 py-3 border border-primary text-primary font-label-caps uppercase tracking-widest hover:bg-primary hover:text-white transition-all"
+              className="px-8 py-3 rounded border border-outline-variant text-primary-container font-label-caps uppercase tracking-widest hover:border-secondary transition-all"
               href="/sobre-nosotros"
             >
               Conocé al equipo

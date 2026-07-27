@@ -24,8 +24,8 @@ export default async function DesarrolladoraLanding({ params }) {
   return (
     <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
       <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-surface-variant mb-6">
-        <Link href="/" className="hover:text-link-gold">Inicio</Link><span>/</span>
-        <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="hover:text-link-gold">Desarrolladoras</Link>
+        <Link href="/" className="hover:text-secondary">Inicio</Link><span>/</span>
+        <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="hover:text-secondary">Desarrolladoras</Link>
         <span>/</span><span className="text-primary">{dev.nombre}</span>
       </nav>
 
@@ -37,7 +37,7 @@ export default async function DesarrolladoraLanding({ params }) {
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="font-headline-md text-headline-md text-primary">{dev.nombre}</h1>
-            {dev.badge ? <span className="text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-link-gold px-2.5 py-1 rounded-lg">{dev.badge}</span> : null}
+            {dev.badge ? <span className="text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{dev.badge}</span> : null}
           </div>
           {dev.anios ? <p className="text-on-surface-variant mt-1">{dev.anios}</p> : null}
           {barrios.length > 0 && (
@@ -53,7 +53,7 @@ export default async function DesarrolladoraLanding({ params }) {
             </div>
           )}
           {dev.web && (
-            <a href={dev.web.startsWith("http") ? dev.web : `https://${dev.web}`} target="_blank" rel="nofollow noopener" className="inline-block mt-4 text-[14px] text-link-gold hover:underline">Sitio oficial ↗</a>
+            <a href={dev.web.startsWith("http") ? dev.web : `https://${dev.web}`} target="_blank" rel="nofollow noopener" className="inline-block mt-4 text-[14px] text-secondary hover:underline">Sitio oficial ↗</a>
           )}
         </div>
       </header>
@@ -94,7 +94,7 @@ export default async function DesarrolladoraLanding({ params }) {
       ) : (
         <div className="border border-outline-variant rounded-xl p-8 text-center">
           <p className="text-on-surface-variant">Todavía no cargamos proyectos en pozo de esta desarrolladora. Estamos sumando su cartera.</p>
-          <Link href="/desarrollos-inmobiliarios/" className="inline-block mt-4 text-link-gold hover:underline">Ver todos los proyectos en pozo →</Link>
+          <Link href="/desarrollos-inmobiliarios/" className="inline-block mt-4 text-secondary hover:underline">Ver todos los proyectos en pozo →</Link>
         </div>
       )}
     </main>

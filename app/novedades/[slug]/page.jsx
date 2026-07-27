@@ -59,7 +59,7 @@ export default async function NovedadPage({ params }) {
           <div className="mb-8">
             <Link
               href="/novedades/"
-              className="inline-flex items-center gap-2 text-on-surface-variant hover:text-link-gold transition-colors font-label-md text-label-md"
+              className="inline-flex items-center gap-2 text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md"
             >
               <span className="material-symbols-outlined text-[20px]">arrow_back</span>
               Volver a Novedades
@@ -106,7 +106,7 @@ export default async function NovedadPage({ params }) {
             prose-h2:text-headline-md prose-h2:mt-12 prose-h2:mb-4
             prose-h3:text-headline-sm prose-h3:mt-8 prose-h3:mb-3
             prose-p:font-body-lg prose-p:text-body-lg prose-p:mb-6
-            prose-a:text-link-gold prose-a:no-underline hover:prose-a:underline
+            prose-a:text-secondary prose-a:no-underline hover:prose-a:underline
             prose-strong:text-primary
             prose-img:my-8
             prose-blockquote:border-l-4 prose-blockquote:border-secondary-fixed

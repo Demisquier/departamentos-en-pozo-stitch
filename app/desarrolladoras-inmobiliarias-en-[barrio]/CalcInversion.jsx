@@ -25,7 +25,7 @@ export default function CalcInversion({ precioM2Default = 2500, barrio = "el bar
   const Field = ({ label, value, setValue, suffix, min, max, step }) => (
     <label className="block">
       <span className="text-[12px] text-on-surface-variant">{label}</span>
-      <div className="flex items-center border border-outline-variant rounded-lg mt-1 overflow-hidden focus-within:border-link-gold bg-white">
+      <div className="flex items-center border border-outline-variant rounded-lg mt-1 overflow-hidden focus-within:border-secondary bg-white">
         <input type="number" value={value} min={min} max={max} step={step}
           onChange={(e) => setValue(e.target.value)}
           className="w-full px-3 py-2 text-[14px] text-primary outline-none bg-white" />
@@ -51,7 +51,7 @@ export default function CalcInversion({ precioM2Default = 2500, barrio = "el bar
         <div><span className="block text-[11px] text-on-surface-variant uppercase tracking-wide">Precio total</span><span className="text-headline-sm font-headline-sm text-primary">{fmtUSD(r.total)}</span></div>
         <div><span className="block text-[11px] text-on-surface-variant uppercase tracking-wide">Anticipo</span><span className="text-headline-sm font-headline-sm text-primary">{fmtUSD(r.anticipo)}</span></div>
         <div><span className="block text-[11px] text-on-surface-variant uppercase tracking-wide">Saldo en cuotas</span><span className="text-headline-sm font-headline-sm text-primary">{fmtUSD(r.saldo)}</span></div>
-        <div><span className="block text-[11px] text-on-surface-variant uppercase tracking-wide">Cuota mensual</span><span className="text-headline-sm font-headline-sm text-link-gold">{fmtUSD(r.cuotaMes)}</span></div>
+        <div><span className="block text-[11px] text-on-surface-variant uppercase tracking-wide">Cuota mensual</span><span className="text-headline-sm font-headline-sm text-secondary">{fmtUSD(r.cuotaMes)}</span></div>
       </div>
       <p className="mt-4 text-[11px] text-on-surface-variant">El saldo suele pesificarse y ajustarse por índice CAC hasta la entrega. No constituye asesoramiento financiero.</p>
     </div>

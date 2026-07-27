@@ -88,14 +88,14 @@ export default async function HomePage() {
           </h1>
           <form action="/desarrollos-inmobiliarios/" className="bg-surface p-6 md:p-8 rounded-xl shadow-2xl max-w-4xl flex flex-col md:flex-row gap-4 items-end">
             <div className="w-full md:flex-1 space-y-2">
-              <label className="text-on-surface-variant font-label-caps text-label-caps uppercase">Barrio</label>
-              <select name="barrio" className="w-full border border-outline-variant rounded p-3 text-on-surface outline-none appearance-none bg-white">
+              <label htmlFor="hero-barrio" className="text-on-surface-variant font-label-caps text-label-caps uppercase">Barrio</label>
+              <select id="hero-barrio" name="barrio" aria-label="Elegir barrio" className="w-full border border-outline-variant rounded p-3 text-on-surface outline-none appearance-none bg-white">
                 <option value="">Todos los barrios</option>
                 <option>Palermo</option><option>Caballito</option><option>Belgrano</option>
                 <option>Núñez</option><option>Puerto Madero</option><option>Villa Urquiza</option><option>Colegiales</option>
               </select>
             </div>
-            <button className="w-full md:w-auto bg-link-gold text-primary-container font-bold px-8 py-4 rounded hover:brightness-110 transition-all flex items-center justify-center gap-2 font-label-caps">
+            <button className="w-full md:w-auto bg-primary-container text-on-primary font-bold px-8 py-4 rounded hover:opacity-90 transition-all flex items-center justify-center gap-2 font-label-caps">
               <span className="material-symbols-outlined">search</span> BUSCAR PROYECTOS
             </button>
           </form>
@@ -128,7 +128,7 @@ export default async function HomePage() {
               Una selección de oportunidades en pozo con precio de referencia, desarrolladora y ubicación.
             </p>
           </div>
-          <Link className="text-link-gold font-bold flex items-center gap-2 hover:underline font-label-caps whitespace-nowrap" href="/desarrollos-inmobiliarios/">
+          <Link className="text-secondary font-bold flex items-center gap-2 hover:underline font-label-caps whitespace-nowrap" href="/desarrollos-inmobiliarios/">
             VER TODOS <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
         </div>
@@ -157,7 +157,7 @@ export default async function HomePage() {
                       <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
                     )}
                   </div>
-                  <span className="text-link-gold font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
+                  <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
                 </div>
               </div>
             </Link>

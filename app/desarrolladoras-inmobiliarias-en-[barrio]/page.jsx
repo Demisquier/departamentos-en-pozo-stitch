@@ -151,7 +151,7 @@ export default async function GuiaBarrioPage({ params }) {
             <p className="text-body-lg mb-8 opacity-90 max-w-xl">
               Análisis independiente de {proyectos.length} proyecto{proyectos.length === 1 ? "" : "s"} en pozo en {barrio}: precio por m², desarrolladora y financiación.
             </p>
-            <Link href="/desarrollos-inmobiliarios/?barrio=" className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
+            <Link href="/desarrollos-inmobiliarios/?barrio=" className="bg-link-gold text-primary-container px-10 py-4 rounded text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
               Ver proyectos en {barrio}
               <span className="material-symbols-outlined">arrow_forward</span>
             </Link>
@@ -204,7 +204,7 @@ export default async function GuiaBarrioPage({ params }) {
                     <p className="text-[13px] text-on-surface-variant flex items-center gap-1 mb-4"><span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{p.barrio}</p>
                     <div className="flex justify-between items-end pt-4 border-t border-outline-variant">
                       <div><span className="block text-[10px] uppercase tracking-widest text-on-surface-variant">Desde</span><span className="font-bold text-primary">{p.precio ? `USD ${p.precio.toLocaleString("es-AR")}/m²` : "Consultar"}</span></div>
-                      <span className="text-link-gold text-label-caps flex items-center gap-1 group-hover:gap-2 transition-all">Ver <span className="material-symbols-outlined text-sm">chevron_right</span></span>
+                      <span className="text-secondary text-label-caps flex items-center gap-1 group-hover:gap-2 transition-all">Ver <span className="material-symbols-outlined text-sm">chevron_right</span></span>
                     </div>
                   </div>
                 </Link>
@@ -243,7 +243,7 @@ export default async function GuiaBarrioPage({ params }) {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
           <h2 className="text-headline-md font-headline-md mb-6">¿Querés invertir en {barrio}?</h2>
           <p className="text-body-lg opacity-80 max-w-xl mx-auto mb-8">Accedé a un análisis independiente de los proyectos en pozo del barrio, sin costo para el inversor.</p>
-          <Link href="/contacto/" className="bg-link-gold text-primary-container px-10 py-4 text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
+          <Link href="/contacto/" className="bg-link-gold text-primary-container px-10 py-4 rounded text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
             Quiero más información
             <span className="material-symbols-outlined">arrow_forward</span>
           </Link>

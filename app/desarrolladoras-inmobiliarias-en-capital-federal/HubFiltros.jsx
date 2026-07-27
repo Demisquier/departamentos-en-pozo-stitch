@@ -58,7 +58,7 @@ export default function HubFiltros({ firmas = [] }) {
 
       <p className="text-[13px] text-on-surface-variant mb-6">
         <span className="text-primary font-medium">{visibles.length}</span> {visibles.length === 1 ? "desarrolladora" : "desarrolladoras"}
-        {(zona !== "Todas" || q) && <button onClick={() => { setZona("Todas"); setQ(""); }} className="ml-3 text-link-gold underline underline-offset-2">Limpiar</button>}
+        {(zona !== "Todas" || q) && <button onClick={() => { setZona("Todas"); setQ(""); }} className="ml-3 text-secondary underline underline-offset-2">Limpiar</button>}
       </p>
 
       {/* Grid */}
@@ -95,7 +95,7 @@ export default function HubFiltros({ firmas = [] }) {
       {visibles.length === 0 && (
         <div className="text-center py-16">
           <p className="text-on-surface-variant">No hay desarrolladoras que coincidan con el filtro.</p>
-          <button onClick={() => { setZona("Todas"); setQ(""); }} className="mt-3 text-link-gold underline underline-offset-4">Limpiar filtros</button>
+          <button onClick={() => { setZona("Todas"); setQ(""); }} className="mt-3 text-secondary underline underline-offset-4">Limpiar filtros</button>
         </div>
       )}
     </>

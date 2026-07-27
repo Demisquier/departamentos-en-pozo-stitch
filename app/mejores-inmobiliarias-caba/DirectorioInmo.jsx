@@ -24,7 +24,7 @@ function Card({ d }) {
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-headline-sm text-[19px] leading-tight text-primary">{d.nombre}</h3>
             {d.badge ? (
-              <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-link-gold px-2.5 py-1 rounded-lg">{d.badge}</span>
+              <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{d.badge}</span>
             ) : null}
           </div>
           {d.matricula ? <p className="text-[13px] font-medium text-on-surface-variant mt-1">Matrícula: {d.matricula}</p> : null}
@@ -47,7 +47,7 @@ function Card({ d }) {
 
       <div className="mt-4 pt-3 border-t border-outline-variant">
         {d.web && (
-          <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-link-gold">Sitio oficial ↗</a>
+          <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-secondary">Sitio oficial ↗</a>
         )}
       </div>
     </li>
@@ -89,18 +89,18 @@ export default function DirectorioInmo({ items = [] }) {
       <div className="flex flex-col gap-3 mb-6">
         <div className="flex flex-col sm:flex-row gap-3">
           <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar por nombre o zona…" aria-label="Buscar inmobiliaria"
-            className="flex-1 border border-outline-variant rounded-lg px-4 py-2.5 text-[15px] bg-surface focus:outline-none focus:border-link-gold" />
+            className="flex-1 border border-outline-variant rounded-lg px-4 py-2.5 text-[15px] bg-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary" />
           <button type="button" onClick={() => setSoloMat((v) => !v)} aria-pressed={soloMat}
-            className={`px-4 py-2.5 rounded-lg text-[14px] font-medium border transition-colors whitespace-nowrap ${soloMat ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
+            className={`px-4 py-2.5 rounded-lg text-[14px] font-medium border transition-colors whitespace-nowrap ${soloMat ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
             {soloMat ? "✓ Con matrícula" : "Con matrícula verificable"}
           </button>
         </div>
         {zonas.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setZona("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>Todas</button>
+            <button type="button" onClick={() => setZona("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todas</button>
             {zonas.map((b) => (
               <button key={b} type="button" onClick={() => setZona(zona === b ? "" : b)}
-                className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
+                className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
                 {BARRIO_LABEL[b] || b}
               </button>
             ))}

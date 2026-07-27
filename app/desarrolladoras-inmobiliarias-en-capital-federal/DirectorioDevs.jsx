@@ -37,11 +37,11 @@ function Card({ d }) {
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.nombre}</h3>
             {d.badge ? (
-              <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-link-gold px-2.5 py-1 rounded-lg">
+              <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">
                 {d.badge}
               </span>
             ) : d.destacada ? (
-              <span className="shrink-0 text-[10px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-link-gold px-2 py-0.5 rounded-full">Destacada</span>
+              <span className="shrink-0 text-[10px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2 py-0.5 rounded-full">Destacada</span>
             ) : null}
           </div>
           {d.anios ? <p className="text-[13px] font-medium text-on-surface-variant mt-1">{d.anios}</p> : null}
@@ -73,7 +73,7 @@ function Card({ d }) {
           </a>
         )}
         {d.web && (
-          <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-link-gold">
+          <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-secondary">
             Sitio oficial ↗
           </a>
         )}
@@ -148,15 +148,15 @@ export default function DirectorioDevs({ devs = [], barrioFijo = "", chipsComoLi
             {chipsComoLinks
               ? barrios.map((b) => (
                   <Link key={b} href={`/desarrolladoras-inmobiliarias-en-${BARRIO_URL[b] || b}/`}
-                    className="px-3 py-1.5 rounded-full text-[13px] border border-outline-variant text-primary hover:border-link-gold transition-colors">
+                    className="px-3 py-1.5 rounded-full text-[13px] border border-outline-variant text-primary hover:border-secondary transition-colors">
                     {BARRIO_LABEL[b] || b}
                   </Link>
                 ))
               : (<>
-                  <button type="button" onClick={() => setBarrio("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>Todos</button>
+                  <button type="button" onClick={() => setBarrio("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todos</button>
                   {barrios.map((b) => (
                     <button key={b} type="button" onClick={() => setBarrio(barrio === b ? "" : b)}
-                      className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
+                      className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${barrio === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
                       {BARRIO_LABEL[b] || b}
                     </button>
                   ))}

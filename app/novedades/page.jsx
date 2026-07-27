@@ -147,7 +147,7 @@ export default async function NovedadesPage() {
                         {minutos(featured) && (<><span aria-hidden="true">·</span><span>{minutos(featured)} MIN</span></>)}
                       </div>
                       <h2
-                        className="font-headline-md text-headline-md text-primary mb-4 group-hover:text-link-gold transition-colors"
+                        className="font-headline-md text-headline-md text-primary mb-4 group-hover:text-secondary transition-colors"
                         dangerouslySetInnerHTML={{ __html: featured.title?.rendered || "" }}
                       />
                       <p className="text-on-surface-variant font-body-md text-body-md line-clamp-3">
@@ -177,12 +177,12 @@ export default async function NovedadesPage() {
                         )}
                       </div>
                       {categoria(post) && (
-                        <span className="text-link-gold font-label-caps text-label-caps mb-2 block">
+                        <span className="text-secondary font-label-caps text-label-caps mb-2 block">
                           {categoria(post)}
                         </span>
                       )}
                       <h3
-                        className="font-headline-sm text-headline-sm text-primary group-hover:text-link-gold transition-colors mb-2"
+                        className="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors mb-2"
                         dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
                       />
                       <div className="flex flex-wrap items-center gap-x-2 font-label-caps text-label-caps text-on-surface-variant">
@@ -211,12 +211,12 @@ export default async function NovedadesPage() {
                       )}
                     </div>
                     {categoria(post) && (
-                      <span className="text-link-gold font-label-caps text-label-caps mb-2 block">
+                      <span className="text-secondary font-label-caps text-label-caps mb-2 block">
                         {categoria(post)}
                       </span>
                     )}
                     <h3
-                      className="font-headline-sm text-headline-sm text-primary mb-2 group-hover:text-link-gold transition-colors"
+                      className="font-headline-sm text-headline-sm text-primary mb-2 group-hover:text-secondary transition-colors"
                       dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
                     />
                     <p className="text-on-surface-variant font-body-md text-[15px] line-clamp-2 mb-2.5">
@@ -255,7 +255,7 @@ export default async function NovedadesPage() {
               <Link
                 key={slug}
                 href={`/desarrolladoras-inmobiliarias-en-${slug}/`}
-                className="px-4 py-2 rounded-full border border-outline-variant text-[14px] text-primary hover:border-link-gold hover:text-link-gold transition-colors"
+                className="px-4 py-2 rounded-full border border-outline-variant text-[14px] text-primary hover:border-secondary hover:text-secondary transition-colors"
               >
                 {label}
               </Link>

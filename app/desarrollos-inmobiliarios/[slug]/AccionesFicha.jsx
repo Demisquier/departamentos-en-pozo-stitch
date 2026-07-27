@@ -36,11 +36,11 @@ export default function AccionesFicha({
           </dl>
 
           <button type="button" onClick={() => openModal("cotizacion")}
-            className="w-full py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all flex justify-center items-center gap-2 mb-3">
+            className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2 mb-3">
             SOLICITAR COTIZACIÓN
           </button>
           <button type="button" onClick={() => openModal("visita")}
-            className="w-full py-3.5 border border-primary text-primary rounded-lg font-label-caps text-label-caps tracking-widest hover:bg-surface-container transition-all flex justify-center items-center gap-2">
+            className="w-full py-3.5 border border-outline-variant text-primary-container rounded font-label-caps text-label-caps tracking-widest hover:border-secondary transition-all flex justify-center items-center gap-2">
             AGENDAR VISITA
           </button>
 
@@ -57,7 +57,7 @@ export default function AccionesFicha({
       {/* Barra fija móvil */}
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
         <button type="button" onClick={() => openModal("cotizacion")}
-          className="w-full px-8 py-3.5 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
+          className="w-full px-8 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
           QUIERO MÁS INFORMACIÓN
           <span className="material-symbols-outlined fill-icon">send</span>
         </button>
@@ -94,7 +94,7 @@ export function Calculadora({ precioNum, comparableNum }) {
   const Field = ({ label, value, setValue, suffix, min, max, step }) => (
     <label className="block">
       <span className="text-[12px] text-on-surface-variant">{label}</span>
-      <div className="flex items-center border border-outline-variant rounded-lg mt-1 overflow-hidden focus-within:border-link-gold">
+      <div className="flex items-center border border-outline-variant rounded-lg mt-1 overflow-hidden focus-within:border-secondary">
         <input type="number" value={value} min={min} max={max} step={step}
           onChange={(e) => setValue(e.target.value)}
           className="w-full px-3 py-2 text-[14px] text-primary outline-none bg-white" />
@@ -123,7 +123,7 @@ export function Calculadora({ precioNum, comparableNum }) {
         <div className="flex justify-between"><dt className="text-on-surface-variant">Saldo en cuotas</dt><dd className="text-primary font-medium">{fmtUSD(r.saldo)}</dd></div>
         <div className="flex justify-between items-baseline pt-2 mt-1 border-t border-outline-variant">
           <dt className="text-primary font-medium">Cuota mensual</dt>
-          <dd className="text-link-gold font-headline-sm text-headline-sm">{fmtUSD(r.cuotaMes)}</dd>
+          <dd className="text-secondary font-headline-sm text-headline-sm">{fmtUSD(r.cuotaMes)}</dd>
         </div>
       </dl>
 
@@ -184,25 +184,25 @@ function ModalContacto({ slug, nombre, asunto, onClose }) {
             <span className="material-symbols-outlined text-5xl text-green-600">check_circle</span>
             <p className="font-headline-sm text-headline-sm text-primary mt-3">¡Consulta enviada!</p>
             <p className="text-body-md text-on-surface-variant mt-1">Te contactamos a la brevedad por {nombre}.</p>
-            <button type="button" onClick={onClose} className="mt-5 px-6 py-2.5 bg-primary-container text-on-primary rounded-lg font-label-caps text-label-caps">CERRAR</button>
+            <button type="button" onClick={onClose} className="mt-5 px-6 py-2.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps hover:opacity-90 transition-all">CERRAR</button>
           </div>
         ) : (
           <form onSubmit={submit} className="p-5 space-y-3">
             <p className="text-[13px] text-on-surface-variant">Sobre <span className="text-primary font-medium">{nombre}</span>. Dejanos tus datos y te respondemos con precios y disponibilidad.</p>
             <input name="nombre" value={form.nombre} onChange={change} required placeholder="Nombre y apellido *"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-link-gold bg-white" />
+              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
             <input name="email" type="email" value={form.email} onChange={change} placeholder="Email"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-link-gold bg-white" />
+              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
             <input name="whatsapp" value={form.whatsapp} onChange={change} placeholder="WhatsApp / teléfono"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-link-gold bg-white" />
+              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
             <textarea name="mensaje" value={form.mensaje} onChange={change} rows={3}
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-link-gold bg-white resize-none" />
+              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white resize-none" />
             {/* honeypot */}
             <input type="text" name="_gotcha" value={form._gotcha} onChange={change} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
             <p className="text-[11px] text-on-surface-variant">Requerido: nombre + email o teléfono.</p>
             {status === "error" && <p className="text-[13px] text-red-700">No se pudo enviar. Probá de nuevo o escribinos a contacto@departamentosenpozo.com.ar.</p>}
             <button type="submit" disabled={status === "sending"}
-              className="w-full py-3 bg-link-gold text-white rounded-lg font-label-caps text-label-caps tracking-widest hover:brightness-110 transition-all disabled:opacity-60">
+              className="w-full py-3 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all disabled:opacity-60">
               {status === "sending" ? "ENVIANDO…" : "ENVIAR CONSULTA"}
             </button>
           </form>

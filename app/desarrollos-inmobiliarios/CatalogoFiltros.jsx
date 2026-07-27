@@ -123,7 +123,7 @@ export default function CatalogoFiltros({ items }) {
 
   const chip = (active) =>
     `px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
-      active ? 'bg-primary text-white border-primary' : 'border-outline-variant text-primary hover:border-primary'
+      active ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'
     }`;
 
   const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); };
@@ -137,7 +137,7 @@ export default function CatalogoFiltros({ items }) {
           <div className="relative">
             <button
               onClick={() => setBarrioOpen((o) => !o)}
-              className={`flex items-center gap-2 px-3.5 py-2 border rounded-full text-[13px] transition-colors ${barrio ? 'bg-primary text-white border-primary' : 'border-outline-variant text-primary hover:border-primary'}`}
+              className={`flex items-center gap-2 px-3.5 py-2 border rounded-full text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
             >
               <span className="material-symbols-outlined text-[16px]">location_on</span>
               <span>{barrio || 'Barrio'}</span>
@@ -147,7 +147,7 @@ export default function CatalogoFiltros({ items }) {
               <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
                 <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
                 {barrios.map((b) => (
-                  <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-link-gold font-medium' : ''}`}>{b}</button>
+                  <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
                 ))}
               </div>
             )}
@@ -176,10 +176,10 @@ export default function CatalogoFiltros({ items }) {
           <div className="flex items-center gap-4">
             {/* Toggle Lista / Mapa */}
             <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden">
-              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'lista' ? 'bg-primary text-white' : 'text-primary hover:bg-surface-container'}`}>
+              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
                 <span className="material-symbols-outlined text-[16px]">grid_view</span>Lista
               </button>
-              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'mapa' ? 'bg-primary text-white' : 'text-primary hover:bg-surface-container'}`}>
+              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
                 <span className="material-symbols-outlined text-[16px]">map</span>Mapa
               </button>
             </div>
@@ -242,7 +242,7 @@ export default function CatalogoFiltros({ items }) {
                       <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
                     )}
                   </div>
-                  <span className="text-link-gold font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
+                  <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
                 </div>
                 {i.desarrolladora && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">Desarrolla: {i.desarrolladora}</p>)}
               </div>
@@ -254,7 +254,7 @@ export default function CatalogoFiltros({ items }) {
       {vista === 'lista' && filtered.length === 0 && (
         <div className="mt-10 text-center">
           <p className="text-on-surface-variant font-body-md text-body-md">No hay proyectos que coincidan con los filtros.</p>
-          <button onClick={limpiar} className="mt-3 text-link-gold underline underline-offset-4 text-[14px]">Limpiar filtros</button>
+          <button onClick={limpiar} className="mt-3 text-secondary underline underline-offset-4 text-[14px]">Limpiar filtros</button>
         </div>
       )}
     </>

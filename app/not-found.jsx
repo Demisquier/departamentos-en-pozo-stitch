@@ -16,21 +16,21 @@ export default function NotFound() {
 
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Link
-            className="text-link-gold font-bold border-b border-link-gold hover:opacity-70 transition-opacity"
+            className="text-secondary font-bold border-b border-secondary hover:opacity-70 transition-opacity"
             href="/desarrollos-inmobiliarios"
           >
             Ver Proyectos Destacados
           </Link>
           <span className="text-outline-variant">|</span>
           <Link
-            className="text-link-gold font-bold border-b border-link-gold hover:opacity-70 transition-opacity"
+            className="text-secondary font-bold border-b border-secondary hover:opacity-70 transition-opacity"
             href="/sobre-nosotros"
           >
             Sobre Nosotros
           </Link>
           <span className="text-outline-variant">|</span>
           <Link
-            className="text-link-gold font-bold border-b border-link-gold hover:opacity-70 transition-opacity"
+            className="text-secondary font-bold border-b border-secondary hover:opacity-70 transition-opacity"
             href="/contacto"
           >
             Contactar Asesor
@@ -39,7 +39,7 @@ export default function NotFound() {
 
         <div className="pt-8">
           <Link
-            className="inline-flex items-center gap-2 bg-primary-container text-on-primary px-8 py-4 rounded-lg font-label-caps uppercase tracking-widest hover:opacity-90 transition-all"
+            className="inline-flex items-center gap-2 bg-primary-container text-on-primary px-8 py-4 rounded font-label-caps uppercase tracking-widest hover:opacity-90 transition-all"
             href="/"
           >
             <span className="material-symbols-outlined text-[18px]">home</span>
