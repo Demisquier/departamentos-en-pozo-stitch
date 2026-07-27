@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Button from "../_ui/Button";
 
 const NAV = [
   { label: "INICIO", href: "/" },
@@ -56,12 +57,9 @@ export default function Header() {
             </Link>
           ))}
 
-          <Link
-            href="/contacto/"
-            className="bg-primary-container text-on-primary rounded px-6 py-2 text-label-caps font-label-caps hover:opacity-90 transition-all"
-          >
+          <Button as={Link} variant="primary" href="/contacto/" className="px-6 py-2 text-label-caps font-label-caps">
             CONTACTO
-          </Link>
+          </Button>
         </nav>
       </div>
 

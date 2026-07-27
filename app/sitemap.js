@@ -1,6 +1,5 @@
 import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, rel } from "../lib/wp";
-
-const BASE = "https://departamentosenpozo.com.ar";
+import { SITE as BASE } from "../lib/constants";
 
 /* Sitemap dinámico: mantiene TODAS las URLs indexadas (preservación SEO).
  * Resiliente: si WP no responde, al menos devuelve las rutas fijas. */

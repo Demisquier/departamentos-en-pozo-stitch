@@ -1,4 +1,5 @@
 import { getPageBySlug } from "../../lib/wp";
+import { SITE } from "../../lib/constants";
 
 const SLUG = "guia-invertir-departamentos-en-pozo-argentina";
 
@@ -10,7 +11,7 @@ export async function generateMetadata() {
   const clean = (page?.title?.rendered || "Cómo invertir en departamentos en pozo en Argentina 2026")
     .replace(/<[^>]*>/g, "")
     .replace(/&amp;/g, "&");
-  return { title: `${clean} — Departamentos en Pozo`, alternates: { canonical: "https://departamentosenpozo.com.ar/guia-invertir-departamentos-en-pozo-argentina/" } };
+  return { title: `${clean} — Departamentos en Pozo`, alternates: { canonical: `${SITE}/guia-invertir-departamentos-en-pozo-argentina/` } };
 }
 
 export default async function GuiaPillarPage() {

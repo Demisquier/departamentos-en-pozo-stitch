@@ -5,6 +5,7 @@ import { deaccent } from "../../lib/format";
 // Reactiva los filtros del contenido de WordPress (Top 13 por zona + directorio +200
 // con búsqueda y chips). El <script> inline de WP se elimina al renderizar headless,
 // así que re-implementamos la lógica sobre el DOM ya inyectado (progressive enhancement).
+const deaccent = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
 export default function DirEnhancer() {
   useEffect(() => {

@@ -2,47 +2,17 @@ import Link from "next/link";
 import { getPageBySlug, getRankMathSchema, getDesarrollos, getDesarrolladoras, featuredImage, acf } from "../../lib/wp";
 import CalcInversion from "./CalcInversion";
 import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
-
-// Barrio de la URL → clave del CPT (barriosKey). Con esto pre-filtramos el directorio.
-const BARRIO_CPT = {
-  palermo: "palermo", belgrano: "belgrano", caballito: "caballito", nunez: "nunez",
-  "puerto-madero": "puerto-madero", recoleta: "recoleta", "villa-urquiza": "villa-urquiza",
-  "colegiales-chacarita": "colegiales", "saavedra-coghlan": "saavedra",
-};
+import { BARRIO_CPT, BARRIOS_SLUGS, barrioNombre } from "../../lib/barrios";
+import { deaccent, toNumber as num } from "../../lib/format";
+import Container from "../_ui/Container";
+import JsonLd from "../_ui/JsonLd";
+import Button from "../_ui/Button";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
 
-const BARRIOS = [
-  "palermo",
-  "caballito",
-  "belgrano",
-  "nunez",
-  "puerto-madero",
-  "recoleta",
-  "villa-urquiza",
-  "colegiales-chacarita",
-  "saavedra-coghlan",
-];
-
 export function generateStaticParams() {
-  return BARRIOS.map((barrio) => ({ barrio }));
-}
-
-function barrioNombre(slug) {
-  if (!slug) return "Buenos Aires";
-  const casos = {
-    nunez: "Núñez",
-    "puerto-madero": "Puerto Madero",
-    "colegiales-chacarita": "Colegiales y Chacarita",
-    "saavedra-coghlan": "Saavedra y Coghlan",
-    "villa-urquiza": "Villa Urquiza",
-  };
-  if (casos[slug]) return casos[slug];
-  return slug
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
+  return BARRIOS_SLUGS.map((barrio) => ({ barrio }));
 }
 
 // Base de matcheo (primer token del barrio, sin acentos) para filtrar proyectos reales.
@@ -50,13 +20,6 @@ function barrioBase(slug) {
   const first = (slug || "").split("-")[0];
   const map = { nunez: "nunez", puerto: "puerto madero", villa: "villa urquiza", colegiales: "colegiales", saavedra: "saavedra" };
   return (map[first] || first).toLowerCase();
-}
-const deaccent = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-function num(v) {
-  if (v == null) return null;
-  const n = parseInt(String(v).replace(/[^\d]/g, ""), 10);
-  return Number.isFinite(n) ? n : null;
 }
 
 // Quita del HTML de WP lo que rompe o no aplica en headless: <script>, <iframe>, descargas .pdf.
@@ -134,9 +97,7 @@ export default async function GuiaBarrioPage({ params }) {
 
   return (
     <main>
-      {rmSchema.map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      <JsonLd data={rmSchema} />
 
       {/* Hero */}
       <section className="relative h-[70vh] flex items-end">
@@ -144,36 +105,36 @@ export default async function GuiaBarrioPage({ params }) {
           <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${HERO_IMG}')` }} />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-container/85 to-transparent" />
         </div>
-        <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop pb-16 max-w-container-max mx-auto text-on-primary">
+        <Container className="relative z-10 w-full pb-16 text-on-primary">
           <div className="max-w-3xl">
             <span className="text-label-caps text-secondary-fixed mb-4 block">GUÍA DE MERCADO · {barrio.toUpperCase()}</span>
             <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg mb-5 leading-tight" dangerouslySetInnerHTML={{ __html: title }} />
             <p className="text-body-lg mb-8 opacity-90 max-w-xl">
               Análisis independiente de {proyectos.length} proyecto{proyectos.length === 1 ? "" : "s"} en pozo en {barrio}: precio por m², desarrolladora y financiación.
             </p>
-            <Link href="/desarrollos-inmobiliarios/?barrio=" className="bg-link-gold text-primary-container px-10 py-4 rounded text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
+            <Button as={Link} variant="gold" href="/desarrollos-inmobiliarios/?barrio=" className="px-10 py-4 text-label-caps uppercase tracking-widest inline-flex items-center gap-3">
               Ver proyectos en {barrio}
               <span className="material-symbols-outlined">arrow_forward</span>
-            </Link>
+            </Button>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Barra de datos reales */}
       <section className="bg-surface-container-low border-b border-outline-variant py-8">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <Container className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div><span className="block text-headline-sm font-headline-sm text-primary">{proyectos.length}</span><span className="text-label-caps text-on-surface-variant">Proyectos relevados</span></div>
           <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(minP)}</span><span className="text-label-caps text-on-surface-variant">Precio/m² desde</span></div>
           <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(avgP)}</span><span className="text-label-caps text-on-surface-variant">Promedio /m²</span></div>
           <div><span className="block text-headline-sm font-headline-sm text-primary">{fmt(maxP)}</span><span className="text-label-caps text-on-surface-variant">Máximo /m²</span></div>
-        </div>
+        </Container>
       </section>
 
       {/* Barrios CON desarrolladoras cargadas: directorio pre-filtrado (fuente única = hub). */}
       {usaDirectorio && (
-        <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <Container>
           <DirectorioDevs devs={devsBarrio} barrioFijo={cptKey} tituloBarrio={barrio} />
-        </div>
+        </Container>
       )}
 
       {/* Barrios SIN desarrolladoras aún: se conserva el análisis WP para no dejar la página fina. */}
@@ -187,7 +148,7 @@ export default async function GuiaBarrioPage({ params }) {
       {/* Proyectos reales del barrio */}
       {destacados.length > 0 && (
         <section className="bg-primary-container py-20">
-          <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+          <Container>
             <div className="mb-12 text-center">
               <span className="text-label-caps text-secondary-fixed mb-3 block">PROYECTOS EN POZO</span>
               <h2 className="text-headline-md font-headline-md text-on-primary">Desarrollos en {barrio}</h2>
@@ -210,7 +171,7 @@ export default async function GuiaBarrioPage({ params }) {
                 </Link>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
       )}
 
@@ -240,14 +201,14 @@ export default async function GuiaBarrioPage({ params }) {
 
       {/* CTA */}
       <section className="bg-primary-container text-on-primary py-20">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+        <Container className="text-center">
           <h2 className="text-headline-md font-headline-md mb-6">¿Querés invertir en {barrio}?</h2>
           <p className="text-body-lg opacity-80 max-w-xl mx-auto mb-8">Accedé a un análisis independiente de los proyectos en pozo del barrio, sin costo para el inversor.</p>
-          <Link href="/contacto/" className="bg-link-gold text-primary-container px-10 py-4 rounded text-label-caps uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center gap-3">
+          <Button as={Link} variant="gold" href="/contacto/" className="px-10 py-4 text-label-caps uppercase tracking-widest inline-flex items-center gap-3">
             Quiero más información
             <span className="material-symbols-outlined">arrow_forward</span>
-          </Link>
-        </div>
+          </Button>
+        </Container>
       </section>
     </main>
   );

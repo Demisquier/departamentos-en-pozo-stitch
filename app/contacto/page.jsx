@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Container from "../_ui/Container";
+import Button from "../_ui/Button";
 
 // Página de Contacto — diseño Stitch portado fielmente (hero + bloque 2 columnas).
 // Client component: el formulario maneja estado y hace POST a /api/contacto.
@@ -68,7 +70,7 @@ export default function ContactoPage() {
       </section>
 
       {/* Contact Block */}
-      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 -mt-20 relative z-20">
+      <Container as="section" className="py-20 -mt-20 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
           {/* Form Column */}
           <div className="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm rounded-lg border border-outline-variant">
@@ -275,29 +277,23 @@ export default function ContactoPage() {
             </div>
           </div>
         </div>
-      </section>
+      </Container>
 
       {/* CTA Section */}
       <section className="bg-surface-container-low py-20 border-t border-outline-variant">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+        <Container className="text-center">
           <h2 className="text-headline-md font-headline-md text-primary mb-6">
             Explore nuestra colección de oportunidades
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              className="px-8 py-3 rounded bg-primary-container text-on-primary font-label-caps uppercase tracking-widest hover:opacity-90 transition-all"
-              href="/desarrollos-inmobiliarios"
-            >
+            <Button as={Link} variant="primary" href="/desarrollos-inmobiliarios" className="px-8 py-3 font-label-caps uppercase tracking-widest">
               Ver Proyectos
-            </Link>
-            <Link
-              className="px-8 py-3 rounded border border-outline-variant text-primary-container font-label-caps uppercase tracking-widest hover:border-secondary transition-all"
-              href="/sobre-nosotros"
-            >
+            </Button>
+            <Button as={Link} variant="secondary" href="/sobre-nosotros" className="px-8 py-3 font-label-caps uppercase tracking-widest">
               Conocé al equipo
-            </Link>
+            </Button>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );

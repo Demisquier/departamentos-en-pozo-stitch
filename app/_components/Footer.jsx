@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { BARRIOS_PAGINA } from "../../lib/barrios";
+import { CONTACT_EMAIL } from "../../lib/constants";
+import Container from "../_ui/Container";
 
 /* Footer: navy (primary-container), wordmark Caslon, columnas con labels bronce */
 export default function Footer() {
   return (
     <footer className="bg-primary-container text-primary-fixed-dim">
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+      <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <h3 className="font-headline-md text-white text-2xl mb-3">Departamentos en Pozo</h3>
@@ -13,11 +16,11 @@ export default function Footer() {
               No somos inmobiliaria ni desarrolladora.
             </p>
             <a
-              href="mailto:contacto@departamentosenpozo.com.ar"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center gap-2 text-sm text-white hover:text-link-gold transition-colors"
             >
               <span className="material-symbols-outlined text-[18px] text-link-gold">mail</span>
-              contacto@departamentosenpozo.com.ar
+              {CONTACT_EMAIL}
             </a>
           </div>
 
@@ -30,21 +33,11 @@ export default function Footer() {
           {/* Las 9 páginas de barrio, todas. Patrón Zonaprop: el bloque de links de barrio
               al pie es el activo SEO real del directorio (facetas indexables), no el listado.
               Acá viven todas para que ninguna quede huérfana aunque salgan del menú. */}
-          <FootCol title="Por barrio" links={[
-            ["Palermo", "/desarrolladoras-inmobiliarias-en-palermo/"],
-            ["Belgrano", "/desarrolladoras-inmobiliarias-en-belgrano/"],
-            ["Caballito", "/desarrolladoras-inmobiliarias-en-caballito/"],
-            ["Núñez", "/desarrolladoras-inmobiliarias-en-nunez/"],
-            ["Puerto Madero", "/desarrolladoras-inmobiliarias-en-puerto-madero/"],
-            ["Recoleta", "/desarrolladoras-inmobiliarias-en-recoleta/"],
-            ["Villa Urquiza", "/desarrolladoras-inmobiliarias-en-villa-urquiza/"],
-            ["Colegiales y Chacarita", "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/"],
-            ["Saavedra y Coghlan", "/desarrolladoras-inmobiliarias-en-saavedra-coghlan/"],
-          ]} />
+          <FootCol title="Por barrio" links={BARRIOS_PAGINA.map(([label, slug]) => [label, `/desarrolladoras-inmobiliarias-en-${slug}/`])} />
 
           <FootCol title="Contacto" links={[
             ["Escribinos", "/contacto/"],
-            ["contacto@departamentosenpozo.com.ar", "mailto:contacto@departamentosenpozo.com.ar"],
+            [CONTACT_EMAIL, `mailto:${CONTACT_EMAIL}`],
             ["Guías y novedades", "/novedades/"],
             ["Nosotros", "/sobre-nosotros/"],
           ]} />
@@ -54,7 +47,7 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} Departamentos en Pozo. Todos los derechos reservados.</span>
           <span>Contenido informativo · No constituye asesoramiento financiero.</span>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

@@ -1,48 +1,21 @@
 import Link from "next/link";
 import { getPosts, getCategories, featuredImage, readingTimeMinutes } from "../../lib/wp";
+import { cleanExcerpt, formatDate, categoria } from "../../lib/format";
+import { BARRIOS_PAGINA } from "../../lib/barrios";
+import { SITE } from "../../lib/constants";
+import Container from "../_ui/Container";
+import PostCard from "../_ui/PostCard";
 
 export const revalidate = 600;
 
-// Placeholder branded para posts sin imagen destacada (evita la caja gris vacía).
-function Ph({ label }) {
-  return (
-    <div className="w-full h-full bg-primary-container flex flex-col items-center justify-center gap-2 text-on-primary">
-      <span className="material-symbols-outlined text-secondary-fixed text-4xl">apartment</span>
-      {label ? <span className="font-label-caps text-label-caps text-secondary-fixed uppercase opacity-90">{label}</span> : null}
-    </div>
-  );
-}
-
 export const metadata = {
   title: "Guías y Novedades — Departamentos en Pozo",
-  alternates: { canonical: "https://departamentosenpozo.com.ar/novedades/" },
+  alternates: { canonical: `${SITE}/novedades/` },
   description:
     "Información estratégica y análisis profundo para el inversor sofisticado en el mercado de real estate premium.",
 };
 
-// Limpia tags HTML del excerpt de WP y recorta
-function cleanExcerpt(html, max = 220) {
-  const text = (html || "")
-    .replace(/<[^>]*>/g, "")
-    .replace(/\[&hellip;\]/g, "…")
-    .replace(/&hellip;/g, "…")
-    .replace(/&#8230;/g, "…")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .trim();
-  if (text.length <= max) return text;
-  return text.slice(0, max).replace(/\s+\S*$/, "") + "…";
-}
-
-function formatDate(dateStr) {
-  try {
-    return new Date(dateStr)
-      .toLocaleDateString("es-AR", { day: "2-digit", month: "long", year: "numeric" })
-      .toUpperCase();
-  } catch {
-    return "";
-  }
-}
+// cleanExcerpt, formatDate y categoria viven en lib/format.
 
 // Tiempo de lectura del post (min), calculado por longitud del texto.
 function minutos(post) {
@@ -51,13 +24,6 @@ function minutos(post) {
   } catch {
     return null;
   }
-}
-
-// Categoría desde el _embedded
-function categoria(post) {
-  const terms = post?._embedded?.["wp:term"]?.[0];
-  const cat = Array.isArray(terms) ? terms.find((t) => t.taxonomy === "category") : null;
-  return cat?.name ? cat.name.toUpperCase() : null;
 }
 
 export default async function NovedadesPage() {
@@ -83,10 +49,7 @@ export default async function NovedadesPage() {
   return (
     <main className="min-h-screen">
       {/* Index View: Editorial Grid */}
-      <section
-        className="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto"
-        id="guides-index"
-      >
+      <Container as="section" className="py-16 md:py-24" id="guides-index">
         <div className="mb-12 border-b border-outline-variant pb-8">
           <h1 className="font-headline-md text-headline-md text-primary mb-4">
             Guías y Actualidad Inmobiliaria
@@ -120,114 +83,55 @@ export default async function NovedadesPage() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
               {/* Main Featured Card */}
               {featured && (
-                <article className="md:col-span-8 group">
-                  <Link href={`/${featured.slug}/`} className="block cursor-pointer">
-                    <div className="relative overflow-hidden aspect-[16/9] mb-6">
-                      {featuredImage(featured) ? (
-                        <img
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          src={featuredImage(featured)}
-                          alt={title(featured)}
-                          loading="eager"
-                        />
-                      ) : (
-                        <Ph />
-                      )}
-                      {categoria(featured) && (
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps tracking-widest">
-                            {categoria(featured)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 font-label-caps text-label-caps text-on-surface-variant mb-3">
-                        <time>{formatDate(featured.date)}</time>
-                        {minutos(featured) && (<><span aria-hidden="true">·</span><span>{minutos(featured)} MIN</span></>)}
-                      </div>
-                      <h2
-                        className="font-headline-md text-headline-md text-primary mb-4 group-hover:text-secondary transition-colors"
-                        dangerouslySetInnerHTML={{ __html: featured.title?.rendered || "" }}
-                      />
-                      <p className="text-on-surface-variant font-body-md text-body-md line-clamp-3">
-                        {cleanExcerpt(featured.excerpt?.rendered)}
-                      </p>
-                    </div>
-                  </Link>
-                </article>
+                <PostCard
+                  variant="featured"
+                  as="article"
+                  className="md:col-span-8"
+                  href={`/${featured.slug}/`}
+                  img={featuredImage(featured)}
+                  imgAlt={title(featured)}
+                  category={categoria(featured)}
+                  titleHtml={featured.title?.rendered || ""}
+                  date={formatDate(featured.date)}
+                  minutes={minutos(featured)}
+                  excerpt={cleanExcerpt(featured.excerpt?.rendered)}
+                />
               )}
 
               {/* Sidebar Grid */}
               <div className="md:col-span-4 flex flex-col gap-gutter">
                 {sidebar.map((post) => (
-                  <article key={post.id} className="group">
-                    <Link href={`/${post.slug}/`} className="block cursor-pointer">
-                      {/* 16:9 = mismo ratio de los masters (1280×720). Evita el crop del 4:3. */}
-                      <div className="aspect-[16/9] overflow-hidden mb-4">
-                        {featuredImage(post) ? (
-                          <img
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            src={featuredImage(post)}
-                            alt={title(post)}
-                            loading="lazy"
-                          />
-                        ) : (
-                          <Ph />
-                        )}
-                      </div>
-                      {categoria(post) && (
-                        <span className="text-secondary font-label-caps text-label-caps mb-2 block">
-                          {categoria(post)}
-                        </span>
-                      )}
-                      <h3
-                        className="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors mb-2"
-                        dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
-                      />
-                      <div className="flex flex-wrap items-center gap-x-2 font-label-caps text-label-caps text-on-surface-variant">
-                        <time>{formatDate(post.date)}</time>
-                        {minutos(post) && (<><span aria-hidden="true">·</span><span>{minutos(post)} MIN</span></>)}
-                      </div>
-                    </Link>
-                  </article>
+                  <PostCard
+                    key={post.id}
+                    variant="standard"
+                    as="article"
+                    href={`/${post.slug}/`}
+                    img={featuredImage(post)}
+                    imgAlt={title(post)}
+                    category={categoria(post)}
+                    titleHtml={post.title?.rendered || ""}
+                    date={formatDate(post.date)}
+                    minutes={minutos(post)}
+                  />
                 ))}
               </div>
 
               {/* Regular Grid Rows */}
               {rest.map((post) => (
-                <div key={post.id} className="md:col-span-4 group mt-8">
-                  <Link href={`/${post.slug}/`} className="block cursor-pointer">
-                    <div className="aspect-[16/9] overflow-hidden mb-4">
-                      {featuredImage(post) ? (
-                        <img
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          src={featuredImage(post)}
-                          alt={title(post)}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <Ph />
-                      )}
-                    </div>
-                    {categoria(post) && (
-                      <span className="text-secondary font-label-caps text-label-caps mb-2 block">
-                        {categoria(post)}
-                      </span>
-                    )}
-                    <h3
-                      className="font-headline-sm text-headline-sm text-primary mb-2 group-hover:text-secondary transition-colors"
-                      dangerouslySetInnerHTML={{ __html: post.title?.rendered || "" }}
-                    />
-                    <p className="text-on-surface-variant font-body-md text-[15px] line-clamp-2 mb-2.5">
-                      {cleanExcerpt(post.excerpt?.rendered, 140)}
-                    </p>
-                    <div className="flex flex-wrap items-center gap-x-2 font-label-caps text-label-caps text-on-surface-variant">
-                      <time>{formatDate(post.date)}</time>
-                      {minutos(post) && (<><span aria-hidden="true">·</span><span>{minutos(post)} MIN</span></>)}
-                    </div>
-                  </Link>
-                </div>
+                <PostCard
+                  key={post.id}
+                  variant="compact"
+                  as="div"
+                  className="md:col-span-4 mt-8"
+                  href={`/${post.slug}/`}
+                  img={featuredImage(post)}
+                  imgAlt={title(post)}
+                  category={categoria(post)}
+                  titleHtml={post.title?.rendered || ""}
+                  date={formatDate(post.date)}
+                  minutes={minutos(post)}
+                  excerpt={cleanExcerpt(post.excerpt?.rendered, 140)}
+                />
               ))}
             </div>
           </>
@@ -241,17 +145,7 @@ export default async function NovedadesPage() {
             Análisis de las desarrolladoras activas en pozo, barrio por barrio de CABA.
           </p>
           <div className="flex flex-wrap gap-3">
-            {[
-              ["Palermo", "palermo"],
-              ["Belgrano", "belgrano"],
-              ["Caballito", "caballito"],
-              ["Núñez", "nunez"],
-              ["Puerto Madero", "puerto-madero"],
-              ["Recoleta", "recoleta"],
-              ["Villa Urquiza", "villa-urquiza"],
-              ["Colegiales y Chacarita", "colegiales-chacarita"],
-              ["Saavedra y Coghlan", "saavedra-coghlan"],
-            ].map(([label, slug]) => (
+            {BARRIOS_PAGINA.map(([label, slug]) => (
               <Link
                 key={slug}
                 href={`/desarrolladoras-inmobiliarias-en-${slug}/`}
@@ -262,7 +156,7 @@ export default async function NovedadesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Container>
     </main>
   );
 }

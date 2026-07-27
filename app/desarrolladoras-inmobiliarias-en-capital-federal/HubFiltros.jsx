@@ -1,8 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import Link from "next/link";
-
-const deaccent = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+import { deaccent } from "../../lib/format";
 
 // Directorio de desarrolladoras con filtro por zona + búsqueda REALES (client).
 export default function HubFiltros({ firmas = [] }) {

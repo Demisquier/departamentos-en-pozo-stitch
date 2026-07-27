@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDesarrolladoraBySlug, featuredImage, acf } from "../../../lib/wp";
+import Container from "../../_ui/Container";
+import Breadcrumb from "../../_ui/Breadcrumb";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -22,12 +24,18 @@ export default async function DesarrolladoraLanding({ params }) {
   const barrios = (dev.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);
 
   return (
-    <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
-      <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-surface-variant mb-6">
-        <Link href="/" className="hover:text-secondary">Inicio</Link><span>/</span>
-        <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="hover:text-secondary">Desarrolladoras</Link>
-        <span>/</span><span className="text-primary">{dev.nombre}</span>
-      </nav>
+    <Container as="main" className="py-10 md:py-14">
+      <Breadcrumb
+        tone="light"
+        sep="/"
+        sepAriaHidden={false}
+        className="mb-6"
+        items={[
+          { name: "Inicio", href: "/" },
+          { name: "Desarrolladoras", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
+          { name: dev.nombre },
+        ]}
+      />
 
       {/* Cabecera desarrolladora */}
       <header className="flex items-start gap-5 border-b border-outline-variant pb-8 mb-8">
@@ -97,6 +105,6 @@ export default async function DesarrolladoraLanding({ params }) {
           <Link href="/desarrollos-inmobiliarios/" className="inline-block mt-4 text-secondary hover:underline">Ver todos los proyectos en pozo →</Link>
         </div>
       )}
-    </main>
+    </Container>
   );
 }

@@ -1,9 +1,12 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
+import { toNumber } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
 import Descripcion from './Descripcion';
+import Container from '../../_ui/Container';
+import JsonLd from '../../_ui/JsonLd';
+import Breadcrumb from '../../_ui/Breadcrumb';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -14,13 +17,7 @@ export async function generateStaticParams() {
   return (all || []).map((x) => ({ slug: x.slug }));
 }
 
-// Normaliza precio a número para poder formatear/derivar el anticipo.
-function toNumber(v) {
-  if (v == null) return null;
-  if (typeof v === 'number') return v;
-  const n = parseInt(String(v).replace(/[^\d]/g, ''), 10);
-  return Number.isFinite(n) ? n : null;
-}
+// toNumber (normaliza precio a número) vive en lib/format.
 
 // amenities puede venir como array (ACF repeater/checkbox), como string separada por comas, o null.
 function parseAmenities(raw) {
@@ -86,7 +83,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${nombre}${barrio ? ' — ' + barrio : ''} | Departamentos en Pozo`,
     description: `Ficha del desarrollo ${nombre}${barrio ? ' en ' + barrio : ''}: desarrolladora, precio por m², financiación, avance de obra, amenities y ubicación. Análisis independiente.`,
-    alternates: { canonical: `https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/${params.slug}/` },
+    alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/${params.slug}/` },
   };
 }
 
@@ -187,17 +184,21 @@ export default async function FichaProyecto({ params }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
 
-      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 md:py-8 pb-28">
+      <Container as="main" className="py-6 md:py-8 pb-28">
         {/* Breadcrumb */}
-        <nav className="text-[13px] text-on-surface-variant mb-4 flex flex-wrap items-center gap-1.5">
-          <Link href="/" className="hover:text-secondary">Inicio</Link>
-          <span>/</span>
-          <Link href="/desarrollos-inmobiliarios/" className="hover:text-secondary">Proyectos en pozo</Link>
-          <span>/</span>
-          <span className="text-primary">{nombre}</span>
-        </nav>
+        <Breadcrumb
+          tone="light"
+          sep="/"
+          sepAriaHidden={false}
+          className="mb-4"
+          items={[
+            { name: "Inicio", href: "/" },
+            { name: "Proyectos en pozo", href: "/desarrollos-inmobiliarios/" },
+            { name: nombre },
+          ]}
+        />
 
         {/* Galería mosaico + lightbox con zoom (client) */}
         <Galeria images={gallery} nombre={nombre} />
@@ -408,7 +409,7 @@ export default async function FichaProyecto({ params }) {
             />
           </aside>
         </div>
-      </main>
+      </Container>
     </>
   );
 }

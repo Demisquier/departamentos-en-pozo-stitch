@@ -1,4 +1,5 @@
 import { getPageBySlug } from "../../lib/wp";
+import { SITE } from "../../lib/constants";
 
 const SLUG = "indice-precios-pozo-caballito-2026";
 
@@ -7,7 +8,7 @@ export async function generateMetadata() {
   const clean = (page?.title?.rendered || "Índice de precios Caballito 2026")
     .replace(/<[^>]*>/g, "")
     .replace(/&amp;/g, "&");
-  return { title: `${clean} — Departamentos en Pozo`, alternates: { canonical: "https://departamentosenpozo.com.ar/indice-precios-pozo-caballito-2026/" } };
+  return { title: `${clean} — Departamentos en Pozo`, alternates: { canonical: `${SITE}/indice-precios-pozo-caballito-2026/` } };
 }
 
 export default async function IndicePreciosPage() {

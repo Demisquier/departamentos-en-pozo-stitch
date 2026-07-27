@@ -3,11 +3,10 @@ import Script from "next/script";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import BottomNav from "./_components/BottomNav";
-
-const GA_ID = "G-G2FM2450HS";
+import { SITE, GA_ID } from "../lib/constants";
 
 export const metadata = {
-  metadataBase: new URL("https://departamentosenpozo.com.ar"),
+  metadataBase: new URL(SITE),
   title: {
     default: "Departamentos en Pozo | Inversiones Inmobiliarias en Buenos Aires",
     template: "%s",

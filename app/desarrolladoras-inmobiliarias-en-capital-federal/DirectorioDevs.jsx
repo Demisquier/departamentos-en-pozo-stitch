@@ -1,27 +1,13 @@
 "use client";
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { deaccent } from "../../lib/format";
+import { BARRIO_LABEL, BARRIO_URL } from "../../lib/barrios";
 
 // Directorio unificado de desarrolladoras (CPT `desarrolladora`). Server-rendered:
 // el listado sale en el HTML (SEO). Buscador + filtro por barrio = enhancement client.
-const deaccent = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-
-// Etiquetas lindas para las claves de barrio (bk) que guardamos en el CPT.
-const BARRIO_LABEL = {
-  palermo: "Palermo", belgrano: "Belgrano", caballito: "Caballito", nunez: "Núñez",
-  "puerto-madero": "Puerto Madero", "puerto madero": "Puerto Madero", recoleta: "Recoleta",
-  "villa-urquiza": "Villa Urquiza", "villa urquiza": "Villa Urquiza", colegiales: "Colegiales",
-  chacarita: "Chacarita", saavedra: "Saavedra", coghlan: "Coghlan", retiro: "Retiro",
-};
-
-// Barrio (clave) → slug de la página curada. Con esto los chips del hub se vuelven
-// LINKS navegables (filtro = URL propia = indexable), en vez de filtro client-only.
-const BARRIO_URL = {
-  palermo: "palermo", belgrano: "belgrano", caballito: "caballito", nunez: "nunez",
-  "puerto-madero": "puerto-madero", recoleta: "recoleta", "villa-urquiza": "villa-urquiza",
-  colegiales: "colegiales-chacarita", chacarita: "colegiales-chacarita",
-  saavedra: "saavedra-coghlan", coghlan: "saavedra-coghlan",
-};
+// deaccent, BARRIO_LABEL (etiquetas por clave del CPT) y BARRIO_URL (clave → slug de
+// página curada, para chips navegables) viven en lib/format y lib/barrios.
 
 function Card({ d }) {
   const barrios = (d.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);

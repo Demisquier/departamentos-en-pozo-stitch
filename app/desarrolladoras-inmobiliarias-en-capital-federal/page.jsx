@@ -1,6 +1,8 @@
 import { getPageBySlug, getRankMathSchema, getDesarrolladoras, buildMeta } from "../../lib/wp";
 import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
+import Container from "../_ui/Container";
+import JsonLd from "../_ui/JsonLd";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -43,11 +45,9 @@ export default async function HubDesarrolladorasPage() {
 
   return (
     <>
-      {rmSchema.map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      <JsonLd data={rmSchema} />
 
-      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
+      <Container as="main" className="py-10 md:py-14">
         {html ? (
           <>
             <div
@@ -73,7 +73,7 @@ export default async function HubDesarrolladorasPage() {
             </a>
           </div>
         )}
-      </main>
+      </Container>
 
       {/* Mientras no exista el marcador en WP, se sigue mostrando el directorio viejo:
           reactivamos sus filtros. Una vez que el directorio nuevo toma el control, no. */}

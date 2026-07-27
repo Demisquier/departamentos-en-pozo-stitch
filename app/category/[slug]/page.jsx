@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCategories, getCategoryBySlug, getPostsByCategory, featuredImage } from "../../../lib/wp";
+import { getCategories, getCategoryBySlug, getPostsByCategory, featuredImage, breadcrumbSchema } from "../../../lib/wp";
+import { SITE } from "../../../lib/constants";
+import Container from "../../_ui/Container";
+import JsonLd from "../../_ui/JsonLd";
+import Breadcrumb from "../../_ui/Breadcrumb";
+import PageHeader from "../../_ui/PageHeader";
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -11,7 +16,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const cat = await getCategoryBySlug(params.slug);
-  return { title: cat ? `${cat.name} | Departamentos en Pozo` : "Categoría", alternates: { canonical: `https://departamentosenpozo.com.ar/category/${params.slug}/` } };
+  return { title: cat ? `${cat.name} | Departamentos en Pozo` : "Categoría", alternates: { canonical: `${SITE}/category/${params.slug}/` } };
 }
 
 function clean(html) {
@@ -25,30 +30,31 @@ export default async function CategoryPage({ params }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: "https://departamentosenpozo.com.ar/" },
-          { "@type": "ListItem", position: 2, name: "Guías", item: "https://departamentosenpozo.com.ar/novedades/" },
-          { "@type": "ListItem", position: 3, name: cat.name, item: `https://departamentosenpozo.com.ar/category/${cat.slug}/` },
-        ],
-      }) }} />
-      <header className="bg-primary-container text-on-primary">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
-          <nav className="flex flex-wrap items-center gap-1.5 text-[13px] text-on-primary-fixed-variant mb-6">
-            <Link href="/" className="hover:text-link-gold">Inicio</Link><span>/</span>
-            <Link href="/novedades/" className="hover:text-link-gold">Guías</Link><span>/</span>
-            <span className="text-on-primary" dangerouslySetInnerHTML={{ __html: cat.name }} />
-          </nav>
-          <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">Categoría</p>
-          <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg" dangerouslySetInnerHTML={{ __html: cat.name }} />
-          {cat.description && (
-            <p className="text-on-primary-fixed-variant text-body-lg max-w-2xl mt-5 leading-relaxed">{cat.description}</p>
-          )}
-        </div>
-      </header>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Inicio", url: "/" },
+        { name: "Guías", url: "/novedades/" },
+        { name: cat.name, url: `/category/${cat.slug}/` },
+      ])} />
+      <PageHeader>
+        <Breadcrumb
+          tone="dark"
+          sep="/"
+          sepAriaHidden={false}
+          className="mb-6"
+          items={[
+            { name: "Inicio", href: "/" },
+            { name: "Guías", href: "/novedades/" },
+            { html: cat.name },
+          ]}
+        />
+        <p className="text-link-gold font-label-caps text-label-caps uppercase mb-4">Categoría</p>
+        <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg" dangerouslySetInnerHTML={{ __html: cat.name }} />
+        {cat.description && (
+          <p className="text-on-primary-fixed-variant text-body-lg max-w-2xl mt-5 leading-relaxed">{cat.description}</p>
+        )}
+      </PageHeader>
 
-      <section className="py-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <Container as="section" className="py-16">
         {posts.length === 0 ? (
           <p className="text-on-surface-variant">No hay publicaciones en esta categoría por ahora.</p>
         ) : (
@@ -74,7 +80,7 @@ export default async function CategoryPage({ params }) {
             })}
           </div>
         )}
-      </section>
+      </Container>
     </>
   );
 }

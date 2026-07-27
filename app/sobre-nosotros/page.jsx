@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { getPageBySlug } from "../../lib/wp";
+import { SITE } from "../../lib/constants";
+import Button from "../_ui/Button";
 
 export const metadata = {
   title: "Nosotros | Departamentos en Pozo",
-  alternates: { canonical: "https://departamentosenpozo.com.ar/sobre-nosotros/" },
+  alternates: { canonical: `${SITE}/sobre-nosotros/` },
   description:
     "Análisis independiente de inversión en departamentos en pozo en CABA. Conocé nuestra metodología, criterios y por qué no somos una inmobiliaria.",
 };
@@ -201,9 +203,9 @@ export default async function SobreNosotrosPage() {
               </p>
             </div>
             <div className="relative z-10 flex flex-wrap gap-4">
-              <Link className="inline-block bg-link-gold text-primary-container px-8 py-4 rounded font-bold hover:brightness-110 transition-all shadow-xl" href="/desarrollos-inmobiliarios/">
+              <Button as={Link} variant="gold" href="/desarrollos-inmobiliarios/" className="inline-block px-8 py-4 font-bold shadow-xl">
                 Ver proyectos
-              </Link>
+              </Button>
               <Link className="inline-block border border-white/40 text-white px-8 py-4 rounded font-bold hover:bg-white/10 transition-all" href="/contacto/">
                 Contacto
               </Link>

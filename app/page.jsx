@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { getDesarrollos, featuredImage, acf } from "../lib/wp";
+import { BARRIO_PAGE, BARRIO_ORDEN } from "../lib/barrios";
+import { toNumber as num } from "../lib/format";
+import { SITE } from "../lib/constants";
+import Container from "./_ui/Container";
+import ProjectCard from "./_ui/ProjectCard";
 
 export const revalidate = 600;
 
@@ -8,13 +13,13 @@ export const metadata = {
   title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA | Departamentos en Pozo",
   description:
     "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías para invertir con criterio.",
-  alternates: { canonical: "https://departamentosenpozo.com.ar/" },
+  alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
     title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA",
     description:
       "Directorio de desarrolladoras, proyectos en pozo, precios por m² y guías. Análisis independiente para inversores.",
-    url: "https://departamentosenpozo.com.ar/",
+    url: `${SITE}/`,
     siteName: "Departamentos en Pozo",
     locale: "es_AR",
   },
@@ -22,22 +27,6 @@ export const metadata = {
 
 // Imagen real del sitio (antes era un placeholder de Stitch en lh3.googleusercontent).
 const HERO_IMG = "/wp-content/uploads/2026/05/emprendimientos-pozo-ba-hero.jpg";
-
-// Barrios con página de desarrolladoras (para las tiles).
-const BARRIO_PAGE = {
-  Palermo: "/desarrolladoras-inmobiliarias-en-palermo/",
-  Belgrano: "/desarrolladoras-inmobiliarias-en-belgrano/",
-  Caballito: "/desarrolladoras-inmobiliarias-en-caballito/",
-  "Núñez": "/desarrolladoras-inmobiliarias-en-nunez/",
-  "Puerto Madero": "/desarrolladoras-inmobiliarias-en-puerto-madero/",
-};
-const BARRIO_ORDEN = ["Palermo", "Caballito", "Belgrano", "Puerto Madero", "Núñez"];
-
-function num(v) {
-  if (v == null) return null;
-  const n = parseInt(String(v).replace(/[^\d]/g, ""), 10);
-  return Number.isFinite(n) ? n : null;
-}
 
 export default async function HomePage() {
   let items = [];
@@ -104,7 +93,7 @@ export default async function HomePage() {
 
       {/* Stats Bar */}
       <section className="bg-primary-container py-6 md:py-8 border-y border-on-primary-fixed-variant">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-6">
+        <Container className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             ["analytics", `${mapped.length} PROYECTOS RELEVADOS`],
             ["location_city", `${tiles.length}+ BARRIOS DE CABA`],
@@ -116,11 +105,11 @@ export default async function HomePage() {
               <p className="text-label-caps font-label-caps">{txt}</p>
             </div>
           ))}
-        </div>
+        </Container>
       </section>
 
       {/* Proyectos Destacados */}
-      <section className="py-16 md:py-20 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <Container as="section" className="py-16 md:py-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
             <h2 className="font-headline-md text-headline-md text-primary mb-2">Proyectos destacados</h2>
@@ -134,40 +123,14 @@ export default async function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {destacados.map((d) => (
-            <Link key={d.slug} href={`/desarrollos-inmobiliarios/${d.slug}/`} className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
-              <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
-                {d.img ? (
-                  <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={d.img} alt={`${d.nombre} — ${d.barrio}`} loading="lazy" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-outline-variant text-4xl">image</span></div>
-                )}
-                <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">EN POZO</span>
-              </div>
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="serif text-headline-sm text-primary leading-tight">{d.nombre}</h3>
-                <p className="text-on-surface-variant text-[13px] flex items-center gap-1 mt-1">
-                  <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{d.barrio}
-                </p>
-                <div className="mt-4 pt-4 border-t border-outline-variant flex items-end justify-between">
-                  <div>
-                    <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
-                    {d.precio ? (
-                      <span className="text-primary font-headline-sm text-headline-sm">USD {d.precio.toLocaleString("es-AR")}<span className="text-[13px] text-on-surface-variant"> /m²</span></span>
-                    ) : (
-                      <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
-                    )}
-                  </div>
-                  <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
-                </div>
-              </div>
-            </Link>
+            <ProjectCard key={d.slug} slug={d.slug} nombre={d.nombre} barrio={d.barrio} precio={d.precio} img={d.img} />
           ))}
         </div>
-      </section>
+      </Container>
 
       {/* Explorá por barrio */}
       <section className="py-16 md:py-20 bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <Container>
           <h2 className="font-headline-md text-headline-md text-primary mb-10 text-center">Explorá por barrio</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {tiles.map((b) => (
@@ -185,11 +148,11 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Value Props */}
-      <section className="py-20 md:py-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <Container as="section" className="py-20 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
           {[
             ["verified_user", "Análisis independiente", "No somos inmobiliaria. Evaluamos proyectos con datos y track record real."],
@@ -204,7 +167,7 @@ export default async function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </Container>
     </>
   );
 }

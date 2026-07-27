@@ -1,16 +1,12 @@
 "use client";
 import { useState, useMemo } from "react";
+import { deaccent } from "../../lib/format";
+import { ZONA_INMO_LABEL as BARRIO_LABEL } from "../../lib/barrios";
 
 // Directorio de inmobiliarias (CPT `inmobiliaria`). Mismo formato de tarjeta rica que
 // el de desarrolladoras. Server-rendered (SEO); buscador + filtros = enhancement client.
-const deaccent = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-
-const BARRIO_LABEL = {
-  palermo: "Palermo", belgrano: "Belgrano", caballito: "Caballito", nunez: "Núñez",
-  "puerto-madero": "Puerto Madero", recoleta: "Recoleta", "villa-urquiza": "Villa Urquiza",
-  colegiales: "Colegiales", "barrio-norte": "Barrio Norte", almagro: "Almagro",
-  "las-canitas": "Las Cañitas", "villa-devoto": "Villa Devoto", "palermo-chico": "Palermo Chico",
-};
+// deaccent vive en lib/format; el mapa de etiquetas de zona (vocabulario propio de las
+// inmobiliarias) es ZONA_INMO_LABEL en lib/barrios.
 
 function Card({ d }) {
   const zonas = (d.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);

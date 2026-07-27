@@ -1,6 +1,8 @@
+import { SITE } from "../lib/constants";
+
 export default function robots() {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://departamentosenpozo.com.ar/sitemap.xml",
+    sitemap: `${SITE}/sitemap.xml`,
   };
 }

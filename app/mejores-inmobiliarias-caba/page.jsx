@@ -1,5 +1,7 @@
 import { getPageBySlug, getRankMathSchema, getInmobiliarias, buildMeta } from "../../lib/wp";
 import DirectorioInmo from "./DirectorioInmo";
+import Container from "../_ui/Container";
+import JsonLd from "../_ui/JsonLd";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -45,11 +47,9 @@ export default async function InmobiliariasPage() {
 
   return (
     <>
-      {[...rmSchema, ...extraSchema].map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      <JsonLd data={[...rmSchema, ...extraSchema]} />
 
-      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-14">
+      <Container as="main" className="py-10 md:py-14">
         {html ? (
           <>
             <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: before }} />
@@ -62,7 +62,7 @@ export default async function InmobiliariasPage() {
             <p className="text-on-surface-variant max-w-xl mx-auto">Estamos actualizando este directorio.</p>
           </div>
         )}
-      </main>
+      </Container>
     </>
   );
 }

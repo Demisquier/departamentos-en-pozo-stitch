@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPosts, getPostBySlug, featuredImage } from "../../../lib/wp";
+import { formatDate, categoria } from "../../../lib/format";
+import { SITE } from "../../../lib/constants";
 
 export const dynamicParams = !process.env.EXPORT;
 
@@ -23,25 +25,11 @@ export async function generateMetadata({ params }) {
   // apunta su canonical allí para no competir por el mismo contenido (evita duplicado SEO).
   return {
     title: `${clean} — Departamentos en Pozo`,
-    alternates: { canonical: `https://departamentosenpozo.com.ar/${params.slug}/` },
+    alternates: { canonical: `${SITE}/${params.slug}/` },
   };
 }
 
-function formatDate(dateStr) {
-  try {
-    return new Date(dateStr)
-      .toLocaleDateString("es-AR", { day: "2-digit", month: "long", year: "numeric" })
-      .toUpperCase();
-  } catch {
-    return "";
-  }
-}
-
-function categoria(post) {
-  const terms = post?._embedded?.["wp:term"]?.[0];
-  const cat = Array.isArray(terms) ? terms.find((t) => t.taxonomy === "category") : null;
-  return cat?.name ? cat.name.toUpperCase() : null;
-}
+// formatDate y categoria viven en lib/format.
 
 // TODO confirmar permalink de posts (WP puede usar /?p= o una estructura distinta a /novedades/)
 export default async function NovedadPage({ params }) {
