@@ -68,7 +68,7 @@ function Card({ d }) {
 
       <div className="mt-auto pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-4 gap-y-2">
         {d.proyectosSlug && d.proyectosSlug.length > 0 && (
-          <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-medium text-link-gold hover:underline">
+          <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-semibold text-secondary hover:underline">
             Ver {d.proyectosSlug.length} proyecto{d.proyectosSlug.length === 1 ? "" : "s"} →
           </a>
         )}
@@ -127,24 +127,24 @@ export default function DirectorioDevs({ devs = [], barrioFijo = "", chipsComoLi
 
   return (
     <section id="directorio" className="my-12">
-      <h2 className="font-headline-sm text-headline-sm text-primary mb-1">
-        {barrioFijo ? `Desarrolladoras en ${tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}` : "Directorio de desarrolladoras en CABA"}
-      </h2>
+      {/* En el hub el H1 de la página ya dice "Directorio de desarrolladoras"; acá el H2
+          va oculto (sr-only) para mantener estructura/a11y sin repetir visualmente. */}
+      {barrioFijo ? (
+        <h2 className="font-headline-sm text-headline-sm text-primary mb-1">
+          Desarrolladoras en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}
+        </h2>
+      ) : (
+        <h2 className="sr-only">Directorio de desarrolladoras en CABA</h2>
+      )}
       <p className="text-on-surface-variant mb-6">
         {barrioFijo
-          ? <>Desarrolladoras con obra activa en pozo en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}. <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-link-gold hover:underline">Ver todas las de CABA →</Link></>
-          : <>{devs.length} desarrolladoras activas en pozo. Las {totalDest} destacadas —por trayectoria y volumen entregado— aparecen primero.</>}
+          ? <>Desarrolladoras con obra activa en pozo en {tituloBarrio || BARRIO_LABEL[barrioFijo] || barrioFijo}. <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-secondary underline hover:no-underline">Ver todas las de CABA →</Link></>
+          : <>{devs.length} desarrolladoras activas en pozo en CABA, GBA e interior.</>}
       </p>
 
       <div className="flex flex-col gap-3 mb-6">
-        <div className="flex flex-col sm:flex-row gap-3">
-          <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar por nombre o barrio…" aria-label="Buscar desarrolladora"
-            className="flex-1 border border-outline-variant rounded-lg px-4 py-2.5 text-[15px] bg-surface focus:outline-none focus:border-link-gold" />
-          <button type="button" onClick={() => setSoloDest((v) => !v)} aria-pressed={soloDest}
-            className={`px-4 py-2.5 rounded-lg text-[14px] font-medium border transition-colors whitespace-nowrap ${soloDest ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-link-gold"}`}>
-            {soloDest ? "★ Solo destacadas" : "☆ Solo destacadas"}
-          </button>
-        </div>
+        <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar por nombre o barrio…" aria-label="Buscar desarrolladora"
+          className="w-full border border-outline-variant rounded-lg px-4 py-2.5 text-[15px] bg-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary-container" />
         {/* En el hub: chips = LINKS a la página del barrio (filtro navegable, URL propia).
             En la página de barrio: sin chips (ya está pre-filtrado). */}
         {!barrioFijo && barrios.length > 0 && (
