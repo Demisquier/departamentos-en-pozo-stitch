@@ -12,13 +12,16 @@ export default function ProjectCard({
   nombre,
   barrio,
   direccion,
-  precio,
+  precio,        // legacy: valor /m² (se sigue aceptando; equivale a precioM2)
+  precioDesde,   // precio TOTAL "desde" (héroe cuando existe)
+  precioM2,      // valor de referencia por m²
   img,
   etapa,
   ambientes,
   entrega,
   desarrolladora,
 }) {
+  const m2 = precioM2 ?? precio;  // compat con llamadas viejas
   return (
     <Link
       href={`/desarrollos-inmobiliarios/${slug}/`}
@@ -45,11 +48,21 @@ export default function ProjectCard({
         )}
         <div className="mt-4 pt-4 border-t border-outline-variant flex items-end justify-between">
           <div>
-            <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
-            {precio ? (
-              <span className="text-primary font-headline-sm text-headline-sm">USD {precio.toLocaleString("es-AR")}<span className="text-[13px] text-on-surface-variant"> /m²</span></span>
+            {precioDesde ? (
+              <>
+                <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
+                <span className="text-primary font-headline-sm text-headline-sm">USD {precioDesde.toLocaleString("es-AR")}</span>
+              </>
+            ) : m2 ? (
+              <>
+                <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">REFERENCIA</span>
+                <span className="text-primary font-headline-sm text-headline-sm">USD {m2.toLocaleString("es-AR")}<span className="text-[13px] text-on-surface-variant"> /m²</span></span>
+              </>
             ) : (
-              <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
+              <>
+                <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">PRECIO</span>
+                <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>
+              </>
             )}
           </div>
           <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>

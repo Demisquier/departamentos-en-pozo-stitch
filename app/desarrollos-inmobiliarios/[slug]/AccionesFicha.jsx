@@ -6,7 +6,7 @@ const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 // Sidebar sticky (precio + datos + calculadora) + modal de contacto + barra fija móvil.
 // Todo interactivo vive acá para compartir el estado del modal entre el sidebar y la barra móvil.
 export default function AccionesFicha({
-  slug, nombre, precioLabel, precioNum, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
+  slug, nombre, precioHeroLabel, precioDesdeNum, refM2Label, cuotaEstim, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
 }) {
   const [modal, setModal] = useState(false);
   const [asunto, setAsunto] = useState("cotizacion");
@@ -18,10 +18,10 @@ export default function AccionesFicha({
       <div className="lg:sticky lg:top-24 space-y-4">
         {/* Card precio + CTAs */}
         <div className="border border-outline-variant rounded-xl p-6 bg-surface shadow-sm">
-          <p className="font-label-caps text-label-caps text-on-surface-variant">DESDE</p>
-          <p className="font-headline-md text-headline-md text-primary mb-1">
-            {precioLabel}{precioNum ? <span className="text-body-md text-on-surface-variant"> /m²</span> : null}
-          </p>
+          <p className="font-label-caps text-label-caps text-on-surface-variant">PRECIO</p>
+          <p className="font-headline-md text-headline-md text-primary mb-1">{precioHeroLabel}</p>
+          {cuotaEstim ? <p className="text-body-md text-secondary font-medium mb-1">≈ {cuotaEstim}</p> : null}
+          {refM2Label ? <p className="text-[13px] text-on-surface-variant mb-1">Referencia: {refM2Label}</p> : null}
 
           <dl className="space-y-2 py-4 my-4 border-y border-outline-variant text-[14px]">
             {anticipoLabel && (

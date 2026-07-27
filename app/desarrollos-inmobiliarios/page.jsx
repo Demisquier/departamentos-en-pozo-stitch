@@ -10,7 +10,7 @@ export const revalidate = 600;
 export const metadata = {
   title: 'Departamentos en pozo en CABA: 46 proyectos | Departamentos en Pozo',
   description:
-    'Catálogo de departamentos en pozo (preventa) en CABA: precio por m², desarrolladora, tipologías, avance y entrega. Compará proyectos por barrio con análisis independiente.',
+    'Catálogo de departamentos en pozo (preventa) en CABA: precio, financiación, desarrolladora, tipologías, avance y entrega. Compará proyectos por barrio con análisis independiente.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
 };
 
@@ -50,7 +50,9 @@ export default async function CatalogoPage() {
     const barrio = (tituloRaw.split('—')[1] || '').trim() || acfAny(node, ['barrio', 'pozo_barrio']) || '';
     const direccion = acfAny(node, ['direccion']) || '';
 
-    const precioNum = toNumber(acfAny(node, ['precio_m2', 'precio_desde']));
+    const precioM2Num = toNumber(acfAny(node, ['precio_m2']));
+    const precioDesdeNum = toNumber(acfAny(node, ['precio_desde']));
+    const precioNum = precioM2Num; // usado por filtros/mapa (base /m²)
     const tip = tipologias(acfAny(node, ['tipologias', 'ambientes']));
     const entrega = fmtFecha(acfAny(node, ['fecha_entrega', 'entrega']));
     const desarrolladora = acfAny(node, ['desarrolladora', 'constructora']) || '';
@@ -66,7 +68,9 @@ export default async function CatalogoPage() {
       barrio,
       direccion,
       precio: precioNum,
-      precioLabel: precioNum ? `USD ${precioNum.toLocaleString('es-AR')}` : 'Consultar',
+      precioM2: precioM2Num,
+      precioDesde: precioDesdeNum,
+      precioLabel: precioDesdeNum ? `Desde USD ${precioDesdeNum.toLocaleString('es-AR')}` : (precioM2Num ? `USD ${precioM2Num.toLocaleString('es-AR')} /m²` : 'Consultar'),
       ambientes: tip.label,
       ambientesNums: tip.nums,
       entrega,
@@ -102,7 +106,7 @@ export default async function CatalogoPage() {
           Departamentos en pozo en CABA: {mapped.length} proyectos
         </h1>
         <p className="mt-4 text-on-surface-variant font-body-lg text-body-lg max-w-2xl">
-          Catálogo con análisis independiente: precio por m², desarrolladora, tipologías, avance y entrega.
+          Catálogo con análisis independiente: precio, financiación, desarrolladora, tipologías, avance y entrega.
           Compará proyectos barrio por barrio antes de invertir.
         </p>
       </div>

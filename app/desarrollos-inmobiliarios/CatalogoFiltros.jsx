@@ -215,7 +215,8 @@ export default function CatalogoFiltros({ items }) {
               nombre={i.nombre}
               barrio={i.barrio}
               direccion={i.direccion}
-              precio={i.precio}
+              precioDesde={i.precioDesde}
+              precioM2={i.precioM2}
               img={i.imagen}
               etapa={i.etapa}
               ambientes={i.ambientes}

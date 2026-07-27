@@ -106,8 +106,15 @@ export default async function FichaProyecto({ params }) {
   const lng = acfAny(d, ['lng', 'longitud']);
   const amenities = parseAmenities(acf(d, 'amenities'));
 
-  const precioNum = toNumber(acfAny(d, ['precio_m2', 'precio_desde']));
-  const precioLabel = precioNum ? `USD ${precioNum.toLocaleString('es-AR')}` : 'Consultar';
+  // Precio: separamos el TOTAL ("desde") del VALOR/m² (referencia de mercado).
+  // El total es el héroe; el /m² baja a referencia (dato del inversor, no el titular).
+  // Nunca se estima un total a partir del m²: si no hay total, se muestra "Consultar precio".
+  const precioDesdeNum = toNumber(acfAny(d, ['precio_desde']));
+  const precioM2Num = toNumber(acfAny(d, ['precio_m2']));
+  const precioHeroLabel = precioDesdeNum ? `Desde USD ${precioDesdeNum.toLocaleString('es-AR')}` : 'Consultar precio';
+  const refM2Label = precioM2Num ? `USD ${precioM2Num.toLocaleString('es-AR')} /m²` : null;
+  // Cuota mensual estimada: SOLO si viene cargada como dato real. No se deriva/inventa acá.
+  const cuotaEstim = acfAny(d, ['cuota_estimada']);
   const anticipoRaw = acfAny(d, ['anticipo']);
   const anticipoNum = toNumber(anticipoRaw);
   const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : null);
@@ -137,7 +144,9 @@ export default async function FichaProyecto({ params }) {
   ].filter(([, v]) => v);
 
   const grupoFinanciacion = [
-    ['Precio desde', precioNum ? `${precioLabel} /m²` : null],
+    ['Precio desde (total)', precioDesdeNum ? `USD ${precioDesdeNum.toLocaleString('es-AR')}` : null],
+    ['Valor de referencia', refM2Label],
+    ['Cuota estimada', cuotaEstim ? String(cuotaEstim) : null],
     ['Anticipo', anticipoLabel],
     ['Esquema de cuotas', cuotas || null],
     ['Ajuste de cuotas', ajuste || null],
@@ -169,10 +178,11 @@ export default async function FichaProyecto({ params }) {
     address.addressCountry = 'AR';
     schema.address = { '@type': 'PostalAddress', ...address };
   }
-  if (precioNum) {
+  // Offer solo con precio TOTAL real (el /m² no es el precio de la oferta).
+  if (precioDesdeNum) {
     schema.offers = {
       '@type': 'Offer',
-      price: precioNum,
+      price: precioDesdeNum,
       priceCurrency: 'USD',
       availability: 'https://schema.org/PreOrder',
       url: `${SITE}/desarrollos-inmobiliarios/${d.slug}/`,
@@ -207,12 +217,17 @@ export default async function FichaProyecto({ params }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Columna principal */}
           <div className="lg:col-span-2">
-            {/* Precio + resumen */}
+            {/* Precio + resumen. Héroe = precio TOTAL "desde"; el /m² baja a referencia. */}
             <div className="border-b border-outline-variant pb-6 mb-6">
-              <div className="flex items-baseline gap-2 flex-wrap">
-                <span className="font-display-lg text-display-lg text-primary leading-none">{precioLabel}</span>
-                {precioNum && <span className="text-body-lg text-on-surface-variant">/m²</span>}
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <span className="font-display-lg text-display-lg text-primary leading-none">{precioHeroLabel}</span>
+                {cuotaEstim && <span className="text-body-lg text-secondary font-medium">≈ {String(cuotaEstim)}</span>}
               </div>
+              {refM2Label && (
+                <p className="text-body-md text-on-surface-variant mt-1.5">
+                  Valor de referencia: <span className="text-primary font-medium">{refM2Label}</span>
+                </p>
+              )}
               <h1 className="font-headline-sm text-headline-sm text-primary mt-2">{nombre}</h1>
               <p className="text-body-md text-on-surface-variant flex items-center gap-1.5 mt-1">
                 <span className="material-symbols-outlined text-[18px] text-link-gold">location_on</span>
@@ -232,18 +247,18 @@ export default async function FichaProyecto({ params }) {
             {/* BRECHA POZO vs TERMINADO — el dato diferencial del sitio, como conclusión
                 y no como herramienta. Se lee sin tocar nada. Solo se muestra si ambos
                 valores existen; nunca se estima. */}
-            {precioNum && comparableNum && comparableNum > precioNum ? (
+            {precioM2Num && comparableNum && comparableNum > precioM2Num ? (
               <div className="mb-8 rounded-xl border border-link-gold/40 bg-link-gold/[0.06] p-6">
                 <p className="font-label-caps text-label-caps text-on-surface-variant mb-2">
                   COMPRANDO EN POZO
                 </p>
                 <p className="font-headline-md text-headline-md text-primary leading-tight">
-                  Pagás {Math.round(((comparableNum - precioNum) / comparableNum) * 100)}% menos
+                  Pagás {Math.round(((comparableNum - precioM2Num) / comparableNum) * 100)}% menos
                   que un terminado comparable de la zona
                 </p>
                 <p className="text-body-md text-on-surface-variant mt-3">
-                  USD {precioNum.toLocaleString('es-AR')}/m² en pozo contra USD {comparableNum.toLocaleString('es-AR')}/m² terminado
-                  {' '}— una diferencia de <strong className="text-primary">USD {(comparableNum - precioNum).toLocaleString('es-AR')} por m²</strong>.
+                  USD {precioM2Num.toLocaleString('es-AR')}/m² en pozo contra USD {comparableNum.toLocaleString('es-AR')}/m² terminado
+                  {' '}— una diferencia de <strong className="text-primary">USD {(comparableNum - precioM2Num).toLocaleString('es-AR')} por m²</strong>.
                 </p>
                 <p className="text-[12px] text-on-surface-variant mt-3">
                   La brecha es la contrapartida del riesgo de obra: se cobra al entregar, no al firmar.
@@ -379,10 +394,10 @@ export default async function FichaProyecto({ params }) {
 
             {/* Calculadora: bajó del sidebar al cuerpo. Acá es "ajustá los supuestos",
                 el titular ya lo dio el bloque de brecha más arriba. */}
-            {precioNum && comparableNum ? (
+            {precioM2Num && comparableNum ? (
               <div className="mb-4">
                 <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Simulá tu inversión</h2>
-                <Calculadora precioNum={precioNum} comparableNum={comparableNum} />
+                <Calculadora precioNum={precioM2Num} comparableNum={comparableNum} />
               </div>
             ) : null}
 
@@ -399,8 +414,10 @@ export default async function FichaProyecto({ params }) {
             <AccionesFicha
               slug={d.slug}
               nombre={nombre}
-              precioLabel={precioLabel}
-              precioNum={precioNum}
+              precioHeroLabel={precioHeroLabel}
+              precioDesdeNum={precioDesdeNum}
+              refM2Label={refM2Label}
+              cuotaEstim={cuotaEstim ? String(cuotaEstim) : null}
               anticipoLabel={anticipoLabel}
               entrega={entrega}
               cuotas={cuotas}
