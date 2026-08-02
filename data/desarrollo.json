@@ -16,7 +16,7 @@
    "rendered": "Arcadia Art Residence — Coghlan"
   },
   "content": {
-   "rendered": "<p><strong>Arcadia Art Residence</strong> es un desarrollo en pozo de Grupo Trust Real Estate en Coghlan (Av. Congreso 3163). Planta baja + 7 pisos con unidades de 1, 2 y 3 ambientes y entrega estimada para diciembre de 2027.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Grupo Trust Real Estate</li>\n<li><strong>Ubicación:</strong> Av. Congreso 3163, Coghlan, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Escala:</strong> Planta baja + 7 pisos</li>\n<li><strong>Amenities:</strong> Deck con solárium y parrillas, bicicletero, losa radiante, grupo electrógeno, agua caliente central y DVH (sin pileta ni gimnasio)</li>\n<li><strong>Precio de referencia:</strong> 3 ambientes de 72,87 m² en USD 200.000 (cochera USD 30.000–35.000)</li>\n<li><strong>Financiación:</strong> Consultar financiación con la comercializadora</li>\n<li><strong>Entrega estimada:</strong> Diciembre de 2027</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p>Coghlan es uno de los barrios más residenciales y buscados de CABA, de baja densidad y muy arbolado, con una oferta acotada de obra nueva que tiende a sostener el valor.</p>\n<p>Antes de invertir, verificá la <strong>estructura legal</strong> (fideicomiso al costo o precio cerrado), la <strong>fórmula de ajuste</strong> de las cuotas con un ejemplo numérico, los plazos y penalidades por demora, y la calidad constructiva en obras ya entregadas por la desarrolladora. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Contenido informativo; no constituye asesoramiento financiero ni oferta comercial.</strong> Precios, plazos y condiciones surgen de fuentes públicas y de la comercializadora, pueden variar y deben verificarse en el contrato y en los planos aprobados ante el GCBA.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"ApartmentComplex\", \"name\": \"Arcadia Art Residence\", \"description\": \"Arcadia Art Residence: desarrollo en pozo en Coghlan. es un desarrollo en pozo de Grupo Trust Real Estate en Coghlan (Av. Congreso 3163). Planta baja + 7 pisos con unidades d\", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Av. Congreso 3163, Coghlan, CABA\", \"addressLocality\": \"Coghlan\", \"addressRegion\": \"Ciudad Autónoma de Buenos Aires\", \"addressCountry\": \"AR\"}}</script></p>\n",
+   "rendered": "<p>Arcadia Art Residence es un edificio boutique en pozo (PB + 7 pisos, 27 unidades y un local) sobre Av. Congreso 3163, en Coghlan, un barrio residencial tranquilo y de baja densidad con buena conexión a la línea D y a Av. Cabildo. Ofrece monoambientes, 2 y 3 ambientes con terminaciones de gama (aluminio con DVH, porcelanato, preinstalación de aire).</p><p>No se publica un precio total de lista: solo figuran cocheras (USD 35.000 cubierta / USD 30.000 descubierta). El esquema difundido es agresivo en anticipo (50% + 20 cuotas), típico de obras en etapas iniciales, lo que exige capacidad de desembolso alta en poco tiempo. Antes de pedir precio conviene pedir la lista completa por tipología y m².</p><p>Verificá: estructura del fideicomiso y fiduciario, permiso de obra y avance real (entrega lejana, Oct 2027), y si el ajuste de las cuotas es por CAC. Coghlan tiene poca oferta de obra nueva, lo que puede sostener valor, pero la falta de precio público obliga a negociar con información completa.</p>",
    "protected": false
   },
   "excerpt": {
@@ -40,21 +40,36 @@
    "pozo-barrio-coghlan"
   ],
   "acf": {
-   "desarrolladora": "Grupo Trust Real Estate",
+   "desarrolladora": "Situar (com. RE/MAX)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "Consultar financiación con la comercializadora.",
-   "fecha_entrega": "20271201",
-   "avance_obra": "",
+   "anticipo": "50% del valor",
+   "esquema_cuotas": "Anticipo: 50% del valor · Cuotas: 20 cuotas mensuales · Posesión: Saldo a la entrega (estimada Oct 2027)",
+   "fecha_entrega": "Oct 2027",
+   "avance_obra": "En pozo",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
    "comparable_terminado": "",
-   "direccion": "Av. Congreso 3163, Coghlan, CABA",
-   "amenities": "Deck con solárium y parrillas, Bicicletero, Losa radiante, Grupo electrógeno, Agua caliente central, DVH",
-   "estado": "En pozo"
+   "direccion": "Av. Congreso 3163, Coghlan",
+   "amenities": "Parrilla en balcones, laundry, bicicletero, parrilla en terraza, solárium con deck",
+   "estado": "En pozo",
+   "moneda": "USD",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "50% del valor"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "20 cuotas mensuales"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo a la entrega (estimada Oct 2027)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -126,7 +141,7 @@
    "rendered": "Vibe Deheza — Saavedra"
   },
   "content": {
-   "rendered": "<p><strong>Vibe Deheza</strong> es un desarrollo en pozo de Casabe Lifestyle Developments en Saavedra (Deheza 4824), con obra a cargo de Basso Constructora. Un edificio de 7 pisos con alrededor de 20 unidades (3 por piso) de 1, 2 y 3 ambientes.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Casabe Lifestyle Developments (obra: Basso Constructora)</li>\n<li><strong>Ubicación:</strong> Deheza 4824, Saavedra, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Unidades y pisos:</strong> ~20 unidades en 7 pisos (3 por piso)</li>\n<li><strong>Precio:</strong> Desde ~USD 162.500 (estimado, según portal)</li>\n<li><strong>Financiación:</strong> A consultar con la comercializadora</li>\n<li><strong>Entrega estimada:</strong> Marzo de 2028 (estimada)</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p>Saavedra ofrece un entorno residencial de baja densidad, verde y buena conectividad, con tickets accesibles y demanda de alquiler estable frente a barrios más consolidados.</p>\n<p>Antes de invertir, verificá la <strong>estructura legal</strong> (fideicomiso al costo o precio cerrado), la <strong>fórmula de ajuste</strong> de las cuotas con un ejemplo numérico, los plazos y penalidades por demora, y la calidad constructiva en obras ya entregadas por la desarrolladora. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Contenido informativo; no constituye asesoramiento financiero ni oferta comercial.</strong> Precios, plazos y condiciones surgen de fuentes públicas y de la comercializadora, pueden variar y deben verificarse en el contrato y en los planos aprobados ante el GCBA.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"ApartmentComplex\", \"name\": \"Vibe Deheza\", \"description\": \"Vibe Deheza: desarrollo en pozo en Saavedra. es un desarrollo en pozo de Casabe Lifestyle Developments en Saavedra (Deheza 4824), con obra a cargo de Basso Construct\", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Deheza 4824, Saavedra, CABA\", \"addressLocality\": \"Saavedra\", \"addressRegion\": \"Ciudad Autónoma de Buenos Aires\", \"addressCountry\": \"AR\"}}</script></p>\n",
+   "rendered": "<p>Vibe Deheza es un desarrollo chico (7 pisos, 20 unidades, 3 por planta) de Casabe Lifestyle Developments en Deheza 4824, Saavedra, a pocas cuadras del Parque Sarmiento y Av. Balbín, con salida rápida a General Paz y Panamericana. Combina 3 ambientes al frente con monoambientes y monoambientes divisibles al contrafrente, con detalles de diseño (hormigón visto, 2,60 m de altura libre, cerraduras digitales).</p><p>El precio de arranque publicado ronda los USD 108.000, valor coherente para una unidad chica en Saavedra en etapa temprana; la financiación (anticipo + 24/30 cuotas) es moderada. Al ser un edificio de pocas unidades, la liquidez de reventa puede ser menor; el monoambiente divisible es más apto para renta que para vivienda.</p><p>Verificá: constitución del fideicomiso y fiduciario, avance de obra real (entrega lejana 2028), qué índice ajusta las cuotas y si el precio desde corresponde a monoambiente. Confirmá amenities, ya que las fuentes públicas no los detallan.</p>",
    "protected": false
   },
   "excerpt": {
@@ -150,21 +165,37 @@
    "pozo-barrio-saavedra"
   ],
   "acf": {
-   "desarrolladora": "Casabe Lifestyle Developments",
+   "desarrolladora": "Casabe Lifestyle Developments (com. A. Suárez Real Estate)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora.",
-   "fecha_entrega": "20280301",
-   "avance_obra": "",
+   "anticipo": "Anticipo al boleto",
+   "esquema_cuotas": "Anticipo: Anticipo al boleto · Cuotas: 24 a 30 cuotas · Posesión: Saldo a la entrega (estimada Mar 2028)",
+   "fecha_entrega": "Mar 2028",
+   "avance_obra": "En pozo",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
    "comparable_terminado": "",
-   "direccion": "Deheza 4824, Saavedra, CABA",
+   "direccion": "Deheza 4824, Saavedra",
    "amenities": "",
-   "estado": "En pozo"
+   "estado": "En pozo",
+   "precio_desde": 108000,
+   "moneda": "USD",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "Anticipo al boleto"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "24 a 30 cuotas"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo a la entrega (estimada Mar 2028)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -236,7 +267,7 @@
    "rendered": "Av. Balbín 3194 — Saavedra"
   },
   "content": {
-   "rendered": "<p><strong>Av. Balbín 3194</strong> es un desarrollo en pozo de Nemovi en Saavedra, sobre una esquina de la Av. Balbín. Un edificio de 8 pisos con 5 unidades y un local en planta baja, con obra avanzada a mayo de 2026.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Nemovi</li>\n<li><strong>Ubicación:</strong> Av. Balbín 3194, Saavedra, CABA (esquina)</li>\n<li><strong>Tipologías:</strong> 2 ambientes (39–61 m²) y 3 ambientes (69 m²)</li>\n<li><strong>Unidades y pisos:</strong> 5 unidades y un local en PB, 8 pisos</li>\n<li><strong>Terminaciones:</strong> Losa radiante eléctrica</li>\n<li><strong>Precio:</strong> Desde USD 120.360 (contado)</li>\n<li><strong>Financiación:</strong> Contado, o alternativa de 70% de anticipo + cuotas con ajuste del 1% mensual (no CAC)</li>\n<li><strong>Entrega estimada:</strong> Marzo de 2027 (obra avanzada a mayo de 2026)</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p>Saavedra combina un perfil residencial tranquilo, espacios verdes y buena conectividad; es una zona de tickets accesibles con demanda sostenida de alquiler familiar.</p>\n<p>Antes de invertir, verificá la <strong>estructura legal</strong> (fideicomiso al costo o precio cerrado), la <strong>fórmula de ajuste</strong> de las cuotas con un ejemplo numérico, los plazos y penalidades por demora, y la calidad constructiva en obras ya entregadas por la desarrolladora. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Contenido informativo; no constituye asesoramiento financiero ni oferta comercial.</strong> Precios, plazos y condiciones surgen de fuentes públicas y de la comercializadora, pueden variar y deben verificarse en el contrato y en los planos aprobados ante el GCBA.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"ApartmentComplex\", \"name\": \"Av. Balbín 3194\", \"description\": \"Av. Balbín 3194: desarrollo en pozo en Saavedra. es un desarrollo en pozo de Nemovi en Saavedra, sobre una esquina de la Av. Balbín. Un edificio de 8 pisos con 5 unidade\", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Av. Balbín 3194, Saavedra, CABA\", \"addressLocality\": \"Saavedra\", \"addressRegion\": \"Ciudad Autónoma de Buenos Aires\", \"addressCountry\": \"AR\"}}</script></p>\n",
+   "rendered": "<p>Edificio en esquina de 8 plantas sobre Av. Balbín 3194 (esquina Roque Pérez), Saavedra, desarrollado por Nemovi SAS, constructora con más de 12 años y 30 obras entregadas. La ubicación en avenida comercial y en esquina da buena ventilación y salida; ofrece 2 ambientes al frente (39-61 m²) y 3 ambientes contrafrente de 69 m², más un local en PB.</p><p>El diferencial es el avance de obra: a mediados de 2026 la estructura y mampostería estaban terminadas y los revoques del frente al 100%, con entrega proyectada a Mar 2027, lo que reduce el riesgo de obra respecto de un pozo inicial. El esquema pide un anticipo alto (70%) con saldo en cuotas ajustadas 1% mensual; los valores publicados son al contado, así que financiar encarece el total.</p><p>Verificá: precio de lista actual por unidad (no publicado), fideicomiso y fiduciario, y el costo real de financiar con ajuste del 1% mensual sobre el saldo. Con la obra avanzada, pedí cronograma firme de posesión y penalidades por mora.</p>",
    "protected": false
   },
   "excerpt": {
@@ -260,23 +291,37 @@
    "pozo-barrio-saavedra"
   ],
   "acf": {
-   "desarrolladora": "Nemovi",
+   "desarrolladora": "Nemovi SAS",
    "precio_m2": "",
    "precio_desde": "120360",
-   "anticipo": "",
-   "esquema_cuotas": "Contado desde USD 120.360. Alternativa: 70% de anticipo + cuotas con ajuste del 1% mensual (no CAC).",
-   "esquema_pago": [{"etapa": "Contado", "detalle": "Desde USD 120.360"}, {"etapa": "Financiado", "detalle": "70% de anticipo + cuotas con ajuste del 1% mensual (no CAC)"}],
-   "fecha_entrega": "20270301",
-   "avance_obra": "",
+   "anticipo": "70% de anticipo",
+   "esquema_cuotas": "Anticipo: 70% de anticipo · Cuotas: Saldo en cuotas consecutivas, ajuste 1% mensual · Posesión: Saldo a la entrega (proyectada Mar 2027)",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "70% de anticipo"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Saldo en cuotas consecutivas, ajuste 1% mensual"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo a la entrega (proyectada Mar 2027)"
+    }
+   ],
+   "fecha_entrega": "Mar 2027",
+   "avance_obra": "En construcción avanzada (jun 2026): estructura y mampostería completas, frente al 100%",
    "tipologias": [
     "2_ambientes",
     "3_ambientes"
    ],
    "comparable_terminado": "",
-   "direccion": "Av. Balbín 3194, Saavedra, CABA",
-   "amenities": "Losa radiante eléctrica",
+   "direccion": "Av. Ricardo Balbín 3194 esq. Roque Pérez, Saavedra",
+   "amenities": "Losa radiante eléctrica, termotanque individual, ascensor inteligente con acceso digital y respaldo eléctrico",
    "estado": "En construcción",
-   "pozo_estado": "En construcción"
+   "pozo_estado": "En construcción",
+   "moneda": "USD"
   },
   "_links": {
    "self": [
@@ -348,7 +393,7 @@
    "rendered": "Newbery Place — Colegiales"
   },
   "content": {
-   "rendered": "<p><strong>Newbery Place</strong>, comercializado por <strong>Mel Propiedades</strong>, se ubica en Jorge Newbery 2510, Colegiales, con entrega estimada para agosto de 2027. Ofrece unidades funcionales orientadas a inversión y vivienda.</p>\n<p>El valor de referencia en pozo parte de aproximadamente USD 3.435/m². Colegiales es uno de los barrios de mejor calidad de vida de la zona norte de CABA. Verificá el avance de obra, el fideicomiso y el esquema de ajuste de cuotas.</p>\n",
+   "rendered": "<p><strong>Newbery Place</strong> es un emprendimiento en pozo en el corazón de <strong>Colegiales</strong>, sobre Jorge Newbery 2510, comercializado por Mel Propiedades. Reúne unidades de 1 y 2 ambientes pensadas tanto para vivienda como para inversión, con posesión estimada para <strong>agosto de 2027</strong>.</p>\n<p>La unidad de referencia es un <strong>2 ambientes al frente de 49 m²</strong> (41 m² cubiertos + 8 m² descubiertos), desde <strong>USD 170.482</strong>. El edificio ofrece amenities de primer nivel: piscina con solárium, SUM con terraza, gimnasio, bicicletero y laundry.</p>\n<h3>Plan de pago</h3>\n<p>La financiación publicada es <strong>40% al boleto + saldo en cuotas mensuales en pesos ajustadas por CAC</strong>, con el saldo final a la posesión. El ajuste por CAC (Cámara Argentina de la Construcción) traslada la evolución del costo de la construcción a las cuotas: es la contracara de comprar antes de que el edificio esté terminado.</p>\n<h3>Análisis independiente</h3>\n<p>Colegiales es uno de los barrios de mejor calidad de vida de la zona norte de CABA, con buena conectividad y demanda sostenida de alquiler — lo que le da atractivo a una unidad chica para renta. El valor en pozo se ubica en torno a los <strong>USD 3.479/m²</strong>, en línea con el terminado a estrenar de la zona: acá el diferencial de comprar en pozo pasa más por el <strong>plan de pago en pesos</strong> (que licúa parte del costo si tus ingresos son en pesos) que por un descuento fuerte sobre el m².</p>\n<p><strong>Antes de firmar, conviene verificar tres cosas:</strong> la estructura de fideicomiso y quién es la desarrolladora (hoy figura a confirmar; la comercializa Mel Propiedades), el avance de obra real, y las condiciones del ajuste CAC y de los eventuales refuerzos. Son los tres puntos que definen el riesgo de entrega y el costo final de la inversión.</p>",
    "protected": false
   },
   "excerpt": {
@@ -376,13 +421,33 @@
   ],
   "acf": {
    "desarrolladora": "A confirmar (com. Mel Propiedades)",
-   "precio_m2": 3435,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
+   "precio_m2": "3479",
+   "anticipo": "40% al boleto",
+   "esquema_cuotas": "40% al boleto + cuotas mensuales en pesos ajustadas por CAC. Posesión Ago 2027.",
    "fecha_entrega": "Ago 2027",
    "avance_obra": "",
    "tipologias": "1,2",
-   "comparable_terminado": 2825
+   "comparable_terminado": 2825,
+   "precio_desde": "170482",
+   "moneda": "USD",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "40% al boleto de compraventa"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Saldo en cuotas mensuales en pesos, ajustadas por CAC"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo final a la entrega (estimada Ago 2027)"
+    }
+   ],
+   "amenities": "Piscina, Solárium, SUM, Terraza, Gimnasio, Bicicletero, Laundry",
+   "direccion": "Jorge Newbery 2510, Colegiales, CABA",
+   "sup_total": "49",
+   "sup_cubierta": "41"
   },
   "_links": {
    "self": [
@@ -613,7 +678,7 @@
    "rendered": "Vía Cramer — Colegiales"
   },
   "content": {
-   "rendered": "<p><strong>Vía Cramer</strong> es un desarrollo en pozo de Rosbaco &amp; Partners en Colegiales (Cramer 758). Un edificio de 9 pisos con 50 unidades de 2, 3 y 4 ambientes, todas con balcón y parrilla.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Rosbaco &amp; Partners</li>\n<li><strong>Ubicación:</strong> Cramer 758, Colegiales, CABA</li>\n<li><strong>Tipologías:</strong> 2, 3 y 4 ambientes (todas con balcón y parrilla)</li>\n<li><strong>Unidades y pisos:</strong> 50 unidades en 9 pisos</li>\n<li><strong>Amenities:</strong> Piscina en planta baja, coworking, SUM, terraza y cocheras en subsuelo</li>\n<li><strong>Precio:</strong> A consultar (no verificable a la fecha)</li>\n<li><strong>Financiación:</strong> Plan en 3 años (detalle a confirmar con la comercializadora)</li>\n<li><strong>Entrega estimada:</strong> 2.º semestre de 2027</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p>Colegiales es un barrio de baja escala, buena gastronomía y demanda estable, muy buscado por su cercanía a Belgrano y Palermo con tickets de entrada más accesibles.</p>\n<p>Antes de invertir, verificá la <strong>estructura legal</strong> (fideicomiso al costo o precio cerrado), la <strong>fórmula de ajuste</strong> de las cuotas con un ejemplo numérico, los plazos y penalidades por demora, y la calidad constructiva en obras ya entregadas por la desarrolladora. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Contenido informativo; no constituye asesoramiento financiero ni oferta comercial.</strong> Precios, plazos y condiciones surgen de fuentes públicas y de la comercializadora, pueden variar y deben verificarse en el contrato y en los planos aprobados ante el GCBA.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"ApartmentComplex\", \"name\": \"Vía Cramer\", \"description\": \"Vía Cramer: desarrollo en pozo en Colegiales. es un desarrollo en pozo de Rosbaco & Partners en Colegiales (Cramer 758). Un edificio de 9 pisos con 50 unidades de 2, \", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Cramer 758, Colegiales, CABA\", \"addressLocality\": \"Colegiales\", \"addressRegion\": \"Ciudad Autónoma de Buenos Aires\", \"addressCountry\": \"AR\"}}</script></p>\n",
+   "rendered": "<p>Vía Cramer es un edificio full amenities de 9 pisos y unas 50 unidades desarrollado por Rosbaco & Partners y comercializado por Soldati, en Cramer 758, Colegiales, un barrio en pleno auge gastronómico y con excelente conectividad. Ofrece unidades de 2, 3 y 4 ambientes con balcones amplios (algunos con parrilla propia) y una batería de amenities amplia.</p><p>Los precios de arranque publicados varían según fuente y momento (desde ~USD 173.840 hasta 2 ambientes cerca de USD 213.200), lo que sugiere que la lista se fue actualizando; conviene pedir la grilla vigente por tipología y m². Al ser un proyecto con muchos amenities, atención a las expensas futuras, que en Colegiales pueden ser altas.</p><p>Verificá: fecha real de entrega (las fuentes muestran Mar 2026 y también fechas posteriores, señal de posible atraso), avance de obra, fideicomiso e índice de ajuste. Cruzá el precio por m² contra usados y otros pozos de Colegiales para no pagar sobreprecio por amenities.</p>",
    "protected": false
   },
   "excerpt": {
@@ -640,22 +705,29 @@
    "pozo-barrio-colegiales"
   ],
   "acf": {
-   "desarrolladora": "Rosbaco & Partners",
+   "desarrolladora": "Rosbaco & Partners (com. Soldati)",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "Plan de financiación en 3 años (detalle a confirmar con la comercializadora).",
-   "esquema_pago": [{"etapa": "Financiación", "detalle": "Plan a 3 años (detalle a confirmar con la comercializadora)"}],
-   "fecha_entrega": "2º semestre 2027",
-   "avance_obra": "",
+   "esquema_pago": [
+    {
+     "etapa": "Financiación",
+     "detalle": "Plan a 3 años (detalle a confirmar con la comercializadora)"
+    }
+   ],
+   "fecha_entrega": "Mar 2026",
+   "avance_obra": "En pozo / en obra",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
    "comparable_terminado": "",
-   "direccion": "Cramer 758, Colegiales, CABA",
-   "amenities": "Piscina en planta baja, Coworking, SUM, Terraza, Cocheras en subsuelo",
-   "estado": "En pozo"
+   "direccion": "Cramer 758, Colegiales",
+   "amenities": "Pileta (adultos y niños), solárium, juegos infantiles, coworking, SUM, bicicletero, playroom, fitness en rooftop, lounge en jardín, parrillas en terraza",
+   "estado": "En pozo",
+   "precio_desde": 173840,
+   "moneda": "USD"
   },
   "_links": {
    "self": [
@@ -910,7 +982,7 @@
    "rendered": "Live Belgrano — Colegiales"
   },
   "content": {
-   "rendered": "<p><strong>Live Belgrano</strong>, de <strong>Massana</strong>, se ubica en Virrey Avilés 2786, en el límite de Colegiales con Belgrano, con entrega estimada para agosto de 2027. Ofrece unidades de 1 y 2 ambientes.</p>\n<p>El valor de referencia en pozo ronda los USD 3.018/m². La ubicación combina el perfil tranquilo de Colegiales con la cercanía a los servicios de Belgrano. Verificá el avance de obra y las condiciones legales antes de invertir.</p>\n",
+   "rendered": "<p>Live Belgrano es un edificio de 9 pisos de diseño contemporáneo (proyecto de Abramzon Arquitectos, comercializa Le Bleu) sobre Virrey Avilés 2700, esquina Vidal, en el límite Belgrano R / Colegiales, muy cerca de la estación Belgrano R del Mitre, la línea D y el Parque Ferroviario del Corredor Colegiales. Ofrece unidades de 1 a 3 ambientes (36 a 81 m²), con dos residencias únicas en el 8º piso.</p><p>El precio de arranque publicado es USD 126.641. Dos advertencias de la propia ficha: es \"no apto crédito\" y \"sin cocheras\", lo que limita el universo de compradores y puede afectar la reventa; para inversión en renta, la falta de cochera pesa menos que para vivienda familiar. No detalla amenities de esparcimiento.</p><p>Verificá: fecha de entrega (no publicada) y avance de obra, fideicomiso y fiduciario, índice de ajuste de cuotas, y el motivo de \"no apto crédito\" (suele indicar unidades sin subdivisión de dominio o situación de obra). Confirmá el precio por m² frente a la zona.</p>",
    "protected": false
   },
   "excerpt": {
@@ -937,14 +1009,18 @@
    "pozo-barrio-colegiales"
   ],
   "acf": {
-   "desarrolladora": "Massana",
+   "desarrolladora": "Abramzon Arquitectos (com. Le Bleu)",
    "precio_m2": 3018,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Nov 2027",
-   "avance_obra": "",
+   "avance_obra": "En pozo",
    "tipologias": "Mono,1,2",
-   "comparable_terminado": 2825
+   "comparable_terminado": 2825,
+   "precio_desde": 126641,
+   "moneda": "USD",
+   "amenities": "Ascensor a todas las plantas, local comercial en esquina en PB (sin cocheras, no apto crédito)",
+   "direccion": "Virrey Avilés 2700 esq. Vidal, Belgrano R / Colegiales"
   },
   "_links": {
    "self": [
@@ -1199,7 +1275,7 @@
    "rendered": "Virrey Avilés 2805 — Colegiales"
   },
   "content": {
-   "rendered": "<p><strong>Virrey Avilés 2805</strong> es un edificio boutique en pozo de Civitas en Colegiales, en la esquina de Vidal y frente al Parque Ferroviario. Nueve pisos con 24 unidades (3 por piso) y entrega estimada para marzo de 2028.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Civitas</li>\n<li><strong>Ubicación:</strong> Virrey Avilés 2805 (esquina Vidal), Colegiales, CABA — frente al Parque Ferroviario</li>\n<li><strong>Tipologías:</strong> 2 ambientes (47–55 m²) y semipisos (63–100 m²)</li>\n<li><strong>Unidades y pisos:</strong> 24 unidades en 9 pisos (3 por piso)</li>\n<li><strong>Amenities:</strong> Piscina, solárium y parrilla</li>\n<li><strong>Precio:</strong> Desde USD 157.000 (hasta ~USD 280.000)</li>\n<li><strong>Financiación:</strong> Anticipo 40% + 30 cuotas + 2 refuerzos</li>\n<li><strong>Entrega estimada:</strong> Marzo de 2028</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p>Colegiales es un barrio de baja densidad, buena oferta gastronómica y demanda estable; los proyectos frente al Parque Ferroviario suman valor por las visuales abiertas y el verde.</p>\n<p>Antes de invertir, verificá la <strong>estructura legal</strong> (fideicomiso al costo o precio cerrado), la <strong>fórmula de ajuste</strong> de las cuotas con un ejemplo numérico, los plazos y penalidades por demora, y la calidad constructiva en obras ya entregadas por la desarrolladora. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Contenido informativo; no constituye asesoramiento financiero ni oferta comercial.</strong> Precios, plazos y condiciones surgen de fuentes públicas y de la comercializadora, pueden variar y deben verificarse en el contrato y en los planos aprobados ante el GCBA.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"ApartmentComplex\", \"name\": \"Virrey Avilés 2805\", \"description\": \"Virrey Avilés 2805: desarrollo en pozo en Colegiales. es un edificio boutique en pozo de Civitas en Colegiales, en la esquina de Vidal y frente al Parque Ferroviario. Nueve p\", \"address\": {\"@type\": \"PostalAddress\", \"streetAddress\": \"Virrey Avilés 2805, Colegiales, CABA\", \"addressLocality\": \"Colegiales\", \"addressRegion\": \"Ciudad Autónoma de Buenos Aires\", \"addressCountry\": \"AR\"}}</script></p>\n",
+   "rendered": "<p>Proyecto en pozo de la desarrolladora Civitas en Virrey Avilés 2805, sobre una esquina que enfrenta el nuevo corredor verde del Parque Ferroviario Colegiales, en el límite Belgrano / Colegiales. Son 24 unidades, todas de 2 ambientes con balcón al frente, baño y toilette, con opción de cochera y baulera; destaca por especificaciones de calidad (revestimientos ILVA, DVH A40, equipos Samsung).</p><p>El precio de arranque publicado es USD 157.000 para el 2 ambientes. Al ser un edificio monotipología (solo 2 ambientes), es un producto pensado para inversión/renta o primera vivienda de pareja; la ubicación frente al parque es un plus real de valor y luminosidad. La entrega es lejana (Mar 2028), por lo que el riesgo de obra es mayor.</p><p>Verificá: fideicomiso y fiduciario, avance de obra y cronograma, esquema y ajuste de las cuotas (no detallado), y si la vista al parque de la unidad está garantizada por normativa. Compará el m² contra la oferta de 2 ambientes de la zona.</p>",
    "protected": false
   },
   "excerpt": {
@@ -1230,17 +1306,32 @@
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "Anticipo 40% + 30 cuotas + 2 refuerzos.",
-   "esquema_pago": [{"etapa": "Anticipo", "detalle": "40% al boleto"}, {"etapa": "Cuotas", "detalle": "30 cuotas mensuales"}, {"etapa": "Refuerzos", "detalle": "2 refuerzos"}],
-   "fecha_entrega": "20280301",
-   "avance_obra": "",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "40% al boleto"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "30 cuotas mensuales"
+    },
+    {
+     "etapa": "Refuerzos",
+     "detalle": "2 refuerzos"
+    }
+   ],
+   "fecha_entrega": "Mar 2028",
+   "avance_obra": "En pozo",
    "tipologias": [
     "2_ambientes",
     "3_ambientes"
    ],
    "comparable_terminado": "",
-   "direccion": "Virrey Avilés 2805, Colegiales, CABA",
-   "amenities": "Piscina, Solárium, Parrilla",
-   "estado": "En pozo"
+   "direccion": "Virrey Avilés 2805, Colegiales (límite Belgrano)",
+   "amenities": "Piscina, solárium, parrilla; opción de cocheras y bauleras",
+   "estado": "En pozo",
+   "precio_desde": 157000,
+   "moneda": "USD"
   },
   "_links": {
    "self": [
@@ -1504,7 +1595,7 @@
    "rendered": "BAWILSA 36 — Villa Urquiza"
   },
   "content": {
-   "rendered": "<p><strong>BAWILSA 36</strong>, de la desarrolladora <strong>Bawilsa</strong>, se emplaza en Olazábal 5500, Villa Urquiza. Ofrece unidades de distintas tipologías con terminaciones de categoría.</p>\n<p>El valor de referencia en pozo ronda los USD 2.300/m² para las unidades de entrada. Villa Urquiza es un barrio en plena transformación, con buena relación precio-calidad para inversión. Verificá el avance de obra y el esquema de ajuste de cuotas.</p>\n",
+   "rendered": "<p>Bawilsa 36 es un edificio mixto (residencial + un local) de 12 pisos en Olazábal 5572, Villa Urquiza, desarrollado por Bawilsa, firma con 25 años y más de 1.000 departamentos entregados, lo que aporta trayectoria. Suma 54 unidades (9 monoambientes, 30 de 2 amb, 15 de 3 amb) y 14 cocheras, en una zona muy comercial con subte, tren y más de 20 líneas de colectivo.</p><p>El precio de arranque publicado es USD 90.650 para el monoambiente de 36 m² (~USD 2.518/m²), con 2 ambientes desde USD 101.200 y 3 ambientes desde USD 142.600; una tipología figura 100% vendida, señal de buena absorción. La financiación es cómoda (anticipo + 60 cuotas), aunque conviene confirmar el índice de ajuste.</p><p>Verificá: fideicomiso y fiduciario, avance de obra real (entrega lejana Dic 2028), índice y moneda de ajuste de las 60 cuotas, y expensas estimadas (un edificio con pileta puede tener expensas altas para monoambientes chicos).</p>",
    "protected": false
   },
   "excerpt": {
@@ -1531,14 +1622,32 @@
    "pozo-barrio-villa-urquiza"
   ],
   "acf": {
-   "desarrolladora": "Bawilsa",
-   "precio_m2": 2300,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
+   "desarrolladora": "Bawilsa Desarrollos Inmobiliarios",
+   "precio_m2": 2518,
+   "anticipo": "Anticipo inicial",
+   "esquema_cuotas": "Anticipo: Anticipo inicial · Cuotas: 60 cuotas · Posesión: Saldo a la entrega (estimada Dic 2028)",
    "fecha_entrega": "Dic 2028",
-   "avance_obra": "",
+   "avance_obra": "En pozo",
    "tipologias": "1,2,3",
-   "comparable_terminado": 2470
+   "comparable_terminado": 2470,
+   "precio_desde": 90650,
+   "moneda": "USD",
+   "amenities": "Bicicletero, laundry, solárium, terraza verde, piscina, agua caliente central, cochera, control de acceso",
+   "direccion": "Olazábal 5572, Villa Urquiza",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "Anticipo inicial"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "60 cuotas"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo a la entrega (estimada Dic 2028)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -1785,7 +1894,7 @@
    "rendered": "Smart Point Villa Urquiza — Villa Urquiza"
   },
   "content": {
-   "rendered": "<p><strong>Smart Point Villa Urquiza</strong>, de <strong>Newland</strong>, se ubica en Tomás Le Bretón 5000, Villa Urquiza. Es un desarrollo pensado con unidades compactas y eficientes, orientado a inversión y renta.</p>\n<p>La prensa especializada publicó valores desde USD 2.062/m², uno de los tickets de entrada más accesibles del catálogo. Villa Urquiza combina demanda de alquiler sólida y buena conectividad. Revisá plazos de entrega y condiciones del fideicomiso.</p>\n",
+   "rendered": "<p>Smart Point Villa Urquiza es un proyecto en pozo de Newland en Le Bretón 5100 y Capdevila, Villa Urquiza, barrio residencial y bien conectado (línea B, ramal Suárez del Mitre y acceso a General Paz). Son 44 unidades de 1, 2 y 3 ambientes (25 a 68 m²) con diseño de hormigón visto, aberturas de piso a techo con DVH y terrazas propias en pisos altos.</p><p>El único valor publicado es el precio por m² (desde USD 2.062), sin precio total por unidad, por lo que el precio desde real hay que pedirlo. El esquema de lanzamiento (20% adelanto + 70% en cuotas + 10% a la posesión) es de los más accesibles del listado y apunta a inversores, con foco en bajas expensas.</p><p>Verificá: precio total por tipología (no publicado), fideicomiso y fiduciario, avance de obra real, e índice de ajuste de las cuotas. Al ser unidades chicas para renta, estimá el rendimiento neto con expensas reales antes de firmar.</p>",
    "protected": false
   },
   "excerpt": {
@@ -1814,12 +1923,29 @@
   "acf": {
    "desarrolladora": "Newland",
    "precio_m2": 2062,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Mar 2027",
-   "avance_obra": "",
+   "anticipo": "20% del valor (etapa de lanzamiento)",
+   "esquema_cuotas": "Anticipo: 20% del valor (etapa de lanzamiento) · Cuotas: 70% financiado en cuotas · Posesión: 10% a la posesión (estimada Ene 2027)",
+   "fecha_entrega": "Ene 2027",
+   "avance_obra": "En pozo",
    "tipologias": "Mono,2,3",
-   "comparable_terminado": 2470
+   "comparable_terminado": 2470,
+   "moneda": "USD",
+   "amenities": "SUM con terraza, parrilla y cocina (piso 12), laundry, terraza verde, bicicletero individual por unidad",
+   "direccion": "Le Bretón 5100 y Capdevila, Villa Urquiza",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "20% del valor (etapa de lanzamiento)"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "70% financiado en cuotas"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "10% a la posesión (estimada Ene 2027)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -2050,7 +2176,7 @@
    "rendered": "ANDO — Villa Urquiza"
   },
   "content": {
-   "rendered": "<p><strong>ANDO</strong>, de <strong>Rosbaco &amp; Partners</strong>, se emplaza en Andonaegui 2100, Villa Urquiza. Es un edificio residencial con diseño contemporáneo y amenities.</p>\n<p>Al momento de este análisis no hay un valor por m² publicado de forma pública verificable; conviene solicitarlo a la desarrolladora. Villa Urquiza ofrece un perfil residencial tranquilo con creciente oferta de nuevos desarrollos. Verificá plazos, precio y estructura legal antes de avanzar.</p>\n",
+   "rendered": "<p>ANDO es un edificio en Andonaegui 2129, Villa Urquiza, con 41 unidades de 2, 3 y 4 ambientes, PB comercial y amenities de escala media (piscina climatizada en el 10°, SUM, workspace y Sky Forest). Es un producto residencial familiar típico del corredor Villa Urquiza, uno de los de mayor absorción de obra nueva en CABA.</p><p>La comercializadora publica el precio como 'Consultar', por lo que no hay un precio total verificable de la unidad de entrada. Circula un valor 'desde USD 140.300', pero corresponde a tipologías de 1 ambiente que ANDO no ofrece (arranca en 2 ambientes), así que no debe atribuirse a este proyecto. La financiación es la estructura estándar del pozo (anticipo en USD + cuotas en pesos).</p><p>Verificá: fideicomiso y escribano (las fuentes discrepan en la fecha de entrega entre nov-2026, ene-2028 y jun-2028, lo que sugiere reprogramación), avance real de obra, e índice de ajuste de las cuotas.</p>",
    "protected": false
   },
   "excerpt": {
@@ -2077,14 +2203,17 @@
    "pozo-barrio-villa-urquiza"
   ],
   "acf": {
-   "desarrolladora": "Rosbaco & Partners",
+   "desarrolladora": "com. Gimenez Inmuebles / MEL Propiedades",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Nov 2026",
-   "avance_obra": "",
+   "fecha_entrega": "Ene 2028",
+   "avance_obra": "En construcción",
    "tipologias": "2,3,4",
-   "comparable_terminado": 2470
+   "comparable_terminado": 2470,
+   "moneda": "USD",
+   "amenities": "Piscina climatizada, solárium, SUM, workspace, Sky Forest, laundry, bicicletero",
+   "direccion": "Andonaegui 2129, Villa Urquiza"
   },
   "_links": {
    "self": [
@@ -2331,7 +2460,7 @@
    "rendered": "Rivera Mystic — Villa Urquiza"
   },
   "content": {
-   "rendered": "<p><strong>Rivera Mystic</strong>, del <strong>Estudio Kohon</strong>, se ubica en Dr. Pedro Ignacio Rivera 4900, Villa Urquiza. Es un desarrollo de diseño con unidades de 1 a 3 ambientes y amenities.</p>\n<p>El valor de referencia en pozo parte de aproximadamente USD 2.892/m² (unidades de 2 ambientes). Villa Urquiza es uno de los barrios de mayor desarrollo inmobiliario reciente, con buena relación precio-calidad. Revisá avance de obra y condiciones del fideicomiso.</p>\n",
+   "rendered": "<p>Rivera Mystic es un edificio de categoría media-alta en Pedro Ignacio Rivera 4900/4927, Villa Urquiza, doble frente, con 52 unidades de 1, 2 y 3 ambientes (42 a 110 m²) y amenities acotados (piscina, solárium, SUM). Terminaciones estándar: porcelanato, DVH, aire split, calefacción por radiadores.</p><p>El precio de entrada publicado es ~USD 188.000; conviene contrastarlo con el precio/m² de la tipología más chica, ya que en Villa Urquiza el usado ronda valores inferiores a la obra nueva premium. La comercializadora publica 'Consultar' y no detalla esquema de pago.</p><p>Verificá: es un proyecto con entrega ya vencida o inminente según la fuente (Soldati indica ago-2025, otras dic-2025 o 2026), lo que exige confirmar el avance de obra real y si hay demoras. Chequeá fideicomiso, estado de final de obra/subdivisión y qué unidades quedan a ese precio.</p>",
    "protected": false
   },
   "excerpt": {
@@ -2358,14 +2487,18 @@
    "pozo-barrio-villa-urquiza"
   ],
   "acf": {
-   "desarrolladora": "Estudio Kohon",
+   "desarrolladora": "com. Soldati / Coldwell Banker",
    "precio_m2": 2892,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Abr 2026",
-   "avance_obra": "",
+   "fecha_entrega": "2025-2026 (verificar)",
+   "avance_obra": "En construcción, obra avanzada",
    "tipologias": "1,2,3",
-   "comparable_terminado": 2470
+   "comparable_terminado": 2470,
+   "precio_desde": 188000,
+   "moneda": "USD",
+   "amenities": "Piscina, solárium, SUM, bicicletero",
+   "direccion": "Dr. Pedro Ignacio Rivera 4900/4927, Villa Urquiza"
   },
   "_links": {
    "self": [
@@ -2612,7 +2745,7 @@
    "rendered": "Osten Tower I — Puerto Madero"
   },
   "content": {
-   "rendered": "<p><strong>Osten Tower I</strong> es la primera torre del complejo Osten de <strong>GNV Group</strong>, en Madero Harbour, Dique 1, Puerto Madero. Con 26 pisos y amenities de categoría, antecede a la Osten Tower II del mismo desarrollo.</p>\n<p>Los valores derivados de unidades publicadas rondan los USD 5.972/m². Puerto Madero es la plaza de mayor valor por m² de CABA. Verificá el estado de obra, plazos de entrega y esquema de pago antes de invertir.</p>\n",
+   "rendered": "<p>Osten Tower I es la primera torre residencial de lujo de la marca Osten (GNV Group) en el Dique 1, dentro del distrito Madero Harbour de Puerto Madero. Tiene 26 pisos y 168 unidades, desde suites de 46 m² hasta 2 dormitorios de 173 m², con amenities de clase mundial (rooftop infinity pool, sky gym, spa, coworking).</p><p>No hay un precio de entrada oficial verificable publicado por la desarrolladora. Como referencia de mercado, La Nación (dic-2025) cita una unidad de 4 ambientes en reventa a USD 1.960.000, y Puerto Madero promedia USD 6.144/m², el valor más alto de CABA. Es un producto de ultra-lujo, no comparable con obra nueva de barrios residenciales.</p><p>Verificá: precio y disponibilidad actuales caso por caso (mucha oferta es reventa), estado de la torre, condiciones de financiación si quedaran unidades de desarrollador, y expensas —en torres premium de Puerto Madero pueden ser muy elevadas y condicionan la renta.</p>",
    "protected": false
   },
   "excerpt": {
@@ -2644,9 +2777,12 @@
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "2026",
-   "avance_obra": "",
+   "avance_obra": "Torre más avanzada de la marca (anterior a Osten II)",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 6000
+   "comparable_terminado": 6000,
+   "moneda": "USD",
+   "amenities": "Lobby, welcome gallery, coworking, salas de reunión, rooftop infinity pool y bar, wellness center, sky gym, solárium, spa, sauna",
+   "direccion": "Camila O'Gorman 430, Dique 1 (Madero Harbour), Puerto Madero"
   },
   "_links": {
    "self": [
@@ -2877,7 +3013,7 @@
    "rendered": "Sofitel Residences Madero — Puerto Madero"
   },
   "content": {
-   "rendered": "<p><strong>Sofitel Residences Madero</strong> es el primer edificio residencial de marca <strong>Sofitel (Accor)</strong> en Puerto Madero, desarrollado por <strong>Northbaires</strong>. Con 43 pisos, ofrece unidades con servicios hoteleros (branded residences).</p>\n<p>El desarrollador comunicó valores desde USD 10.000/m², ubicándolo en la cima del mercado local. Las branded residences suman servicios y potencial de renta, pero con ticket alto: revisá el contrato de servicios, plazos y fideicomiso.</p>\n",
+   "rendered": "<p>Sofitel Residences Madero es la primera residencia de marca (branded residence) de Sofitel en el mundo, desarrollada por la local NorthBaires en el Dique 4 de Puerto Madero. El proyecto contempla 43 pisos y 188 residencias que fusionan servicio hotelero cinco estrellas con vivienda propia. Es el segmento de ultra-lujo del barrio más caro del país.</p><p>El único dato de precio verificable es el valor del m² 'desde USD 10.000', muy por encima del promedio de Puerto Madero (USD 6.144/m²), coherente con el premium de una branded residence. No hay precio total porque no se publicó la superficie mínima.</p><p>Verificá: es un desarrollo en etapa temprana (anuncio), por lo que hay que confirmar inicio de obra, fideicomiso y respaldo del licenciante de marca (Accor/Sofitel), plazos y esquema de pago. El premium por marca debe evaluarse contra la liquidez de reventa y las expensas/fees de servicio.</p>",
    "protected": false
   },
   "excerpt": {
@@ -2904,14 +3040,17 @@
    "pozo-barrio-puerto-madero"
   ],
   "acf": {
-   "desarrolladora": "Northbaires + Accor/Sofitel",
+   "desarrolladora": "NorthBaires (marca Sofitel / Accor)",
    "precio_m2": 10000,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "2030",
-   "avance_obra": "",
+   "avance_obra": "Anunciado / inicio de proyecto",
    "tipologias": "Varias",
-   "comparable_terminado": 6000
+   "comparable_terminado": 6000,
+   "moneda": "USD",
+   "amenities": "Servicios hoteleros 5 estrellas Sofitel (branded residences)",
+   "direccion": "Juana Manso y Trinidad Guevara, Dique 4, Puerto Madero"
   },
   "_links": {
    "self": [
@@ -3174,7 +3313,7 @@
    "rendered": "Be Boulevard — Puerto Madero"
   },
   "content": {
-   "rendered": "<p><strong>Be Boulevard</strong>, de <strong>ABV Desarrollos</strong>, se ubica en Azucena Villaflor 435, Puerto Madero. Es un edificio residencial con amenities en una de las zonas más exclusivas de Buenos Aires.</p>\n<p>Al momento de este análisis el valor por m² figura a consultar en los portales; conviene pedir el listado de unidades y precios a la desarrolladora. Puerto Madero mantiene los valores más altos y estables de la ciudad. Verificá siempre plazos y estructura legal.</p>\n",
+   "rendered": "<p>Be Boulevard es una reconversión del ex edificio corporativo de Mercedes Benz en el Dique 2 de Puerto Madero, a cargo de ABV y comercializado por Ocampo Propiedades. Replica la tendencia neoyorkina de transformar oficinas en viviendas: suites desde 31 m², 2 y 3 ambientes y penthouses duplex, con un rooftop de 460 m² y servicios tipo hotel. Apto profesional y alquiler temporario.</p><p>El ticket de entrada verificado es USD 160.000, valor de acceso comparativamente bajo para Puerto Madero, explicado por los monoambientes de 31 m². Se comercializa con precio fijo y financiación, aunque la desarrolladora no publica el desglose de anticipo/cuotas.</p><p>Verificá: al ser reconversión, chequeá el permiso de obra y la aprobación de cambio de destino a residencial, el fideicomiso, y el avance real (obra iniciada a fines de 2025). Para renta temporaria, dimensioná expensas y la absorción del microsegmento de monoambientes.</p>",
    "protected": false
   },
   "excerpt": {
@@ -3201,14 +3340,32 @@
    "pozo-barrio-puerto-madero"
   ],
   "acf": {
-   "desarrolladora": "ABV Desarrollos",
+   "desarrolladora": "ABV (com. Ocampo Propiedades)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
+   "anticipo": "Precio fijo con financiación (anticipo a confirmar)",
+   "esquema_cuotas": "Anticipo: Precio fijo con financiación (anticipo a confirmar) · Cuotas: Financiación en cuotas (detalle con Ocampo Propiedades) · Posesión: Saldo a la entrega",
    "fecha_entrega": "2028",
-   "avance_obra": "",
+   "avance_obra": "Obra iniciada (nov 2025)",
    "tipologias": "Mono,1,2,3",
-   "comparable_terminado": 6000
+   "comparable_terminado": 6000,
+   "precio_desde": 160000,
+   "moneda": "USD",
+   "amenities": "Rooftop verde 460 m² con vistas 360°, parrillero, piscina infinity, áreas verdes, gimnasio, coworking, front-desk, seguridad 24 h",
+   "direccion": "Azucena Villaflor 435, Dique 2, Puerto Madero",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "Precio fijo con financiación (anticipo a confirmar)"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Financiación en cuotas (detalle con Ocampo Propiedades)"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Saldo a la entrega"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -3472,7 +3629,7 @@
    "rendered": "ÚNICA — Puerto Madero"
   },
   "content": {
-   "rendered": "<p><strong>ÚNICA (Torre Única)</strong> es un desarrollo de <strong>VIZORA</strong> con diseño del estudio italiano <strong>Pininfarina</strong>, en Pierina Dealessi 1800, Puerto Madero. Un proyecto de arquitectura de autor en el segmento de mayor categoría de la ciudad.</p>\n<p>Los valores derivados de unidades publicadas rondan los USD 6.877/m². La firma Pininfarina y la ubicación en Puerto Madero posicionan al proyecto como una propuesta de lujo. Consultá el detalle de unidades, plazos y condiciones legales.</p>\n",
+   "rendered": "<p>ÚNICA es una torre de ultra-lujo en el Dique 1 de Puerto Madero, desarrollada por Vizora con diseño de la firma italiana Pininfarina e impulsada por la familia Brito. Tendrá 35 pisos y solo 90 departamentos (2 a 4 ambientes, semipisos de hasta 240 m² y penthouses), con una inversión declarada de USD 30 millones solo en obra. Es producto de escasez y firma de diseño.</p><p>El precio de entrada tiene dispersión según fuente y momento: notas de 2023 hablaban de 'desde USD 500.000' (82 m²), mientras publicaciones más recientes ubican el ingreso en ~USD 1.019.000. Se cargó el valor más reciente, pero debe confirmarse contra la lista vigente, porque el rango llega a penthouses de ~USD 3,5 millones.</p><p>Verificá: fideicomiso y respaldo de Vizora, avance de obra, esquema de pago (no publicado) y el sobreprecio por 'firma Pininfarina' frente a comparables del Dique 1. En este ticket, la liquidez de reventa y las expensas premium son los factores que más pesan.</p>",
    "protected": false
   },
   "excerpt": {
@@ -3499,14 +3656,18 @@
    "pozo-barrio-puerto-madero"
   ],
   "acf": {
-   "desarrolladora": "VIZORA (diseño Pininfarina)",
+   "desarrolladora": "Vizora (diseño Pininfarina)",
    "precio_m2": 6877,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Nov 2026",
-   "avance_obra": "",
+   "avance_obra": "En pozo / construcción",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 6000
+   "comparable_terminado": 6000,
+   "precio_desde": 1019000,
+   "moneda": "USD",
+   "amenities": "Gimnasio, salón de yoga y spa, gran piscina con solárium",
+   "direccion": "Pierina Dealessi 1800, Dique 1, Puerto Madero"
   },
   "_links": {
    "self": [
@@ -3737,7 +3898,7 @@
    "rendered": "Osten Tower II — Puerto Madero"
   },
   "content": {
-   "rendered": "<p><strong>Osten Tower II</strong> es la segunda torre del complejo Osten de <strong>GNV Group</strong>, ubicada en Madero Harbour, Dique 1, Puerto Madero. Con 33 pisos, es uno de los proyectos en altura más ambiciosos de la zona, con amenities de lujo.</p>\n<p>El desarrollador comunicó valores desde USD 4.800/m². Puerto Madero es el barrio de mayor valor por m² de la ciudad y una plaza de referencia para inversión en pozo premium. Verificá plazos, fideicomiso y esquema de pago.</p>\n",
+   "rendered": "<p>Osten Tower II es la segunda torre de la marca Osten (GNV Group) en el Dique 1 de Puerto Madero. Tendrá 33 pisos y ~205 unidades (de 40 a 330 m², más un penthouse), con amenities muy completos (rooftop bar e infinity pool en el piso 33, wellness center, pádel, pickleball, valet parking). La inversión total junto a Osten I es de USD 95 millones.</p><p>Es el proyecto con datos más completos del set: precio de entrada USD 212.000 con preventa desde ~USD 4.800/m², bien por debajo del promedio de Puerto Madero, lo que refleja el descuento por comprar en pozo temprano. El esquema está explicitado: 30% de anticipo, refuerzos del 10% en pisos 10 y 20, y 50% en 36 cuotas en pesos ajustadas por CAC.</p><p>Verificá (clave): el ajuste por CAC de las cuotas es el factor de riesgo dominante —en pesos y en contexto de costos de construcción crecientes, el costo total real puede alejarse del precio de lista en dólares. Confirmá fideicomiso, respaldo de GNV Group y el avance de obra hacia dic-2028.</p>",
    "protected": false
   },
   "excerpt": {
@@ -3766,12 +3927,34 @@
   "acf": {
    "desarrolladora": "GNV Group",
    "precio_m2": 4800,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
+   "anticipo": "30% de anticipo",
+   "esquema_cuotas": "Anticipo: 30% de anticipo · Refuerzos: 10% al piso 10 y 10% al piso 20 · Cuotas: Saldo 50% en 36 cuotas en pesos ajustadas por CAC · Posesión: Entrega prevista Dic 2028",
    "fecha_entrega": "Dic 2028",
-   "avance_obra": "",
+   "avance_obra": "Inicio de obra oct 2025 (~40 meses de plazo)",
    "tipologias": "2,3,4",
-   "comparable_terminado": 6000
+   "comparable_terminado": 6000,
+   "precio_desde": 212000,
+   "moneda": "USD",
+   "amenities": "Room service, rooftop bar (piso 33), infinity pool, valet parking, business center, coworking, wellness center, sauna, cancha de pádel y pickleball, gym",
+   "direccion": "Julieta Lanteri 1987, Dique 1 (Madero Harbour), Puerto Madero",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "30% de anticipo"
+    },
+    {
+     "etapa": "Refuerzos",
+     "detalle": "10% al piso 10 y 10% al piso 20"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Saldo 50% en 36 cuotas en pesos ajustadas por CAC"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Entrega prevista Dic 2028"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -4002,7 +4185,7 @@
    "rendered": "Paz Boulevard — Núñez"
   },
   "content": {
-   "rendered": "<p><strong>Paz Boulevard</strong>, de <strong>MMP Group</strong>, se emplaza en Ciudad de la Paz y Vilela, Núñez. Es un edificio residencial con amenities y unidades de distintas tipologías.</p>\n<p>El precio de referencia en preventa se ubica en torno a USD 3.547/m². La ubicación combina el perfil residencial de Núñez con buena conectividad hacia Belgrano y la zona norte. Revisá el avance de obra y las condiciones del fideicomiso.</p>\n",
+   "rendered": "<p>Paz Boulevard es un desarrollo en prelanzamiento en una esquina destacada de Núñez (Ciudad de la Paz y Vilela, sobre Boulevard San Isidro Labrador), comercializado por Achaval Cornejo. Se plantea sobre un lote de 3000 m² con solo 7 pisos, unidades de 1 a 4 ambientes con balcones amplios y parrilla individual, dúplex en el último piso y más de 1000 m² de amenities. Núñez es el 3° barrio más caro de CABA.</p><p>No hay precio de entrada oficial publicado. Como referencia, un 2 ambientes de 65 m² figura a USD 266.010 (~USD 4.090/m²), por encima del promedio del barrio, coherente con obra nueva de categoría y baja densidad. El precio desde real (unidad más chica) no está disponible.</p><p>Verificá: por ser prelanzamiento, es crítico confirmar fideicomiso, permiso de obra y avance real (puede no haber pozo abierto aún), esquema de pago e índice de ajuste. El precio/m² por encima del promedio debe justificarse por producto y ubicación.</p>",
    "protected": false
   },
   "excerpt": {
@@ -4029,14 +4212,17 @@
    "pozo-barrio-nunez"
   ],
   "acf": {
-   "desarrolladora": "MMP Group",
-   "precio_m2": 3547,
+   "desarrolladora": "com. Achaval Cornejo",
+   "precio_m2": 4092,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Oct 2029",
-   "avance_obra": "",
+   "avance_obra": "Prelanzamiento / pozo",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 2150
+   "comparable_terminado": 2150,
+   "moneda": "USD",
+   "amenities": "+1000 m² de amenities: coworking, gimnasio, SUM, parrillas eléctricas en balcones; dúplex en piso 7 con terraza",
+   "direccion": "Ciudad de la Paz y Vilela, Núñez"
   },
   "_links": {
    "self": [
@@ -4291,7 +4477,7 @@
    "rendered": "AMENNA — Núñez"
   },
   "content": {
-   "rendered": "<p><strong>AMENNA</strong> es un desarrollo en Amenábar 3892, Núñez, comercializado por Interwin. Propone unidades residenciales con terminaciones de categoría en una zona de fuerte demanda.</p>\n<p>El valor de referencia en pozo ronda los USD 3.013/m² para las unidades de entrada. Núñez ofrece cercanía a espacios verdes, la costanera y buena conectividad. Verificá plazos de entrega, fideicomiso y ajuste de cuotas antes de invertir.</p>\n",
+   "rendered": "<p>AMENNA es un edificio en pozo en una esquina de cuádruple lote (casi 40 m de frente) en Amenábar y Paroissien, en la zona más tranquila de Núñez, a unos 200 m del Metrobús de Cabildo y cerca de General Paz. Es de baja altura (PB, 7 pisos y 2 retiros) con unidades de 1 a 3 dormitorios, cocheras y amenities de categoría en el último piso (pileta, solárium, parrillas, sky-living). Lo comercializa Interwin.</p><p>La unidad más económica publicada es un 1 dormitorio de 45 m² a USD 135.995 (~USD 3.013/m², valor esperable para obra nueva en Núñez). Los 2 y 3 ambientes escalan hasta ~USD 452.000 en las unidades grandes.</p><p>Verificá con la comercializadora: esquema de pago (anticipo y cuotas, no publicado), si el precio es sobre superficie total o propia, qué incluye la cochera, y el fideicomiso. Con entrega Oct 2027 y obra avanzada, el riesgo de construcción es menor, pero contrastá el avance real contra el cronograma.</p>",
    "protected": false
   },
   "excerpt": {
@@ -4318,14 +4504,18 @@
    "pozo-barrio-nunez"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (com. Interwin)",
+   "desarrolladora": "com. Interwin / Selectia",
    "precio_m2": 3013,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Oct 2027",
-   "avance_obra": "",
+   "avance_obra": "En construcción (avance a sep 2025)",
    "tipologias": "2,3,4",
-   "comparable_terminado": 2150
+   "comparable_terminado": 2150,
+   "precio_desde": 135995,
+   "moneda": "USD",
+   "amenities": "Piscina descubierta, solárium, sector de parrillas, sky-living con fogonero",
+   "direccion": "Amenábar 3892 esq. Paroissien, Núñez"
   },
   "_links": {
    "self": [
@@ -4580,7 +4770,7 @@
    "rendered": "Altos de Ruiz Huidobro — Núñez"
   },
   "content": {
-   "rendered": "<p><strong>Altos de Ruiz Huidobro</strong> se ubica en Ruiz Huidobro 2371, Núñez. Se comercializa bajo esquema de fideicomiso al costo, una modalidad frecuente en desarrollos que buscan trasladar al inversor el precio de construcción.</p>\n<p>El precio se maneja a consultar con la comercializadora (Premium Brokers). El fideicomiso al costo puede ofrecer ventajas de precio pero traslada al inversor la variación de costos de obra: es clave entender el reglamento del fideicomiso y el avance antes de sumarse.</p>\n",
+   "rendered": "<p>Altos de Ruiz Huidobro es un edificio en pozo de PB y 12 pisos sobre Av. Ruiz Huidobro al 2300, a media cuadra de Av. Cabildo, con departamentos de 1, 2 y 3 ambientes con expansiones y un piso 13 con solárium, parrilla e hidromasaje. Tipología de escala media típica del corredor Núñez, con buena conectividad a Puente Saavedra y Metrobús.</p><p>Se ofrece bajo fideicomiso al costo: anticipo del 50% en dólares y 24 cuotas ajustadas por dólar/CAC. La unidad más económica publicada es un 2 ambientes de 47,8 m² a USD 140.400 (~USD 2.937/m²), competitivo para obra nueva en Núñez.</p><p>El fideicomiso al costo con ajuste CAC traslada al comprador el riesgo de inflación en costos: la cuota puede subir más que el dólar. Verificá el contrato de fideicomiso, quién construye (no publicado), el avance real y si el precio es sobre superficie total o propia.</p>",
    "protected": false
   },
   "excerpt": {
@@ -4606,14 +4796,32 @@
    "pozo-barrio-nunez"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (com. Premium Brokers)",
-   "precio_m2": 2400,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Mar 2028",
-   "avance_obra": "",
+   "desarrolladora": "com. Lanven / Coldwell Banker",
+   "precio_m2": 2937,
+   "anticipo": "50% en USD (fideicomiso al costo)",
+   "esquema_cuotas": "Anticipo: 50% en USD (fideicomiso al costo) · Cuotas: 24 cuotas iguales ajustadas por variación dólar/CAC · Posesión: Entrega prevista Ene 2028",
+   "fecha_entrega": "Ene 2028",
+   "avance_obra": "En construcción",
    "tipologias": "Mono,2,3",
-   "comparable_terminado": 2150
+   "comparable_terminado": 2150,
+   "precio_desde": 140400,
+   "moneda": "USD",
+   "amenities": "Solárium con parrilla e hidromasaje (piso 13), local comercial en PB/subsuelo",
+   "direccion": "Av. Ruiz Huidobro 2371, Núñez",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "50% en USD (fideicomiso al costo)"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "24 cuotas iguales ajustadas por variación dólar/CAC"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Entrega prevista Ene 2028"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -4728,7 +4936,7 @@
    "rendered": "Aura Núñez — Núñez"
   },
   "content": {
-   "rendered": "<p><strong>Aura Núñez</strong> es un desarrollo de <strong>GCH (Grupo Chomer)</strong> en Cuba 4501, Núñez, una de las zonas de mayor crecimiento premium de la ciudad. Ofrece unidades con amenities y diseño contemporáneo.</p>\n<p>Según fuentes de mercado, el valor en pozo financiado parte de aproximadamente USD 2.600/m². Núñez consolidó en los últimos años un polo residencial de categoría con nuevos desarrollos de lujo. Revisá el esquema de financiación y los plazos antes de decidir.</p>\n",
+   "rendered": "<p>Aura Núñez es un complejo residencial premium de baja densidad de Grupo Chomer, en media manzana de Lomas de Núñez (Cuba, Deheza y Arias), con proyecto de MSGSSV y una batería de amenities muy por encima del promedio: doble piscina (incl. indoor climatizada), spa completo, microcine, business center y kids club. Consolida la 'zona premium' de Núñez.</p><p>La unidad más económica publicada es un monoambiente de 32 m² en versión ECO a USD 146.296; hay versiones ECO y ESTÁNDAR. El rango va de ese monoambiente hasta 3 dormitorios superiores a USD 1.100.000. Por el mix de tipologías y terminaciones, el valor por m² varía fuerte; la prensa mencionó un promedio en torno a USD 2.600/m² en pozo al lanzamiento (a verificar).</p><p>Grupo Chomer tiene trayectoria (60+ años), lo que reduce el riesgo de contraparte. Confirmá: diferencia de precio y specs entre ECO y ESTÁNDAR, esquema de pago (no publicado), qué unidades quedan dado el avance de ventas, y que bauleras/rooftops se cotizan aparte. Entrega recién para Mar 2029.</p>",
    "protected": false
   },
   "excerpt": {
@@ -4755,14 +4963,18 @@
    "pozo-barrio-nunez"
   ],
   "acf": {
-   "desarrolladora": "GCH (Grupo Chomer)",
+   "desarrolladora": "Grupo Chomer (com. Soldati)",
    "precio_m2": 2600,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Ago 2026",
-   "avance_obra": "",
+   "fecha_entrega": "Mar 2029",
+   "avance_obra": "En construcción; ~65% vendido (2023)",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 2150
+   "comparable_terminado": 2150,
+   "precio_desde": 146296,
+   "moneda": "USD",
+   "amenities": "Piscina y solárium con cascada, piscina indoor climatizada, spa con saunas, gimnasio, SUM, business center, salón de juegos, kids club, microcine, laundry",
+   "direccion": "Cuba 4500, Lomas de Núñez"
   },
   "_links": {
    "self": [
@@ -5025,7 +5237,7 @@
    "rendered": "Sucre Garden — Belgrano"
   },
   "content": {
-   "rendered": "<p><strong>Sucre Garden</strong> es un emprendimiento en Sucre 2070, Belgrano, comercializado por Interwin. Se trata de un proyecto residencial con entrega prevista para agosto de 2028.</p>\n<p>Al momento de este análisis no hay un valor por m² publicado de forma pública verificable; conviene solicitar el detalle de precios y unidades a la comercializadora. Belgrano R y sus alrededores son zonas de baja densidad y alta demanda. Verificá siempre condiciones legales y de obra.</p>\n",
+   "rendered": "<p>Sucre Garden es un desarrollo boutique de diseño contemporáneo en Sucre y Arcos, entre la Casa del Ángel y las Barrancas de Belgrano, a unos 300 m del subte D (Juramento) y del polo comercial de Cabildo. Es un edificio chico de 9 pisos con unidades de 1 y 2 ambientes, orientado a vivienda e inversión para renta (incluida la temporaria), con amenities completos.</p><p>Lo comercializa Interwin. Al momento de la investigación la grilla de unidades y precios figuraba 'en carga' (sin precio publicado), por lo que no se pudo verificar un precio desde ni el precio/m² sin contactar a la comercializadora.</p><p>Verificá: precio desde y superficies reales, esquema de pago (no publicado), desarrollador/constructor, y estado del fideicomiso. Con entrega Ago 2028, es un proyecto de horizonte largo y probablemente en etapa temprana de obra.</p>",
    "protected": false
   },
   "excerpt": {
@@ -5052,14 +5264,17 @@
    "pozo-barrio-belgrano"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (com. Interwin)",
+   "desarrolladora": "com. Interwin",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Ago 2028",
-   "avance_obra": "",
+   "avance_obra": "En pozo",
    "tipologias": "1,2",
-   "comparable_terminado": 3350
+   "comparable_terminado": 3350,
+   "moneda": "USD",
+   "amenities": "Piscina con solárium, rooftop con parrilla, gimnasio, sauna, jacuzzi",
+   "direccion": "Mcal. A. J. de Sucre 2070 esq. Arcos, Belgrano"
   },
   "_links": {
    "self": [
@@ -5584,7 +5799,7 @@
    "rendered": "Aurea — Belgrano"
   },
   "content": {
-   "rendered": "<p><strong>Aurea</strong> es un desarrollo de <strong>EDFAN</strong> emplazado en Ciudad de la Paz 2246, Belgrano, sobre un lote de triple frente. Propone unidades residenciales con foco en luminosidad y terminaciones de categoría.</p>\n<p>El precio de referencia en preventa se ubica en torno a USD 3.118/m². Belgrano es una de las zonas más consolidadas y demandadas de CABA, lo que respalda el potencial de valorización. Verificá plazos de entrega y condiciones legales antes de avanzar.</p>\n",
+   "rendered": "<p>Aurea Belgrano es una torre residencial de 15 pisos sobre Ciudad de la Paz al 2200/2246, a 50 m de Plaza Noruega y a dos cuadras de Juramento (subte D) y del Metrobús. Tiene unas 75 unidades de 1 a 4 ambientes (más oficinas y locales), con amenities de piscina con solárium, SUM y gimnasio, y 79 cocheras opcionales.</p><p>Lo comercializa Krell Brokers. La unidad más económica publicada es un 2 ambientes de 70 m² a USD 272.000 (~USD 3.884/m²), valor alto que se explica por ser un piso grande y ubicación premium de Belgrano C. Esquema: anticipo del 30% + cuotas en pesos ajustadas por CAC; cocheras (desde USD 30.000) y bauleras (desde USD 3.000) aparte.</p><p>Atención con la fecha de entrega: la ficha muestra 'Feb 2026' pero el texto interno menciona 'ago 2024', señal de obra atrasada; verificá el avance real. Revisá también el fideicomiso y el impacto del ajuste CAC en la cuota en pesos.</p>",
    "protected": false
   },
   "excerpt": {
@@ -5611,14 +5826,32 @@
    "pozo-barrio-belgrano"
   ],
   "acf": {
-   "desarrolladora": "EDFAN",
-   "precio_m2": 3118,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "Ago 2026",
-   "avance_obra": "",
+   "desarrolladora": "com. Krell Brokers",
+   "precio_m2": 3884,
+   "anticipo": "30%",
+   "esquema_cuotas": "Anticipo: 30% · Cuotas: Saldo en cuotas en pesos ajustadas por CAC · Posesión: Cocheras opcionales desde USD 30.000 y bauleras desde USD 3.000 (no incluidas)",
+   "fecha_entrega": "Feb 2026 (verificar; posible atraso)",
+   "avance_obra": "En construcción",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 3350
+   "comparable_terminado": 3350,
+   "precio_desde": 272000,
+   "moneda": "USD",
+   "amenities": "Piscina con solárium, SUM, gimnasio, bauleras y 79 cocheras opcionales",
+   "direccion": "Ciudad de la Paz 2246, Belgrano",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "30%"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Saldo en cuotas en pesos ajustadas por CAC"
+    },
+    {
+     "etapa": "Posesión",
+     "detalle": "Cocheras opcionales desde USD 30.000 y bauleras desde USD 3.000 (no incluidas)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -5870,7 +6103,7 @@
    "rendered": "ZETA — Belgrano"
   },
   "content": {
-   "rendered": "<p><strong>ZETA</strong> es una torre residencial de categoría desarrollada por <strong>BSD Investments</strong> (construcción a cargo de COINSA), ubicada en Zabala 1851, en el corazón de Belgrano. El proyecto, con diseño de arquitectura contemporánea, ofrece unidades de 1 a 4 ambientes.</p>\n<p>La entrega está estimada para 2026. El valor de referencia en pozo ronda los USD 5.794/m², posicionándolo en el segmento premium del barrio. Como en toda compra en pozo, conviene verificar la estructura del fideicomiso, los plazos de obra y el esquema de ajuste de cuotas antes de invertir.</p>\n",
+   "rendered": "<p>ZETA es una torre de diseño en Zabala 1851 (ex terreno de la Universidad de Belgrano), primer proyecto en Latinoamérica del estudio neoyorquino ODA Architecture, desarrollado y comercializado por BSD Investments. Su diferencial son los balcones escultóricos y más de 2.000 m² de amenities premium (doble pileta climatizada, spa, wine cellar, gourmet, sala de música). Son 13.500 m² en unidades de 2 a 4 ambientes.</p><p>Es un producto de alta gama y, según prensa de lanzamiento, ya tenía ~90% de las unidades vendidas, por lo que el sitio oficial muestra los costos como 'Próximamente': la disponibilidad es escasa y los valores se manejan por consulta directa. No se pudo verificar precio desde ni precio/m².</p><p>Verificá con BSD Investments: unidades realmente disponibles, precio y precio/m², esquema de pago, fecha de entrega y avance de obra (no publicados). Por ser desarrollo de autor con marca internacional, es esperable un premium de precio respecto al promedio de Belgrano.</p>",
    "protected": false
   },
   "excerpt": {
@@ -5897,14 +6130,17 @@
    "pozo-barrio-belgrano"
   ],
   "acf": {
-   "desarrolladora": "BSD Investments (constr. COINSA)",
+   "desarrolladora": "BSD Investments (diseño ODA Architecture)",
    "precio_m2": 5794,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Jul 2026",
-   "avance_obra": "",
+   "avance_obra": "~90% de unidades vendidas (2023)",
    "tipologias": "1,2,3,4",
-   "comparable_terminado": 3350
+   "comparable_terminado": 3350,
+   "moneda": "USD",
+   "amenities": "+2.000 m²: business center, SUM, sala de juegos, kids club, gimnasio, pileta semiolímpica climatizada, solárium, pileta cubierta, spa, wine cellar, comedor gourmet, sala de música, lounge, laundry",
+   "direccion": "Zabala 1851, Belgrano"
   },
   "_links": {
    "self": [
@@ -6175,7 +6411,7 @@
    "rendered": "Neuhaus Directorio — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Neuhaus Directorio</strong> es un desarrollo en pozo de <strong>A confirmar</strong> en <strong>Caballito</strong> (Av. Directorio 1290). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Irujo Bienes Raíces)</li>\n<li><strong>Ubicación:</strong> Av. Directorio 1290 — Caballito, CABA</li>\n<li><strong>Tipologías:</strong> 1 y 2 ambientes / semipisos premium</li>\n<li><strong>Superficies:</strong> 48 a 76 m²</li>\n<li><strong>Pisos:</strong> 12</li>\n<li><strong>Amenities / perfil:</strong> 12 niveles; semipisos premium</li>\n<li><strong>Entrega estimada:</strong> septiembre 2027</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Neuhaus Directorio\",\"description\":\"Neuhaus Directorio: desarrollo en pozo en Caballito, Av. Directorio 1290. 1 y 2 ambientes / semipisos premium.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Directorio 1290\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Neuhaus Directorio es un desarrollo chico de 12 niveles sobre Av. Directorio 1302, Caballito, con un concepto de integración de arquitectura y naturaleza (fachada verde, balcones con jardines de riego automatizado) y rooftop con parrilla. Ofrece unidades de 1 y 2 ambientes de calidad superior, con semipisos de 2 ambientes con suite. Lo comercializa Irujo Bienes Raíces.</p><p>La unidad más económica arranca en USD 109.000, con superficies de 48 a 76 m² (~USD 2.271/m² en la unidad de entrada) y entrega Sep 2027. Existe además una ficha 'Neuhaus Directorio 1302' con precio desde USD 138.500 y entrega may-2028, que podría ser otra etapa: conviene aclarar cuál corresponde.</p><p>Verificá: esquema de pago (no publicado; habitual en la zona es 40-50% de anticipo + cuotas CAC), quién construye (no identificado), si el precio es sobre superficie total o propia, y el avance real frente al cronograma 2027/2028.</p>",
    "protected": false
   },
   "excerpt": {
@@ -6205,17 +6441,21 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Irujo Bienes Raíces)",
-   "precio_m2": 2270,
+   "desarrolladora": "com. Irujo Bienes Raíces",
+   "precio_m2": 2271,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20270901",
-   "avance_obra": "",
+   "fecha_entrega": "Sep 2027",
+   "avance_obra": "En construcción",
    "tipologias": [
     "1_ambiente",
     "2_ambientes"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 109000,
+   "moneda": "USD",
+   "amenities": "Rooftop con parrilla, fachada verde con jardines de riego automatizado en balcones",
+   "direccion": "Av. Directorio 1302, Caballito"
   },
   "_links": {
    "self": [
@@ -6488,7 +6728,7 @@
    "rendered": "Life Caballito — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Life Caballito</strong> es un desarrollo en pozo de <strong>A confirmar</strong> en <strong>Caballito (Parque Rivadavia)</strong> (Hidalgo 205). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Justé Vila)</li>\n<li><strong>Ubicación:</strong> Hidalgo 205 — Caballito (Parque Rivadavia), CABA</li>\n<li><strong>Tipologías:</strong> 1 a 4 ambientes + locales</li>\n<li><strong>Superficies:</strong> 53 a 752 m²</li>\n<li><strong>Pisos:</strong> 22</li>\n<li><strong>Amenities / perfil:</strong> Torre de 22 pisos frente a la zona de Parque Rivadavia</li>\n<li><strong>Entrega estimada:</strong> julio 2028</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Life Caballito\",\"description\":\"Life Caballito: desarrollo en pozo en Caballito (Parque Rivadavia), Hidalgo 205. 1 a 4 ambientes + locales.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hidalgo 205\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Life Caballito es una torre residencial premium de I Desarrollos (grupo con varios proyectos 'Life') en Hidalgo 205, a pasos del Parque Rivadavia y con buena conectividad a Rivadavia. Plantea 22 pisos, 145 unidades de 2 a 4 ambientes (50 a 170 m²), locales en PB y oficinas en el primer piso, con amenities completos (pileta, solárium, gimnasio, SUM).</p><p>El precio de referencia más bajo ronda USD 154.100, coherente con producto nuevo de gama media-alta en Caballito. Lo diferencial es el esquema en pesos: 30% al boleto y hasta 30 cuotas ajustadas por CAC, lo que traslada el riesgo de costo de construcción al comprador; conviene proyectar cuánto puede moverse la cuota en pesos frente al dólar.</p><p>Verificá: dirección exacta (algunas piezas lo listan como 'Life Parque Rivadavia'), superficie y precio de la unidad concreta, y fecha de entrega real (Jul 2028). Pedí carpeta de ventas y boleto modelo para confirmar la fórmula de ajuste.</p>",
    "protected": false
   },
   "excerpt": {
@@ -6519,19 +6759,33 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Justé Vila)",
+   "desarrolladora": "I Desarrollos (com. Justevila)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20280701",
-   "avance_obra": "",
+   "anticipo": "30% al boleto",
+   "esquema_cuotas": "Boleto: 30% al boleto · Cuotas: Hasta 30 cuotas en pesos ajustadas por CAC hasta la entrega",
+   "fecha_entrega": "Jul 2028",
+   "avance_obra": "En pozo / inicio de obra",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 154100,
+   "moneda": "USD",
+   "amenities": "Pileta, solárium, gimnasio, SUM con exteriores, concierge, cocheras en 2 subsuelos",
+   "direccion": "Hidalgo 205, Caballito (Parque Rivadavia)",
+   "esquema_pago": [
+    {
+     "etapa": "Boleto",
+     "detalle": "30% al boleto"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Hasta 30 cuotas en pesos ajustadas por CAC hasta la entrega"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -7458,7 +7712,7 @@
    "rendered": "Vera Lyria — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Vera Lyria</strong> es un desarrollo en pozo de <strong>Grupo 8.66</strong> en <strong>Caballito</strong> (Juan B. Alberdi 493). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Grupo 8.66</li>\n<li><strong>Ubicación:</strong> Juan B. Alberdi 493 — Caballito, CABA</li>\n<li><strong>Tipologías:</strong> 2 a 5 ambientes + locales</li>\n<li><strong>Superficies:</strong> 56 a 825 m²</li>\n<li><strong>Amenities / perfil:</strong> Amplio rango de superficies, incluye locales</li>\n<li><strong>Entrega estimada:</strong> noviembre 2029</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Vera Lyria\",\"description\":\"Vera Lyria: desarrollo en pozo en Caballito, Juan B. Alberdi 493. 2 a 5 ambientes + locales.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Juan B. Alberdi 493\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Vera Lyria es el segundo edificio de la línea 'Vera' de Grupo 8.66 (desarrolladora con base en Caballito), en Juan B. Alberdi 493, zona Parque Rivadavia. Son 44 unidades de 2 a 5 ambientes (56 a 287 m²) en 12 pisos, con amenities de gama alta (pileta climatizada, cava, wellness, salón de eventos) y una propuesta diferencial: personalización de planos e interiorismo sin cargo.</p><p>El sitio oficial no publica precio de lista ni fecha de entrega, y comercializa Llamedo Propiedades. Por comparables de pozo premium en Caballito (USD 2.800–4.000/m²) un 2 ambientes se ubicaría en el rango bajo, pero es estimación, no dato: hay que pedir la lista real.</p><p>Verificá antes de publicar: precio de la unidad de entrada (2 amb), fecha de entrega comprometida, y el detalle fino del plan ('adaptada' es marketing, no un esquema). El fuerte del producto es la personalización; el riesgo típico es el ajuste de cuota y el cumplimiento de plazos.</p>",
    "protected": false
   },
   "excerpt": {
@@ -7489,18 +7743,27 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Grupo 8.66",
+   "desarrolladora": "Grupo 8.66 (com. Llamedo Propiedades)",
    "precio_m2": 3500,
    "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
+   "esquema_cuotas": "Anticipo + cuotas: Anticipo más cuotas hasta la entrega; financiación adaptada (consultar plan)",
    "fecha_entrega": "20291101",
-   "avance_obra": "",
+   "avance_obra": "En pozo",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "moneda": "USD",
+   "amenities": "Piscina climatizada y solárium, cava de vino, salón de eventos, gimnasio, parrillero, wellness area, playground, bike parking, terraza verde, grupo electrógeno",
+   "direccion": "Juan B. Alberdi 493 esq. Moreno, Caballito Sur",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo + cuotas",
+     "detalle": "Anticipo más cuotas hasta la entrega; financiación adaptada (consultar plan)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -7781,7 +8044,7 @@
    "rendered": "Vera Nubia — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Vera Nubia</strong> es un desarrollo en pozo de <strong>Grupo 8.66</strong> en <strong>Caballito Sur</strong> (Calasanz 671 (esq. Bonifacio)). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Grupo 8.66</li>\n<li><strong>Ubicación:</strong> Calasanz 671 (esq. Bonifacio) — Caballito Sur, CABA</li>\n<li><strong>Tipologías:</strong> 2 a 5 ambientes + locales</li>\n<li><strong>Superficies:</strong> 52 a 192 m²</li>\n<li><strong>Amenities / perfil:</strong> Unidades con locales comerciales en planta baja</li>\n<li><strong>Entrega estimada:</strong> diciembre 2029</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Vera Nubia\",\"description\":\"Vera Nubia: desarrollo en pozo en Caballito Sur, Calasanz 671 (esq. Bonifacio). 2 a 5 ambientes + locales.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calasanz 671 (esq. Bonifacio)\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Vera Nubia es el primer edificio de la línea 'Vera' de Grupo 8.66, en Calasanz 671 esquina Bonifacio, a una cuadra de Av. Pedro Goyena (Caballito Sur, el eje premium del barrio). Son 29 unidades de 2 a 4 ambientes (52 a 318 m²) en 11 pisos con 3 subsuelos y 40 cocheras, amenities completos (sala de cata, concierge, pileta climatizada, wellness) y personalización sin cargo.</p><p>Dato de precio verificado: una unidad de 3 ambientes (90 m² tot / 71 cub) cotiza USD 374.900, con entrega comprometida a Dic 2029 (~USD 4.100/m² sobre superficie total, consistente con premium de Pedro Goyena). Comercializa Llamedo Propiedades.</p><p>Verificá: precio real de la unidad más chica de 2 ambientes (el dato de USD 374.900 es de un 3 amb, no del piso de entrada), y el detalle del plan de cuotas (moneda e índice de ajuste). Entrega a fines de 2029 es horizonte largo: el análisis de riesgo debe centrarse en plazo y estructura de ajuste.</p>",
    "protected": false
   },
   "excerpt": {
@@ -7812,18 +8075,28 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Grupo 8.66",
+   "desarrolladora": "Grupo 8.66 (com. Llamedo Propiedades)",
    "precio_m2": "",
    "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20291201",
-   "avance_obra": "",
+   "esquema_cuotas": "Anticipo + cuotas: Anticipo más cuotas hasta la entrega (amplia financiación; consultar plan)",
+   "fecha_entrega": "Dic 2029",
+   "avance_obra": "En pozo",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 374900,
+   "moneda": "USD",
+   "amenities": "Sala de cata, concierge, salón de eventos, gimnasio, pileta climatizada, parrillero, wellness area, espacio chill out con fogonero, bike parking",
+   "direccion": "San José de Calasanz 671 esq. Bonifacio, Caballito Sur",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo + cuotas",
+     "detalle": "Anticipo más cuotas hasta la entrega (amplia financiación; consultar plan)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -8096,7 +8369,7 @@
    "rendered": "Rio4 — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Rio4</strong> es un desarrollo en pozo de <strong>Estudio Kohon</strong> en <strong>Caballito / Parque Centenario</strong> (Río de Janeiro 577). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Estudio Kohon</li>\n<li><strong>Ubicación:</strong> Río de Janeiro 577 — Caballito / Parque Centenario, CABA</li>\n<li><strong>Tipologías:</strong> 2 y 3 ambientes</li>\n<li><strong>Superficies:</strong> unidades con patio desde ~48 m²</li>\n<li><strong>Amenities / perfil:</strong> Especialista en pozo con foco en conectividad (subte/tren) y perfil inversor retail</li>\n<li><strong>Entrega estimada:</strong> 2027</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Rio4\",\"description\":\"Rio4: desarrollo en pozo en Caballito / Parque Centenario, Río de Janeiro 577. 2 y 3 ambientes.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Río de Janeiro 577\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Rio4 es un edificio de Estudio Kohon (desarrolladora/estudio activo en Caballito desde 1977) en Río de Janeiro 500, a pocas cuadras de Parque Centenario, Hospital Italiano y Hospital Naval. Producto de doble frente, con unidades de 1 a 4 ambientes (28 a 98 m²) en 14 pisos, más cocheras y amenities estándar.</p><p>El precio de referencia arranca en ~USD 177.000 y el esquema publicado es 40% de anticipo + 24 cuotas, con mejor precio por pago contado. La entrega figura comprometida para Dic 2025, por lo que a la fecha debería estar terminado o muy próximo a la posesión: conviene reclasificarlo como 'terminado/a estrenar' si ya se entregó.</p><p>Verificá: estado real de obra/entrega, stock disponible y precio actual de la unidad de entrada. Al estar casi terminado, el riesgo de pozo es bajo pero el margen de financiación restante también es menor.</p>",
    "protected": false
   },
   "excerpt": {
@@ -8128,15 +8401,29 @@
   "acf": {
    "desarrolladora": "Estudio Kohon",
    "precio_m2": 2800,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20270601",
-   "avance_obra": "",
+   "anticipo": "40% de anticipo",
+   "esquema_cuotas": "Anticipo: 40% de anticipo · Cuotas: 24 cuotas; precio promocional para pago contado",
+   "fecha_entrega": "Dic 2025",
+   "avance_obra": "En construcción avanzada / próxima a entrega",
    "tipologias": [
     "2_ambientes",
     "3_ambientes"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 177000,
+   "moneda": "USD",
+   "amenities": "SUM, parrillas, deck solárium, piscina con duchas, bike parking, cocheras, ascensores inteligentes",
+   "direccion": "Río de Janeiro 500, Caballito",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "40% de anticipo"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "24 cuotas; precio promocional para pago contado"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -8417,7 +8704,7 @@
    "rendered": "Donna Grigia — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Donna Grigia</strong> es un desarrollo en pozo de <strong>Azcuy (línea Donna)</strong> en <strong>Caballito</strong> (Av. Directorio 1641 / J. Bonifacio 1624). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Azcuy (línea Donna)</li>\n<li><strong>Ubicación:</strong> Av. Directorio 1641 / J. Bonifacio 1624 — Caballito, CABA</li>\n<li><strong>Tipologías:</strong> 3 a 6 ambientes</li>\n<li><strong>Superficies:</strong> 108 a 683 m²</li>\n<li><strong>Amenities / perfil:</strong> Serie Donna; lote pasante de doble frente</li>\n<li><strong>Entrega estimada:</strong> junio 2030</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Donna Grigia\",\"description\":\"Donna Grigia: desarrollo en pozo en Caballito, Av. Directorio 1641 / J. Bonifacio 1624. 3 a 6 ambientes.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Directorio 1641 / J. Bonifacio 1624\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Donna Grigia es uno de los edificios más grandes de la Serie Donna de Azcuy (líder del eje Pedro Goyena/Directorio en Caballito), en la esquina de Av. Directorio y José Bonifacio. Es un proyecto de escala (~22.500 m², unas 86-95 unidades de 3 a 5 ambientes, 95 a 300 m²) con dos frentes de distinta altura y cerca de 1.500 m² de amenities. Azcuy trabaja bajo fideicomiso al costo.</p><p>No se encontró precio de lista oficial confirmado para la unidad de entrada; una referencia de mercado ubica el pozo premium de Caballito en USD 3.500–4.000/m², pero es estimación, no dato. La entrega se informa hacia Jun 2030, horizonte muy largo, típico de los proyectos grandes de la serie.</p><p>Verificá: precio real de la unidad de 3 ambientes más económica, moneda e índice de ajuste de las cuotas, y el cronograma de obra. El respaldo de marca (Azcuy) y los amenities son fortalezas; el punto crítico es el plazo (2030) y el ajuste de cuota en un fideicomiso al costo.</p>",
    "protected": false
   },
   "excerpt": {
@@ -8448,17 +8735,26 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Azcuy (línea Donna)",
+   "desarrolladora": "Azcuy (com. Fabián Achával / Justevila)",
    "precio_m2": 3326,
    "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20300601",
-   "avance_obra": "",
+   "esquema_cuotas": "Anticipo + cuotas: Esquema Azcuy: anticipo (~30%) + cuotas en pesos ajustadas hasta la posesión (confirmar lista vigente)",
+   "fecha_entrega": "Jun 2030",
+   "avance_obra": "En pozo",
    "tipologias": [
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "moneda": "USD",
+   "amenities": "~1.500 m²: salón de eventos, gimnasio, sala de yoga, parrillas, coworking, spa & relax, pileta y solárium, seguridad, pet friendly",
+   "direccion": "Av. Directorio y José Bonifacio, Caballito Sur",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo + cuotas",
+     "detalle": "Esquema Azcuy: anticipo (~30%) + cuotas en pesos ajustadas hasta la posesión (confirmar lista vigente)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -8739,7 +9035,7 @@
    "rendered": "Donna Ambra — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Donna Ambra</strong> es un desarrollo en pozo de <strong>Azcuy</strong> en <strong>Caballito Sur</strong> (Valle 23 / Av. La Plata 689). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Azcuy</li>\n<li><strong>Ubicación:</strong> Valle 23 / Av. La Plata 689 — Caballito Sur, CABA</li>\n<li><strong>Tipologías:</strong> 2 a 5 ambientes</li>\n<li><strong>Superficies:</strong> 96 a 536 m²</li>\n<li><strong>Amenities / perfil:</strong> Serie Donna de Azcuy; lote con doble frente</li>\n<li><strong>Entrega estimada:</strong> 2029</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Donna Ambra\",\"description\":\"Donna Ambra: desarrollo en pozo en Caballito Sur, Valle 23 / Av. La Plata 689. 2 a 5 ambientes.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Valle 23 / Av. La Plata 689\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Donna Ambra es otro edificio de la Serie Donna de Azcuy, sobre Valle 23 a metros de Av. La Plata (Caballito Sur). Son 98 unidades de 2 a 5 ambientes (70 a 240 m²) más 4 dúplex de 5 ambientes (310 a 420 m²), con terminaciones de categoría (porcelanato italiano, Silestone, grifería Steinberg, VRV Daikin) y amenities completos.</p><p>Dato de precio verificado: un 3 ambientes cotiza USD 373.700 (~USD 4.853/m²), con esquema 30% de anticipo + cuotas hasta la posesión y entrega comprometida a Mar 2029. No se dejó ese valor como precio desde porque corresponde a un 3 amb; el piso de entrada real serían los 2 ambientes de ~70 m², cuyo precio no se pudo confirmar.</p><p>Verificá: precio de la unidad de 2 ambientes (piso de entrada), moneda e índice de ajuste, y avance de obra. El valor de ~USD 4.853/m² lo ubica en el segmento premium del barrio; el respaldo de Azcuy es fuerte, pero, como todo pozo a 2029, el análisis debe centrarse en plazo y estructura de cuotas.</p>",
    "protected": false
   },
   "excerpt": {
@@ -8770,18 +9066,31 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Azcuy",
-   "precio_m2": 3592,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20290301",
-   "avance_obra": "",
+   "desarrolladora": "Azcuy (com. Justevila / Fabián Achával)",
+   "precio_m2": 4853,
+   "anticipo": "30% de anticipo",
+   "esquema_cuotas": "Anticipo: 30% de anticipo · Cuotas: Cuotas hasta la posesión (fideicomiso al costo Azcuy; confirmar moneda/ajuste)",
+   "fecha_entrega": "Mar 2029",
+   "avance_obra": "En pozo",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "moneda": "USD",
+   "amenities": "Pileta, solárium, salón comunitario, gimnasio, sauna, área de relax, coworking, sector de parrillas",
+   "direccion": "Valle 23 (a metros de Av. La Plata), Caballito Sur",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "30% de anticipo"
+    },
+    {
+     "etapa": "Cuotas",
+     "detalle": "Cuotas hasta la posesión (fideicomiso al costo Azcuy; confirmar moneda/ajuste)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -9062,7 +9371,7 @@
    "rendered": "Donna Salvia — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Donna Salvia</strong> es un desarrollo en pozo de <strong>Azcuy</strong> en <strong>Caballito Sur</strong> (Malvinas Argentinas 148). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Azcuy</li>\n<li><strong>Ubicación:</strong> Malvinas Argentinas 148 — Caballito Sur, CABA</li>\n<li><strong>Tipologías:</strong> 2 a 5 ambientes + locales</li>\n<li><strong>Superficies:</strong> 125 a 687 m²</li>\n<li><strong>Amenities / perfil:</strong> Serie Donna de Azcuy; unidades grandes y locales comerciales</li>\n<li><strong>Entrega estimada:</strong> diciembre 2029</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Donna Salvia\",\"description\":\"Donna Salvia: desarrollo en pozo en Caballito Sur, Malvinas Argentinas 148. 2 a 5 ambientes + locales.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Malvinas Argentinas 148\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Donna Salvia es un edificio en pozo de Azcuy en Malvinas Argentinas 148, Caballito Sur, dentro de su serie 'Donna' del eje Pedro Goyena. Es el más nuevo del cluster: Azcuy lo marca 'en construcción' pero la comercializadora declara entrega en Dic 2029, lo que confirma etapa muy temprana. Ofrece unidades de 3 a 5 ambientes con dependencia de servicio y palier privado, terminaciones de gama alta y amenities completos.</p><p>Sobre precios hay dato verificable: una unidad de 3 ambientes de 128 m² se ofrece en USD 427.100 (~USD 3.992/m²) y una de 4 ambientes de 182 m² en USD 613.800. Ese valor por m² está en el techo de Caballito, coherente con el posicionamiento premium de Azcuy pero exige pagar sobreprecio de marca.</p><p>Verificá: estructura legal (fideicomiso al costo vs. precio cerrado) y fórmula de ajuste de las cuotas, crítico dado el plazo hasta 2029; planos aprobados ante el GCBA; y penalidades por demora. La trayectoria de Azcuy mitiga riesgo, pero el ticket (>USD 420k) lo vuelve producto de segmento alto.</p>",
    "protected": false
   },
   "excerpt": {
@@ -9093,18 +9402,22 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Azcuy",
-   "precio_m2": 3318,
+   "desarrolladora": "Azcuy (com. Justevila / Fabián Achával)",
+   "precio_m2": 3992,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20291201",
-   "avance_obra": "",
+   "fecha_entrega": "Dic 2029",
+   "avance_obra": "En pozo (etapa inicial)",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 427100,
+   "moneda": "USD",
+   "amenities": "Piscina in-out, solárium, spa & relax, gimnasio, coworking, SUM, salón de eventos, parrilleros, balcones parquizados con riego, grupo electrógeno, cocheras",
+   "direccion": "Malvinas Argentinas 148, Caballito Sur"
   },
   "_links": {
    "self": [
@@ -9385,7 +9698,7 @@
    "rendered": "Donna Zaffira — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Donna Zaffira</strong> es un desarrollo en pozo de <strong>Azcuy</strong> en <strong>Caballito Norte</strong> (Av. Juan B. Alberdi 1536 (esq. Achával)). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Azcuy</li>\n<li><strong>Ubicación:</strong> Av. Juan B. Alberdi 1536 (esq. Achával) — Caballito Norte, CABA</li>\n<li><strong>Tipologías:</strong> 3 a 5 ambientes</li>\n<li><strong>Superficies:</strong> 108 a 230 m²</li>\n<li><strong>Amenities / perfil:</strong> Línea “The Smart Life” de Azcuy; serie Donna premium</li>\n<li><strong>Entrega estimada:</strong> 1.º trimestre 2028</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Donna Zaffira\",\"description\":\"Donna Zaffira: desarrollo en pozo en Caballito Norte, Av. Juan B. Alberdi 1536 (esq. Achával). 3 a 5 ambientes.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Juan B. Alberdi 1536 (esq. Achával)\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Donna Zaffira es otro edificio de la serie Donna de Azcuy, en Av. Juan B. Alberdi 1536 esquina Achával (Caballito Sur), a metros del polo gastronómico. Su seña es la fachada de losas superpuestas en hormigón, vidrio y acero. Son 13 pisos con 31 unidades de 3, 4 y 5 ambientes; los dos últimos niveles concentran los amenities. Entrega Ene 2028.</p><p>El dato verificable de precio corresponde a una unidad grande: un 5 ambientes de 210 m² a USD 896.100 (~USD 4.818/m²). No se pudo verificar el precio de las tipologías más chicas (3 amb ~108 m²), por lo que precio desde queda en null; el valor por m² del 5 amb sugiere un rango de USD 3.900–4.800/m², en el segmento más caro de Caballito.</p><p>Verificá: estructura legal y fórmula de ajuste de cuotas con ejemplo numérico dado el plazo hasta 2028; planos aprobados y avance real en visita; y la lista de precios oficial por unidad. El respaldo de Azcuy es fuerte, pero conviene contrastar el sobreprecio contra comparables del mismo eje.</p>",
    "protected": false
   },
   "excerpt": {
@@ -9416,17 +9729,20 @@
    "pozo-barrio-caballito"
   ],
   "acf": {
-   "desarrolladora": "Azcuy",
+   "desarrolladora": "Azcuy (com. Justevila / Toribio Achával)",
    "precio_m2": 3615,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20280101",
-   "avance_obra": "",
+   "fecha_entrega": "Ene 2028",
+   "avance_obra": "En construcción",
    "tipologias": [
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "moneda": "USD",
+   "amenities": "Piscina rooftop, solárium, parrilleros, gimnasio Technogym, spa con sauna, sala de yoga, coworking, SUM, paneles solares, grupo electrógeno, cocheras en 3 subsuelos",
+   "direccion": "Av. Juan B. Alberdi 1536 esq. Achával, Caballito Sur"
   },
   "_links": {
    "self": [
@@ -9707,7 +10023,7 @@
    "rendered": "Donna Gioia — Caballito"
   },
   "content": {
-   "rendered": "<p><strong>Donna Gioia</strong> es un desarrollo en pozo de <strong>Azcuy</strong> en <strong>Caballito Sur</strong> (Av. Pedro Goyena 22). Ficha técnica completa y análisis de inversión a continuación.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Azcuy</li>\n<li><strong>Ubicación:</strong> Av. Pedro Goyena 22 — Caballito Sur, CABA</li>\n<li><strong>Tipologías:</strong> 2 a 5 ambientes</li>\n<li><strong>Superficies:</strong> 84 a 275 m²</li>\n<li><strong>Amenities / perfil:</strong> Serie Donna de Azcuy: diseño premium y foco en sustentabilidad</li>\n<li><strong>Entrega estimada:</strong> 2026</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Caballito, 2025):</strong> promedio de barrio ~<strong>USD 2.402/m²</strong> (usado+nuevo) · obra nueva/a estrenar ~<strong>USD 3.233/m²</strong> · en pozo ~<strong>USD 2.800–3.500/m²</strong> según calidad y amenities (fuente: Zonaprop Index / RE-MAX, 2025).</p>\n<p>Caballito ofrece, frente a Palermo, un <strong>ticket de entrada más bajo</strong> con fuerte demanda de alquiler de familias y profesionales y excelente conectividad (subte línea A sobre Av. Rivadavia). El upside del pozo aquí suele ser mayor que en barrios premium ya consolidados.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con ejemplo numérico), plazos y penalidades por demora, y calidad constructiva en obras entregadas. Guía: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos de fuentes públicas (avisos y prensa); verificá contrato, planos aprobados ante el GCBA y trayectoria antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-caballito/\">Desarrolladoras en Caballito</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Donna Gioia\",\"description\":\"Donna Gioia: desarrollo en pozo en Caballito Sur, Av. Pedro Goyena 22. 2 a 5 ambientes.\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Pedro Goyena 22\",\"addressLocality\":\"Caballito\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Donna Gioia es uno de los proyectos más avanzados de la serie Donna de Azcuy, en una esquina muy visible de Caballito Sur: Av. Pedro Goyena 16-22 esquina Av. La Plata, con un segundo frente sobre José Bonifacio. Son dos volúmenes conectados por un jardín interno; los amenities se ubican en altura (pisos 13 y 14). Entrega 2027 y los avisos hablan de 'últimas unidades'.</p><p>Precios verificables: una unidad de 4 ambientes de 116 m² se ofrece en USD 412.400 (~USD 4.004/m²), y hay referencias de 2 ambientes de ~60 m² desde ~USD 148.000, que tomo como precio desde. El valor por m² ubica a Gioia en el rango premium de Caballito. Esquema: 30% de anticipo y saldo en cuotas en dólares.</p><p>Verificá: precio y disponibilidad reales del 2 ambientes (el dato de USD 148.000 proviene de un aviso de portal, no de lista oficial), la estructura legal y el ajuste, y el estado exacto de obra. Al estar más cerca de la posesión, Gioia ofrece menos riesgo de obra que Salvia o Zaffira, pero también menor descuento por pozo.</p>",
    "protected": false
   },
   "excerpt": {
@@ -9738,17 +10054,31 @@
   ],
   "acf": {
    "desarrolladora": "Azcuy",
-   "precio_m2": 3200,
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260601",
-   "avance_obra": "",
+   "precio_m2": 4004,
+   "anticipo": "30% al firmar",
+   "esquema_cuotas": "Anticipo: 30% al firmar · Saldo: Cuotas en dólares hasta la posesión/entrega",
+   "fecha_entrega": "2027",
+   "avance_obra": "En construcción (avanzado; últimas unidades)",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3233
+   "comparable_terminado": 3233,
+   "precio_desde": 148000,
+   "moneda": "USD",
+   "amenities": "Piscina, solárium con parrillas, gimnasio, spa / sala de relax, sala de yoga, coworking, salón de eventos (pisos 13 y 14), paneles solares, recolección de agua de lluvia, cocheras y bauleras",
+   "direccion": "Av. Pedro Goyena 16-22 esq. Av. La Plata, Caballito Sur",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "30% al firmar"
+    },
+    {
+     "etapa": "Saldo",
+     "detalle": "Cuotas en dólares hasta la posesión/entrega"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -10029,7 +10359,7 @@
    "rendered": "Nice Córdoba — Palermo"
   },
   "content": {
-   "rendered": "<p><strong>Nice Córdoba</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo</strong> (Av. Córdoba 3402). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Av. Córdoba 3402 — Palermo, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2, 3 y 4 ambientes</li>\n<li><strong>Unidades:</strong> 83 + 32 cocheras · <strong>Pisos:</strong> 13</li>\n<li><strong>Amenities:</strong> Pileta en el piso 13 + solárium doble, roof garden con parrillas, SUM con cocina, gym, sauna y spa con jacuzzi</li>\n<li><strong>Entrega estimada:</strong> noviembre 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Nice Córdoba\",\"description\":\"Nice Córdoba: desarrollo en construcción en Palermo, Av. Córdoba 3402. 1, 2, 3 y 4 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nice-cordoba-palermo/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Córdoba 3402\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":83}</script></p>\n",
+   "rendered": "<p>Nice Córdoba es un edificio de 13 pisos en pozo sobre Av. Córdoba 3400, esquina Billinghurst, en pleno Palermo y a una cuadra de la Universidad de Palermo. Lo comercializa Grupo Galcerán (la desarrolladora no figura pública). Es un proyecto chico: 6 unidades disponibles, de 1 y 2 dormitorios, con superficies de 43 a 108 m², entrega Abr 2026 y amenities amplios para su escala.</p><p>El precio desde publicado es USD 121.128 por el 1 dormitorio de 43 m² (~USD 2.800/m² derivado). El salto hasta el 2 dormitorios de 108 m² a USD 303.156 es grande. La ubicación sobre avenida troncal y cerca de la Universidad es sólida para renta estudiantil o profesional, aunque estar sobre Av. Córdoba implica más ruido que el corazón de Palermo Soho/Hollywood.</p><p>Verificá: identidad y trayectoria de la desarrolladora, estado real de obra, condiciones de financiación (promete 'financiación' pero no publica anticipo/cuotas/ajuste), expensas estimadas y fideicomiso. Precios y superficies son orientativos.</p>",
    "protected": false
   },
   "excerpt": {
@@ -10059,19 +10389,23 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "com. Grupo Galcerán",
    "precio_m2": 3000,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20261101",
-   "avance_obra": "",
+   "fecha_entrega": "Abr 2026",
+   "avance_obra": "En construcción",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 121128,
+   "moneda": "USD",
+   "amenities": "Piscina en piso 13 con solárium y terraza verde, Roof Garden con parrillas, doble solárium, SUM con cocina y patio, gimnasio, sauna/spa con jacuzzi, cochera subterránea, apto mascotas, seguridad 24 h",
+   "direccion": "Av. Córdoba 3400 esq. Billinghurst, Palermo"
   },
   "_links": {
    "self": [
@@ -10344,7 +10678,7 @@
    "rendered": "Nice Hollywood — Palermo Hollywood"
   },
   "content": {
-   "rendered": "<p><strong>Nice Hollywood</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo Hollywood</strong> (Av. Cabildo 20 y Dorrego). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Av. Cabildo 20 y Dorrego — Palermo Hollywood, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2, 3 y 4 ambientes</li>\n<li><strong>Pisos:</strong> 15 + 3 subsuelos</li>\n<li><strong>Amenities:</strong> ~1.000 m² de amenities: pileta semiolímpica climatizada cubierta, solárium, gym, SUM, sauna/spa, cowork, rooftop verde con parrillas</li>\n<li><strong>Entrega estimada:</strong> octubre 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Nice Hollywood\",\"description\":\"Nice Hollywood: desarrollo en construcción en Palermo Hollywood, Av. Cabildo 20 y Dorrego. 1, 2, 3 y 4 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nice-hollywood-palermo-hollywood/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Cabildo 20 y Dorrego\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Nice Hollywood es un edificio de 15 pisos con 3 subsuelos de cocheras en Av. Cabildo 20, esquina Dorrego, sobre el ex predio de la pista de hielo 'My Way', en el límite de Palermo Hollywood con Chacarita/Colegiales y a pasos del subte D. Lo comercializa Grupo Galcerán (desarrolladora no nombrada). Comparte marca 'Nice' con Nice Córdoba. La PB se dedica a amenities y suma pileta exterior y quinchos en los pisos 14 y 15.</p><p>El precio desde es USD 141.344 por una unidad de 1 dormitorio de 45 m² (~USD 3.100/m² derivado). El rango disponible es acotado (9 unidades, 45 a 65 m²) con tickets hasta USD 180.900. El dato más relevante frente a un pozo puro es que la obra estaría al 70% con entrega en Sep 2026, lo que reduce el riesgo de construcción, aunque deja menos margen de descuento.</p><p>Verificá: quién es la desarrolladora y su trayectoria, la validez del 70% con visita a obra, condiciones de financiación, expensas estimadas y fideicomiso. También el impacto de estar sobre Av. Cabildo versus el interior más tranquilo de Palermo Hollywood.</p>",
    "protected": false
   },
   "excerpt": {
@@ -10374,19 +10708,23 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "com. Grupo Galcerán",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20261001",
-   "avance_obra": "",
+   "fecha_entrega": "Sep 2026",
+   "avance_obra": "En construcción al 70%",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 141344,
+   "moneda": "USD",
+   "amenities": "Piscina semiolímpica cubierta, solárium, gimnasio, SUM, spa (sauna), patio verde en PB; piscina exterior, quinchos con parrilla y sector verde en pisos 14 y 15; hidromasaje, sala de juegos, seguridad, apto mascotas",
+   "direccion": "Av. Cabildo 20 esq. Dorrego, Palermo Hollywood"
   },
   "_links": {
    "self": [
@@ -10683,7 +11021,7 @@
    "rendered": "Paseo Plaza Thames — Palermo Soho"
   },
   "content": {
-   "rendered": "<p><strong>Paseo Plaza Thames</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo Soho</strong> (Thames 1452). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Thames 1452 — Palermo Soho, CABA</li>\n<li><strong>Tipologías:</strong> Dúplex de 3, 4 y 5 dormitorios</li>\n<li><strong>Superficies:</strong> ~145 a 154 m²</li>\n<li><strong>Unidades:</strong> 5 + local</li>\n<li><strong>Amenities:</strong> Pileta y solárium, jardín, parrillas; pisos radiantes y DVH</li>\n<li><strong>Entrega estimada:</strong> marzo 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Paseo Plaza Thames\",\"description\":\"Paseo Plaza Thames: desarrollo en construcción en Palermo Soho, Thames 1452. Dúplex de 3, 4 y 5 dormitorios.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/paseo-plaza-thames-palermo-soho/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Thames 1452\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":5}</script></p>\n",
+   "rendered": "<p>Paseo Plaza Thames es un desarrollo boutique de solo 5 unidades sobre Thames 1452, en pleno polo gastronómico de Palermo Soho, a metros de Plaza Serrano. Se diferencia por unidades tipo casa/dúplex de 2, 3 y 4 ambientes con doble altura, patios o terrazas propias y amenities acotados pero valiosos (piscina de uso común, solárium, jardín y parrilla). Terminaciones de categoría.</p><p>Las unidades publicadas por Toribio Achával van de USD 354.352 (2 ambientes, 117 m²) a USD 420.550 (PB, 123 m²), cerca de USD 3.000/m² sobre superficie total. Es un ticket alto incluso para Palermo Soho, explicable por el formato casa-en-altura de baja densidad. El esquema es 50% de anticipo y saldo en cuotas, financiación exigente.</p><p>Verificá: identidad y trayectoria de la desarrolladora (no publicada; Toribio Achával es broker), estructura legal (fideicomiso, boleto), plazo real de entrega (Oct 2026) y el detalle de cuotas del saldo. El aviso legal aclara que precios, medidas y fechas son orientativos.</p>",
    "protected": false
   },
   "excerpt": {
@@ -10713,18 +11051,32 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "com. Toribio Achával",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260301",
-   "avance_obra": "",
+   "anticipo": "50% del total como anticipo",
+   "esquema_cuotas": "Anticipo: 50% del total como anticipo · Saldo: Saldo restante en cuotas",
+   "fecha_entrega": "Oct 2026",
+   "avance_obra": "En construcción",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 354352,
+   "moneda": "USD",
+   "amenities": "Piscina de uso común, solárium, jardín, parrilla, patios y terrazas privadas",
+   "direccion": "Thames 1452, Palermo Soho",
+   "esquema_pago": [
+    {
+     "etapa": "Anticipo",
+     "detalle": "50% del total como anticipo"
+    },
+    {
+     "etapa": "Saldo",
+     "detalle": "Saldo restante en cuotas"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -11021,7 +11373,7 @@
    "rendered": "PIET Gascón — Palermo Soho"
   },
   "content": {
-   "rendered": "<p><strong>PIET Gascón</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo Soho</strong> (Gascón 1346). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Gascón 1346 — Palermo Soho, CABA</li>\n<li><strong>Tipologías:</strong> 2, 3 y 4 ambientes (PB tipo casa)</li>\n<li><strong>Superficies:</strong> desde 65 m²</li>\n<li><strong>Unidades:</strong> 12 · <strong>Pisos:</strong> 4</li>\n<li><strong>Amenities:</strong> Terraza común con parrilla y pérgola, bauleras y bicicletero en subsuelo, cocheras. Proyecto boutique</li>\n<li><strong>Entrega estimada:</strong> julio 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"PIET Gascón\",\"description\":\"PIET Gascón: desarrollo en construcción en Palermo Soho, Gascón 1346. 2, 3 y 4 ambientes (PB tipo casa).\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/piet-gascon-palermo-soho/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Gascón 1346\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":12}</script></p>\n",
+   "rendered": "<p>PIET Gascón es un edificio de escala boutique (4 pisos, 12 unidades, 8 cocheras) sobre Gascón 1346, en el borde de Palermo Soho hacia Palermo/Almagro, con buena conectividad. El producto apunta a un comprador de diseño contemporáneo: fachada de hormigón visto con textura de tablitas y vegetación en balcones, ventanales de aluminio negro con DVH. Los amenities son mínimos (terraza común con parrilla más bike garage), coherente con un edificio chico.</p><p>El precio de entrada informado ronda USD 215.000 para las últimas unidades de 2 ambientes (65 a 80 m² totales, ~USD 3.000–3.300/m²), en línea con obra nueva de Palermo. Figuraban solo 2 a 4 unidades disponibles, señal de que el proyecto está bastante vendido. La financiación se comunica de forma genérica.</p><p>Verificá: quién es el desarrollador real (la marca 'PIET' no está aclarada; Toribio Achával es comercializador), la estructura legal, el detalle del plan de pagos y la fecha de entrega (Oct 2026). Pedí el brochure oficial y confirmá superficies y precios unidad por unidad.</p>",
    "protected": false
   },
   "excerpt": {
@@ -11051,18 +11403,28 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "com. Toribio Achával",
    "precio_m2": "",
    "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260701",
-   "avance_obra": "",
+   "esquema_cuotas": "Financiación: Anticipo y financiación en los últimos meses de obra (detalle a confirmar)",
+   "fecha_entrega": "Oct 2026",
+   "avance_obra": "En construcción (en pozo)",
    "tipologias": [
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 215000,
+   "moneda": "USD",
+   "amenities": "Terraza superior con parrilla y pérgola, bike garage, cocheras opcionales (8)",
+   "direccion": "Gascón 1346, Palermo (Soho)",
+   "esquema_pago": [
+    {
+     "etapa": "Financiación",
+     "detalle": "Anticipo y financiación en los últimos meses de obra (detalle a confirmar)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -11343,7 +11705,7 @@
    "rendered": "Casa AER — Palermo Soho"
   },
   "content": {
-   "rendered": "<p><strong>Casa AER</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo Soho</strong> (Honduras 4682). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Honduras 4682 — Palermo Soho, CABA</li>\n<li><strong>Tipologías:</strong> 1 a 5 ambientes</li>\n<li><strong>Superficies:</strong> 35 a 340 m²</li>\n<li><strong>Unidades:</strong> 2 edificios · <strong>Pisos:</strong> 8</li>\n<li><strong>Amenities:</strong> Pileta exterior + pileta climatizada cubierta, sauna, gym, SUM, playroom, cowork, jardín seco</li>\n<li><strong>Entrega estimada:</strong> mayo 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Casa AER\",\"description\":\"Casa AER: desarrollo en construcción en Palermo Soho, Honduras 4682. 1 a 5 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/casa-aer-palermo-soho/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Honduras 4682\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Casa AER es el proyecto más ambicioso de los de Palermo Soho: desarrollado por Cubero Rubio sobre un lote de esquina con triple frente por Honduras y frente simple por Malabia, plantea 35 unidades en 8 pisos bajo el concepto de 'casas en altura', del monoambiente al 5 ambientes y 6 triplex con piscina propia. El diferencial es el paquete de amenities, uno de los más completos de Palermo Soho.</p><p>El dato débil es el precio: ninguna fuente oficial publica un 'precio desde' verificable. En portales aparecieron unidades de referencia (un 3 ambientes de ~65 m² alrededor de USD 249.600) y cocheras desde USD 41.000, pero no hay un valor de entrada confirmado por la desarrolladora.</p><p>Otro punto a confirmar es la entrega: la ficha de un broker indica Abr 2025 y 'en construcción', mientras otras referencias mencionan May 2026, lo que sugiere que el proyecto está terminado o muy avanzado (posible 'a estrenar' más que pozo puro). Verificá: precio y disponibilidad por tipología, estado y fecha real de entrega, estructura legal, y qué comercializador conviene.</p>",
    "protected": false
   },
   "excerpt": {
@@ -11373,19 +11735,22 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "Cubero Rubio",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260501",
-   "avance_obra": "",
+   "fecha_entrega": "Abr 2025 (verificar; posible a estrenar)",
+   "avance_obra": "En construcción / obra avanzada",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "moneda": "USD",
+   "amenities": "Jardín con pileta climatizada, solárium, workspace, SUM/lounge, kids club/playroom, gimnasio, spa con pileta cubierta climatizada, laundry",
+   "direccion": "Honduras 4682 y Malabia 1585, Palermo Soho"
   },
   "_links": {
    "self": [
@@ -11682,7 +12047,7 @@
    "rendered": "HAAUS — Palermo Soho"
   },
   "content": {
-   "rendered": "<p><strong>HAAUS</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo Soho</strong> (Armenia 1210). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Armenia 1210 — Palermo Soho, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Superficies:</strong> 35 a 100 m²</li>\n<li><strong>Unidades:</strong> 85</li>\n<li><strong>Amenities:</strong> Pileta + solárium, rooftop con parrilla y fogón, SUM, coffee lab, cowork, bicicletero, laundry, CCTV 24h; concepto “alma de hotel” para renta temporaria</li>\n<li><strong>Entrega estimada:</strong> agosto 2026</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"HAAUS\",\"description\":\"HAAUS: desarrollo en construcción en Palermo Soho, Armenia 1210. 1, 2 y 3 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/haaus-palermo-soho/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Armenia 1210\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":85}</script></p>\n",
+   "rendered": "<p>HAAUS es un edificio de 85 unidades en una de las esquinas más codiciadas de Palermo Soho (Armenia y Av. Córdoba), concebido con lógica de 'aparthotel': unidades pensadas para alquiler temporario con renta en dólares y administración especializada, con opción de entrega amoblada y equipada. El programa de amenities es amplio (piscina, rooftop, coworking, gimnasio, techo verde), lo que lo posiciona para el inversor que busca rentar.</p><p>El precio de arranque verificado es USD 265.000 para un 2 ambientes de ~69 m² (~USD 3.800/m² sobre superficie total), coherente con el techo de Palermo pozo. Es un ticket alto: no hay monoambientes económicos publicados, el piso real ronda los 265 mil dólares.</p><p>Verificá: el esquema de financiación (la ficha solo dice 'consultar financiación'), la titularidad y el fideicomiso, y la fecha de entrega (Ago 2026, muy próxima; confirmá avance real). Distinguí HAAUS de HAAUS II, que es un segundo edificio con entrega posterior.</p>",
    "protected": false
   },
   "excerpt": {
@@ -11712,18 +12077,22 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "HAAUS (com. Fabián Achával / Selectia)",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260801",
-   "avance_obra": "",
+   "fecha_entrega": "Ago 2026",
+   "avance_obra": "En construcción",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 265000,
+   "moneda": "USD",
+   "amenities": "Piscina con solárium y vestuarios, rooftop con quinchos parrilleros y fogonero, techo verde con huerta, jardines, gimnasio, cocina gourmet, laboratorio de café, coworking + study room, bicicleteros, laundry, SUM, seguridad 24 h",
+   "direccion": "Armenia 1210 esq. Av. Córdoba, Palermo Soho"
   },
   "_links": {
    "self": [
@@ -11996,7 +12365,7 @@
    "rendered": "Central Acuña — Palermo"
   },
   "content": {
-   "rendered": "<p><strong>Central Acuña</strong> es un desarrollo en construcción de <strong>A confirmar</strong> en <strong>Palermo</strong> (Acuña de Figueroa 1336). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Acuña de Figueroa 1336 — Palermo, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Unidades:</strong> 53 · <strong>Pisos:</strong> 7</li>\n<li><strong>Amenities:</strong> Conserjería 24h, lobby con café, pasaje comercial gastronómico, plaza interior y rooftop verde de 500 m². Inspirado en los mews londinenses</li>\n<li><strong>Entrega estimada:</strong> junio 2027</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Central Acuña\",\"description\":\"Central Acuña: desarrollo en construcción en Palermo, Acuña de Figueroa 1336. 1, 2 y 3 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/central-acuna-palermo/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Acuña de Figueroa 1336\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":53}</script></p>\n",
+   "rendered": "<p>Central Acuña es un proyecto de Base Proyectos (Juan Vignolio) sobre F. Acuña de Figueroa 1336, con arquitectura de Diéguez Fridman, interiorismo de Esrawe+Pardo y paisajismo de Estudio Bulla. La propuesta diferencial es una 'plaza interior' inspirada en los mews londinenses, con restaurante, galería de arte y espacio de diseño, más servicios de hotelería. Orientado tanto a vivir como a invertir.</p><p>El precio de entrada verificable ronda USD 105.679 para las unidades más chicas de 1 dormitorio (34–61 m²), ticket accesible dentro de Palermo. La prensa menciona una inversión cercana a USD 20 millones y ~30% vendido, con entrega estimada en 2027.</p><p>Verificá: la desarrolladora no publica esquema de financiación ni precios por unidad (todo por consulta a Toribio Achával), por lo que anticipo, cuotas y ajuste (CAC/dólar) deben confirmarse. Validá también el estado del fideicomiso y el avance de obra real, dado que la entrega recién sería en 2027.</p>",
    "protected": false
   },
   "excerpt": {
@@ -12026,18 +12395,22 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "Base Proyectos (com. Toribio Achával)",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20270601",
-   "avance_obra": "",
+   "fecha_entrega": "2027",
+   "avance_obra": "En pozo (~30% comercializado)",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 105679,
+   "moneda": "USD",
+   "amenities": "Front desk / recepción 24 h, lobby con cafetería en doble altura, plaza interior con restaurante y galería de arte (estilo mews londinense), terraza, servicio de limpieza a demanda, restaurante y bar en PB, cocheras",
+   "direccion": "F. Acuña de Figueroa 1336, Palermo"
   },
   "_links": {
    "self": [
@@ -12318,7 +12691,7 @@
    "rendered": "Nice Plaza — Palermo Botánico"
   },
   "content": {
-   "rendered": "<p><strong>Nice Plaza</strong> es un desarrollo en pozo de <strong>A confirmar</strong> en <strong>Palermo (zona Botánico)</strong> (Cerviño 3510). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Cerviño 3510 — Palermo (zona Botánico), CABA</li>\n<li><strong>Tipologías:</strong> 3, 4 y 5 dormitorios</li>\n<li><strong>Unidades:</strong> 36 · <strong>Pisos:</strong> 9 + rooftop</li>\n<li><strong>Amenities:</strong> Terraza parquizada, parrilla, pileta y solárium, SUM, gym con vestuarios, bicicletero. Proyecto de Estudio Aisenson</li>\n<li><strong>Entrega estimada:</strong> 2028</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Nice Plaza\",\"description\":\"Nice Plaza: desarrollo en pozo en Palermo (zona Botánico), Cerviño 3510. 3, 4 y 5 dormitorios.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nice-plaza-palermo-botanico/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Cerviño 3510\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":36}</script></p>\n",
+   "rendered": "<p>Nice Plaza es parte de la línea 'Nice' de Brothers Developers (proyecto del Estudio Aisenson), en la esquina de Cerviño y Jerónimo Salguero, a metros del Parque Las Heras y el Jardín Botánico, en el borde Palermo Botánico/Palermo Chico. Es un edificio de 9 pisos exclusivamente de unidades grandes (3, 4 y 5 ambientes) con dos subsuelos de cocheras y amenities de terraza (Roof Garden, piscina, parrillas, gimnasio).</p><p>El precio de arranque verificado es USD 355.153, lo que confirma un producto premium orientado a familias y comprador de alto poder adquisitivo, no al inversor de ticket chico. La ausencia de monoambientes/2 ambientes refuerza ese posicionamiento en una de las zonas más caras de la ciudad.</p><p>Verificá: la entrega es lejana (Dic 2028), por lo que el riesgo de obra y el plan de financiación (no publicado) son puntos críticos. Confirmá la superficie exacta de la unidad de entrada y el fideicomiso: a este ticket y plazo, la estructura legal y el track record pesan tanto como el precio.</p>",
    "protected": false
   },
   "excerpt": {
@@ -12348,17 +12721,21 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "Brothers Developers (diseño Estudio Aisenson; com. Toribio Achával)",
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20280901",
-   "avance_obra": "",
+   "fecha_entrega": "Dic 2028",
+   "avance_obra": "En pozo",
    "tipologias": [
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 355153,
+   "moneda": "USD",
+   "amenities": "Bicicleteros, SUM, terraza con parrillas y pérgolas, Roof Garden, piscina, solárium, gimnasio con vestuarios, local comercial",
+   "direccion": "Av. Cerviño y Jerónimo Salguero, Palermo Botánico"
   },
   "_links": {
    "self": [
@@ -12639,7 +13016,7 @@
    "rendered": "Humboldt 1545 — Palermo Hollywood"
   },
   "content": {
-   "rendered": "<p><strong>Humboldt 1545</strong> es un desarrollo en pozo de <strong>A confirmar</strong> en <strong>Palermo Hollywood</strong> (Humboldt 1545). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Humboldt 1545 — Palermo Hollywood, CABA</li>\n<li><strong>Tipologías:</strong> Monoambiente y 1 ambiente</li>\n<li><strong>Superficies:</strong> 33 a 43 m²</li>\n<li><strong>Entrega estimada:</strong> diciembre 2029</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Humboldt 1545\",\"description\":\"Humboldt 1545: desarrollo en pozo en Palermo Hollywood, Humboldt 1545. Monoambiente y 1 ambiente.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/humboldt-1545-palermo-hollywood/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Humboldt 1545\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Humboldt 1545 es un edificio de unidades chicas y medianas (monoambientes a 2 ambientes, 28–76 m²) en pleno Palermo Hollywood, sobre la esquina de Av. Juan B. Justo y Honduras. En varias fichas aparece como 'Torre QIUB', sobre un lote de ~2.390 m² con triple frente. El precio de entrada verificado es USD 128.030 para un monoambiente de 37 m², con un 2 ambientes de 47 m² en USD 153.368.</p><p>El diferencial es la financiación real publicada: contado total al ingreso, o 40% de anticipo y saldo en pesos ajustado por CAC en cuotas, algo concreto que la mayoría de los competidores no muestra. La cochera se vende por separado (desde USD 38.950).</p><p>Verificá: la fecha figura como Dic 2025, es decir que el proyecto ya estaría entregado o muy próximo, por lo que 'en pozo' puede no aplicar; confirmá estado y disponibilidad. No se pudo confirmar la desarrolladora con fuente oficial (fichas de brokers). Ojo con el ajuste CAC del saldo en pesos.</p>",
    "protected": false
   },
   "excerpt": {
@@ -12669,17 +13046,31 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "com. Coldwell Banker / Korn Propiedades",
    "precio_m2": "",
    "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20291201",
-   "avance_obra": "",
+   "esquema_cuotas": "Contado: Pago total al ingreso · Financiado: 40% de anticipo y saldo en pesos ajustado por CAC en cuotas",
+   "fecha_entrega": "Dic 2025 (obra en etapa final / posible entrega inmediata)",
+   "avance_obra": "En construcción avanzada / terminando",
    "tipologias": [
     "monoambiente",
     "1_ambiente"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 128030,
+   "moneda": "USD",
+   "amenities": "Amenities de edificio con balcón amplio (~11 m en unidades al frente); cochera desde USD 38.950 aparte",
+   "direccion": "Humboldt 1545 esq. Av. Juan B. Justo y Honduras, Palermo Hollywood",
+   "esquema_pago": [
+    {
+     "etapa": "Contado",
+     "detalle": "Pago total al ingreso"
+    },
+    {
+     "etapa": "Financiado",
+     "detalle": "40% de anticipo y saldo en pesos ajustado por CAC en cuotas"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -12960,7 +13351,7 @@
    "rendered": "HAAUS II — Palermo Soho"
   },
   "content": {
-   "rendered": "<p><strong>HAAUS II</strong> es un desarrollo en pozo de <strong>A confirmar</strong> en <strong>Palermo Soho</strong> (Armenia 1205). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> A confirmar (comercializa Toribio Achával)</li>\n<li><strong>Ubicación:</strong> Armenia 1205 — Palermo Soho, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Superficies:</strong> 35 a 100 m²</li>\n<li><strong>Unidades:</strong> ~85 (a confirmar)</li>\n<li><strong>Amenities:</strong> Pileta y solárium, rooftop con parrilla, SUM, cowork, laundry; concepto “alma de hotel” orientado a renta temporaria</li>\n<li><strong>Entrega estimada:</strong> mayo 2027</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"HAAUS II\",\"description\":\"HAAUS II: desarrollo en pozo en Palermo Soho, Armenia 1205. 1, 2 y 3 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/haaus-ii-palermo-soho/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Armenia 1205\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":85}</script></p>\n",
+   "rendered": "<p>HAAUS II es la segunda etapa de la marca HAAUS en Palermo Soho (Armenia y Av. Córdoba), desarrollada por CEK con proyecto del Estudio Abramzon y comercializada por Toribio Achával. Son 100 unidades de tipologías flexibles y unificables (28 a 75 m²) de 1, 2 y 3 ambientes, con el mismo concepto de 'edificio con alma de hotel' y pool de renta temporaria en dólares que la primera etapa.</p><p>El dato más concreto es el esquema de lanzamiento: mínimo anticipo y 30 cuotas, con anticipo en dólares al boleto. Es la propuesta más atractiva del combo (financiación estructurada), aunque los montos de anticipo y el ajuste de cuotas no están publicados y deben pedirse.</p><p>Verificá: no hay precio de entrada publicado para HAAUS II (a diferencia de HAAUS I, con piso de USD 265.000), por lo que el ticket hay que confirmarlo; y la entrega es May 2027, plazo que exige revisar avance de obra, fideicomiso y quién construye. No confundir las dos etapas.</p>",
    "protected": false
   },
   "excerpt": {
@@ -12990,18 +13381,31 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "A confirmar (comercializa Toribio Achával)",
+   "desarrolladora": "CEK (diseño Estudio Abramzon; com. Toribio Achával / Fabián Achával)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20270501",
-   "avance_obra": "",
+   "anticipo": "Anticipo en USD (montos a confirmar con el broker)",
+   "esquema_cuotas": "Lanzamiento: Mínimo anticipo y 30 cuotas · Boleto: Anticipo en USD (montos a confirmar con el broker)",
+   "fecha_entrega": "May 2027",
+   "avance_obra": "En pozo / construcción",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "moneda": "USD",
+   "amenities": "Jardines, techo verde con huerta, piscina con solárium y vestuarios, rooftop con quinchos parrilleros, laboratorio de café, gimnasio, cocina gourmet, coworking + study room, bike garage, laundry, SUM, seguridad 24 h",
+   "direccion": "Armenia 1205 esq. Av. Córdoba, Palermo Soho",
+   "esquema_pago": [
+    {
+     "etapa": "Lanzamiento",
+     "detalle": "Mínimo anticipo y 30 cuotas"
+    },
+    {
+     "etapa": "Boleto",
+     "detalle": "Anticipo en USD (montos a confirmar con el broker)"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -13298,7 +13702,7 @@
    "rendered": "TENCA — Palermo Hollywood"
   },
   "content": {
-   "rendered": "<p><strong>TENCA</strong> es un desarrollo en pozo de <strong>Construye 4 Construcciones</strong> en <strong>Palermo Hollywood</strong> (Arévalo 2300). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> Construye 4 Construcciones</li>\n<li><strong>Ubicación:</strong> Arévalo 2300 — Palermo Hollywood, CABA</li>\n<li><strong>Tipologías:</strong> 1, 2 y 3 ambientes</li>\n<li><strong>Unidades:</strong> 32 · <strong>Pisos:</strong> 14</li>\n<li><strong>Amenities:</strong> Balcón terraza con parrilla, techos de 2,70 m</li>\n<li><strong>Entrega estimada:</strong> julio 2026</li>\n<li><strong>Estado de obra:</strong> En pozo</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"TENCA\",\"description\":\"TENCA: desarrollo en pozo en Palermo Hollywood, Arévalo 2300. 1, 2 y 3 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/tenca-palermo-hollywood/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Arévalo 2300\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":32}</script></p>\n",
+   "rendered": "<p>TENCA es un edificio de Grupo Angular (construye 4 Construcciones, diseño de Ricardo Pereyra Iraola) sobre Arévalo 2381, en el corazón gastronómico de Palermo Hollywood y a pasos de la estación Ministro Carranza. Son 13 pisos con entre 25 y 32 unidades de monoambientes a 3 ambientes, con techos altos de 2,70 m, balcones con parrilla y amenities de terraza (pileta, solárium, cowork, laundry).</p><p>Lo más sólido es el esquema de pago: 30% de anticipo al boleto en dólares y el 70% restante en 18 o 24 cuotas en pesos ajustadas por CAC. Es financiación real, pero el ajuste por CAC traslada al comprador el riesgo del costo de construcción, algo a dimensionar bien.</p><p>Verificá: no hay precio total publicado (todo es 'consultar'), por lo que el ticket de entrada hay que pedirlo; y hay contradicción de fechas entre fuentes (jul-2026 vs. abr-2027 con obra iniciada oct-2024) —la más detallada indica Abr 2027. Confirmá avance de obra y cantidad final de unidades.</p>",
    "protected": false
   },
   "excerpt": {
@@ -13328,18 +13732,31 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "Construye 4 Construcciones",
+   "desarrolladora": "Grupo Angular (construye 4 Construcciones; com. Fabián Achával / Tiscornia)",
    "precio_m2": "",
-   "anticipo": "",
-   "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20260701",
-   "avance_obra": "",
+   "anticipo": "30% de anticipo al boleto en USD",
+   "esquema_cuotas": "Boleto: 30% de anticipo al boleto en USD · Saldo: 70% en 18 o 24 cuotas en pesos ajustadas por CAC",
+   "fecha_entrega": "Abr 2027 (obra iniciada oct 2024)",
+   "avance_obra": "En construcción",
    "tipologias": [
     "1_ambiente",
     "2_ambientes",
     "3_ambientes"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "moneda": "USD",
+   "amenities": "Terraza con piscina y solárium, sala de cowork en PB, laundry, bicicletero, patio verde en PB, balcones con parrilla, SUM, seguridad 24 h",
+   "direccion": "Arévalo 2381, Palermo Hollywood",
+   "esquema_pago": [
+    {
+     "etapa": "Boleto",
+     "detalle": "30% de anticipo al boleto en USD"
+    },
+    {
+     "etapa": "Saldo",
+     "detalle": "70% en 18 o 24 cuotas en pesos ajustadas por CAC"
+    }
+   ]
   },
   "_links": {
    "self": [
@@ -13636,7 +14053,7 @@
    "rendered": "Palacio Cabrera — Palermo Hollywood"
   },
   "content": {
-   "rendered": "<p><strong>Palacio Cabrera</strong> es un desarrollo en construcción de <strong>BrodyFriedman</strong> en <strong>Palermo Hollywood</strong> (Cabrera 5653). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> BrodyFriedman</li>\n<li><strong>Ubicación:</strong> Cabrera 5653 — Palermo Hollywood, CABA</li>\n<li><strong>Tipologías:</strong> 1 y 2 ambientes</li>\n<li><strong>Superficies:</strong> 50 a 200 m²</li>\n<li><strong>Amenities:</strong> Reciclaje de un edificio histórico de los años ’30 integrado con unidades nuevas</li>\n<li><strong>Estado de obra:</strong> En construcción</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"Palacio Cabrera\",\"description\":\"Palacio Cabrera: desarrollo en construcción en Palermo Hollywood, Cabrera 5653. 1 y 2 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/palacio-cabrera-palermo-hollywood/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Cabrera 5653\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"}}</script></p>\n",
+   "rendered": "<p>Palacio Cabrera es un caso atípico: un edificio histórico de 1935 en José A. Cabrera 5600 (Palermo Hollywood) recuperado por BrodyFriedman y reconvertido en edificio residencial con uso profesional. La fachada original está protegida por la Ley 2548 de Protección Patrimonial. Suma amenities modernos (piscina, gimnasio, terrazas, patios) y dos espacios gastronómicos en el ingreso, con unidades usables como departamento, estudio profesional u oficina.</p><p>El precio de referencia verificado es USD 275.000 para un 2 ambientes de 66 m² (~USD 4.166/m²), coherente con producto premium/boutique en la zona. Al ser reciclaje patrimonial más que pozo tradicional, el atractivo pasa por el carácter único del edificio antes que por el precio.</p><p>Verificá: no se encontró esquema de financiación ni fuente oficial con listado de precios (la referencia de USD 275.000 proviene de un broker). Confirmá si aún se comercializa en preventa o son unidades terminadas, el estado de obra y las condiciones de pago. El estatus patrimonial implica restricciones para futuras modificaciones.</p>",
    "protected": false
   },
   "excerpt": {
@@ -13670,13 +14087,17 @@
    "precio_m2": "",
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": null,
-   "avance_obra": "",
+   "fecha_entrega": "A estrenar (edificio restaurado)",
+   "avance_obra": "Terminado / etapa final de restauración",
    "tipologias": [
     "1_ambiente",
     "2_ambientes"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "precio_desde": 275000,
+   "moneda": "USD",
+   "amenities": "Patios, piscina, gimnasio, terrazas y jardín común; dos espacios gastronómicos en el ingreso; edificio histórico restaurado (fachada de 1935 protegida por Ley 2548)",
+   "direccion": "José A. Cabrera 5600, Palermo Hollywood"
   },
   "_links": {
    "self": [
@@ -13949,7 +14370,7 @@
    "rendered": "SENS Luxury Homes — Palermo Hollywood"
   },
   "content": {
-   "rendered": "<p><strong>SENS Luxury Homes</strong> es un desarrollo en pozo / inicio de obra de <strong>ATV Arquitectos</strong> en <strong>Palermo Hollywood</strong> (Godoy Cruz 2199). A continuación, la ficha técnica completa y el análisis de inversión.</p>\n<h2>Ficha técnica</h2>\n<ul style=\"line-height:1.8\">\n<li><strong>Desarrolladora:</strong> ATV Arquitectos</li>\n<li><strong>Ubicación:</strong> Godoy Cruz 2199 — Palermo Hollywood, CABA</li>\n<li><strong>Tipologías:</strong> 3 a 6 ambientes</li>\n<li><strong>Superficies:</strong> 120 a 580 m²</li>\n<li><strong>Unidades:</strong> 25</li>\n<li><strong>Amenities:</strong> Unidades premium, varias con pileta privada; certificaciones de sustentabilidad</li>\n<li><strong>Entrega estimada:</strong> agosto 2027</li>\n<li><strong>Estado de obra:</strong> En pozo / inicio de obra</li>\n<li><strong>Estructura legal:</strong> a verificar en el contrato (fideicomiso al costo o precio cerrado)</li>\n</ul>\n<h2>Análisis para el inversor</h2>\n<p><strong>Comparable de zona (Palermo, nov. 2025):</strong> usado <strong>USD 3.035/m²</strong> · a estrenar <strong>USD 3.893/m²</strong> · en pozo <strong>USD 3.976/m²</strong> (fuente: Zonaprop Index). Palermo lidera el ranking de precios de CABA.</p>\n<p>El spread entre el m² en pozo y el terminado en Palermo es hoy <strong>estrecho</strong>: el upside está más en la apreciación durante la obra y en la calidad del producto que en un descuento de entrada grande. Por eso pesan tanto la <strong>trayectoria de entrega de la desarrolladora</strong> y la <strong>estructura legal</strong>.</p>\n<p><strong>Antes de invertir, verificá:</strong> estructura legal (fideicomiso al costo vs. precio cerrado), fórmula de ajuste (índice CAC con un ejemplo numérico escrito), plazos y penalidades por demora, y calidad constructiva en obras ya entregadas. Guía completa: <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">cómo evaluar una desarrolladora</a>.</p>\n<p style=\"font-size:0.85em;color:#666;margin-top:14px;\"><strong>Precio/m² y anticipo de este proyecto: a consultar con la comercializadora.</strong> Contenido informativo; no constituye asesoramiento financiero. Datos elaborados a partir de fuentes públicas (avisos y prensa especializada); verificá el contrato, los planos aprobados ante el GCBA y la trayectoria de la desarrolladora antes de invertir.</p>\n<p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #e6eaf0;\"><strong>Seguí explorando:</strong> <a href=\"/desarrolladoras-inmobiliarias-en-palermo/\">Desarrolladoras en Palermo</a> · <a href=\"/desarrollos-inmobiliarios/\">Catálogo de desarrollos en pozo</a> · <a href=\"/desarrolladoras-inmobiliarias-en-capital-federal/\">Directorio de desarrolladoras CABA</a></p>\n<p><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"ApartmentComplex\",\"name\":\"SENS Luxury Homes\",\"description\":\"SENS Luxury Homes: desarrollo en pozo / inicio de obra en Palermo Hollywood, Godoy Cruz 2199. 3 a 6 ambientes.\",\"url\":\"https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/sens-luxury-homes-palermo-hollywood/\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"Godoy Cruz 2199\",\"addressLocality\":\"Palermo\",\"addressRegion\":\"Ciudad Autónoma de Buenos Aires\",\"addressCountry\":\"AR\"},\"numberOfAccommodationUnits\":25}</script></p>\n",
+   "rendered": "<p>SENS Luxury Homes es un desarrollo de lujo de ATV Arquitectos (marca SENS) que ocupa una manzana completa entre Juan B. Justo, Niceto Vega, Soler, Godoy Cruz y Nicaragua, sobre antiguos terrenos ferroviarios en el límite Palermo Hollywood/Soho. Es de escala mayor (inversión reportada en ~USD 130 millones), con 95 unidades exclusivamente grandes (3 a 5 ambientes y triplex, de 118 a 580 m²), 26 penthouses, parque central, certificaciones LEED y FITWEL, y curadurías de diseño (Li Edelkoort) y gastronomía (Germán Martitegui).</p><p>No hay precio total publicado: tanto en Soldati como en Ocampo todas las unidades figuran como 'Consultar'. La única referencia numérica es de prensa (~USD 3.880/m² en pozo); a ese valor, incluso la unidad más chica (118 m²) implicaría un ticket cercano al medio millón de dólares, confirmando que es producto del segmento más premium.</p><p>Verificá: el precio efectivo por unidad y el esquema de financiación (no publicados), el avance de obra frente a la entrega estimada de Jul 2026, y la estructura legal. Al tratarse de tickets muy altos y superficies XXL, el respaldo del desarrollador, el fideicomiso y las certificaciones deben validarse con documentación.</p>",
    "protected": false
   },
   "excerpt": {
@@ -13979,17 +14400,20 @@
    "pozo-barrio-palermo"
   ],
   "acf": {
-   "desarrolladora": "ATV Arquitectos",
-   "precio_m2": 4000,
+   "desarrolladora": "ATV Arquitectos (marca SENS; com. Soldati / Ocampo)",
+   "precio_m2": 3880,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
-   "fecha_entrega": "20270801",
-   "avance_obra": "",
+   "fecha_entrega": "Jul 2026",
+   "avance_obra": "En construcción",
    "tipologias": [
     "3_ambientes",
     "4_mas"
    ],
-   "comparable_terminado": 3893
+   "comparable_terminado": 3893,
+   "moneda": "USD",
+   "amenities": "Piscina descubierta templada de 25 m + playa de agua, piscina interior de 17 m, spa completo, gimnasio con yoga, SUM, oficinas privadas y sala de reuniones, biblioteca, áreas para niños, plaza/parque central, cocheras con carga eléctrica, bicicletero. Certificaciones LEED y FITWEL",
+   "direccion": "Godoy Cruz 2100/2200, Palermo Hollywood"
   },
   "_links": {
    "self": [
