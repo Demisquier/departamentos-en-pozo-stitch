@@ -29,7 +29,7 @@ export default function BarrioView({
         {/* Header estilo hub + chip de filtro: la página de barrio se siente el mismo
             hub con un filtro aplicado, fácil de volver a "todas". */}
         {!contenidoTieneH1 && (
-          <h1 className="font-headline-md text-[1.9rem] md:text-[2.5rem] leading-tight text-primary mb-4">
+          <h1 className="text-[34px] leading-[1.2] text-primary mb-4">
             Desarrolladoras en {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
           </h1>
         )}

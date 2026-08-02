@@ -1,9 +1,20 @@
 import { notFound } from "next/navigation";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, getDesarrolladoras } from "../../lib/wp";
-import { BARRIO_CPT } from "../../lib/barrios";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, getDesarrolladoras, getInmobiliarias, SITE } from "../../lib/wp";
+import { BARRIO_CPT, ZONA_INMO_LABEL } from "../../lib/barrios";
 import PostView from "../_views/PostView";
 import BarrioView from "../_views/BarrioView";
 import PageView from "../_views/PageView";
+import InmobiliariasBarrioView from "../_views/InmobiliariasBarrioView";
+
+// Zonas con ≥3 inmobiliarias → páginas /mejores-inmobiliarias-en-{barrio}/ (mismo patrón que devs).
+async function inmoBarrioSlugs() {
+  try {
+    const inmo = await getInmobiliarias();
+    const count = {};
+    for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) count[k] = (count[k] || 0) + 1;
+    return Object.keys(count).filter((k) => count[k] >= 3 && ZONA_INMO_LABEL[k]).map((k) => `mejores-inmobiliarias-en-${k}`);
+  } catch { return []; }
+}
 
 export const dynamicParams = !process.env.EXPORT;
 // Revalidación ISR: las páginas servidas por este route (barrios, posts, páginas WP)
@@ -32,10 +43,11 @@ const EXPLICIT = new Set([
 
 // Pre-genera todas las páginas (barrios y otras) + posts que viven en la raíz (paridad con WordPress)
 export async function generateStaticParams() {
-  const [pages, posts] = await Promise.all([getAllPages(), getPosts(100)]);
+  const [pages, posts, inmoSlugs] = await Promise.all([getAllPages(), getPosts(100), inmoBarrioSlugs()]);
   const slugs = new Set();
   for (const p of pages || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);
   for (const p of posts || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);
+  for (const s of inmoSlugs) slugs.add(s);
   return [...slugs].map((slug) => ({ slug }));
 }
 
@@ -48,12 +60,33 @@ async function resolve(slug) {
 }
 
 export async function generateMetadata({ params }) {
+  // Página de inmobiliarias por barrio (/mejores-inmobiliarias-en-{barrio}/).
+  const im = params.slug.match(/^mejores-inmobiliarias-en-(.+)$/);
+  if (im && ZONA_INMO_LABEL[im[1]]) {
+    const label = ZONA_INMO_LABEL[im[1]];
+    return {
+      title: `Mejores inmobiliarias en ${label} 2026 | Departamentos en Pozo`,
+      description: `Directorio de inmobiliarias con actividad en ${label}, CABA, ordenado por matrícula CUCICBA verificable. Análisis independiente, sin ranking pago.`,
+      alternates: { canonical: `${SITE}/${params.slug}/` },
+    };
+  }
   const r = await resolve(params.slug);
   if (!r) return { title: "No encontrado", robots: { index: false, follow: false } };
   return buildMeta(r.node, `/${params.slug}/`, r.type === "post" ? "article" : "website");
 }
 
 export default async function SinglePage({ params }) {
+  // Página de inmobiliarias por barrio: se resuelve ANTES del lookup de página/post
+  // (no existe como página WP; se arma sintética con el directorio filtrado por zona).
+  const im = params.slug.match(/^mejores-inmobiliarias-en-(.+)$/);
+  if (im && ZONA_INMO_LABEL[im[1]]) {
+    const zonaKey = im[1];
+    let inmo = [];
+    try { inmo = await getInmobiliarias(); } catch (e) { inmo = []; }
+    const schema = await getRankMathSchema(`/mejores-inmobiliarias-en-${zonaKey}/`);
+    return <InmobiliariasBarrioView zonaKey={zonaKey} items={inmo} schema={schema} />;
+  }
+
   const r = await resolve(params.slug);
   if (!r) notFound();
   const { node, type } = r;

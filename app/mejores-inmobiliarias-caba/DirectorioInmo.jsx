@@ -1,12 +1,15 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { deaccent } from "../../lib/format";
 import { ZONA_INMO_LABEL as BARRIO_LABEL } from "../../lib/barrios";
 
 // Directorio de inmobiliarias (CPT `inmobiliaria`). Mismo formato de tarjeta rica que
 // el de desarrolladoras. Server-rendered (SEO); buscador + filtros = enhancement client.
-// deaccent vive en lib/format; el mapa de etiquetas de zona (vocabulario propio de las
-// inmobiliarias) es ZONA_INMO_LABEL en lib/barrios.
+// Props nuevas (misma lógica que DirectorioDevs):
+//   - zonaFija: cuando la página es por barrio (/mejores-inmobiliarias-en-{barrio}/),
+//     pre-filtra a esa zona y oculta los chips (el H1 de la página ya dice el barrio).
+//   - chipsComoLinks: en el hub, los chips de zona son links a la página del barrio.
 
 function Card({ d }) {
   const zonas = (d.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -50,36 +53,45 @@ function Card({ d }) {
   );
 }
 
-export default function DirectorioInmo({ items = [] }) {
+export default function DirectorioInmo({ items = [], zonaFija = "", chipsComoLinks = false }) {
   const [q, setQ] = useState("");
   const [zona, setZona] = useState("");
   const [soloMat, setSoloMat] = useState(false);
 
+  // Base: en página por barrio pre-filtramos a la zona fija; en el hub, todas.
+  const base = useMemo(
+    () => (zonaFija ? items.filter((d) => deaccent(d.zonasKey || "").split(/\s+/).includes(zonaFija)) : items),
+    [items, zonaFija]
+  );
+
   const zonas = useMemo(() => {
     const count = {};
-    items.forEach((d) => {
+    base.forEach((d) => {
       (d.zonasKey || "").split(/\s+/).filter(Boolean).forEach((k) => { count[k] = (count[k] || 0) + 1; });
     });
     return Object.entries(count).filter(([k, n]) => n >= 3 && BARRIO_LABEL[k]).sort((a, b) => b[1] - a[1]).map(([k]) => k);
-  }, [items]);
+  }, [base]);
 
   const filtered = useMemo(() => {
     const nq = deaccent(q.trim());
-    return items.filter((d) => {
+    return base.filter((d) => {
       if (soloMat && !d.badge) return false;
       if (zona && !deaccent(d.zonasKey || "").split(/\s+/).includes(zona)) return false;
       if (!nq) return true;
       return deaccent(d.nombre + " " + d.zonas + " " + d.espec).includes(nq);
     });
-  }, [items, q, zona, soloMat]);
+  }, [base, q, zona, soloMat]);
 
-  const totalMat = items.filter((d) => d.badge).length;
+  const totalMat = base.filter((d) => d.badge).length;
+  const tituloZona = zonaFija ? (BARRIO_LABEL[zonaFija] || zonaFija) : null;
 
   return (
     <section id="directorio" className="my-12">
-      <h2 className="font-headline-sm text-headline-sm text-primary mb-1">Directorio de inmobiliarias en Capital Federal</h2>
+      <h2 className="font-headline-sm text-headline-sm text-primary mb-1">
+        {tituloZona ? `Inmobiliarias en ${tituloZona}` : "Directorio de inmobiliarias en Capital Federal"}
+      </h2>
       <p className="text-on-surface-variant mb-6">
-        {items.length} inmobiliarias relevadas. Las {totalMat} con matrícula CUCICBA verificable aparecen primero. Ordenado por criterios comprobables, no por opinión.
+        {base.length} inmobiliarias{tituloZona ? ` con actividad en ${tituloZona}` : " relevadas"}. Las {totalMat} con matrícula CUCICBA verificable aparecen primero. Ordenado por criterios comprobables, no por opinión.
       </p>
 
       <div className="flex flex-col gap-3 mb-6">
@@ -91,14 +103,24 @@ export default function DirectorioInmo({ items = [] }) {
             {soloMat ? "✓ Con matrícula" : "Con matrícula verificable"}
           </button>
         </div>
-        {zonas.length > 0 && (
+        {/* Chips de zona: en página por barrio NO se muestran (ya hay filtro fijo). En el
+            hub, si chipsComoLinks, son links a la página del barrio; si no, filtran client. */}
+        {!zonaFija && zonas.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setZona("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todas</button>
+            {!chipsComoLinks && (
+              <button type="button" onClick={() => setZona("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todas</button>
+            )}
             {zonas.map((b) => (
-              <button key={b} type="button" onClick={() => setZona(zona === b ? "" : b)}
-                className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
-                {BARRIO_LABEL[b] || b}
-              </button>
+              chipsComoLinks ? (
+                <Link key={b} href={`/mejores-inmobiliarias-en-${b}/`} className="px-3 py-1.5 rounded-full text-[13px] border border-outline-variant text-primary hover:border-secondary transition-colors">
+                  {BARRIO_LABEL[b] || b}
+                </Link>
+              ) : (
+                <button key={b} type="button" onClick={() => setZona(zona === b ? "" : b)}
+                  className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === b ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
+                  {BARRIO_LABEL[b] || b}
+                </button>
+              )
             ))}
           </div>
         )}

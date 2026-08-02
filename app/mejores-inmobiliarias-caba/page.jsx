@@ -53,7 +53,7 @@ export default async function InmobiliariasPage() {
         {html ? (
           <>
             <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: before }} />
-            {useCpt && <DirectorioInmo items={items} />}
+            {useCpt && <DirectorioInmo items={items} chipsComoLinks />}
             {after && <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: after }} />}
           </>
         ) : (
