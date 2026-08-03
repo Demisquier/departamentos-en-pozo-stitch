@@ -1,8 +1,17 @@
-import { getPageBySlug, getRankMathSchema, getDesarrolladoras, buildMeta } from "../../lib/wp";
+import { getPageBySlug, getRankMathSchema, getDesarrolladoras, buildMeta, SITE } from "../../lib/wp";
 import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+
+// FAQ del hub para el FAQPage schema (RankMath no detecta las <h3> del contenido WP).
+const HUB_FAQ = [
+  ["¿Cuáles son las mejores desarrolladoras de Buenos Aires?", "No existe un ranking objetivo porque no hay datos públicos de operaciones ni satisfacción. Lo verificable es la trayectoria (obras entregadas), la estructura legal del proyecto (fideicomiso al costo, precio cerrado) y el cumplimiento de plazos. Este directorio ordena por criterios comprobables, no por opinión ni pago."],
+  ["¿Qué es un fideicomiso al costo?", "Es la estructura legal más común en el pozo argentino: el comprador financia la construcción y paga el costo real de la obra más honorarios, con las cuotas en pesos ajustadas por un índice de la construcción (CAC). Traslada al comprador el riesgo de costo, a cambio de un precio de entrada menor."],
+  ["¿Por qué la desarrolladora importa más que la inmobiliaria al comprar en pozo?", "Porque cuando comprás algo que todavía no existe, quien responde por la entrega en fecha, la calidad y la estructura legal es la desarrolladora, no el intermediario que te muestra la unidad. Su trayectoria es el principal mitigante del riesgo de entrega."],
+  ["¿Cómo evaluar una desarrolladora antes de invertir?", "Revisá obras entregadas y cumplimiento de plazos, el tipo de fideicomiso y quién es el fiduciario, el avance de obra real, y el precio por m² frente al usado terminado de la zona. Pedí el boleto modelo y la carpeta de ventas."],
+  ["¿Cobran por aparecer en este directorio?", "No. No cobramos por aparecer, no vendemos posiciones ni recibimos comisión por derivar consultas. Es un directorio de análisis independiente."],
+];
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -11,7 +20,13 @@ export const revalidate = 600;
 // de la página WP + canonical, igual que el resto del sitio.
 export async function generateMetadata() {
   const page = await getPageBySlug("desarrolladoras-inmobiliarias-en-capital-federal");
-  return buildMeta(page, "/desarrolladoras-inmobiliarias-en-capital-federal/", "website");
+  const m = buildMeta(page, "/desarrolladoras-inmobiliarias-en-capital-federal/", "website");
+  // Meta description propia (antes se derivaba del contenido).
+  return {
+    ...m,
+    description:
+      "Directorio de las mejores desarrolladoras inmobiliarias de Buenos Aires 2026: desarrolladoras con obra en pozo por barrio, trayectoria, estructura de fideicomiso y proyecto insignia. Análisis independiente, sin ranking pago.",
+  };
 }
 
 // Hub de desarrolladoras. El contenido editorial (intro, tabla, checklist, FAQ, recursos)
@@ -36,6 +51,29 @@ export default async function HubDesarrolladorasPage() {
     devs = [];
   }
 
+  // Schema estructurado propio (el hub no traía ItemList/FAQ/Breadcrumb).
+  const extraSchema = [
+    {
+      "@context": "https://schema.org", "@type": "ItemList", name: "Mejores desarrolladoras inmobiliarias en Buenos Aires",
+      numberOfItems: devs.length,
+      itemListElement: devs.map((d, i) => ({
+        "@type": "ListItem", position: i + 1,
+        item: { "@type": "Organization", name: d.nombre, areaServed: "Ciudad Autónoma de Buenos Aires", ...(d.web ? { url: d.web.startsWith("http") ? d.web : `https://${d.web}` } : {}) },
+      })),
+    },
+    {
+      "@context": "https://schema.org", "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
+        { "@type": "ListItem", position: 2, name: "Desarrolladoras en CABA", item: `${SITE}/desarrolladoras-inmobiliarias-en-capital-federal/` },
+      ],
+    },
+    {
+      "@context": "https://schema.org", "@type": "FAQPage",
+      mainEntity: HUB_FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+    },
+  ];
+
   const html = page?.content?.rendered || "";
   // Si el contenido WP tiene el marcador Y hay datos en el CPT, partimos y montamos el
   // directorio nuevo en el medio. Si no, renderizamos el contenido completo (fallback
@@ -45,7 +83,7 @@ export default async function HubDesarrolladorasPage() {
 
   return (
     <>
-      <JsonLd data={rmSchema} />
+      <JsonLd data={[...rmSchema, ...extraSchema]} />
 
       <Container as="main" className="py-10 md:py-14">
         {html ? (

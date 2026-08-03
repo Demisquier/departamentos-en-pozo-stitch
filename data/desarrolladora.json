@@ -66,28 +66,6 @@
   }
  },
  {
-  "id": 10066,
-  "slug": "gpl-real-estate",
-  "title": {
-   "rendered": "GPL Real Estate"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://gpl.com.ar/",
-   "dev_desc": "Boutique inversor.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10065,
   "slug": "trentino-cantilo",
   "title": {
@@ -97,28 +75,6 @@
    "_acf_changed": false,
    "dev_web": "https://trentinocantilo.com/",
    "dev_desc": "Desarrollos residenciales.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10064,
-  "slug": "vialia-argentina",
-  "title": {
-   "rendered": "Vialia Argentina"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://vialia.com.ar/",
-   "dev_desc": "Real estate residencial.",
    "dev_iniciales": "",
    "dev_badge": "",
    "dev_anios": "",
@@ -207,28 +163,6 @@
    "_acf_changed": false,
    "dev_web": "https://bestani.com.ar/",
    "dev_desc": "Desarrollos del NOA. (Tucumán).",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10059,
-  "slug": "aramendia",
-  "title": {
-   "rendered": "Aramendía"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://aramendia.com.ar/",
-   "dev_desc": "Real estate residencial. (CABA).",
    "dev_iniciales": "",
    "dev_badge": "",
    "dev_anios": "",
@@ -770,28 +704,6 @@
   }
  },
  {
-  "id": 10034,
-  "slug": "kuok-group-argentina",
-  "title": {
-   "rendered": "Kuok Group Argentina"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://kuokgroup.com/",
-   "dev_desc": "Real estate institucional internacional.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10033,
   "slug": "mosaico-real-estate",
   "title": {
@@ -999,72 +911,6 @@
    "_acf_changed": false,
    "dev_web": "https://sieder.com.ar/",
    "dev_desc": "Desarrollos en CABA.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10023,
-  "slug": "kalpa-group",
-  "title": {
-   "rendered": "Kalpa Group"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://kalpagroup.com/",
-   "dev_desc": "Real estate institucional Latam.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10022,
-  "slug": "vodanovich",
-  "title": {
-   "rendered": "Vodanovich"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://vodanovich.com.ar/",
-   "dev_desc": "Construcción y desarrollo.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10021,
-  "slug": "mirgor-real-estate",
-  "title": {
-   "rendered": "Mirgor Real Estate"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://mirgor.com.ar/",
-   "dev_desc": "Diversificación industrial al real estate.",
    "dev_iniciales": "",
    "dev_badge": "",
    "dev_anios": "",
