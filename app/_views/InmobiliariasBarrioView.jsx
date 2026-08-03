@@ -5,16 +5,31 @@
 import Link from "next/link";
 import DirectorioInmo from "../mejores-inmobiliarias-caba/DirectorioInmo";
 import { ZONA_INMO_LABEL } from "../../lib/barrios";
+import { INMO_BARRIO_INTRO } from "../../lib/inmoBarrioIntros";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
 
 export default function InmobiliariasBarrioView({ zonaKey, items, schema }) {
   const label = ZONA_INMO_LABEL[zonaKey] || zonaKey;
+  const intro = INMO_BARRIO_INTRO[zonaKey];
   return (
     <article>
       <JsonLd data={schema} />
       <Container as="main" className="py-10 md:py-14">
+        {/* Breadcrumb (UX + refuerza el BreadcrumbList del schema) */}
+        <nav aria-label="Ruta" className="text-[13px] text-on-surface-variant mb-4 flex flex-wrap items-center gap-1.5">
+          <Link href="/" className="hover:text-secondary">Inicio</Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/mejores-inmobiliarias-caba/" className="hover:text-secondary">Inmobiliarias CABA</Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-primary">{label}</span>
+        </nav>
+
         <h1 className="text-[34px] leading-[1.2] text-primary mb-4">Inmobiliarias en {label}</h1>
+
+        {intro && (
+          <div className="wp-content prose max-w-none text-body-md text-on-surface-variant mb-6" dangerouslySetInnerHTML={{ __html: intro }} />
+        )}
 
         <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-outline-variant">
           <span className="text-[12px] font-label-caps uppercase tracking-wider text-on-surface-variant">Filtrando por barrio</span>

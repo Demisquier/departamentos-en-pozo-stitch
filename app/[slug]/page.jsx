@@ -81,9 +81,30 @@ export default async function SinglePage({ params }) {
   const im = params.slug.match(/^mejores-inmobiliarias-en-(.+)$/);
   if (im && ZONA_INMO_LABEL[im[1]]) {
     const zonaKey = im[1];
+    const label = ZONA_INMO_LABEL[zonaKey];
     let inmo = [];
     try { inmo = await getInmobiliarias(); } catch (e) { inmo = []; }
-    const schema = await getRankMathSchema(`/mejores-inmobiliarias-en-${zonaKey}/`);
+    const enZona = inmo.filter((d) => String(d.zonasKey || "").split(/\s+/).includes(zonaKey));
+    const rm = await getRankMathSchema(`/mejores-inmobiliarias-en-${zonaKey}/`);
+    // Schema propio de la página de barrio: BreadcrumbList + ItemList de las inmobiliarias de la zona.
+    const schema = [
+      ...rm,
+      {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Inmobiliarias en CABA", item: `${SITE}/mejores-inmobiliarias-caba/` },
+          { "@type": "ListItem", position: 3, name: `Inmobiliarias en ${label}`, item: `${SITE}/mejores-inmobiliarias-en-${zonaKey}/` },
+        ],
+      },
+      {
+        "@context": "https://schema.org", "@type": "ItemList", name: `Inmobiliarias en ${label}`,
+        itemListElement: enZona.map((d, i) => ({
+          "@type": "ListItem", position: i + 1,
+          item: { "@type": "RealEstateAgent", name: d.nombre, areaServed: label, ...(d.web ? { url: d.web.startsWith("http") ? d.web : `https://${d.web}` } : {}) },
+        })),
+      },
+    ];
     return <InmobiliariasBarrioView zonaKey={zonaKey} items={inmo} schema={schema} />;
   }
 
