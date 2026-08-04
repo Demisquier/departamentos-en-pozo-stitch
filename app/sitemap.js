@@ -1,6 +1,7 @@
 import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, getInmobiliarias, rel } from "../lib/wp";
 import { SITE as BASE } from "../lib/constants";
-import { ZONA_INMO_LABEL } from "../lib/barrios";
+import { ZONA_INMO_LABEL, BARRIO_CATALOGO, matchBarrioCatalogo } from "../lib/barrios";
+import { mapDesarrollos } from "../lib/catalogo";
 
 /* Sitemap dinámico: mantiene TODAS las URLs indexadas (preservación SEO).
  * Resiliente: si WP no responde, al menos devuelve las rutas fijas. */
@@ -17,6 +18,9 @@ export default async function sitemap() {
     const zonaCount = {};
     for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) zonaCount[k] = (zonaCount[k] || 0) + 1;
     for (const k of Object.keys(zonaCount)) if (zonaCount[k] >= 3 && ZONA_INMO_LABEL[k]) out.push({ url: BASE + `/mejores-inmobiliarias-en-${k}/`, lastModified: new Date() });
+    // Landings de catálogo por barrio (/departamentos-en-pozo-en-{barrio}/): ≥3 proyectos.
+    const mappedCat = mapDesarrollos(desa || []);
+    for (const k of Object.keys(BARRIO_CATALOGO)) if (mappedCat.filter((i) => matchBarrioCatalogo(i.barrio, k)).length >= 3) out.push({ url: BASE + `/departamentos-en-pozo-en-${k}/`, lastModified: new Date() });
     for (const p of pages || []) out.push({ url: BASE + rel(p.link), lastModified: new Date() });
     for (const p of posts || []) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
