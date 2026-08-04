@@ -78,7 +78,7 @@ function MapaListado({ items }) {
 }
 
 // item: { slug, nombre, barrio, direccion, precio, precioLabel, ambientes, ambientesNums, entrega, desarrolladora, etapa, imagen, lat, lng }
-export default function CatalogoFiltros({ items }) {
+export default function CatalogoFiltros({ items, barrioFijo = null }) {
   const [barrio, setBarrio] = useState('');
   const [amb, setAmb] = useState('');
   const [precio, setPrecio] = useState('todos');
@@ -143,26 +143,31 @@ export default function CatalogoFiltros({ items }) {
     <>
       <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="relative">
-            <button
-              onClick={() => setBarrioOpen((o) => !o)}
-              className={`flex items-center gap-2 px-3.5 py-2 border rounded-full text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
-            >
-              <span className="material-symbols-outlined text-[16px]">location_on</span>
-              <span>{barrio || 'Barrio'}</span>
-              <span className="material-symbols-outlined text-[16px]">expand_more</span>
-            </button>
-            {barrioOpen && (
-              <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
-                <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-                {barrios.map((b) => (
-                  <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
-                ))}
+          {/* Chip de barrio: se oculta en las landings por barrio (items ya pre-filtrados). */}
+          {!barrioFijo && (
+            <>
+              <div className="relative">
+                <button
+                  onClick={() => setBarrioOpen((o) => !o)}
+                  className={`flex items-center gap-2 px-3.5 py-2 border rounded-full text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
+                >
+                  <span className="material-symbols-outlined text-[16px]">location_on</span>
+                  <span>{barrio || 'Barrio'}</span>
+                  <span className="material-symbols-outlined text-[16px]">expand_more</span>
+                </button>
+                {barrioOpen && (
+                  <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
+                    <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
+                    {barrios.map((b) => (
+                      <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
+              <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
+            </>
+          )}
           {['1', '2', '3', '4+'].map((a) => (
             <button key={a} className={chip(amb === a)} onClick={() => setAmb(amb === a ? '' : a)}>{a} amb</button>
           ))}
