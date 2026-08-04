@@ -1,0 +1,19 @@
+{
+ "_meta": {
+  "descripcion": "Precio USD/m2 de deptos usados/terminados por barrio CABA. Referencia para el campo comparable_terminado de las fichas y el calculo de brecha pozo-vs-usado.",
+  "actualizado": "2026-08",
+  "advertencia": "Mudafy = blend oferta+cierre (tiende a estar por debajo del valor de oferta). Zonaprop/GCBA = oferta (publicacion), mas alto. Para la brecha usar SIEMPRE misma naturaleza: como los precios en pozo del sitio son de oferta, comparar contra dato de OFERTA (Zonaprop/GCBA), NO contra el blend de Mudafy (inflaria la brecha). Los comparable_terminado actuales de las fichas ya son tipo oferta; NO se pisaron con este dato."
+ },
+ "barrios": [
+  {"barrio":"Palermo","usd_m2_blend_mudafy":2631,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Puerto Madero","usd_m2_blend_mudafy":4681,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Belgrano","usd_m2_blend_mudafy":2526,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Nunez","usd_m2_blend_mudafy":2569,"usd_m2_oferta_zonaprop":3403,"periodo":"jul-2026","fuente":"Mudafy / Zonaprop","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Caballito","usd_m2_blend_mudafy":1952,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Villa Urquiza","usd_m2_blend_mudafy":2212,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Coghlan","usd_m2_blend_mudafy":1956,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"Colegiales","usd_m2_blend_mudafy":2334,"periodo":"jul-2026","fuente":"Mudafy","url":"https://mudafy.com.ar/d/valor-metro-cuadrado-en-caba-por-barrio"},
+  {"barrio":"CABA promedio","usd_m2_oferta_zonaprop":2467,"periodo":"jun-2026","fuente":"Zonaprop Index","url":"https://www.zonaprop.com.ar/blog/zpindex/"}
+ ],
+ "fuente_oficial_pendiente": "GCBA Estadistica y Censos (usados por barrio, por ambientes): https://www.estadisticaciudad.gob.ar/eyc/?p=157955 - bajar XLS/CSV para valores de oferta oficiales por barrio"
+}

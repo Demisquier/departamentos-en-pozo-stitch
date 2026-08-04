@@ -198,28 +198,6 @@
   }
  },
  {
-  "id": 10057,
-  "slug": "lartirigoyen-y-cia",
-  "title": {
-   "rendered": "Lartirigoyen y Cia"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://lartirigoyen.com.ar/",
-   "dev_desc": "Construcción y real estate.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10056,
   "slug": "aldrey-iglesias-inmobiliaria",
   "title": {
@@ -396,28 +374,6 @@
   }
  },
  {
-  "id": 10048,
-  "slug": "lartirigoyen-hijos",
-  "title": {
-   "rendered": "Lartirigoyen Hijos"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://lartirigoyen.com/",
-   "dev_desc": "Construcción tradicional. (CABA).",
-   "dev_iniciales": "",
-   "dev_badge": "Grupo familiar",
-   "dev_anios": "Desde 1986 · +35 años",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10047,
   "slug": "servente",
   "title": {
@@ -572,28 +528,6 @@
   }
  },
  {
-  "id": 10040,
-  "slug": "vincent-real-estate",
-  "title": {
-   "rendered": "Vincent Real Estate"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://vincentre.com/",
-   "dev_desc": "Boutique residencial.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10039,
   "slug": "toribio-achaval",
   "title": {
@@ -647,28 +581,6 @@
    "_acf_changed": false,
    "dev_web": "https://sycsa.com.ar/",
    "dev_desc": "Construcción y desarrollo.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10036,
-  "slug": "skye-capital",
-  "title": {
-   "rendered": "Skye Capital"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://skyecapital.com/",
-   "dev_desc": "Inversión real estate.",
    "dev_iniciales": "",
    "dev_badge": "",
    "dev_anios": "",

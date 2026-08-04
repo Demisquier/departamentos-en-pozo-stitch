@@ -41,7 +41,7 @@
   ],
   "acf": {
    "desarrolladora": "Situar (com. RE/MAX)",
-   "precio_m2": "",
+   "precio_m2": 2486,
    "anticipo": "50% del valor",
    "esquema_cuotas": "Anticipo: 50% del valor · Cuotas: 20 cuotas mensuales · Posesión: Saldo a la entrega (estimada Oct 2027)",
    "fecha_entrega": "Oct 2027",
@@ -69,7 +69,8 @@
      "etapa": "Posesión",
      "detalle": "Saldo a la entrega (estimada Oct 2027)"
     }
-   ]
+   ],
+   "precio_desde": 190000
   },
   "_links": {
    "self": [
@@ -1922,7 +1923,7 @@
   ],
   "acf": {
    "desarrolladora": "Newland",
-   "precio_m2": 2062,
+   "precio_m2": 2339,
    "anticipo": "20% del valor (etapa de lanzamiento)",
    "esquema_cuotas": "Anticipo: 20% del valor (etapa de lanzamiento) · Cuotas: 70% financiado en cuotas · Posesión: 10% a la posesión (estimada Ene 2027)",
    "fecha_entrega": "Ene 2027",
@@ -1945,7 +1946,8 @@
      "etapa": "Posesión",
      "detalle": "10% a la posesión (estimada Ene 2027)"
     }
-   ]
+   ],
+   "precio_desde": 72500
   },
   "_links": {
    "self": [
@@ -2204,7 +2206,7 @@
   ],
   "acf": {
    "desarrolladora": "com. Gimenez Inmuebles / MEL Propiedades",
-   "precio_m2": "",
+   "precio_m2": 2953,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Ene 2028",
@@ -2213,7 +2215,8 @@
    "comparable_terminado": 2470,
    "moneda": "USD",
    "amenities": "Piscina climatizada, solárium, SUM, workspace, Sky Forest, laundry, bicicletero",
-   "direccion": "Andonaegui 2129, Villa Urquiza"
+   "direccion": "Andonaegui 2129, Villa Urquiza",
+   "precio_desde": 180133
   },
   "_links": {
    "self": [
@@ -2773,7 +2776,7 @@
   ],
   "acf": {
    "desarrolladora": "GNV Group",
-   "precio_m2": 5972,
+   "precio_m2": 5175,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "2026",
@@ -2782,7 +2785,8 @@
    "comparable_terminado": 6000,
    "moneda": "USD",
    "amenities": "Lobby, welcome gallery, coworking, salas de reunión, rooftop infinity pool y bar, wellness center, sky gym, solárium, spa, sauna",
-   "direccion": "Camila O'Gorman 430, Dique 1 (Madero Harbour), Puerto Madero"
+   "direccion": "Camila O'Gorman 430, Dique 1 (Madero Harbour), Puerto Madero",
+   "precio_desde": 590000
   },
   "_links": {
    "self": [
@@ -3050,7 +3054,8 @@
    "comparable_terminado": 6000,
    "moneda": "USD",
    "amenities": "Servicios hoteleros 5 estrellas Sofitel (branded residences)",
-   "direccion": "Juana Manso y Trinidad Guevara, Dique 4, Puerto Madero"
+   "direccion": "Juana Manso y Trinidad Guevara, Dique 4, Puerto Madero",
+   "precio_desde": 700000
   },
   "_links": {
    "self": [
@@ -4222,7 +4227,8 @@
    "comparable_terminado": 2150,
    "moneda": "USD",
    "amenities": "+1000 m² de amenities: coworking, gimnasio, SUM, parrillas eléctricas en balcones; dúplex en piso 7 con terraza",
-   "direccion": "Ciudad de la Paz y Vilela, Núñez"
+   "direccion": "Ciudad de la Paz y Vilela, Núñez",
+   "precio_desde": 266010
   },
   "_links": {
    "self": [
@@ -5265,7 +5271,7 @@
   ],
   "acf": {
    "desarrolladora": "com. Interwin",
-   "precio_m2": "",
+   "precio_m2": 4171,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Ago 2028",
@@ -5274,7 +5280,8 @@
    "comparable_terminado": 3350,
    "moneda": "USD",
    "amenities": "Piscina con solárium, rooftop con parrilla, gimnasio, sauna, jacuzzi",
-   "direccion": "Mcal. A. J. de Sucre 2070 esq. Arcos, Belgrano"
+   "direccion": "Mcal. A. J. de Sucre 2070 esq. Arcos, Belgrano",
+   "precio_desde": 95940
   },
   "_links": {
    "self": [
@@ -7744,7 +7751,7 @@
   ],
   "acf": {
    "desarrolladora": "Grupo 8.66 (com. Llamedo Propiedades)",
-   "precio_m2": 3500,
+   "precio_m2": 3994,
    "anticipo": "",
    "esquema_cuotas": "Anticipo + cuotas: Anticipo más cuotas hasta la entrega; financiación adaptada (consultar plan)",
    "fecha_entrega": "20291101",
@@ -7763,7 +7770,8 @@
      "etapa": "Anticipo + cuotas",
      "detalle": "Anticipo más cuotas hasta la entrega; financiación adaptada (consultar plan)"
     }
-   ]
+   ],
+   "precio_desde": 223700
   },
   "_links": {
    "self": [
@@ -9067,7 +9075,7 @@
   ],
   "acf": {
    "desarrolladora": "Azcuy (com. Justevila / Fabián Achával)",
-   "precio_m2": 4853,
+   "precio_m2": 3610,
    "anticipo": "30% de anticipo",
    "esquema_cuotas": "Anticipo: 30% de anticipo · Cuotas: Cuotas hasta la posesión (fideicomiso al costo Azcuy; confirmar moneda/ajuste)",
    "fecha_entrega": "Mar 2029",
@@ -9090,7 +9098,8 @@
      "etapa": "Cuotas",
      "detalle": "Cuotas hasta la posesión (fideicomiso al costo Azcuy; confirmar moneda/ajuste)"
     }
-   ]
+   ],
+   "precio_desde": 346600
   },
   "_links": {
    "self": [
@@ -9742,7 +9751,8 @@
    "comparable_terminado": 3233,
    "moneda": "USD",
    "amenities": "Piscina rooftop, solárium, parrilleros, gimnasio Technogym, spa con sauna, sala de yoga, coworking, SUM, paneles solares, grupo electrógeno, cocheras en 3 subsuelos",
-   "direccion": "Av. Juan B. Alberdi 1536 esq. Achával, Caballito Sur"
+   "direccion": "Av. Juan B. Alberdi 1536 esq. Achával, Caballito Sur",
+   "precio_desde": 390400
   },
   "_links": {
    "self": [
@@ -11736,7 +11746,7 @@
   ],
   "acf": {
    "desarrolladora": "Cubero Rubio",
-   "precio_m2": "",
+   "precio_m2": 4309,
    "anticipo": "",
    "esquema_cuotas": "A consultar con la comercializadora",
    "fecha_entrega": "Abr 2025 (verificar; posible a estrenar)",
@@ -11750,7 +11760,8 @@
    "comparable_terminado": 3893,
    "moneda": "USD",
    "amenities": "Jardín con pileta climatizada, solárium, workspace, SUM/lounge, kids club/playroom, gimnasio, spa con pileta cubierta climatizada, laundry",
-   "direccion": "Honduras 4682 y Malabia 1585, Palermo Soho"
+   "direccion": "Honduras 4682 y Malabia 1585, Palermo Soho",
+   "precio_desde": 150822
   },
   "_links": {
    "self": [
@@ -13382,7 +13393,7 @@
   ],
   "acf": {
    "desarrolladora": "CEK (diseño Estudio Abramzon; com. Toribio Achával / Fabián Achával)",
-   "precio_m2": "",
+   "precio_m2": 3700,
    "anticipo": "Anticipo en USD (montos a confirmar con el broker)",
    "esquema_cuotas": "Lanzamiento: Mínimo anticipo y 30 cuotas · Boleto: Anticipo en USD (montos a confirmar con el broker)",
    "fecha_entrega": "May 2027",
@@ -13405,7 +13416,8 @@
      "etapa": "Boleto",
      "detalle": "Anticipo en USD (montos a confirmar con el broker)"
     }
-   ]
+   ],
+   "precio_desde": 185625
   },
   "_links": {
    "self": [
@@ -13733,7 +13745,7 @@
   ],
   "acf": {
    "desarrolladora": "Grupo Angular (construye 4 Construcciones; com. Fabián Achával / Tiscornia)",
-   "precio_m2": "",
+   "precio_m2": 2813,
    "anticipo": "30% de anticipo al boleto en USD",
    "esquema_cuotas": "Boleto: 30% de anticipo al boleto en USD · Saldo: 70% en 18 o 24 cuotas en pesos ajustadas por CAC",
    "fecha_entrega": "Abr 2027 (obra iniciada oct 2024)",
@@ -13756,7 +13768,8 @@
      "etapa": "Saldo",
      "detalle": "70% en 18 o 24 cuotas en pesos ajustadas por CAC"
     }
-   ]
+   ],
+   "precio_desde": 150000
   },
   "_links": {
    "self": [
@@ -14413,7 +14426,8 @@
    "comparable_terminado": 3893,
    "moneda": "USD",
    "amenities": "Piscina descubierta templada de 25 m + playa de agua, piscina interior de 17 m, spa completo, gimnasio con yoga, SUM, oficinas privadas y sala de reuniones, biblioteca, áreas para niños, plaza/parque central, cocheras con carga eléctrica, bicicletero. Certificaciones LEED y FITWEL",
-   "direccion": "Godoy Cruz 2100/2200, Palermo Hollywood"
+   "direccion": "Godoy Cruz 2100/2200, Palermo Hollywood",
+   "precio_desde": 445000
   },
   "_links": {
    "self": [
