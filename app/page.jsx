@@ -151,6 +151,35 @@ export default async function HomePage() {
         </Container>
       </section>
 
+      {/* Herramientas y directorios */}
+      <section id="herramientas" className="py-16 md:py-20 scroll-mt-24">
+        <Container>
+          <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Herramientas y directorios</h2>
+          <p className="text-on-surface-variant max-w-2xl mx-auto text-center mb-10 text-body-lg">
+            Recursos independientes para decidir con criterio: simulá tu cuota, recibí alertas de lanzamientos y encontrá proveedores verificados.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              ["calculate", "Simulador de cuota CAC", "Proyectá cómo evoluciona tu cuota si ajusta por índice de construcción.", "/simulador-cuota-cac-pozo/"],
+              ["notifications_active", "Alertas de lanzamientos", "Te avisamos por email cuando aparece un proyecto que encaja con tu búsqueda.", "/alertas-de-lanzamientos-en-pozo/"],
+              ["storefront", "Corralones y materiales", "Directorio de corralones, homecenters y fabricantes para tu obra.", "/corralones-y-materiales-de-construccion-en-caba/"],
+              ["domain", "Desarrolladoras en CABA", "Directorio de desarrolladoras con proyectos y track record.", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
+              ["real_estate_agent", "Inmobiliarias en CABA", "Directorio de inmobiliarias con matrícula CUCICBA verificable.", "/mejores-inmobiliarias-caba/"],
+              ["menu_book", "Guías para invertir", "Todo lo que necesitás entender antes de comprar en pozo.", "/novedades/"],
+            ].map(([ic, h, p, href]) => (
+              <Link key={href} href={href} className="group block border border-outline-variant rounded-xl p-6 hover:border-secondary transition-colors">
+                <span className="material-symbols-outlined text-3xl text-link-gold">{ic}</span>
+                <h3 className="font-headline-sm text-[19px] text-primary mt-3 group-hover:text-secondary transition-colors flex items-center gap-2">
+                  {h}
+                  <span className="material-symbols-outlined text-[18px] opacity-60 group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                </h3>
+                <p className="text-on-surface-variant text-body-md mt-1.5 leading-relaxed">{p}</p>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Value Props */}
       <Container as="section" className="py-20 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
