@@ -164,3 +164,26 @@ main h1 {
   background: #f3f4f5;
   font-weight: 600;
 }
+
+/* ── Mobile UX ──────────────────────────────────────────────────────────
+   Tablas: en pantallas chicas se vuelven scrolleables horizontalmente en
+   lugar de romper el layout (afecta las comparativas de los hubs y todas
+   las tablas de las guías). El header sticky compensa con scroll-margin. */
+@media (max-width: 640px) {
+  .wp-content table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .wp-content th,
+  .wp-content td {
+    padding: 8px 12px;
+  }
+  /* Títulos de contenido un punto más chicos para respirar en mobile. */
+  .wp-content h1 { font-size: 28px; }
+  .wp-content h2 { font-size: 24px; margin: 2rem 0 0.75rem; }
+  .wp-content h3 { font-size: 20px; }
+}
