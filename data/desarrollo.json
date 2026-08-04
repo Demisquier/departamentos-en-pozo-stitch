@@ -14707,7 +14707,7 @@
    "rendered": "<p>Le Lis Residence — Palermo Soho. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90001,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -14735,7 +14735,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 123400,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-lelis-residence-57389457.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-lelis-residence-57389457.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/57/38/94/57/720x532/2007012268.jpg"
   },
   "_links": {
    "self": [
@@ -14787,6 +14788,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90001,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/38/94/57/720x532/2007012268.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Le Lis Residence"
+    }
    ]
   }
  },
@@ -14814,7 +14825,7 @@
    "rendered": "<p>Inspira Way — Palermo Soho. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90002,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -14842,7 +14853,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 92736,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-inspira-way-guemes-4700-58163148.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-inspira-way-guemes-4700-58163148.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/16/31/48/720x532/2027278168.jpg"
   },
   "_links": {
    "self": [
@@ -14894,6 +14906,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90002,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/16/31/48/720x532/2027278168.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Inspira Way"
+    }
    ]
   }
  },
@@ -14921,7 +14943,7 @@
    "rendered": "<p>Niceto Vega 5210 — Palermo Soho. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90003,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -14949,7 +14971,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 97686,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-niceto-vega-5210-58342076.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-niceto-vega-5210-58342076.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/34/20/76/720x532/2032169965.jpg"
   },
   "_links": {
    "self": [
@@ -15001,6 +15024,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90003,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/34/20/76/720x532/2032169965.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Niceto Vega 5210"
+    }
    ]
   }
  },
@@ -15028,7 +15061,7 @@
    "rendered": "<p>El Nuevo Portal de Palermo - Casa Araoz — Palermo Soho. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90004,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15056,7 +15089,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 235999,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-el-nuevo-portal-de-palermo-casa-araoz-53027179.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-el-nuevo-portal-de-palermo-casa-araoz-53027179.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/02/71/79/720x532/1897232214.jpg"
   },
   "_links": {
    "self": [
@@ -15108,6 +15142,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90004,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/02/71/79/720x532/1897232214.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "El Nuevo Portal de Palermo - Casa Araoz"
+    }
    ]
   }
  },
@@ -15135,7 +15179,7 @@
    "rendered": "<p>Araoz 2174 — Palermo Soho. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90005,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15163,7 +15207,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 144000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-araoz-2174-54665398.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-araoz-2174-54665398.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/54/66/53/98/720x532/2044458298.jpg"
   },
   "_links": {
    "self": [
@@ -15215,6 +15260,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90005,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/66/53/98/720x532/2044458298.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Araoz 2174"
+    }
    ]
   }
  },
@@ -15242,7 +15297,7 @@
    "rendered": "<p>Charcas 4100 — Palermo Soho. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90006,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15270,7 +15325,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 225200,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-charcas-4100-59339296.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-charcas-4100-59339296.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/33/92/96/720x532/2058463180.jpg"
   },
   "_links": {
    "self": [
@@ -15322,6 +15378,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90006,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/33/92/96/720x532/2058463180.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Charcas 4100"
+    }
    ]
   }
  },
@@ -15349,7 +15415,7 @@
    "rendered": "<p>Zapata 239 — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90007,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15377,7 +15443,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 118400,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-palermo-hollywood--18300866"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-palermo-hollywood--18300866",
+   "render": "https://www.argenprop.com/static-content/66800381/fc05ac65-f573-4691-b1b0-4d6b89e43624.jpg"
   },
   "_links": {
    "self": [
@@ -15429,6 +15496,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90007,
+     "source_url": "https://www.argenprop.com/static-content/66800381/fc05ac65-f573-4691-b1b0-4d6b89e43624.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Zapata 239"
+    }
    ]
   }
  },
@@ -15456,7 +15533,7 @@
    "rendered": "<p>Qube Honduras — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90008,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15484,7 +15561,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 174892,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-qube-honduras-59144863.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-qube-honduras-59144863.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/14/48/63/720x532/2053713390.jpg"
   },
   "_links": {
    "self": [
@@ -15536,6 +15614,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90008,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/14/48/63/720x532/2053713390.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Qube Honduras"
+    }
    ]
   }
  },
@@ -15563,7 +15651,7 @@
    "rendered": "<p>Vibe Bonpland — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90009,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15591,7 +15679,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 139185,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-vibe-bonpland-55229845.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-vibe-bonpland-55229845.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/55/22/98/45/720x532/2003490195.jpg"
   },
   "_links": {
    "self": [
@@ -15643,6 +15732,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90009,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/22/98/45/720x532/2003490195.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Vibe Bonpland"
+    }
    ]
   }
  },
@@ -15670,7 +15769,7 @@
    "rendered": "<p>Dome Suites Residence — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90010,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15698,7 +15797,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 142200,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-dome-suites-residence-en-palermo-55639224.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-dome-suites-residence-en-palermo-55639224.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/55/63/92/24/720x532/1961244739.jpg"
   },
   "_links": {
    "self": [
@@ -15750,6 +15850,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90010,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/63/92/24/720x532/1961244739.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Dome Suites Residence"
+    }
    ]
   }
  },
@@ -15777,7 +15887,7 @@
    "rendered": "<p>More III — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90011,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15805,7 +15915,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 113102,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-more-iii-58045634.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-more-iii-58045634.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/04/56/34/720x532/2023918503.jpg"
   },
   "_links": {
    "self": [
@@ -15857,6 +15968,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90011,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/04/56/34/720x532/2023918503.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "More III"
+    }
    ]
   }
  },
@@ -15884,7 +16005,7 @@
    "rendered": "<p>Feel Palermo — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90012,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -15912,7 +16033,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 115800,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-feel-palermo-59619800.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-feel-palermo-59619800.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/00/720x532/2065618649.jpg"
   },
   "_links": {
    "self": [
@@ -15964,6 +16086,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90012,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/00/720x532/2065618649.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Feel Palermo"
+    }
    ]
   }
  },
@@ -15991,7 +16123,7 @@
    "rendered": "<p>Her Humboldt 1344 — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90013,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16019,7 +16151,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 230476,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-her-humboldt-1344-56881180.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-her-humboldt-1344-56881180.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/88/11/80/720x532/1993006652.jpg"
   },
   "_links": {
    "self": [
@@ -16071,6 +16204,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90013,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/88/11/80/720x532/1993006652.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Her Humboldt 1344"
+    }
    ]
   }
  },
@@ -16098,7 +16241,7 @@
    "rendered": "<p>Row Arevalo — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90014,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16126,7 +16269,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 148959,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememhoin-row-arevalo-56416175.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememhoin-row-arevalo-56416175.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/41/61/75/720x532/2042083839.jpg"
   },
   "_links": {
    "self": [
@@ -16178,6 +16322,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90014,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/41/61/75/720x532/2042083839.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Row Arevalo"
+    }
    ]
   }
  },
@@ -16205,7 +16359,7 @@
    "rendered": "<p>Crza 1425 — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90015,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16233,7 +16387,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 107330,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-crza-1425-53098053.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-crza-1425-53098053.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/09/80/53/720x532/1898711071.jpg"
   },
   "_links": {
    "self": [
@@ -16285,6 +16440,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90015,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/09/80/53/720x532/1898711071.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Crza 1425"
+    }
    ]
   }
  },
@@ -16312,7 +16477,7 @@
    "rendered": "<p>Kubus Bonpland — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90016,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16340,7 +16505,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 70000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-kubus-bonpland-59657138.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-kubus-bonpland-59657138.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/38/720x532/2066524041.jpg"
   },
   "_links": {
    "self": [
@@ -16392,6 +16558,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90016,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/38/720x532/2066524041.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Kubus Bonpland"
+    }
    ]
   }
  },
@@ -16419,7 +16595,7 @@
    "rendered": "<p>Sens Futura — Palermo Hollywood. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90017,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16447,7 +16623,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-sens-futura-57803382.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-sens-futura-57803382.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/57/80/33/82/720x532/2049716936.jpg"
   },
   "_links": {
    "self": [
@@ -16499,6 +16676,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90017,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/80/33/82/720x532/2049716936.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Sens Futura"
+    }
    ]
   }
  },
@@ -16526,7 +16713,7 @@
    "rendered": "<p>Yud Cervino — Palermo Botanico. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90018,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16554,7 +16741,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 173128,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-yud-cervino-53685749.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-yud-cervino-53685749.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/68/57/49/720x532/1918365510.jpg"
   },
   "_links": {
    "self": [
@@ -16606,6 +16794,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90018,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/68/57/49/720x532/1918365510.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Yud Cervino"
+    }
    ]
   }
  },
@@ -16633,7 +16831,7 @@
    "rendered": "<p>Goyena Casas Urbanas — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90019,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16661,7 +16859,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 222566,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-goyena-casas-urbanas-56318537.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-goyena-casas-urbanas-56318537.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/31/85/37/720x532/2050812654.jpg"
   },
   "_links": {
    "self": [
@@ -16713,6 +16912,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90019,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/31/85/37/720x532/2050812654.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Goyena Casas Urbanas"
+    }
    ]
   }
  },
@@ -16740,7 +16949,7 @@
    "rendered": "<p>Caballito Plaza — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90020,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16768,7 +16977,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 101000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-caballito-plaza-56275851.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-caballito-plaza-56275851.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/27/58/51/720x532/2051123853.jpg"
   },
   "_links": {
    "self": [
@@ -16820,6 +17030,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90020,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/27/58/51/720x532/2051123853.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Caballito Plaza"
+    }
    ]
   }
  },
@@ -16847,7 +17067,7 @@
    "rendered": "<p>Aurian — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90021,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16875,7 +17095,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 165800,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-aurian-donato-alvarez-53532950.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-aurian-donato-alvarez-53532950.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/53/29/50/720x532/2051310422.jpg"
   },
   "_links": {
    "self": [
@@ -16927,6 +17148,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90021,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/53/29/50/720x532/2051310422.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Aurian"
+    }
    ]
   }
  },
@@ -16954,7 +17185,7 @@
    "rendered": "<p>Maiten Thorne 446 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90022,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -16982,7 +17213,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 450000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-maiten-thorne-446-55988889.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-maiten-thorne-446-55988889.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/55/98/88/89/720x532/2051579225.jpg"
   },
   "_links": {
    "self": [
@@ -17034,6 +17266,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90022,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/98/88/89/720x532/2051579225.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Maiten Thorne 446"
+    }
    ]
   }
  },
@@ -17061,7 +17303,7 @@
    "rendered": "<p>Beton Senillosa 869 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90023,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17089,7 +17331,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 260000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-beton-senillosa-869-58975274.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-beton-senillosa-869-58975274.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/97/52/74/720x532/2049273046.jpg"
   },
   "_links": {
    "self": [
@@ -17141,6 +17384,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90023,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/97/52/74/720x532/2049273046.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Beton Senillosa 869"
+    }
    ]
   }
  },
@@ -17168,7 +17421,7 @@
    "rendered": "<p>Senillosa 461 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90024,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17196,7 +17449,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 157000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-senillosa-461-55993034.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-senillosa-461-55993034.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/55/99/30/34/720x532/2045279953.jpg"
   },
   "_links": {
    "self": [
@@ -17248,6 +17502,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90024,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/99/30/34/720x532/2045279953.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Senillosa 461"
+    }
    ]
   }
  },
@@ -17275,7 +17539,7 @@
    "rendered": "<p>Parral 59 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90025,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17303,7 +17567,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 88500,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-parral-59-55839796.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-parral-59-55839796.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/55/83/97/96/720x532/2051276262.jpg"
   },
   "_links": {
    "self": [
@@ -17355,6 +17620,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90025,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/83/97/96/720x532/2051276262.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Parral 59"
+    }
    ]
   }
  },
@@ -17382,7 +17657,7 @@
    "rendered": "<p>Beauchef 766 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90026,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17410,7 +17685,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 67000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-beauchef-766-58181605.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-beauchef-766-58181605.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/18/16/05/720x532/2046028301.jpg"
   },
   "_links": {
    "self": [
@@ -17462,6 +17738,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90026,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/18/16/05/720x532/2046028301.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Beauchef 766"
+    }
    ]
   }
  },
@@ -17596,7 +17882,7 @@
    "rendered": "<p>Vivi Caballito — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90027,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17624,7 +17910,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 106700,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-quito-4277-caballito-capital-federal-58426841.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-quito-4277-caballito-capital-federal-58426841.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/42/68/41/720x532/2034590152.jpg"
   },
   "_links": {
    "self": [
@@ -17676,6 +17963,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90027,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/42/68/41/720x532/2034590152.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Vivi Caballito"
+    }
    ]
   }
  },
@@ -17703,7 +18000,7 @@
    "rendered": "<p>San Ireneo 353 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90028,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17731,7 +18028,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 63500,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-san-ireneo-353-caballito-capital-federal-58800524.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-san-ireneo-353-caballito-capital-federal-58800524.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/80/05/24/720x532/2044760009.jpg"
   },
   "_links": {
    "self": [
@@ -17783,6 +18081,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90028,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/80/05/24/720x532/2044760009.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "San Ireneo 353"
+    }
    ]
   }
  },
@@ -17810,7 +18118,7 @@
    "rendered": "<p>Paysandu 449 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90029,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17838,7 +18146,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 81000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-obra-en-pozo-en-paysandu-y-avellaneda-57445841.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-obra-en-pozo-en-paysandu-y-avellaneda-57445841.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/57/44/58/41/720x532/2052335609.jpg"
   },
   "_links": {
    "self": [
@@ -17890,6 +18199,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90029,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/44/58/41/720x532/2052335609.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Paysandu 449"
+    }
    ]
   }
  },
@@ -17917,7 +18236,7 @@
    "rendered": "<p>Avellaneda 996 — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90030,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -17945,7 +18264,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 103800,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-avellaneda-996-caballito-capital-federal-58429339.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-avellaneda-996-caballito-capital-federal-58429339.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/42/93/39/720x532/2034643221.jpg"
   },
   "_links": {
    "self": [
@@ -17997,6 +18317,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90030,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/42/93/39/720x532/2034643221.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Avellaneda 996"
+    }
    ]
   }
  },
@@ -18880,7 +19210,7 @@
    "rendered": "<p>Urban Cramer — Belgrano. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90031,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18908,7 +19238,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 153000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-urban-cramer-54867471.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-urban-cramer-54867471.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/54/86/74/71/720x532/2051028354.jpg"
   },
   "_links": {
    "self": [
@@ -18960,6 +19291,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90031,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/86/74/71/720x532/2051028354.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Urban Cramer"
+    }
    ]
   }
  },
@@ -18987,7 +19328,7 @@
    "rendered": "<p>Sentire Belgrano II — Belgrano. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90032,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19015,7 +19356,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 92497,
-   "fuente": "https://soldati.com/emprendimiento/sentire-belgrano-ii--9327"
+   "fuente": "https://soldati.com/emprendimiento/sentire-belgrano-ii--9327",
+   "render": "https://d1v2p1s05qqabi.cloudfront.net/25731639/1784752227.jpg"
   },
   "_links": {
    "self": [
@@ -19067,6 +19409,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90032,
+     "source_url": "https://d1v2p1s05qqabi.cloudfront.net/25731639/1784752227.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Sentire Belgrano II"
+    }
    ]
   }
  },
@@ -21555,7 +21907,7 @@
    "rendered": "<p>Grand Atlantida — Puerto Madero. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90033,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21583,7 +21935,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-puerto-madero--14749635"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-puerto-madero--14749635",
+   "render": "https://www.argenprop.com/static-content/53694741/6eabd8bf-dcb0-447d-bfef-1488aa1882a0.jpg"
   },
   "_links": {
    "self": [
@@ -21635,6 +21988,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90033,
+     "source_url": "https://www.argenprop.com/static-content/53694741/6eabd8bf-dcb0-447d-bfef-1488aa1882a0.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Grand Atlantida"
+    }
    ]
   }
  },
@@ -21769,7 +22132,7 @@
    "rendered": "<p>Echeverria 4957 — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90034,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21797,7 +22160,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 83000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--16476546"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--16476546",
+   "render": "https://www.argenprop.com/static-content/64567461/fc0731b1-0704-4ca7-8249-4adc0647cf78.jpg"
   },
   "_links": {
    "self": [
@@ -21849,6 +22213,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90034,
+     "source_url": "https://www.argenprop.com/static-content/64567461/fc0731b1-0704-4ca7-8249-4adc0647cf78.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Echeverria 4957"
+    }
    ]
   }
  },
@@ -21876,7 +22250,7 @@
    "rendered": "<p>Echeverria 4340 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90035,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21904,7 +22278,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--15994519"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--15994519",
+   "render": "https://www.argenprop.com/static-content/91549951/43e19e96-0e83-4cbd-8ecc-598aab05220a.jpg"
   },
   "_links": {
    "self": [
@@ -21956,6 +22331,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90035,
+     "source_url": "https://www.argenprop.com/static-content/91549951/43e19e96-0e83-4cbd-8ecc-598aab05220a.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Echeverria 4340"
+    }
    ]
   }
  },
@@ -21983,7 +22368,7 @@
    "rendered": "<p>Nunez 6150 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90036,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22011,7 +22396,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--18114825"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--18114825",
+   "render": "https://www.argenprop.com/static-content/52841181/97d4614b-5cb7-4316-9f68-5a9954661de2.jpg"
   },
   "_links": {
    "self": [
@@ -22063,6 +22449,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90036,
+     "source_url": "https://www.argenprop.com/static-content/52841181/97d4614b-5cb7-4316-9f68-5a9954661de2.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Nunez 6150"
+    }
    ]
   }
  },
@@ -23267,7 +23663,7 @@
    "rendered": "<p>BEME Colegiales — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90037,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23295,7 +23691,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 175200,
-   "fuente": "https://ljramos.com/emprendimiento/beme-colegiales--8193"
+   "fuente": "https://ljramos.com/emprendimiento/beme-colegiales--8193",
+   "render": "https://d1acdg20u0pmxj.cloudfront.net/entrepreneurships/1e061b3c-427d-4fde-9345-c800dc501f3b/1080xAUTO/dbfae765-f937-4d21-8519-d6bcf61343d9.jpg"
   },
   "_links": {
    "self": [
@@ -23347,6 +23744,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90037,
+     "source_url": "https://d1acdg20u0pmxj.cloudfront.net/entrepreneurships/1e061b3c-427d-4fde-9345-c800dc501f3b/1080xAUTO/dbfae765-f937-4d21-8519-d6bcf61343d9.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "BEME Colegiales"
+    }
    ]
   }
  },
@@ -23374,7 +23781,7 @@
    "rendered": "<p>Aer Zapiola — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90038,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23402,7 +23809,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 182693,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-aer-zapiola-56564216.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-aer-zapiola-56564216.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/80/82/720x532/1994276048.jpg"
   },
   "_links": {
    "self": [
@@ -23454,6 +23862,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90038,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/80/82/720x532/1994276048.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Aer Zapiola"
+    }
    ]
   }
  },
@@ -23481,7 +23899,7 @@
    "rendered": "<p>Cramer Urban — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90039,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23509,7 +23927,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 90000,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/57/74/68/50/720x532/2026406820.jpg"
   },
   "_links": {
    "self": [
@@ -23561,6 +23980,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90039,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/74/68/50/720x532/2026406820.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Cramer Urban"
+    }
    ]
   }
  },
@@ -23588,7 +24017,7 @@
    "rendered": "<p>Ciudad de La Paz 488 — Colegiales. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90040,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23616,7 +24045,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 103000,
-   "fuente": "https://lepore.com.ar/edificio-ciudad-de-la-paz-488-en-colegiales-capital-federal-emprendimiento-640"
+   "fuente": "https://lepore.com.ar/edificio-ciudad-de-la-paz-488-en-colegiales-capital-federal-emprendimiento-640",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/49/28/54/720x532/2036410148.jpg"
   },
   "_links": {
    "self": [
@@ -23668,6 +24098,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90040,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/49/28/54/720x532/2036410148.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Ciudad de La Paz 488"
+    }
    ]
   }
  },
@@ -23695,7 +24135,7 @@
    "rendered": "<p>Pavillon Vista — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90041,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23723,7 +24163,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 104000,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/29/71/75/720x532/2051848428.jpg"
   },
   "_links": {
    "self": [
@@ -23775,6 +24216,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90041,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/29/71/75/720x532/2051848428.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Pavillon Vista"
+    }
    ]
   }
  },
@@ -23802,7 +24253,7 @@
    "rendered": "<p>Alvarez Thomas 892 — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90042,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23830,7 +24281,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 89700,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/91/14/74/720x532/2047670591.jpg"
   },
   "_links": {
    "self": [
@@ -23882,6 +24334,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90042,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/91/14/74/720x532/2047670591.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Alvarez Thomas 892"
+    }
    ]
   }
  },
@@ -24123,7 +24585,7 @@
    "rendered": "<p>Virrey Aviles 2758 — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90043,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24151,7 +24613,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 180000,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/43/68/24/720x532/2037725957.jpg"
   },
   "_links": {
    "self": [
@@ -24203,6 +24666,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90043,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/43/68/24/720x532/2037725957.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Virrey Aviles 2758"
+    }
    ]
   }
  },
@@ -24230,7 +24703,7 @@
    "rendered": "<p>Manuel Ugarte 3612 — Coghlan. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90044,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24258,7 +24731,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 149350,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-manuel-ugarte-3612-59689296.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-manuel-ugarte-3612-59689296.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/68/92/96/720x532/2067305748.jpg"
   },
   "_links": {
    "self": [
@@ -24310,6 +24784,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90044,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/68/92/96/720x532/2067305748.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Manuel Ugarte 3612"
+    }
    ]
   }
  },
@@ -24337,7 +24821,7 @@
    "rendered": "<p>Hills Freire — Coghlan. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90045,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24365,7 +24849,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 68900,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-hills-freire-en-coghlan-capital-59500430.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-hills-freire-en-coghlan-capital-59500430.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/50/04/30/720x532/2062735823.jpg"
   },
   "_links": {
    "self": [
@@ -24417,6 +24902,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90045,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/50/04/30/720x532/2062735823.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Hills Freire"
+    }
    ]
   }
  },
@@ -24444,7 +24939,7 @@
    "rendered": "<p>Congreso 3748 — Coghlan. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90046,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24472,7 +24967,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 79900,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-congreso-3748-59297356.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-congreso-3748-59297356.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/29/73/56/720x532/2057440655.jpg"
   },
   "_links": {
    "self": [
@@ -24524,6 +25020,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90046,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/29/73/56/720x532/2057440655.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Congreso 3748"
+    }
    ]
   }
  },
@@ -24551,7 +25057,7 @@
    "rendered": "<p>Rivera Haus — Coghlan. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90047,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24579,7 +25085,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 109000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-rivera-haus-59089853.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-rivera-haus-59089853.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/53/720x532/2052327495.jpg"
   },
   "_links": {
    "self": [
@@ -24631,6 +25138,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90047,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/53/720x532/2052327495.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Rivera Haus"
+    }
    ]
   }
  },
@@ -24658,7 +25175,7 @@
    "rendered": "<p>Congreso 4000 — Coghlan. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90048,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24686,7 +25203,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 93000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-congreso-4000-58627729.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-congreso-4000-58627729.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/62/77/29/720x532/2040166041.jpg"
   },
   "_links": {
    "self": [
@@ -24738,6 +25256,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90048,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/62/77/29/720x532/2040166041.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Congreso 4000"
+    }
    ]
   }
  },
@@ -24765,7 +25293,7 @@
    "rendered": "<p>E-Diez Coghlan — Coghlan. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90049,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24793,7 +25321,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-e-diez-coghlan-59725874.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-e-diez-coghlan-59725874.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/72/58/74/720x532/2068209075.jpg"
   },
   "_links": {
    "self": [
@@ -24845,6 +25374,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90049,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/72/58/74/720x532/2068209075.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "E-Diez Coghlan"
+    }
    ]
   }
  },
@@ -24872,7 +25411,7 @@
    "rendered": "<p>Feel Pedraza II — Coghlan. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90050,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24900,7 +25439,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 128000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-feel-pedraza-2-58162340.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-feel-pedraza-2-58162340.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/16/23/40/720x532/2067357210.jpg"
   },
   "_links": {
    "self": [
@@ -24952,6 +25492,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90050,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/16/23/40/720x532/2067357210.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Feel Pedraza II"
+    }
    ]
   }
  },
@@ -24979,7 +25529,7 @@
    "rendered": "<p>Palacio Roccatagliata — Coghlan. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 90051,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -25007,7 +25557,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 299664,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-roccatagliatta-56808331.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-roccatagliatta-56808331.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/80/83/31/720x532/1990921797.jpg"
   },
   "_links": {
    "self": [
@@ -25059,6 +25610,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 90051,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/80/83/31/720x532/1990921797.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Palacio Roccatagliata"
+    }
    ]
   }
  },
