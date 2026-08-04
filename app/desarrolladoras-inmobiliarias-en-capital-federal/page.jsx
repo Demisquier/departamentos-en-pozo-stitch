@@ -11,6 +11,11 @@ const HUB_FAQ = [
   ["¿Por qué la desarrolladora importa más que la inmobiliaria al comprar en pozo?", "Porque cuando comprás algo que todavía no existe, quien responde por la entrega en fecha, la calidad y la estructura legal es la desarrolladora, no el intermediario que te muestra la unidad. Su trayectoria es el principal mitigante del riesgo de entrega."],
   ["¿Cómo evaluar una desarrolladora antes de invertir?", "Revisá obras entregadas y cumplimiento de plazos, el tipo de fideicomiso y quién es el fiduciario, el avance de obra real, y el precio por m² frente al usado terminado de la zona. Pedí el boleto modelo y la carpeta de ventas."],
   ["¿Cobran por aparecer en este directorio?", "No. No cobramos por aparecer, no vendemos posiciones ni recibimos comisión por derivar consultas. Es un directorio de análisis independiente."],
+  // AEO: preguntas con el fraseo de asistentes IA (miles de impresiones en GSC, 0 clics).
+  ["¿Qué empresa constructora de departamentos tiene mejor cumplimiento de plazos?", "No existe una única mejor: el cumplimiento se mide caso por caso. Una desarrolladora confiable te muestra obras ya entregadas con la fecha prometida y la fecha real de posesión. Pedí ese historial y priorizá a quien tenga entregas verificables por sobre quien solo promete."],
+  ["¿Cómo sé si una desarrolladora tiene buena reputación?", "Chequeá datos públicos, no autoreseñas: razón social, antigüedad, reclamos en Defensa del Consumidor y opiniones de compradores que ya escrituraron. Visitar una obra habitada de la misma empresa es la señal más fuerte de todas."],
+  ["¿Qué desarrolladora de departamentos conviene en CABA?", "Conviene la que mejor cumple tus criterios verificables: plazos cumplidos, precio por m² razonable para el barrio, fideicomiso claro y obras entregadas. No la más publicitada. Este directorio está ordenado por esos criterios para que compares por tu cuenta."],
+  ["¿Qué tengo que pedir antes de comprar en pozo para reducir el riesgo?", "Pedí la lista de obras entregadas con fechas, el pliego de especificaciones técnicas y el contrato de fideicomiso con fiduciario identificado. Recordá que quien responde por la entrega del pozo es la desarrolladora, no el portal ni el aviso."],
 ];
 
 export const dynamicParams = !process.env.EXPORT;
