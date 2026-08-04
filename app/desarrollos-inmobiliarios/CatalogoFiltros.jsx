@@ -2,6 +2,14 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
+import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
+
+// Barrio (granular, ej. "Palermo Hollywood") -> slug de landing propia, si existe.
+// Palermo Soho/Hollywood/Botánico -> "palermo". Barrios sin landing (Saavedra, Coghlan) -> null.
+function landingSlugForBarrio(label) {
+  for (const slug of Object.keys(BARRIO_CATALOGO)) if (matchBarrioCatalogo(label, slug)) return slug;
+  return null;
+}
 
 // --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
 function MapaListado({ items }) {
@@ -96,7 +104,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   const hydrated = useRef(false);
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
-    if (!barrioFijo && sp.get('barrio')) setBarrio(sp.get('barrio'));
+    // barrio NO es un query param: el filtro de barrio navega a la landing propia.
     if (sp.get('amb')) setAmb(sp.get('amb'));
     if (sp.get('precio')) setPrecio(sp.get('precio'));
     if (sp.get('etapa')) setEtapa(sp.get('etapa'));
@@ -108,7 +116,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   useEffect(() => {
     if (!hydrated.current) return;
     const sp = new URLSearchParams();
-    if (!barrioFijo && barrio) sp.set('barrio', barrio);
     if (amb) sp.set('amb', amb);
     if (precio !== 'todos') sp.set('precio', precio);
     if (etapa) sp.set('etapa', etapa);
@@ -188,9 +195,20 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                 {barrioOpen && (
                   <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
                     <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-                    {barrios.map((b) => (
-                      <button key={b} onClick={() => { setBarrio(b); setBarrioOpen(false); }} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
-                    ))}
+                    {barrios.map((b) => {
+                      // Si el barrio tiene landing propia, el filtro NAVEGA a esa página
+                      // (listado ya filtrado, con su propio "ver todas" para quitarlo).
+                      // Si no la tiene, cae al filtro en página.
+                      const slug = landingSlugForBarrio(b);
+                      const go = () => {
+                        setBarrioOpen(false);
+                        if (slug) window.location.assign(`/departamentos-en-pozo-en-${slug}/`);
+                        else setBarrio(b);
+                      };
+                      return (
+                        <button key={b} onClick={go} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
