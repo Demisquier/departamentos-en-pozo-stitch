@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary-container text-primary-fixed-dim">
       <Container className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
           <div className="md:col-span-1">
             <h3 className="font-headline-md text-white text-2xl mb-3">Departamentos en Pozo</h3>
             <p className="text-on-primary-fixed-variant text-sm leading-relaxed max-w-xs mb-4">
@@ -28,6 +28,13 @@ export default function Footer() {
             ["Inicio", "/"],
             ["Proyectos en pozo", "/desarrollos-inmobiliarios/"],
             ["Desarrolladoras", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
+            ["Inmobiliarias", "/mejores-inmobiliarias-caba/"],
+            ["Corralones y materiales", "/corralones-y-materiales-de-construccion-en-caba/"],
+          ]} />
+
+          <FootCol title="Herramientas" links={[
+            ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],
+            ["Alertas de lanzamientos", "/alertas-de-lanzamientos-en-pozo/"],
           ]} />
 
           {/* Las 9 páginas de barrio, todas. Patrón Zonaprop: el bloque de links de barrio

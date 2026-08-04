@@ -14,6 +14,7 @@ const NAV = [
 const NAV_END = [
   { label: "DESARROLLADORAS", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
   { label: "INMOBILIARIAS", href: "/mejores-inmobiliarias-caba/" },
+  { label: "HERRAMIENTAS", href: "/#herramientas" },
   { label: "GUÍAS", href: "/novedades/" },
   { label: "NOSOTROS", href: "/sobre-nosotros/" },
 ];
