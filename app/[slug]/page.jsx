@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, getDesarrolladoras, getInmobiliarias, SITE } from "../../lib/wp";
-import { BARRIO_CPT, ZONA_INMO_LABEL } from "../../lib/barrios";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, getDesarrolladoras, getInmobiliarias, getDesarrollos, SITE } from "../../lib/wp";
+import { BARRIO_CPT, ZONA_INMO_LABEL, BARRIO_CATALOGO, matchBarrioCatalogo } from "../../lib/barrios";
+import { mapDesarrollos } from "../../lib/catalogo";
+import { CATALOGO_BARRIO_INTRO } from "../../lib/catalogoBarrioIntros";
 import PostView from "../_views/PostView";
 import BarrioView from "../_views/BarrioView";
 import PageView from "../_views/PageView";
 import InmobiliariasBarrioView from "../_views/InmobiliariasBarrioView";
+import CatalogoBarrioView from "../_views/CatalogoBarrioView";
 
 // Zonas con ≥3 inmobiliarias → páginas /mejores-inmobiliarias-en-{barrio}/ (mismo patrón que devs).
 async function inmoBarrioSlugs() {
@@ -13,6 +16,17 @@ async function inmoBarrioSlugs() {
     const count = {};
     for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) count[k] = (count[k] || 0) + 1;
     return Object.keys(count).filter((k) => count[k] >= 3 && ZONA_INMO_LABEL[k]).map((k) => `mejores-inmobiliarias-en-${k}`);
+  } catch { return []; }
+}
+
+// Landings de catálogo por barrio (/departamentos-en-pozo-en-{barrio}/): solo barrios de
+// BARRIO_CATALOGO con al menos 3 proyectos reales (evita páginas thin).
+async function catalogoBarrioSlugs() {
+  try {
+    const items = mapDesarrollos(await getDesarrollos());
+    return Object.keys(BARRIO_CATALOGO)
+      .filter((k) => items.filter((i) => matchBarrioCatalogo(i.barrio, k)).length >= 3)
+      .map((k) => `departamentos-en-pozo-en-${k}`);
   } catch { return []; }
 }
 
@@ -43,11 +57,12 @@ const EXPLICIT = new Set([
 
 // Pre-genera todas las páginas (barrios y otras) + posts que viven en la raíz (paridad con WordPress)
 export async function generateStaticParams() {
-  const [pages, posts, inmoSlugs] = await Promise.all([getAllPages(), getPosts(100), inmoBarrioSlugs()]);
+  const [pages, posts, inmoSlugs, catSlugs] = await Promise.all([getAllPages(), getPosts(100), inmoBarrioSlugs(), catalogoBarrioSlugs()]);
   const slugs = new Set();
   for (const p of pages || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);
   for (const p of posts || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);
   for (const s of inmoSlugs) slugs.add(s);
+  for (const s of catSlugs) slugs.add(s);
   return [...slugs].map((slug) => ({ slug }));
 }
 
@@ -67,6 +82,16 @@ export async function generateMetadata({ params }) {
     return {
       title: `Mejores inmobiliarias en ${label} 2026 | Departamentos en Pozo`,
       description: `Directorio de inmobiliarias con actividad en ${label}, CABA, ordenado por matrícula CUCICBA verificable. Análisis independiente, sin ranking pago.`,
+      alternates: { canonical: `${SITE}/${params.slug}/` },
+    };
+  }
+  // Landing de catálogo por barrio (/departamentos-en-pozo-en-{barrio}/).
+  const cm = params.slug.match(/^departamentos-en-pozo-en-(.+)$/);
+  if (cm && BARRIO_CATALOGO[cm[1]]) {
+    const label = BARRIO_CATALOGO[cm[1]].label;
+    return {
+      title: `Departamentos en pozo en ${label}: proyectos y precios 2026 | Departamentos en Pozo`,
+      description: `Catálogo de departamentos en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará proyectos con análisis independiente.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }
@@ -106,6 +131,36 @@ export default async function SinglePage({ params }) {
       },
     ];
     return <InmobiliariasBarrioView zonaKey={zonaKey} items={inmo} schema={schema} />;
+  }
+
+  // Landing de CATÁLOGO por barrio (/departamentos-en-pozo-en-{barrio}/): el listado de
+  // PROYECTOS pre-filtrado por barrio. Se resuelve ANTES del lookup de página/post.
+  const cm = params.slug.match(/^departamentos-en-pozo-en-(.+)$/);
+  if (cm && BARRIO_CATALOGO[cm[1]]) {
+    const barrioSlugCat = cm[1];
+    const { label } = BARRIO_CATALOGO[barrioSlugCat];
+    let mapped = [];
+    try { mapped = mapDesarrollos(await getDesarrollos()); } catch (e) { mapped = []; }
+    const items = mapped.filter((i) => matchBarrioCatalogo(i.barrio, barrioSlugCat));
+    const schema = [
+      {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Departamentos en pozo en CABA", item: `${SITE}/desarrollos-inmobiliarios/` },
+          { "@type": "ListItem", position: 3, name: `Departamentos en pozo en ${label}`, item: `${SITE}/departamentos-en-pozo-en-${barrioSlugCat}/` },
+        ],
+      },
+      {
+        "@context": "https://schema.org", "@type": "ItemList", name: `Departamentos en pozo en ${label}`,
+        numberOfItems: items.length,
+        itemListElement: items.map((i, idx) => ({
+          "@type": "ListItem", position: idx + 1,
+          url: `${SITE}/desarrollos-inmobiliarios/${i.slug}/`, name: i.nombre,
+        })),
+      },
+    ];
+    return <CatalogoBarrioView slug={barrioSlugCat} label={label} items={items} intro={CATALOGO_BARRIO_INTRO[barrioSlugCat]} schema={schema} />;
   }
 
   const r = await resolve(params.slug);
