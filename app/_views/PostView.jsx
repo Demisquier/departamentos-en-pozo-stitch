@@ -9,6 +9,7 @@ import JsonLd from "../_ui/JsonLd";
 import Breadcrumb from "../_ui/Breadcrumb";
 import Button from "../_ui/Button";
 import PageHeader from "../_ui/PageHeader";
+import AlertaCTA from "../_ui/AlertaCTA";
 
 export default async function PostView({ node, slug, content, img, title, rmSchema }) {
   const { html: postHtml, toc } = addHeadingIds(content);
@@ -135,6 +136,9 @@ export default async function PostView({ node, slug, content, img, title, rmSche
             className="wp-content max-w-[68ch]"
             dangerouslySetInnerHTML={{ __html: postHtml }}
           />
+
+          {/* Captura de leads: alertas de lanzamientos al cierre de la guía */}
+          <AlertaCTA />
 
           {/* CTA / interlinking hacia secciones money */}
           <section className="mt-14 border-t border-outline-variant pt-10">
