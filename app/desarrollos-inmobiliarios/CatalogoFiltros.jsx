@@ -89,6 +89,36 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   const [vista, setVista] = useState('lista'); // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
 
+  // ── URL <-> filtros (vista compartible). Leemos los query params al montar y
+  // reflejamos los filtros en la URL con replaceState (sin recargar ni navegar).
+  // El canonical de la página apunta siempre a la URL base, así que las variantes
+  // con ?barrio=...&amb=... no generan contenido duplicado indexable.
+  const hydrated = useRef(false);
+  useEffect(() => {
+    const sp = new URLSearchParams(window.location.search);
+    if (!barrioFijo && sp.get('barrio')) setBarrio(sp.get('barrio'));
+    if (sp.get('amb')) setAmb(sp.get('amb'));
+    if (sp.get('precio')) setPrecio(sp.get('precio'));
+    if (sp.get('etapa')) setEtapa(sp.get('etapa'));
+    if (sp.get('entrega')) setEntregaMax(sp.get('entrega'));
+    if (sp.get('fin') === '1') setFin(true);
+    if (sp.get('orden')) setOrden(sp.get('orden'));
+    hydrated.current = true;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!hydrated.current) return;
+    const sp = new URLSearchParams();
+    if (!barrioFijo && barrio) sp.set('barrio', barrio);
+    if (amb) sp.set('amb', amb);
+    if (precio !== 'todos') sp.set('precio', precio);
+    if (etapa) sp.set('etapa', etapa);
+    if (entregaMax) sp.set('entrega', entregaMax);
+    if (fin) sp.set('fin', '1');
+    if (orden !== 'destacados') sp.set('orden', orden);
+    const qs = sp.toString();
+    window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
+  }, [barrio, amb, precio, etapa, entregaMax, fin, orden, barrioFijo]);
+
   const barrios = useMemo(
     () => Array.from(new Set(items.map((i) => i.barrio).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'es')),
     [items]
