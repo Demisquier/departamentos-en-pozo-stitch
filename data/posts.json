@@ -14209,5 +14209,201 @@
     ]
    ]
   }
+ },
+ {
+  "id": 9919,
+  "date": "2026-08-05T16:00:00",
+  "date_gmt": "2026-08-05T19:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?p=9919"
+  },
+  "modified": "2026-08-05T16:00:00",
+  "modified_gmt": "2026-08-05T19:00:00",
+  "slug": "materiales-de-construccion-en-caba-donde-comprar-y-como-no-pagar-de-mas",
+  "status": "publish",
+  "type": "post",
+  "link": "https://departamentosenpozo.com.ar/materiales-de-construccion-en-caba-donde-comprar-y-como-no-pagar-de-mas/",
+  "title": {
+   "rendered": "Materiales de construccion en CABA: donde comprar y como no pagar de mas"
+  },
+  "content": {
+   "rendered": "<p class=\"lead\">Los materiales son el corazon del costo de una obra y el rubro donde mas plata se pierde por comprar mal. Esta guia practica ordena donde comprar en CABA y GBA, como comparar presupuestos y por que el precio se mueve al ritmo del mismo indice que ajusta las cuotas en pozo.</p>\n<h2 id=\"donde-comprar\">Donde comprar segun el rubro</h2>\n<p>No hay un unico lugar mejor. La regla que usan los que construyen seguido: el grueso pesado en corralon, las terminaciones y la ferreteria en homecenter o casa especializada.</p>\n<table>\n<thead><tr><th>Rubro</th><th>Donde suele convenir</th><th>Por que</th></tr></thead>\n<tbody>\n<tr><td>Cemento, cal, ladrillos, hierro</td><td>Corralon de barrio</td><td>Mejor precio por volumen y flete corto</td></tr>\n<tr><td>Ferreteria y herramientas</td><td>Homecenter</td><td>Variedad, stock y financiacion en cuotas</td></tr>\n<tr><td>Sanitarios y ceramicos</td><td>Casa especializada / retail</td><td>Muestra fisica y asesoramiento de terminacion</td></tr>\n<tr><td>Aberturas</td><td>Fabricante o distribuidor</td><td>Medida a pedido y garantia de fabrica</td></tr>\n</tbody>\n</table>\n<p>El listado completo de proveedores con cobertura CABA/GBA esta en el <a href=\"/corralones-y-materiales-de-construccion-en-caba/\">directorio de corralones y materiales</a>.</p>\n<h2 id=\"comparar\">Como comparar presupuestos sin equivocarte</h2>\n<p>El error clasico es comparar precio de mostrador contra precio puesto en obra. Para que la comparacion sea real, pedi siempre el total con flete, descarga y minimos incluidos, y sobre los mismos productos y marcas. Tres presupuestos por los rubros pesados suele ser suficiente para detectar el que se va de linea.</p>\n<ul>\n<li>Pedi precio <strong>puesto en obra</strong>, no en mostrador.</li>\n<li>Igualá marca y calidad antes de comparar numeros.</li>\n<li>Confirma <strong>stock y fecha de entrega</strong> por escrito.</li>\n<li>Exigi <strong>factura</strong>: respalda garantia y es gasto deducible.</li>\n</ul>\n<h2 id=\"cac\">Por que el precio sigue al ajuste CAC</h2>\n<p>El indice CAC de la Camara Argentina de la Construccion mide el costo de construir, y los materiales son su componente principal. Por eso el mismo indice que hace subir las cuotas de un departamento en pozo mueve el presupuesto de tu obra mes a mes. Si vas a comprar en etapas, conviene dimensionar ese arrastre: podes hacerlo con el <a href=\"/simulador-cuota-cac-pozo/\">simulador de ajuste CAC</a> y entender la logica en la guia de <a href=\"/ajuste-por-cac-en-departamentos-en-pozo-como-funciona-y-como-protegerte/\">ajuste por CAC</a>.</p>\n<h2 id=\"faq\">Preguntas frecuentes</h2>\n<h3>¿Cuanto pesan los materiales en el costo total de una obra?</h3>\n<p>Varia segun el tipo de obra, pero los materiales suelen ser el componente mas grande del costo directo, por encima de la mano de obra en muchas etapas. Comprar bien mueve el resultado final.</p>\n<h3>¿Conviene comprar todo junto o por etapas?</h3>\n<p>Comprar por etapas evita inmovilizar capital y stock, pero te expone a la suba del CAC entre compra y compra. Para obras largas conviene asegurar precio de los rubros pesados cuando el indice esta planchado.</p>\n<!-- pozo-disclaimer-start -->\n<div style=\"border: 1px solid #fbbf24; background: #fef3c7; padding: 14px 18px; margin: 24px 0; border-radius: 4px; font-size: 0.92em;\">\n<p style=\"margin: 0;\"><strong>Aviso:</strong> Este contenido es informativo y no constituye asesoramiento financiero, comercial ni tecnico. Los precios de materiales varian con el mercado. Verifica presupuestos y condiciones con cada proveedor antes de comprar.</p>\n</div>\n<!-- pozo-disclaimer-end -->\n<script type=\"application/ld+json\">\n{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[\n{\"@type\":\"Question\",\"name\":\"¿Cuanto pesan los materiales en el costo total de una obra?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Los materiales suelen ser el componente mas grande del costo directo de una obra, por encima de la mano de obra en muchas etapas. Comprar bien mueve el resultado final.\"}},\n{\"@type\":\"Question\",\"name\":\"¿Conviene comprar todo junto o por etapas?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Comprar por etapas evita inmovilizar capital pero expone a la suba del CAC entre compras. Para obras largas conviene asegurar precio de los rubros pesados cuando el indice esta planchado.\"}}\n]}\n</script>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Donde comprar materiales en CABA y GBA sin pagar de mas: corralon vs homecenter por rubro, como comparar presupuestos y por que el costo sigue al ajuste CAC.</p>",
+   "protected": false
+  },
+  "author": 2,
+  "featured_media": 9701,
+  "comment_status": "open",
+  "ping_status": "open",
+  "sticky": false,
+  "template": "",
+  "format": "standard",
+  "meta": {
+   "_acf_changed": false,
+   "rank_math_title": "Materiales de construccion en CABA: donde comprar | Guia",
+   "rank_math_description": "Donde comprar materiales en CABA y GBA sin pagar de mas: corralon vs homecenter por rubro, como comparar presupuestos y el impacto del ajuste CAC.",
+   "footnotes": "",
+   "image_credit": "",
+   "image_credit_url": ""
+  },
+  "categories": [
+   60
+  ],
+  "tags": [],
+  "class_list": [
+   "post",
+   "type-post",
+   "status-publish",
+   "format-standard"
+  ],
+  "acf": [],
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/posts/9701"
+    }
+   ]
+  },
+  "_embedded": {
+   "author": [
+    {
+     "id": 2,
+     "name": "El especialista",
+     "url": "",
+     "description": "",
+     "link": "https://departamentosenpozo.com.ar/author/c2711948/",
+     "slug": "c2711948",
+     "avatar_urls": {
+      "24": "https://secure.gravatar.com/avatar/fc18ce0880b872933908452dcb7d895af270e6fb7131661c62ea8ef7914f09b2?s=24&d=mm&r=g",
+      "48": "https://secure.gravatar.com/avatar/fc18ce0880b872933908452dcb7d895af270e6fb7131661c62ea8ef7914f09b2?s=48&d=mm&r=g",
+      "96": "https://secure.gravatar.com/avatar/fc18ce0880b872933908452dcb7d895af270e6fb7131661c62ea8ef7914f09b2?s=96&d=mm&r=g"
+     },
+     "acf": [],
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users"
+       }
+      ]
+     }
+    }
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9701,
+     "date": "2026-05-22T21:58:57",
+     "slug": "contrato-12-clausulas-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/contrato-12-clausulas-hero/",
+     "title": {
+      "rendered": "Render: Donna Zaffira — Azcuy"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Render: Donna Zaffira — Azcuy</p>\n"
+     },
+     "alt_text": "Fideicomiso al costo vs. llave en mano en departamentos en pozo",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/06/render-donna-zaffira-caballito.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9273",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9273"
+       }
+      ]
+     }
+    }
+   ],
+   "wp:term": [
+    [
+     {
+      "id": 60,
+      "link": "https://departamentosenpozo.com.ar/category/riesgos-contratos-pozo/",
+      "name": "Riesgos y contratos",
+      "slug": "riesgos-contratos-pozo",
+      "taxonomy": "category",
+      "acf": [],
+      "_links": {
+       "self": [
+        {
+         "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/categories/60",
+         "targetHints": {
+          "allow": [
+           "GET"
+          ]
+         }
+        }
+       ],
+       "collection": [
+        {
+         "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/categories"
+        }
+       ],
+       "about": [
+        {
+         "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/taxonomies/category"
+        }
+       ],
+       "wp:post_type": [
+        {
+         "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/posts?categories=60"
+        }
+       ],
+       "curies": [
+        {
+         "name": "wp",
+         "href": "https://api.w.org/{rel}",
+         "templated": true
+        }
+       ]
+      }
+     }
+    ],
+    []
+   ]
+  }
  }
 ]
