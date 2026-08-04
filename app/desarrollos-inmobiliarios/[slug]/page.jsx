@@ -10,6 +10,7 @@ import TipologiasTabla from './TipologiasTabla';
 import Container from '../../_ui/Container';
 import JsonLd from '../../_ui/JsonLd';
 import Breadcrumb from '../../_ui/Breadcrumb';
+import AlertaCTA from '../../_ui/AlertaCTA';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -455,6 +456,9 @@ export default async function FichaProyecto({ params }) {
               pueden variar y no constituyen asesoramiento financiero ni oferta comercial. Verificá precios, plazos y
               condiciones legales antes de invertir.
             </p>
+
+            {/* Captura de leads: alerta para este perfil de proyecto */}
+            <AlertaCTA titulo="¿Buscás un proyecto así?" texto={`Activá una alerta y te avisamos cuando aparezca un nuevo lanzamiento en ${barrio} o en el barrio que elijas, antes de que salga a los portales.`} cta="Crear alerta" />
           </div>
 
           {/* Sidebar: contacto (modal) + calculadora de inversión + barra móvil (client) */}
