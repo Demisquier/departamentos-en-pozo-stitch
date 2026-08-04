@@ -13,7 +13,7 @@ export default async function sitemap() {
 
   const out = [...fixed];
   try {
-    const [pages, posts, desa, cats, devs, inmo] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(100), getCategories(), getDesarrolladoras(), getInmobiliarias()]);
+    const [pages, posts, desa, cats, devs, inmo] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(1000), getCategories(), getDesarrolladoras(), getInmobiliarias()]);
     // Páginas de inmobiliarias por barrio (sintéticas, no son páginas WP): zonas con ≥3 inmobiliarias.
     const zonaCount = {};
     for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) zonaCount[k] = (zonaCount[k] || 0) + 1;
