@@ -10368,7 +10368,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9260,
   "comment_status": "closed",
   "ping_status": "closed",
   "sticky": false,
@@ -10417,6 +10417,123 @@
       "taxonomy": "category"
      }
     ]
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9260,
+     "date": "2026-05-22T21:57:03",
+     "slug": "costos-pozo-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/costos-pozo-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/17097090/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre costos pozo",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/costos-pozo-hero.jpg",
+      "filesize": 73167,
+      "sizes": {
+       "medium": {
+        "file": "costos-pozo-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 6401,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "costos-pozo-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 53640,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "costos-pozo-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 3448,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "costos-pozo-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 35898,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "costos-pozo-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "1",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/costos-pozo-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9260",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9260"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -10445,7 +10562,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9708,
   "comment_status": "closed",
   "ping_status": "closed",
   "sticky": false,
@@ -10456,8 +10573,8 @@
    "rank_math_title": "¿Conviene invertir en pozo en 2026? ROI y riesgos",
    "rank_math_description": "Marco honesto para decidir si conviene invertir en pozo en 2026: palancas de retorno, riesgos reales y un checklist final para saber si es para vos.",
    "footnotes": "",
-   "image_credit": "",
-   "image_credit_url": ""
+   "image_credit": "Render: UNICA — Vizora",
+   "image_credit_url": "/desarrollos-inmobiliarios/unica-puerto-madero/"
   },
   "categories": [
    59
@@ -10494,6 +10611,20 @@
       "taxonomy": "category"
      }
     ]
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9708,
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/07/1925550221.jpg",
+     "media_type": "image",
+     "alt_text": "Render del proyecto UNICA (Vizora), imagen ilustrativa",
+     "caption": {
+      "rendered": "<p>Render: UNICA — Vizora.</p>\n"
+     },
+     "title": {
+      "rendered": "UNICA — Vizora"
+     }
+    }
    ]
   }
  },
@@ -10522,7 +10653,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9269,
   "comment_status": "closed",
   "ping_status": "closed",
   "sticky": false,
@@ -10571,6 +10702,123 @@
       "taxonomy": "category"
      }
     ]
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9269,
+     "date": "2026-05-22T21:58:47",
+     "slug": "dolar-pozo-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/dolar-pozo-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/28428161/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre dolar pozo",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/dolar-pozo-hero.jpg",
+      "filesize": 72948,
+      "sizes": {
+       "medium": {
+        "file": "dolar-pozo-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 8088,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "dolar-pozo-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 50526,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "dolar-pozo-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 4583,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "dolar-pozo-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 32534,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "dolar-pozo-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "Sebastian Luna\rsebastian-luna.com",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "1",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/dolar-pozo-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9269",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9269"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -10599,7 +10847,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9267,
   "comment_status": "closed",
   "ping_status": "closed",
   "sticky": false,
@@ -10648,6 +10896,123 @@
       "taxonomy": "category"
      }
     ]
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9267,
+     "date": "2026-05-22T21:58:15",
+     "slug": "checklist-visitar-obra-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/checklist-visitar-obra-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/1816030/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre checklist visitar obra",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/checklist-visitar-obra-hero.jpg",
+      "filesize": 71229,
+      "sizes": {
+       "medium": {
+        "file": "checklist-visitar-obra-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 9070,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "checklist-visitar-obra-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 65237,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "checklist-visitar-obra-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 6626,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "checklist-visitar-obra-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 40486,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "checklist-visitar-obra-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "0",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/checklist-visitar-obra-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9267",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9267"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -10676,7 +11041,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9273,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -10788,6 +11153,123 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9273,
+     "date": "2026-05-22T21:58:57",
+     "slug": "contrato-12-clausulas-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/contrato-12-clausulas-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/20273065/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre contrato 12 clausulas",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/contrato-12-clausulas-hero.jpg",
+      "filesize": 55645,
+      "sizes": {
+       "medium": {
+        "file": "contrato-12-clausulas-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 9493,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "contrato-12-clausulas-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 54819,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "contrato-12-clausulas-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 4679,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "contrato-12-clausulas-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 36831,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "contrato-12-clausulas-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "0",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/contrato-12-clausulas-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9273",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9273"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -10816,7 +11298,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9272,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -10928,6 +11410,123 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9272,
+     "date": "2026-05-22T21:58:54",
+     "slug": "riesgos-pozo-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/riesgos-pozo-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/3882638/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre riesgos pozo",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/riesgos-pozo-hero.jpg",
+      "filesize": 49938,
+      "sizes": {
+       "medium": {
+        "file": "riesgos-pozo-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 4042,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "riesgos-pozo-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 42484,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "riesgos-pozo-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 3349,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "riesgos-pozo-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 27133,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "riesgos-pozo-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "0",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/riesgos-pozo-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9272",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9272"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -10956,7 +11555,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9263,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -11137,6 +11736,123 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9263,
+     "date": "2026-05-22T21:58:01",
+     "slug": "estrategia-alquiler-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/estrategia-alquiler-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/11299679/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre estrategia alquiler",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/estrategia-alquiler-hero.jpg",
+      "filesize": 55868,
+      "sizes": {
+       "medium": {
+        "file": "estrategia-alquiler-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 4716,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "estrategia-alquiler-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 48055,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "estrategia-alquiler-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 2491,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "estrategia-alquiler-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 28525,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "estrategia-alquiler-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "0",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-alquiler-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9263",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9263"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -11165,7 +11881,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9711,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -11176,8 +11892,8 @@
    "rank_math_title": "Cochera y baulera en pozo: ¿conviene comprar? | Análisis",
    "rank_math_description": "¿Conviene comprar cochera o baulera en pozo junto con la unidad? Analizamos cuándo suma rentabilidad y cuándo es capital inmovilizado de baja rotación.",
    "footnotes": "",
-   "image_credit": "",
-   "image_credit_url": ""
+   "image_credit": "Render: Aura Nunez — Grupo Chomer (GCH)",
+   "image_credit_url": "/desarrollos-inmobiliarios/aura-nunez-nunez/"
   },
   "categories": [
    59
@@ -11346,6 +12062,20 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9711,
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/07/GCHWeb_AuraNunez_Exterior_01.jpg",
+     "media_type": "image",
+     "alt_text": "Render del proyecto Aura Nunez (Grupo Chomer (GCH)), imagen ilustrativa",
+     "caption": {
+      "rendered": "<p>Render: Aura Nunez — Grupo Chomer (GCH).</p>\n"
+     },
+     "title": {
+      "rendered": "Aura Nunez — Grupo Chomer (GCH)"
+     }
+    }
    ]
   }
  },
@@ -11374,7 +12104,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9262,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -11555,6 +12285,123 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9262,
+     "date": "2026-05-22T21:57:57",
+     "slug": "estrategia-reventa-hero",
+     "type": "attachment",
+     "link": "https://departamentosenpozo.com.ar/estrategia-reventa-hero/",
+     "title": {
+      "rendered": "Imagen ilustrativa — arquitectura residencial moderna"
+     },
+     "author": 2,
+     "featured_media": 0,
+     "acf": [],
+     "caption": {
+      "rendered": "<p>Foto via <a href=\"https://www.pexels.com/photo/27080350/\" rel=\"nofollow noopener\">Pexels</a> bajo Pexels License (uso libre comercial).</p>\n"
+     },
+     "alt_text": "Arquitectura residencial moderna, imagen ilustrativa del artículo sobre estrategia reventa",
+     "media_type": "image",
+     "mime_type": "image/jpeg",
+     "media_details": {
+      "width": 1280,
+      "height": 720,
+      "file": "2026/05/estrategia-reventa-hero.jpg",
+      "filesize": 53412,
+      "sizes": {
+       "medium": {
+        "file": "estrategia-reventa-hero-300x169.jpg",
+        "width": 300,
+        "height": 169,
+        "filesize": 10258,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero-300x169.jpg"
+       },
+       "large": {
+        "file": "estrategia-reventa-hero-1024x576.jpg",
+        "width": 1024,
+        "height": 576,
+        "filesize": 54419,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero-1024x576.jpg"
+       },
+       "thumbnail": {
+        "file": "estrategia-reventa-hero-150x150.jpg",
+        "width": 150,
+        "height": 150,
+        "filesize": 5151,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero-150x150.jpg"
+       },
+       "medium_large": {
+        "file": "estrategia-reventa-hero-768x432.jpg",
+        "width": 768,
+        "height": 432,
+        "filesize": 36275,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero-768x432.jpg"
+       },
+       "full": {
+        "file": "estrategia-reventa-hero.jpg",
+        "width": 1280,
+        "height": 720,
+        "mime_type": "image/jpeg",
+        "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero.jpg"
+       }
+      },
+      "image_meta": {
+       "aperture": "0",
+       "credit": "",
+       "camera": "",
+       "caption": "",
+       "created_timestamp": "0",
+       "copyright": "",
+       "focal_length": "0",
+       "iso": "0",
+       "shutter_speed": "0",
+       "title": "",
+       "orientation": "0",
+       "keywords": []
+      }
+     },
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/05/estrategia-reventa-hero.jpg",
+     "_links": {
+      "self": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media/9262",
+        "targetHints": {
+         "allow": [
+          "GET"
+         ]
+        }
+       }
+      ],
+      "collection": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media"
+       }
+      ],
+      "about": [
+       {
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/attachment"
+       }
+      ],
+      "author": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/users/2"
+       }
+      ],
+      "replies": [
+       {
+        "embeddable": true,
+        "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/comments?post=9262"
+       }
+      ]
+     }
+    }
    ]
   }
  },
@@ -11583,7 +12430,7 @@
    "protected": false
   },
   "author": 2,
-  "featured_media": 0,
+  "featured_media": 9711,
   "comment_status": "open",
   "ping_status": "open",
   "sticky": false,
@@ -11594,8 +12441,8 @@
    "rank_math_title": "Expensas en pozo: cómo estimarlas antes de comprar",
    "rank_math_description": "Cómo anticipar cuánto vas a pagar de expensas en un edificio en pozo antes de que exista, qué las dispara y por qué un amenity de más te come la renta.",
    "footnotes": "",
-   "image_credit": "",
-   "image_credit_url": ""
+   "image_credit": "Render: Aura Nunez — Grupo Chomer (GCH)",
+   "image_credit_url": "/desarrollos-inmobiliarios/aura-nunez-nunez/"
   },
   "categories": [
    59
@@ -11764,6 +12611,20 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 9711,
+     "source_url": "https://cms.departamentosenpozo.com.ar/wp-content/uploads/2026/07/GCHWeb_AuraNunez_Exterior_01.jpg",
+     "media_type": "image",
+     "alt_text": "Render del proyecto Aura Nunez (Grupo Chomer (GCH)), imagen ilustrativa",
+     "caption": {
+      "rendered": "<p>Render: Aura Nunez — Grupo Chomer (GCH).</p>\n"
+     },
+     "title": {
+      "rendered": "Aura Nunez — Grupo Chomer (GCH)"
+     }
+    }
    ]
   }
  }
