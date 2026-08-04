@@ -96,6 +96,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   const [orden, setOrden] = useState('destacados');
   const [vista, setVista] = useState('lista'); // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
+  const [filtrosOpen, setFiltrosOpen] = useState(false); // panel de filtros colapsable (mobile)
 
   // ── URL <-> filtros (vista compartible). Leemos los query params al montar y
   // reflejamos los filtros en la URL con replaceState (sin recargar ni navegar).
@@ -169,6 +170,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
 
   const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); setEntregaMax(''); setFin(false); };
   const hayFiltros = barrio || amb || precio !== 'todos' || etapa || entregaMax || fin;
+  const activeCount = [barrio, amb, precio !== 'todos', etapa, entregaMax, fin].filter(Boolean).length;
   // Años de entrega disponibles (para el select), ascendente.
   const aniosEntrega = useMemo(
     () => Array.from(new Set(items.map((i) => i.entregaAnio).filter(Boolean))).sort((a, b) => a - b),
@@ -179,14 +181,33 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   return (
     <>
       <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
-        <div className="flex flex-wrap items-center gap-2.5">
+        {/* Barra compacta mobile: botón Filtros (con contador) + resultados. Solo <md. */}
+        <div className="md:hidden flex items-center justify-between gap-3">
+          <button
+            onClick={() => setFiltrosOpen((o) => !o)}
+            aria-expanded={filtrosOpen}
+            className="flex items-center gap-2 px-4 py-2.5 border border-outline-variant rounded-full text-[14px] text-primary active:bg-surface-container"
+          >
+            <span className="material-symbols-outlined text-[18px]">tune</span>
+            Filtros
+            {activeCount > 0 && (
+              <span className="ml-0.5 min-w-[20px] h-5 px-1 rounded-full bg-secondary text-white text-[11px] font-medium flex items-center justify-center">{activeCount}</span>
+            )}
+          </button>
+          <p className="text-[13px] text-on-surface-variant">
+            <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
+          </p>
+        </div>
+
+        {/* Chips de filtro: en mobile ocultos hasta abrir "Filtros"; en desktop siempre visibles. */}
+        <div className={`${filtrosOpen ? 'flex' : 'hidden'} md:flex flex-wrap items-center gap-2.5`}>
           {/* Chip de barrio: se oculta en las landings por barrio (items ya pre-filtrados). */}
           {!barrioFijo && (
             <>
               <div className="relative">
                 <button
                   onClick={() => setBarrioOpen((o) => !o)}
-                  className={`flex items-center gap-2 px-3.5 py-2 border rounded-full text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
+                  className={`flex items-center gap-2 px-3.5 py-2.5 md:py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
                 >
                   <span className="material-symbols-outlined text-[16px]">location_on</span>
                   <span>{barrio || 'Barrio'}</span>
@@ -194,7 +215,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                 </button>
                 {barrioOpen && (
                   <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
-                    <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container">Todos los barrios</button>
+                    <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
                     {barrios.map((b) => {
                       // Si el barrio tiene landing propia, el filtro NAVEGA a esa página
                       // (listado ya filtrado, con su propio "ver todas" para quitarlo).
@@ -206,7 +227,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                         else setBarrio(b);
                       };
                       return (
-                        <button key={b} onClick={go} className={`block w-full text-left px-4 py-2 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
+                        <button key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
                       );
                     })}
                   </div>
@@ -230,39 +251,42 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
           <button className={chip(etapa === 'en construcción')} onClick={() => setEtapa(etapa === 'en construcción' ? '' : 'en construcción')}>En construcción</button>
           <button className={chip(fin)} onClick={() => setFin((v) => !v)}>Con financiación</button>
 
+          {/* Entrega: es un filtro, va con los chips (antes estaba en la fila de controles). */}
+          {aniosEntrega.length > 0 && (
+            <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
+              Entrega hasta
+              <select value={entregaMax} onChange={(e) => setEntregaMax(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
+                <option value="">Cualquiera</option>
+                {aniosEntrega.map((a) => (<option key={a} value={a}>{a}</option>))}
+              </select>
+            </label>
+          )}
+
           {hayFiltros && (
             <button onClick={limpiar} className="px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar</button>
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <p className="text-[13px] text-on-surface-variant">
+        {/* Controles de vista: resultados (desktop) + Lista/Mapa + Orden. Siempre visibles. */}
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <p className="hidden md:block text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
             {filtered.length !== items.length && <span> de {items.length}</span>}
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 flex-wrap ml-auto">
             {/* Toggle Lista / Mapa */}
             <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden">
-              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-2 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
                 <span className="material-symbols-outlined text-[16px]">grid_view</span>Lista
               </button>
-              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-1.5 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-2 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
                 <span className="material-symbols-outlined text-[16px]">map</span>Mapa
               </button>
             </div>
-            {aniosEntrega.length > 0 && (
-              <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
-                Entrega hasta
-                <select value={entregaMax} onChange={(e) => setEntregaMax(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-1.5 text-[13px] text-primary bg-surface">
-                  <option value="">Cualquiera</option>
-                  {aniosEntrega.map((a) => (<option key={a} value={a}>{a}</option>))}
-                </select>
-              </label>
-            )}
             {vista === 'lista' && (
               <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
-                Ordenar por
-                <select value={orden} onChange={(e) => setOrden(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-1.5 text-[13px] text-primary bg-surface">
+                <span className="hidden sm:inline">Ordenar por</span>
+                <select value={orden} onChange={(e) => setOrden(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
                   <option value="destacados">Destacados</option>
                   <option value="precio_asc">Precio/m² ↑</option>
                   <option value="precio_desc">Precio/m² ↓</option>
