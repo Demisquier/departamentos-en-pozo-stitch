@@ -1,5 +1,6 @@
-import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, rel } from "../lib/wp";
+import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, getInmobiliarias, rel } from "../lib/wp";
 import { SITE as BASE } from "../lib/constants";
+import { ZONA_INMO_LABEL } from "../lib/barrios";
 
 /* Sitemap dinámico: mantiene TODAS las URLs indexadas (preservación SEO).
  * Resiliente: si WP no responde, al menos devuelve las rutas fijas. */
@@ -11,7 +12,11 @@ export default async function sitemap() {
 
   const out = [...fixed];
   try {
-    const [pages, posts, desa, cats, devs] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(100), getCategories(), getDesarrolladoras()]);
+    const [pages, posts, desa, cats, devs, inmo] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(100), getCategories(), getDesarrolladoras(), getInmobiliarias()]);
+    // Páginas de inmobiliarias por barrio (sintéticas, no son páginas WP): zonas con ≥3 inmobiliarias.
+    const zonaCount = {};
+    for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) zonaCount[k] = (zonaCount[k] || 0) + 1;
+    for (const k of Object.keys(zonaCount)) if (zonaCount[k] >= 3 && ZONA_INMO_LABEL[k]) out.push({ url: BASE + `/mejores-inmobiliarias-en-${k}/`, lastModified: new Date() });
     for (const p of pages || []) out.push({ url: BASE + rel(p.link), lastModified: new Date() });
     for (const p of posts || []) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
