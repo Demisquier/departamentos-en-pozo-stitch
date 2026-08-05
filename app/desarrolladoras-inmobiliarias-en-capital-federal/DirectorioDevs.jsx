@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { deaccent } from "../../lib/format";
 import { BARRIO_LABEL, BARRIO_URL } from "../../lib/barrios";
+import LogoAvatar from "../_ui/LogoAvatar";
 
 // Directorio unificado de desarrolladoras (CPT `desarrolladora`). Server-rendered:
 // el listado sale en el HTML (SEO). Buscador + filtro por barrio = enhancement client.
@@ -14,11 +15,7 @@ function Card({ d }) {
   return (
     <li className={`rounded-xl p-4 bg-surface border ${d.destacada ? "border-link-gold/40" : "border-outline-variant"} flex flex-col`}>
       <div className="flex items-start gap-3">
-        {d.iniciales ? (
-          <span className="shrink-0 w-11 h-11 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-[15px] tracking-wide">
-            {d.iniciales}
-          </span>
-        ) : null}
+        <LogoAvatar web={d.web} iniciales={d.iniciales} />
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.nombre}</h3>
