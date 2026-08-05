@@ -50,11 +50,11 @@ function Card({ d }) {
       {d.desc && <p className="text-[12.5px] text-on-surface-variant mt-3 leading-relaxed line-clamp-2">{d.desc}</p>}
 
       <div className="mt-auto pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-4 gap-y-2">
-        {d.proyectosSlug && d.proyectosSlug.length > 0 && (
-          <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-semibold text-secondary hover:underline">
-            Ver {d.proyectosSlug.length} proyecto{d.proyectosSlug.length === 1 ? "" : "s"} →
-          </a>
-        )}
+        <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-semibold text-secondary hover:underline">
+          {d.proyectosSlug && d.proyectosSlug.length > 0
+            ? `Ver ${d.proyectosSlug.length} proyecto${d.proyectosSlug.length === 1 ? "" : "s"} →`
+            : "Ver perfil →"}
+        </a>
         {d.web && (
           <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-secondary">
             Sitio oficial ↗
