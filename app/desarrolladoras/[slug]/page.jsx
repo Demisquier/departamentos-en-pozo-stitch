@@ -82,7 +82,8 @@ export default async function DesarrolladoraLanding({ params }) {
             const nombre = p.title?.rendered || "";
             const barrio = acf(p, "barrio") || acf(p, "direccion") || "";
             const precio = acf(p, "precio_m2");
-            const entrega = acf(p, "fecha_entrega");
+            const fe = String(acf(p, "fecha_entrega") || "");
+            const entrega = /^\d{6}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : (/^\d{8}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : fe);
             return (
               <Link key={p.slug} href={`/desarrollos-inmobiliarios/${p.slug}/`} className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all">
                 <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
