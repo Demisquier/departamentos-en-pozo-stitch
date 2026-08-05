@@ -29,7 +29,7 @@ export default function ProjectCard({
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
         {img ? (
-          <img src={img} alt={`${nombre} — ${barrio}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={img} alt={`${nombre} — ${barrio}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-outline-variant text-4xl">image</span></div>
         )}
