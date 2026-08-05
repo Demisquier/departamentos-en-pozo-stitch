@@ -39,10 +39,11 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
 
         <CatalogoFiltros items={items} barrioFijo={label} />
 
-        {/* Cierre: enlaces a las otras capas del barrio (empresas), sin canibalizar. */}
+        {/* Cierre: variante de keyword (desarrollos inmobiliarios) + enlaces a las otras capas. */}
         <section className="mt-12 pt-8 border-t border-outline-variant text-[15px] text-on-surface-variant">
+          <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Desarrollos inmobiliarios en pozo en {label}</h2>
           <p>
-            Estás viendo los {n} proyectos en pozo de {label}
+            Estás viendo los {n} desarrollos inmobiliarios en pozo de {label}
             {conPrecio ? ` (${conPrecio} con precio publicado)` : ""}. Si comprás en preventa, el
             riesgo de entrega depende de quién construye: revisá también las{" "}
             <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-secondary underline underline-offset-2">
