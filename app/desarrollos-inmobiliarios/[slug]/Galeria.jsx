@@ -28,7 +28,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
   const Tile = ({ src, alt, i }) =>
     src ? (
       <button type="button" onClick={() => show(i)} className="group w-full h-full block relative overflow-hidden cursor-zoom-in" aria-label={`Ampliar foto ${i + 1}`}>
-        <img src={src} alt={alt} loading={i === 0 ? "eager" : "lazy"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src={src} alt={alt} loading={i === 0 ? "eager" : "lazy"} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
       </button>
     ) : (
@@ -76,6 +76,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
             <img
               src={imgs[idx]}
               alt={`${nombre} — foto ${idx + 1}`}
+              referrerPolicy="no-referrer"
               onClick={() => setZoom((z) => !z)}
               className={`select-none transition-transform duration-300 ${zoom ? "max-w-none max-h-none w-auto h-auto scale-150 cursor-zoom-out" : "max-w-[92vw] max-h-[78vh] object-contain cursor-zoom-in"}`}
             />
