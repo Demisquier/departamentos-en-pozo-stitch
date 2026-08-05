@@ -23,7 +23,7 @@
    "rendered": "<p>Arcadia Art Residence es un desarrollo en pozo de Grupo Trust Real Estate en Coghlan (Av. Congreso 3163). Planta baja + 7 pisos con unidades de 1, 2 y 3 ambientes y entrega estimada para diciembre de 2027. Coghlan es uno de los barrios más residenciales y buscados de CABA, de baja densidad y muy [&hellip;]</p>\n",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91001,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -70,7 +70,8 @@
      "detalle": "Saldo a la entrega (estimada Oct 2027)"
     }
    ],
-   "precio_desde": 190000
+   "precio_desde": 190000,
+   "render": "https://d1acdg20u0pmxj.cloudfront.net/listings/a760e99a-7601-42db-aee5-8ca2244d0e85/1080xAUTO/9baa83f8-50e6-46ba-ac16-6b4151fd4f4a.jpg"
   },
   "_links": {
    "self": [
@@ -122,6 +123,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91001,
+     "source_url": "https://d1acdg20u0pmxj.cloudfront.net/listings/a760e99a-7601-42db-aee5-8ca2244d0e85/1080xAUTO/9baa83f8-50e6-46ba-ac16-6b4151fd4f4a.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Arcadia Art Residence — Coghlan"
+    }
    ]
   }
  },
@@ -149,7 +160,7 @@
    "rendered": "<p>Vibe Deheza es un desarrollo en pozo de Casabe Lifestyle Developments en Saavedra (Deheza 4824), con obra a cargo de Basso Constructora. Un edificio de 7 pisos con alrededor de 20 unidades (3 por piso) de 1, 2 y 3 ambientes. Saavedra ofrece un entorno residencial de baja densidad, verde y buena [&hellip;]</p>\n",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91002,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -196,7 +207,8 @@
      "etapa": "Posesión",
      "detalle": "Saldo a la entrega (estimada Mar 2028)"
     }
-   ]
+   ],
+   "render": "https://cdn.roomix.ai/1/30568614/59277190/2056947805_exterior.jpg"
   },
   "_links": {
    "self": [
@@ -248,6 +260,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91002,
+     "source_url": "https://cdn.roomix.ai/1/30568614/59277190/2056947805_exterior.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Vibe Deheza — Saavedra"
+    }
    ]
   }
  },
@@ -275,7 +297,7 @@
    "rendered": "<p>Av. Balbín 3194 es un desarrollo en pozo de Nemovi en Saavedra, sobre una esquina de la Av. Balbín. Un edificio de 8 pisos con 5 unidades y un local en planta baja, con obra avanzada a mayo de 2026. Saavedra combina un perfil residencial tranquilo, espacios verdes y buena conectividad; es una zona [&hellip;]</p>\n",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91003,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -322,7 +344,8 @@
    "amenities": "Losa radiante eléctrica, termotanque individual, ascensor inteligente con acceso digital y respaldo eléctrico",
    "estado": "En construcción",
    "pozo_estado": "En construcción",
-   "moneda": "USD"
+   "moneda": "USD",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/52/55/51/16/720x532/2061929514.jpg"
   },
   "_links": {
    "self": [
@@ -374,6 +397,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91003,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/52/55/51/16/720x532/2061929514.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Av. Balbín 3194 — Saavedra"
+    }
    ]
   }
  },
@@ -4783,7 +4816,7 @@
    "rendered": "<p>Altos de Ruiz Huidobro se ubica en Ruiz Huidobro 2371, Núñez. Se comercializa bajo esquema de fideicomiso al costo, una modalidad frecuente en desarrollos que buscan trasladar al inversor el precio de construcción. El precio se maneja a consultar con la comercializadora (Premium Brokers). El fideicomiso al costo puede ofrecer ventajas de precio pero traslada [&hellip;]</p>\n",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91004,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -4827,7 +4860,8 @@
      "etapa": "Posesión",
      "detalle": "Entrega prevista Ene 2028"
     }
-   ]
+   ],
+   "render": "https://d1v2p1s05qqabi.cloudfront.net/13441942/1735519335.jpg"
   },
   "_links": {
    "self": [
@@ -4922,6 +4956,16 @@
      }
     ],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91004,
+     "source_url": "https://d1v2p1s05qqabi.cloudfront.net/13441942/1735519335.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Altos de Ruiz Huidobro — Núñez"
+    }
    ]
   }
  },
@@ -18354,7 +18398,7 @@
    "rendered": "<p>Mii Zuviria — Caballito. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91005,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18382,7 +18426,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 99300,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mii-zuviria-59764619.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mii-zuviria-59764619.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/76/46/19/720x532/2069140469.jpg"
   },
   "_links": {
    "self": [
@@ -18434,6 +18479,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91005,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/76/46/19/720x532/2069140469.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Mii Zuviria — Caballito"
+    }
    ]
   }
  },
@@ -18461,7 +18516,7 @@
    "rendered": "<p>Nicasio Orono 78 — Caballito. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91006,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18489,7 +18544,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 165000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nicasio-nicasio-orono-78-59309419.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nicasio-nicasio-orono-78-59309419.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/59/30/94/19/720x532/2057740441.jpg"
   },
   "_links": {
    "self": [
@@ -18541,6 +18597,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91006,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/30/94/19/720x532/2057740441.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Nicasio Orono 78 — Caballito"
+    }
    ]
   }
  },
@@ -18568,7 +18634,7 @@
    "rendered": "<p>Editorial Z740 — Caballito. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91007,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18596,7 +18662,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 62000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-editorial-z740-57282813.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-editorial-z740-57282813.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/57/28/28/13/720x532/2038356892.jpg"
   },
   "_links": {
    "self": [
@@ -18648,6 +18715,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91007,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/28/28/13/720x532/2038356892.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Editorial Z740 — Caballito"
+    }
    ]
   }
  },
@@ -18675,7 +18752,7 @@
    "rendered": "<p>Achaval 584 — Caballito. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91008,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18703,7 +18780,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 85000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-achaval-584-full-amenities-cocheras-caballito-50337385.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-achaval-584-full-amenities-cocheras-caballito-50337385.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/50/33/73/85/720x532/2046990948.jpg"
   },
   "_links": {
    "self": [
@@ -18755,6 +18833,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91008,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/50/33/73/85/720x532/2046990948.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Achaval 584 — Caballito"
+    }
    ]
   }
  },
@@ -18782,7 +18870,7 @@
    "rendered": "<p>Viel 490 — Caballito. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91009,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -18810,7 +18898,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 160000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-viel-490-caballito-capital-federal-58482185.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-viel-490-caballito-capital-federal-58482185.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/58/48/21/85/720x532/2036796486.jpg"
   },
   "_links": {
    "self": [
@@ -18862,6 +18951,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91009,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/48/21/85/720x532/2036796486.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Viel 490 — Caballito"
+    }
    ]
   }
  },
@@ -19446,7 +19545,7 @@
    "rendered": "<p>Cinco Cramer — Belgrano. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91010,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19474,7 +19573,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--8947892"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--8947892",
+   "render": "https://www.argenprop.com/static-content/2987498/e9d87e05-21ab-442f-882b-6478ad89c77d.jpg"
   },
   "_links": {
    "self": [
@@ -19526,6 +19626,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91010,
+     "source_url": "https://www.argenprop.com/static-content/2987498/e9d87e05-21ab-442f-882b-6478ad89c77d.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Cinco Cramer — Belgrano"
+    }
    ]
   }
  },
@@ -19553,7 +19663,7 @@
    "rendered": "<p>Black Sucre — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91011,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19581,7 +19691,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-black-sucre-56451080.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-black-sucre-56451080.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/45/10/80/720x532/1981115688.jpg"
   },
   "_links": {
    "self": [
@@ -19633,6 +19744,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91011,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/45/10/80/720x532/1981115688.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Black Sucre — Belgrano"
+    }
    ]
   }
  },
@@ -19660,7 +19781,7 @@
    "rendered": "<p>Roosevelt 1745 — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91012,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19688,7 +19809,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 80000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--11657094"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--11657094",
+   "render": "https://www.argenprop.com/static-content/49075611/6d4f8334-2b73-46fa-b5ad-1831e790bc0c.jpg"
   },
   "_links": {
    "self": [
@@ -19740,6 +19862,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91012,
+     "source_url": "https://www.argenprop.com/static-content/49075611/6d4f8334-2b73-46fa-b5ad-1831e790bc0c.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Roosevelt 1745 — Belgrano"
+    }
    ]
   }
  },
@@ -19767,7 +19899,7 @@
    "rendered": "<p>Black Echeverria 1237 — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91013,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19795,7 +19927,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 385782,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-black-echeverria-1237-56921530.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-black-echeverria-1237-56921530.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/15/30/720x532/1994091607.jpg"
   },
   "_links": {
    "self": [
@@ -19847,6 +19980,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91013,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/15/30/720x532/1994091607.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Black Echeverria 1237 — Belgrano"
+    }
    ]
   }
  },
@@ -19874,7 +20017,7 @@
    "rendered": "<p>Casa Sucre — Belgrano. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91014,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -19902,7 +20045,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--17037672"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--17037672",
+   "render": "https://www.argenprop.com/static-content/27673071/3d2f1a0f-1845-4f76-92ac-a1920d2a3ec8.jpg"
   },
   "_links": {
    "self": [
@@ -19954,6 +20098,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91014,
+     "source_url": "https://www.argenprop.com/static-content/27673071/3d2f1a0f-1845-4f76-92ac-a1920d2a3ec8.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Casa Sucre — Belgrano"
+    }
    ]
   }
  },
@@ -19981,7 +20135,7 @@
    "rendered": "<p>Mood Montaneses — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91015,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20009,7 +20163,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 70800,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano-c--15242110"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano-c--15242110",
+   "render": "https://www.argenprop.com/static-content/01124251/ca58bfe8-75a5-4ca7-98e8-ec8d16c93719.jpg"
   },
   "_links": {
    "self": [
@@ -20061,6 +20216,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91015,
+     "source_url": "https://www.argenprop.com/static-content/01124251/ca58bfe8-75a5-4ca7-98e8-ec8d16c93719.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Mood Montaneses — Belgrano"
+    }
    ]
   }
  },
@@ -20195,7 +20360,7 @@
    "rendered": "<p>BeHome Bajo Belgrano — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91016,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20223,7 +20388,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 186300,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--18621867"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-belgrano--18621867",
+   "render": "https://www.argenprop.com/static-content/76812681/714576cb-0607-4998-9eb0-cad6b781f52e.jpg"
   },
   "_links": {
    "self": [
@@ -20275,6 +20441,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91016,
+     "source_url": "https://www.argenprop.com/static-content/76812681/714576cb-0607-4998-9eb0-cad6b781f52e.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "BeHome Bajo Belgrano — Belgrano"
+    }
    ]
   }
  },
@@ -20302,7 +20478,7 @@
    "rendered": "<p>Virrey Loreto 1740 — Belgrano. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91017,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20330,7 +20506,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 467500,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-virrey-loreto-1740-53706747.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-virrey-loreto-1740-53706747.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/70/67/47/720x532/1948757986.jpg"
   },
   "_links": {
    "self": [
@@ -20382,6 +20559,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91017,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/70/67/47/720x532/1948757986.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Virrey Loreto 1740 — Belgrano"
+    }
    ]
   }
  },
@@ -20623,7 +20810,7 @@
    "rendered": "<p>Bleau Ugarte — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91018,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20651,7 +20838,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 160000,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/bleau-ugarte--ugarte-1640"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bleau-ugarte--ugarte-1640",
+   "render": "https://static.tokkobroker.com/dw_pics/58083_46167786955333438370354702289840184205177312378384724145191225780261093093034.jpg"
   },
   "_links": {
    "self": [
@@ -20703,6 +20891,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91018,
+     "source_url": "https://static.tokkobroker.com/dw_pics/58083_46167786955333438370354702289840184205177312378384724145191225780261093093034.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Bleau Ugarte — Núñez"
+    }
    ]
   }
  },
@@ -20730,7 +20928,7 @@
    "rendered": "<p>Black Tower — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91019,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20758,7 +20956,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 410000,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/black-tower--arcos-3631"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/black-tower--arcos-3631",
+   "render": "https://static.tokkobroker.com/dw_pics/57575_43183539575007502324065527043390020431795507434598473989491020194134792674006.jpg"
   },
   "_links": {
    "self": [
@@ -20810,6 +21009,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91019,
+     "source_url": "https://static.tokkobroker.com/dw_pics/57575_43183539575007502324065527043390020431795507434598473989491020194134792674006.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Black Tower — Núñez"
+    }
    ]
   }
  },
@@ -20837,7 +21046,7 @@
    "rendered": "<p>Tres Ayres Blvd — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91020,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20865,7 +21074,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 103846,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/tres-ayres-blvd--av.-san-isidro-labrador-4541"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/tres-ayres-blvd--av.-san-isidro-labrador-4541",
+   "render": "https://static.tokkobroker.com/dw_pics/63484_68995944147653270950884817886496598861164088853144116451535218417483874467502.jpg"
   },
   "_links": {
    "self": [
@@ -20917,6 +21127,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91020,
+     "source_url": "https://static.tokkobroker.com/dw_pics/63484_68995944147653270950884817886496598861164088853144116451535218417483874467502.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Tres Ayres Blvd — Núñez"
+    }
    ]
   }
  },
@@ -20944,7 +21164,7 @@
    "rendered": "<p>Orion Parque — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91021,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -20972,7 +21192,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 177934,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/orion-parque--parque-de-la-innovacion"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/orion-parque--parque-de-la-innovacion",
+   "render": "https://static.tokkobroker.com/dw_pics/59648_36296392397067671161809855786309923896100998528561703058374428390767770697289.jpg"
   },
   "_links": {
    "self": [
@@ -21024,6 +21245,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91021,
+     "source_url": "https://static.tokkobroker.com/dw_pics/59648_36296392397067671161809855786309923896100998528561703058374428390767770697289.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Orion Parque — Núñez"
+    }
    ]
   }
  },
@@ -21051,7 +21282,7 @@
    "rendered": "<p>Astoria Libertador — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91022,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21079,7 +21310,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 131590,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/astoria-libertador--av.-del-libertador-7402"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/astoria-libertador--av.-del-libertador-7402",
+   "render": "https://static.tokkobroker.com/dw_pics/50149_105491260829086872071888751425093441578111345185766568548620182773725311256158.jpg"
   },
   "_links": {
    "self": [
@@ -21131,6 +21363,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91022,
+     "source_url": "https://static.tokkobroker.com/dw_pics/50149_105491260829086872071888751425093441578111345185766568548620182773725311256158.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Astoria Libertador — Núñez"
+    }
    ]
   }
  },
@@ -21158,7 +21400,7 @@
    "rendered": "<p>Maker Nunez — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91023,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21186,7 +21428,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 114194,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/maker-nunez--manzanares-2373"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/maker-nunez--manzanares-2373",
+   "render": "https://static.tokkobroker.com/dw_pics/841834421571730278190755182151410123375448633612851750718328538833836958522725266.jpg"
   },
   "_links": {
    "self": [
@@ -21238,6 +21481,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91023,
+     "source_url": "https://static.tokkobroker.com/dw_pics/841834421571730278190755182151410123375448633612851750718328538833836958522725266.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Maker Nunez — Núñez"
+    }
    ]
   }
  },
@@ -21265,7 +21518,7 @@
    "rendered": "<p>Premiere Cabildo — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91024,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21293,7 +21546,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 98909,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/premiere-cabildo--cabildo-3081"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/premiere-cabildo--cabildo-3081",
+   "render": "https://static.tokkobroker.com/dw_pics/88581_43017007291437832815385647193090547980030983338926857218924531690982698000783.jpg"
   },
   "_links": {
    "self": [
@@ -21345,6 +21599,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91024,
+     "source_url": "https://static.tokkobroker.com/dw_pics/88581_43017007291437832815385647193090547980030983338926857218924531690982698000783.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Premiere Cabildo — Núñez"
+    }
    ]
   }
  },
@@ -21372,7 +21636,7 @@
    "rendered": "<p>Sentire Nunez — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91025,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21400,7 +21664,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 86566,
-   "fuente": "https://www.interwin.com.ar/emprendimientos/sentire-nunez--cabildo-3201"
+   "fuente": "https://www.interwin.com.ar/emprendimientos/sentire-nunez--cabildo-3201",
+   "render": "https://static.tokkobroker.com/dw_pics/70441_4262583349946716873142748588555541285137689200126416191215655561593255455214.jpg"
   },
   "_links": {
    "self": [
@@ -21452,6 +21717,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91025,
+     "source_url": "https://static.tokkobroker.com/dw_pics/70441_4262583349946716873142748588555541285137689200126416191215655561593255455214.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Sentire Nunez — Núñez"
+    }
    ]
   }
  },
@@ -21586,7 +21861,7 @@
    "rendered": "<p>Torre Quo — Nunez. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91026,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21614,7 +21889,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 284108,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-nunez--17099234"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-nunez--17099234",
+   "render": "https://www.argenprop.com/static-content/43299071/d428f5d1-62e6-45d3-964a-35664b0352a2.jpg"
   },
   "_links": {
    "self": [
@@ -21666,6 +21942,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91026,
+     "source_url": "https://www.argenprop.com/static-content/43299071/d428f5d1-62e6-45d3-964a-35664b0352a2.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Torre Quo — Núñez"
+    }
    ]
   }
  },
@@ -21693,7 +21979,7 @@
    "rendered": "<p>Cotta — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91027,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -21721,7 +22007,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 335032,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-nunez--17826991"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-nunez--17826991",
+   "render": "https://www.argenprop.com/static-content/19962871/dfacfff2-69bf-425a-9662-b72c4fca0a8d.jpg"
   },
   "_links": {
    "self": [
@@ -21773,6 +22060,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91027,
+     "source_url": "https://www.argenprop.com/static-content/19962871/dfacfff2-69bf-425a-9662-b72c4fca0a8d.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Cotta — Núñez"
+    }
    ]
   }
  },
@@ -22025,7 +22322,7 @@
    "rendered": "<p>Harbour Tower — Puerto Madero. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91028,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22053,7 +22350,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 380000,
-   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-harbour-tower-puerto-madero-54359504.html"
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-harbour-tower-puerto-madero-54359504.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/54/35/95/04/720x532/2008956801.jpg"
   },
   "_links": {
    "self": [
@@ -22105,6 +22403,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91028,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/35/95/04/720x532/2008956801.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Harbour Tower — Puerto Madero"
+    }
    ]
   }
  },
@@ -22486,7 +22794,7 @@
    "rendered": "<p>Millennials IX — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91029,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22514,7 +22822,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 110649,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19085708"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19085708",
+   "render": "https://www.argenprop.com/static-content/80758091/aedc1536-a302-44d6-a56f-a7d2f9ab0404.jpg"
   },
   "_links": {
    "self": [
@@ -22566,6 +22875,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91029,
+     "source_url": "https://www.argenprop.com/static-content/80758091/aedc1536-a302-44d6-a56f-a7d2f9ab0404.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Millennials IX — Villa Urquiza"
+    }
    ]
   }
  },
@@ -22593,7 +22912,7 @@
    "rendered": "<p>Monroe 4443 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91030,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22621,7 +22940,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 109000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19034644"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19034644",
+   "render": "https://www.argenprop.com/static-content/44643091/21a116db-1ee6-4a1e-addc-e3ba7c52b530.jpg"
   },
   "_links": {
    "self": [
@@ -22673,6 +22993,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91030,
+     "source_url": "https://www.argenprop.com/static-content/44643091/21a116db-1ee6-4a1e-addc-e3ba7c52b530.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Monroe 4443 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -22700,7 +23030,7 @@
    "rendered": "<p>Slow Home Villa Urquiza — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91031,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22728,7 +23058,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 80000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--16200811"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--16200811",
+   "render": "https://www.argenprop.com/static-content/11800261/77763daf-c853-45ea-9483-caa84a104e74.jpg"
   },
   "_links": {
    "self": [
@@ -22780,6 +23111,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91031,
+     "source_url": "https://www.argenprop.com/static-content/11800261/77763daf-c853-45ea-9483-caa84a104e74.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Slow Home Villa Urquiza — Villa Urquiza"
+    }
    ]
   }
  },
@@ -22807,7 +23148,7 @@
    "rendered": "<p>Echeverria 4374 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91032,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22835,7 +23176,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 108494,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600067"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600067",
+   "render": "https://www.argenprop.com/static-content/76000691/0020bdb4-0203-47df-ae36-3d8d4a39c47c.jpg"
   },
   "_links": {
    "self": [
@@ -22887,6 +23229,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91032,
+     "source_url": "https://www.argenprop.com/static-content/76000691/0020bdb4-0203-47df-ae36-3d8d4a39c47c.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Echeverria 4374 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -22914,7 +23266,7 @@
    "rendered": "<p>Congreso 4077 VU — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91033,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -22942,7 +23294,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 75000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--14682961"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--14682961",
+   "render": "https://www.argenprop.com/static-content/16928641/9ce14957-8632-45d6-a491-b3735f7351df.jpg"
   },
   "_links": {
    "self": [
@@ -22994,6 +23347,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91033,
+     "source_url": "https://www.argenprop.com/static-content/16928641/9ce14957-8632-45d6-a491-b3735f7351df.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Congreso 4077 VU — Villa Urquiza"
+    }
    ]
   }
  },
@@ -23021,7 +23384,7 @@
    "rendered": "<p>Andonaegui 2083 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91034,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23049,7 +23412,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 165000,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600116"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600116",
+   "render": "https://www.argenprop.com/static-content/61100691/fb027edd-3581-428a-8bfd-f72524a263c7.jpg"
   },
   "_links": {
    "self": [
@@ -23101,6 +23465,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91034,
+     "source_url": "https://www.argenprop.com/static-content/61100691/fb027edd-3581-428a-8bfd-f72524a263c7.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Andonaegui 2083 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -23235,7 +23609,7 @@
    "rendered": "<p>Donado 2695 Luma Doho — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91035,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23263,7 +23637,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 89900,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19718622"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19718622",
+   "render": "https://www.argenprop.com/static-content/22681791/c0a47921-c6d8-4dbc-ae35-b5af20b2ea96.jpg"
   },
   "_links": {
    "self": [
@@ -23315,6 +23690,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91035,
+     "source_url": "https://www.argenprop.com/static-content/22681791/c0a47921-c6d8-4dbc-ae35-b5af20b2ea96.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Donado 2695 Luma Doho — Villa Urquiza"
+    }
    ]
   }
  },
@@ -23342,7 +23727,7 @@
    "rendered": "<p>Olazabal 5402 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91036,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23370,7 +23755,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 159500,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600096"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600096",
+   "render": "https://www.argenprop.com/static-content/69000691/484e79d8-850d-4dab-8533-9c30ad4d414c.jpg"
   },
   "_links": {
    "self": [
@@ -23422,6 +23808,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91036,
+     "source_url": "https://www.argenprop.com/static-content/69000691/484e79d8-850d-4dab-8533-9c30ad4d414c.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Olazabal 5402 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -23449,7 +23845,7 @@
    "rendered": "<p>Andonaegui 2129 — Villa Urquiza. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91037,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23477,7 +23873,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 176900,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600101"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600101",
+   "render": "https://www.argenprop.com/static-content/10100691/4f95f270-b787-44c8-8e09-93e81a2c033a.jpg"
   },
   "_links": {
    "self": [
@@ -23529,6 +23926,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91037,
+     "source_url": "https://www.argenprop.com/static-content/10100691/4f95f270-b787-44c8-8e09-93e81a2c033a.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Andonaegui 2129 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -23556,7 +23963,7 @@
    "rendered": "<p>Olazabal 4715 — Villa Urquiza. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91038,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -23584,7 +23991,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 105336,
-   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600056"
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-urquiza--19600056",
+   "render": "https://www.argenprop.com/static-content/65000691/c37e3b19-faa7-43cd-9526-90781b76f30e.jpg"
   },
   "_links": {
    "self": [
@@ -23636,6 +24044,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91038,
+     "source_url": "https://www.argenprop.com/static-content/65000691/c37e3b19-faa7-43cd-9526-90781b76f30e.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Olazabal 4715 — Villa Urquiza"
+    }
    ]
   }
  },
@@ -24371,7 +24789,7 @@
    "rendered": "<p>Teodoro Garcia 3054 — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91039,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24399,7 +24817,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 122090,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/53/56/75/16/720x532/1909245359.jpg"
   },
   "_links": {
    "self": [
@@ -24451,6 +24870,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91039,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/56/75/16/720x532/1909245359.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Teodoro Garcia 3054 — Colegiales"
+    }
    ]
   }
  },
@@ -24478,7 +24907,7 @@
    "rendered": "<p>Teodoro Garcia 3150 — Colegiales. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91040,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -24506,7 +24935,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 405000,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-colegiales-etapa-en-pozo.html",
+   "render": "https://static.tokkobroker.com/dw_pics/2110748141_67371184297130357908895793517192764556994798116160504021130649393486951300301.jpg"
   },
   "_links": {
    "self": [
@@ -24558,6 +24988,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91040,
+     "source_url": "https://static.tokkobroker.com/dw_pics/2110748141_67371184297130357908895793517192764556994798116160504021130649393486951300301.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Teodoro Garcia 3150 — Colegiales"
+    }
    ]
   }
  },
@@ -25647,7 +26087,7 @@
    "rendered": "<p>E6 Parque de la Innovacion — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91041,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -25675,7 +26115,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 219574,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html",
+   "render": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/12/12956.jpg"
   },
   "_links": {
    "self": [
@@ -25727,6 +26168,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91041,
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/12/12956.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "E6 Parque de la Innovacion — Núñez"
+    }
    ]
   }
  },
@@ -25754,7 +26205,7 @@
    "rendered": "<p>Correa 2300 — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91042,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -25782,7 +26233,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 127600,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html",
+   "render": "https://www.argenprop.com/static-content/66784961/ee1b8e66-58ee-4f94-893c-b9f056d73398.jpg"
   },
   "_links": {
    "self": [
@@ -25834,6 +26286,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91042,
+     "source_url": "https://www.argenprop.com/static-content/66784961/ee1b8e66-58ee-4f94-893c-b9f056d73398.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Correa 2300 — Núñez"
+    }
    ]
   }
  },
@@ -25861,7 +26323,7 @@
    "rendered": "<p>Moldes 3600 — Nunez. En pozo.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91043,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -25889,7 +26351,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": 125000,
-   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html"
+   "fuente": "https://www.zonaprop.com.ar/emprendimientos-departamentos-nunez-etapa-en-pozo.html",
+   "render": "https://static.tokkobroker.com/dw_pics/2110762143_23008493270780617270751166117084355655129312840096653832397788272946727232006.jpg"
   },
   "_links": {
    "self": [
@@ -25941,6 +26404,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91043,
+     "source_url": "https://static.tokkobroker.com/dw_pics/2110762143_23008493270780617270751166117084355655129312840096653832397788272946727232006.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Moldes 3600 — Núñez"
+    }
    ]
   }
  },
@@ -25968,7 +26441,7 @@
    "rendered": "<p>Quartier Bajo Belgrano — Belgrano. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91044,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -25996,7 +26469,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://quartierbajobelgrano.com/"
+   "fuente": "https://quartierbajobelgrano.com/",
+   "render": "https://framerusercontent.com/images/RNVLE3VPLxYLk1Fo45WTqOtl7u8.png"
   },
   "_links": {
    "self": [
@@ -26048,6 +26522,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91044,
+     "source_url": "https://framerusercontent.com/images/RNVLE3VPLxYLk1Fo45WTqOtl7u8.png",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Quartier Bajo Belgrano — Belgrano"
+    }
    ]
   }
  },
@@ -26075,7 +26559,7 @@
    "rendered": "<p>Boreas Almagro — Almagro. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91045,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -26103,7 +26587,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://realestate.criba.com.ar/d/57188-Boreas-Almagro-en-Almagro"
+   "fuente": "https://realestate.criba.com.ar/d/57188-Boreas-Almagro-en-Almagro",
+   "render": "https://imgar.zonapropcdn.com/avisos/1/00/54/88/99/14/720x532/2065126269.jpg"
   },
   "_links": {
    "self": [
@@ -26155,6 +26640,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91045,
+     "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/88/99/14/720x532/2065126269.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Boreas Almagro — Almagro"
+    }
    ]
   }
  },
@@ -26182,7 +26677,7 @@
    "rendered": "<p>OM Botanico — Palermo. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91046,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -26210,7 +26705,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://bmaestudio.com.ar/om-botanico-una-nueva-pieza-urbana/"
+   "fuente": "https://bmaestudio.com.ar/om-botanico-una-nueva-pieza-urbana/",
+   "render": "https://bmaestudio.com.ar/wp-content/uploads/2025/06/OM-BOTANICO-Captura-de-Pantalla-2024-09-30-a-las-00.13.27-e1728314496288-edited.png"
   },
   "_links": {
    "self": [
@@ -26262,6 +26758,16 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91046,
+     "source_url": "https://bmaestudio.com.ar/wp-content/uploads/2025/06/OM-BOTANICO-Captura-de-Pantalla-2024-09-30-a-las-00.13.27-e1728314496288-edited.png",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "OM Botanico — Palermo"
+    }
    ]
   }
  },
@@ -26503,7 +27009,7 @@
    "rendered": "<p>Link Towers — Puerto Madero. En construccion.</p>",
    "protected": false
   },
-  "featured_media": 0,
+  "featured_media": 91047,
   "template": "",
   "meta": {
    "_acf_changed": false
@@ -26531,7 +27037,8 @@
    "moneda": "USD",
    "esquema_pago": "",
    "precio_desde": "",
-   "fuente": "https://www.fernandezprieto.com.ar/"
+   "fuente": "https://www.fernandezprieto.com.ar/",
+   "render": "https://thelinktowers.com/img/link1.jpg"
   },
   "_links": {
    "self": [
@@ -26583,6 +27090,562 @@
    "wp:term": [
     [],
     []
+   ],
+   "wp:featuredmedia": [
+    {
+     "id": 91047,
+     "source_url": "https://thelinktowers.com/img/link1.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Link Towers — Puerto Madero"
+    }
+   ]
+  }
+ },
+ {
+  "id": 10210,
+  "date": "2026-08-05T19:00:00",
+  "date_gmt": "2026-08-05T22:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10210"
+  },
+  "modified": "2026-08-05T19:00:00",
+  "modified_gmt": "2026-08-05T22:00:00",
+  "slug": "astor-san-telmo-san-telmo",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/astor-san-telmo-san-telmo/",
+  "title": {
+   "rendered": "Astor San Telmo — San Telmo"
+  },
+  "content": {
+   "rendered": "<p>Astor San Telmo es un desarrollo en construccion en San Telmo, Av. Caseros entre Bolivar y Peru, San Telmo. Tipologias: 1 a 4 amb. Desarrolla TGLT. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Astor San Telmo — San Telmo. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "San Telmo",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10210",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "TGLT",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "1 a 4 amb",
+   "comparable_terminado": "",
+   "direccion": "Av. Caseros entre Bolivar y Peru, San Telmo",
+   "amenities": "Piletas, patios centrales, gimnasio, parrillas, bicicletero, sala de juegos, concierge",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.zonaprop.com.ar/propiedades/astor-san-telmo-41876588.html",
+   "render": ""
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10211,
+  "date": "2026-08-05T19:00:00",
+  "date_gmt": "2026-08-05T22:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10211"
+  },
+  "modified": "2026-08-05T19:00:00",
+  "modified_gmt": "2026-08-05T22:00:00",
+  "slug": "la-portena-ii-residences-puerto-madero",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/la-portena-ii-residences-puerto-madero/",
+  "title": {
+   "rendered": "La Portena II Residences — Puerto Madero"
+  },
+  "content": {
+   "rendered": "<p>La Portena II Residences es un desarrollo en construccion en Puerto Madero, Dique 2, Puerto Madero Este. Tipologias: 52 departamentos. Desarrolla Faena Group. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>La Portena II Residences — Puerto Madero. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Puerto Madero",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10211",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Faena Group",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "52 departamentos",
+   "comparable_terminado": "",
+   "direccion": "Dique 2, Puerto Madero Este",
+   "amenities": "Amenities Faena: gimnasio, pileta rooftop, microcine, lounge",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.cronista.com/impresa-general/faena-lanza-su-segundo-edificio-en-puerto-madero/",
+   "render": ""
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10212,
+  "date": "2026-08-05T19:00:00",
+  "date_gmt": "2026-08-05T22:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10212"
+  },
+  "modified": "2026-08-05T19:00:00",
+  "modified_gmt": "2026-08-05T22:00:00",
+  "slug": "los-molinos-building-puerto-madero",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/los-molinos-building-puerto-madero/",
+  "title": {
+   "rendered": "Los Molinos Building — Puerto Madero"
+  },
+  "content": {
+   "rendered": "<p>Los Molinos Building es un desarrollo en construccion en Puerto Madero, Juana Manso 1100, Puerto Madero. Tipologias: 97 departamentos. Desarrolla Faena Group. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Los Molinos Building — Puerto Madero. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Puerto Madero",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10212",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Faena Group",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "97 departamentos",
+   "comparable_terminado": "",
+   "direccion": "Juana Manso 1100, Puerto Madero",
+   "amenities": "",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.argenprop.com/departamento-en-venta-en-puerto-madero-2-ambientes--18517368",
+   "render": ""
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10213,
+  "date": "2026-08-05T19:00:00",
+  "date_gmt": "2026-08-05T22:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10213"
+  },
+  "modified": "2026-08-05T19:00:00",
+  "modified_gmt": "2026-08-05T22:00:00",
+  "slug": "ayres-haus-benavidez-benavidez",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/ayres-haus-benavidez-benavidez/",
+  "title": {
+   "rendered": "Ayres Haus Benavidez — Benavidez"
+  },
+  "content": {
+   "rendered": "<p>Ayres Haus Benavidez es un desarrollo en pozo en Benavidez, Santa Fe 3600, Benavidez, Tigre. Tipologias: 2 y 3 amb + duplex. Entrega estimada 2026-12. Desarrolla Ayres Desarrollos. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Ayres Haus Benavidez — Benavidez. En pozo.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Benavidez",
+  "estado_obra": "En pozo",
+  "class_list": [
+   "post-10213",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Ayres Desarrollos",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "202612",
+   "avance_obra": "",
+   "tipologias": "2 y 3 amb + duplex",
+   "comparable_terminado": "",
+   "direccion": "Santa Fe 3600, Benavidez, Tigre",
+   "amenities": "SUM, pileta adultos y ninos, jardines privados, areas verdes",
+   "estado": "En pozo",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-ayres-haus-benavidez-54930705.html",
+   "render": ""
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10214,
+  "date": "2026-08-05T19:00:00",
+  "date_gmt": "2026-08-05T22:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10214"
+  },
+  "modified": "2026-08-05T19:00:00",
+  "modified_gmt": "2026-08-05T22:00:00",
+  "slug": "vita-pallares-valentin-alsina",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/vita-pallares-valentin-alsina/",
+  "title": {
+   "rendered": "Vita Pallares — Valentin Alsina"
+  },
+  "content": {
+   "rendered": "<p>Vita Pallares es un desarrollo en construccion en Valentin Alsina, Sen. Jose Pallares 2264, Valentin Alsina, Lanus. Tipologias: 1 a 3 amb. Desarrolla Aconif. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Vita Pallares — Valentin Alsina. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 91048,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Valentin Alsina",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10214",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Aconif",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "1 a 3 amb",
+   "comparable_terminado": "",
+   "direccion": "Sen. Jose Pallares 2264, Valentin Alsina, Lanus",
+   "amenities": "",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://aconif.com/departamentos-de-pozo/lanus/vita-pallares-valentin-alsina/",
+   "render": "https://aconif.com/wp-content/uploads/2022/06/02-PALLARES-TERRAZA-FINAL.jpg"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "id": 91048,
+     "source_url": "https://aconif.com/wp-content/uploads/2022/06/02-PALLARES-TERRAZA-FINAL.jpg",
+     "media_details": {
+      "sizes": {}
+     },
+     "alt_text": "Vita Pallares"
+    }
    ]
   }
  }

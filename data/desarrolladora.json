@@ -330,50 +330,6 @@
   }
  },
  {
-  "id": 10050,
-  "slug": "soa-desarrollos",
-  "title": {
-   "rendered": "SOA Desarrollos"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://soa.com.ar/",
-   "dev_desc": "Boutique residencial CABA.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "Puerto Madero",
-   "dev_barrios_key": "puerto-madero",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10049,
-  "slug": "tonna",
-  "title": {
-   "rendered": "Tonna"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://tonna.com.ar/",
-   "dev_desc": "Desarrollos en zona Norte CABA.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10047,
   "slug": "servente",
   "title": {
@@ -390,28 +346,6 @@
    "dev_barrios": "",
    "dev_barrios_key": "",
    "dev_proyecto": "Torre Dorrego (Palermo, 102 m)",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10046,
-  "slug": "mariotto",
-  "title": {
-   "rendered": "Mariotto"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://mariotto.com.ar/",
-   "dev_desc": "Construcción residencial. (Rosario).",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
    "dev_estructura": "",
    "dev_proyectos_slug": "",
    "dev_destacada": false
@@ -506,28 +440,6 @@
   }
  },
  {
-  "id": 10041,
-  "slug": "saicur-sa",
-  "title": {
-   "rendered": "Saicur SA"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://saicur.com/",
-   "dev_desc": "Real estate residencial.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10039,
   "slug": "toribio-achaval",
   "title": {
@@ -559,138 +471,6 @@
    "_acf_changed": false,
    "dev_web": "https://vistacapital.com.ar/",
    "dev_desc": "Real estate y fondos de inversión.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10037,
-  "slug": "sycsa",
-  "title": {
-   "rendered": "Sycsa"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://sycsa.com.ar/",
-   "dev_desc": "Construcción y desarrollo.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10035,
-  "slug": "pur-desarrollos",
-  "title": {
-   "rendered": "PUR Desarrollos"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://purdesarrollos.com/",
-   "dev_desc": "Vivienda residencial premium.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "Puerto Madero",
-   "dev_barrios_key": "puerto-madero",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10033,
-  "slug": "mosaico-real-estate",
-  "title": {
-   "rendered": "Mosaico Real Estate"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://mosaico-realestate.com/",
-   "dev_desc": "Real estate boutique premium.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10032,
-  "slug": "inarsus",
-  "title": {
-   "rendered": "Inarsus"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://inarsus.com/",
-   "dev_desc": "Desarrollos y construcción.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10031,
-  "slug": "habitec",
-  "title": {
-   "rendered": "Habitec"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://habitec.com.ar/",
-   "dev_desc": "Desarrollos sustentables.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10030,
-  "slug": "aterno",
-  "title": {
-   "rendered": "Aterno"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://aterno.com.ar/",
-   "dev_desc": "Boutique residencial CABA.",
    "dev_iniciales": "",
    "dev_badge": "",
    "dev_anios": "",
@@ -742,28 +522,6 @@
    "dev_barrios": "",
    "dev_barrios_key": "",
    "dev_proyecto": "Edificio SADAIC (Buenos Aires)",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
-  "id": 10027,
-  "slug": "sudamericana-real-estate",
-  "title": {
-   "rendered": "Sudamericana Real Estate"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://sudamericanaholding.com/",
-   "dev_desc": "Inversión real estate institucional.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
    "dev_estructura": "",
    "dev_proyectos_slug": "",
    "dev_destacada": false
@@ -836,28 +594,6 @@
   }
  },
  {
-  "id": 10020,
-  "slug": "gha-argentina",
-  "title": {
-   "rendered": "GHA Argentina"
-  },
-  "meta": {
-   "_acf_changed": false,
-   "dev_web": "https://gha.com.ar/",
-   "dev_desc": "Desarrollos boutique en CABA.",
-   "dev_iniciales": "",
-   "dev_badge": "",
-   "dev_anios": "",
-   "dev_volumen": "",
-   "dev_barrios": "",
-   "dev_barrios_key": "",
-   "dev_proyecto": "",
-   "dev_estructura": "",
-   "dev_proyectos_slug": "",
-   "dev_destacada": false
-  }
- },
- {
   "id": 10019,
   "slug": "eurnekian-group",
   "title": {
@@ -897,7 +633,7 @@
    "dev_barrios_key": "puerto-madero",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "la-portena-ii-residences-puerto-madero,los-molinos-building-puerto-madero",
    "dev_destacada": false
   }
  },
@@ -919,7 +655,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "astor-san-telmo-san-telmo",
    "dev_destacada": false
   }
  },
@@ -985,7 +721,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "ayres-haus-benavidez-benavidez",
    "dev_destacada": false
   }
  },
@@ -1051,7 +787,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "vita-pallares-valentin-alsina",
    "dev_destacada": false
   }
  },
