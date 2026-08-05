@@ -171,7 +171,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "life-caballito-caballito",
    "dev_destacada": false
   }
  },
@@ -545,7 +545,7 @@
    "dev_barrios_key": "palermo",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "nice-cordoba-palermo,nice-hollywood-palermo-hollywood,paseo-plaza-thames-palermo-soho,piet-gascon-palermo-soho,casa-aer-palermo-soho,haaus-palermo-soho,central-acuna-palermo,nice-plaza-palermo-botanico,humboldt-1545-palermo-hollywood,haaus-ii-palermo-soho",
+   "dev_proyectos_slug": "black-echeverria-1237-belgrano,casa-aer-palermo-soho,casa-sucre-belgrano,central-acuna-palermo,cinco-cramer-belgrano,haaus-ii-palermo-soho,haaus-palermo-soho,humboldt-1545-palermo-hollywood,nice-cordoba-palermo,nice-hollywood-palermo-hollywood,nice-plaza-palermo-botanico,paseo-plaza-thames-palermo-soho,piet-gascon-palermo-soho",
    "dev_destacada": false
   }
  },
@@ -1975,7 +1975,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "zapata-239-palermo-hollywood",
    "dev_destacada": false
   }
  },
@@ -2877,7 +2877,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "feel-palermo-palermo-hollywood",
    "dev_destacada": false
   }
  },
@@ -2921,7 +2921,7 @@
    "dev_barrios_key": "puerto-madero",
    "dev_proyecto": "Distrito Madero Harbour, Osten Tower II",
    "dev_estructura": "Precio cerrado / al costo",
-   "dev_proyectos_slug": "osten-tower-i-puerto-madero,osten-tower-ii-puerto-madero",
+   "dev_proyectos_slug": "harbour-tower-puerto-madero,osten-tower-i-puerto-madero,osten-tower-ii-puerto-madero",
    "dev_destacada": true
   }
  },
@@ -3493,7 +3493,7 @@
    "dev_barrios_key": "palermo",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "casa-aer-palermo-soho",
    "dev_destacada": false
   }
  },
@@ -3867,7 +3867,7 @@
    "dev_barrios_key": "palermo nunez belgrano",
    "dev_proyecto": "Torre QUO (18.000 m²), Velvet Collection Sucre",
    "dev_estructura": "Fideicomiso al costo",
-   "dev_proyectos_slug": "palacio-cabrera-palermo-hollywood",
+   "dev_proyectos_slug": "palacio-cabrera-palermo-hollywood,torre-quo-nunez",
    "dev_destacada": true
   }
  },
@@ -4175,7 +4175,7 @@
    "dev_barrios_key": "palermo belgrano recoleta",
    "dev_proyecto": "Alianza Armani (Recoleta), premium en Palermo",
    "dev_estructura": "Precio cerrado",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "be-boulevard-puerto-madero",
    "dev_destacada": true
   }
  },
@@ -4219,7 +4219,7 @@
    "dev_barrios_key": "",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "dome-suites-residence-palermo-hollywood,dome-torre-arcos-belgrano",
    "dev_destacada": false
   }
  },
@@ -4395,7 +4395,7 @@
    "dev_barrios_key": "saavedra",
    "dev_proyecto": "LOICA (Saavedra)",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "tenca-palermo-hollywood",
    "dev_destacada": false
   }
  },
