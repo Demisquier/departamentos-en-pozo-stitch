@@ -90,8 +90,8 @@ export async function generateMetadata({ params }) {
   if (cm && BARRIO_CATALOGO[cm[1]]) {
     const label = BARRIO_CATALOGO[cm[1]].label;
     return {
-      title: `Departamentos en pozo en ${label}: proyectos y precios 2026 | Departamentos en Pozo`,
-      description: `Catálogo de departamentos en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará proyectos con análisis independiente.`,
+      title: `Desarrollos inmobiliarios en pozo en ${label}: proyectos y precios 2026 | Departamentos en Pozo`,
+      description: `Desarrollos inmobiliarios en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará departamentos en pozo por proyecto con análisis independiente.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }
