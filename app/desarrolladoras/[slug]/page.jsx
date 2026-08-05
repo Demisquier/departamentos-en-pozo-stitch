@@ -1,11 +1,18 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getDesarrolladoraBySlug, featuredImage, acf } from "../../../lib/wp";
+import { getDesarrolladoraBySlug, getDesarrolladoras, featuredImage, acf } from "../../../lib/wp";
 import Container from "../../_ui/Container";
 import Breadcrumb from "../../_ui/Breadcrumb";
+import LogoAvatar from "../../_ui/LogoAvatar";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
+
+// Pre-generamos la landing de TODAS las desarrolladoras (con o sin proyectos cargados).
+export async function generateStaticParams() {
+  const devs = await getDesarrolladoras();
+  return (devs || []).filter((d) => d.slug).map((d) => ({ slug: d.slug }));
+}
 
 export async function generateMetadata({ params }) {
   const r = await getDesarrolladoraBySlug(params.slug);
@@ -39,9 +46,7 @@ export default async function DesarrolladoraLanding({ params }) {
 
       {/* Cabecera desarrolladora */}
       <header className="flex items-start gap-5 border-b border-outline-variant pb-8 mb-8">
-        {dev.iniciales ? (
-          <span className="shrink-0 w-16 h-16 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-[22px]">{dev.iniciales}</span>
-        ) : null}
+        <LogoAvatar web={dev.web} iniciales={dev.iniciales} size={64} />
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="font-headline-md text-headline-md text-primary">{dev.nombre}</h1>
