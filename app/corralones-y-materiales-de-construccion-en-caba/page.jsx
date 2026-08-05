@@ -56,7 +56,9 @@ export default async function CorralonesPage() {
           Directorio independiente de corralones, homecenters y fabricantes de materiales, util para quien encara una obra o refaccion. No cobramos por aparecer: solo listamos proveedores con presencia verificable.
         </p>
 
-        <div className="wp-content max-w-none mb-6">
+        <DirectorioCorralones items={items} />
+
+        <div className="wp-content max-w-none mt-12">
           <h2 id="como-elegir">Como elegir corralon y comprar sin pagar de mas</h2>
           <p>El precio de los materiales se mueve casi tanto como el costo de construir (el mismo indice CAC que ajusta las cuotas en pozo). Comprar bien es parte del retorno de la obra: pedi tres presupuestos por los rubros pesados, compara precio puesto en obra (no en mostrador) y separa lo que conviene en corralon de barrio de lo que conviene en homecenter.</p>
           <table>
@@ -68,11 +70,7 @@ export default async function CorralonesPage() {
               <tr><td>Comprobante</td><td>Exigi factura: respalda garantia y deduce</td><td>Solo remito o precio "en negro"</td></tr>
             </tbody>
           </table>
-        </div>
 
-        <DirectorioCorralones items={items} />
-
-        <div className="wp-content max-w-none mt-4">
           <p><em>Nota de sourcing: se listan proveedores con sitio oficial verificable. Se excluyeron marcas sin presencia clara en CABA/GBA. No publicamos direcciones ni telefonos: confirmalos en cada sitio oficial.</em></p>
 
           <h2 id="faq">Preguntas frecuentes</h2>
