@@ -25943,5 +25943,647 @@
     []
    ]
   }
+ },
+ {
+  "id": 10204,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10204"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "quartier-bajo-belgrano-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/quartier-bajo-belgrano-belgrano/",
+  "title": {
+   "rendered": "Quartier Bajo Belgrano — Belgrano"
+  },
+  "content": {
+   "rendered": "<p>Quartier Bajo Belgrano es un desarrollo en construccion en Belgrano, Minones entre Monroe y Blanco Encalada, Bajo Belgrano. Tipologias: 1 a 3 dormitorios. Entrega estimada 2027. Desarrolla Argencons. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Quartier Bajo Belgrano — Belgrano. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10204",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Argencons",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "2027",
+   "avance_obra": "",
+   "tipologias": "1 a 3 dormitorios",
+   "comparable_terminado": "",
+   "direccion": "Minones entre Monroe y Blanco Encalada, Bajo Belgrano",
+   "amenities": "Wellness center, gimnasio, pileta climatizada, spa, SUM, coworking, jardines con parrillas, laundry",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://quartierbajobelgrano.com/"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10205,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10205"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "boreas-almagro-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/boreas-almagro-almagro/",
+  "title": {
+   "rendered": "Boreas Almagro — Almagro"
+  },
+  "content": {
+   "rendered": "<p>Boreas Almagro es un desarrollo en construccion en Almagro, Bulnes 27, Almagro. Tipologias: 1 a 4 amb. Entrega estimada 2026-09. Desarrolla Criba. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Boreas Almagro — Almagro. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10205",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Criba",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "202609",
+   "avance_obra": "",
+   "tipologias": "1 a 4 amb",
+   "comparable_terminado": "",
+   "direccion": "Bulnes 27, Almagro",
+   "amenities": "Gimnasio, coworking, pileta, solarium, parrilla, cocheras, bauleras",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://realestate.criba.com.ar/d/57188-Boreas-Almagro-en-Almagro"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10206,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10206"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "om-botanico-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/om-botanico-palermo/",
+  "title": {
+   "rendered": "OM Botanico — Palermo"
+  },
+  "content": {
+   "rendered": "<p>OM Botanico es un desarrollo en construccion en Palermo, Av. Santa Fe y Araoz, frente al Botanico, Palermo. Tipologias: 1 a 5 amb. Desarrolla BMA Arquitectos. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>OM Botanico — Palermo. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10206",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "BMA Arquitectos",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "1 a 5 amb",
+   "comparable_terminado": "",
+   "direccion": "Av. Santa Fe y Araoz, frente al Botanico, Palermo",
+   "amenities": "Pileta de nado, gimnasio indoor-outdoor, cocheras",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://bmaestudio.com.ar/om-botanico-una-nueva-pieza-urbana/"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10207,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10207"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "viaviva-libertador-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/viaviva-libertador-belgrano/",
+  "title": {
+   "rendered": "ViaViva Libertador — Belgrano"
+  },
+  "content": {
+   "rendered": "<p>ViaViva Libertador es un desarrollo en construccion en Belgrano, Av. del Libertador, tramo Belgrano-Palermo. Desarrolla BMA Arquitectos. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>ViaViva Libertador — Belgrano. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10207",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "BMA Arquitectos",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "",
+   "comparable_terminado": "",
+   "direccion": "Av. del Libertador, tramo Belgrano-Palermo",
+   "amenities": "Emprendimiento de usos mixtos sobre traza ferroviaria",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://bmaestudio.com.ar/segunda-etapa-viaviva/"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10208,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10208"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "catalinas-rio-retiro",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/catalinas-rio-retiro/",
+  "title": {
+   "rendered": "Catalinas Rio — Retiro"
+  },
+  "content": {
+   "rendered": "<p>Catalinas Rio es un desarrollo en pozo en Retiro, Catalinas, Retiro. Desarrolla Consultatio. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Catalinas Rio — Retiro. En pozo.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Retiro",
+  "estado_obra": "En pozo",
+  "class_list": [
+   "post-10208",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Consultatio",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "",
+   "comparable_terminado": "",
+   "direccion": "Catalinas, Retiro",
+   "amenities": "",
+   "estado": "En pozo",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.consultatio.com.ar/"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
+ },
+ {
+  "id": 10209,
+  "date": "2026-08-05T18:00:00",
+  "date_gmt": "2026-08-05T21:00:00",
+  "guid": {
+   "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=10209"
+  },
+  "modified": "2026-08-05T18:00:00",
+  "modified_gmt": "2026-08-05T21:00:00",
+  "slug": "link-towers-puerto-madero",
+  "status": "publish",
+  "type": "desarrollo",
+  "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/link-towers-puerto-madero/",
+  "title": {
+   "rendered": "Link Towers — Puerto Madero"
+  },
+  "content": {
+   "rendered": "<p>Link Towers es un desarrollo en construccion en Puerto Madero, Dique 1, Madero Harbour, Puerto Madero. Desarrolla Fernandez Prieto. Datos de fuente publica; verifica precio, plazos y condiciones legales antes de invertir.</p>",
+   "protected": false
+  },
+  "excerpt": {
+   "rendered": "<p>Link Towers — Puerto Madero. En construccion.</p>",
+   "protected": false
+  },
+  "featured_media": 0,
+  "template": "",
+  "meta": {
+   "_acf_changed": false
+  },
+  "barrio": "Puerto Madero",
+  "estado_obra": "En construccion",
+  "class_list": [
+   "post-10209",
+   "desarrollo",
+   "type-desarrollo",
+   "status-publish"
+  ],
+  "acf": {
+   "desarrolladora": "Fernandez Prieto",
+   "precio_m2": "",
+   "anticipo": "",
+   "esquema_cuotas": "",
+   "fecha_entrega": "",
+   "avance_obra": "",
+   "tipologias": "",
+   "comparable_terminado": "",
+   "direccion": "Dique 1, Madero Harbour, Puerto Madero",
+   "amenities": "",
+   "estado": "En construccion",
+   "moneda": "USD",
+   "esquema_pago": "",
+   "precio_desde": "",
+   "fuente": "https://www.fernandezprieto.com.ar/"
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo/10103",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/desarrollo"
+    }
+   ],
+   "about": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/types/desarrollo"
+    }
+   ],
+   "wp:attachment": [
+    {
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/media?parent=10103"
+    }
+   ],
+   "wp:term": [
+    {
+     "taxonomy": "barrio",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/barrio?post=10103"
+    },
+    {
+     "taxonomy": "estado_obra",
+     "embeddable": true,
+     "href": "https://departamentosenpozo.com.ar/wp-json/wp/v2/estado_obra?post=10103"
+    }
+   ],
+   "curies": [
+    {
+     "name": "wp",
+     "href": "https://api.w.org/{rel}",
+     "templated": true
+    }
+   ]
+  },
+  "_embedded": {
+   "wp:term": [
+    [],
+    []
+   ]
+  }
  }
 ]

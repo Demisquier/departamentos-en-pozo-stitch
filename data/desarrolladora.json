@@ -303,7 +303,7 @@
    "dev_barrios_key": "palermo",
    "dev_proyecto": "Quintana 281 (Recoleta)",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "om-botanico-palermo,viaviva-libertador-belgrano",
    "dev_destacada": false
   }
  },
@@ -3053,7 +3053,7 @@
    "dev_barrios_key": "puerto-madero",
    "dev_proyecto": "The Link Towers (Dique 1, US$120M)",
    "dev_estructura": "Asociación con Vizora",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "link-towers-puerto-madero",
    "dev_destacada": true
   }
  },
@@ -3581,7 +3581,7 @@
    "dev_barrios_key": "puerto-madero nunez recoleta",
    "dev_proyecto": "Alvear Tower (235m, el residencial más alto del país)",
    "dev_estructura": "Desarrollos propios + obra para terceros",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "boreas-almagro-almagro",
    "dev_destacada": true
   }
  },
@@ -3625,7 +3625,7 @@
    "dev_barrios_key": "puerto-madero",
    "dev_proyecto": "Catalinas Río (185.000 m²), Oceana Nordelta",
    "dev_estructura": "Precio cerrado / al costo",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "catalinas-rio-retiro",
    "dev_destacada": true
   }
  },
@@ -4131,7 +4131,7 @@
    "dev_barrios_key": "recoleta",
    "dev_proyecto": "",
    "dev_estructura": "",
-   "dev_proyectos_slug": "",
+   "dev_proyectos_slug": "quartier-bajo-belgrano-belgrano",
    "dev_destacada": false
   }
  },
