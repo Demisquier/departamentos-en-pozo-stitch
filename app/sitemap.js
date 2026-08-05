@@ -25,8 +25,8 @@ export default async function sitemap() {
     for (const p of posts || []) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
     for (const c of cats || []) if (c.slug && c.slug !== "uncategorized" && (c.count || 0) > 0) out.push({ url: BASE + `/category/${c.slug}/`, lastModified: new Date() });
-    // Landings de desarrolladora: solo las que tienen proyectos (las vacías serían thin).
-    for (const d of devs || []) if (d.slug && d.proyectosSlug && d.proyectosSlug.length > 0) out.push({ url: BASE + `/desarrolladoras/${d.slug}/`, lastModified: new Date() });
+    // Landings de desarrolladora: TODAS (cada dev tiene su perfil, con o sin proyectos cargados).
+    for (const d of devs || []) if (d.slug) out.push({ url: BASE + `/desarrolladoras/${d.slug}/`, lastModified: new Date() });
   } catch (e) {
     // WP no disponible en build: devolvemos al menos las rutas fijas
   }
