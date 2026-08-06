@@ -343,12 +343,35 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
         </div>
       )}
 
-      {vista === 'lista' && filtered.length === 0 && (
-        <div className="mt-10 text-center">
-          <p className="text-on-surface-variant font-body-md text-body-md">No hay proyectos que coincidan con los filtros.</p>
-          <button onClick={limpiar} className="mt-3 text-secondary underline underline-offset-4 text-[14px]">Limpiar filtros</button>
-        </div>
-      )}
+      {vista === 'lista' && filtered.length === 0 && (() => {
+        const preLbl = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
+        const activos = [];
+        if (barrio) activos.push([barrio, () => setBarrio('')]);
+        if (amb) activos.push([`${amb} amb`, () => setAmb('')]);
+        if (precio !== 'todos') activos.push([preLbl[precio] || 'Precio', () => setPrecio('todos')]);
+        if (etapa) activos.push([etapa, () => setEtapa('')]);
+        if (entregaMax) activos.push([`Entrega hasta ${entregaMax}`, () => setEntregaMax('')]);
+        if (fin) activos.push(['Con financiación', () => setFin(false)]);
+        return (
+          <div className="mt-10 text-center max-w-lg mx-auto">
+            <span className="material-symbols-outlined text-5xl text-outline-variant">search_off</span>
+            <p className="mt-2 text-primary font-medium text-body-lg">Ningún proyecto coincide con estos filtros.</p>
+            {activos.length > 0 && (
+              <>
+                <p className="text-on-surface-variant text-[14px] mt-1">Probá quitar alguno para ver más resultados:</p>
+                <div className="flex flex-wrap gap-2 justify-center mt-4">
+                  {activos.map(([label, fn], i) => (
+                    <button key={i} onClick={fn} className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary hover:text-secondary transition-colors flex items-center gap-1.5">
+                      Quitar «{label}» <span className="material-symbols-outlined text-[15px]">close</span>
+                    </button>
+                  ))}
+                  <button onClick={limpiar} className="px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-[13px] hover:opacity-90 transition-opacity">Ver todos</button>
+                </div>
+              </>
+            )}
+          </div>
+        );
+      })()}
     </>
   );
 }

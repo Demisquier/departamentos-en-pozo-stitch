@@ -5,6 +5,7 @@ import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
 import CatalogoFiltros from './CatalogoFiltros';
 import Container from '../_ui/Container';
 import JsonLd from '../_ui/JsonLd';
+import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 
 // ISR: la lista se regenera sola con los datos (además del revalidate del fetch).
 export const revalidate = 600;
@@ -96,6 +97,9 @@ export default async function CatalogoPage() {
           ))}
         </div>
       </section>
+
+      {/* Interlinking a las guías de decisión de compra. */}
+      <GuiasRelacionadas />
     </Container>
   );
 }
