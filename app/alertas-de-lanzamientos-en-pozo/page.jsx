@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE } from "../../lib/wp";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+import Faq from "../_ui/Faq";
 import AlertasForm from "./AlertasForm";
 
 export const metadata = {
@@ -88,12 +89,7 @@ export default function AlertasPage() {
         <Container className="max-w-3xl">
           <div className="wp-content">
             <h2 id="faq">Preguntas frecuentes</h2>
-            {FAQ.map(([q, a]) => (
-              <details key={q} className="group border border-outline-variant rounded-lg p-5 mb-3 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between cursor-pointer font-semibold text-primary">{q}<span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span></summary>
-                <p className="mt-3 text-on-surface-variant leading-relaxed">{a}</p>
-              </details>
-            ))}
+            <Faq items={FAQ} className="!mt-4" />
 
             <p className="mt-8">
               Mientras tanto, revisa el <Link href="/desarrollos-inmobiliarios/">catalogo de desarrollos en pozo</Link>, el <Link href="/indice-precios-pozo-caba-por-barrio/">indice de precios por barrio</Link> y el <Link href="/simulador-cuota-cac-pozo/">simulador de cuota con ajuste CAC</Link>.
