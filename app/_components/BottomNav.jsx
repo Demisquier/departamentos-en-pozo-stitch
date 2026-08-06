@@ -13,7 +13,7 @@ export default function BottomNav() {
     <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-3 px-margin-mobile z-50 border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
       {ITEMS.map((it, i) => (
         <Link key={it.href} href={it.href} className={`flex flex-col items-center justify-center ${i === 0 ? "text-secondary font-bold" : "text-on-surface-variant hover:text-secondary"} transition-colors`}>
-          <span className="material-symbols-outlined" style={it.fill ? { fontVariationSettings: "'FILL' 1" } : undefined}>{it.icon}</span>
+          <span className={`material-symbols-outlined${it.fill ? " icon-fill" : ""}`}>{it.icon}</span>
           <span className="text-[10px] uppercase mt-1 font-label-caps">{it.label}</span>
         </Link>
       ))}
