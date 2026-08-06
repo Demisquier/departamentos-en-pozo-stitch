@@ -39,7 +39,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
 
   return (
     <>
-      <section className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 mb-6 rounded-xl overflow-hidden relative" style={{ minHeight: "340px" }}>
+      <section className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-2 mb-6 rounded-xl overflow-hidden relative min-h-[340px]">
         <div className="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto relative"><Tile src={imgs[0]} alt={nombre} i={0} /></div>
         <div className="hidden md:block relative"><Tile src={imgs[1]} alt={`${nombre} 2`} i={1} /></div>
         <div className="hidden md:block relative"><Tile src={imgs[2]} alt={`${nombre} 3`} i={2} /></div>
@@ -57,7 +57,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
         // Tocar CUALQUIER zona oscura del overlay cierra (onClick={close} en la raíz).
         // Solo la imagen, las flechas y las miniaturas detienen la propagación para no cerrar
         // por accidente. Así en mobile no queda "atrapado": el 90% de la pantalla cierra.
-        <div className="fixed inset-0 z-[100] flex flex-col" style={{ backgroundColor: "rgba(0,0,0,0.94)" }} onClick={close}>
+        <div className="fixed inset-0 z-[100] flex flex-col scrim" onClick={close}>
           {/* Botón CERRAR flotante: glifo unicode (siempre renderiza, sin depender de la
               fuente de íconos), target grande, alto contraste, por encima de todo. */}
           <button

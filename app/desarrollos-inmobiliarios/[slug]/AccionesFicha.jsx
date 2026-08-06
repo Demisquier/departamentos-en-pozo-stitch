@@ -168,7 +168,7 @@ function ModalContacto({ slug, nombre, asunto, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[110] flex items-end sm:items-center justify-center p-0 sm:p-4" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} onClick={onClose}>
+    <div className="fixed inset-0 z-[110] flex items-end sm:items-center justify-center p-0 sm:p-4 scrim-soft" onClick={onClose}>
       <div className="bg-surface w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl shadow-2xl max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between p-5 border-b border-outline-variant sticky top-0 bg-surface">
           <h3 className="font-headline-sm text-headline-sm text-primary">
