@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { SITE } from "../../lib/wp";
+import { NEARBY_CATALOGO, BARRIO_CATALOGO } from "../../lib/barrios";
 import CatalogoFiltros from "../desarrollos-inmobiliarios/CatalogoFiltros";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+import GuiasRelacionadas from "../_ui/GuiasRelacionadas";
 
 // Landing de catálogo por barrio: el listado de proyectos en pozo pre-filtrado por barrio.
 // Reusa CatalogoFiltros (con barrioFijo) y el mismo shape de items del catálogo general.
@@ -55,6 +57,28 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
             </Link>.
           </p>
         </section>
+
+        {/* Barrios cercanos: interlinking hacia landings de barrios linderos. */}
+        {(() => {
+          const nearby = (NEARBY_CATALOGO[slug] || []).filter((k) => BARRIO_CATALOGO[k]);
+          if (!nearby.length) return null;
+          return (
+            <section className="mt-10">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Barrios cercanos</h2>
+              <div className="flex flex-wrap gap-2.5">
+                {nearby.map((k) => (
+                  <Link key={k} href={`/desarrollos-inmobiliarios-en-${k}/`}
+                    className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary hover:text-secondary transition-colors">
+                    Desarrollos en pozo en {BARRIO_CATALOGO[k].label}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
+
+        {/* Interlinking a las guías de decisión de compra. */}
+        <GuiasRelacionadas />
       </Container>
     </>
   );
