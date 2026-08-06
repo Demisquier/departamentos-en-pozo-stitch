@@ -54,36 +54,42 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
       </section>
 
       {open && imgs.length > 0 && (
+        // Tocar CUALQUIER zona oscura del overlay cierra (onClick={close} en la raíz).
+        // Solo la imagen, las flechas y las miniaturas detienen la propagación para no cerrar
+        // por accidente. Así en mobile no queda "atrapado": el 90% de la pantalla cierra.
         <div className="fixed inset-0 z-[100] bg-black/92 flex flex-col" onClick={close}>
-          <div className="flex items-center justify-between px-4 py-3 text-white/90 shrink-0" onClick={(e) => e.stopPropagation()}>
+          {/* Botón CERRAR flotante: glifo unicode (siempre renderiza, sin depender de la
+              fuente de íconos), target grande, alto contraste, por encima de todo. */}
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Cerrar galería"
+            className="fixed top-3 right-3 z-[120] flex items-center gap-2 h-11 pl-4 pr-3 rounded-full bg-white text-primary shadow-lg hover:bg-white/90 active:scale-95 transition"
+          >
+            <span className="text-[15px] font-semibold">Cerrar</span>
+            <span className="text-[20px] leading-none">✕</span>
+          </button>
+
+          <div className="flex items-center px-4 py-3 text-white/90 shrink-0">
             <span className="text-[14px] font-medium">{idx + 1} / {imgs.length}</span>
-            <div className="flex items-center gap-1">
-              <button type="button" onClick={() => setZoom((z) => !z)} className="p-2 hover:bg-white/10 rounded-full" aria-label="Zoom">
-                <span className="material-symbols-outlined">{zoom ? "zoom_out" : "zoom_in"}</span>
-              </button>
-              <button type="button" onClick={close} className="p-2 hover:bg-white/10 rounded-full" aria-label="Cerrar">
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
+            <button type="button" onClick={(e) => { e.stopPropagation(); setZoom((z) => !z); }} className="ml-auto mr-14 p-2 hover:bg-white/10 rounded-full text-[22px] leading-none" aria-label="Zoom">
+              {zoom ? "－" : "＋"}
+            </button>
           </div>
 
-          <div className="flex-1 flex items-center justify-center relative overflow-auto px-2" onClick={(e) => e.stopPropagation()}>
+          <div className="flex-1 flex items-center justify-center relative overflow-auto px-2">
             {imgs.length > 1 && (
-              <button type="button" onClick={prev} className="absolute left-2 md:left-6 z-10 p-2 md:p-3 bg-white/10 hover:bg-white/20 rounded-full text-white" aria-label="Anterior">
-                <span className="material-symbols-outlined text-[28px]">chevron_left</span>
-              </button>
+              <button type="button" onClick={(e) => { e.stopPropagation(); prev(); }} className="absolute left-2 md:left-6 z-10 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/30 rounded-full text-white text-[30px] leading-none" aria-label="Anterior">‹</button>
             )}
             <img
               src={imgs[idx]}
               alt={`${nombre} — foto ${idx + 1}`}
               referrerPolicy="no-referrer"
-              onClick={() => setZoom((z) => !z)}
-              className={`select-none transition-transform duration-300 ${zoom ? "max-w-none max-h-none w-auto h-auto scale-150 cursor-zoom-out" : "max-w-[92vw] max-h-[78vh] object-contain cursor-zoom-in"}`}
+              onClick={(e) => { e.stopPropagation(); setZoom((z) => !z); }}
+              className={`select-none transition-transform duration-300 ${zoom ? "max-w-none max-h-none w-auto h-auto scale-150 cursor-zoom-out" : "max-w-[92vw] max-h-[74vh] object-contain cursor-zoom-in"}`}
             />
             {imgs.length > 1 && (
-              <button type="button" onClick={next} className="absolute right-2 md:right-6 z-10 p-2 md:p-3 bg-white/10 hover:bg-white/20 rounded-full text-white" aria-label="Siguiente">
-                <span className="material-symbols-outlined text-[28px]">chevron_right</span>
-              </button>
+              <button type="button" onClick={(e) => { e.stopPropagation(); next(); }} className="absolute right-2 md:right-6 z-10 w-11 h-11 flex items-center justify-center bg-white/15 hover:bg-white/30 rounded-full text-white text-[30px] leading-none" aria-label="Siguiente">›</button>
             )}
           </div>
 

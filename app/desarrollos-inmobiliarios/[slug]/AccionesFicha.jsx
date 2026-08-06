@@ -174,9 +174,7 @@ function ModalContacto({ slug, nombre, asunto, onClose }) {
           <h3 className="font-headline-sm text-headline-sm text-primary">
             {asunto === "visita" ? "Agendar visita" : "Solicitar cotización"}
           </h3>
-          <button type="button" onClick={onClose} className="p-1 text-on-surface-variant hover:text-primary" aria-label="Cerrar">
-            <span className="material-symbols-outlined">close</span>
-          </button>
+          <button type="button" onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full text-[22px] leading-none text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition" aria-label="Cerrar">✕</button>
         </div>
 
         {status === "sent" ? (
