@@ -4,6 +4,7 @@ import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
 import Breadcrumb from "../_ui/Breadcrumb";
 import AlertaCTA from "../_ui/AlertaCTA";
+import Faq from "../_ui/Faq";
 import DirectorioCorralones from "./DirectorioCorralones";
 
 export const dynamicParams = !process.env.EXPORT;
@@ -49,7 +50,7 @@ export default async function CorralonesPage() {
           { name: "Corralones y materiales" },
         ]} />
 
-        <h1 className="font-headline-lg text-headline-lg md:text-display-sm text-primary mb-3 max-w-3xl">
+        <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-3 max-w-3xl">
           Corralones y materiales de construccion en CABA y GBA
         </h1>
         <p className="text-body-lg text-on-surface-variant max-w-2xl mb-8">
@@ -75,14 +76,8 @@ export default async function CorralonesPage() {
 
           <h2 id="faq">Preguntas frecuentes</h2>
         </div>
-        <div className="space-y-3">
-          {FAQ.map(([q, a]) => (
-            <details key={q} className="group border border-outline-variant rounded-lg p-5 [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between cursor-pointer font-semibold text-primary">{q}<span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span></summary>
-              <p className="mt-3 text-on-surface-variant leading-relaxed">{a}</p>
-            </details>
-          ))}
-        </div>
+
+        <Faq items={FAQ} />
 
         <AlertaCTA titulo="¿Vas a construir o invertir en pozo?" texto="Activá una alerta y te avisamos cuando aparezca un nuevo proyecto en pozo que encaje con tu busqueda, antes de que salga a los portales." cta="Activar mi alerta" />
 
