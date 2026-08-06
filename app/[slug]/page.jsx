@@ -19,14 +19,15 @@ async function inmoBarrioSlugs() {
   } catch { return []; }
 }
 
-// Landings de catálogo por barrio (/departamentos-en-pozo-en-{barrio}/): solo barrios de
+// Landings de catálogo por barrio (/desarrollos-inmobiliarios-en-{barrio}/): solo barrios de
 // BARRIO_CATALOGO con al menos 3 proyectos reales (evita páginas thin).
+// (URL renombrada desde /departamentos-en-pozo-en-{barrio}/ → 301 en next.config.js).
 async function catalogoBarrioSlugs() {
   try {
     const items = mapDesarrollos(await getDesarrollos());
     return Object.keys(BARRIO_CATALOGO)
       .filter((k) => items.filter((i) => matchBarrioCatalogo(i.barrio, k)).length >= 3)
-      .map((k) => `departamentos-en-pozo-en-${k}`);
+      .map((k) => `desarrollos-inmobiliarios-en-${k}`);
   } catch { return []; }
 }
 
@@ -85,8 +86,8 @@ export async function generateMetadata({ params }) {
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }
-  // Landing de catálogo por barrio (/departamentos-en-pozo-en-{barrio}/).
-  const cm = params.slug.match(/^departamentos-en-pozo-en-(.+)$/);
+  // Landing de catálogo por barrio (/desarrollos-inmobiliarios-en-{barrio}/).
+  const cm = params.slug.match(/^desarrollos-inmobiliarios-en-(.+)$/);
   if (cm && BARRIO_CATALOGO[cm[1]]) {
     const label = BARRIO_CATALOGO[cm[1]].label;
     return {
@@ -133,9 +134,9 @@ export default async function SinglePage({ params }) {
     return <InmobiliariasBarrioView zonaKey={zonaKey} items={inmo} schema={schema} />;
   }
 
-  // Landing de CATÁLOGO por barrio (/departamentos-en-pozo-en-{barrio}/): el listado de
+  // Landing de CATÁLOGO por barrio (/desarrollos-inmobiliarios-en-{barrio}/): el listado de
   // PROYECTOS pre-filtrado por barrio. Se resuelve ANTES del lookup de página/post.
-  const cm = params.slug.match(/^departamentos-en-pozo-en-(.+)$/);
+  const cm = params.slug.match(/^desarrollos-inmobiliarios-en-(.+)$/);
   if (cm && BARRIO_CATALOGO[cm[1]]) {
     const barrioSlugCat = cm[1];
     const { label } = BARRIO_CATALOGO[barrioSlugCat];
@@ -147,8 +148,8 @@ export default async function SinglePage({ params }) {
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE}/` },
-          { "@type": "ListItem", position: 2, name: "Departamentos en pozo en CABA", item: `${SITE}/desarrollos-inmobiliarios/` },
-          { "@type": "ListItem", position: 3, name: `Departamentos en pozo en ${label}`, item: `${SITE}/departamentos-en-pozo-en-${barrioSlugCat}/` },
+          { "@type": "ListItem", position: 2, name: "Desarrollos inmobiliarios en pozo en CABA", item: `${SITE}/desarrollos-inmobiliarios/` },
+          { "@type": "ListItem", position: 3, name: `Desarrollos inmobiliarios en pozo en ${label}`, item: `${SITE}/desarrollos-inmobiliarios-en-${barrioSlugCat}/` },
         ],
       },
       {
