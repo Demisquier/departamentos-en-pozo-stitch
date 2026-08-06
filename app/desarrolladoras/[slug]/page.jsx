@@ -49,7 +49,7 @@ export default async function DesarrolladoraLanding({ params }) {
         <LogoAvatar web={dev.web} iniciales={dev.iniciales} size={64} />
         <div className="flex-1">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="font-headline-md text-headline-md text-primary">{dev.nombre}</h1>
+            <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight">{dev.nombre}</h1>
             {dev.badge ? <span className="text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{dev.badge}</span> : null}
           </div>
           {dev.anios ? <p className="text-on-surface-variant mt-1">{dev.anios}</p> : null}
