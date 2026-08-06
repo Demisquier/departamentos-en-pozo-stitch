@@ -60,7 +60,7 @@ export default function SimuladorPage() {
 
         <Faq items={FAQ} />
 
-        <p className="mt-8 text-[0.92em] leading-relaxed rounded" style={{ border: "1px solid #fbbf24", background: "#fef3c7", padding: "14px 18px" }}>
+        <p className="aviso mt-8">
           <strong>Aviso:</strong> Esta información tiene carácter educativo y no constituye asesoramiento financiero, legal ni impositivo. Verificá siempre las condiciones reales de cada proyecto y consultá con un profesional matriculado antes de firmar o tomar decisiones de inversión.
         </p>
       </Container>
