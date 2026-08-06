@@ -60,10 +60,7 @@ export default async function GuiaPillarPage() {
             </div>
           </div>
           <div className="md:col-span-5 relative h-full min-h-[400px]">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${HERO_IMG}')` }}
-            />
+            <img src={HERO_IMG} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
         {/* Decorative Element */}
