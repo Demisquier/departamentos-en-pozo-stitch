@@ -11,6 +11,8 @@ import Container from '../../_ui/Container';
 import JsonLd from '../../_ui/JsonLd';
 import Breadcrumb from '../../_ui/Breadcrumb';
 import AlertaCTA from '../../_ui/AlertaCTA';
+import { mapDesarrollos, similaresDesarrollos } from '../../../lib/catalogo';
+import ProyectosSimilares from './ProyectosSimilares';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -148,6 +150,18 @@ export default async function FichaProyecto({ params }) {
 
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
+
+  // Proyectos similares (carrusel al pie): mismo barrio / precio cercano / etapa.
+  let similares = [];
+  try {
+    const allMapped = mapDesarrollos(await getDesarrollos());
+    similares = similaresDesarrollos(d.slug, allMapped, {
+      barrio,
+      precioDesde: precioDesdeNum,
+      precioM2: precioM2Num,
+      etapa: /construc/.test(String(estado || '').toLowerCase()) ? 'En construcción' : 'En pozo',
+    }, 10);
+  } catch (e) { similares = []; }
 
   // Galería: featured + fotos del campo `galeria` (proxied) + imágenes del contenido.
   // `galeria` es un array de URLs (renders/fotos reales del proyecto) en el dato del
@@ -482,6 +496,9 @@ export default async function FichaProyecto({ params }) {
             />
           </aside>
         </div>
+
+        {/* Interlinking: carrusel de proyectos similares (mismo barrio / precio) */}
+        <ProyectosSimilares items={similares} barrio={barrio} />
       </Container>
     </>
   );
