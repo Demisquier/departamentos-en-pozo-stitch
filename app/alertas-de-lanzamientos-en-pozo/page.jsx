@@ -95,7 +95,7 @@ export default function AlertasPage() {
               Mientras tanto, revisa el <Link href="/desarrollos-inmobiliarios/">catalogo de desarrollos en pozo</Link>, el <Link href="/indice-precios-pozo-caba-por-barrio/">indice de precios por barrio</Link> y el <Link href="/simulador-cuota-cac-pozo/">simulador de cuota con ajuste CAC</Link>.
             </p>
 
-            <p style={{ border: "1px solid #fbbf24", background: "#fef3c7", padding: "14px 18px", margin: "24px 0", borderRadius: "4px", fontSize: "0.92em" }}>
+            <p className="aviso">
               <strong>Aviso:</strong> Este servicio es informativo y no constituye asesoramiento financiero, legal ni impositivo. Los avisos no son recomendaciones de compra. Verifica siempre las condiciones de cada proyecto y consulta con un profesional matriculado antes de invertir.
             </p>
           </div>
