@@ -4,6 +4,8 @@ import { ZONA_INMO_LABEL } from "../../lib/barrios";
 import DirectorioInmo from "./DirectorioInmo";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+import SectionTitle from "../_ui/SectionTitle";
+import Faq from "../_ui/Faq";
 
 // FAQ extra (long-tail) que se agregan al FAQPage + se muestran abajo.
 const FAQ_EXTRA = [
@@ -94,8 +96,7 @@ export default async function InmobiliariasPage() {
             {/* Cluster interno: links REALES a las páginas por barrio (SEO + navegación). */}
             {barrios.length > 0 && (
               <section className="mt-12 pt-8 border-t border-outline-variant">
-                <h2 className="font-headline-sm text-headline-sm text-primary mb-2">Inmobiliarias por barrio</h2>
-                <p className="text-on-surface-variant mb-4 text-[15px]">Explorá el directorio filtrado por zona, con matrícula CUCICBA verificable:</p>
+                <SectionTitle sub="Explorá el directorio filtrado por zona, con matrícula CUCICBA verificable:">Inmobiliarias por barrio</SectionTitle>
                 <div className="flex flex-wrap gap-2.5">
                   {barrios.map((k) => (
                     <Link key={k} href={`/mejores-inmobiliarias-en-${k}/`} className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary hover:text-secondary transition-colors">
@@ -107,23 +108,13 @@ export default async function InmobiliariasPage() {
             )}
 
             {/* FAQ extra (long-tail) — mismo contenido que el FAQPage del schema. */}
-            <section className="mt-12">
-              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Cómo elegir tu inmobiliaria</h2>
-              <div className="space-y-3">
-                {FAQ_EXTRA.map(([q, a]) => (
-                  <details key={q} className="group border border-outline-variant rounded-lg p-5 [&_summary::-webkit-details-marker]:hidden">
-                    <summary className="flex items-center justify-between cursor-pointer font-semibold text-primary">{q}<span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span></summary>
-                    <p className="mt-3 text-on-surface-variant leading-relaxed">{a}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
+            <Faq items={FAQ_EXTRA} title="Cómo elegir tu inmobiliaria" />
 
             <p className="text-[12px] text-on-surface-variant mt-8">Actualizado agosto 2026 · Directorio de análisis independiente. La matrícula de cada inmobiliaria se verifica en el padrón público de CUCICBA.</p>
           </>
         ) : (
           <div className="text-center py-24">
-            <h1 className="font-headline-md text-headline-md text-primary mb-3">Mejores inmobiliarias en CABA</h1>
+            <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-3">Mejores inmobiliarias en CABA</h1>
             <p className="text-on-surface-variant max-w-xl mx-auto">Estamos actualizando este directorio.</p>
           </div>
         )}
