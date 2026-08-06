@@ -108,7 +108,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   const hydrated = useRef(false);
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
-    // barrio NO es un query param: el filtro de barrio navega a la landing propia.
+    // Barrios con landing propia navegan a su página; los demás (pocos proyectos) se
+    // filtran en el pilar y quedan reflejados en la URL (?barrio=...) para ser compartibles.
+    if (!barrioFijo && sp.get('barrio')) setBarrio(sp.get('barrio'));
     if (sp.get('amb')) setAmb(sp.get('amb'));
     if (sp.get('precio')) setPrecio(sp.get('precio'));
     if (sp.get('etapa')) setEtapa(sp.get('etapa'));
