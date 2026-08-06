@@ -211,7 +211,7 @@ export default async function SobreNosotrosPage() {
               </Link>
             </div>
             <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-              <span className="material-symbols-outlined text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>apartment</span>
+              <span className="material-symbols-outlined icon-fill text-[200px]">apartment</span>
             </div>
           </div>
         </div>
