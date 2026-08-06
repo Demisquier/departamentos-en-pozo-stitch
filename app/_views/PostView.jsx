@@ -81,6 +81,8 @@ export default async function PostView({ node, slug, content, img, title, rmSche
             src={img}
             alt={tituloPlano}
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full aspect-[16/9] object-cover rounded shadow-xl -mt-8 relative z-10"
           />
           {node.meta?.image_credit && (
