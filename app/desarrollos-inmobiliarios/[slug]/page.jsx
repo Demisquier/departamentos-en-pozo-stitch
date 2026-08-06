@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
+import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import { toNumber } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
@@ -149,9 +149,13 @@ export default async function FichaProyecto({ params }) {
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
 
-  // Galería: featured + imágenes del contenido (ya con URLs relativas), únicas, hasta 5.
+  // Galería: featured + fotos del campo `galeria` (proxied) + imágenes del contenido.
+  // `galeria` es un array de URLs (renders/fotos reales del proyecto) en el dato del
+  // desarrollo (top-level o acf.galeria). Únicas, hasta 8 para una galería completa.
+  const galeriaRaw = Array.isArray(d.galeria) ? d.galeria : (Array.isArray(acf(d, 'galeria')) ? acf(d, 'galeria') : []);
+  const galeriaImgs = galeriaRaw.map((u) => proxyImage(u)).filter(Boolean);
   const contentImgs = [...contenido.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)].map((m) => m[1]);
-  const gallery = [imagen, ...contentImgs].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 5);
+  const gallery = [imagen, ...galeriaImgs, ...contentImgs].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 8);
 
   // Campos que se muestran solo si existen.
   const legal = acfAny(d, ['legal', 'confianza_legal', 'estructura_legal']);
