@@ -107,7 +107,7 @@ export default async function HubDesarrolladorasPage() {
           </>
         ) : (
           <div className="text-center py-24">
-            <h1 className="font-headline-md text-headline-md text-primary mb-3">Desarrolladoras en Capital Federal</h1>
+            <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-3">Desarrolladoras en Capital Federal</h1>
             <p className="text-on-surface-variant max-w-xl mx-auto">
               Estamos actualizando este directorio. Mientras tanto, explorá el catálogo de proyectos en pozo por barrio.
             </p>
