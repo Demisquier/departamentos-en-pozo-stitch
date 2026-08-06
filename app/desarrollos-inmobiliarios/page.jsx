@@ -52,17 +52,23 @@ export default async function CatalogoPage() {
         <h1 className="font-headline-md text-headline-md md:text-display-lg serif text-primary max-w-3xl leading-tight">
           Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
         </h1>
-        <div className="mt-4 text-on-surface-variant font-body-lg text-body-lg max-w-3xl space-y-3">
-          <p>
-            Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en la Ciudad de Buenos Aires. Un desarrollo inmobiliario es un edificio de departamentos que una desarrolladora concibe, financia y construye; comprarlo en pozo —antes de que esté terminado— suele tener un precio de entrada menor que el usado de la zona, a cambio del riesgo de obra.
-          </p>
-          <p>
-            Cada ficha reúne precio, desarrolladora, tipologías, etapa de obra, estructura de pago y entrega, para que compares proyectos con criterio. Explorá el catálogo completo o filtrá por barrio más abajo.
-          </p>
-        </div>
+        <p className="mt-4 text-on-surface-variant font-body-lg text-body-lg max-w-3xl">
+          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en la Ciudad de Buenos Aires: precio, desarrolladora, obra y entrega, proyecto por proyecto.
+        </p>
       </div>
 
       <CatalogoFiltros items={mapped} />
+
+      {/* Bloque semántico: DEBAJO del directorio (H1 → bajada → grid → contexto). */}
+      <section className="mt-12 pt-8 border-t border-outline-variant max-w-3xl text-on-surface-variant font-body-lg text-body-lg space-y-3">
+        <h2 className="font-headline-sm text-headline-sm text-primary mb-1">Qué es un desarrollo inmobiliario en pozo</h2>
+        <p>
+          Un desarrollo inmobiliario es el emprendimiento completo —en general un edificio de departamentos— que una desarrolladora concibe, financia y construye. El <strong>departamento en pozo</strong> es una unidad de ese desarrollo comprada antes de que esté terminado: es la parte, no el todo.
+        </p>
+        <p>
+          Comprar en pozo suele tener un precio de entrada menor que el usado de la zona, a cambio del riesgo de obra. Cada ficha reúne precio, desarrolladora, tipologías, etapa de obra, estructura de pago y entrega, para que compares proyectos con criterio.
+        </p>
+      </section>
 
       {barrios.length > 0 && (
         <section className="mt-12 pt-8 border-t border-outline-variant">
@@ -70,7 +76,7 @@ export default async function CatalogoPage() {
           <p className="text-on-surface-variant mb-4 text-[15px]">Explorá los desarrollos en pozo por barrio de CABA, con precio y desarrolladora:</p>
           <div className="flex flex-wrap gap-2.5">
             {barrios.map((b) => (
-              <Link key={b.k} href={`/departamentos-en-pozo-en-${b.k}/`}
+              <Link key={b.k} href={`/desarrollos-inmobiliarios-en-${b.k}/`}
                 className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary hover:text-secondary transition-colors">
                 Desarrollos inmobiliarios en {b.label} ({b.n})
               </Link>

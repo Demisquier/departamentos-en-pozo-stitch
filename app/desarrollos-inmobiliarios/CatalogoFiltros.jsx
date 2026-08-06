@@ -223,7 +223,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                       const slug = landingSlugForBarrio(b);
                       const go = () => {
                         setBarrioOpen(false);
-                        if (slug) window.location.assign(`/departamentos-en-pozo-en-${slug}/`);
+                        if (slug) window.location.assign(`/desarrollos-inmobiliarios-en-${slug}/`);
                         else setBarrio(b);
                       };
                       return (
