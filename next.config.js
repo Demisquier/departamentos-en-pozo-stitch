@@ -51,6 +51,25 @@ const nextConfig = {
       { source: "/barrio/colegiales", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
       { source: "/barrio/colegiales/", destination: "/desarrolladoras-inmobiliarias-en-colegiales-chacarita/", permanent: true },
 
+      // --- Renombre de landings de catálogo por barrio (consistencia con el pilar
+      // /desarrollos-inmobiliarios/): /departamentos-en-pozo-en-{barrio}/ →
+      // /desarrollos-inmobiliarios-en-{barrio}/. Fuentes EXACTAS por barrio para NO
+      // atrapar el post de blog "departamentos-en-pozo-en-caballito-mejores-proyectos...". ---
+      { source: "/departamentos-en-pozo-en-palermo", destination: "/desarrollos-inmobiliarios-en-palermo/", permanent: true },
+      { source: "/departamentos-en-pozo-en-palermo/", destination: "/desarrollos-inmobiliarios-en-palermo/", permanent: true },
+      { source: "/departamentos-en-pozo-en-caballito", destination: "/desarrollos-inmobiliarios-en-caballito/", permanent: true },
+      { source: "/departamentos-en-pozo-en-caballito/", destination: "/desarrollos-inmobiliarios-en-caballito/", permanent: true },
+      { source: "/departamentos-en-pozo-en-puerto-madero", destination: "/desarrollos-inmobiliarios-en-puerto-madero/", permanent: true },
+      { source: "/departamentos-en-pozo-en-puerto-madero/", destination: "/desarrollos-inmobiliarios-en-puerto-madero/", permanent: true },
+      { source: "/departamentos-en-pozo-en-belgrano", destination: "/desarrollos-inmobiliarios-en-belgrano/", permanent: true },
+      { source: "/departamentos-en-pozo-en-belgrano/", destination: "/desarrollos-inmobiliarios-en-belgrano/", permanent: true },
+      { source: "/departamentos-en-pozo-en-nunez", destination: "/desarrollos-inmobiliarios-en-nunez/", permanent: true },
+      { source: "/departamentos-en-pozo-en-nunez/", destination: "/desarrollos-inmobiliarios-en-nunez/", permanent: true },
+      { source: "/departamentos-en-pozo-en-villa-urquiza", destination: "/desarrollos-inmobiliarios-en-villa-urquiza/", permanent: true },
+      { source: "/departamentos-en-pozo-en-villa-urquiza/", destination: "/desarrollos-inmobiliarios-en-villa-urquiza/", permanent: true },
+      { source: "/departamentos-en-pozo-en-colegiales", destination: "/desarrollos-inmobiliarios-en-colegiales/", permanent: true },
+      { source: "/departamentos-en-pozo-en-colegiales/", destination: "/desarrollos-inmobiliarios-en-colegiales/", permanent: true },
+
       // --- Consolidación de guías canibalizadoras (Auditoría-Guias-SEO-2026-07) ---
       // Guías duplicadas puras: 301 a la guía ganadora para concentrar señal por URL.
       // 164 → 10 (los tres "cómo elegir proyecto" 8/10/164; 10 es la ganadora del trío).
