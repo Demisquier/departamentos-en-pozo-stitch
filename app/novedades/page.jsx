@@ -51,7 +51,7 @@ export default async function NovedadesPage() {
       {/* Index View: Editorial Grid */}
       <Container as="section" className="py-16 md:py-24" id="guides-index">
         <div className="mb-12 border-b border-outline-variant pb-8">
-          <h1 className="font-headline-md text-headline-md text-primary mb-4">
+          <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-4">
             Guías y Actualidad Inmobiliaria
           </h1>
           <p className="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">
