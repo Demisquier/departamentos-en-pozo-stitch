@@ -65,7 +65,7 @@ export default async function CategoryPage({ params }) {
                 <Link key={p.id} href={`/${p.slug}/`} className="group block space-y-4">
                   <div className="aspect-video bg-surface-container overflow-hidden rounded">
                     {img ? (
-                      <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={img} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
                       <div className="w-full h-full bg-surface-container" />
                     )}
