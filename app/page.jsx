@@ -73,9 +73,13 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* Preload del hero: arranca la descarga de la imagen LCP lo antes posible. */}
+      <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
       <section className="relative h-[620px] md:h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${HERO_IMG}')` }} />
+        {/* Imagen LCP como <img> (no background-image): descubrible por el navegador y
+            priorizable con fetchPriority. Antes tardaba ~12 s en pintar. */}
+        <img src={HERO_IMG} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop text-center md:text-left">
           <span className="inline-block text-link-gold font-bold tracking-widest uppercase mb-4 text-label-caps font-label-caps">

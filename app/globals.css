@@ -6,7 +6,7 @@
    Los form controls NO heredan font-family por defecto → aparecía "Inter" en botones/
    inputs (directorio, filtros, formularios). Se fuerza herencia. */
 body {
-  font-family: "Work Sans", system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 button,
 input,
@@ -42,7 +42,7 @@ summary:focus-visible,
    para alinearlo a los tokens del sistema: Work Sans + navy #0c1b35 + bronce.
    ══════════════════════════════════════════════════════════════════════ */
 .barrio-guide {
-  --font-stack: "Work Sans", system-ui, sans-serif !important; /* fin del leak de Inter */
+  --font-stack: var(--font-sans), system-ui, sans-serif !important; /* fin del leak de Inter */
   --c-primary: #0c1b35 !important;   /* navy del sistema (era #0a2540) */
   --c-accent: #a68966 !important;    /* bronce del sistema (era #f5b800 amarillo) */
   --c-text: #191c1d !important;
@@ -59,13 +59,13 @@ summary:focus-visible,
 .barrio-guide h3,
 .barrio-guide h4,
 .wp-content h1 {
-  font-family: "Libre Caslon Text", Georgia, serif;
+  font-family: var(--font-serif), Georgia, serif;
   color: #0b1a34;
 }
 /* Fix del leak: el CSS de barrio define un `h1` global que pisaba el H1 del
    componente. Lo devolvemos al serif del sistema en todas las páginas. */
 main h1 {
-  font-family: "Libre Caslon Text", Georgia, serif;
+  font-family: var(--font-serif), Georgia, serif;
 }
 .wp-content h1 {
   font-size: 34px;
@@ -86,13 +86,13 @@ main h1 {
 
 /* Estilo del contenido que viene de WordPress (páginas y posts) */
 .wp-content {
-  font-family: "Work Sans", system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   color: #191c1d;
   line-height: 1.7;
   font-size: 18px;
 }
 .wp-content h2 {
-  font-family: "Libre Caslon Text", Georgia, serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: 30px;
   color: #0b1a34;
   margin: 2.5rem 0 1rem;
@@ -103,7 +103,7 @@ main h1 {
   scroll-margin-top: 6rem;
 }
 .wp-content h3 {
-  font-family: "Libre Caslon Text", Georgia, serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: 23px;
   color: #0b1a34;
   margin: 2rem 0 0.75rem;
