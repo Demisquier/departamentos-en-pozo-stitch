@@ -57,7 +57,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
         // Tocar CUALQUIER zona oscura del overlay cierra (onClick={close} en la raíz).
         // Solo la imagen, las flechas y las miniaturas detienen la propagación para no cerrar
         // por accidente. Así en mobile no queda "atrapado": el 90% de la pantalla cierra.
-        <div className="fixed inset-0 z-[100] bg-black/92 flex flex-col" onClick={close}>
+        <div className="fixed inset-0 z-[100] flex flex-col" style={{ backgroundColor: "rgba(0,0,0,0.94)" }} onClick={close}>
           {/* Botón CERRAR flotante: glifo unicode (siempre renderiza, sin depender de la
               fuente de íconos), target grande, alto contraste, por encima de todo. */}
           <button
