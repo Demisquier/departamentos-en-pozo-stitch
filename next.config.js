@@ -32,6 +32,10 @@ const nextConfig = {
       { source: "/author/:slug", destination: "/", permanent: true },
       // Archivos de tag: no hay páginas de tag → índice de novedades.
       { source: "/tag/:slug", destination: "/novedades/", permanent: true },
+      // Feeds RSS por post del WP viejo (/{post}/feed/) → el post en sí. Limpia los 404
+      // que reporta Search Console. OJO: "/:slug/feed" exige un segmento ANTES de /feed,
+      // así que la raíz "/feed/" (RSS real del sitio) nunca matchea y sigue intacta.
+      { source: "/:slug/feed", destination: "/:slug/", permanent: true },
 
       // --- Barrios: las viejas taxonomías /barrio/{x}/ del WP daban 404 en el front
       // headless pero seguían indexadas y con tráfico en Google. Las mandamos 301 a la
