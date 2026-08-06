@@ -2,11 +2,11 @@
 // Extraído tal cual desde app/[slug]/page.jsx (rama barrio del segundo return): mismo
 // layout que el hub (ancho, prose), header + chip de filtro + directorio pre-filtrado
 // + contenido WP partido por el marcador <!--DIRECTORIO-->. Render idéntico.
-import Link from "next/link";
 import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
 import { BARRIO_NOMBRE } from "../../lib/barrios";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+import FilterChip from "../_ui/FilterChip";
 
 export default function BarrioView({
   content,
@@ -29,19 +29,16 @@ export default function BarrioView({
         {/* Header estilo hub + chip de filtro: la página de barrio se siente el mismo
             hub con un filtro aplicado, fácil de volver a "todas". */}
         {!contenidoTieneH1 && (
-          <h1 className="text-[34px] leading-[1.2] text-primary mb-4">
+          <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-4">
             Desarrolladoras en {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
           </h1>
         )}
         {usaDirectorioBarrio && (
-          <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-outline-variant">
-            <span className="text-[12px] font-label-caps uppercase tracking-wider text-on-surface-variant">Filtrando por barrio</span>
-            <span className="inline-flex items-center gap-2 bg-primary-container text-on-primary rounded-full pl-4 pr-1.5 py-1.5 text-[14px] font-medium">
-              {BARRIO_NOMBRE[barrioSlug] || barrioSlug}
-              <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" aria-label="Quitar filtro, ver todas las desarrolladoras" className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/25 hover:bg-white/45 transition-colors leading-none">✕</Link>
-            </span>
-            <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-[14px] text-secondary underline hover:no-underline">Ver todas las desarrolladoras de CABA</Link>
-          </div>
+          <FilterChip
+            label={BARRIO_NOMBRE[barrioSlug] || barrioSlug}
+            backHref="/desarrolladoras-inmobiliarias-en-capital-federal/"
+            backLabel="Ver todas las desarrolladoras de CABA"
+          />
         )}
         {/* Directorio ARRIBA (igual que el hub): el listado filtrado va justo después
             del header/chip, y TODO el editorial del barrio queda debajo. Un solo cambio

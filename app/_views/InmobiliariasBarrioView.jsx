@@ -8,6 +8,7 @@ import { ZONA_INMO_LABEL } from "../../lib/barrios";
 import { INMO_BARRIO_INTRO } from "../../lib/inmoBarrioIntros";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
+import FilterChip from "../_ui/FilterChip";
 
 export default function InmobiliariasBarrioView({ zonaKey, items, schema }) {
   const label = ZONA_INMO_LABEL[zonaKey] || zonaKey;
@@ -25,20 +26,17 @@ export default function InmobiliariasBarrioView({ zonaKey, items, schema }) {
           <span className="text-primary">{label}</span>
         </nav>
 
-        <h1 className="text-[34px] leading-[1.2] text-primary mb-4">Inmobiliarias en {label}</h1>
+        <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-4">Inmobiliarias en {label}</h1>
 
         {intro && (
           <div className="wp-content prose max-w-none text-body-md text-on-surface-variant mb-6" dangerouslySetInnerHTML={{ __html: intro }} />
         )}
 
-        <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-outline-variant">
-          <span className="text-[12px] font-label-caps uppercase tracking-wider text-on-surface-variant">Filtrando por barrio</span>
-          <span className="inline-flex items-center gap-2 bg-primary-container text-on-primary rounded-full pl-4 pr-1.5 py-1.5 text-[14px] font-medium">
-            {label}
-            <Link href="/mejores-inmobiliarias-caba/" aria-label="Quitar filtro, ver todas las inmobiliarias" className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/25 hover:bg-white/45 transition-colors leading-none">✕</Link>
-          </span>
-          <Link href="/mejores-inmobiliarias-caba/" className="text-[14px] text-secondary underline hover:no-underline">Ver todas las inmobiliarias de CABA</Link>
-        </div>
+        <FilterChip
+          label={label}
+          backHref="/mejores-inmobiliarias-caba/"
+          backLabel="Ver todas las inmobiliarias de CABA"
+        />
 
         <DirectorioInmo items={items} zonaFija={zonaKey} />
 
