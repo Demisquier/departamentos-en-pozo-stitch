@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { getDesarrollos, featuredImage, acf } from "../lib/wp";
-import { BARRIO_PAGE, BARRIO_ORDEN } from "../lib/barrios";
+import { BARRIO_PAGE, BARRIO_ORDEN, BARRIO_CATALOGO, matchBarrioCatalogo } from "../lib/barrios";
 import { toNumber as num } from "../lib/format";
 import { SITE } from "../lib/constants";
 import Container from "./_ui/Container";
 import ProjectCard from "./_ui/ProjectCard";
+import HomeBuscador from "./_ui/HomeBuscador";
 
 export const revalidate = 600;
 
@@ -55,12 +56,20 @@ export default async function HomePage() {
     destacados.push(extra);
   }
 
-  // Tiles por barrio: conteo real + imagen representativa.
+  // Tiles "Desarrolladoras por barrio": links a los directorios de desarrolladoras por barrio.
   const tiles = BARRIO_ORDEN.map((b) => {
     const enBarrio = mapped.filter((m) => m.topBarrio === b);
     const conImg = enBarrio.find((m) => m.img);
     return { name: b, count: enBarrio.length, href: BARRIO_PAGE[b], img: conImg ? conImg.img : null };
   }).filter((t) => t.count > 0);
+
+  // Tiles "Desarrollos por barrio": links a las landings de CATÁLOGO por barrio
+  // (/desarrollos-inmobiliarios-en-{slug}/). Solo barrios con >=3 proyectos.
+  const catTiles = Object.keys(BARRIO_CATALOGO).map((k) => {
+    const en = mapped.filter((m) => matchBarrioCatalogo(m.barrio, k));
+    const conImg = en.find((m) => m.img);
+    return { slug: k, name: BARRIO_CATALOGO[k].label, count: en.length, img: conImg ? conImg.img : null };
+  }).filter((t) => t.count >= 3).sort((a, b) => b.count - a.count);
 
   return (
     <>
@@ -75,19 +84,7 @@ export default async function HomePage() {
           <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-10">
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
-          <form action="/desarrollos-inmobiliarios/" className="bg-surface p-6 md:p-8 rounded-xl shadow-2xl max-w-4xl flex flex-col md:flex-row gap-4 items-end">
-            <div className="w-full md:flex-1 space-y-2">
-              <label htmlFor="hero-barrio" className="text-on-surface-variant font-label-caps text-label-caps uppercase">Barrio</label>
-              <select id="hero-barrio" name="barrio" aria-label="Elegir barrio" className="w-full border border-outline-variant rounded p-3 text-on-surface outline-none appearance-none bg-white">
-                <option value="">Todos los barrios</option>
-                <option>Palermo</option><option>Caballito</option><option>Belgrano</option>
-                <option>Núñez</option><option>Puerto Madero</option><option>Villa Urquiza</option><option>Colegiales</option>
-              </select>
-            </div>
-            <button className="w-full md:w-auto bg-primary-container text-on-primary font-bold px-8 py-4 rounded hover:opacity-90 transition-all flex items-center justify-center gap-2 font-label-caps">
-              <span className="material-symbols-outlined">search</span> BUSCAR PROYECTOS
-            </button>
-          </form>
+          <HomeBuscador />
         </div>
       </section>
 
@@ -128,15 +125,18 @@ export default async function HomePage() {
         </div>
       </Container>
 
-      {/* Explorá por barrio */}
+      {/* Desarrollos por barrio: catálogo de PROYECTOS por barrio */}
       <section className="py-16 md:py-20 bg-surface-container-low">
         <Container>
-          <h2 className="font-headline-md text-headline-md text-primary mb-10 text-center">Explorá por barrio</h2>
+          <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Desarrollos por barrio</h2>
+          <p className="text-on-surface-variant text-center max-w-2xl mx-auto mb-10 text-body-lg font-body-lg">
+            Explorá el catálogo de proyectos en pozo barrio por barrio, con precio, desarrolladora y entrega.
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {tiles.map((b) => (
-              <Link key={b.name} href={b.href} className="relative group h-44 md:h-56 rounded-xl overflow-hidden block">
+            {catTiles.map((b) => (
+              <Link key={b.slug} href={`/desarrollos-inmobiliarios-en-${b.slug}/`} className="relative group h-44 md:h-56 rounded-xl overflow-hidden block">
                 {b.img ? (
-                  <img src={b.img} alt={b.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={b.img} alt={b.name} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                   <div className="absolute inset-0 bg-primary-container" />
                 )}
@@ -144,6 +144,32 @@ export default async function HomePage() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
                   <h4 className="font-headline-sm text-headline-sm">{b.name}</h4>
                   <p className="text-label-caps font-label-caps opacity-90 uppercase text-[11px]">{b.count} {b.count === 1 ? "proyecto" : "proyectos"}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Desarrolladoras por barrio: directorios de EMPRESAS por barrio */}
+      <section className="py-16 md:py-20">
+        <Container>
+          <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Desarrolladoras por barrio</h2>
+          <p className="text-on-surface-variant text-center max-w-2xl mx-auto mb-10 text-body-lg font-body-lg">
+            Directorio de las desarrolladoras con obra en cada barrio, para revisar quién construye antes de comprar.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {tiles.map((b) => (
+              <Link key={b.name} href={b.href} className="relative group h-44 md:h-56 rounded-xl overflow-hidden block">
+                {b.img ? (
+                  <img src={b.img} alt={b.name} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <div className="absolute inset-0 bg-primary-container" />
+                )}
+                <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/40 transition-all duration-300" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
+                  <h4 className="font-headline-sm text-headline-sm">{b.name}</h4>
+                  <p className="text-label-caps font-label-caps opacity-90 uppercase text-[11px]">Ver desarrolladoras</p>
                 </div>
               </Link>
             ))}
