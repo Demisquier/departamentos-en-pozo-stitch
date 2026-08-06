@@ -11,6 +11,9 @@ function landingSlugForBarrio(label) {
   return null;
 }
 
+// Barrios con landing propia (para el dropdown de barrio en las páginas por barrio).
+const LANDING_BARRIOS = Object.keys(BARRIO_CATALOGO).map((slug) => ({ slug, label: BARRIO_CATALOGO[slug].label }));
+
 // --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
 function MapaListado({ items }) {
   const ref = useRef(null);
@@ -201,20 +204,31 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
 
         {/* Chips de filtro: en mobile ocultos hasta abrir "Filtros"; en desktop siempre visibles. */}
         <div className={`${filtrosOpen ? 'flex' : 'hidden'} md:flex flex-wrap items-center gap-2.5`}>
-          {/* Chip de barrio: se oculta en las landings por barrio (items ya pre-filtrados). */}
-          {!barrioFijo && (
-            <>
-              <div className="relative">
-                <button
-                  onClick={() => setBarrioOpen((o) => !o)}
-                  className={`flex items-center gap-2 px-3.5 py-2.5 md:py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${barrio ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
-                >
-                  <span className="material-symbols-outlined text-[16px]">location_on</span>
-                  <span>{barrio || 'Barrio'}</span>
-                  <span className="material-symbols-outlined text-[16px]">expand_more</span>
-                </button>
-                {barrioOpen && (
-                  <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
+          {/* Chip de barrio. En el pilar: filtra en página o navega a la landing.
+              En una landing por barrio: queda pre-seleccionado (barrioFijo) y el dropdown
+              ofrece "Todos los barrios" (vuelve al catálogo completo) + cambiar de barrio. */}
+          <div className="relative">
+            <button
+              onClick={() => setBarrioOpen((o) => !o)}
+              className={`flex items-center gap-2 px-3.5 py-2.5 md:py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${(barrio || barrioFijo) ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
+            >
+              <span className="material-symbols-outlined text-[16px]">location_on</span>
+              <span>{barrio || barrioFijo || 'Barrio'}</span>
+              <span className="material-symbols-outlined text-[16px]">expand_more</span>
+            </button>
+            {barrioOpen && (
+              <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
+                {barrioFijo ? (
+                  // En una landing por barrio: la lista viene fija de los barrios con landing.
+                  // "Todos los barrios" saca el filtro y vuelve al catálogo completo.
+                  <>
+                    <button onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
+                    {LANDING_BARRIOS.map((b) => (
+                      <button key={b.slug} onClick={() => window.location.assign(`/desarrollos-inmobiliarios-en-${b.slug}/`)} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b.label === barrioFijo ? 'text-secondary font-medium' : ''}`}>{b.label}</button>
+                    ))}
+                  </>
+                ) : (
+                  <>
                     <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
                     {barrios.map((b) => {
                       // Si el barrio tiene landing propia, el filtro NAVEGA a esa página
@@ -230,13 +244,13 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                         <button key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
                       );
                     })}
-                  </div>
+                  </>
                 )}
               </div>
+            )}
+          </div>
 
-              <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-            </>
-          )}
+          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
           {['1', '2', '3', '4+'].map((a) => (
             <button key={a} className={chip(amb === a)} onClick={() => setAmb(amb === a ? '' : a)}>{a} amb</button>
           ))}
