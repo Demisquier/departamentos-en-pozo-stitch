@@ -80,6 +80,8 @@ export default async function NovedadPage({ params }) {
               className="w-full h-full object-cover"
               src={img}
               alt={(post.title?.rendered || "").replace(/<[^>]*>/g, "")}
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </div>
