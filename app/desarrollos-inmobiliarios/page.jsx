@@ -5,6 +5,7 @@ import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
 import CatalogoFiltros from './CatalogoFiltros';
 import Container from '../_ui/Container';
 import JsonLd from '../_ui/JsonLd';
+import Faq from '../_ui/Faq';
 import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 
 // ISR: la lista se regenera sola con los datos (además del revalidate del fetch).
@@ -86,17 +87,7 @@ export default async function CatalogoPage() {
         </section>
       )}
 
-      <section className="mt-12">
-        <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Preguntas frecuentes sobre desarrollos inmobiliarios</h2>
-        <div className="space-y-3">
-          {FAQ.map(([q, a]) => (
-            <details key={q} className="group border border-outline-variant rounded-lg p-5 [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between cursor-pointer font-semibold text-primary">{q}<span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span></summary>
-              <p className="mt-3 text-on-surface-variant leading-relaxed">{a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      <Faq items={FAQ} title="Preguntas frecuentes sobre desarrollos inmobiliarios" />
 
       {/* Interlinking a las guías de decisión de compra. */}
       <GuiasRelacionadas />
