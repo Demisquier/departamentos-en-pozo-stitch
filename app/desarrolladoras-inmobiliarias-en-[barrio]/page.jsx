@@ -99,10 +99,12 @@ export default async function GuiaBarrioPage({ params }) {
     <main>
       <JsonLd data={rmSchema} />
 
+      {/* Preload del hero (imagen LCP) para pintar antes. */}
+      <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
       <section className="relative h-[70vh] flex items-end">
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${HERO_IMG}')` }} />
+          <img src={HERO_IMG} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-container/85 to-transparent" />
         </div>
         <Container className="relative z-10 w-full pb-16 text-on-primary">
