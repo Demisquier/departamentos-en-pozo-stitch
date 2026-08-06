@@ -3,6 +3,7 @@ import { SITE } from "../../lib/wp";
 import Container from "../_ui/Container";
 import PageHeader from "../_ui/PageHeader";
 import JsonLd from "../_ui/JsonLd";
+import Faq from "../_ui/Faq";
 import SimuladorCAC from "./SimuladorCAC";
 
 export const metadata = {
@@ -55,17 +56,13 @@ export default function SimuladorPage() {
           <p>Para entender el mecanismo del índice en profundidad, mirá la guía de <Link href="/ajuste-por-cac-en-departamentos-en-pozo-como-funciona-y-como-protegerte/">ajuste por CAC: cómo funciona y cómo protegerte</Link>, la comparación entre <Link href="/cuotas-fijas-en-pesos-vs-ajuste-cac-en-pozo-que-conviene/">cuotas fijas en pesos vs ajuste CAC</Link> y las <Link href="/opciones-de-financiacion-para-comprar-en-pozo/">opciones de financiación para comprar en pozo</Link>. Y aplicá el número a proyectos reales en el <Link href="/desarrollos-inmobiliarios/">catálogo de desarrollos</Link>.</p>
 
           <h2 id="faq">Preguntas frecuentes</h2>
-          {FAQ.map(([q, a]) => (
-            <details key={q} className="group border border-outline-variant rounded-lg p-5 mb-3 [&_summary::-webkit-details-marker]:hidden">
-              <summary className="flex items-center justify-between cursor-pointer font-semibold text-primary">{q}<span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span></summary>
-              <p className="mt-3 text-on-surface-variant leading-relaxed">{a}</p>
-            </details>
-          ))}
-
-          <p style={{ border: "1px solid #fbbf24", background: "#fef3c7", padding: "14px 18px", margin: "24px 0", borderRadius: "4px", fontSize: "0.92em" }}>
-            <strong>Aviso:</strong> Esta información tiene carácter educativo y no constituye asesoramiento financiero, legal ni impositivo. Verificá siempre las condiciones reales de cada proyecto y consultá con un profesional matriculado antes de firmar o tomar decisiones de inversión.
-          </p>
         </div>
+
+        <Faq items={FAQ} />
+
+        <p className="mt-8 text-[0.92em] leading-relaxed rounded" style={{ border: "1px solid #fbbf24", background: "#fef3c7", padding: "14px 18px" }}>
+          <strong>Aviso:</strong> Esta información tiene carácter educativo y no constituye asesoramiento financiero, legal ni impositivo. Verificá siempre las condiciones reales de cada proyecto y consultá con un profesional matriculado antes de firmar o tomar decisiones de inversión.
+        </p>
       </Container>
     </article>
   );
