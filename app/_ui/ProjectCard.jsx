@@ -6,6 +6,7 @@
 // Nota: las cards de /desarrolladoras/[slug] y de la página de barrio NO usan este componente
 // (tienen estructura/estilos propios: bg-white, h-56, formato de precio distinto) → siguen inline.
 import Link from "next/link";
+import GuardarBtn from "../_auth/GuardarBtn";
 
 export default function ProjectCard({
   slug,
@@ -22,6 +23,8 @@ export default function ProjectCard({
   desarrolladora,
 }) {
   const m2 = precioM2 ?? precio;  // compat con llamadas viejas
+  // Dato denormalizado que guarda el botón favorito (lo consume /mi-seleccion sin releer catálogo).
+  const card = { slug, nombre, barrio, direccion, precio, precioDesde, precioM2, img, etapa, ambientes, entrega, desarrolladora };
   return (
     <Link
       href={`/desarrollos-inmobiliarios/${slug}/`}
@@ -34,6 +37,7 @@ export default function ProjectCard({
           <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-outline-variant text-4xl">image</span></div>
         )}
         <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(etapa || "EN POZO").toUpperCase()}</span>
+        <GuardarBtn card={card} />
       </div>
       <div className="p-5 flex flex-col flex-1">
         <h3 className="serif text-headline-sm text-primary leading-tight">{nombre}</h3>
