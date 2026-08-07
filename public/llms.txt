@@ -1,0 +1,29 @@
+# Departamentos en Pozo
+
+> Portal de análisis independiente sobre inversión en departamentos "en pozo" (preventa) en CABA y GBA, Argentina. Directorio de desarrolladoras y proyectos, precios por m², guías para invertir con criterio y herramientas propias. No cobramos por aparecer ni vendemos posiciones.
+
+## Qué es
+- Sitio editorial + directorio independiente. Cobertura: Ciudad de Buenos Aires (CABA) y Gran Buenos Aires (GBA).
+- Vocabulario clave: pozo / preventa, fideicomiso al costo, boleto de compraventa, ajuste CAC (Cámara Argentina de la Construcción), brecha pozo vs. usado, entrega/posesión.
+
+## Páginas principales
+- Home: https://departamentosenpozo.com.ar/
+- Catálogo de proyectos en pozo: https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/
+- Directorio de desarrolladoras (CABA): https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-en-capital-federal/
+- Directorio de inmobiliarias (CABA): https://departamentosenpozo.com.ar/mejores-inmobiliarias-caba/
+- Guías y novedades: https://departamentosenpozo.com.ar/novedades/
+- Índice de precios en pozo por barrio: https://departamentosenpozo.com.ar/indice-precios-pozo-caba-por-barrio/
+
+## Herramientas
+- Simulador de cuota con ajuste CAC: https://departamentosenpozo.com.ar/simulador-cuota-cac-pozo/
+- Alertas de lanzamientos: https://departamentosenpozo.com.ar/alertas-de-lanzamientos-en-pozo/
+
+## Guías destacadas
+- Guía para invertir en pozo: https://departamentosenpozo.com.ar/guia-invertir-departamentos-en-pozo-argentina/
+- Cómo evaluar una desarrolladora (señales de confianza y red flags): https://departamentosenpozo.com.ar/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/
+- Contrato de pozo: cláusulas clave: https://departamentosenpozo.com.ar/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/
+
+## Notas
+- Contenido informativo. No constituye asesoramiento financiero.
+- Actualización: catálogo y precios se revisan de forma continua; las guías incluyen fecha de publicación/modificación.
+- Contacto: contacto@departamentosenpozo.com.ar
