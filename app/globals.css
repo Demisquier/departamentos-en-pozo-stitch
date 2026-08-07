@@ -192,6 +192,27 @@ main h1 {
 /* Ícono Material relleno (antes se hacía con fontVariationSettings inline). */
 .icon-fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
 
+/* Indicador "escribiendo…" del asesor (tres puntitos que parpadean). */
+@keyframes dpp-typing { 0%, 80%, 100% { opacity: 0.2; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-2px); } }
+.typing-dots { display: inline-flex; gap: 4px; align-items: center; }
+.typing-dots span { width: 6px; height: 6px; border-radius: 9999px; background: currentColor; display: inline-block; animation: dpp-typing 1.2s infinite; }
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Mapa (Leaflet): pin de precio y popup de proyecto. Leaflet inyecta HTML fuera de React,
+   así que su estilo vive acá (nada inline) con los tokens del sitio: navy + bronce + fuentes. */
+.map-pin {
+  background: #0c1b35; color: #fff; border-radius: 14px; padding: 3px 9px;
+  font: 600 12px/1 var(--font-sans, "Work Sans"), sans-serif; white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); border: 1.5px solid #fff;
+}
+.map-pop { text-decoration: none; color: #0c1b35; display: block; width: 210px; }
+.map-pop__img { width: 210px; height: 118px; object-fit: cover; border-radius: 6px; }
+.map-pop__body { padding: 7px 2px 2px; }
+.map-pop__name { font: 600 15px/1.2 var(--font-serif, "Libre Caslon Text"), serif; }
+.map-pop__meta { color: #667085; font-size: 12px; margin: 2px 0; }
+.map-pop__price { color: #a68966; font-size: 14px; }
+
 /* ── Mobile UX ──────────────────────────────────────────────────────────
    Tablas: en pantallas chicas se vuelven scrolleables horizontalmente en
    lugar de romper el layout (afecta las comparativas de los hubs y todas
