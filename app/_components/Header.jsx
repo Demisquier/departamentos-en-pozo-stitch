@@ -5,7 +5,7 @@ import Button from "../_ui/Button";
 import AuthButton from "../_auth/AuthButton";
 
 const NAV = [
-  { label: "INICIO", href: "/" },
+  // "INICIO" salió del menú: el logo ya lleva al home.
   { label: "PROYECTOS EN POZO", href: "/desarrollos-inmobiliarios/" },
 ];
 
