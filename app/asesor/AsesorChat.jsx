@@ -56,9 +56,15 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     let n = proyectoNombre;
     if (!n) { try { n = new URLSearchParams(window.location.search).get("nombre") || ""; } catch {} }
     (async () => {
-      if (n) { setProyecto(n); await say("¡Hola! Soy Sofía.", 500); await say(`Qué bueno que te gustó ${n}.`, 900); }
-      else { await say("¡Hola! Soy Sofía.", 500); }
-      await say("Te ayudo a encontrar el depto que va con vos. ¿Cómo te llamás?", 950);
+      if (n) {
+        setProyecto(n);
+        await say("¡Hola! Soy Sofía.", 500);
+        await say(`Qué bueno que te gustó ${n}. Le avisamos a la desarrolladora para que te pasen más info.`, 950);
+        await say("Para eso dejame tus datos. ¿Cómo te llamás?", 850);
+      } else {
+        await say("¡Hola! Soy Sofía.", 500);
+        await say("Te ayudo a encontrar tu próximo depto en pozo. ¿Cómo te llamás?", 900);
+      }
       setFase("contacto"); setCto(0);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,7 +93,8 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
       setMsgs((m) => [...m, { s: "u", t: [mail, wpp].filter(Boolean).join(" · ") }]);
       setForm((f) => ({ ...f, email: mail, whatsapp: wpp }));
       setFase("chat"); setIdx(0);
-      await say("¡Genial! Ahora, unas preguntas rápidas para recomendarte bien.", 700);
+      if (proyecto) await say("¡Gracias! Además de ese, tenemos otros proyectos que capaz te encajan. Te hago unas preguntas para pasarte los que van con vos.", 850);
+      else await say("¡Genial! Te hago unas preguntas rápidas para recomendarte los proyectos que van con vos.", 800);
       await say(PASOS[0].p, 800);
     }
   }
@@ -113,18 +120,20 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const datos = form;
     const guardados = leerFavoritos();
     try { localStorage.setItem("dpp_perfil_v1", JSON.stringify({ ...perfilFinal, ...datos, ts: Date.now() })); } catch {}
-    const payload = { _subject: "Nuevo perfil de comprador (asesor)", _template: "table", _captcha: "false", _cc: "dema2910@gmail.com", Nombre: datos.nombre.trim() || "—", Email: datos.email.trim() || "—", WhatsApp: datos.whatsapp.trim() || "—" };
+    const payload = { _subject: "Nuevo perfil de comprador (asesor)", _template: "table", _captcha: "false", _cc: "contacto@departamentosenpozo.com.ar", Nombre: datos.nombre.trim() || "—", Email: datos.email.trim() || "—", WhatsApp: datos.whatsapp.trim() || "—" };
     PASOS.forEach((p) => { payload[ETIQUETAS[p.key]] = perfilFinal[p.key] || "—"; });
     payload["Proyectos guardados"] = guardados.length ? guardados.join(", ") : "ninguno aún";
     if (proyecto) payload["Proyecto de interés"] = proyecto;
     payload["Origen"] = proyecto ? "Ficha · quiero más info" : "Asesor · perfil";
     try {
-      const res = await fetch("https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar", {
+      const res = await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", {
         method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload),
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && (data.success === true || data.success === "true")) {
-        await say(`¡Gracias, ${datos.nombre.split(" ")[0] || ""}! Guardé tu perfil y te escribo con propuestas que encajen con vos.`, 700);
+        const first = datos.nombre.split(" ")[0] || "";
+        if (proyecto) await say(`¡Gracias, ${first}! Le pasé tu interés en ${proyecto} a la desarrolladora y te escribo con más opciones que encajen con vos.`, 700);
+        else await say(`¡Gracias, ${first}! Guardé tu perfil y te escribo con proyectos que van con vos.`, 700);
         setFase("ok");
       } else { await say("Uy, ahora no pude enviarlo. Ya te guardé el perfil igual; podés reintentar el envío.", 500); setFase("error"); }
     } catch { await say("Uy, ahora no pude enviarlo. Ya te guardé el perfil igual; podés reintentar el envío.", 500); setFase("error"); }
