@@ -1,17 +1,16 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 
 const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 
-// Sidebar sticky (precio + datos + calculadora) + modal de contacto + barra fija móvil.
-// Todo interactivo vive acá para compartir el estado del modal entre el sidebar y la barra móvil.
+// Sidebar sticky (precio + datos + calculadora) + barra fija móvil. El CTA "Quiero más info" lleva al asesor.
 export default function AccionesFicha({
   slug, nombre, precioHeroLabel, precioDesdeNum, refM2Label, cuotaEstim, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
 }) {
-  const [modal, setModal] = useState(false);
-  const [asunto, setAsunto] = useState("cotizacion");
-
-  const openModal = (a) => { setAsunto(a); setModal(true); };
+  // El CTA de la ficha ("Quiero más info") dispara el flujo de preguntas del asesor,
+  // con el proyecto pre-cargado como contexto (proyecto + nombre en la URL).
+  const asesorHref = `/asesor/?proyecto=${encodeURIComponent(slug || "")}&nombre=${encodeURIComponent(nombre || "")}`;
 
   return (
     <>
@@ -35,18 +34,15 @@ export default function AccionesFicha({
             )}
           </dl>
 
-          <button type="button" onClick={() => openModal("cotizacion")}
-            className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2 mb-3">
-            SOLICITAR COTIZACIÓN
-          </button>
-          <button type="button" onClick={() => openModal("visita")}
-            className="w-full py-3.5 border border-outline-variant text-primary-container rounded font-label-caps text-label-caps tracking-widest hover:border-secondary transition-all flex justify-center items-center gap-2">
-            AGENDAR VISITA
-          </button>
+          <Link href={asesorHref}
+            className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
+            QUIERO MÁS INFO
+            <span className="material-symbols-outlined text-[18px]">forum</span>
+          </Link>
 
           <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
             <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
-            Cuotas en pesos ajustables. Consultá descuentos por pago contado y disponibilidad de unidades.
+            Te hacemos unas preguntas rápidas y te pasamos precios, disponibilidad y opciones a tu medida — sin compromiso.
           </p>
         </div>
 
@@ -56,16 +52,12 @@ export default function AccionesFicha({
 
       {/* Barra fija móvil */}
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
-        <button type="button" onClick={() => openModal("cotizacion")}
+        <Link href={asesorHref}
           className="w-full px-8 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
           QUIERO MÁS INFORMACIÓN
           <span className="material-symbols-outlined fill-icon">send</span>
-        </button>
+        </Link>
       </div>
-
-      {modal && (
-        <ModalContacto slug={slug} nombre={nombre} asunto={asunto} onClose={() => setModal(false)} />
-      )}
     </>
   );
 }
@@ -143,69 +135,3 @@ export function Calculadora({ precioNum, comparableNum }) {
   );
 }
 
-function ModalContacto({ slug, nombre, asunto, onClose }) {
-  const [form, setForm] = useState({
-    nombre: "", email: "", whatsapp: "",
-    mensaje: asunto === "visita" ? `Quiero agendar una visita a ${nombre}.` : `Quiero recibir la cotización y disponibilidad de ${nombre}.`,
-    proyecto: slug, origen: "ficha:" + slug, _gotcha: "",
-  });
-  const [status, setStatus] = useState("idle");
-
-  const change = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
-
-  const submit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contacto", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("bad");
-      setStatus("sent");
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 z-[110] flex items-end sm:items-center justify-center p-0 sm:p-4 scrim-soft" onClick={onClose}>
-      <div className="bg-surface w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl shadow-2xl max-h-[92vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between p-5 border-b border-outline-variant sticky top-0 bg-surface">
-          <h3 className="font-headline-sm text-headline-sm text-primary">
-            {asunto === "visita" ? "Agendar visita" : "Solicitar cotización"}
-          </h3>
-          <button type="button" onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full text-[22px] leading-none text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition" aria-label="Cerrar">✕</button>
-        </div>
-
-        {status === "sent" ? (
-          <div className="p-8 text-center">
-            <span className="material-symbols-outlined text-5xl text-green-600">check_circle</span>
-            <p className="font-headline-sm text-headline-sm text-primary mt-3">¡Consulta enviada!</p>
-            <p className="text-body-md text-on-surface-variant mt-1">Te contactamos a la brevedad por {nombre}.</p>
-            <button type="button" onClick={onClose} className="mt-5 px-6 py-2.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps hover:opacity-90 transition-all">CERRAR</button>
-          </div>
-        ) : (
-          <form onSubmit={submit} className="p-5 space-y-3">
-            <p className="text-[13px] text-on-surface-variant">Sobre <span className="text-primary font-medium">{nombre}</span>. Dejanos tus datos y te respondemos con precios y disponibilidad.</p>
-            <input name="nombre" value={form.nombre} onChange={change} required placeholder="Nombre y apellido *"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
-            <input name="email" type="email" value={form.email} onChange={change} placeholder="Email"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
-            <input name="whatsapp" value={form.whatsapp} onChange={change} placeholder="WhatsApp / teléfono"
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white" />
-            <textarea name="mensaje" value={form.mensaje} onChange={change} rows={3}
-              className="w-full border border-outline-variant rounded-lg px-3 py-2.5 text-[14px] outline-none focus:border-secondary bg-white resize-none" />
-            {/* honeypot */}
-            <input type="text" name="_gotcha" value={form._gotcha} onChange={change} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-            <p className="text-[11px] text-on-surface-variant">Requerido: nombre + email o teléfono.</p>
-            {status === "error" && <p className="text-[13px] text-red-700">No se pudo enviar. Probá de nuevo o escribinos a contacto@departamentosenpozo.com.ar.</p>}
-            <button type="submit" disabled={status === "sending"}
-              className="w-full py-3 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all disabled:opacity-60">
-              {status === "sending" ? "ENVIANDO…" : "ENVIAR CONSULTA"}
-            </button>
-          </form>
-        )}
-      </div>
-    </div>
-  );
-}
