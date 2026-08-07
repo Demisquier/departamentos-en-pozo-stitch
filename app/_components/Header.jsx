@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import Button from "../_ui/Button";
 import AuthButton from "../_auth/AuthButton";
 
 const NAV = [
@@ -24,14 +23,15 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-4">
-      <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-0 max-w-container-max mx-auto">
+    <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-3">
+      <div className="flex justify-between items-center gap-4 w-full px-margin-mobile md:px-margin-desktop py-0 max-w-container-max mx-auto">
         <Link href="/" className="flex items-center shrink-0" aria-label="Departamentos en Pozo — Inicio">
-          {/* Logo con fondo TRANSPARENTE (se integra al fondo del header) y liviano (66KB). */}
+          {/* Logo con fondo TRANSPARENTE (se integra al fondo del header) y liviano (66KB).
+              Lockup ancho → limitamos alto Y ancho máx para que nunca se coma el margen. */}
           <img
             src="/wp-content/uploads/logo-header.png"
             alt="Departamentos en Pozo"
-            className="h-8 md:h-10 w-auto"
+            className="h-7 md:h-8 w-auto max-w-[150px] md:max-w-[190px] object-contain"
           />
         </Link>
 
@@ -39,7 +39,7 @@ export default function Header() {
           <span className="material-symbols-outlined">menu</span>
         </button>
 
-        <nav className="hidden md:flex items-center gap-4 lg:gap-5">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-4">
           {NAV.map((n, i) => (
             <Link
               key={n.href}
@@ -60,9 +60,8 @@ export default function Header() {
             </Link>
           ))}
 
-          <Button as={Link} variant="primary" href="/contacto/" className="shrink-0 px-5 py-2 text-label-caps font-label-caps whitespace-nowrap">
-            CONTACTO
-          </Button>
+          {/* CONTACTO salió del header (pedido de producto): libera espacio. Sigue en el menú
+              mobile y en el footer, así que la vía de contacto no se pierde. */}
           <AuthButton />
         </nav>
       </div>
