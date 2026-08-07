@@ -1,9 +1,11 @@
 "use client";
-// app/asesor/AsesorChat.jsx — Asesora "Sofía" (sin IA). Conversa de forma humana: escribe de a poco
-// (indicador "escribiendo…"), pide PRIMERO los datos (nombre, y mail + WhatsApp juntos) y después el
-// perfil con opciones (chips). Guarda el perfil en la selección (localStorage 'dpp_perfil_v1') y envía
-// el lead por mail vía Formsubmit (SIN WordPress): primario a dema2910@gmail.com (activación fácil desde
-// Gmail) con copia (_cc) a contacto@departamentosenpozo.com.ar. Sirve como página (/asesor) o modal.
+// app/asesor/AsesorChat.jsx — Asesora "Sofía" (sin IA). Dos modos:
+//  • BUSCADOR (home / botón flotante / sin aviso): hace preguntas y termina llevando al catálogo
+//    con los filtros ya aplicados (?barrio=&amb=). No pide contacto: es un buscador.
+//  • LEAD (desde una ficha): ya tenemos el aviso → pide contacto CONVERSANDO (nombre, y mail+WhatsApp
+//    en texto libre, no inputs) y arma el perfil, guarda en localStorage y envía el lead por mail
+//    (Formsubmit, sin WordPress): primario dema2910@gmail.com, _cc contacto@departamentosenpozo.com.ar.
+// UX tipo chat: escribe de a poco ("escribiendo…"), scroll interno, caja fija abajo.
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
@@ -18,6 +20,17 @@ const PASOS = [
 ];
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
 
+// Mapeos perfil → filtros del catálogo (?barrio=&amb=), para el modo buscador.
+const ZONA_BARRIO = { "Caballito": "Caballito", "Villa Urquiza": "Villa Urquiza", "Palermo": "Palermo", "Belgrano / Núñez": "Belgrano" };
+const AMB_FILTRO = { "Monoambiente": "1", "2 ambientes": "2", "3 ambientes": "3", "3+ ambientes": "4+" };
+function urlBuscador(perfil) {
+  const sp = new URLSearchParams();
+  const b = ZONA_BARRIO[perfil.zonas]; if (b) sp.set("barrio", b);
+  const a = AMB_FILTRO[perfil.ambientes]; if (a) sp.set("amb", a);
+  const qs = sp.toString();
+  return "/desarrollos-inmobiliarios/" + (qs ? "?" + qs : "");
+}
+
 function leerFavoritos() {
   try {
     const raw = localStorage.getItem("dpp_favoritos_v1");
@@ -29,43 +42,44 @@ function leerFavoritos() {
 export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onClose = null }) {
   const [msgs, setMsgs] = useState([]);
   const [typing, setTyping] = useState(true);
+  const [modo, setModo] = useState(proyectoNombre ? "lead" : "buscador");
   const [idx, setIdx] = useState(0);
   const [perfil, setPerfil] = useState({});
-  const [fase, setFase] = useState("intro"); // intro | contacto | chat | enviando | ok | error
-  const [cto, setCto] = useState(0); // 0 = nombre, 1 = mail + WhatsApp (juntos)
-  const [txt, setTxt] = useState(""); // nombre
-  const [cMail, setCMail] = useState("");
-  const [cWpp, setCWpp] = useState("");
+  const [fase, setFase] = useState("intro"); // intro | contacto | chat | enviando | ok | okBuscar | error
+  const [cto, setCto] = useState(0); // 0 = nombre, 1 = mail + WhatsApp (texto libre)
+  const [txt, setTxt] = useState("");
   const [form, setForm] = useState({ nombre: "", email: "", whatsapp: "" });
   const [gotcha, setGotcha] = useState("");
   const [proyecto, setProyecto] = useState(proyectoNombre || "");
+  const [buscarUrl, setBuscarUrl] = useState("/desarrollos-inmobiliarios/");
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const started = useRef(false);
-  const perfilRef = useRef({}); // perfil final, para reintentar el envío sin reiniciar el chat
+  const perfilRef = useRef({});
 
-  // Sofía "piensa" y después escribe: burbuja de puntos + delay antes de cada mensaje.
   const say = (text, delay = 850) => new Promise((resolve) => {
     setTyping(true);
     setTimeout(() => { setMsgs((m) => [...m, { s: "a", t: text }]); setTyping(false); resolve(); }, delay);
   });
 
-  // Apertura humana: saludo corto + (contexto del proyecto si vino de una ficha) → pedimos el nombre.
   useEffect(() => {
     if (started.current) return; started.current = true;
     let n = proyectoNombre;
     if (!n) { try { n = new URLSearchParams(window.location.search).get("nombre") || ""; } catch {} }
     (async () => {
       if (n) {
-        setProyecto(n);
+        setModo("lead"); setProyecto(n);
         await say("¡Hola! Soy Sofía.", 500);
         await say(`Qué bueno que te gustó ${n}. Le avisamos a la desarrolladora para que te pasen más info.`, 950);
         await say("Para eso dejame tus datos. ¿Cómo te llamás?", 850);
+        setFase("contacto"); setCto(0);
       } else {
+        setModo("buscador");
         await say("¡Hola! Soy Sofía.", 500);
-        await say("Te ayudo a encontrar tu próximo depto en pozo. ¿Cómo te llamás?", 900);
+        await say("Te ayudo a encontrar tu depto en pozo. Van unas preguntas rápidas.", 850);
+        await say(PASOS[0].p, 800);
+        setFase("chat"); setIdx(0);
       }
-      setFase("contacto"); setCto(0);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -76,25 +90,25 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     if (fase === "contacto" && !typing && inputRef.current) inputRef.current.focus();
   }, [msgs, typing, fase, cto]);
 
-  // Contacto: nombre → (mail + WhatsApp juntos) → arrancan las preguntas del perfil.
+  // Contacto conversado (solo modo lead): nombre → mail + WhatsApp en texto libre.
   async function enviarContacto(e) {
     e.preventDefault();
-    if (typing) return;
+    const val = txt.trim();
+    if (!val || typing) return;
+    setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]);
     if (cto === 0) {
-      const val = txt.trim();
-      if (!val) return;
-      setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]);
       setForm((f) => ({ ...f, nombre: val }));
       setCto(1);
-      await say(`Un gusto, ${val.split(" ")[0]}. Dejame tu mail y tu WhatsApp para pasarte las propuestas.`, 850);
+      await say(`Un gusto, ${val.split(" ")[0]}. Pasame tu mail y tu WhatsApp así te escribimos.`, 850);
     } else {
-      const mail = cMail.trim(), wpp = cWpp.trim();
-      if (!mail && !wpp) return;
-      setMsgs((m) => [...m, { s: "u", t: [mail, wpp].filter(Boolean).join(" · ") }]);
-      setForm((f) => ({ ...f, email: mail, whatsapp: wpp }));
+      const mail = (val.match(/[^\s@]+@[^\s@]+\.[^\s@]+/) || [""])[0];
+      const resto = val.replace(mail, "").trim();
+      const wpp = ((resto.match(/\d/g) || []).length >= 6) ? resto : "";
+      if (!mail && !wpp) { await say("Uy, no lo tomé bien. Pasame un mail (con @) o un WhatsApp con característica.", 600); return; }
+      const datos = { ...form, email: mail, whatsapp: wpp };
+      setForm(datos);
       setFase("chat"); setIdx(0);
-      if (proyecto) await say("¡Gracias! Además de ese, tenemos otros proyectos que capaz te encajan. Te hago unas preguntas para pasarte los que van con vos.", 850);
-      else await say("¡Genial! Te hago unas preguntas rápidas para recomendarte los proyectos que van con vos.", 800);
+      await say("¡Gracias! Además de ese, tenemos otros proyectos que capaz te encajan. Unas preguntas para pasarte los que van con vos.", 900);
       await say(PASOS[0].p, 800);
     }
   }
@@ -108,8 +122,18 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const next = idx + 1;
     setIdx(next);
     (async () => {
-      if (next < PASOS.length) { await say(PASOS[next].p); }
-      else { perfilRef.current = nuevo; await say("¡Listo! Con esto ya tengo todo. Dame un segundo…", 700); enviar(nuevo); }
+      if (next < PASOS.length) { await say(PASOS[next].p); return; }
+      // Fin del cuestionario: bifurca por modo.
+      perfilRef.current = nuevo;
+      try { localStorage.setItem("dpp_perfil_v1", JSON.stringify({ ...nuevo, ...form, ts: Date.now() })); } catch {}
+      if (modo === "buscador") {
+        setBuscarUrl(urlBuscador(nuevo));
+        await say("¡Listo! Te armé una búsqueda a tu medida. Mirá los proyectos que encajan.", 800);
+        setFase("okBuscar");
+      } else {
+        await say("¡Listo! Con esto ya tengo todo. Dame un segundo…", 700);
+        enviar(nuevo);
+      }
     })();
   }
 
@@ -139,7 +163,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     } catch { await say("Uy, ahora no pude enviarlo. Ya te guardé el perfil igual; podés reintentar el envío.", 500); setFase("error"); }
   }
 
-  const progreso = fase === "chat" ? `Paso ${Math.min(idx + 1, PASOS.length)} de ${PASOS.length}` : (fase === "ok" ? "¡Listo!" : "Encantada de ayudarte");
+  const progreso = fase === "chat" ? `Paso ${Math.min(idx + 1, PASOS.length)} de ${PASOS.length}` : ((fase === "ok" || fase === "okBuscar") ? "¡Listo!" : "Encantada de ayudarte");
 
   return (
     <div className="flex flex-col h-full bg-surface border border-outline-variant rounded-2xl overflow-hidden shadow-sm">
@@ -155,7 +179,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
         )}
       </div>
 
-      {/* Conversación con scroll interno */}
+      {/* Conversación */}
       <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col gap-2.5">
         {msgs.map((m, i) => (
           <div key={i} className={`max-w-[85%] ${m.s === "u" ? "self-end" : "self-start"}`}>
@@ -171,7 +195,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
         )}
       </div>
 
-      {/* Caja de respuesta SIEMPRE fija abajo */}
+      {/* Caja de respuesta fija abajo */}
       <div className="shrink-0 border-t border-outline-variant bg-surface">
         {fase === "chat" && !typing && idx < PASOS.length && (
           <div className="p-3 flex flex-wrap gap-2">
@@ -183,27 +207,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
 
         {fase === "contacto" && (
           <form onSubmit={enviarContacto} className="p-3">
-            {cto === 0 ? (
-              <div className="flex items-center gap-2">
-                <input ref={inputRef} value={txt} onChange={(e) => setTxt(e.target.value)} disabled={typing} placeholder="Escribí tu nombre…"
-                  className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
-                <button type="submit" disabled={typing || !txt.trim()} aria-label="Enviar" className="shrink-0 w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 transition disabled:opacity-50">
-                  <span className="material-symbols-outlined fill-icon text-[20px]">send</span>
-                </button>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <input ref={inputRef} value={cMail} onChange={(e) => setCMail(e.target.value)} disabled={typing} type="email" inputMode="email" placeholder="Tu mail"
-                    className="flex-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
-                  <input value={cWpp} onChange={(e) => setCWpp(e.target.value)} disabled={typing} inputMode="tel" placeholder="Tu WhatsApp"
-                    className="flex-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
-                </div>
-                <button type="submit" disabled={typing || (!cMail.trim() && !cWpp.trim())} className="inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-6 py-2.5 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-50">
-                  Continuar
-                </button>
-              </div>
-            )}
+            <div className="flex items-center gap-2">
+              <input ref={inputRef} value={txt} onChange={(e) => setTxt(e.target.value)} disabled={typing}
+                inputMode={cto === 1 ? "email" : "text"} placeholder={cto === 0 ? "Escribí tu nombre…" : "Tu mail y tu WhatsApp…"}
+                className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
+              <button type="submit" disabled={typing || !txt.trim()} aria-label="Enviar" className="shrink-0 w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 transition disabled:opacity-50">
+                <span className="material-symbols-outlined fill-icon text-[20px]">send</span>
+              </button>
+            </div>
             <input value={gotcha} onChange={(e) => setGotcha(e.target.value)} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
             <p className="text-[11px] text-on-surface-variant mt-2 px-1">Usamos tus datos solo para pasarte las propuestas. No los compartimos con terceros.</p>
           </form>
@@ -215,6 +226,15 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
               <span className="material-symbols-outlined text-[18px]">refresh</span> Reintentar
             </button>
             <Link href="/mi-seleccion/" className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Ver mi selección</Link>
+          </div>
+        )}
+
+        {fase === "okBuscar" && (
+          <div className="p-4 flex items-center justify-center gap-3 flex-wrap">
+            <Link href={buscarUrl} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[18px]">search</span> Ver proyectos que encajan
+            </Link>
+            <Link href="/mi-seleccion/" className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Mi selección</Link>
           </div>
         )}
 
