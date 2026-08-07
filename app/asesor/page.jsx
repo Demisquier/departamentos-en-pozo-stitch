@@ -18,7 +18,9 @@ export default function AsesorPage() {
           Contanos qué buscás en 2 minutos. Guardamos tu perfil en tu selección y te ayudamos a encontrar el proyecto en pozo que va con vos — sin presiones.
         </p>
       </div>
-      <AsesorChat />
+      <div className="max-w-xl mx-auto h-[72vh] min-h-[520px]">
+        <AsesorChat />
+      </div>
     </Container>
   );
 }
