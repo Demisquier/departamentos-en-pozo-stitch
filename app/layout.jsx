@@ -4,6 +4,7 @@ import Script from "next/script";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import BottomNav from "./_components/BottomNav";
+import AuthProvider from "./_auth/AuthProvider";
 import { SITE, GA_ID } from "../lib/constants";
 
 // Fuentes self-hosteadas por Next (next/font): se sirven desde nuestro dominio, con
@@ -67,9 +68,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_ID}');`}
         </Script>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
