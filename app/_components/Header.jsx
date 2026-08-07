@@ -26,11 +26,12 @@ export default function Header() {
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-4">
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-0 max-w-container-max mx-auto">
-        <Link href="/" className="flex items-center" aria-label="Departamentos en Pozo — Inicio">
+        <Link href="/" className="flex items-center shrink-0" aria-label="Departamentos en Pozo — Inicio">
+          {/* Logo con fondo TRANSPARENTE (se integra al fondo del header) y liviano (66KB). */}
           <img
-            src="/wp-content/uploads/2026/05/Logo-depatamentos-en-pozo.png"
+            src="/wp-content/uploads/logo-header.png"
             alt="Departamentos en Pozo"
-            className="h-14 md:h-20 w-auto"
+            className="h-11 md:h-14 w-auto"
           />
         </Link>
 
@@ -38,12 +39,12 @@ export default function Header() {
           <span className="material-symbols-outlined">menu</span>
         </button>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-5">
           {NAV.map((n, i) => (
             <Link
               key={n.href}
               href={n.href}
-              className={`${i === 0 ? "text-secondary font-bold" : "text-on-surface-variant"} text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
+              className={`${i === 0 ? "text-secondary font-bold" : "text-on-surface-variant"} whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
             >
               {n.label}
             </Link>
@@ -53,13 +54,13 @@ export default function Header() {
             <Link
               key={n.label}
               href={n.href}
-              className="text-on-surface-variant text-label-caps font-label-caps hover:text-secondary transition-colors duration-300"
+              className="text-on-surface-variant whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300"
             >
               {n.label}
             </Link>
           ))}
 
-          <Button as={Link} variant="primary" href="/contacto/" className="px-6 py-2 text-label-caps font-label-caps">
+          <Button as={Link} variant="primary" href="/contacto/" className="shrink-0 px-5 py-2 text-label-caps font-label-caps whitespace-nowrap">
             CONTACTO
           </Button>
           <AuthButton />
