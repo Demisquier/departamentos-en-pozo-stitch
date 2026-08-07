@@ -1,89 +1,67 @@
 "use client";
-// app/_auth/AuthProvider.jsx — Estado global (client) de sesión + favoritos. Envuelve la
-// app en el layout. Expone: user, login con Google, logout, el set de slugs guardados,
-// isSaved(slug) y toggleFavorito(card). Los favoritos se cargan UNA vez por sesión y se
-// comparten, así las cards no disparan N queries. Si Supabase no está configurado
-// (authEnabled=false) queda todo inerte y el sitio funciona igual.
+// app/_auth/AuthProvider.jsx — Favoritos SIN login, persistidos en el navegador (localStorage).
+// El usuario guarda las propiedades que le interesan y las ve en /mi-seleccion, sin crear
+// cuenta. Estado compartido por toda la app (una sola lectura de localStorage), con sync
+// entre pestañas. (El nombre del archivo/hook se mantiene para no tocar los imports; la
+// versión con login-Google queda para sumar más adelante.)
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from "react";
-import { supabase, authEnabled } from "../../lib/supabase";
 
-const AuthCtx = createContext(null);
+const KEY = "dpp_favoritos_v1";
+const Ctx = createContext(null);
 
 export function useAuth() {
-  return useContext(AuthCtx) || { user: null, loading: false, enabled: false, favoritos: new Set(), isSaved: () => false, toggleFavorito: () => {}, signIn: () => {}, signOut: () => {} };
+  return (
+    useContext(Ctx) || {
+      enabled: true,
+      ready: false,
+      favoritos: new Set(),
+      items: [],
+      count: 0,
+      isSaved: () => false,
+      toggleFavorito: () => {},
+    }
+  );
 }
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [favSlugs, setFavSlugs] = useState(() => new Set());
+  const [items, setItems] = useState([]); // array de cards (más reciente primero)
+  const [ready, setReady] = useState(false);
 
-  // Sesión + suscripción a cambios de auth.
   useEffect(() => {
-    if (!authEnabled) { setLoading(false); return; }
-    supabase.auth.getSession().then(({ data }) => {
-      setUser(data?.session?.user ?? null);
-      setLoading(false);
-    });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      setUser(session?.user ?? null);
-    });
-    return () => sub?.subscription?.unsubscribe();
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) setItems(JSON.parse(raw) || []);
+    } catch {}
+    setReady(true);
+    // Sync entre pestañas: si se guarda en otra pestaña, se refleja acá.
+    const onStorage = (e) => {
+      if (e.key === KEY) {
+        try { setItems(e.newValue ? JSON.parse(e.newValue) : []); } catch {}
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  // Al loguear (o cambiar de user), cargar los slugs guardados. Al desloguear, vaciar.
-  useEffect(() => {
-    if (!authEnabled || !user) { setFavSlugs(new Set()); return; }
-    let alive = true;
-    supabase.from("favoritos").select("slug").eq("user_id", user.id).then(({ data }) => {
-      if (alive && data) setFavSlugs(new Set(data.map((r) => r.slug)));
-    });
-    return () => { alive = false; };
-  }, [user]);
-
-  const signIn = useCallback(async () => {
-    if (!authEnabled) return;
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: { redirectTo: typeof window !== "undefined" ? window.location.href : undefined },
-    });
+  const persist = useCallback((next) => {
+    setItems(next);
+    try { localStorage.setItem(KEY, JSON.stringify(next)); } catch {}
   }, []);
 
-  const signOut = useCallback(async () => {
-    if (!authEnabled) return;
-    await supabase.auth.signOut();
-    setUser(null);
-    setFavSlugs(new Set());
-  }, []);
+  const slugs = useMemo(() => new Set(items.map((x) => x.slug)), [items]);
+  const isSaved = useCallback((slug) => slugs.has(slug), [slugs]);
 
-  const isSaved = useCallback((slug) => favSlugs.has(slug), [favSlugs]);
-
-  // Toggle optimista: actualiza el set local al toque y persiste en Supabase. `card` es el
-  // dato denormalizado de la tarjeta (slug, nombre, barrio, precio, img, href) para que la
-  // página privada renderice sin volver a leer el catálogo.
-  const toggleFavorito = useCallback(async (card) => {
-    if (!authEnabled) return "disabled";
-    if (!user) { signIn(); return "login"; }
-    const slug = card?.slug;
-    if (!slug) return;
-    const saved = favSlugs.has(slug);
-    setFavSlugs((prev) => {
-      const n = new Set(prev);
-      saved ? n.delete(slug) : n.add(slug);
-      return n;
-    });
-    if (saved) {
-      await supabase.from("favoritos").delete().eq("user_id", user.id).eq("slug", slug);
-    } else {
-      await supabase.from("favoritos").upsert({ user_id: user.id, slug, data: card }, { onConflict: "user_id,slug" });
-    }
-    return saved ? "removed" : "added";
-  }, [user, favSlugs, signIn]);
+  const toggleFavorito = useCallback((card) => {
+    if (!card?.slug) return;
+    const exists = items.some((x) => x.slug === card.slug);
+    persist(exists ? items.filter((x) => x.slug !== card.slug) : [{ ...card, _ts: Date.now() }, ...items]);
+    return exists ? "removed" : "added";
+  }, [items, persist]);
 
   const value = useMemo(
-    () => ({ user, loading, enabled: authEnabled, favoritos: favSlugs, isSaved, toggleFavorito, signIn, signOut }),
-    [user, loading, favSlugs, isSaved, toggleFavorito, signIn, signOut]
+    () => ({ enabled: true, ready, favoritos: slugs, items, count: items.length, isSaved, toggleFavorito }),
+    [ready, slugs, items, isSaved, toggleFavorito]
   );
 
-  return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

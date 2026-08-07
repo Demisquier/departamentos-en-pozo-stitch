@@ -1,16 +1,14 @@
 "use client";
-// app/_auth/GuardarBtn.jsx — Botón "Guardar" (corazón) para fichas y cards.
-// - Si la feature no está configurada (Supabase sin credenciales) → no se muestra.
-// - Si el user NO está logueado → al tocar dispara el login con Google.
-// - Si está logueado → togglea el favorito (optimista).
-// Recibe `card`: el dato denormalizado que se guarda ({slug, nombre, barrio, precio, img, href}).
-//   variant "icon" (default): botón flotante circular para la esquina de las cards.
+// app/_auth/GuardarBtn.jsx — Botón "Guardar" (corazón) para fichas y cards. Sin login:
+// togglea el favorito en el navegador (localStorage vía el provider).
+//   card: dato denormalizado que se guarda ({slug, nombre, barrio, precio, img, href}).
+//   variant "icon" (default): flotante circular para la esquina de las cards.
 //   variant "full": botón con texto para la ficha.
 import { useAuth } from "./AuthProvider";
 
 export default function GuardarBtn({ card, variant = "icon", className = "" }) {
-  const { enabled, isSaved, toggleFavorito } = useAuth();
-  if (!enabled || !card?.slug) return null;
+  const { isSaved, toggleFavorito } = useAuth();
+  if (!card?.slug) return null;
   const saved = isSaved(card.slug);
 
   const onClick = (e) => {
