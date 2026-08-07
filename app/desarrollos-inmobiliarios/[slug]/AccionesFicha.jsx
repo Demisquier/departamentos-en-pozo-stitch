@@ -1,16 +1,15 @@
 "use client";
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import AsesorModal from "../../asesor/AsesorModal";
 
 const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 
-// Sidebar sticky (precio + datos + calculadora) + barra fija móvil. El CTA "Quiero más info" lleva al asesor.
+// Sidebar sticky (precio + datos + calculadora) + barra fija móvil. El CTA "Quiero más info"
+// abre el asesor como MODAL sobre la ficha (sin perder la navegación).
 export default function AccionesFicha({
   slug, nombre, precioHeroLabel, precioDesdeNum, refM2Label, cuotaEstim, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
 }) {
-  // El CTA de la ficha ("Quiero más info") dispara el flujo de preguntas del asesor,
-  // con el proyecto pre-cargado como contexto (proyecto + nombre en la URL).
-  const asesorHref = `/asesor/?proyecto=${encodeURIComponent(slug || "")}&nombre=${encodeURIComponent(nombre || "")}`;
+  const [asesorOpen, setAsesorOpen] = useState(false);
 
   return (
     <>
@@ -34,11 +33,11 @@ export default function AccionesFicha({
             )}
           </dl>
 
-          <Link href={asesorHref}
+          <button type="button" onClick={() => setAsesorOpen(true)}
             className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
             QUIERO MÁS INFO
             <span className="material-symbols-outlined text-[18px]">forum</span>
-          </Link>
+          </button>
 
           <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
             <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
@@ -52,12 +51,14 @@ export default function AccionesFicha({
 
       {/* Barra fija móvil */}
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
-        <Link href={asesorHref}
+        <button type="button" onClick={() => setAsesorOpen(true)}
           className="w-full px-8 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
           QUIERO MÁS INFORMACIÓN
           <span className="material-symbols-outlined fill-icon">send</span>
-        </Link>
+        </button>
       </div>
+
+      {asesorOpen && <AsesorModal nombre={nombre} slug={slug} onClose={() => setAsesorOpen(false)} />}
     </>
   );
 }
