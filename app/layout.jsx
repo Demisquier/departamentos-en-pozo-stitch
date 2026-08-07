@@ -5,6 +5,7 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import BottomNav from "./_components/BottomNav";
 import AuthProvider from "./_auth/AuthProvider";
+import AsesorLauncher from "./asesor/AsesorLauncher";
 import { SITE, GA_ID } from "../lib/constants";
 
 // Fuentes self-hosteadas por Next (next/font): se sirven desde nuestro dominio, con
@@ -72,6 +73,7 @@ gtag('config', '${GA_ID}');`}
           <Header />
           <main>{children}</main>
           <Footer />
+          <AsesorLauncher />
         </AuthProvider>
       </body>
     </html>
