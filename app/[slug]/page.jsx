@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, getDesarrolladoras, getInmobiliarias, getDesarrollos, SITE } from "../../lib/wp";
+import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, stripEmbeddedSchema, getDesarrolladoras, getInmobiliarias, getDesarrollos, SITE } from "../../lib/wp";
 import { BARRIO_CPT, ZONA_INMO_LABEL, BARRIO_CATALOGO, matchBarrioCatalogo } from "../../lib/barrios";
 import { mapDesarrollos } from "../../lib/catalogo";
 import { CATALOGO_BARRIO_INTRO } from "../../lib/catalogoBarrioIntros";
@@ -169,7 +169,9 @@ export default async function SinglePage({ params }) {
   const { node, type } = r;
   const img = featuredImage(node);
   const title = node.title?.rendered || "";
-  const content = fixImgs(node.content?.rendered || "");
+  // Saneamos el HTML: sacamos los <script ld+json> embebidos del WP viejo (duplicaban el
+  // schema del <head>) y rescatamos FAQPage/Dataset/AboutPage para re-emitirlos limpios.
+  const { html: content, keep: keepSchema } = stripEmbeddedSchema(fixImgs(node.content?.rendered || ""));
 
   // ¿Es una página de barrio con desarrolladoras cargadas? Si sí, mostramos el directorio
   // pre-filtrado en vez del contenido WP viejo. Si no (o barrio sin devs), contenido normal.
@@ -198,7 +200,7 @@ export default async function SinglePage({ params }) {
 
   // Schema JSON-LD de RankMath (FAQPage, ItemList, BreadcrumbList, etc.). Aditivo:
   // se suma al Article básico existente. Devuelve [] si el endpoint no responde.
-  const rmSchema = await getRankMathSchema(`/${params.slug}/`);
+  const rmSchema = [...(await getRankMathSchema(`/${params.slug}/`)), ...keepSchema];
 
   // ── POST (guía) ─────────────────────────────────────────────────────────
   // Los posts viven en la raíz (/{slug}/). Layout editorial de blog (ver PostView).
