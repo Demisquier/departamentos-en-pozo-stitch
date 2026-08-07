@@ -2,10 +2,28 @@ import Link from "next/link";
 import { getDesarrollos, featuredImage, acf } from "../lib/wp";
 import { BARRIO_PAGE, BARRIO_ORDEN, BARRIO_CATALOGO, matchBarrioCatalogo } from "../lib/barrios";
 import { toNumber as num } from "../lib/format";
-import { SITE } from "../lib/constants";
+import { SITE, BRAND, LOGO_URL, CONTACT_EMAIL } from "../lib/constants";
 import Container from "./_ui/Container";
 import ProjectCard from "./_ui/ProjectCard";
 import HomeBuscador from "./_ui/HomeBuscador";
+import JsonLd from "./_ui/JsonLd";
+
+// Schema de ENTIDAD para el home: consolida "Departamentos en Pozo" como Organization/WebSite
+// (ancla a la que apunta cada publisher del resto del sitio) — clave para Google y buscadores IA.
+const ENTITY_SCHEMA = [
+  {
+    "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#organization`,
+    name: BRAND, url: `${SITE}/`,
+    logo: { "@type": "ImageObject", url: LOGO_URL },
+    description: "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías.",
+    contactPoint: { "@type": "ContactPoint", email: CONTACT_EMAIL, contactType: "customer support", areaServed: "AR", availableLanguage: "Spanish" },
+  },
+  {
+    "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE}/#website`,
+    name: BRAND, url: `${SITE}/`, inLanguage: "es-AR",
+    publisher: { "@id": `${SITE}/#organization` },
+  },
+];
 
 export const revalidate = 600;
 
@@ -73,6 +91,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={ENTITY_SCHEMA} />
       {/* Preload del hero: arranca la descarga de la imagen LCP lo antes posible. */}
       <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
