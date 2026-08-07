@@ -232,12 +232,22 @@ export default async function FichaProyecto({ params }) {
     };
   }
 
+  // BreadcrumbList: todos los demás tipos de página lo tienen; las fichas no lo tenían.
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Proyectos en pozo', item: `${SITE}/desarrollos-inmobiliarios/` },
+      { '@type': 'ListItem', position: 3, name: nombre, item: `${SITE}/desarrollos-inmobiliarios/${d.slug}/` },
+    ],
+  };
+
   const mapQuery = lat && lng ? `${lat},${lng}` : encodeURIComponent(`${direccion}`);
   const mapSrc = `https://maps.google.com/maps?q=${mapQuery}&z=15&output=embed`;
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd data={[schema, breadcrumbSchema]} />
 
       <Container as="main" className="py-6 md:py-8 pb-28">
         {/* Breadcrumb */}
