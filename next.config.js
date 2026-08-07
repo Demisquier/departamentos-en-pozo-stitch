@@ -19,8 +19,27 @@ const nextConfig = {
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
   },
+  // Headers de seguridad en TODAS las respuestas (antes solo estaba HSTS). No incluimos CSP
+  // acá a propósito: una CSP mal calibrada rompe GTM/GA/Maps/Fonts/Formsubmit; se deja para
+  // una pasada dedicada con allowlist testeada.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
+      // www → apex, permanente (308). Antes Vercel lo hacía con 307 temporal.
+      { source: "/:path*", has: [{ type: "host", value: "www.departamentosenpozo.com.ar" }], destination: "https://departamentosenpozo.com.ar/:path*", permanent: true },
+
       // Los posts viven en la raíz (como en WordPress). Si algún link viejo apunta a
       // /novedades/{slug}, lo mandamos con 301 a /{slug} para no duplicar contenido.
       { source: "/novedades/:slug", destination: "/:slug", permanent: true },
