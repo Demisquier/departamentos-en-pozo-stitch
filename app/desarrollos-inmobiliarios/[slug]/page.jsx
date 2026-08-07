@@ -4,6 +4,7 @@ import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage,
 import { toNumber } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
+import GuardarBtn from '../../_auth/GuardarBtn';
 import Descripcion from './Descripcion';
 import EsquemaPago from './EsquemaPago';
 import TipologiasTabla from './TipologiasTabla';
@@ -493,6 +494,11 @@ export default async function FichaProyecto({ params }) {
               cuotas={cuotasReal}
               ajuste={ajuste}
               comparableNum={comparableNum}
+            />
+            <GuardarBtn
+              variant="full"
+              className="w-full mt-3"
+              card={{ slug: d.slug, nombre, barrio, precioDesde: precioDesdeNum, img: imagen, etapa: estado, entrega, desarrolladora: constructora }}
             />
           </aside>
         </div>
