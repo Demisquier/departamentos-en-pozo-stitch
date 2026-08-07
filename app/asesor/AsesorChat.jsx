@@ -69,15 +69,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     (async () => {
       if (n) {
         setModo("lead"); setProyecto(n);
-        await say("¡Hola! Soy Sofía.", 500);
-        await say(`Qué bueno que te gustó ${n}. Le avisamos a la desarrolladora para que te pasen más info.`, 950);
-        await say("Para eso dejame tus datos. ¿Cómo te llamás?", 850);
+        await say("¡Hola! Soy Sofía.", 400);
+        await say(`Buenísimo lo de ${n}: le aviso a la desarrolladora. ¿Cómo te llamás?`, 850);
         setFase("contacto"); setCto(0);
       } else {
         setModo("buscador");
-        await say("¡Hola! Soy Sofía.", 500);
-        await say("Te ayudo a encontrar tu depto en pozo. Van unas preguntas rápidas.", 850);
-        await say(PASOS[0].p, 800);
+        await say("¡Hola! Soy Sofía.", 400);
+        await say("Te ayudo a encontrar tu depto. Unas preguntas rápidas.", 700);
+        await say(PASOS[0].p, 700);
         setFase("chat"); setIdx(0);
       }
     })();
@@ -86,9 +85,19 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    if (el) el.scrollTop = el.scrollHeight;
     if (fase === "contacto" && !typing && inputRef.current) inputRef.current.focus();
   }, [msgs, typing, fase, cto]);
+
+  // Cuando aparece/desaparece el teclado (mobile), el viewport cambia: re-scrolleamos al último
+  // mensaje para que lo que pedimos quede visible por encima del teclado.
+  useEffect(() => {
+    const vv = typeof window !== "undefined" ? window.visualViewport : null;
+    if (!vv) return;
+    const on = () => { const el = scrollRef.current; if (el) el.scrollTop = el.scrollHeight; };
+    vv.addEventListener("resize", on);
+    return () => vv.removeEventListener("resize", on);
+  }, []);
 
   // Contacto conversado (solo modo lead): nombre → mail + WhatsApp en texto libre.
   async function enviarContacto(e) {
@@ -209,6 +218,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
           <form onSubmit={enviarContacto} className="p-3">
             <div className="flex items-center gap-2">
               <input ref={inputRef} value={txt} onChange={(e) => setTxt(e.target.value)} disabled={typing}
+                onFocus={() => setTimeout(() => { const el = scrollRef.current; if (el) el.scrollTop = el.scrollHeight; }, 320)}
                 inputMode={cto === 1 ? "email" : "text"} placeholder={cto === 0 ? "Escribí tu nombre…" : "Tu mail y tu WhatsApp…"}
                 className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
               <button type="submit" disabled={typing || !txt.trim()} aria-label="Enviar" className="shrink-0 w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 transition disabled:opacity-50">
