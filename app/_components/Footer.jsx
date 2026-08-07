@@ -43,7 +43,7 @@ export default function Footer() {
           <FootCol title="Por barrio" links={BARRIOS_PAGINA.map(([label, slug]) => [label, `/desarrolladoras-inmobiliarias-en-${slug}/`])} />
 
           <FootCol title="Contacto" links={[
-            ["Escribinos", "/contacto/"],
+            ["Soy desarrolladora", "/soy-desarrolladora/"],
             [CONTACT_EMAIL, `mailto:${CONTACT_EMAIL}`],
             ["Guías y novedades", "/novedades/"],
             ["Nosotros", "/sobre-nosotros/"],
