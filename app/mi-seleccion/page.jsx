@@ -15,7 +15,7 @@ export default function MiSeleccionPage() {
     <Container as="main" className="py-10 md:py-14">
       <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-2">Mi selección</h1>
       <p className="text-on-surface-variant font-body-lg text-body-lg mb-8 max-w-2xl">
-        Las propiedades en pozo que guardaste, en un solo lugar. Accedé desde cualquier dispositivo.
+        Las propiedades en pozo que guardaste, en un solo lugar. Se guardan en este navegador.
       </p>
       <MiSeleccion />
     </Container>
