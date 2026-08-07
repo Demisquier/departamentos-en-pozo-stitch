@@ -116,6 +116,17 @@ export default async function HubDesarrolladorasPage() {
             </a>
           </div>
         )}
+
+        {/* CTA para desarrolladoras: nuestros datos son públicos y no están validados; invitamos a actualizar. */}
+        <aside className="mt-12 border border-outline-variant rounded-2xl p-6 md:flex md:items-center md:justify-between gap-6 bg-surface-container-low">
+          <div>
+            <h2 className="font-headline-sm text-headline-sm text-primary mb-1">¿Sos una de estas desarrolladoras?</h2>
+            <p className="text-on-surface-variant text-[14px]">Nuestros datos son públicos y no están validados. Actualizá tu ficha, sumá un proyecto o conversemos.</p>
+          </div>
+          <a href="/soy-desarrolladora/" className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+            <span className="material-symbols-outlined text-[18px]">apartment</span> Actualizar mis datos
+          </a>
+        </aside>
       </Container>
 
       {/* Mientras no exista el marcador en WP, se sigue mostrando el directorio viejo:
