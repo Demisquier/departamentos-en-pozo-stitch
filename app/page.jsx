@@ -89,6 +89,7 @@ export default async function HomePage() {
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
           <HomeBuscador />
+          <p className="mt-4 text-on-primary text-[14px] opacity-90">¿No sabés por dónde empezar? <Link href="/asesor/" className="underline font-medium hover:no-underline">Armá tu perfil y te recomendamos a tu medida →</Link></p>
         </div>
       </section>
 
