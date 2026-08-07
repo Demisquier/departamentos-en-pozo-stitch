@@ -31,7 +31,7 @@ export default function Header() {
           <img
             src="/wp-content/uploads/logo-header.png"
             alt="Departamentos en Pozo"
-            className="h-11 md:h-14 w-auto"
+            className="h-8 md:h-10 w-auto"
           />
         </Link>
 
