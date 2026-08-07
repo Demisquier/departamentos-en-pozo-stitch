@@ -4,7 +4,7 @@
 // y lo ENVÍA como lead por mail vía Formsubmit (SIN WordPress, sin backend): primario a
 // contacto@departamentosenpozo.com.ar, con copia (_cc) a dema2910@gmail.com.
 // Incluye los proyectos guardados (favoritos) en el lead para que llegue rico.
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const PASOS = [
@@ -34,6 +34,19 @@ export default function AsesorChat() {
   const [fase, setFase] = useState("chat"); // chat | contacto | enviando | ok | error
   const [form, setForm] = useState({ nombre: "", email: "", whatsapp: "" });
   const [gotcha, setGotcha] = useState("");
+  const [proyecto, setProyecto] = useState("");
+
+  // Si venís desde una ficha ("Quiero más info"), tomamos el proyecto como contexto:
+  // lo mencionamos al arrancar y lo mandamos en el lead.
+  useEffect(() => {
+    try {
+      const n = new URLSearchParams(window.location.search).get("nombre");
+      if (n) {
+        setProyecto(n);
+        setMsgs((m) => [{ s: "a", t: `Veo que te interesó ${n}. ¡Buenísimo! Te hago unas preguntitas para recomendarte con criterio y guardo tu interés.` }, ...m]);
+      }
+    } catch {}
+  }, []);
 
   function elegir(label, value) {
     const paso = PASOS[idx];
@@ -63,7 +76,8 @@ export default function AsesorChat() {
     const payload = { _subject: "Nuevo perfil de comprador (asesor)", _template: "table", _captcha: "false", _cc: "dema2910@gmail.com", Nombre: form.nombre.trim(), Email: form.email.trim() || "—", WhatsApp: form.whatsapp.trim() || "—" };
     PASOS.forEach((p) => { payload[ETIQUETAS[p.key]] = perfil[p.key] || "—"; });
     payload["Proyectos guardados"] = guardados.length ? guardados.join(", ") : "ninguno aún";
-    payload["Origen"] = "Asesor · perfil";
+    if (proyecto) payload["Proyecto de interés"] = proyecto;
+    payload["Origen"] = proyecto ? "Ficha · quiero más info" : "Asesor · perfil";
     try {
       const res = await fetch("https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar", {
         method: "POST",
