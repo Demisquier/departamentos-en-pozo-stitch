@@ -65,16 +65,16 @@ function MapaListado({ items }) {
         const label = i.precio ? 'USD ' + Math.round(i.precio / 100) / 10 + 'k' : 'Consultar';
         const icon = L.divIcon({
           className: '',
-          html: `<div style="background:#1b2a4a;color:#fff;border-radius:14px;padding:3px 9px;font:600 12px/1 Work Sans,sans-serif;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.35);border:1.5px solid #fff">${i.precio ? '$' + Math.round(i.precio / 1000) + 'k' : '•'}</div>`,
+          html: `<div class="map-pin">${i.precio ? '$' + Math.round(i.precio / 1000) + 'k' : '•'}</div>`,
           iconSize: [48, 22], iconAnchor: [24, 22],
         });
         const m = L.marker([i.lat, i.lng], { icon }).addTo(layer);
         m.bindPopup(
-          `<a href="/desarrollos-inmobiliarios/${i.slug}/" style="text-decoration:none;color:#1b2a4a;display:block;width:210px">
-            ${i.imagen ? `<img src="${i.imagen}" style="width:210px;height:118px;object-fit:cover;border-radius:6px" loading="lazy"/>` : ''}
-            <div style="padding:7px 2px 2px"><strong style="font:600 15px/1.2 Libre Caslon Text,serif">${i.nombre}</strong>
-            <div style="color:#667;font-size:12px;margin:2px 0">${i.barrio || ''}${i.ambientes ? ' · ' + i.ambientes : ''}</div>
-            <strong style="color:#A68966;font-size:14px">${label !== 'Consultar' && i.precio ? 'USD ' + i.precio.toLocaleString('es-AR') + ' /m²' : 'Consultar'}</strong></div></a>`,
+          `<a href="/desarrollos-inmobiliarios/${i.slug}/" class="map-pop">
+            ${i.imagen ? `<img src="${i.imagen}" class="map-pop__img" loading="lazy"/>` : ''}
+            <div class="map-pop__body"><strong class="map-pop__name">${i.nombre}</strong>
+            <div class="map-pop__meta">${i.barrio || ''}${i.ambientes ? ' · ' + i.ambientes : ''}</div>
+            <strong class="map-pop__price">${label !== 'Consultar' && i.precio ? 'USD ' + i.precio.toLocaleString('es-AR') + ' /m²' : 'Consultar'}</strong></div></a>`,
           { minWidth: 210 }
         );
         pts.push([i.lat, i.lng]);
