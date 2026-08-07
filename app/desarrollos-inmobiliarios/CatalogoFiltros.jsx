@@ -14,6 +14,16 @@ function landingSlugForBarrio(label) {
 // Barrios con landing propia (para el dropdown de barrio en las páginas por barrio).
 const LANDING_BARRIOS = Object.keys(BARRIO_CATALOGO).map((slug) => ({ slug, label: BARRIO_CATALOGO[slug].label }));
 
+// Rangos de precio total (USD) — sobre precioDesde. Datos parciales: el filtro excluye
+// proyectos sin precio total cargado (mismo criterio que el de precio/m²).
+const PRECIO_TOTAL = {
+  hasta150: { label: 'Hasta USD 150.000', test: (p) => p <= 150000 },
+  '150a250': { label: 'USD 150.000–250.000', test: (p) => p > 150000 && p <= 250000 },
+  '250a400': { label: 'USD 250.000–400.000', test: (p) => p > 250000 && p <= 400000 },
+  mas400: { label: '+USD 400.000', test: (p) => p > 400000 },
+};
+const PRECIO_M2_LBL = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
+
 // --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
 function MapaListado({ items }) {
   const ref = useRef(null);
@@ -88,52 +98,98 @@ function MapaListado({ items }) {
   return <div ref={ref} className="w-full h-[560px] md:h-[640px] rounded-xl overflow-hidden border border-outline-variant bg-surface-container-high" />;
 }
 
-// item: { slug, nombre, barrio, direccion, precio, precioLabel, ambientes, ambientesNums, entrega, desarrolladora, etapa, imagen, lat, lng }
+// item: { slug, nombre, barrio, direccion, precio, precioM2, precioDesde, precioLabel,
+//         ambientes, ambientesNums, entrega, entregaAnio, financiacion, desarrolladora, etapa, imagen, lat, lng }
 export default function CatalogoFiltros({ items, barrioFijo = null }) {
+  // Principales
   const [barrio, setBarrio] = useState('');
   const [amb, setAmb] = useState('');
-  const [precio, setPrecio] = useState('todos');
+  const [precio, setPrecio] = useState('todos');     // precio/m²
   const [etapa, setEtapa] = useState('');
+  // Secundarios ("Más filtros")
   const [entregaMax, setEntregaMax] = useState('');
-  const [fin, setFin] = useState(false);
+  const [fin, setFin] = useState(false);              // forma de pago: con financiación (cuotas)
+  const [desarrolladora, setDesarrolladora] = useState('');
+  const [precioTotal, setPrecioTotal] = useState('todos');
+  // UI
   const [orden, setOrden] = useState('destacados');
-  const [vista, setVista] = useState('lista'); // 'lista' | 'mapa'
+  const [vista, setVista] = useState('lista');        // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
-  const [filtrosOpen, setFiltrosOpen] = useState(false); // panel de filtros colapsable (mobile)
+  const [masOpen, setMasOpen] = useState(false);      // panel secundarios (desktop)
+  const [sheetOpen, setSheetOpen] = useState(false);  // bottom-sheet (mobile)
 
   // ── URL <-> filtros (vista compartible). Leemos los query params al montar y
   // reflejamos los filtros en la URL con replaceState (sin recargar ni navegar).
-  // El canonical de la página apunta siempre a la URL base, así que las variantes
-  // con ?barrio=...&amb=... no generan contenido duplicado indexable.
+  // El canonical apunta siempre a la URL base, así que las variantes con ?... no
+  // generan contenido duplicado indexable.
   const hydrated = useRef(false);
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
-    // Barrios con landing propia navegan a su página; los demás (pocos proyectos) se
-    // filtran en el pilar y quedan reflejados en la URL (?barrio=...) para ser compartibles.
     if (!barrioFijo && sp.get('barrio')) setBarrio(sp.get('barrio'));
     if (sp.get('amb')) setAmb(sp.get('amb'));
     if (sp.get('precio')) setPrecio(sp.get('precio'));
     if (sp.get('etapa')) setEtapa(sp.get('etapa'));
     if (sp.get('entrega')) setEntregaMax(sp.get('entrega'));
     if (sp.get('fin') === '1') setFin(true);
+    if (sp.get('dev')) setDesarrolladora(sp.get('dev'));
+    if (sp.get('ptot')) setPrecioTotal(sp.get('ptot'));
     if (sp.get('orden')) setOrden(sp.get('orden'));
     hydrated.current = true;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!hydrated.current) return;
     const sp = new URLSearchParams();
+    if (barrio) sp.set('barrio', barrio);
     if (amb) sp.set('amb', amb);
     if (precio !== 'todos') sp.set('precio', precio);
     if (etapa) sp.set('etapa', etapa);
     if (entregaMax) sp.set('entrega', entregaMax);
     if (fin) sp.set('fin', '1');
+    if (desarrolladora) sp.set('dev', desarrolladora);
+    if (precioTotal !== 'todos') sp.set('ptot', precioTotal);
     if (orden !== 'destacados') sp.set('orden', orden);
     const qs = sp.toString();
     window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
-  }, [barrio, amb, precio, etapa, entregaMax, fin, orden, barrioFijo]);
+  }, [barrio, amb, precio, etapa, entregaMax, fin, desarrolladora, precioTotal, orden, barrioFijo]);
+
+  // Bloqueo de scroll del body mientras el bottom-sheet mobile está abierto.
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [sheetOpen]);
+
+  // Focus-trap + Escape en el bottom-sheet (accesibilidad).
+  const sheetRef = useRef(null);
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const el = sheetRef.current;
+    const focusables = () => Array.from(el?.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])') || []);
+    focusables()[0]?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') { setSheetOpen(false); return; }
+      if (e.key !== 'Tab') return;
+      const f = focusables();
+      if (!f.length) return;
+      const a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [sheetOpen]);
 
   const barrios = useMemo(
     () => Array.from(new Set(items.map((i) => i.barrio).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'es')),
+    [items]
+  );
+  const desarrolladoras = useMemo(
+    () => Array.from(new Set(items.map((i) => i.desarrolladora).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'es')),
+    [items]
+  );
+  const aniosEntrega = useMemo(
+    () => Array.from(new Set(items.map((i) => i.entregaAnio).filter(Boolean))).sort((a, b) => a - b),
     [items]
   );
 
@@ -152,9 +208,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
         if (precio === '3000a4500' && !(p > 3000 && p <= 4500)) return false;
         if (precio === 'mas4500' && !(p > 4500)) return false;
       }
+      if (precioTotal !== 'todos') {
+        const p = i.precioDesde;
+        if (p == null || !PRECIO_TOTAL[precioTotal].test(p)) return false;
+      }
       if (etapa && (i.etapa || '').toLowerCase() !== etapa) return false;
       if (entregaMax && (i.entregaAnio == null || i.entregaAnio > Number(entregaMax))) return false;
       if (fin && !i.financiacion) return false;
+      if (desarrolladora && i.desarrolladora !== desarrolladora) return false;
       return true;
     });
     const entregaKey = (s) => {
@@ -166,35 +227,160 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, etapa, entregaMax, fin, orden]);
+  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden]);
 
+  // Chips toggle (con aria-pressed, focus visible y tap target 44px).
   const chip = (active) =>
-    `px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
+    `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
       active ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'
     }`;
 
-  const limpiar = () => { setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa(''); setEntregaMax(''); setFin(false); };
-  const hayFiltros = barrio || amb || precio !== 'todos' || etapa || entregaMax || fin;
-  const activeCount = [barrio, amb, precio !== 'todos', etapa, entregaMax, fin].filter(Boolean).length;
-  // Años de entrega disponibles (para el select), ascendente.
-  const aniosEntrega = useMemo(
-    () => Array.from(new Set(items.map((i) => i.entregaAnio).filter(Boolean))).sort((a, b) => a - b),
-    [items]
-  );
+  const limpiar = () => {
+    setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa('');
+    setEntregaMax(''); setFin(false); setDesarrolladora(''); setPrecioTotal('todos');
+  };
+  const secundariosCount = [entregaMax, fin, desarrolladora, precioTotal !== 'todos'].filter(Boolean).length;
+  const activeCount = [barrio, amb, precio !== 'todos', etapa].filter(Boolean).length + secundariosCount;
+  const hayFiltros = activeCount > 0;
   const conCoord = filtered.filter((i) => i.lat != null).length;
+
+  // Chips de filtros activos (patrón principal para quitar un filtro). [label, clearFn]
+  const activeChips = () => {
+    const a = [];
+    if (barrio) a.push([barrio, () => setBarrio('')]);
+    if (amb) a.push([`${amb} amb`, () => setAmb('')]);
+    if (precio !== 'todos') a.push([PRECIO_M2_LBL[precio] || 'Precio/m²', () => setPrecio('todos')]);
+    if (precioTotal !== 'todos') a.push([PRECIO_TOTAL[precioTotal].label, () => setPrecioTotal('todos')]);
+    if (etapa) a.push([etapa === 'en pozo' ? 'En pozo' : 'En construcción', () => setEtapa('')]);
+    if (entregaMax) a.push([`Entrega hasta ${entregaMax}`, () => setEntregaMax('')]);
+    if (fin) a.push(['Con financiación', () => setFin(false)]);
+    if (desarrolladora) a.push([desarrolladora, () => setDesarrolladora('')]);
+    return a;
+  };
+
+  // ── Bloques reutilizables ────────────────────────────────────────────────
+
+  const barrioDropdown = () => (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setBarrioOpen((o) => !o)}
+        aria-expanded={barrioOpen}
+        aria-haspopup="listbox"
+        className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${(barrio || barrioFijo) ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
+      >
+        <span className="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
+        <span>{barrio || barrioFijo || 'Barrio'}</span>
+        <span className="material-symbols-outlined text-[16px]" aria-hidden="true">expand_more</span>
+      </button>
+      {barrioOpen && (
+        <div role="listbox" aria-label="Elegir barrio" className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
+          {barrioFijo ? (
+            <>
+              <button type="button" onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
+              {LANDING_BARRIOS.map((b) => (
+                <button type="button" key={b.slug} onClick={() => window.location.assign(`/desarrollos-inmobiliarios-en-${b.slug}/`)} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b.label === barrioFijo ? 'text-secondary font-medium' : ''}`}>{b.label}</button>
+              ))}
+            </>
+          ) : (
+            <>
+              <button type="button" onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
+              {barrios.map((b) => {
+                const slug = landingSlugForBarrio(b);
+                const go = () => {
+                  setBarrioOpen(false);
+                  if (slug) window.location.assign(`/desarrollos-inmobiliarios-en-${slug}/`);
+                  else setBarrio(b);
+                };
+                return (
+                  <button type="button" key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
+                );
+              })}
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+
+  const ambChips = () => (
+    <>
+      {['1', '2', '3', '4+'].map((a) => (
+        <button type="button" key={a} aria-pressed={amb === a} className={chip(amb === a)} onClick={() => setAmb(amb === a ? '' : a)}>{a} amb</button>
+      ))}
+    </>
+  );
+
+  const precioM2Chips = () => (
+    <>
+      <button type="button" aria-pressed={precio === 'hasta3000'} className={chip(precio === 'hasta3000')} onClick={() => setPrecio(precio === 'hasta3000' ? 'todos' : 'hasta3000')}>Hasta USD 3.000/m²</button>
+      <button type="button" aria-pressed={precio === '3000a4500'} className={chip(precio === '3000a4500')} onClick={() => setPrecio(precio === '3000a4500' ? 'todos' : '3000a4500')}>3.000–4.500/m²</button>
+      <button type="button" aria-pressed={precio === 'mas4500'} className={chip(precio === 'mas4500')} onClick={() => setPrecio(precio === 'mas4500' ? 'todos' : 'mas4500')}>+4.500/m²</button>
+    </>
+  );
+
+  const etapaChips = () => (
+    <>
+      <button type="button" aria-pressed={etapa === 'en pozo'} className={chip(etapa === 'en pozo')} onClick={() => setEtapa(etapa === 'en pozo' ? '' : 'en pozo')}>En pozo</button>
+      <button type="button" aria-pressed={etapa === 'en construcción'} className={chip(etapa === 'en construcción')} onClick={() => setEtapa(etapa === 'en construcción' ? '' : 'en construcción')}>En construcción</button>
+    </>
+  );
+
+  // Campos secundarios ("Más filtros"). stack=true los apila (mobile sheet).
+  const masFields = (stack = false) => (
+    <div className={stack ? 'flex flex-col gap-5' : 'flex flex-wrap items-end gap-x-6 gap-y-4'}>
+      {/* Forma de pago — diferencial pozo (Fase 4) */}
+      <fieldset>
+        <legend className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Forma de pago</legend>
+        <button type="button" aria-pressed={fin} className={chip(fin)} onClick={() => setFin((v) => !v)}>Con financiación (cuotas)</button>
+      </fieldset>
+
+      {/* Entrega hasta */}
+      {aniosEntrega.length > 0 && (
+        <div>
+          <label htmlFor="f-entrega" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Entrega hasta</label>
+          <select id="f-entrega" value={entregaMax} onChange={(e) => setEntregaMax(e.target.value)} className="min-h-[44px] w-full sm:w-auto border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
+            <option value="">Cualquier año</option>
+            {aniosEntrega.map((a) => (<option key={a} value={a}>{a}</option>))}
+          </select>
+        </div>
+      )}
+
+      {/* Precio total (USD) — datos parciales (Fase 4/2) */}
+      <div>
+        <label htmlFor="f-ptot" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio total</label>
+        <select id="f-ptot" value={precioTotal} onChange={(e) => setPrecioTotal(e.target.value)} className="min-h-[44px] w-full sm:w-auto border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
+          <option value="todos">Cualquier precio</option>
+          {Object.entries(PRECIO_TOTAL).map(([k, v]) => (<option key={k} value={k}>{v.label}</option>))}
+        </select>
+      </div>
+
+      {/* Desarrolladora (Fase 2) */}
+      {desarrolladoras.length > 0 && (
+        <div>
+          <label htmlFor="f-dev" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Desarrolladora</label>
+          <select id="f-dev" value={desarrolladora} onChange={(e) => setDesarrolladora(e.target.value)} className="min-h-[44px] w-full sm:w-[15rem] border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
+            <option value="">Todas</option>
+            {desarrolladoras.map((d) => (<option key={d} value={d}>{d}</option>))}
+          </select>
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
       <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
-        {/* Barra compacta mobile: botón Filtros (con contador) + resultados. Solo <md. */}
+        {/* ── Barra compacta MOBILE: botón Filtrar (con contador) + resultados ── */}
         <div className="md:hidden flex items-center justify-between gap-3">
           <button
-            onClick={() => setFiltrosOpen((o) => !o)}
-            aria-expanded={filtrosOpen}
-            className="flex items-center gap-2 px-4 py-2.5 border border-outline-variant rounded-full text-[14px] text-primary active:bg-surface-container"
+            type="button"
+            onClick={() => setSheetOpen(true)}
+            aria-haspopup="dialog"
+            className="inline-flex items-center gap-2 min-h-[44px] px-4 py-2.5 border border-outline-variant rounded-full text-[14px] text-primary active:bg-surface-container"
           >
-            <span className="material-symbols-outlined text-[18px]">tune</span>
-            Filtros
+            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">tune</span>
+            Filtrar
             {activeCount > 0 && (
               <span className="ml-0.5 min-w-[20px] h-5 px-1 rounded-full bg-secondary text-white text-[11px] font-medium flex items-center justify-center">{activeCount}</span>
             )}
@@ -204,105 +390,78 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
           </p>
         </div>
 
-        {/* Chips de filtro: en mobile ocultos hasta abrir "Filtros"; en desktop siempre visibles. */}
-        <div className={`${filtrosOpen ? 'flex' : 'hidden'} md:flex flex-wrap items-center gap-2.5`}>
-          {/* Chip de barrio. En el pilar: filtra en página o navega a la landing.
-              En una landing por barrio: queda pre-seleccionado (barrioFijo) y el dropdown
-              ofrece "Todos los barrios" (vuelve al catálogo completo) + cambiar de barrio. */}
-          <div className="relative">
-            <button
-              onClick={() => setBarrioOpen((o) => !o)}
-              className={`flex items-center gap-2 px-3.5 py-2.5 md:py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${(barrio || barrioFijo) ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
-            >
-              <span className="material-symbols-outlined text-[16px]">location_on</span>
-              <span>{barrio || barrioFijo || 'Barrio'}</span>
-              <span className="material-symbols-outlined text-[16px]">expand_more</span>
-            </button>
-            {barrioOpen && (
-              <div className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
-                {barrioFijo ? (
-                  // En una landing por barrio: la lista viene fija de los barrios con landing.
-                  // "Todos los barrios" saca el filtro y vuelve al catálogo completo.
-                  <>
-                    <button onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-                    {LANDING_BARRIOS.map((b) => (
-                      <button key={b.slug} onClick={() => window.location.assign(`/desarrollos-inmobiliarios-en-${b.slug}/`)} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b.label === barrioFijo ? 'text-secondary font-medium' : ''}`}>{b.label}</button>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <button onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-                    {barrios.map((b) => {
-                      // Si el barrio tiene landing propia, el filtro NAVEGA a esa página
-                      // (listado ya filtrado, con su propio "ver todas" para quitarlo).
-                      // Si no la tiene, cae al filtro en página.
-                      const slug = landingSlugForBarrio(b);
-                      const go = () => {
-                        setBarrioOpen(false);
-                        if (slug) window.location.assign(`/desarrollos-inmobiliarios-en-${slug}/`);
-                        else setBarrio(b);
-                      };
-                      return (
-                        <button key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
-                      );
-                    })}
-                  </>
-                )}
-              </div>
+        {/* ── Barra principal DESKTOP: 4 filtros principales + "Más filtros" ── */}
+        <div className="hidden md:flex flex-wrap items-center gap-2.5">
+          {barrioDropdown()}
+          <span className="h-6 w-px bg-outline-variant mx-1" />
+          {ambChips()}
+          <span className="h-6 w-px bg-outline-variant mx-1" />
+          {precioM2Chips()}
+          <span className="h-6 w-px bg-outline-variant mx-1" />
+          {etapaChips()}
+
+          <button
+            type="button"
+            onClick={() => setMasOpen((o) => !o)}
+            aria-expanded={masOpen}
+            className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] transition-colors ${masOpen || secundariosCount > 0 ? 'border-secondary text-secondary' : 'border-outline-variant text-primary hover:border-secondary'}`}
+          >
+            <span className="material-symbols-outlined text-[16px]" aria-hidden="true">tune</span>
+            Más filtros
+            {secundariosCount > 0 && (
+              <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-secondary text-white text-[11px] font-medium flex items-center justify-center">{secundariosCount}</span>
             )}
-          </div>
-
-          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-          {['1', '2', '3', '4+'].map((a) => (
-            <button key={a} className={chip(amb === a)} onClick={() => setAmb(amb === a ? '' : a)}>{a} amb</button>
-          ))}
-
-          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-          <button className={chip(precio === 'hasta3000')} onClick={() => setPrecio(precio === 'hasta3000' ? 'todos' : 'hasta3000')}>Hasta USD 3.000/m²</button>
-          <button className={chip(precio === '3000a4500')} onClick={() => setPrecio(precio === '3000a4500' ? 'todos' : '3000a4500')}>3.000–4.500/m²</button>
-          <button className={chip(precio === 'mas4500')} onClick={() => setPrecio(precio === 'mas4500' ? 'todos' : 'mas4500')}>+4.500/m²</button>
-
-          <span className="h-6 w-px bg-outline-variant mx-1 hidden sm:block" />
-          <button className={chip(etapa === 'en pozo')} onClick={() => setEtapa(etapa === 'en pozo' ? '' : 'en pozo')}>En pozo</button>
-          <button className={chip(etapa === 'en construcción')} onClick={() => setEtapa(etapa === 'en construcción' ? '' : 'en construcción')}>En construcción</button>
-          <button className={chip(fin)} onClick={() => setFin((v) => !v)}>Con financiación</button>
-
-          {/* Entrega: es un filtro, va con los chips (antes estaba en la fila de controles). */}
-          {aniosEntrega.length > 0 && (
-            <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
-              Entrega hasta
-              <select value={entregaMax} onChange={(e) => setEntregaMax(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
-                <option value="">Cualquiera</option>
-                {aniosEntrega.map((a) => (<option key={a} value={a}>{a}</option>))}
-              </select>
-            </label>
-          )}
+          </button>
 
           {hayFiltros && (
-            <button onClick={limpiar} className="px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar</button>
+            <button type="button" onClick={limpiar} className="min-h-[44px] px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar todo</button>
           )}
         </div>
 
-        {/* Controles de vista: resultados (desktop) + Lista/Mapa + Orden. Siempre visibles. */}
+        {/* Panel "Más filtros" (desktop, colapsable) */}
+        {masOpen && (
+          <div className="hidden md:block border border-outline-variant rounded-xl p-4 bg-surface-container-low">
+            {masFields()}
+          </div>
+        )}
+
+        {/* ── Chips de filtros activos (patrón principal para quitar filtros) ── */}
+        {activeChips().length > 0 && (
+          <div className="hidden md:flex flex-wrap items-center gap-2">
+            {activeChips().map(([label, fn], idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={fn}
+                aria-label={`Quitar filtro ${label}`}
+                className="inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-primary-container text-on-primary text-[12px]"
+              >
+                {label}
+                <span className="material-symbols-outlined text-[15px]" aria-hidden="true">close</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* ── Controles de vista: resultados (desktop) + Lista/Mapa + Orden ── */}
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <p className="hidden md:block text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
             {filtered.length !== items.length && <span> de {items.length}</span>}
           </p>
           <div className="flex items-center gap-3 flex-wrap ml-auto">
-            {/* Toggle Lista / Mapa */}
-            <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden">
-              <button onClick={() => setVista('lista')} className={`flex items-center gap-1.5 px-3 py-2 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
-                <span className="material-symbols-outlined text-[16px]">grid_view</span>Lista
+            <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden" role="group" aria-label="Vista">
+              <button type="button" onClick={() => setVista('lista')} aria-pressed={vista === 'lista'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">grid_view</span>Lista
               </button>
-              <button onClick={() => setVista('mapa')} className={`flex items-center gap-1.5 px-3 py-2 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
-                <span className="material-symbols-outlined text-[16px]">map</span>Mapa
+              <button type="button" onClick={() => setVista('mapa')} aria-pressed={vista === 'mapa'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">map</span>Mapa
               </button>
             </div>
             {vista === 'lista' && (
               <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
                 <span className="hidden sm:inline">Ordenar por</span>
-                <select value={orden} onChange={(e) => setOrden(e.target.value)} className="border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
+                <select value={orden} onChange={(e) => setOrden(e.target.value)} aria-label="Ordenar por" className="min-h-[44px] border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
                   <option value="destacados">Destacados</option>
                   <option value="precio_asc">Precio/m² ↑</option>
                   <option value="precio_desc">Precio/m² ↓</option>
@@ -314,6 +473,50 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
           </div>
         </div>
       </div>
+
+      {/* ── Bottom-sheet MOBILE (Fase 3): todos los filtros + Aplicar/Limpiar ── */}
+      {sheetOpen && (
+        <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Filtrar proyectos">
+          <div className="absolute inset-0 scrim-soft" onClick={() => setSheetOpen(false)} />
+          <div ref={sheetRef} className="absolute inset-x-0 bottom-0 bg-surface rounded-t-2xl max-h-[90dvh] flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-outline-variant">
+              <h2 className="text-[15px] font-medium text-primary">Filtrar proyectos</h2>
+              <button type="button" onClick={() => setSheetOpen(false)} aria-label="Cerrar filtros" className="p-2 text-on-surface-variant">
+                <span className="material-symbols-outlined" aria-hidden="true">close</span>
+              </button>
+            </div>
+
+            <div className="overflow-y-auto flex-1 px-4 py-4 space-y-6">
+              <div>
+                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Barrio</p>
+                {barrioDropdown()}
+              </div>
+              <div>
+                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Ambientes</p>
+                <div className="flex flex-wrap gap-2">{ambChips()}</div>
+              </div>
+              <div>
+                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio por m²</p>
+                <div className="flex flex-wrap gap-2">{precioM2Chips()}</div>
+              </div>
+              <div>
+                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Etapa de obra</p>
+                <div className="flex flex-wrap gap-2">{etapaChips()}</div>
+              </div>
+              <div className="border-t border-outline-variant pt-5">
+                {masFields(true)}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 px-4 py-3 border-t border-outline-variant bg-surface">
+              <button type="button" onClick={limpiar} className="min-h-[44px] px-4 text-[14px] text-on-surface-variant underline underline-offset-2">Limpiar</button>
+              <button type="button" onClick={() => setSheetOpen(false)} className="flex-1 min-h-[48px] rounded-full bg-primary-container text-on-primary text-[15px] font-medium">
+                Ver {filtered.length} {filtered.length === 1 ? 'proyecto' : 'proyectos'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {vista === 'mapa' ? (
         <div>
@@ -344,28 +547,21 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
       )}
 
       {vista === 'lista' && filtered.length === 0 && (() => {
-        const preLbl = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
-        const activos = [];
-        if (barrio) activos.push([barrio, () => setBarrio('')]);
-        if (amb) activos.push([`${amb} amb`, () => setAmb('')]);
-        if (precio !== 'todos') activos.push([preLbl[precio] || 'Precio', () => setPrecio('todos')]);
-        if (etapa) activos.push([etapa, () => setEtapa('')]);
-        if (entregaMax) activos.push([`Entrega hasta ${entregaMax}`, () => setEntregaMax('')]);
-        if (fin) activos.push(['Con financiación', () => setFin(false)]);
+        const activos = activeChips();
         return (
           <div className="mt-10 text-center max-w-lg mx-auto">
-            <span className="material-symbols-outlined text-5xl text-outline-variant">search_off</span>
+            <span className="material-symbols-outlined text-5xl text-outline-variant" aria-hidden="true">search_off</span>
             <p className="mt-2 text-primary font-medium text-body-lg">Ningún proyecto coincide con estos filtros.</p>
             {activos.length > 0 && (
               <>
                 <p className="text-on-surface-variant text-[14px] mt-1">Probá quitar alguno para ver más resultados:</p>
                 <div className="flex flex-wrap gap-2 justify-center mt-4">
                   {activos.map(([label, fn], i) => (
-                    <button key={i} onClick={fn} className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary hover:text-secondary transition-colors flex items-center gap-1.5">
-                      Quitar «{label}» <span className="material-symbols-outlined text-[15px]">close</span>
+                    <button key={i} type="button" onClick={fn} className="inline-flex items-center gap-1.5 min-h-[44px] px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary hover:text-secondary transition-colors">
+                      Quitar «{label}» <span className="material-symbols-outlined text-[15px]" aria-hidden="true">close</span>
                     </button>
                   ))}
-                  <button onClick={limpiar} className="px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-[13px] hover:opacity-90 transition-opacity">Ver todos</button>
+                  <button type="button" onClick={limpiar} className="min-h-[44px] px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary text-[13px] hover:opacity-90 transition-opacity">Ver todos</button>
                 </div>
               </>
             )}
