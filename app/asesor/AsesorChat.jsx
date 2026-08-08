@@ -111,12 +111,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     knownRef.current = known;
     perfilRef.current = { ...known };
     setPerfil({ ...known });
-    const first = (known.nombre || "").split(" ")[0];
+    // Nombre guardado: solo lo usamos para saludar si es válido (no grosería ni basura).
+    const nombreOk = known.nombre && esNombreValido(known.nombre) && !tieneGroseria(known.nombre);
+    const first = nombreOk ? String(known.nombre).split(" ")[0] : "";
 
     (async () => {
       if (n) {
         setModo("lead"); setProyecto(n);
-        if (known.nombre) await say(`¡Hola de nuevo, ${first}! Te doy una mano con ${n}.`, 400);
+        if (first) await say(`¡Hola de nuevo, ${first}! Te doy una mano con ${n}.`, 400);
         else await say(`Hola, soy Sofía y te doy una mano con ${n}.`, 400);
         // Enganche de bajo compromiso (si no lo sabemos aún).
         if (!known.objetivo) {
@@ -127,7 +129,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
         }
       } else {
         setModo("buscador");
-        if (known.nombre) await say(`¡Hola de nuevo, ${first}!`, 400);
+        if (first) await say(`¡Hola de nuevo, ${first}!`, 400);
         else await say("Hola, soy Sofía.", 400);
         const q = BUSCADOR.filter((p) => !known[p.key]);
         if (q.length === 0) {
