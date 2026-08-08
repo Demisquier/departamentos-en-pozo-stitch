@@ -125,6 +125,9 @@ export default function AuthProvider({ children }) {
     if (authEnabled) { try { await supabase.auth.signOut(); } catch {} }
     setUser(null);
     setItems([]); // limpiamos la vista al salir (la data queda en la cuenta)
+    // Borramos el caché local para que los favoritos de una cuenta NO migren a otra
+    // si alguien más se loguea en el mismo navegador. La data real vive en la nube.
+    try { localStorage.removeItem(KEY); localStorage.removeItem(PENDING_KEY); } catch {}
   }, []);
 
   const openAuthPrompt = useCallback((card) => setPromptCard(card || {}), []);
