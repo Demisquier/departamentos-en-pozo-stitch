@@ -114,11 +114,19 @@ export default function AuthProvider({ children }) {
     return exists ? "removed" : "added";
   }, [items, persist, user]);
 
-  // login(redirectTo): vuelve a la página donde estabas (para retomar el guardado). Default: URL actual.
+  // login(redirectTo): vuelve a la página donde estabas (para retomar el guardado).
+  // Normalizamos SIEMPRE al dominio canónico (apex, https) para que el callback de Google
+  // no aterrice en www y el redirect www→apex rompa la sesión (loop "logueate de nuevo").
   const login = useCallback((redirectTo) => {
     if (!authEnabled) return;
-    const fallback = (typeof window !== "undefined" ? window.location.href : "");
-    supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo || fallback } });
+    let dest = "https://departamentosenpozo.com.ar/mi-seleccion/";
+    try {
+      const base = redirectTo || (typeof window !== "undefined" ? window.location.href : dest);
+      const u = new URL(base, "https://departamentosenpozo.com.ar");
+      u.protocol = "https:"; u.host = "departamentosenpozo.com.ar";
+      dest = u.toString();
+    } catch {}
+    supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: dest } });
   }, []);
 
   const logout = useCallback(async () => {
