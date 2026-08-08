@@ -57,7 +57,7 @@ function LoginGate({ login }) {
       <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center">
         <span className="material-symbols-outlined text-[30px] text-secondary icon-fill" aria-hidden="true">favorite</span>
       </div>
-      <h1 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver tu selección</h1>
+      <h2 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver tu selección</h2>
       <p className="text-on-surface-variant text-[15px] mb-6">
         Guardá los proyectos que te interesan y tu perfil de búsqueda en tu cuenta, y accedé desde cualquier dispositivo. Es gratis y sin contraseñas.
       </p>
