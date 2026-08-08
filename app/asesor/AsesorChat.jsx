@@ -48,6 +48,14 @@ const norm = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,
 function tieneGroseria(s) { const t = norm(s); return MALAS.some((w) => new RegExp(`(^|[^a-z])${w}([^a-z]|$)`).test(t)); }
 function extraerMail(s) { return (String(s || "").match(/[^\s@]+@[^\s@]+\.[^\s@]+/) || [""])[0]; }
 function extraerWpp(s) { return ((String(s || "").match(/\d/g) || []).length >= 6) ? String(s).trim() : ""; }
+// ¿El texto guardado parece un nombre real? (para no saludar con basura o groserías viejas)
+function esNombreValido(s) {
+  const t = String(s || "").trim();
+  if (t.length < 2 || t.length > 40) return false;
+  if (/https?:|www\.|@|\d{4,}/i.test(t)) return false;
+  if ((t.match(/[a-záéíóúñ]/gi) || []).length < 2) return false;
+  return true;
+}
 
 function resumen(k) {
   const parts = [];
