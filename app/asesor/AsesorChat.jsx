@@ -164,11 +164,11 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const k = knownRef.current;
     if (k.email) { // ya lo tenemos → lead parcial y a enriquecer
       await mandarLead({ ...perfilRef.current, email: k.email }, "parcial");
-      await say("Ya le avisé a la desarrolladora y te escribo a tu mail. Un par de datos más para afinar el match.", 900);
+      await say("Ya le avisé a la desarrolladora tu interés. Te hago un par de preguntas para pasarles y ayudarte mejor.", 900);
       startEnrich();
     } else {
       setFase("email");
-      await say(`Te armo el match${proyecto ? " con " + proyecto : ""} y te aviso apenas entra algo que encaje. ¿A qué mail te lo mando?`, 850);
+      await say(`Vamos a avisarle a la desarrolladora que te interesó ${proyecto || "este proyecto"}, así te contactan. ¿A qué mail te escriben?`, 850);
     }
   }
   async function enviarEmail(e) {
@@ -178,14 +178,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const mail = extraerMail(val);
     if (!mail) {
       setMsgs((m) => [...m, { s: "u", t: val }]);
-      await say(tieneGroseria(val) ? "Jaja, igual necesito un mail válido (con @) para mandarte el match." : "Mmm, ese mail no me cierra. ¿Me lo pasás con @?", 550);
+      await say(tieneGroseria(val) ? "Jaja, igual necesito un mail válido (con @) para que te contacten." : "Mmm, ese mail no me cierra. ¿Me lo pasás con @?", 550);
       return;
     }
     setMsgs((m) => [...m, { s: "u", t: mail }]);
     const data = { ...perfilRef.current, email: mail };
     setPerfilAll(data); persistPerfil(data);
     await mandarLead(data, "parcial");
-    await say("¡Listo! Ya le avisé a la desarrolladora y te escribo. ¿Querés dejar también un WhatsApp? (opcional)", 900);
+    await say("¡Listo! Ya le avisé a la desarrolladora tu interés, te van a contactar. ¿Querés dejar también un WhatsApp? (opcional)", 900);
     setFase("whatsapp");
   }
   async function omitirEmail() {
@@ -206,13 +206,13 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const data = { ...perfilRef.current, whatsapp: wpp };
     setPerfilAll(data); persistPerfil(data);
     await mandarLead(data, "parcial");
-    await say("¡Genial! Un par de datos más para afinar el match (o cerramos cuando quieras).", 850);
+    await say("¡Genial! Te hago un par de preguntas más para pasarle a la desarrolladora (o cerramos cuando quieras).", 850);
     startEnrich();
   }
   async function omitirWhatsapp() {
     if (typing) return;
     setMsgs((m) => [...m, { s: "u", t: "Seguir sin WhatsApp" }]);
-    await say("Perfecto. Un par de datos para afinar el match.", 700);
+    await say("Perfecto. Un par de preguntas y listo.", 700);
     startEnrich();
   }
 
@@ -245,7 +245,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     if (etapa === "engage") { await pedirEmail(); return; }
     if (etapa === "buscar") {
       setBuscarUrl(urlBuscador(data));
-      await say("¡Listo! Te armé una búsqueda a tu medida.", 700);
+      await say("¡Listo! Acá tenés los proyectos con lo que me dijiste.", 700);
       setFase("okBuscar");
       return;
     }
@@ -255,8 +255,8 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const data = perfilRef.current;
     persistPerfil(data);
     await mandarLead(data, "final");
-    if (proyecto) { await say("¡Listo! Ya tiene todo la desarrolladora y te escribe. Guardé tu búsqueda en Mi selección.", 850); setFase("ok"); }
-    else { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Te armé el match. Mirá los que encajan.", 800); setFase("okBuscar"); }
+    if (proyecto) { await say("¡Listo! Ya le pasé todo a la desarrolladora, te van a contactar. Guardé tu búsqueda en Mi selección.", 850); setFase("ok"); }
+    else { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Acá tenés los proyectos que te pueden servir.", 800); setFase("okBuscar"); }
   }
 
   // ── Alerta por mail al final del buscador (opcional) ───────────────────────
