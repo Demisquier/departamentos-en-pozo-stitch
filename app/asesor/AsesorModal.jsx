@@ -1,12 +1,13 @@
 "use client";
 // app/asesor/AsesorModal.jsx — Abre el asesor como modal SOBRE la ficha, sin perder navegación.
-// Fix mobile: cuando el teclado aparece, la altura del panel sigue al visualViewport (así la caja
-// de escritura no queda tapada). En desktop usa altura fija.
+// Fix mobile: cuando el teclado aparece, el panel se ancla EXACTAMENTE al viewport visible
+// (top + height del visualViewport), así la caja de escritura nunca queda tapada ni corrida.
+// En desktop usa el centrado normal con altura fija.
 import { useEffect, useState } from "react";
 import AsesorChat from "./AsesorChat";
 
 export default function AsesorModal({ nombre = "", slug = "", onClose }) {
-  const [vh, setVh] = useState(null); // alto visible en mobile (px) o null (desktop → clase)
+  const [vp, setVp] = useState(null); // { top, height } en mobile, o null en desktop
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -15,7 +16,10 @@ export default function AsesorModal({ nombre = "", slug = "", onClose }) {
     window.addEventListener("keydown", onEsc);
 
     const vv = window.visualViewport;
-    const sync = () => setVh(window.innerWidth < 640 && vv ? Math.round(vv.height) : null);
+    const sync = () => {
+      if (window.innerWidth < 640 && vv) setVp({ top: Math.round(vv.offsetTop), height: Math.round(vv.height) });
+      else setVp(null);
+    };
     sync();
     if (vv) { vv.addEventListener("resize", sync); vv.addEventListener("scroll", sync); }
     window.addEventListener("resize", sync);
@@ -31,8 +35,8 @@ export default function AsesorModal({ nombre = "", slug = "", onClose }) {
   return (
     <div className="fixed inset-0 z-[120] flex items-end sm:items-center justify-center p-0 sm:p-4 scrim-soft" onClick={onClose}>
       <div
-        className="w-full sm:max-w-lg h-[100dvh] sm:h-[640px] sm:max-h-[94vh]"
-        style={vh ? { height: vh + "px" } : undefined}
+        className={vp ? "fixed left-0 right-0 w-full" : "w-full sm:max-w-lg h-[100dvh] sm:h-[640px] sm:max-h-[94vh]"}
+        style={vp ? { top: vp.top + "px", height: vp.height + "px" } : undefined}
         onClick={(e) => e.stopPropagation()}
       >
         <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} onClose={onClose} />
