@@ -10,13 +10,21 @@ import ProjectCard from "../_ui/ProjectCard";
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
 
 export default function MiSeleccion() {
-  const { items, ready, enabled, user, login, logout } = useAuth();
+  const { items, ready, enabled, authReady, user, login, logout } = useAuth();
   const [perfil, setPerfil] = useState(undefined); // undefined = cargando
 
   useEffect(() => {
     try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); }
     catch { setPerfil(null); }
   }, []);
+
+  // Con auth activo, "Mi selección" es privada: sin sesión no se ve la lista.
+  if (enabled && !authReady) {
+    return <p className="text-on-surface-variant py-10 text-center">Cargando…</p>;
+  }
+  if (enabled && !user) {
+    return <LoginGate login={login} />;
+  }
 
   return (
     <div className="flex flex-col gap-8">
@@ -38,6 +46,32 @@ export default function MiSeleccion() {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+// Pantalla de acceso: sin sesión no se muestra la selección. Entrar = crear/loguear con Google.
+function LoginGate({ login }) {
+  return (
+    <div className="max-w-lg mx-auto text-center border border-outline-variant rounded-2xl p-8 md:p-10 bg-surface-container-low">
+      <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center">
+        <span className="material-symbols-outlined text-[30px] text-secondary icon-fill" aria-hidden="true">favorite</span>
+      </div>
+      <h1 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver tu selección</h1>
+      <p className="text-on-surface-variant text-[15px] mb-6">
+        Guardá los proyectos que te interesan y tu perfil de búsqueda en tu cuenta, y accedé desde cualquier dispositivo. Es gratis y sin contraseñas.
+      </p>
+      <button
+        type="button"
+        onClick={() => login(typeof window !== "undefined" ? window.location.href : undefined)}
+        className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 rounded-full bg-primary-container text-on-primary px-8 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all"
+      >
+        <span className="material-symbols-outlined text-[18px]" aria-hidden="true">login</span>
+        Continuar con Google
+      </button>
+      <p className="mt-5 text-[13px] text-on-surface-variant">
+        ¿Solo querés mirar? <Link href="/desarrollos-inmobiliarios/" className="text-secondary underline hover:no-underline">Explorá los proyectos en pozo</Link>
+      </p>
     </div>
   );
 }
