@@ -1,19 +1,21 @@
 "use client";
-// app/_auth/GuardarBtn.jsx — Botón "Guardar" (corazón) para fichas y cards. Sin login:
-// togglea el favorito en el navegador (localStorage vía el provider).
+// app/_auth/GuardarBtn.jsx — Botón "Guardar" (corazón) para fichas y cards.
+// Con sesión → togglea el favorito en la cuenta (nube). Sin sesión → abre el modal de login
+// (AuthPrompt), que recuerda el proyecto y lo guarda solo al volver del OAuth.
 //   card: dato denormalizado que se guarda ({slug, nombre, barrio, precio, img, href}).
 //   variant "icon" (default): flotante circular para la esquina de las cards.
 //   variant "full": botón con texto para la ficha.
 import { useAuth } from "./AuthProvider";
 
 export default function GuardarBtn({ card, variant = "icon", className = "" }) {
-  const { isSaved, toggleFavorito } = useAuth();
+  const { isSaved, toggleFavorito, enabled, user, openAuthPrompt } = useAuth();
   if (!card?.slug) return null;
   const saved = isSaved(card.slug);
 
   const onClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (enabled && !user) { openAuthPrompt(card); return; } // pedir login antes de guardar
     toggleFavorito(card);
   };
 

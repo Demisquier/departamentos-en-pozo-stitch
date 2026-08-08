@@ -1,23 +1,28 @@
 "use client";
-// app/_auth/AuthProvider.jsx — Favoritos + login con Google (Supabase), con localStorage de RESPALDO.
-// • Sin sesión: funciona igual que antes, guardando en el navegador (localStorage 'dpp_favoritos_v1').
-// • Con sesión Google (Supabase): favoritos y perfil quedan en la nube (tablas con RLS) → persisten
-//   cross-device. Al primer login MIGRAMOS lo que había en localStorage a la cuenta.
-// Si faltan las env vars de Supabase (authEnabled=false), queda en modo localStorage sin romper nada.
+// app/_auth/AuthProvider.jsx — Favoritos con SESIÓN de Google (Supabase).
+// Modelo login-gated: para guardar o ver "Mi selección" tenés que estar logueado.
+// • Al tocar "Guardar" sin sesión → se abre el modal (AuthPrompt), se recuerda la
+//   intención (dpp_pending_fav_v1) y al volver del OAuth el proyecto se guarda solo.
+// • Migración: si había favoritos viejos en el navegador (modelo anterior), al primer
+//   login se suben a la cuenta. localStorage queda solo como caché.
+// Si faltan las env vars de Supabase (authEnabled=false), cae a modo local sin romper nada.
 import { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { supabase, authEnabled } from "../../lib/supabase";
+import AuthPrompt from "./AuthPrompt";
 
 const KEY = "dpp_favoritos_v1";
 const PERFIL_KEY = "dpp_perfil_v1";
+const PENDING_KEY = "dpp_pending_fav_v1"; // favorito que se quiso guardar antes de loguear
 const Ctx = createContext(null);
 
 export function useAuth() {
   return (
     useContext(Ctx) || {
-      enabled: authEnabled, ready: false, user: null,
+      enabled: authEnabled, ready: false, authReady: false, user: null,
       favoritos: new Set(), items: [], count: 0,
       isSaved: () => false, toggleFavorito: () => {},
       login: () => {}, logout: () => {},
+      promptCard: null, openAuthPrompt: () => {}, closeAuthPrompt: () => {},
     }
   );
 }
@@ -28,7 +33,9 @@ const readPerfil = () => { try { return JSON.parse(localStorage.getItem(PERFIL_K
 export default function AuthProvider({ children }) {
   const [items, setItems] = useState([]);
   const [ready, setReady] = useState(false);
+  const [authReady, setAuthReady] = useState(!authEnabled); // sin auth: resuelto de entrada
   const [user, setUser] = useState(null);
+  const [promptCard, setPromptCard] = useState(null); // card pendiente que abre el modal de login
   const syncing = useRef(false);
 
   const persist = useCallback((next) => {
@@ -36,7 +43,7 @@ export default function AuthProvider({ children }) {
     try { localStorage.setItem(KEY, JSON.stringify(next)); } catch {}
   }, []);
 
-  // Al iniciar sesión: fusionamos favoritos nube ⇄ local, subimos lo que falte, y sincronizamos perfil.
+  // Al iniciar sesión: fusionamos favoritos nube ⇄ local ⇄ pendiente, subimos lo que falte, sincronizamos perfil.
   const onLogin = useCallback(async (u) => {
     setUser(u);
     if (!authEnabled || syncing.current) return;
@@ -44,11 +51,17 @@ export default function AuthProvider({ children }) {
     try {
       const { data: rows } = await supabase.from("favoritos").select("slug,data").eq("user_id", u.id);
       const cloud = (rows || []).map((r) => ({ ...(r.data || {}), slug: r.slug }));
-      const local = readLocal();
       const bySlug = new Map();
       cloud.forEach((c) => bySlug.set(c.slug, c));
       const toUpload = [];
-      local.forEach((l) => { if (l.slug && !bySlug.has(l.slug)) { bySlug.set(l.slug, l); toUpload.push(l); } });
+      // Favoritos viejos del navegador (modelo anterior) → migran a la cuenta.
+      readLocal().forEach((l) => { if (l.slug && !bySlug.has(l.slug)) { bySlug.set(l.slug, l); toUpload.push(l); } });
+      // Favorito pendiente (tocó "Guardar" sin sesión, se logueó recién).
+      try {
+        const pend = JSON.parse(localStorage.getItem(PENDING_KEY) || "null");
+        if (pend && pend.slug && !bySlug.has(pend.slug)) { bySlug.set(pend.slug, pend); toUpload.push(pend); }
+      } catch {}
+      try { localStorage.removeItem(PENDING_KEY); } catch {}
       persist([...bySlug.values()]);
       if (toUpload.length) await supabase.from("favoritos").upsert(toUpload.map((c) => ({ user_id: u.id, slug: c.slug, data: c })));
       // Perfil (asesor): nube → local si existe; si no, local → nube.
@@ -68,10 +81,15 @@ export default function AuthProvider({ children }) {
 
     let unsub = null;
     if (authEnabled) {
-      supabase.auth.getSession().then(({ data }) => { const u = data?.session?.user; if (u) onLogin(u); });
+      supabase.auth.getSession().then(({ data }) => {
+        const u = data?.session?.user;
+        if (u) onLogin(u);
+        setAuthReady(true);
+      });
       const { data: sub } = supabase.auth.onAuthStateChange((_ev, session) => {
         const u = session?.user || null;
         if (u) onLogin(u); else setUser(null);
+        setAuthReady(true);
       });
       unsub = () => sub?.subscription?.unsubscribe?.();
     }
@@ -80,10 +98,13 @@ export default function AuthProvider({ children }) {
   }, []);
 
   const slugs = useMemo(() => new Set(items.map((x) => x.slug)), [items]);
-  const isSaved = useCallback((slug) => slugs.has(slug), [slugs]);
+  // Deslogueado (con auth activo) no mostramos favoritos: la selección vive en la cuenta.
+  const isSaved = useCallback((slug) => (authEnabled && !user ? false : slugs.has(slug)), [slugs, user]);
 
   const toggleFavorito = useCallback((card) => {
     if (!card?.slug) return;
+    // Con auth activo, guardar requiere sesión. GuardarBtn abre el modal antes de llegar acá.
+    if (authEnabled && !user) { setPromptCard(card); return "needsLogin"; }
     const exists = items.some((x) => x.slug === card.slug);
     persist(exists ? items.filter((x) => x.slug !== card.slug) : [{ ...card, _ts: Date.now() }, ...items]);
     if (authEnabled && user) {
@@ -93,21 +114,39 @@ export default function AuthProvider({ children }) {
     return exists ? "removed" : "added";
   }, [items, persist, user]);
 
-  const login = useCallback(() => {
+  // login(redirectTo): vuelve a la página donde estabas (para retomar el guardado). Default: URL actual.
+  const login = useCallback((redirectTo) => {
     if (!authEnabled) return;
-    const redirectTo = (typeof window !== "undefined" ? window.location.origin : "") + "/mi-seleccion/";
-    supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
+    const fallback = (typeof window !== "undefined" ? window.location.href : "");
+    supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo || fallback } });
   }, []);
 
   const logout = useCallback(async () => {
     if (authEnabled) { try { await supabase.auth.signOut(); } catch {} }
     setUser(null);
+    setItems([]); // limpiamos la vista al salir (la data queda en la cuenta)
   }, []);
 
+  const openAuthPrompt = useCallback((card) => setPromptCard(card || {}), []);
+  const closeAuthPrompt = useCallback(() => setPromptCard(null), []);
+
+  // Para la vista, si hay auth y no hay sesión, no exponemos favoritos.
+  const viewItems = authEnabled && !user ? [] : items;
+
   const value = useMemo(
-    () => ({ enabled: authEnabled, ready, user, favoritos: slugs, items, count: items.length, isSaved, toggleFavorito, login, logout }),
-    [ready, user, slugs, items, isSaved, toggleFavorito, login, logout]
+    () => ({
+      enabled: authEnabled, ready, authReady, user,
+      favoritos: slugs, items: viewItems, count: viewItems.length,
+      isSaved, toggleFavorito, login, logout,
+      promptCard, openAuthPrompt, closeAuthPrompt,
+    }),
+    [ready, authReady, user, slugs, viewItems, isSaved, toggleFavorito, login, logout, promptCard, openAuthPrompt, closeAuthPrompt]
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={value}>
+      {children}
+      <AuthPrompt />
+    </Ctx.Provider>
+  );
 }
