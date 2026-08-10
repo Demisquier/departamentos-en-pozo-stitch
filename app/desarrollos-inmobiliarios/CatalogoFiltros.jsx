@@ -17,10 +17,10 @@ const LANDING_BARRIOS = Object.keys(BARRIO_CATALOGO).map((slug) => ({ slug, labe
 // Rangos de precio total (USD) — sobre precioDesde. Datos parciales: el filtro excluye
 // proyectos sin precio total cargado (mismo criterio que el de precio/m²).
 const PRECIO_TOTAL = {
-  hasta150: { label: 'Hasta USD 150.000', test: (p) => p <= 150000 },
-  '150a250': { label: 'USD 150.000–250.000', test: (p) => p > 150000 && p <= 250000 },
-  '250a400': { label: 'USD 250.000–400.000', test: (p) => p > 250000 && p <= 400000 },
-  mas400: { label: '+USD 400.000', test: (p) => p > 400000 },
+  hasta150: { label: 'Hasta USD 150.000', chip: 'Hasta USD 150k', test: (p) => p <= 150000 },
+  '150a250': { label: 'USD 150.000–250.000', chip: 'USD 150k–250k', test: (p) => p > 150000 && p <= 250000 },
+  '250a400': { label: 'USD 250.000–400.000', chip: 'USD 250k–400k', test: (p) => p > 250000 && p <= 400000 },
+  mas400: { label: '+USD 400.000', chip: '+USD 400k', test: (p) => p > 400000 },
 };
 const PRECIO_M2_LBL = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
 
@@ -239,8 +239,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
     setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa('');
     setEntregaMax(''); setFin(false); setDesarrolladora(''); setPrecioTotal('todos');
   };
-  const secundariosCount = [entregaMax, fin, desarrolladora, precioTotal !== 'todos'].filter(Boolean).length;
-  const activeCount = [barrio, amb, precio !== 'todos', etapa].filter(Boolean).length + secundariosCount;
+  // Precio TOTAL es ahora el filtro PRINCIPAL (85% de cobertura); precio/m² pasó a secundario (20%).
+  const secundariosCount = [entregaMax, fin, desarrolladora, precio !== 'todos'].filter(Boolean).length;
+  const activeCount = [barrio, amb, precioTotal !== 'todos', etapa].filter(Boolean).length + secundariosCount;
   const hayFiltros = activeCount > 0;
   const conCoord = filtered.filter((i) => i.lat != null).length;
 
@@ -311,11 +312,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
     </>
   );
 
-  const precioM2Chips = () => (
+  // Precio TOTAL (principal): mejor cobertura de dato (85%).
+  const precioTotalChips = () => (
     <>
-      <button type="button" aria-pressed={precio === 'hasta3000'} className={chip(precio === 'hasta3000')} onClick={() => setPrecio(precio === 'hasta3000' ? 'todos' : 'hasta3000')}>Hasta USD 3.000/m²</button>
-      <button type="button" aria-pressed={precio === '3000a4500'} className={chip(precio === '3000a4500')} onClick={() => setPrecio(precio === '3000a4500' ? 'todos' : '3000a4500')}>3.000–4.500/m²</button>
-      <button type="button" aria-pressed={precio === 'mas4500'} className={chip(precio === 'mas4500')} onClick={() => setPrecio(precio === 'mas4500' ? 'todos' : 'mas4500')}>+4.500/m²</button>
+      {Object.entries(PRECIO_TOTAL).map(([k, v]) => (
+        <button type="button" key={k} aria-pressed={precioTotal === k} className={chip(precioTotal === k)} onClick={() => setPrecioTotal(precioTotal === k ? 'todos' : k)}>{v.chip}</button>
+      ))}
     </>
   );
 
@@ -346,12 +348,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
         </div>
       )}
 
-      {/* Precio total (USD) — datos parciales (Fase 4/2) */}
+      {/* Precio por m² — secundario (dato parcial ~20%). El principal es precio total. */}
       <div>
-        <label htmlFor="f-ptot" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio total</label>
-        <select id="f-ptot" value={precioTotal} onChange={(e) => setPrecioTotal(e.target.value)} className="min-h-[44px] w-full sm:w-auto border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
-          <option value="todos">Cualquier precio</option>
-          {Object.entries(PRECIO_TOTAL).map(([k, v]) => (<option key={k} value={k}>{v.label}</option>))}
+        <label htmlFor="f-pm2" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio por m²</label>
+        <select id="f-pm2" value={precio} onChange={(e) => setPrecio(e.target.value)} className="min-h-[44px] w-full sm:w-auto border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
+          <option value="todos">Cualquiera</option>
+          <option value="hasta3000">Hasta USD 3.000/m²</option>
+          <option value="3000a4500">USD 3.000–4.500/m²</option>
+          <option value="mas4500">+USD 4.500/m²</option>
         </select>
       </div>
 
@@ -396,7 +400,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {ambChips()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
-          {precioM2Chips()}
+          {precioTotalChips()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {etapaChips()}
 
@@ -496,8 +500,8 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
                 <div className="flex flex-wrap gap-2">{ambChips()}</div>
               </div>
               <div>
-                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio por m²</p>
-                <div className="flex flex-wrap gap-2">{precioM2Chips()}</div>
+                <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio total</p>
+                <div className="flex flex-wrap gap-2">{precioTotalChips()}</div>
               </div>
               <div>
                 <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Etapa de obra</p>
