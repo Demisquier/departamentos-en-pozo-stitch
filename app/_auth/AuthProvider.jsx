@@ -9,6 +9,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { supabase, authEnabled } from "../../lib/supabase";
 import AuthPrompt from "./AuthPrompt";
+import { track } from "../../lib/track";
 
 const KEY = "dpp_favoritos_v1";
 const PERFIL_KEY = "dpp_perfil_v1";
@@ -89,6 +90,7 @@ export default function AuthProvider({ children }) {
       const { data: sub } = supabase.auth.onAuthStateChange((_ev, session) => {
         const u = session?.user || null;
         if (u) onLogin(u); else setUser(null);
+        if (_ev === "SIGNED_IN") track("login", { metodo: "google" });
         setAuthReady(true);
       });
       unsub = () => sub?.subscription?.unsubscribe?.();
@@ -106,6 +108,7 @@ export default function AuthProvider({ children }) {
     // Con auth activo, guardar requiere sesión. GuardarBtn abre el modal antes de llegar acá.
     if (authEnabled && !user) { setPromptCard(card); return "needsLogin"; }
     const exists = items.some((x) => x.slug === card.slug);
+    if (!exists) track("favorito_guardado", { slug: card.slug });
     persist(exists ? items.filter((x) => x.slug !== card.slug) : [{ ...card, _ts: Date.now() }, ...items]);
     if (authEnabled && user) {
       if (exists) supabase.from("favoritos").delete().eq("user_id", user.id).eq("slug", card.slug).then(() => {}, () => {});
