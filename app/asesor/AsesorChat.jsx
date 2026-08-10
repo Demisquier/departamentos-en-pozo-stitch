@@ -21,7 +21,8 @@ const PASOS = [
 ];
 const ENGAGE = PASOS[0];                 // pregunta de enganche (bajo compromiso)
 const ENRICH = PASOS.slice(1);           // enriquecimiento opcional
-const BUSCADOR = PASOS.filter((p) => p.key === "zonas" || p.key === "ambientes");
+// El buscador arma un perfil un poco más completo (no solo lo que mapea a filtros) para ayudar mejor.
+const BUSCADOR = PASOS;
 const ETIQUETAS = { objetivo: "Objetivo", zonas: "Zonas", ambientes: "Tipología", presupuesto: "Presupuesto" };
 
 const ZONA_BARRIO = { "Caballito": "Caballito", "Villa Urquiza": "Villa Urquiza", "Palermo": "Palermo", "Belgrano / Núñez": "Belgrano" };
@@ -147,7 +148,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
           setFase("okBuscar");
         } else {
           if (q.length < BUSCADOR.length) await say("Retomo lo que ya me contaste, me falta un dato.", 750);
-          else await say("En dos toques te armo el listado a tu medida.", 700);
+          else await say("Te ayudo a ver listados de lo que estás buscando. Un par de preguntas cortas.", 750);
           setEtapa("buscar"); setQueue(q); setIdx(0); setFase("chat");
           await say(q[0].p, 700);
         }
@@ -201,7 +202,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
   async function omitirEmail() {
     if (typing) return;
     setMsgs((m) => [...m, { s: "u", t: "Ahora no" }]);
-    await say("Sin drama. Igual te muestro los proyectos que encajan.", 700);
+    await say("Sin drama. Igual te muestro los proyectos que te pueden interesar.", 700);
     startEnrich();
   }
 
@@ -266,7 +267,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     persistPerfil(data);
     await mandarLead(data, "final");
     if (proyecto) { await say("¡Listo! Ya le pasé todo a la desarrolladora, te van a contactar. Guardé tu búsqueda en Mi selección.", 850); setFase("ok"); }
-    else { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Acá tenés los proyectos que te pueden servir.", 800); setFase("okBuscar"); }
+    else { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Acá tenés los proyectos que te pueden interesar.", 800); setFase("okBuscar"); }
   }
 
   // ── Alerta por mail al final del buscador (opcional) ───────────────────────
@@ -341,7 +342,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
                 <button type="button" onClick={terminarEnrich} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Listo, con esto alcanza</button>
               )}
               {etapa === "buscar" && (
-                <Link href={escapeUrl} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Prefiero ver el listado →</Link>
+                <Link href={escapeUrl} onClick={() => onClose && onClose()} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Prefiero ver el listado →</Link>
               )}
             </div>
           </div>
@@ -381,8 +382,8 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
         {fase === "okBuscar" && (
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-center gap-3 flex-wrap">
-              <Link href={buscarUrl} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-                <span className="material-symbols-outlined text-[18px]">search</span> Ver proyectos que encajan
+              <Link href={buscarUrl} onClick={() => onClose && onClose()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+                <span className="material-symbols-outlined text-[18px]">search</span> Ver los proyectos
               </Link>
               <button type="button" onClick={reiniciar} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Buscar otra cosa</button>
             </div>
@@ -398,14 +399,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
                 <input value={gotcha} onChange={(e) => setGotcha(e.target.value)} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
               </form>
             ) : alertaOk ? (
-              <p className="text-[13px] text-secondary text-center pt-2 border-t border-outline-variant">Listo, te aviso cuando entre algo que encaje.</p>
+              <p className="text-[13px] text-secondary text-center pt-2 border-t border-outline-variant">Listo, te aviso cuando entre algo de tu interés.</p>
             ) : null}
           </div>
         )}
 
         {fase === "ok" && (
           <div className="p-4 flex items-center justify-center gap-3 flex-wrap">
-            <Link href="/mi-seleccion/" className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+            <Link href="/mi-seleccion/" onClick={() => onClose && onClose()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
               <span className="material-symbols-outlined text-[18px]">favorite</span> Ver mi selección
             </Link>
             {onClose && (

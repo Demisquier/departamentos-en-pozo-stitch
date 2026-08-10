@@ -1,13 +1,15 @@
 "use client";
 // app/asesor/AsesorLauncher.jsx — Botón flotante (abajo a la derecha) para abrir a Sofía desde
 // cualquier página: otra forma de buscar. Se oculta en la ficha (ya tiene su CTA) y en /asesor.
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import AsesorModal from "./AsesorModal";
 
 export default function AsesorLauncher() {
   const [open, setOpen] = useState(false);
   const path = usePathname() || "";
+  // Cerramos el modal al cambiar de página (para que no tape el listado al navegar, sobre todo en mobile).
+  useEffect(() => { setOpen(false); }, [path]);
   const enFicha = /^\/desarrollos-inmobiliarios\/[^/]+\/?$/.test(path);
   if (path.startsWith("/asesor") || enFicha) return null;
 
