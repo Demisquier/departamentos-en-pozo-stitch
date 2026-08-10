@@ -12,6 +12,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase, authEnabled } from "../../lib/supabase";
+import { track } from "../../lib/track";
 
 const PASOS = [
   { key: "objetivo", p: "¿Es para vivir o para invertir?", o: [["Para invertir", "Inversión"], ["Para vivir", "Vivienda propia"], ["No lo sé aún", "A definir"]] },
@@ -109,6 +110,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     try {
       await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
       leadRef.current = { sent: true, snap };
+      track("lead", { tipo, origen: tipo === "alerta" ? "buscador" : (proyecto ? "ficha" : "asesor"), proyecto: proyecto || "" });
     } catch {}
   }
 
@@ -116,6 +118,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     if (started.current) return; started.current = true;
     let n = proyectoNombre;
     if (!n) { try { n = new URLSearchParams(window.location.search).get("nombre") || ""; } catch {} }
+    track("chat_open", { modo: n ? "lead" : "buscador", proyecto: n || "" });
     const known = readPerfil();
     knownRef.current = known;
     perfilRef.current = { ...known };
@@ -195,6 +198,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     setMsgs((m) => [...m, { s: "u", t: mail }]);
     const data = { ...perfilRef.current, email: mail };
     setPerfilAll(data); persistPerfil(data);
+    track("chat_email", { origen: proyecto ? "ficha" : "asesor" });
     await mandarLead(data, "parcial");
     await say("¡Listo! Ya le avisé a la desarrolladora tu interés, te van a contactar. ¿Querés dejar también un WhatsApp? (opcional)", 900);
     setFase("whatsapp");
@@ -279,6 +283,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     setTxt("");
     const data = { ...perfilRef.current, email: mail };
     setPerfilAll(data); persistPerfil(data);
+    track("alerta_email", {});
     await mandarLead(data, "alerta");
     setAlertaOk(true);
   }
@@ -342,7 +347,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
                 <button type="button" onClick={terminarEnrich} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Listo, con esto alcanza</button>
               )}
               {etapa === "buscar" && (
-                <Link href={escapeUrl} onClick={() => onClose && onClose()} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Prefiero ver el listado →</Link>
+                <Link href={escapeUrl} onClick={() => { track("ver_listado", { origen: "chat_escape" }); onClose && onClose(); }} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Prefiero ver el listado →</Link>
               )}
             </div>
           </div>
@@ -382,7 +387,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
         {fase === "okBuscar" && (
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-center gap-3 flex-wrap">
-              <Link href={buscarUrl} onClick={() => onClose && onClose()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <Link href={buscarUrl} onClick={() => { track("ver_listado", { origen: "chat_cta" }); onClose && onClose(); }} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
                 <span className="material-symbols-outlined text-[18px]">search</span> Ver los proyectos
               </Link>
               <button type="button" onClick={reiniciar} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Buscar otra cosa</button>
