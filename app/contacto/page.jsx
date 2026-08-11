@@ -248,7 +248,7 @@ export default function ContactoPage() {
                     <div>
                       <h5 className="font-bold text-body-lg mb-2">Análisis independiente</h5>
                       <p className="text-on-primary-container text-body-md">
-                        46 proyectos analizados en 9 barrios de CABA, con criterio propio y sin ataduras a una sola marca.
+                        Proyectos en pozo relevados barrio por barrio en CABA, con criterio propio y sin ataduras a una sola marca.
                       </p>
                     </div>
                   </div>
