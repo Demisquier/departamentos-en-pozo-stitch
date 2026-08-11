@@ -68,7 +68,9 @@ export default async function PostView({ node, slug, content, img, title, rmSche
           <p className="mt-5 text-on-primary/80 font-body-lg text-body-lg max-w-2xl">{bajada}</p>
         )}
         <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] text-on-primary-fixed-variant">
-          <span className="text-link-gold font-medium">Equipo Departamentos en Pozo</span>
+          <Link href="/sobre-nosotros/" className="text-link-gold font-medium hover:underline">Equipo Departamentos en Pozo</Link>
+          <span aria-hidden="true">·</span>
+          <span>liderado por Demian Squiersky</span>
           {fecha && (<><span aria-hidden="true">·</span><time dateTime={node.date}>{fecha}</time></>)}
           <span aria-hidden="true">·</span>
           <span>{minutes} min de lectura</span>
@@ -138,6 +140,28 @@ export default async function PostView({ node, slug, content, img, title, rmSche
             className="wp-content max-w-[68ch]"
             dangerouslySetInnerHTML={{ __html: postHtml }}
           />
+
+          {/* Autoría (E-E-A-T): quién está detrás del análisis. Refuerza experiencia y
+              confianza, y linkea a las credenciales verificables del equipo. */}
+          <aside className="mt-12 max-w-[68ch] flex gap-5 items-start border border-outline-variant rounded-lg bg-surface-container-low p-6">
+            <div className="shrink-0 w-14 h-14 rounded-full border-2 border-link-gold flex items-center justify-center">
+              <span className="material-symbols-outlined text-link-gold text-[28px]">groups</span>
+            </div>
+            <div className="min-w-0">
+              <p className="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Sobre esta guía</p>
+              <h3 className="font-headline-sm text-[18px] text-primary leading-snug mb-1.5">
+                Análisis del equipo de Departamentos en Pozo, liderado por Demian Squiersky
+              </h3>
+              <p className="text-[14px] text-on-surface-variant leading-relaxed">
+                Más de 10 años en real estate digital, con experiencia liderando producto en los portales
+                inmobiliarios líderes de Latinoamérica. Escribimos con criterio propio, sin intermediar ni
+                cobrar comisión.{" "}
+                <Link href="/sobre-nosotros/" className="text-secondary font-medium hover:underline">Conocé al equipo</Link>
+                {" · "}
+                <a href="https://ar.linkedin.com/in/demiansquiersky" target="_blank" rel="noopener noreferrer nofollow" className="text-secondary font-medium hover:underline">LinkedIn</a>
+              </p>
+            </div>
+          </aside>
 
           {/* Captura de leads: alertas de lanzamientos al cierre de la guía */}
           <AlertaCTA />
