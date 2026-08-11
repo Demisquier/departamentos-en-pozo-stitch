@@ -1,0 +1,252 @@
+{
+  "_assets": [
+    {
+      "tema": "obra en construccion / grua / edificio en pozo",
+      "url": "https://images.pexels.com/photos/2934280/pexels-photo-2934280.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Pepe Caspers",
+      "fuente": "https://www.pexels.com/photo/construction-crane-on-building-2934280/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "planos / blueprint / arquitectura",
+      "url": "https://images.pexels.com/photos/271667/pexels-photo-271667.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Pixabay",
+      "fuente": "https://www.pexels.com/photo/house-floor-plan-271667/",
+      "licencia": "Pexels License (CC0)"
+    },
+    {
+      "tema": "llaves de departamento / entrega",
+      "url": "https://images.pexels.com/photos/8815915/pexels-photo-8815915.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Kampus Production",
+      "fuente": "https://www.pexels.com/photo/real-estate-agent-handing-house-keys-8815915/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "firma de contrato / documento legal",
+      "url": "https://images.pexels.com/photos/48148/document-agreement-documents-sign-48148.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Pixabay",
+      "fuente": "https://www.pexels.com/photo/person-signing-in-documentation-paper-48148/",
+      "licencia": "Pexels License (CC0)"
+    },
+    {
+      "tema": "escribano / notario / sellos",
+      "url": "https://images.pexels.com/photos/5425649/pexels-photo-5425649.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Anna Tarazevich",
+      "fuente": "https://www.pexels.com/photo/close-up-photo-of-a-stamp-on-a-paper-5425649/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "dinero / dolares / billetes",
+      "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Kaboompics.com",
+      "fuente": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "calculadora + finanzas / planilla",
+      "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Tima Miroshnichenko",
+      "fuente": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "fachada de edificio moderno / departamentos",
+      "url": "https://images.pexels.com/photos/16939462/pexels-photo-16939462.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Juan Fam",
+      "fuente": "https://www.pexels.com/photo/facade-of-a-modern-apartment-building-16939462/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "oficina o local comercial",
+      "url": "https://images.pexels.com/photos/8477444/pexels-photo-8477444.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Gustavo Galeano Maz",
+      "fuente": "https://www.pexels.com/photo/an-empty-office-8477444/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "cartel en venta / real estate sign",
+      "url": "https://images.pexels.com/photos/7578855/pexels-photo-7578855.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Kindel Media",
+      "fuente": "https://www.pexels.com/photo/for-sale-sign-in-front-of-a-house-7578855/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "skyline / ciudad Buenos Aires",
+      "url": "https://images.pexels.com/photos/20985696/pexels-photo-20985696.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Andres Idda Bianchi",
+      "fuente": "https://www.pexels.com/photo/skyscrapers-in-skyline-of-buenos-aires-argentina-20985696/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "manos con maqueta de edificio / inversion inmobiliaria",
+      "url": "https://images.pexels.com/photos/3831828/pexels-photo-3831828.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Andrea Piacquadio",
+      "fuente": "https://www.pexels.com/photo/man-in-black-suit-holding-miniature-house-3831828/",
+      "licencia": "Pexels License"
+    },
+    {
+      "tema": "mudanza / cajas / nuevo hogar",
+      "url": "https://images.pexels.com/photos/4246045/pexels-photo-4246045.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+      "autor": "Ketut Subiyanto",
+      "fuente": "https://www.pexels.com/photo/diverse-couple-unpacking-cardboard-boxes-while-moving-in-new-home-4246045/",
+      "licencia": "Pexels License"
+    }
+  ],
+
+  "seguro-de-caucion-y-garantia-de-entrega-en-pozo": {
+    "url": "https://images.pexels.com/photos/8815915/pexels-photo-8815915.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kampus Production / Pexels",
+    "credit_url": "https://www.pexels.com/photo/real-estate-agent-handing-house-keys-8815915/"
+  },
+  "reglamento-de-copropiedad-que-mirar-antes-de-comprar-en-pozo": {
+    "url": "https://images.pexels.com/photos/48148/document-agreement-documents-sign-48148.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pixabay / Pexels",
+    "credit_url": "https://www.pexels.com/photo/person-signing-in-documentation-paper-48148/"
+  },
+  "recepcion-de-obra-en-pozo-vicios-ocultos-y-como-reclamar": {
+    "url": "https://images.pexels.com/photos/2934280/pexels-photo-2934280.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pepe Caspers / Pexels",
+    "credit_url": "https://www.pexels.com/photo/construction-crane-on-building-2934280/"
+  },
+  "como-verificar-un-fideicomiso-inmobiliario-antes-de-comprar-en-pozo": {
+    "url": "https://images.pexels.com/photos/5425649/pexels-photo-5425649.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Anna Tarazevich / Pexels",
+    "credit_url": "https://www.pexels.com/photo/close-up-photo-of-a-stamp-on-a-paper-5425649/"
+  },
+  "permiso-de-obra-y-planos-aprobados-como-verificar-en-pozo": {
+    "url": "https://images.pexels.com/photos/271667/pexels-photo-271667.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pixabay / Pexels",
+    "credit_url": "https://www.pexels.com/photo/house-floor-plan-271667/"
+  },
+  "cronograma-de-pagos-en-pozo-como-planificar-tu-flujo-de-fondos": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "que-pasa-si-quiebra-la-desarrolladora-en-pozo-como-proteger-tu-inversion": {
+    "url": "https://images.pexels.com/photos/3831828/pexels-photo-3831828.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Andrea Piacquadio / Pexels",
+    "credit_url": "https://www.pexels.com/photo/man-in-black-suit-holding-miniature-house-3831828/"
+  },
+  "iva-en-la-compra-de-un-departamento-en-pozo-cuando-aplica": {
+    "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kaboompics.com / Pexels",
+    "credit_url": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/"
+  },
+  "monotributista-comprando-en-pozo-que-mirar-impositivamente": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "comprar-en-pozo-estando-casado-bien-ganancial-vs-propio": {
+    "url": "https://images.pexels.com/photos/48148/document-agreement-documents-sign-48148.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pixabay / Pexels",
+    "credit_url": "https://www.pexels.com/photo/person-signing-in-documentation-paper-48148/"
+  },
+  "heredar-un-boleto-en-pozo-sucesion-de-una-unidad-en-construccion": {
+    "url": "https://images.pexels.com/photos/5425649/pexels-photo-5425649.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Anna Tarazevich / Pexels",
+    "credit_url": "https://www.pexels.com/photo/close-up-photo-of-a-stamp-on-a-paper-5425649/"
+  },
+  "entrega-demorada-en-pozo-que-podes-reclamar-y-como": {
+    "url": "https://images.pexels.com/photos/2934280/pexels-photo-2934280.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pepe Caspers / Pexels",
+    "credit_url": "https://www.pexels.com/photo/construction-crane-on-building-2934280/"
+  },
+  "oficinas-y-locales-en-pozo-como-invertir-distinto-al-residencial": {
+    "url": "https://images.pexels.com/photos/8477444/pexels-photo-8477444.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Gustavo Galeano Maz / Pexels",
+    "credit_url": "https://www.pexels.com/photo/an-empty-office-8477444/"
+  },
+  "como-vender-tu-unidad-en-pozo-antes-de-la-escritura": {
+    "url": "https://images.pexels.com/photos/7578855/pexels-photo-7578855.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kindel Media / Pexels",
+    "credit_url": "https://www.pexels.com/photo/for-sale-sign-in-front-of-a-house-7578855/"
+  },
+  "cuanto-vale-tu-boleto-en-pozo-como-tasar-una-cesion": {
+    "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kaboompics.com / Pexels",
+    "credit_url": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/"
+  },
+  "impuestos-al-vender-en-pozo-iti-y-ganancia-cedular": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "no-podes-seguir-pagando-el-pozo-vender-ceder-o-rescindir": {
+    "url": "https://images.pexels.com/photos/7578855/pexels-photo-7578855.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kindel Media / Pexels",
+    "credit_url": "https://www.pexels.com/photo/for-sale-sign-in-front-of-a-house-7578855/"
+  },
+  "vender-tu-pozo-a-un-inversor-vs-a-un-usuario-final": {
+    "url": "https://images.pexels.com/photos/3831828/pexels-photo-3831828.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Andrea Piacquadio / Pexels",
+    "credit_url": "https://www.pexels.com/photo/man-in-black-suit-holding-miniature-house-3831828/"
+  },
+  "ganancia-real-de-vender-en-pozo-antes-de-la-entrega": {
+    "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kaboompics.com / Pexels",
+    "credit_url": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/"
+  },
+
+  "como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags": {
+    "url": "https://images.pexels.com/photos/8477444/pexels-photo-8477444.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Gustavo Galeano Maz / Pexels",
+    "credit_url": "https://www.pexels.com/photo/an-empty-office-8477444/"
+  },
+  "como-financiar-un-departamento-en-pozo-cuotas-ajustes-y-estrategias-para-no-ahogarte": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "10-desarrolladoras-de-departamentos-en-pozo-con-proyectos-finalizados-en-argentina": {
+    "url": "https://images.pexels.com/photos/16939462/pexels-photo-16939462.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Juan Fam / Pexels",
+    "credit_url": "https://www.pexels.com/photo/facade-of-a-modern-apartment-building-16939462/"
+  },
+  "emprendimientos-en-pozo-en-buenos-aires-como-elegir-el-mejor-proyecto-y-no-equivocarte": {
+    "url": "https://images.pexels.com/photos/20985696/pexels-photo-20985696.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Andres Idda Bianchi / Pexels",
+    "credit_url": "https://www.pexels.com/photo/skyscrapers-in-skyline-of-buenos-aires-argentina-20985696/"
+  },
+  "como-comprar-un-departamento-en-pozo-paso-a-paso-de-la-reserva-a-la-escritura": {
+    "url": "https://images.pexels.com/photos/4246045/pexels-photo-4246045.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Ketut Subiyanto / Pexels",
+    "credit_url": "https://www.pexels.com/photo/diverse-couple-unpacking-cardboard-boxes-while-moving-in-new-home-4246045/"
+  },
+  "prehorizontalidad-y-ley-19724-la-proteccion-legal-al-comprar-en-pozo": {
+    "url": "https://images.pexels.com/photos/48148/document-agreement-documents-sign-48148.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Pixabay / Pexels",
+    "credit_url": "https://www.pexels.com/photo/person-signing-in-documentation-paper-48148/"
+  },
+  "es-seguro-comprar-en-pozo-en-argentina-que-dicen-los-numeros-en-2026": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "conviene-invertir-en-pozo-2026-roi-riesgos-y-como-decidir": {
+    "url": "https://images.pexels.com/photos/3831828/pexels-photo-3831828.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Andrea Piacquadio / Pexels",
+    "credit_url": "https://www.pexels.com/photo/man-in-black-suit-holding-miniature-house-3831828/"
+  },
+  "comprar-en-pozo-desde-el-exterior-guia-para-no-residentes": {
+    "url": "https://images.pexels.com/photos/20985696/pexels-photo-20985696.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Andres Idda Bianchi / Pexels",
+    "credit_url": "https://www.pexels.com/photo/skyscrapers-in-skyline-of-buenos-aires-argentina-20985696/"
+  },
+  "pozo-vs-plazo-fijo-dolar-y-cedears-donde-rinde-mas-tu-ahorro": {
+    "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kaboompics.com / Pexels",
+    "credit_url": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/"
+  },
+  "financiacion-para-comprar-en-pozo-plan-credito-hipotecario-o-financiera": {
+    "url": "https://images.pexels.com/photos/6694916/pexels-photo-6694916.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Tima Miroshnichenko / Pexels",
+    "credit_url": "https://www.pexels.com/photo/cash-money-and-a-calculator-on-white-paper-printout-6694916/"
+  },
+  "opciones-de-financiacion-para-comprar-en-pozo": {
+    "url": "https://images.pexels.com/photos/4386469/pexels-photo-4386469.jpeg?auto=compress&cs=tinysrgb&w=1200&h=675&fit=crop",
+    "credit": "Foto: Kaboompics.com / Pexels",
+    "credit_url": "https://www.pexels.com/photo/stack-of-dollar-cash-bills-4386469/"
+  }
+}
