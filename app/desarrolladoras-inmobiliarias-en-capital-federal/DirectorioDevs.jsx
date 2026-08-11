@@ -50,7 +50,7 @@ function Card({ d }) {
       {d.desc && <p className="text-[12.5px] text-on-surface-variant mt-3 leading-relaxed line-clamp-2">{d.desc}</p>}
 
       <div className="mt-auto pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-4 gap-y-2">
-        <a href={`/desarrolladoras/${d.slug}/`} className="text-[13px] font-semibold text-secondary hover:underline">
+        <a href={`/desarrolladoras/${d.slug}/`} className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-on-primary px-3.5 py-2 text-[13px] font-semibold hover:bg-primary/90 transition-colors">
           {d.proyectosSlug && d.proyectosSlug.length > 0
             ? `Ver ${d.proyectosSlug.length} proyecto${d.proyectosSlug.length === 1 ? "" : "s"} →`
             : "Ver perfil →"}
