@@ -1,5 +1,6 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
+import { track } from "../../../lib/track";
 import AsesorModal from "../../asesor/AsesorModal";
 
 const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
@@ -68,6 +69,8 @@ export function Calculadora({ precioNum, comparableNum }) {
   const [precioM2, setPrecioM2] = useState(precioNum || 2500);
   const [antPct, setAntPct] = useState(30);
   const [cuotas, setCuotas] = useState(24);
+  const tracked = useRef(false);
+  const mark = () => { if (!tracked.current) { tracked.current = true; track("calc_use"); } };
 
   const r = useMemo(() => {
     const s = Math.max(0, Number(sup) || 0);
@@ -89,7 +92,7 @@ export function Calculadora({ precioNum, comparableNum }) {
       <span className="text-[12px] text-on-surface-variant">{label}</span>
       <div className="flex items-center border border-outline-variant rounded-lg mt-1 overflow-hidden focus-within:border-secondary">
         <input type="number" value={value} min={min} max={max} step={step}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => { mark(); setValue(e.target.value); }}
           className="w-full px-3 py-2 text-[14px] text-primary outline-none bg-white" />
         {suffix && <span className="px-3 text-[12px] text-on-surface-variant bg-surface-container whitespace-nowrap self-stretch flex items-center">{suffix}</span>}
       </div>
@@ -115,10 +118,14 @@ export function Calculadora({ precioNum, comparableNum }) {
         <div className="flex justify-between"><dt className="text-on-surface-variant">Anticipo</dt><dd className="text-primary font-medium">{fmtUSD(r.anticipo)}</dd></div>
         <div className="flex justify-between"><dt className="text-on-surface-variant">Saldo en cuotas</dt><dd className="text-primary font-medium">{fmtUSD(r.saldo)}</dd></div>
         <div className="flex justify-between items-baseline pt-2 mt-1 border-t border-outline-variant">
-          <dt className="text-primary font-medium">Cuota mensual</dt>
+          <dt className="text-primary font-medium">Cuota inicial estimada</dt>
           <dd className="text-secondary font-headline-sm text-headline-sm">{fmtUSD(r.cuotaMes)}</dd>
         </div>
       </dl>
+      <p className="text-[11px] text-on-surface-variant mt-2 leading-snug">
+        Cuota inicial orientativa. En pozo, las cuotas suelen <strong>ajustar por CAC</strong> (índice de la construcción) durante la obra, así que el valor sube con el tiempo.{" "}
+        <a href="/simulador-cuota-cac-pozo/" className="text-secondary font-medium hover:underline">Simular el ajuste CAC →</a>
+      </p>
 
       {r.terminado != null && (
         <div className="mt-4 pt-4 border-t border-outline-variant">
