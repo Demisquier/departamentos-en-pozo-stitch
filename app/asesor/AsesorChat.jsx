@@ -109,6 +109,18 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     payload["Origen"] = tipo === "alerta" ? "Buscador · alerta" : (proyecto ? "Ficha · quiero más info" : "Asesor · perfil");
     try {
       await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
+      // Además del mail: registramos el lead en la planilla (Google Sheet vía Apps Script).
+      try {
+        fetch("https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec", {
+          method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            origen: payload["Origen"], tipo,
+            nombre: data.nombre || "", email, whatsapp,
+            proyecto: proyecto || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
+            presupuesto: data.presupuesto || "", mensaje: data.objetivo || "",
+          }),
+        });
+      } catch {}
       leadRef.current = { sent: true, snap };
       track("lead", { tipo, origen: tipo === "alerta" ? "buscador" : (proyecto ? "ficha" : "asesor"), proyecto: proyecto || "" });
     } catch {}
