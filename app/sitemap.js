@@ -6,7 +6,7 @@ import { mapDesarrollos } from "../lib/catalogo";
 /* Sitemap dinámico: mantiene TODAS las URLs indexadas (preservación SEO).
  * Resiliente: si WP no responde, al menos devuelve las rutas fijas. */
 export default async function sitemap() {
-  const fixed = ["/", "/desarrollos-inmobiliarios/", "/contacto/", "/sobre-nosotros/", "/novedades/", "/simulador-cuota-cac-pozo/", "/alertas-de-lanzamientos-en-pozo/", "/corralones-y-materiales-de-construccion-en-caba/", "/reels/"].map((u) => ({
+  const fixed = ["/", "/desarrollos-inmobiliarios/", "/contacto/", "/sobre-nosotros/", "/novedades/", "/simulador-cuota-cac-pozo/", "/alertas-de-lanzamientos-en-pozo/", "/corralones-y-materiales-de-construccion-en-caba/", "/videos-de-emprendimientos-en-pozo/"].map((u) => ({
     url: BASE + u,
     lastModified: new Date(),
   }));
