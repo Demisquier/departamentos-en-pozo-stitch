@@ -90,6 +90,105 @@
       "barrio": "colegiales-chacarita",
       "proyecto": "Mundo Imaginal",
       "dev": "Azcuy"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "Je7Wc_zaHRw",
+      "url": "https://www.youtube.com/watch?v=Je7Wc_zaHRw",
+      "title": "Astor Núñez — recorrido desde el piso 17",
+      "barrio": "nunez",
+      "proyecto": "Astor Núñez",
+      "dev": "TGLT"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "WfUiXCm3GGI",
+      "url": "https://www.youtube.com/watch?v=WfUiXCm3GGI",
+      "title": "Torre Decó Armani/Casa — Recoleta",
+      "barrio": "recoleta",
+      "proyecto": "Torre Decó Armani/Casa",
+      "dev": "Situar"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "a01SwTs-2aA",
+      "url": "https://www.youtube.com/watch?v=a01SwTs-2aA",
+      "title": "OM Recoleta — avance de obra",
+      "barrio": "recoleta",
+      "proyecto": "OM Recoleta",
+      "dev": "NorthBaires"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "09Py7q7kmog",
+      "url": "https://www.youtube.com/watch?v=09Py7q7kmog",
+      "title": "MEET Palermo — avance de obra",
+      "barrio": "palermo",
+      "proyecto": "MEET Palermo",
+      "dev": "G&D Developers"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "RKRvDbWM9xY",
+      "url": "https://www.youtube.com/watch?v=RKRvDbWM9xY",
+      "title": "Vaiv Belgrano — avance de obra (desarrollo en pozo)",
+      "barrio": "belgrano",
+      "proyecto": "Vaiv Belgrano",
+      "dev": "Crowdium"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "Y-AeYRqhUjA",
+      "url": "https://www.youtube.com/watch?v=Y-AeYRqhUjA",
+      "title": "Aurea Belgrano — avance de obra",
+      "barrio": "belgrano",
+      "proyecto": "Aurea Belgrano",
+      "dev": "Interwin"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "NTbTCqTzPjk",
+      "url": "https://www.youtube.com/watch?v=NTbTCqTzPjk",
+      "title": "Justevila — nuevo emprendimiento en Caballito norte",
+      "barrio": "caballito",
+      "proyecto": "Justevila",
+      "dev": "VQZD"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "iQXvVIAPM_w",
+      "url": "https://www.youtube.com/watch?v=iQXvVIAPM_w",
+      "title": "Obra Burela 2585 — Villa Urquiza",
+      "barrio": "villa-urquiza",
+      "proyecto": "Burela 2585",
+      "dev": "CSV Construcciones"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "xav_lMjQHAI",
+      "url": "https://www.youtube.com/watch?v=xav_lMjQHAI",
+      "title": "Bs As Flats — emprendimiento en Saavedra",
+      "barrio": "saavedra-coghlan",
+      "proyecto": "Bs As Flats Saavedra",
+      "dev": ""
+    },
+    {
+      "platform": "youtube",
+      "videoId": "tM6TVknQcsQ",
+      "url": "https://www.youtube.com/watch?v=tM6TVknQcsQ",
+      "title": "Distrito Colegiales — entorno y avance de obra",
+      "barrio": "colegiales-chacarita",
+      "proyecto": "Distrito Colegiales",
+      "dev": "G&D Developers"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "qUxFGMz6FaI",
+      "url": "https://www.youtube.com/watch?v=qUxFGMz6FaI",
+      "title": "MilAires — emprendimiento en Villa Devoto",
+      "barrio": "villa-devoto",
+      "proyecto": "MilAires",
+      "dev": "Grupo Ecipsa"
     }
   ]
 }
