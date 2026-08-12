@@ -59,6 +59,8 @@ const nextConfig = {
       // --- Barrios: las viejas taxonomías /barrio/{x}/ del WP daban 404 en el front
       // headless pero seguían indexadas y con tráfico en Google. Las mandamos 301 a la
       // página curada de desarrolladoras de ese barrio (recupera tráfico + link equity). ---
+      { source: "/reels", destination: "/videos-de-emprendimientos-en-pozo/", permanent: true },
+      { source: "/reels/", destination: "/videos-de-emprendimientos-en-pozo/", permanent: true },
       { source: "/barrio/palermo", destination: "/desarrolladoras-inmobiliarias-en-palermo/", permanent: true },
       { source: "/barrio/palermo/", destination: "/desarrolladoras-inmobiliarias-en-palermo/", permanent: true },
       { source: "/barrio/belgrano", destination: "/desarrolladoras-inmobiliarias-en-belgrano/", permanent: true },
