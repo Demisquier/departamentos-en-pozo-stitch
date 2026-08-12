@@ -16,7 +16,31 @@ const HUB_FAQ = [
   ["¿Cómo sé si una desarrolladora tiene buena reputación?", "Chequeá datos públicos, no autoreseñas: razón social, antigüedad, reclamos en Defensa del Consumidor y opiniones de compradores que ya escrituraron. Visitar una obra habitada de la misma empresa es la señal más fuerte de todas."],
   ["¿Qué desarrolladora de departamentos conviene en CABA?", "Conviene la que mejor cumple tus criterios verificables: plazos cumplidos, precio por m² razonable para el barrio, fideicomiso claro y obras entregadas. No la más publicitada. Este directorio está ordenado por esos criterios para que compares por tu cuenta."],
   ["¿Qué tengo que pedir antes de comprar en pozo para reducir el riesgo?", "Pedí la lista de obras entregadas con fechas, el pliego de especificaciones técnicas y el contrato de fideicomiso con fiduciario identificado. Recordá que quien responde por la entrega del pozo es la desarrolladora, no el portal ni el aviso."],
+  ["¿Qué empresas constructoras de departamentos tienen los mejores precios?", "El mejor precio es el que resulta competitivo para el m² del barrio con una estructura de pago clara y sin costos ocultos. Compará precio por m² entre proyectos de la misma zona, revisá la forma de ajuste (CAC o dólar) y qué incluye la unidad. Un precio muy por debajo del mercado suele ser una señal de alerta, no una ganga."],
+  ["¿Cómo elegir una constructora con buena ubicación de proyectos?", "Evaluá el barrio por conectividad, servicios, demanda sostenida y valorización proyectada, y confirmá que la documentación de dominio del terreno esté en regla. Una buena ubicación se refleja en la coherencia entre el precio y el entorno. En el catálogo podés filtrar desarrollos por barrio para comparar opciones concretas."],
 ];
+
+// Bloque visible "cómo elegir constructora por atributo" (captura el cluster conversacional
+// de IA: miles de impresiones en GSC con 0 clics para "empresas constructoras de departamentos
+// con [plazos/precios/reputación/materiales/ubicación]"). Se renderiza como sección extra.
+const CLUSTER_HTML = `
+<h2 id="como-elegir-constructora-por-atributo">Cómo elegir una empresa constructora de departamentos según lo que priorizás</h2>
+<p>No todas las <strong>empresas constructoras de departamentos</strong> son iguales, y lo que hace "buena" a una desarrolladora depende de qué estés priorizando: puede ser el cumplimiento de plazos, el precio, la reputación o la calidad de los materiales. En la práctica, "constructora" y "desarrolladora" se usan como sinónimos —aunque técnicamente la desarrolladora estructura el negocio y la constructora ejecuta la obra—, y en un proyecto en pozo lo que te importa es evaluar al equipo completo. Esta guía te muestra, atributo por atributo, en qué fijarte concretamente y qué señales objetivas distinguen a una empresa seria.</p>
+<table>
+  <thead><tr><th>Si priorizás…</th><th>En qué fijarte</th><th>Señales de una buena constructora</th></tr></thead>
+  <tbody>
+    <tr><td>Cumplimiento de plazos</td><td>Historial de obras entregadas y desvíos reales entre fecha prometida y posesión.</td><td>Lista verificable de emprendimientos terminados, avance de obra fotografiado y cláusulas de plazo con penalidades en el boleto.</td></tr>
+    <tr><td>Precios competitivos</td><td>Precio por m² comparado con el barrio, forma de ajuste (CAC, dólar) y qué está incluido.</td><td>Estructura de pago clara, anticipo y cuotas sin costos ocultos, y comparables de mercado que respaldan el valor.</td></tr>
+    <tr><td>Buena reputación</td><td>Trayectoria, referencias de compradores anteriores y presencia en registros y directorios.</td><td>Antigüedad demostrable, testimonios reales, ausencia de litigios graves y respuesta a reclamos.</td></tr>
+    <tr><td>Calidad de materiales</td><td>Pliego de especificaciones técnicas y terminaciones prometidas por escrito.</td><td>Memoria descriptiva detallada, marcas de aberturas/sanitarios especificadas y visita a obras ya entregadas.</td></tr>
+    <tr><td>Ubicación de los proyectos</td><td>Barrio, conectividad, valorización proyectada y entorno del emprendimiento.</td><td>Proyectos en zonas con demanda sostenida, dominio en regla y coherencia entre precio y ubicación.</td></tr>
+    <tr><td>Experiencia y trayectoria</td><td>Cantidad de metros construidos y años en el mercado.</td><td>Portfolio con obras finalizadas verificables, equipo técnico identificable y continuidad de la marca.</td></tr>
+    <tr><td>Atención al cliente</td><td>Claridad en la comunicación y respaldo posventa.</td><td>Respuestas por escrito, contrato transparente, canal de posventa formal y acompañamiento durante la obra.</td></tr>
+    <tr><td>Variedad de proyectos y tipologías</td><td>Mix de unidades (monoambientes, 2 y 3 ambientes) y estado de obra disponible.</td><td>Oferta diversa en distintos barrios y etapas, con fichas técnicas completas por tipología.</td></tr>
+  </tbody>
+</table>
+<p>La constante en todos los atributos es la misma: pedir <strong>fideicomiso</strong> con rendición de cuentas, revisar el cumplimiento de la <strong>ley de prehorizontalidad</strong> y visitar <strong>obras ya entregadas</strong> antes de firmar. En el <a href="/desarrollos-inmobiliarios/">catálogo de desarrollos</a> vas a encontrar desarrolladoras con proyectos verificados; para evaluar en profundidad, leé <a href="/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/">cómo evaluar una desarrolladora de pozo</a>; y para ver avances reales, mirá los <a href="/videos-de-emprendimientos-en-pozo/">videos de emprendimientos en pozo por barrio</a>.</p>
+`;
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -116,6 +140,12 @@ export default async function HubDesarrolladorasPage() {
             </a>
           </div>
         )}
+
+        {/* Bloque AEO "elegir constructora por atributo": captura el cluster de IA (constructoras de departamentos). */}
+        <section
+          className="wp-content prose max-w-none text-body-md text-on-surface-variant mt-12"
+          dangerouslySetInnerHTML={{ __html: CLUSTER_HTML }}
+        />
 
         {/* CTA para desarrolladoras: nuestros datos son públicos y no están validados; invitamos a actualizar. */}
         <aside className="mt-12 border border-outline-variant rounded-2xl p-6 md:flex md:items-center md:justify-between gap-6 bg-surface-container-low">
