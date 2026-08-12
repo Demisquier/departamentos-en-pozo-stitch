@@ -1,0 +1,95 @@
+{
+  "_note": "Directorio curado de reels/videos de emprendimientos en pozo por barrio. Cada item se verificó vía YouTube oEmbed (existe + permite embed). Para sumar más: agregá objetos al array 'reels' con platform (youtube|instagram|tiktok), videoId, url, title, barrio (slug en minúsculas), proyecto y dev. YouTube es el más confiable para embeber.",
+  "reels": [
+    {
+      "platform": "youtube",
+      "videoId": "-20bGb8y9r0",
+      "url": "https://www.youtube.com/watch?v=-20bGb8y9r0",
+      "title": "Quartier Madero Urbano — recorrido del emprendimiento",
+      "barrio": "puerto-madero",
+      "proyecto": "Quartier Madero Urbano",
+      "dev": "Argencons"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "j4hN6hqdB0s",
+      "url": "https://www.youtube.com/watch?v=j4hN6hqdB0s",
+      "title": "Quartier del Bajo — avance de obra",
+      "barrio": "puerto-madero",
+      "proyecto": "Quartier del Bajo",
+      "dev": "Argencons"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "_mil88olXkc",
+      "url": "https://www.youtube.com/watch?v=_mil88olXkc",
+      "title": "Quartier Puerto Retiro — presentación comercial",
+      "barrio": "puerto-madero",
+      "proyecto": "Quartier Puerto Retiro",
+      "dev": "Argencons"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "5MYKAAS1ISQ",
+      "url": "https://www.youtube.com/watch?v=5MYKAAS1ISQ",
+      "title": "Paris Martineau — departamentos en pozo en Palermo",
+      "barrio": "palermo",
+      "proyecto": "Paris Martineau",
+      "dev": "Paris Martineau"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "2J5clEpHjug",
+      "url": "https://www.youtube.com/watch?v=2J5clEpHjug",
+      "title": "DOME Suites & Residence — Palermo Hollywood en pozo",
+      "barrio": "palermo",
+      "proyecto": "DOME Suites & Residence",
+      "dev": ""
+    },
+    {
+      "platform": "youtube",
+      "videoId": "TwrultV5tKs",
+      "url": "https://www.youtube.com/watch?v=TwrultV5tKs",
+      "title": "Migueletes 1080 — emprendimiento en Belgrano",
+      "barrio": "belgrano",
+      "proyecto": "Migueletes 1080",
+      "dev": ""
+    },
+    {
+      "platform": "youtube",
+      "videoId": "-JuGIwfbnKI",
+      "url": "https://www.youtube.com/watch?v=-JuGIwfbnKI",
+      "title": "Emprendimiento en pozo en Villa Urquiza (Díaz Colodrero)",
+      "barrio": "villa-urquiza",
+      "proyecto": "",
+      "dev": "Soho City"
+    },
+    {
+      "platform": "youtube",
+      "videoId": "fkXOKLmNsRE",
+      "url": "https://www.youtube.com/watch?v=fkXOKLmNsRE",
+      "title": "Departamentos 1 y 2 ambientes en pozo en Caballito",
+      "barrio": "caballito",
+      "proyecto": "",
+      "dev": ""
+    },
+    {
+      "platform": "youtube",
+      "videoId": "fTNBSH6mNDY",
+      "url": "https://www.youtube.com/watch?v=fTNBSH6mNDY",
+      "title": "Venta en pozo en Saavedra — 3 y 4 ambientes con amenities",
+      "barrio": "saavedra-coghlan",
+      "proyecto": "",
+      "dev": ""
+    },
+    {
+      "platform": "youtube",
+      "videoId": "QjP8RQCaDWw",
+      "url": "https://www.youtube.com/watch?v=QjP8RQCaDWw",
+      "title": "Mundo Imaginal — avances de obra (Chacarita)",
+      "barrio": "colegiales-chacarita",
+      "proyecto": "Mundo Imaginal",
+      "dev": "Azcuy"
+    }
+  ]
+}
