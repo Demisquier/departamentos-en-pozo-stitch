@@ -25,8 +25,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido). Keyword + diferencial (matrícula) + año.
   return {
     ...m,
+    title: "Mejores inmobiliarias en CABA 2026: listado por barrio",
     description:
-      "Directorio de las mejores inmobiliarias de CABA con matrícula CUCICBA verificada. Buscá por zona (Palermo, Belgrano, Núñez, Puerto Madero y más), sin ranking pago ni comisión. Análisis independiente 2026.",
+      "Listado de las mejores inmobiliarias de CABA y Capital Federal con matrícula CUCICBA verificada. Buscá por barrio (Palermo, Belgrano, Núñez, Puerto Madero y más), sin ranking pago ni comisión. Análisis independiente 2026.",
   };
 }
 
