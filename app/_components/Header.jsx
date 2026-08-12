@@ -15,7 +15,7 @@ const NAV_END = [
   { label: "DESARROLLADORAS", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
   { label: "INMOBILIARIAS", href: "/mejores-inmobiliarias-caba/" },
   { label: "HERRAMIENTAS", href: "/#herramientas" },
-  { label: "REELS", href: "/reels/" },
+  { label: "VIDEOS", href: "/videos-de-emprendimientos-en-pozo/" },
   { label: "GUÍAS", href: "/novedades/" },
   { label: "NOSOTROS", href: "/sobre-nosotros/" },
 ];
