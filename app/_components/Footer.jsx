@@ -35,7 +35,7 @@ export default function Footer() {
           <FootCol title="Herramientas" links={[
             ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],
             ["Alertas de lanzamientos", "/alertas-de-lanzamientos-en-pozo/"],
-            ["Reels de emprendimientos", "/reels/"],
+            ["Videos de emprendimientos", "/videos-de-emprendimientos-en-pozo/"],
           ]} />
 
           {/* Las 9 páginas de barrio, todas. Patrón Zonaprop: el bloque de links de barrio
