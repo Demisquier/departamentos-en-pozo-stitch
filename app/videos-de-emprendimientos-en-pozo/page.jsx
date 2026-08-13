@@ -39,14 +39,6 @@ export default function VideosPage() {
       name: "Videos de emprendimientos en pozo en CABA",
       description: "Videos de desarrollos en pozo en CABA, filtrables por barrio: avances de obra, recorridos y renders.",
       url: `${SITE}${URL_PATH}`,
-      hasPart: REELS.map((r) => ({
-        "@type": "VideoObject",
-        name: r.title,
-        embedUrl: r.platform === "youtube" ? `https://www.youtube.com/embed/${r.videoId}` : r.url,
-        contentUrl: r.url,
-        thumbnailUrl: r.platform === "youtube" ? `https://i.ytimg.com/vi/${r.videoId}/hqdefault.jpg` : undefined,
-        ...(r.proyecto ? { about: r.proyecto } : {}),
-      })),
     },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
   ];
