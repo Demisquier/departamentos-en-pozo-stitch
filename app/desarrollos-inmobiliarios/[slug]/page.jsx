@@ -210,7 +210,7 @@ export default async function FichaProyecto({ params }) {
 
   // --- JSON-LD (Product/Offer) ---
   const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
-  const schema = { '@context': 'https://schema.org', '@type': 'Product', name: nombre };
+  const schema = { '@context': 'https://schema.org', '@type': precioDesdeNum ? 'Product' : 'Apartment', name: nombre };
   if (descLimpia) schema.description = descLimpia.slice(0, 300);
   if (imagen) schema.image = imagen;
   {
