@@ -15,16 +15,14 @@ import { supabase, authEnabled } from "../../lib/supabase";
 import { track } from "../../lib/track";
 
 const PASOS = [
-  { key: "objetivo", p: "¿Es para vivir o para invertir?", o: [["Para invertir", "Inversión"], ["Para vivir", "Vivienda propia"], ["No lo sé aún", "A definir"]] },
   { key: "zonas", p: "¿En qué zona te gustaría?", o: [["Caballito", "Caballito"], ["Villa Urquiza", "Villa Urquiza"], ["Palermo", "Palermo"], ["Belgrano / Núñez", "Belgrano / Núñez"], ["Me da igual", "Abierto a sugerencias"]] },
   { key: "ambientes", p: "¿Qué tamaño buscás?", o: [["Monoambiente", "Monoambiente"], ["2 amb", "2 ambientes"], ["3 amb", "3 ambientes"], ["Más grande", "3+ ambientes"]] },
   { key: "presupuesto", p: "¿Presupuesto aproximado? (USD)", o: [["Hasta 120k", "≤ USD 120k"], ["120–180k", "USD 120k–180k"], ["180–250k", "USD 180k–250k"], ["+250k", "USD 250k+"], ["Lo charlamos", "A conversar"]] },
 ];
-const ENGAGE = PASOS[0];                 // pregunta de enganche (bajo compromiso)
-const ENRICH = PASOS.slice(1);           // enriquecimiento opcional
+const ENRICH = PASOS;                    // enriquecimiento opcional (después de captar el mail)
 // El buscador arma un perfil un poco más completo (no solo lo que mapea a filtros) para ayudar mejor.
 const BUSCADOR = PASOS;
-const ETIQUETAS = { objetivo: "Objetivo", zonas: "Zonas", ambientes: "Tipología", presupuesto: "Presupuesto" };
+const ETIQUETAS = { zonas: "Zonas", ambientes: "Tipología", presupuesto: "Presupuesto" };
 
 const ZONA_BARRIO = { "Caballito": "Caballito", "Villa Urquiza": "Villa Urquiza", "Palermo": "Palermo", "Belgrano / Núñez": "Belgrano" };
 const AMB_FILTRO = { "Monoambiente": "1", "2 ambientes": "2", "3 ambientes": "3", "3+ ambientes": "4+" };
@@ -142,14 +140,16 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     (async () => {
       if (n) {
         setModo("lead"); setProyecto(n);
-        if (first) await say(`¡Hola de nuevo, ${first}! Te doy una mano con ${n}.`, 400);
-        else await say(`Hola, soy Sofía y te doy una mano con ${n}.`, 400);
-        // Enganche de bajo compromiso (si no lo sabemos aún).
-        if (!known.objetivo) {
-          setEtapa("engage"); setQueue([ENGAGE]); setIdx(0); setFase("chat");
-          await say(ENGAGE.p, 650);
+        const saludo = first ? `¡Hola de nuevo, ${first}!` : "Hola, soy Sofía.";
+        if (known.email) {
+          // Ya lo conocemos: disparamos el lead directo y pasamos a los datos opcionales.
+          await say(`${saludo} Le aviso a la desarrolladora de ${n} que seguís interesado así te contactan.`, 400);
+          await mandarLead({ ...perfilRef.current, email: known.email }, "parcial");
+          startEnrich();
         } else {
-          await pedirEmail();
+          // Un solo mensaje: saludo + valor + pedido de mail. Cero fricción previa.
+          setFase("email");
+          await say(`${saludo} Te paso precios, disponibilidad y formas de pago de ${n} directo de la desarrolladora. ¿A qué mail te los envío?`, 400);
         }
       } else {
         setModo("buscador");
@@ -269,7 +269,6 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
 
   async function finQueue(data) {
     persistPerfil(data);
-    if (etapa === "engage") { await pedirEmail(); return; }
     if (etapa === "buscar") {
       setBuscarUrl(urlBuscador(data));
       await say("¡Listo! Acá tenés los proyectos con lo que me dijiste.", 700);
