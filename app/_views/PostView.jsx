@@ -141,6 +141,15 @@ export default async function PostView({ node, slug, content, img, title, rmSche
             dangerouslySetInnerHTML={{ __html: postHtml }}
           />
 
+          {/* Disclaimer legal estándar — cobertura 100% de las guías (YMYL / independencia). */}
+          <p className="mt-8 max-w-[68ch] text-[12.5px] leading-relaxed text-on-surface-variant border-t border-outline-variant pt-5">
+            <strong className="text-primary">Aviso.</strong> Contenido con fines informativos y educativos. No constituye
+            asesoramiento financiero, legal ni impositivo, ni una oferta o recomendación de inversión. Los precios, cifras,
+            impuestos y normas citados son de referencia y pueden cambiar. Verificá cada dato y tu situación particular con
+            profesionales matriculados y fuentes oficiales antes de decidir. Los listados de terceros (desarrolladoras,
+            escribanías, contadores) son informativos y no implican aval ni recomendación.
+          </p>
+
           {/* Autoría (E-E-A-T): quién está detrás del análisis. Refuerza experiencia y
               confianza, y linkea a las credenciales verificables del equipo. */}
           <aside className="mt-12 max-w-[68ch] flex gap-5 items-start border border-outline-variant rounded-lg bg-surface-container-low p-6">
