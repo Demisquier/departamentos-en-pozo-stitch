@@ -100,6 +100,11 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     if (leadRef.current.sent && leadRef.current.snap === snap) return; // nada nuevo
     const subj = tipo === "alerta" ? "Nueva alerta de búsqueda (asesor)" : (leadRef.current.sent ? "Perfil de comprador (actualizado)" : "Nuevo perfil de comprador (asesor)");
     const payload = { _subject: subj, _template: "table", _captcha: "false", _cc: "contacto@departamentosenpozo.com.ar", Email: email || "—", WhatsApp: whatsapp || "—" };
+    // Speed-to-lead: confirmación automática AL INTERESADO (solo la 1ª vez, para no repetir).
+    if (email && !leadRef.current.sent) {
+      payload._replyto = email;
+      payload._autoresponse = `¡Hola! Gracias por tu interés${proyecto ? ` en ${proyecto}` : ""}. Recibimos tus datos y te vamos a contactar a la brevedad con precios actualizados, disponibilidad y formas de pago. Si querés, respondé este mail con tus dudas. — Equipo Departamentos en Pozo`;
+    }
     PASOS.forEach((p) => { payload[ETIQUETAS[p.key]] = data[p.key] || "—"; });
     const guardados = leerFavoritos();
     payload["Proyectos guardados"] = guardados.length ? guardados.join(", ") : "ninguno aún";
