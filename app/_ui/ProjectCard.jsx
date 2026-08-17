@@ -34,7 +34,11 @@ export default function ProjectCard({
         {img ? (
           <img src={img} alt={`${nombre} — ${barrio}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center"><span className="material-symbols-outlined text-outline-variant text-4xl">image</span></div>
+          <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
+            <span className="material-symbols-outlined text-3xl opacity-80">apartment</span>
+            <span className="font-label-caps text-[10px] tracking-widest opacity-80">{barrio || "En pozo"}</span>
+            <span className="text-[10px] opacity-60">Render en preparación</span>
+          </div>
         )}
         <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(etapa || "EN POZO").toUpperCase()}</span>
         <GuardarBtn card={card} />
