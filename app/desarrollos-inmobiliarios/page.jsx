@@ -50,12 +50,12 @@ export default async function CatalogoPage() {
     <Container as="main" className="py-10 md:py-14">
       <JsonLd data={schema} />
 
-      <div className="mb-8">
-        <h1 className="font-headline-md text-headline-md md:text-display-lg serif text-primary max-w-3xl leading-tight">
+      <div className="mb-5 md:mb-8">
+        <h1 className="font-headline-sm text-headline-sm md:font-display-lg md:text-display-lg serif text-primary max-w-3xl leading-tight">
           Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
         </h1>
-        <p className="mt-4 text-on-surface-variant font-body-lg text-body-lg max-w-3xl">
-          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en la Ciudad de Buenos Aires: precio, desarrolladora, obra y entrega, proyecto por proyecto.
+        <p className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl">
+          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en CABA: precio, desarrolladora, obra y entrega, proyecto por proyecto.
         </p>
       </div>
 
