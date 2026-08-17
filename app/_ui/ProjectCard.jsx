@@ -21,6 +21,7 @@ export default function ProjectCard({
   ambientes,
   entrega,
   desarrolladora,
+  destacado,     // slot destacado (monetizable) → badge + prioridad de orden
 }) {
   const m2 = precioM2 ?? precio;  // compat con llamadas viejas
   // Dato denormalizado que guarda el botón favorito (lo consume /mi-seleccion sin releer catálogo).
@@ -41,6 +42,7 @@ export default function ProjectCard({
           </div>
         )}
         <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(etapa || "EN POZO").toUpperCase()}</span>
+        {destacado && <span className="absolute bottom-3 left-3 bg-link-gold text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest shadow-sm">DESTACADO</span>}
         <GuardarBtn card={card} />
       </div>
       <div className="p-5 flex flex-col flex-1">
