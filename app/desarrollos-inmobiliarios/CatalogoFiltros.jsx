@@ -24,6 +24,10 @@ const PRECIO_TOTAL = {
 };
 const PRECIO_M2_LBL = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
 
+// Proyectos DESTACADOS (monetizable / editorial): van primero en el orden por defecto
+// y llevan el badge "Destacado". Editar esta lista para vender/rotar slots.
+const DESTACADOS = ['arcadia-art-residence-coghlan', 'newbery-place-colegiales', 'vibe-deheza-saavedra'];
+
 // --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
 function MapaListado({ items }) {
   const ref = useRef(null);
@@ -222,7 +226,23 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
       const m = String(s || '').match(/(\d{2})\/(\d{4})/);
       return m ? Number(m[2]) * 100 + Number(m[1]) : 999999;
     };
-    if (orden === 'precio_asc') out = [...out].sort((a, b) => (a.precio ?? Infinity) - (b.precio ?? Infinity));
+    if (orden === 'destacados') {
+      // Orden PRO-CONVERSIÓN: destacados (monetizables) primero, luego las fichas más
+      // completas (más señales = más chance de convertir un lead): foto, precio, financiación…
+      const score = (i) => {
+        let s = 0;
+        if (DESTACADOS.includes(i.slug)) s += 1000;               // slots destacados
+        if (i.imagen) s += 40;                                    // con foto convierte más
+        if (i.precioDesde != null || i.precio != null) s += 30;   // con precio
+        if (i.financiacion) s += 20;                              // financiación = señal de compra
+        if (i.desarrolladora) s += 10;                            // confianza
+        if (i.ambientesNums && i.ambientesNums.length) s += 5;    // tipologías cargadas
+        if (i.entregaAnio) s += 3;
+        return s;
+      };
+      out = [...out].sort((a, b) => score(b) - score(a));
+    }
+    else if (orden === 'precio_asc') out = [...out].sort((a, b) => (a.precio ?? Infinity) - (b.precio ?? Infinity));
     else if (orden === 'precio_desc') out = [...out].sort((a, b) => (b.precio ?? -Infinity) - (a.precio ?? -Infinity));
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
@@ -545,6 +565,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
               ambientes={i.ambientes}
               entrega={i.entrega}
               desarrolladora={i.desarrolladora}
+              destacado={DESTACADOS.includes(i.slug)}
             />
           ))}
         </div>
