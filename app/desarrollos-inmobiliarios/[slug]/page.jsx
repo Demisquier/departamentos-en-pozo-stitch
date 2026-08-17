@@ -14,6 +14,8 @@ import Breadcrumb from '../../_ui/Breadcrumb';
 import AlertaCTA from '../../_ui/AlertaCTA';
 import { mapDesarrollos, similaresDesarrollos } from '../../../lib/catalogo';
 import ProyectosSimilares from './ProyectosSimilares';
+import CTAContextual from './CTAContextual';
+import IntakeLauncher from '../../_ui/IntakeLauncher';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -152,10 +154,13 @@ export default async function FichaProyecto({ params }) {
   const imagen = featuredImage(d);
   const contenido = fixImgs(d.content?.rendered || '');
 
+  // Catálogo mapeado (una sola vez): alimenta similares + panel de confianza dev + contexto de precio.
+  let allMapped = [];
+  try { allMapped = mapDesarrollos(await getDesarrollos()); } catch (e) { allMapped = []; }
+
   // Proyectos similares (carrusel al pie): mismo barrio / precio cercano / etapa.
   let similares = [];
   try {
-    const allMapped = mapDesarrollos(await getDesarrollos());
     similares = similaresDesarrollos(d.slug, allMapped, {
       barrio,
       precioDesde: precioDesdeNum,
@@ -163,6 +168,53 @@ export default async function FichaProyecto({ params }) {
       etapa: /construc/.test(String(estado || '').toLowerCase()) ? 'En construcción' : 'En pozo',
     }, 10);
   } catch (e) { similares = []; }
+
+  // --- Bloque 1: panel de confianza de la desarrolladora (dato propio, honesto) ---
+  // Contamos proyectos de esta dev en NUESTRO catálogo, barrios y rango de entregas.
+  const _norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+  let devStats = null;
+  if (constructora) {
+    const dk = _norm(constructora);
+    if (dk.length > 2) {
+      const suyos = allMapped.filter((m) => {
+        const n = _norm(m.desarrolladora);
+        return n && (n === dk || (n.length > 4 && dk.length > 4 && (n.includes(dk) || dk.includes(n))));
+      });
+      if (suyos.length) {
+        const barriosDev = [...new Set(suyos.map((s) => s.barrio).filter(Boolean))];
+        const anios = suyos.map((s) => s.entregaAnio).filter(Boolean).sort((a, b) => a - b);
+        devStats = {
+          n: suyos.length,
+          barrios: barriosDev,
+          anioMin: anios[0] || null,
+          anioMax: anios[anios.length - 1] || null,
+          verificada: suyos.length >= 3,
+        };
+      }
+    }
+  }
+
+  // --- Bloque 2: contexto de precio vs. el barrio (mediana del catálogo en la zona) ---
+  const _topBarrio = (b) => (String(b || '').startsWith('Palermo') ? 'Palermo' : String(b || ''));
+  let precioCtx = null;
+  if (precioM2Num) {
+    const curTop = _topBarrio(barrio);
+    const pares = allMapped
+      .filter((m) => m.slug !== d.slug && m.precioM2 && _topBarrio(m.barrio) === curTop && curTop)
+      .map((m) => m.precioM2);
+    if (pares.length >= 3) {
+      const sorted = [...pares].sort((a, b) => a - b);
+      const median = sorted[Math.floor(sorted.length / 2)];
+      precioCtx = {
+        median,
+        n: pares.length,
+        diffPct: Math.round(((precioM2Num - median) / median) * 100),
+        min: sorted[0],
+        max: sorted[sorted.length - 1],
+        barrioLabel: curTop,
+      };
+    }
+  }
 
   // Galería: featured + fotos del campo `galeria` (proxied) + imágenes del contenido.
   // `galeria` es un array de URLs (renders/fotos reales del proyecto) en el dato del
@@ -207,6 +259,19 @@ export default async function FichaProyecto({ params }) {
     entrega ? { icon: 'event_available', label: `Entrega ${entrega}` } : null,
     { icon: 'location_on', label: barrio },
   ].filter(Boolean);
+
+  // --- Bloque 3: checklist de due diligence del proyecto ---
+  // Cada punto: ✔ si tenemos el dato / — si falta (→ motivo concreto para pedirlo al asesor).
+  // Los "—" son la mejor palanca de lead: convierten un dato faltante en una consulta.
+  const dueItems = [
+    { k: 'Desarrolladora identificada', ok: !!constructora, pedido: 'saber quién desarrolla y su trayectoria' },
+    { k: 'Precio y forma de pago', ok: !!(precioDesdeNum || precioM2Num), pedido: 'el precio actualizado y la forma de pago' },
+    { k: 'Esquema de cuotas y ajuste', ok: !!((Array.isArray(esquemaPasos) && esquemaPasos.length) || cuotasReal || ajuste), pedido: 'el plan de pago con el ajuste (CAC u otro)' },
+    { k: 'Cronograma y avance de obra', ok: !!(obraPct != null || entrega), pedido: 'el cronograma de obra y la fecha de entrega' },
+    { k: 'Tipologías y superficies', ok: !!((Array.isArray(unidades) && unidades.length) || ambientes), pedido: 'el detalle de tipologías y superficies' },
+    { k: 'Estructura legal (fideicomiso / SA)', ok: !!legal, pedido: 'la estructura legal y el contrato de fideicomiso' },
+  ];
+  const dueOk = dueItems.filter((x) => x.ok).length;
 
   // --- JSON-LD (Product/Offer) ---
   const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
@@ -334,6 +399,79 @@ export default async function FichaProyecto({ params }) {
               </div>
             ) : null}
 
+            {/* BLOQUE 2 — Contexto de precio vs. el barrio (dato propio, honesto).
+                El portal da un número aislado; nosotros el juicio "¿caro o barato?". */}
+            {precioCtx ? (
+              <div className="mb-8 rounded-xl border border-outline-variant p-6">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <h2 className="font-headline-sm text-headline-sm text-primary">Este precio, en contexto</h2>
+                  <span className={`text-[12px] font-label-caps uppercase tracking-wider px-2.5 py-1 rounded-md ${precioCtx.diffPct <= -3 ? 'bg-green-700/10 text-green-800' : precioCtx.diffPct >= 8 ? 'bg-link-gold/15 text-secondary' : 'bg-surface-container text-on-surface-variant'}`}>
+                    {precioCtx.diffPct <= -3 ? `${Math.abs(precioCtx.diffPct)}% bajo promedio` : precioCtx.diffPct >= 3 ? `${precioCtx.diffPct}% sobre promedio` : 'En línea con la zona'}
+                  </span>
+                </div>
+                <p className="text-body-md text-on-surface-variant">
+                  A <strong className="text-primary">USD {precioM2Num.toLocaleString('es-AR')}/m²</strong>, este proyecto está
+                  {precioCtx.diffPct <= -3 ? ' por debajo ' : precioCtx.diffPct >= 3 ? ' por encima ' : ' en línea con '}
+                  de la mediana de <strong className="text-primary">USD {precioCtx.median.toLocaleString('es-AR')}/m²</strong> de {precioCtx.n} proyectos en pozo relevados en {precioCtx.barrioLabel}.
+                </p>
+                {/* Barra: rango del barrio + dónde cae este proyecto */}
+                <div className="mt-4">
+                  <div className="relative h-2 rounded-full bg-surface-container-high">
+                    {(() => {
+                      const lo = Math.min(precioCtx.min, precioM2Num), hi = Math.max(precioCtx.max, precioM2Num);
+                      const pos = hi > lo ? ((precioM2Num - lo) / (hi - lo)) * 100 : 50;
+                      const medPos = hi > lo ? ((precioCtx.median - lo) / (hi - lo)) * 100 : 50;
+                      return (<>
+                        <span className="absolute top-1/2 -translate-y-1/2 w-px h-3 bg-on-surface-variant/50" style={{ left: `${medPos}%` }} />
+                        <span className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-link-gold border-2 border-surface shadow" style={{ left: `${pos}%` }} />
+                      </>);
+                    })()}
+                  </div>
+                  <div className="flex justify-between text-[11px] text-on-surface-variant mt-1.5">
+                    <span>USD {precioCtx.min.toLocaleString('es-AR')}/m²</span>
+                    <span>mediana {precioCtx.barrioLabel}</span>
+                    <span>USD {precioCtx.max.toLocaleString('es-AR')}/m²</span>
+                  </div>
+                </div>
+                <p className="text-[12px] text-on-surface-variant mt-3">
+                  Referencia sobre datos propios del catálogo; el valor final depende de piso, orientación, amenities y avance de obra.
+                </p>
+                <div className="mt-3">
+                  <CTAContextual nombre={nombre} slug={d.slug} pedido={`un análisis de si el precio de ${nombre} es conveniente para ${precioCtx.barrioLabel}`} label="Pedir análisis de precio" icon="query_stats" />
+                </div>
+              </div>
+            ) : null}
+
+            {/* BLOQUE 1 — Panel de confianza de la desarrolladora (la pregunta #1 en pozo). */}
+            {devStats ? (
+              <div className="mb-8 rounded-xl border border-outline-variant p-6">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
+                    <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?
+                  </h2>
+                  <span className={`text-[12px] font-label-caps uppercase tracking-wider px-2.5 py-1 rounded-md ${devStats.verificada ? 'bg-green-700/10 text-green-800' : 'bg-surface-container text-on-surface-variant'}`}>
+                    {devStats.verificada ? 'Trayectoria verificada' : 'Datos limitados'}
+                  </span>
+                </div>
+                <p className="text-body-md text-on-surface-variant">
+                  <strong className="text-primary">{constructora}</strong> tiene <strong className="text-primary">{devStats.n} proyecto{devStats.n === 1 ? '' : 's'}</strong> en pozo relevado{devStats.n === 1 ? '' : 's'} en nuestro catálogo
+                  {devStats.barrios.length ? `, en ${devStats.barrios.slice(0, 4).join(', ')}${devStats.barrios.length > 4 ? ' y más' : ''}` : ''}
+                  {devStats.anioMin ? `. Entregas estimadas entre ${devStats.anioMin} y ${devStats.anioMax}.` : '.'}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-4">
+                  {devHref && (
+                    <Link href={devHref} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-secondary hover:text-primary underline underline-offset-2">
+                      Ver los {devStats.n} proyectos de {constructora} →
+                    </Link>
+                  )}
+                  <CTAContextual nombre={nombre} slug={d.slug} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
+                </div>
+                <p className="text-[12px] text-on-surface-variant mt-3">
+                  Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo.
+                </p>
+              </div>
+            ) : null}
+
             {/* Lo destacado (amenities) */}
             {amenities.length > 0 && (
               <div className="mb-8">
@@ -418,6 +556,41 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
+            {/* BLOQUE 3 — Checklist de due diligence del proyecto. El bloque más anti-portal:
+                mostramos qué verificar antes de comprar en pozo y qué dato tenemos de ESTE proyecto.
+                Los "—" (faltantes) son motivos concretos para pedirle al asesor. */}
+            <div className="mb-8 rounded-xl border border-link-gold/40 bg-link-gold/[0.04] p-6">
+              <div className="flex items-center justify-between gap-3 mb-1">
+                <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
+                  <span className="material-symbols-outlined text-link-gold">fact_check</span> Qué verificar antes de comprar
+                </h2>
+                <span className="text-[12px] text-on-surface-variant">{dueOk}/{dueItems.length} con dato</span>
+              </div>
+              <p className="text-[13px] text-on-surface-variant mb-4">
+                Somos un sitio de análisis independiente: te mostramos lo que hay que chequear en pozo y qué dato tenemos de este proyecto. Lo que falta, lo pedís y te lo conseguimos.
+              </p>
+              <ul className="space-y-2.5">
+                {dueItems.map((it) => (
+                  <li key={it.k} className="flex items-start gap-3 text-[14px]">
+                    <span className={`material-symbols-outlined text-[20px] mt-0.5 ${it.ok ? 'text-green-700' : 'text-on-surface-variant/50'}`}>
+                      {it.ok ? 'check_circle' : 'radio_button_unchecked'}
+                    </span>
+                    <span className="flex-1">
+                      <span className={it.ok ? 'text-primary' : 'text-on-surface-variant'}>{it.k}</span>
+                      {!it.ok && (
+                        <span className="block sm:inline sm:ml-2 mt-1 sm:mt-0">
+                          <CTAContextual nombre={nombre} slug={d.slug} pedido={it.pedido} label="Pedir este dato" icon="forum" />
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-[12px] text-on-surface-variant mt-4">
+                Ver también nuestras guías de <a href="/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/" className="text-secondary hover:underline">due diligence</a> y <a href="/fideicomiso-al-costo-vs-sociedad-anonima/" className="text-secondary hover:underline">fideicomiso vs. SA</a>.
+              </p>
+            </div>
+
             {/* Plan de pago estructurado (diferenciador). Timeline si hay datos; si no, el texto libre. */}
             <EsquemaPago pasos={esquemaPasos} textoLibre={cuotasReal} />
 
@@ -488,6 +661,9 @@ export default async function FichaProyecto({ params }) {
 
             {/* Captura de leads: alerta para este perfil de proyecto */}
             <AlertaCTA titulo="¿Buscás un proyecto así?" texto={`Activá una alerta y te avisamos cuando aparezca un nuevo lanzamiento en ${barrio} o en el barrio que elijas, antes de que salga a los portales.`} cta="Crear alerta" />
+
+            {/* Intake: si el que mira es la desarrolladora/comercializadora, que cargue o actualice hablando. */}
+            <IntakeLauncher variant="banner" />
           </div>
 
           {/* Sidebar: contacto (modal) + calculadora de inversión + barra móvil (client) */}
