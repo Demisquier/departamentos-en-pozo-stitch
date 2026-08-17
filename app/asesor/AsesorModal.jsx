@@ -6,7 +6,7 @@
 import { useEffect, useState } from "react";
 import AsesorChat from "./AsesorChat";
 
-export default function AsesorModal({ nombre = "", slug = "", onClose }) {
+export default function AsesorModal({ nombre = "", slug = "", pedido = "", onClose }) {
   const [vp, setVp] = useState(null); // { top, height } en mobile, o null en desktop
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function AsesorModal({ nombre = "", slug = "", onClose }) {
         style={vp ? { top: vp.top + "px", height: vp.height + "px" } : undefined}
         onClick={(e) => e.stopPropagation()}
       >
-        <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} onClose={onClose} />
+        <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
       </div>
     </div>
   );
