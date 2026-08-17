@@ -29,7 +29,7 @@ export default function ProjectCard({
   return (
     <Link
       href={`/desarrollos-inmobiliarios/${slug}/`}
-      className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+      className={`group relative flex flex-col bg-surface rounded-xl overflow-hidden transition-all duration-300 ${destacado ? 'border-2 border-link-gold ring-1 ring-link-gold/40 shadow-lg hover:shadow-xl' : 'border border-outline-variant hover:shadow-lg'}`}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
         {img ? (
@@ -42,7 +42,7 @@ export default function ProjectCard({
           </div>
         )}
         <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(etapa || "EN POZO").toUpperCase()}</span>
-        {destacado && <span className="absolute bottom-3 left-3 bg-link-gold text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest shadow-sm">DESTACADO</span>}
+        {destacado && <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 bg-link-gold text-white px-3 py-1.5 rounded-md font-label-caps text-[11px] tracking-widest shadow-md">★ DESTACADO</span>}
         <GuardarBtn card={card} />
       </div>
       <div className="p-5 flex flex-col flex-1">
