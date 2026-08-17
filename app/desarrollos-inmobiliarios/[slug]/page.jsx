@@ -273,6 +273,24 @@ export default async function FichaProyecto({ params }) {
   ];
   const dueOk = dueItems.filter((x) => x.ok).length;
 
+  // --- Bloque 7 (P1): Veredicto del analista — síntesis honesta, semi-plantillada por reglas ---
+  const _financiacionReal = !!((Array.isArray(esquemaPasos) && esquemaPasos.length) || cuotasReal || ajuste);
+  const veredicto = (() => {
+    const para = [], fuerte = [], verificar = [];
+    if (precioCtx && precioCtx.diffPct <= -3) para.push('el que busca precio por debajo del promedio de la zona');
+    if (devStats && devStats.verificada) para.push('quien prioriza una desarrolladora con trayectoria comprobable');
+    if (_financiacionReal) para.push('quien necesita pagar en cuotas durante la obra');
+    if (!para.length) para.push('inversores que hacen su propia due diligence antes de decidir');
+    if (precioCtx && precioCtx.diffPct <= -3) fuerte.push(`entra ${Math.abs(precioCtx.diffPct)}% por debajo de la mediana de ${precioCtx.barrioLabel}`);
+    else if (devStats && devStats.verificada) fuerte.push(`la desarrolladora tiene ${devStats.n} proyectos relevados en nuestro catálogo`);
+    else if (precioM2Num) fuerte.push('publica precio de referencia, algo que muchos proyectos en pozo no muestran');
+    const falt = dueItems.filter((x) => !x.ok).map((x) => x.k.toLowerCase());
+    if (precioCtx && precioCtx.diffPct >= 8) verificar.push('el precio está por encima del promedio de la zona: pedí qué lo justifica (calidad, amenities, ubicación)');
+    else if (falt.length) verificar.push(`todavía faltan datos clave: ${falt.slice(0, 3).join(', ')}`);
+    else verificar.push('confirmá el fideicomiso, el índice de ajuste de las cuotas y el plazo de entrega antes de firmar');
+    return { para, fuerte, verificar };
+  })();
+
   // --- JSON-LD (Product/Offer) ---
   const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
   const schema = { '@context': 'https://schema.org', '@type': precioDesdeNum ? 'Product' : 'Apartment', name: nombre };
@@ -651,6 +669,25 @@ export default async function FichaProyecto({ params }) {
                 <Calculadora precioNum={precioM2Num} comparableNum={comparableNum} />
               </div>
             ) : null}
+
+            {/* BLOQUE 7 — Veredicto del analista (síntesis honesta, E-E-A-T). Cierra la narrativa
+                de independencia: para quién es, su punto fuerte y su punto a verificar. */}
+            <div className="mb-8 rounded-xl border-l-4 border-link-gold bg-surface-container-low p-6">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-3 flex items-center gap-2">
+                <span className="material-symbols-outlined text-link-gold">rate_review</span> Veredicto del analista
+              </h2>
+              <p className="text-body-md text-on-surface-variant leading-relaxed">
+                <strong className="text-primary">Para quién:</strong> {veredicto.para[0]}{veredicto.para[1] ? ` y ${veredicto.para[1]}` : ''}.{' '}
+                {veredicto.fuerte.length ? <><strong className="text-primary">A favor:</strong> {veredicto.fuerte[0]}. </> : null}
+                <strong className="text-primary">A verificar:</strong> {veredicto.verificar[0]}.
+              </p>
+              <p className="text-[12px] text-on-surface-variant mt-3">
+                Síntesis editorial independiente sobre datos propios; no es asesoramiento financiero. — Equipo Departamentos en Pozo
+              </p>
+              <div className="mt-3">
+                <CTAContextual nombre={nombre} slug={d.slug} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
+              </div>
+            </div>
 
             {/* Disclaimer independencia (E-E-A-T / YMYL) */}
             <p className="text-[12px] text-on-surface-variant leading-relaxed border-t border-outline-variant pt-4 mt-6">
