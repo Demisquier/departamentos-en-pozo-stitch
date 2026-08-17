@@ -13,7 +13,7 @@ import LogoAvatar from "../_ui/LogoAvatar";
 function Card({ d }) {
   const barrios = (d.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);
   return (
-    <li className={`rounded-xl p-4 bg-surface border ${d.destacada ? "border-link-gold/40" : "border-outline-variant"} flex flex-col`}>
+    <li className={`rounded-xl p-4 flex flex-col ${d.destacada ? "border-2 border-link-gold ring-1 ring-link-gold/40 shadow-md bg-link-gold/5" : "bg-surface border border-outline-variant"}`}>
       <div className="flex items-start gap-3">
         <LogoAvatar web={d.web} iniciales={d.iniciales} />
         <div className="flex-1 min-w-0">
@@ -24,7 +24,7 @@ function Card({ d }) {
                 {d.badge}
               </span>
             ) : d.destacada ? (
-              <span className="shrink-0 text-[10px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2 py-0.5 rounded-full">Destacada</span>
+              <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider bg-link-gold text-white px-2.5 py-1 rounded-md shadow-sm">★ Destacada</span>
             ) : null}
           </div>
           {d.anios ? <p className="text-[13px] font-medium text-on-surface-variant mt-1">{d.anios}</p> : null}
