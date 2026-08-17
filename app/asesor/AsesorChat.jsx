@@ -64,7 +64,7 @@ function resumen(k) {
   return parts.join(" ");
 }
 
-export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onClose = null }) {
+export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", pedido = "", onClose = null }) {
   const [msgs, setMsgs] = useState([]);
   const [typing, setTyping] = useState(true);
   const [modo, setModo] = useState(proyectoNombre ? "lead" : "buscador");
@@ -109,6 +109,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     const guardados = leerFavoritos();
     payload["Proyectos guardados"] = guardados.length ? guardados.join(", ") : "ninguno aún";
     if (proyecto) payload["Proyecto de interés"] = proyecto;
+    if (data.objetivo) payload["Consulta"] = data.objetivo;
     payload["Origen"] = tipo === "alerta" ? "Buscador · alerta" : (proyecto ? "Ficha · quiero más info" : "Asesor · perfil");
     try {
       await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
@@ -145,16 +146,17 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", onC
     (async () => {
       if (n) {
         setModo("lead"); setProyecto(n);
+        if (pedido) perfilRef.current = { ...perfilRef.current, objetivo: pedido };
         const saludo = first ? `¡Hola de nuevo, ${first}!` : "Hola, soy Sofía.";
         if (known.email) {
           // Ya lo conocemos: disparamos el lead directo y pasamos a los datos opcionales.
-          await say(`${saludo} Le aviso a la desarrolladora de ${n} que seguís interesado así te contactan.`, 400);
+          await say(`${saludo} ${pedido ? `Le pido a la desarrolladora de ${n} ${pedido} y te lo mandamos.` : `Le aviso a la desarrolladora de ${n} que seguís interesado así te contactan.`}`, 400);
           await mandarLead({ ...perfilRef.current, email: known.email }, "parcial");
           startEnrich();
         } else {
           // Un solo mensaje: saludo + valor + pedido de mail. Cero fricción previa.
           setFase("email");
-          await say(`${saludo} Te paso precios, disponibilidad y formas de pago de ${n} directo de la desarrolladora. ¿A qué mail te los envío?`, 400);
+          await say(`${saludo} ${pedido ? `Te consigo ${pedido} directo de la desarrolladora de ${n}.` : `Te paso precios, disponibilidad y formas de pago de ${n} directo de la desarrolladora.`} ¿A qué mail te lo envío?`, 400);
         }
       } else {
         setModo("buscador");
