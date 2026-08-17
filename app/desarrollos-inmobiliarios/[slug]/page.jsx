@@ -693,7 +693,7 @@ export default async function FichaProyecto({ params }) {
             <p className="text-[12px] text-on-surface-variant leading-relaxed border-t border-outline-variant pt-4 mt-6">
               Análisis independiente con fines informativos. Los datos son de fuentes públicas y de la comercializadora,
               pueden variar y no constituyen asesoramiento financiero ni oferta comercial. Verificá precios, plazos y
-              condiciones legales antes de invertir.
+              condiciones legales antes de invertir. Las imágenes son de referencia, gentileza de la desarrolladora o de fuentes públicas; los derechos pertenecen a sus autores.
             </p>
 
             {/* Captura de leads: alerta para este perfil de proyecto */}
