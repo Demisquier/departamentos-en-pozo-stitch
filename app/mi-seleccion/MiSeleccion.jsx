@@ -8,7 +8,27 @@ import { useAuth } from "../_auth/AuthProvider";
 import ProjectCard from "../_ui/ProjectCard";
 import GuardarBtn from "../_auth/GuardarBtn";
 import AsesorModal from "../asesor/AsesorModal";
-import { similaresDesarrollos } from "../../lib/catalogo";
+
+// Scoring de "similares" INLINE (client-safe): réplica de lib/catalogo.similaresDesarrollos
+// pero sin importar lib/catalogo → lib/wp (server-only, lee /data con fs) para no romper el bundle.
+function topBarrioL(b) { return String(b || "").startsWith("Palermo") ? "Palermo" : String(b || ""); }
+function similaresLocal(currentSlug, mapped, opts = {}, limit = 10) {
+  const { barrio, precioDesde, precioM2, etapa } = opts;
+  const curTop = topBarrioL(barrio);
+  const scored = (mapped || []).filter((m) => m.slug && m.slug !== currentSlug).map((m) => {
+    let s = 0;
+    if (m.barrio && barrio && m.barrio === barrio) s += 60;
+    else if (topBarrioL(m.barrio) && curTop && topBarrioL(m.barrio) === curTop) s += 45;
+    if (m.etapa && etapa && m.etapa === etapa) s += 15;
+    if (precioDesde && m.precioDesde) { const d = Math.abs(precioDesde - m.precioDesde) / precioDesde; if (d <= 0.5) s += Math.round(25 * (1 - d / 0.5)); }
+    else if (precioM2 && m.precioM2) { const d = Math.abs(precioM2 - m.precioM2) / precioM2; if (d <= 0.5) s += Math.round(20 * (1 - d / 0.5)); }
+    if (m.imagen) s += 8;
+    if (m.precioDesde || m.precioM2) s += 4;
+    return { m, s };
+  });
+  scored.sort((a, b) => b.s - a.s);
+  return scored.slice(0, limit).map((x) => x.m);
+}
 
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
 
@@ -22,7 +42,7 @@ export default function MiSeleccion({ catalogo = [] }) {
     const guardados = new Set(items.map((i) => i.slug));
     const vistos = new Set(); const out = [];
     for (const it of items) {
-      const cands = similaresDesarrollos(it.slug, catalogo, { barrio: it.barrio, precioDesde: it.precioDesde, precioM2: it.precioM2 ?? it.precio, etapa: it.etapa }, 6);
+      const cands = similaresLocal(it.slug, catalogo, { barrio: it.barrio, precioDesde: it.precioDesde, precioM2: it.precioM2 ?? it.precio, etapa: it.etapa }, 6);
       for (const c of cands) { if (guardados.has(c.slug) || vistos.has(c.slug)) continue; vistos.add(c.slug); out.push(c); }
     }
     return out.slice(0, 12);
