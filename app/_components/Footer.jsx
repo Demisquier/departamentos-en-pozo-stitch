@@ -48,6 +48,7 @@ export default function Footer() {
             [CONTACT_EMAIL, `mailto:${CONTACT_EMAIL}`],
             ["Guías y novedades", "/novedades/"],
             ["Nosotros", "/sobre-nosotros/"],
+            ["Créditos y fuentes", "/creditos-y-fuentes/"],
           ]} />
         </div>
 
