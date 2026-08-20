@@ -120,7 +120,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
           body: JSON.stringify({
             origen: payload["Origen"], tipo,
             nombre: data.nombre || "", email, whatsapp,
-            proyecto: proyecto || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
+            proyecto: proyecto || "", proyectoSlug: proyectoSlug || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
             presupuesto: data.presupuesto || "", mensaje: data.objetivo || "",
           }),
         });
