@@ -2,16 +2,31 @@
 // app/mi-seleccion/MiSeleccion.jsx — Tu landing privada: tu PERFIL (armado con el asesor,
 // guardado en localStorage) + las fichas que guardaste (favoritos, vía el provider).
 // Todo sin login, en el navegador.
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../_auth/AuthProvider";
 import ProjectCard from "../_ui/ProjectCard";
+import GuardarBtn from "../_auth/GuardarBtn";
+import AsesorModal from "../asesor/AsesorModal";
+import { similaresDesarrollos } from "../../lib/catalogo";
 
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
 
-export default function MiSeleccion() {
+export default function MiSeleccion({ catalogo = [] }) {
   const { items, ready, enabled, authReady, user, login, logout } = useAuth();
   const [perfil, setPerfil] = useState(undefined); // undefined = cargando
+
+  // Similares a lo guardado: unimos los top de cada favorito, sacamos los ya guardados y dedupeamos.
+  const similares = useMemo(() => {
+    if (!ready || !items.length || !catalogo.length) return [];
+    const guardados = new Set(items.map((i) => i.slug));
+    const vistos = new Set(); const out = [];
+    for (const it of items) {
+      const cands = similaresDesarrollos(it.slug, catalogo, { barrio: it.barrio, precioDesde: it.precioDesde, precioM2: it.precioM2 ?? it.precio, etapa: it.etapa }, 6);
+      for (const c of cands) { if (guardados.has(c.slug) || vistos.has(c.slug)) continue; vistos.add(c.slug); out.push(c); }
+    }
+    return out.slice(0, 12);
+  }, [ready, items, catalogo]);
 
   useEffect(() => {
     try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); }
@@ -45,6 +60,67 @@ export default function MiSeleccion() {
             {items.map((it) => (<ProjectCard key={it.slug} {...it} />))}
           </div>
         )}
+      </div>
+
+      {items.length > 0 && similares.length > 0 && (<SimilaresCarousel similares={similares} />)}
+    </div>
+  );
+}
+
+// Carrusel de proyectos similares a los guardados: scroll horizontal con snap.
+// Cada card deja guardarlo (corazón → suma a la selección) y consultarlo (abre a Sofía con el proyecto cargado).
+function SimilaresCarousel({ similares }) {
+  const [consulta, setConsulta] = useState(null); // { nombre, slug }
+  return (
+    <div>
+      <div className="flex items-baseline justify-between gap-4 mb-1">
+        <h2 className="font-headline-sm text-headline-sm text-primary">Similares a lo que guardaste</h2>
+      </div>
+      <p className="text-on-surface-variant text-[14px] mb-4">Basado en zona, etapa de obra y rango de precio de tu selección.</p>
+
+      <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
+        {similares.map((m) => (<SimilarCard key={m.slug} m={m} onConsultar={() => setConsulta({ nombre: m.nombre, slug: m.slug })} />))}
+      </div>
+
+      {consulta && (<AsesorModal nombre={consulta.nombre} slug={consulta.slug} onClose={() => setConsulta(null)} />)}
+    </div>
+  );
+}
+
+function SimilarCard({ m, onConsultar }) {
+  const card = { slug: m.slug, nombre: m.nombre, barrio: m.barrio, direccion: m.direccion, precio: m.precio, precioDesde: m.precioDesde, precioM2: m.precioM2, img: m.imagen, etapa: m.etapa, ambientes: m.ambientes, entrega: m.entrega, desarrolladora: m.desarrolladora };
+  const precioLabel = m.precioDesde ? `Desde USD ${m.precioDesde.toLocaleString("es-AR")}` : (m.precioM2 ? `USD ${m.precioM2.toLocaleString("es-AR")} /m²` : "Consultar");
+  return (
+    <div className="snap-start shrink-0 w-64 flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
+      <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
+        <Link href={`/desarrollos-inmobiliarios/${m.slug}/`} className="block w-full h-full">
+          {m.imagen ? (
+            <img src={m.imagen} alt={`${m.nombre} — ${m.barrio}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
+              <span className="material-symbols-outlined text-3xl opacity-80">apartment</span>
+              <span className="font-label-caps text-[10px] tracking-widest opacity-80">{m.barrio || "En pozo"}</span>
+            </div>
+          )}
+        </Link>
+        <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(m.etapa || "EN POZO").toUpperCase()}</span>
+        <GuardarBtn card={card} />
+      </div>
+      <div className="p-4 flex flex-col flex-1">
+        <Link href={`/desarrollos-inmobiliarios/${m.slug}/`} className="block">
+          <h3 className="serif text-[17px] text-primary leading-tight hover:text-secondary transition-colors">{m.nombre}</h3>
+        </Link>
+        <p className="text-on-surface-variant text-[12.5px] flex items-center gap-1 mt-1">
+          <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{m.barrio || m.direccion}
+        </p>
+        <p className="text-primary font-headline-sm text-[15px] mt-2">{precioLabel}</p>
+        <button
+          type="button"
+          onClick={onConsultar}
+          className="mt-3 inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all"
+        >
+          <span className="material-symbols-outlined text-[16px]">forum</span> Consultar
+        </button>
       </div>
     </div>
   );
