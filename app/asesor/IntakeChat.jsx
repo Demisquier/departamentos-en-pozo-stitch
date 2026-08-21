@@ -21,7 +21,7 @@ const PASOS = [
   { key: "email", type: "text", p: "Por último, ¿a qué mail corporativo te aviso cuando esté publicado? (lo usamos para verificar que sos de la empresa)", ph: "marketing@tudesarrolladora.com" },
 ];
 
-const WEBHOOK = "https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec";
+const WEBHOOK = "https://script.google.com/macros/s/AKfycbzjjoTnBbN-qDEnxQcMj4MEjWkMPa4iNB69abIiN_LVhXyS7b_hZSoHr0oz2uqAqJZ5_A/exec";
 const extraerMail = (s) => (String(s || "").match(/[^\s@]+@[^\s@]+\.[^\s@]+/) || [""])[0];
 
 export default function IntakeChat({ onClose = null }) {
