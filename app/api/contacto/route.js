@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const SHEET_WEBHOOK =
-  "https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec";
+  "https://script.google.com/macros/s/AKfycbzjjoTnBbN-qDEnxQcMj4MEjWkMPa4iNB69abIiN_LVhXyS7b_hZSoHr0oz2uqAqJZ5_A/exec";
 const MAIL_URL = "https://formsubmit.co/ajax/dema2910@gmail.com";
 
 export async function POST(req) {
