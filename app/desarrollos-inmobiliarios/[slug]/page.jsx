@@ -285,8 +285,7 @@ export default async function FichaProyecto({ params }) {
     else if (devStats && devStats.verificada) fuerte.push(`la desarrolladora tiene ${devStats.n} proyectos relevados en nuestro catálogo`);
     else if (precioM2Num) fuerte.push('publica precio de referencia, algo que muchos proyectos en pozo no muestran');
     const falt = dueItems.filter((x) => !x.ok).map((x) => x.k.toLowerCase());
-    if (precioCtx && precioCtx.diffPct >= 8) verificar.push('el precio está por encima del promedio de la zona: pedí qué lo justifica (calidad, amenities, ubicación)');
-    else if (falt.length) verificar.push(`todavía faltan datos clave: ${falt.slice(0, 3).join(', ')}`);
+    if (falt.length) verificar.push(`todavía faltan datos por confirmar: ${falt.slice(0, 3).join(', ')}`);
     else verificar.push('confirmá el fideicomiso, el índice de ajuste de las cuotas y el plazo de entrega antes de firmar');
     return { para, fuerte, verificar };
   })();
@@ -418,19 +417,19 @@ export default async function FichaProyecto({ params }) {
             ) : null}
 
             {/* BLOQUE 2 — Contexto de precio vs. el barrio (dato propio, honesto).
-                El portal da un número aislado; nosotros el juicio "¿caro o barato?". */}
+                El portal da un número aislado; nosotros lo ubicamos en el rango de la zona (sin hablar mal del proyecto). */}
             {precioCtx ? (
               <div className="mb-8 rounded-xl border border-outline-variant p-6">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h2 className="font-headline-sm text-headline-sm text-primary">Este precio, en contexto</h2>
                   <span className={`text-[12px] font-label-caps uppercase tracking-wider px-2.5 py-1 rounded-md ${precioCtx.diffPct <= -3 ? 'bg-green-700/10 text-green-800' : precioCtx.diffPct >= 8 ? 'bg-link-gold/15 text-secondary' : 'bg-surface-container text-on-surface-variant'}`}>
-                    {precioCtx.diffPct <= -3 ? `${Math.abs(precioCtx.diffPct)}% bajo promedio` : precioCtx.diffPct >= 3 ? `${precioCtx.diffPct}% sobre promedio` : 'En línea con la zona'}
+                    {precioCtx.diffPct <= -3 ? `${Math.abs(precioCtx.diffPct)}% bajo promedio` : precioCtx.diffPct >= 3 ? 'Segmento premium de la zona' : 'En línea con la zona'}
                   </span>
                 </div>
                 <p className="text-body-md text-on-surface-variant">
-                  A <strong className="text-primary">USD {precioM2Num.toLocaleString('es-AR')}/m²</strong>, este proyecto está
-                  {precioCtx.diffPct <= -3 ? ' por debajo ' : precioCtx.diffPct >= 3 ? ' por encima ' : ' en línea con '}
-                  de la mediana de <strong className="text-primary">USD {precioCtx.median.toLocaleString('es-AR')}/m²</strong> de {precioCtx.n} proyectos en pozo relevados en {precioCtx.barrioLabel}.
+                  A <strong className="text-primary">USD {precioM2Num.toLocaleString('es-AR')}/m²</strong>, este proyecto se ubica
+                  {precioCtx.diffPct <= -3 ? ' por debajo de ' : precioCtx.diffPct >= 3 ? ' en el segmento premium de la zona, por sobre ' : ' en línea con '}
+                  la mediana de <strong className="text-primary">USD {precioCtx.median.toLocaleString('es-AR')}/m²</strong> de {precioCtx.n} proyectos en pozo relevados en {precioCtx.barrioLabel}.
                 </p>
                 {/* Barra: rango del barrio + dónde cae este proyecto */}
                 <div className="mt-4">
