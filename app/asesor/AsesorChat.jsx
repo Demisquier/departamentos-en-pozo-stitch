@@ -115,7 +115,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
       await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
       // Además del mail: registramos el lead en la planilla (Google Sheet vía Apps Script).
       try {
-        fetch("https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbzjjoTnBbN-qDEnxQcMj4MEjWkMPa4iNB69abIiN_LVhXyS7b_hZSoHr0oz2uqAqJZ5_A/exec", {
           method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             origen: payload["Origen"], tipo,
