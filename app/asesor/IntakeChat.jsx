@@ -116,7 +116,7 @@ export default function IntakeChat({ onClose = null }) {
     };
     if (email) {
       payload._replyto = email;
-      payload._autoresponse = `¡Gracias por cargar ${d.nombre || "tu proyecto"} en Departamentos en Pozo! Lo estamos revisando (somos un sitio de análisis independiente, chequeamos los datos) y te avisamos a este mail cuando esté publicado. Si querés sumar render o amenities, respondé este mail. — Equipo Departamentos en Pozo`;
+      payload._autoresponse = `¡Gracias por cargar ${d.nombre || "tu proyecto"}! Lo estamos revisando y te avisamos por mail cuando esté publicado. Para sumar render o amenities, respondé este correo. — Equipo Departamentos en Pozo`;
     }
     try {
       await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", {
