@@ -7,11 +7,17 @@ import JsonLd from "../_ui/JsonLd";
 import SectionTitle from "../_ui/SectionTitle";
 import Faq from "../_ui/Faq";
 
-// FAQ extra (long-tail) que se agregan al FAQPage + se muestran abajo.
-const FAQ_EXTRA = [
-  ["¿Cómo elegir una inmobiliaria en CABA?", "Priorizá la matrícula CUCICBA vigente (verificable gratis en el padrón del colegio), la experiencia comprobable en la zona y el tipo de operación que necesitás, y la transparencia de datos. Desconfiá de rankings de 'mejores' sin criterio publicado."],
-  ["¿Qué le conviene preguntar a una inmobiliaria antes de firmar?", "Número de matrícula, si representa al vendedor o al comprador, cómo se calcula y quién paga la comisión, y —si comprás en pozo— quién es la desarrolladora, la estructura del fideicomiso y el avance de obra real."],
-  ["¿Conviene una inmobiliaria de mi barrio o una grande?", "Depende de la operación: una inmobiliaria de zona suele conocer mejor los precios y la oferta del barrio; una de red grande puede tener más cartera. En ambos casos, lo verificable (matrícula y experiencia) pesa más que el tamaño."],
+// FAQ única (visible + FAQPage schema). 8 preguntas citables, respuesta directa en la
+// 1ª oración (formato AEO). Fuente de verdad: el HTML editorial NO repite estas FAQ.
+const FAQ_ALL = [
+  ["¿Cuáles son las mejores inmobiliarias de CABA?", "No hay una respuesta objetiva porque no existe información pública sobre operaciones cerradas ni satisfacción de clientes. Lo verificable es la matrícula CUCICBA vigente, la especialización y la transparencia de datos; por eso este directorio ordena 176 firmas de Capital Federal por criterios comprobables y no por opinión ni pago."],
+  ["¿Cómo sé si una inmobiliaria de CABA es de confianza?", "Verificá su matrícula CUCICBA en el padrón público y gratuito, pedí avisos y operaciones reales en tu zona y exigí por escrito quién paga la comisión y a quién representa. Desconfiá de rankings de 'mejores' sin criterio publicado y de las posiciones pagas."],
+  ["¿Es obligatorio que una inmobiliaria tenga matrícula en CABA?", "Sí: el ejercicio del corretaje inmobiliario en la Ciudad de Buenos Aires está regulado y requiere matrícula de CUCICBA, verificable gratis en el padrón público del colegio."],
+  ["¿Qué diferencia hay entre una inmobiliaria y una desarrolladora?", "La inmobiliaria intermedia la venta; la desarrolladora concibe, financia y construye el emprendimiento. En una compra en pozo, el riesgo de entrega depende de la desarrolladora, no de la inmobiliaria."],
+  ["¿Conviene comprar en pozo por una inmobiliaria o directo a la desarrolladora?", "El precio suele ser el mismo porque la comisión ya está contemplada en el esquema del proyecto; la inmobiliaria te deja comparar varios proyectos, ir directo te da trato con quien construye. En ambos casos revisá la estructura legal antes de firmar."],
+  ["¿Cómo elijo una inmobiliaria para comprar en pozo?", "Priorizá matrícula CUCICBA vigente, especialización comprobable en emprendimientos (no solo usados) y experiencia en tu barrio; que sepa leer el fideicomiso y el avance de obra pesa más que el tamaño de la marca."],
+  ["¿Conviene una inmobiliaria de mi barrio o una red grande?", "Depende de la operación: la de zona conoce mejor precios y oferta local; la de red grande puede tener más cartera. En ambos casos, lo verificable (matrícula y experiencia) pesa más que el tamaño."],
+  ["¿Cobran por aparecer en este listado?", "No. No cobramos por aparecer, no vendemos posiciones y no recibimos comisión por derivar consultas."],
 ];
 
 export const dynamicParams = !process.env.EXPORT;
@@ -22,12 +28,13 @@ const MARKER = "<!--DIRECTORIO-->";
 export async function generateMetadata() {
   const page = await getPageBySlug("mejores-inmobiliarias-caba");
   const m = buildMeta(page, "/mejores-inmobiliarias-caba/", "website");
-  // Meta description propia (antes se derivaba del contenido). Keyword + diferencial (matrícula) + año.
+  // Title + meta description propios (antes se derivaban del contenido). Gancho de CTR:
+  // cubre "mejores inmobiliarias caba", "listado de inmobiliarias en capital federal" y "por barrio".
   return {
     ...m,
-    title: "Mejores inmobiliarias en CABA 2026: listado por barrio",
+    title: "Mejores inmobiliarias en CABA 2026: directorio con matrícula CUCICBA",
     description:
-      "Listado de las mejores inmobiliarias de CABA y Capital Federal con matrícula CUCICBA verificada. Buscá por barrio (Palermo, Belgrano, Núñez, Puerto Madero y más), sin ranking pago ni comisión. Análisis independiente 2026.",
+      "Directorio de inmobiliarias en CABA y Capital Federal con matrícula CUCICBA verificable y especialización en pozo. Buscá por barrio (Palermo, Belgrano, Núñez, Puerto Madero y más), sin ranking pago ni comisión. Análisis independiente 2026.",
   };
 }
 
@@ -47,14 +54,8 @@ export default async function InmobiliariasPage() {
   for (const d of items) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) zonaCount[k] = (zonaCount[k] || 0) + 1;
   const barrios = Object.keys(zonaCount).filter((k) => zonaCount[k] >= 3 && ZONA_INMO_LABEL[k]).sort((a, b) => zonaCount[b] - zonaCount[a]);
 
-  // FAQ = base + extra (long-tail). Se usa tanto para el schema como para el bloque visible.
-  const FAQ_BASE = [
-    ["¿Cuáles son las mejores inmobiliarias de CABA?", "No hay una respuesta objetiva porque no existe información pública sobre operaciones cerradas ni satisfacción de clientes. Lo verificable es la matrícula CUCICBA vigente, la experiencia comprobable y la transparencia de datos."],
-    ["¿Es obligatorio que una inmobiliaria tenga matrícula en CABA?", "El ejercicio del corretaje inmobiliario en la Ciudad de Buenos Aires está regulado y requiere matrícula de CUCICBA, verificable gratis en el padrón público del colegio."],
-    ["¿Qué diferencia hay entre una inmobiliaria y una desarrolladora?", "La inmobiliaria intermedia la venta; la desarrolladora concibe, financia y construye el emprendimiento. En una compra en pozo, el riesgo de entrega depende de la desarrolladora."],
-    ["¿Cobran por aparecer en este listado?", "No. No cobramos por aparecer, no vendemos posiciones y no recibimos comisión por derivar consultas."],
-  ];
-  const faqAll = [...FAQ_BASE, ...FAQ_EXTRA];
+  // FAQ = fuente única (visible + schema). Ver FAQ_ALL arriba.
+  const faqAll = FAQ_ALL;
 
   // Schema propio: ItemList (con url y zona), FAQPage (base + extra) y BreadcrumbList.
   const extraSchema = [
@@ -108,8 +109,8 @@ export default async function InmobiliariasPage() {
               </section>
             )}
 
-            {/* FAQ extra (long-tail) — mismo contenido que el FAQPage del schema. */}
-            <Faq items={FAQ_EXTRA} title="Cómo elegir tu inmobiliaria" />
+            {/* FAQ visible — misma fuente que el FAQPage del schema (FAQ_ALL). */}
+            <Faq items={FAQ_ALL} title="Preguntas frecuentes" />
 
             <p className="text-[12px] text-on-surface-variant mt-8">Actualizado agosto 2026 · Directorio de análisis independiente. La matrícula de cada inmobiliaria se verifica en el padrón público de CUCICBA.</p>
           </>
