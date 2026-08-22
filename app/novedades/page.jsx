@@ -30,6 +30,8 @@ export default async function NovedadesPage() {
   let posts = [];
   try {
     posts = await getPosts();
+    // Orden novedades: más reciente primero (las notas de actualidad lideran).
+    posts = (Array.isArray(posts) ? posts : []).slice().sort((a, b) => new Date(b?.date || 0) - new Date(a?.date || 0));
   } catch (e) {
     posts = [];
   }
