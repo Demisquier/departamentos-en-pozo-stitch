@@ -10,9 +10,17 @@ import LogoAvatar from "../_ui/LogoAvatar";
 // avatar + badge + subtítulo + chips + bloque etiquetado + footer. Server-rendered (SEO);
 // buscador + chips = enhancement client.
 
+// Padrón público de matriculados de CUCICBA (verificación gratuita de matrícula).
+const CUCICBA_URL = "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados";
+
 function Card({ d }) {
   const zonas = (d.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);
-  const mat = d.matricula && !/no\s*public/i.test(d.matricula) ? `Matrícula ${d.matricula}` : "Matrícula no publicada";
+  // Matrícula con número (verificable) vs "no publicada". Derivado del dato existente.
+  const matNum = d.matricula && !/no\s*public/i.test(d.matricula) ? d.matricula : "";
+  // Chip "Especialista en pozo": derivado por regex sobre inm_espec (sin dato nuevo).
+  const esPozo = /pozo|emprendimiento|fideicomiso|preventa|en\s*construc/i.test(d.espec || "");
+  // Badge redundante: si ya se muestra el número + ✓, no repetir "matrícula verificable".
+  const showBadge = d.badge && !(matNum && /matr[íi]cula\s*verificable/i.test(d.badge));
   return (
     <li className={`rounded-xl p-4 flex flex-col ${d.destacada ? "border-2 border-link-gold ring-1 ring-link-gold/40 shadow-md bg-link-gold/5" : "bg-surface border border-outline-variant"}`}>
       <div className="flex items-start gap-3">
@@ -20,13 +28,28 @@ function Card({ d }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.nombre}</h3>
-            {d.badge ? (
+            {showBadge ? (
               <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{d.badge}</span>
             ) : d.destacada ? (
               <span className="shrink-0 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider bg-link-gold text-white px-2.5 py-1 rounded-md shadow-sm">★ Destacada</span>
             ) : null}
           </div>
-          <p className="text-[13px] font-medium text-on-surface-variant mt-1">{mat}</p>
+          {matNum ? (
+            <p className="text-[13px] font-medium mt-1">
+              <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="inline-flex items-center gap-1 text-secondary hover:underline" title="Verificar en el padrón público de CUCICBA">
+                <span aria-hidden="true">✓</span> Matrícula {matNum}
+              </a>
+            </p>
+          ) : (
+            <p className="text-[13px] font-medium mt-1">
+              <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="text-on-surface-variant hover:text-secondary hover:underline" title="Verificar matrícula en el padrón público de CUCICBA">
+                Matrícula no publicada — verificala en CUCICBA ↗
+              </a>
+            </p>
+          )}
+          {esPozo && (
+            <span className="mt-1.5 inline-flex w-fit items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider bg-secondary/10 text-secondary px-2 py-0.5 rounded-md">Especialista en pozo</span>
+          )}
         </div>
       </div>
 
@@ -35,6 +58,9 @@ function Card({ d }) {
           {zonas.slice(0, 4).map((b) => (
             <span key={b} className="text-[11px] bg-surface-container text-primary rounded-md px-2 py-0.5">{b}</span>
           ))}
+          {zonas.length > 4 && (
+            <span className="text-[11px] text-on-surface-variant rounded-md px-2 py-0.5" title={zonas.join(", ")}>+{zonas.length - 4} barrios</span>
+          )}
         </div>
       )}
 
