@@ -8,7 +8,23 @@ import LogoAvatar from "../_ui/LogoAvatar";
 // compacta con avatar + badge + subtítulo + chips + bloque etiquetado + footer.
 const TIPO_LABEL = { corralon: "Corralón", retail: "Retail / Homecenter", fabricante: "Fabricante" };
 
+// "Compra online": derivado (sin dato nuevo) de tipo + espec. Señal accionable para el usuario.
+const esOnline = (d) => /online/i.test(`${d.tipo || ""} ${d.espec || ""}`);
+
+// Cobertura legible a partir de zonaKey (único campo capturado que hoy no se surfacea).
+function coberturaLabel(zonaKey) {
+  const z = (zonaKey || "").toLowerCase();
+  if (z.includes("nacional")) return "Cobertura nacional";
+  const hasCaba = z.includes("caba"), hasGba = z.includes("gba");
+  if (hasCaba && hasGba) return "CABA + GBA";
+  if (hasCaba) return "CABA";
+  if (hasGba) return "GBA";
+  return null;
+}
+
 function Card({ d }) {
+  const cobertura = coberturaLabel(d.zonaKey);
+  const online = esOnline(d);
   return (
     <li className={`rounded-xl p-4 bg-surface border ${d.destacada ? "border-link-gold/40" : "border-outline-variant"} flex flex-col`}>
       <div className="flex items-start gap-3">
@@ -26,9 +42,11 @@ function Card({ d }) {
         </div>
       </div>
 
-      {d.zona && (
+      {(d.zona || cobertura || online) && (
         <div className="flex flex-wrap gap-1.5 mt-3">
-          <span className="text-[11px] bg-surface-container text-primary rounded-md px-2 py-0.5">{d.zona}</span>
+          {d.zona && <span className="text-[11px] bg-surface-container text-primary rounded-md px-2 py-0.5">{d.zona}</span>}
+          {cobertura && <span className="text-[11px] bg-surface-container text-primary rounded-md px-2 py-0.5">{cobertura}</span>}
+          {online && <span className="text-[11px] bg-primary-container/60 text-primary rounded-md px-2 py-0.5">Compra online</span>}
         </div>
       )}
 
@@ -47,23 +65,33 @@ function Card({ d }) {
   );
 }
 
+// Orden fijo de buckets de cobertura para los chips de zona.
+const ZONA_ORDER = ["CABA", "GBA", "CABA + GBA", "Cobertura nacional"];
+
 export default function DirectorioCorralones({ items = [] }) {
   const [q, setQ] = useState("");
   const [tipo, setTipo] = useState("");
+  const [zona, setZona] = useState("");
 
   const tipos = useMemo(() => {
     const set = new Set(items.map((d) => d.tipoKey).filter(Boolean));
     return ["corralon", "retail", "fabricante"].filter((k) => set.has(k));
   }, [items]);
 
+  const zonas = useMemo(() => {
+    const set = new Set(items.map((d) => coberturaLabel(d.zonaKey)).filter(Boolean));
+    return ZONA_ORDER.filter((z) => set.has(z));
+  }, [items]);
+
   const filtered = useMemo(() => {
     const nq = deaccent(q.trim());
     return items.filter((d) => {
       if (tipo && d.tipoKey !== tipo) return false;
+      if (zona && coberturaLabel(d.zonaKey) !== zona) return false;
       if (!nq) return true;
       return deaccent(`${d.nombre} ${d.tipo} ${d.zona} ${d.espec}`).includes(nq);
     });
-  }, [items, q, tipo]);
+  }, [items, q, tipo, zona]);
 
   return (
     <section id="directorio" className="my-12">
@@ -77,11 +105,22 @@ export default function DirectorioCorralones({ items = [] }) {
           className="w-full border border-outline-variant rounded-lg px-4 py-2.5 text-[15px] bg-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary-container" />
         {tipos.length > 0 && (
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => setTipo("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${tipo === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todos</button>
+            <button type="button" onClick={() => setTipo("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${tipo === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todos los tipos</button>
             {tipos.map((k) => (
               <button key={k} type="button" onClick={() => setTipo(tipo === k ? "" : k)}
                 className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${tipo === k ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
                 {TIPO_LABEL[k]}
+              </button>
+            ))}
+          </div>
+        )}
+        {zonas.length > 1 && (
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={() => setZona("")} className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === "" ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>Todas las zonas</button>
+            {zonas.map((z) => (
+              <button key={z} type="button" onClick={() => setZona(zona === z ? "" : z)}
+                className={`px-3 py-1.5 rounded-full text-[13px] border transition-colors ${zona === z ? "bg-primary-container text-on-primary border-primary-container" : "border-outline-variant text-primary hover:border-secondary"}`}>
+                {z}
               </button>
             ))}
           </div>
