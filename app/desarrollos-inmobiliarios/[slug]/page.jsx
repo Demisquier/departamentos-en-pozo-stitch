@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
-import { toNumber } from '../../../lib/format';
+import { toNumber, expandComercializa } from '../../../lib/format';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
 import GuardarBtn from '../../_auth/GuardarBtn';
@@ -117,7 +117,7 @@ export default async function FichaProyecto({ params }) {
   const entrega = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega']));
   const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes']));
   const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
-  const constructora = acfAny(d, ['desarrolladora', 'constructora']);
+  const constructora = expandComercializa(acfAny(d, ['desarrolladora', 'constructora']));
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
