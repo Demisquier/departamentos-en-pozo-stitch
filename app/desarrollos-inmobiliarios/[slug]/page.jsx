@@ -89,9 +89,17 @@ export async function generateMetadata({ params }) {
   if (!d) return { title: 'Proyecto no encontrado' };
   const nombre = (d.title?.rendered || 'Proyecto').split('—')[0].trim();
   const barrio = (d.title?.rendered || '').split('—')[1]?.trim() || '';
+  const dev = acfAny(d, ['desarrolladora', 'constructora']);
+  const m2 = toNumber(acfAny(d, ['precio_m2']));
+  const entregaMeta = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega']));
+  const partes = [];
+  if (m2) partes.push(`valor de referencia USD ${m2.toLocaleString('es-AR')}/m²`);
+  if (dev) partes.push(`desarrollado por ${dev}`);
+  if (entregaMeta) partes.push(`entrega ${entregaMeta}`);
+  const desc = `${nombre}${barrio ? ` en ${barrio}` : ''}: ${partes.length ? partes.join(', ') + '. ' : ''}Precio, desarrolladora, financiación, avance de obra y análisis independiente vs. la zona.`;
   return {
-    title: `${nombre}${barrio ? ' — ' + barrio : ''} | Departamentos en Pozo`,
-    description: `Ficha del desarrollo ${nombre}${barrio ? ' en ' + barrio : ''}: desarrolladora, precio por m², financiación, avance de obra, amenities y ubicación. Análisis independiente.`,
+    title: `${nombre}${barrio ? ' — ' + barrio : ''}: precio, desarrolladora y entrega | Departamentos en Pozo`,
+    description: desc.slice(0, 320),
     alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/${params.slug}/` },
   };
 }
@@ -290,6 +298,54 @@ export default async function FichaProyecto({ params }) {
     return { para, fuerte, verificar };
   })();
 
+  // --- Bloque 8: Preguntas frecuentes por proyecto (long-tail + AEO). ---
+  // Solo preguntas con dato real; respuestas neutrales (no hablan mal del proyecto).
+  const _ctxFrase = precioCtx
+    ? (precioCtx.diffPct <= -3
+        ? ` Su valor por m² está ${Math.abs(precioCtx.diffPct)}% por debajo de la mediana de USD ${precioCtx.median.toLocaleString('es-AR')}/m² de ${precioCtx.barrioLabel}.`
+        : precioCtx.diffPct >= 3
+          ? ` Se ubica en el segmento premium de ${precioCtx.barrioLabel} (mediana USD ${precioCtx.median.toLocaleString('es-AR')}/m²).`
+          : ` Está en línea con la mediana de USD ${precioCtx.median.toLocaleString('es-AR')}/m² de ${precioCtx.barrioLabel}.`)
+    : '';
+  const faqs = [];
+  faqs.push({
+    q: `¿Cuánto cuesta ${nombre}?`,
+    a: precioDesdeNum
+      ? `El precio publicado de ${nombre} arranca en USD ${precioDesdeNum.toLocaleString('es-AR')}.${refM2Label ? ` El valor de referencia es de ${refM2Label}.` : ''}${_ctxFrase} Los valores varían según piso, orientación y avance de obra; pedí el precio actualizado a la desarrolladora.`
+      : precioM2Num
+        ? `El valor de referencia de ${nombre} es de ${refM2Label}.${_ctxFrase} No hay un precio total de lista publicado; podés pedir el valor actualizado de la unidad a la desarrolladora.`
+        : `${nombre} no publica un precio de lista. Podés pedir el valor actualizado y la forma de pago a la desarrolladora desde el sitio.`,
+  });
+  if (constructora) faqs.push({
+    q: `¿Quién desarrolla ${nombre}?`,
+    a: `${nombre} es desarrollado por ${constructora}.${devStats ? ` En nuestro catálogo relevamos ${devStats.n} proyecto${devStats.n === 1 ? '' : 's'} de esta desarrolladora${devStats.barrios && devStats.barrios.length ? ` en ${devStats.barrios.slice(0, 3).join(', ')}` : ''}.` : ''} Verificar la trayectoria de la desarrolladora (obras anteriores entregadas) es clave al comprar en pozo.`,
+  });
+  if (entrega) faqs.push({
+    q: `¿Cuándo se entrega ${nombre}?`,
+    a: `La entrega estimada de ${nombre} es ${entrega}.${estado ? ` Estado de obra: ${String(estado)}.` : ''} En pozo el plazo puede ajustarse; conviene confirmar el cronograma de obra antes de firmar.`,
+  });
+  faqs.push({
+    q: `¿En qué barrio está ${nombre}?`,
+    a: `${nombre} está ubicado en ${barrio}, CABA${direccion && direccion !== `${barrio}, CABA` ? ` (${direccion})` : ''}.`,
+  });
+  if (ambientes) faqs.push({
+    q: `¿Qué tipologías tiene ${nombre}?`,
+    a: `${nombre} ofrece unidades de ${ambientes}.${amenities.length ? ` Entre sus amenities: ${amenities.slice(0, 5).join(', ')}.` : ''}`,
+  });
+  if (anticipoLabel || cuotasReal || ajuste) faqs.push({
+    q: `¿Cómo se paga ${nombre}? ¿Tiene financiación?`,
+    a: `${nombre} se compra en pozo${anticipoLabel ? ` con un anticipo de ${anticipoLabel}` : ''} y cuotas durante la obra.${ajuste ? ` Las cuotas se ajustan por ${String(ajuste)}.` : ' Confirmá el índice de ajuste (CAC u otro) y el saldo a la posesión antes de firmar.'}`,
+  });
+  faqs.push({
+    q: `¿Conviene invertir en ${nombre}?`,
+    a: `${nombre} es un proyecto en pozo en ${barrio}.${precioCtx && precioCtx.diffPct <= -3 ? ' Su valor por m² está por debajo de la mediana de la zona.' : ''} Como en toda preventa, la conveniencia depende de tu perfil: conviene verificar la trayectoria de la desarrolladora, el índice de ajuste de las cuotas y el plazo de entrega. Podés pedirnos un análisis para tu caso.`,
+  });
+
+  const faqSchema = faqs.length ? {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  } : null;
+
   // --- JSON-LD (Product/Offer) ---
   const descLimpia = stripHtml(d.excerpt?.rendered) || stripHtml(contenido) || null;
   const schema = { '@context': 'https://schema.org', '@type': precioDesdeNum ? 'Product' : 'Apartment', name: nombre };
@@ -329,7 +385,7 @@ export default async function FichaProyecto({ params }) {
 
   return (
     <>
-      <JsonLd data={[schema, breadcrumbSchema]} />
+      <JsonLd data={[schema, breadcrumbSchema, faqSchema].filter(Boolean)} />
 
       <Container as="main" className="py-6 md:py-8 pb-28">
         {/* Breadcrumb */}
@@ -687,6 +743,27 @@ export default async function FichaProyecto({ params }) {
                 <CTAContextual nombre={nombre} slug={d.slug} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
               </div>
             </div>
+
+            {/* BLOQUE 8 — Preguntas frecuentes (contenido visible que matchea el schema FAQPage;
+                captura long-tail "{proyecto} precio/quién desarrolla/cuándo entrega" + AEO). */}
+            {faqs.length ? (
+              <section className="mb-8">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-link-gold">quiz</span> Preguntas frecuentes sobre {nombre}
+                </h2>
+                <div className="border-y border-outline-variant divide-y divide-outline-variant">
+                  {faqs.map((f, i) => (
+                    <details key={i} className="group py-3">
+                      <summary className="cursor-pointer list-none flex items-start justify-between gap-3 font-medium text-primary">
+                        <span>{f.q}</span>
+                        <span className="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+                      </summary>
+                      <p className="text-body-md text-on-surface-variant mt-2 leading-relaxed">{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             {/* Disclaimer independencia (E-E-A-T / YMYL) */}
             <p className="text-[12px] text-on-surface-variant leading-relaxed border-t border-outline-variant pt-4 mt-6">
