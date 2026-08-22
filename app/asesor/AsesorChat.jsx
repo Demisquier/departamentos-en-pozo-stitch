@@ -103,7 +103,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     // Speed-to-lead: confirmación automática AL INTERESADO (solo la 1ª vez, para no repetir).
     if (email && !leadRef.current.sent) {
       payload._replyto = email;
-      payload._autoresponse = `¡Hola! Gracias por tu interés${proyecto ? ` en ${proyecto}` : ""}. Recibimos tus datos y te vamos a contactar a la brevedad con precios actualizados, disponibilidad y formas de pago. Si querés, respondé este mail con tus dudas. — Equipo Departamentos en Pozo`;
+      payload._autoresponse = `¡Hola! Gracias por tu consulta${proyecto ? ` sobre ${proyecto}` : ""}. Ya la recibimos y en breve te escribimos con precio, disponibilidad y formas de pago. Cualquier duda, respondé este mail. — Equipo Departamentos en Pozo`;
     }
     PASOS.forEach((p) => { payload[ETIQUETAS[p.key]] = data[p.key] || "—"; });
     const guardados = leerFavoritos();
