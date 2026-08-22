@@ -28,6 +28,11 @@ function Card({ d }) {
             ) : null}
           </div>
           {d.anios ? <p className="text-[13px] font-medium text-on-surface-variant mt-1">{d.anios}</p> : null}
+          {d.obraActiva ? (
+            <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider bg-surface-container text-secondary px-2 py-0.5 rounded-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span> Obra activa
+            </span>
+          ) : null}
         </div>
       </div>
 
@@ -51,13 +56,14 @@ function Card({ d }) {
 
       <div className="mt-auto pt-3 border-t border-outline-variant flex flex-wrap items-center gap-x-4 gap-y-2">
         <a href={`/desarrolladoras/${d.slug}/`} className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-on-primary px-3.5 py-2 text-[13px] font-semibold hover:bg-primary/90 transition-colors">
-          {d.proyectosSlug && d.proyectosSlug.length > 0
-            ? `Ver ${d.proyectosSlug.length} proyecto${d.proyectosSlug.length === 1 ? "" : "s"} →`
-            : "Ver perfil →"}
+          {(() => {
+            const n = d.proyectosCount ?? (d.proyectosSlug ? d.proyectosSlug.length : 0);
+            return n > 0 ? `Ver ${n} proyecto${n === 1 ? "" : "s"} →` : "Ver perfil →";
+          })()}
         </a>
         {d.web && (
           <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-secondary">
-            Sitio oficial ↗
+            {d.web.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
           </a>
         )}
       </div>
