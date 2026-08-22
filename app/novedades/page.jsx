@@ -59,12 +59,12 @@ export default async function NovedadesPage() {
             real estate premium.
           </p>
           {cats.length > 0 && (
-            <div className="flex flex-wrap gap-2.5 mt-6">
+            <div className="flex md:flex-wrap gap-2.5 mt-6 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {cats.map((c) => (
                 <Link
                   key={c.id}
                   href={`/category/${c.slug}/`}
-                  className="px-3.5 py-1.5 border border-outline-variant rounded-full text-[13px] text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                  className="shrink-0 whitespace-nowrap px-3.5 py-1.5 border border-outline-variant rounded-full text-[13px] text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
                 >
                   {c.name} <span className="opacity-60">({c.count})</span>
                 </Link>
