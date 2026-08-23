@@ -70,6 +70,8 @@ export default function AuthProvider({ children }) {
       const localPerfil = readPerfil();
       if (prow && prow.data) { try { localStorage.setItem(PERFIL_KEY, JSON.stringify(prow.data)); } catch {} }
       else if (localPerfil) { await supabase.from("perfiles").upsert({ user_id: u.id, data: localPerfil }); }
+      // Avisamos a la vista (MiSeleccion) que el perfil pudo cambiar (hidratación nube→local).
+      try { window.dispatchEvent(new Event("dpp-perfil-updated")); } catch {}
     } catch {}
     syncing.current = false;
   }, [persist]);
