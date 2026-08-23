@@ -1,16 +1,18 @@
 "use client";
-// app/mi-seleccion/MiSeleccion.jsx — Tu landing privada: tu PERFIL (armado con el asesor,
-// guardado en localStorage) + las fichas que guardaste (favoritos, vía el provider).
-// Todo sin login, en el navegador.
+// app/mi-seleccion/MiSeleccion.jsx — "Mi Plan": tu espacio de decisión.
+// Dashboard proactivo (resumen + próximo paso) + perfil + guardados +
+// RECOMENDADOS por tu perfil + SIMILARES a lo guardado, todo con "descartar con motivo".
+// Sin login funciona en localStorage; con login, cross-device vía el provider.
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../_auth/AuthProvider";
 import ProjectCard from "../_ui/ProjectCard";
 import GuardarBtn from "../_auth/GuardarBtn";
 import AsesorModal from "../asesor/AsesorModal";
+import { track } from "../../lib/track";
 
 // Scoring de "similares" INLINE (client-safe): réplica de lib/catalogo.similaresDesarrollos
-// pero sin importar lib/catalogo → lib/wp (server-only, lee /data con fs) para no romper el bundle.
+// pero sin importar lib/catalogo → lib/wp (server-only) para no romper el bundle.
 function topBarrioL(b) { return String(b || "").startsWith("Palermo") ? "Palermo" : String(b || ""); }
 function similaresLocal(currentSlug, mapped, opts = {}, limit = 10) {
   const { barrio, precioDesde, precioM2, etapa } = opts;
@@ -30,30 +32,90 @@ function similaresLocal(currentSlug, mapped, opts = {}, limit = 10) {
   return scored.slice(0, limit).map((x) => x.m);
 }
 
+// Techo de presupuesto (USD) a partir del texto del perfil ("USD 180k–250k", "≤ USD 120k", "250k+").
+function parsePresupuestoMax(s) {
+  if (!s) return null;
+  const t = String(s).toLowerCase();
+  const nums = [...t.matchAll(/(\d+)\s*(k|mil)?/g)].map((m) => parseInt(m[1], 10) * (m[2] ? 1000 : 1)).filter((n) => n >= 1000);
+  if (!nums.length) return null;
+  return Math.max(...nums);
+}
+
+// Recomendados a partir del PERFIL (objetivo/zona/presupuesto/tipología), no de lo guardado.
+function recomendadosLocal(perfil, catalogo, excluir, limit = 12) {
+  if (!perfil || !catalogo.length) return [];
+  const zona = perfil.zonas ? String(perfil.zonas) : "";
+  const zonaTop = topBarrioL(zona);
+  const presMax = parsePresupuestoMax(perfil.presupuesto);
+  const amb = perfil.ambientes ? String(perfil.ambientes).toLowerCase().replace(/amb\w*/g, "").trim() : "";
+  const scored = catalogo.filter((m) => m.slug && !excluir.has(m.slug)).map((m) => {
+    let s = 0;
+    if (zona && m.barrio) { if (m.barrio === zona) s += 55; else if (zonaTop && topBarrioL(m.barrio) === zonaTop) s += 40; }
+    if (presMax && m.precioDesde) { if (m.precioDesde <= presMax * 1.1) s += 30; else if (m.precioDesde <= presMax * 1.35) s += 12; }
+    if (amb && m.ambientes && String(m.ambientes).toLowerCase().includes(amb)) s += 12;
+    if (m.imagen) s += 8;
+    if (m.precioDesde || m.precioM2) s += 4;
+    return { m, s };
+  }).filter((x) => x.s > 0);
+  scored.sort((a, b) => b.s - a.s);
+  return scored.slice(0, limit).map((x) => x.m);
+}
+
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
+const DESCARTES_KEY = "dpp_descartes_v1";
 
 export default function MiSeleccion({ catalogo = [] }) {
   const { items, ready, enabled, authReady, user, login, logout } = useAuth();
   const [perfil, setPerfil] = useState(undefined); // undefined = cargando
-
-  // Similares a lo guardado: unimos los top de cada favorito, sacamos los ya guardados y dedupeamos.
-  const similares = useMemo(() => {
-    if (!ready || !items.length || !catalogo.length) return [];
-    const guardados = new Set(items.map((i) => i.slug));
-    const vistos = new Set(); const out = [];
-    for (const it of items) {
-      const cands = similaresLocal(it.slug, catalogo, { barrio: it.barrio, precioDesde: it.precioDesde, precioM2: it.precioM2 ?? it.precio, etapa: it.etapa }, 6);
-      for (const c of cands) { if (guardados.has(c.slug) || vistos.has(c.slug)) continue; vistos.add(c.slug); out.push(c); }
-    }
-    return out.slice(0, 12);
-  }, [ready, items, catalogo]);
+  const [descartes, setDescartes] = useState({}); // { slug: motivo }
+  const [consulta, setConsulta] = useState(null); // { nombre, slug }
 
   useEffect(() => {
     try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); }
     catch { setPerfil(null); }
+    try { const d = localStorage.getItem(DESCARTES_KEY); if (d) setDescartes(JSON.parse(d)); } catch {}
   }, []);
 
-  // Con auth activo, "Mi selección" es privada: sin sesión no se ve la lista.
+  // Evento norte: "usuario activo de Mi Plan" (se cuenta cada visita a la sección).
+  useEffect(() => {
+    if (perfil === undefined) return; // esperamos a saber si hay perfil
+    try { track("mi_plan_view", { guardados: items.length, tiene_perfil: !!perfil }); } catch {}
+    // eslint-c�sable-next-line react-hooks/exhaustive-deps
+  }, [perfil === undefined]);
+
+  function descartar(slug, motivo) {
+    setDescartes((prev) => {
+      const next = { ...prev, [slug]: motivo };
+      try { localStorage.setItem(DESCARTES_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+    try { track("mi_plan_descarte", { slug, motivo }); } catch {}
+  }
+
+  const excluir = useMemo(() => {
+    const set = new Set(Object.keys(descartes));
+    for (const it of items) set.add(it.slug);
+    return set;
+  }, [descartes, items]);
+
+  // Recomendados por perfil (excluye guardados y descartados).
+  const recomendados = useMemo(() => {
+    if (!ready || !perfil || !catalogo.length) return [];
+    return recomendadosLocal(perfil, catalogo, excluir, 12);
+  }, [ready, perfil, catalogo, excluir]);
+
+  // Similares a lo guardado (excluye guardados y descartados).
+  const similares = useMemo(() => {
+    if (!ready || !items.length || !catalogo.length) return [];
+    const vistos = new Set(); const out = [];
+    for (const it of items) {
+      const cands = similaresLocal(it.slug, catalogo, { barrio: it.barrio, precioDesde: it.precioDesde, precioM2: it.precioM2 ?? it.precio, etapa: it.etapa }, 6);
+      for (const c of cands) { if (excluir.has(c.slug) || vistos.has(c.slug)) continue; vistos.add(c.slug); out.push(c); }
+    }
+    return out.slice(0, 12);
+  }, [ready, items, catalogo, excluir]);
+
+  // Con auth activo, "Mi Plan" es privado: sin sesión no se ve.
   if (enabled && !authReady) {
     return <p className="text-on-surface-variant py-10 text-center">Cargando…</p>;
   }
@@ -63,6 +125,7 @@ export default function MiSeleccion({ catalogo = [] }) {
 
   return (
     <div className="flex flex-col gap-8">
+      <PlanResumen perfil={perfil} nGuardados={items.length} onConsultar={() => items[0] && setConsulta({ nombre: items[0].nombre, slug: items[0].slug })} />
       <CuentaBloque enabled={enabled} user={user} login={login} logout={logout} />
       <PerfilBloque perfil={perfil} />
 
@@ -72,7 +135,7 @@ export default function MiSeleccion({ catalogo = [] }) {
           <p className="text-on-surface-variant">Cargando…</p>
         ) : items.length === 0 ? (
           <div className="border border-outline-variant rounded-xl p-8 text-center">
-            <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo acá.</p>
+            <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo a tu plan.</p>
             <Link href="/desarrollos-inmobiliarios/" className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">Explorar proyectos en pozo</Link>
           </div>
         ) : (
@@ -82,32 +145,91 @@ export default function MiSeleccion({ catalogo = [] }) {
         )}
       </div>
 
-      {items.length > 0 && similares.length > 0 && (<SimilaresCarousel similares={similares} />)}
-    </div>
-  );
-}
+      {recomendados.length > 0 && (
+        <FeedCarousel
+          titulo="Recomendados para tu plan"
+          subtitulo="Según tu objetivo, zona y presupuesto. Descartá lo que no va y afinamos."
+          items={recomendados}
+          onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })}
+          onDescartar={descartar}
+        />
+      )}
 
-// Carrusel de proyectos similares a los guardados: scroll horizontal con snap.
-// Cada card deja guardarlo (corazón → suma a la selección) y consultarlo (abre a Sofía con el proyecto cargado).
-function SimilaresCarousel({ similares }) {
-  const [consulta, setConsulta] = useState(null); // { nombre, slug }
-  return (
-    <div>
-      <div className="flex items-baseline justify-between gap-4 mb-1">
-        <h2 className="font-headline-sm text-headline-sm text-primary">Similares a lo que guardaste</h2>
-      </div>
-      <p className="text-on-surface-variant text-[14px] mb-4">Basado en zona, etapa de obra y rango de precio de tu selección.</p>
-
-      <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
-        {similares.map((m) => (<SimilarCard key={m.slug} m={m} onConsultar={() => setConsulta({ nombre: m.nombre, slug: m.slug })} />))}
-      </div>
+      {similares.length > 0 && (
+        <FeedCarousel
+          titulo="Similares a lo que guardaste"
+          subtitulo="Por zona, etapa de obra y rango de precio de tu plan."
+          items={similares}
+          onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })}
+          onDescartar={descartar}
+        />
+      )}
 
       {consulta && (<AsesorModal nombre={consulta.nombre} slug={consulta.slug} onClose={() => setConsulta(null)} />)}
     </div>
   );
 }
 
-function SimilarCard({ m, onConsultar }) {
+// Resumen del plan + PRÓXIMO PASO (dashboard proactivo, muestra solo lo relevante).
+function PlanResumen({ perfil, nGuardados, onConsultar }) {
+  if (perfil === undefined) return null;
+  let paso, cta, href, action, icon;
+  if (!perfil) {
+    icon = "support_agent";
+    paso = "Armá tu perfil en 2 minutos y te recomendamos proyectos a tu medida.";
+    cta = "Armar mi perfil"; href = "/asesor/";
+  } else if (nGuardados === 0) {
+    icon = "explore";
+    paso = "Ya tenés tu perfil. Guardá tu primer proyecto de los recomendados para empezar a comparar.";
+    cta = "Ver proyectos"; href = "/desarrollos-inmobiliarios/";
+  } else {
+    icon = "forum";
+    paso = `Tenés ${nGuardados} ${nGuardados === 1 ? "proyecto" : "proyectos"} en tu plan. Consultá precio y forma de pago sin compromiso.`;
+    cta = "Consultar con un asesor"; action = onConsultar;
+  }
+  return (
+    <div className="rounded-2xl bg-primary-container text-on-primary p-6 md:p-7 md:flex md:items-center md:justify-between gap-6">
+      <div className="flex items-start gap-3">
+        <span className="material-symbols-outlined text-link-gold text-[26px] mt-0.5">{icon}</span>
+        <div>
+          <p className="font-label-caps text-label-caps tracking-widest text-link-gold mb-1">Tu próximo paso</p>
+          <p className="text-on-primary text-[15.5px] leading-snug max-w-xl">{paso}</p>
+        </div>
+      </div>
+      {action ? (
+        <button type="button" onClick={action} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded-full bg-surface text-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+          <span className="material-symbols-outlined text-[18px]">{icon}</span> {cta}
+        </button>
+      ) : (
+        <Link href={href} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded-full bg-surface text-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+          <span className="material-symbols-outlined text-[18px]">{icon}</span> {cta}
+        </Link>
+      )}
+    </div>
+  );
+}
+
+// Carrusel genérico (recomendados / similares) con scroll horizontal + snap.
+function FeedCarousel({ titulo, subtitulo, items, onConsultar, onDescartar }) {
+  return (
+    <div>
+      <div className="flex items-baseline justify-between gap-4 mb-1">
+        <h2 className="font-headline-sm text-headline-sm text-primary">{titulo}</h2>
+      </div>
+      {subtitulo && <p className="text-on-surface-variant text-[14px] mb-4">{subtitulo}</p>}
+      <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
+        {items.map((m) => (
+          <FeedCard key={m.slug} m={m} onConsultar={() => onConsultar(m)} onDescartar={onDescartar} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const MOTIVOS = ["Zona", "Precio", "Etapa/entrega", "Ya la vi", "Otro"];
+
+function FeedCard({ m, onConsultar, onDescartar }) {
+  const [pidiendoMotivo, setPidiendoMotivo] = useState(false);
   const card = { slug: m.slug, nombre: m.nombre, barrio: m.barrio, direccion: m.direccion, precio: m.precio, precioDesde: m.precioDesde, precioM2: m.precioM2, img: m.imagen, etapa: m.etapa, ambientes: m.ambientes, entrega: m.entrega, desarrolladora: m.desarrolladora };
   const precioLabel = m.precioDesde ? `Desde USD ${m.precioDesde.toLocaleString("es-AR")}` : (m.precioM2 ? `USD ${m.precioM2.toLocaleString("es-AR")} /m²` : "Consultar");
   return (
@@ -134,19 +256,36 @@ function SimilarCard({ m, onConsultar }) {
           <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{m.barrio || m.direccion}
         </p>
         <p className="text-primary font-headline-sm text-[15px] mt-2">{precioLabel}</p>
-        <button
-          type="button"
-          onClick={onConsultar}
-          className="mt-3 inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all"
-        >
-          <span className="material-symbols-outlined text-[16px]">forum</span> Consultar
-        </button>
+
+        {pidiendoMotivo ? (
+          <div className="mt-3">
+            <p className="text-[11px] uppercase tracking-wide text-on-surface-variant mb-1.5">¿Por qué no va?</p>
+            <div className="flex flex-wrap gap-1.5">
+              {MOTIVOS.map((mo) => (
+                <button key={mo} type="button" onClick={() => onDescartar(m.slug, mo)} className="text-[12px] px-2.5 py-1 rounded-full border border-outline-variant text-primary hover:border-secondary hover:bg-secondary-container transition-colors">{mo}</button>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <>
+            <button
+              type="button"
+              onClick={onConsultar}
+              className="mt-3 inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all"
+            >
+              <span className="material-symbols-outlined text-[16px]">forum</span> Consultar
+            </button>
+            <button type="button" onClick={() => setPidiendoMotivo(true)} className="mt-2 text-[12px] text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-1 self-start">
+              <span className="material-symbols-outlined text-[14px]">close</span> No me interesa
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-// Pantalla de acceso: sin sesión no se muestra la selección. Entrar = crear/loguear con Google.
+// Pantalla de acceso: sin sesión no se muestra el plan. Entrar = crear/loguear con Google.
 function LoginGate({ login }) {
   return (
     <div className="max-w-lg mx-auto text-center border border-outline-variant rounded-2xl p-8 md:p-10 bg-surface-container-low">
