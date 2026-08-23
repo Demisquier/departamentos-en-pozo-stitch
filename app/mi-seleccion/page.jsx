@@ -7,8 +7,8 @@ import { getDesarrollos } from "../../lib/wp";
 import { mapDesarrollos } from "../../lib/catalogo";
 
 export const metadata = {
-  title: "Mi selección | Departamentos en Pozo",
-  description: "Tus propiedades en pozo guardadas.",
+  title: "Mi Plan | Departamentos en Pozo",
+  description: "Tu plan de inversión en pozo: los proyectos que guardaste, tu objetivo y presupuesto, y las novedades de lo que seguís.",
   robots: { index: false, follow: false },
 };
 
@@ -27,9 +27,9 @@ export default async function MiSeleccionPage() {
 
   return (
     <Container as="main" className="py-10 md:py-14">
-      <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-2">Mi selección</h1>
+      <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-2">Mi Plan</h1>
       <p className="text-on-surface-variant font-body-lg text-body-lg mb-8 max-w-2xl">
-        Las propiedades en pozo que guardaste, en un solo lugar. Se guardan en tu cuenta para que las veas desde cualquier dispositivo.
+        Tu plan de inversión en pozo: los proyectos que guardaste, tu objetivo y presupuesto, y qué cambió para vos. Te ayudamos a decidir. Se guarda en tu cuenta para que lo veas desde cualquier dispositivo.
       </p>
       <MiSeleccion catalogo={catalogo} />
     </Container>
