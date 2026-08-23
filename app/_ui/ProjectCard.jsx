@@ -8,6 +8,19 @@
 import Link from "next/link";
 import GuardarBtn from "../_auth/GuardarBtn";
 
+function devLine(desarrolladora) {
+  const d = String(desarrolladora || "").trim();
+  if (!d) return null;
+  const m = d.match(/^(.*?)\s*\(\s*com\.?\s*(.+?)\)\s*$/i);
+  if (m) {
+    const dev = m[1].trim(); const com = m[2].trim();
+    if (!dev || /^a\s*confirmar$/i.test(dev)) return "Comercializa: " + com;
+    return "Desarrolla: " + dev + " \u00b7 Comercializa: " + com;
+  }
+  if (/^a\s*confirmar$/i.test(d)) return null;
+  return "Desarrolla: " + d;
+}
+
 export default function ProjectCard({
   slug,
   nombre,
@@ -77,7 +90,7 @@ export default function ProjectCard({
           </div>
           <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
         </div>
-        {desarrolladora && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">Desarrolla: {desarrolladora}</p>)}
+        {devLine(desarrolladora) && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">{devLine(desarrolladora)}</p>)}
       </div>
     </Link>
   );
