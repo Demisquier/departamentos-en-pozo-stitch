@@ -71,9 +71,16 @@ export default function MiSeleccion({ catalogo = [] }) {
   const [consulta, setConsulta] = useState(null); // { nombre, slug }
 
   useEffect(() => {
-    try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); }
-    catch { setPerfil(null); }
+    const loadPerfil = () => { try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); } catch { setPerfil(null); } };
+    loadPerfil();
     try { const d = localStorage.getItem(DESCARTES_KEY); if (d) setDescartes(JSON.parse(d)); } catch {}
+    // El perfil puede llegar de la nube (Supabase) DESPUÉS del montaje: AuthProvider dispara
+    // "dpp-perfil-updated" al hidratar, y otras pestañas via "storage". Re-leemos para no
+    // mostrar "Armá tu perfil" a alguien que ya lo tiene en su cuenta.
+    const onStorage = (e) => { if (!e || e.key === "dpp_perfil_v1") loadPerfil(); };
+    window.addEventListener("dpp-perfil-updated", loadPerfil);
+    window.addEventListener("storage", onStorage);
+    return () => { window.removeEventListener("dpp-perfil-updated", loadPerfil); window.removeEventListener("storage", onStorage); };
   }, []);
 
   // Evento norte: "usuario activo de Mi Plan" (se cuenta cada visita a la sección).
@@ -127,7 +134,7 @@ export default function MiSeleccion({ catalogo = [] }) {
     <div className="flex flex-col gap-8">
       <PlanResumen perfil={perfil} nGuardados={items.length} onConsultar={() => items[0] && setConsulta({ nombre: items[0].nombre, slug: items[0].slug })} />
       <CuentaBloque enabled={enabled} user={user} login={login} logout={logout} />
-      <PerfilBloque perfil={perfil} />
+      {perfil && <PerfilBloque perfil={perfil} />}
 
       <div>
         <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Tus proyectos guardados</h2>
