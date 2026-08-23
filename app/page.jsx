@@ -7,6 +7,7 @@ import Container from "./_ui/Container";
 import ProjectCard from "./_ui/ProjectCard";
 import HomeBuscador from "./_ui/HomeBuscador";
 import JsonLd from "./_ui/JsonLd";
+import MiPlanHome from "./_components/MiPlanHome";
 
 // Schema de ENTIDAD para el home: consolida "Departamentos en Pozo" como Organization/WebSite
 // (ancla a la que apunta cada publisher del resto del sitio) — clave para Google y buscadores IA.
@@ -148,6 +149,8 @@ export default async function HomePage() {
           ))}
         </div>
       </Container>
+
+      <MiPlanHome />
 
       {/* Desarrollos por barrio: catálogo de PROYECTOS por barrio */}
       <section className="py-16 md:py-20 bg-surface-container-low">
