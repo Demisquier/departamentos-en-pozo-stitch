@@ -109,7 +109,12 @@ export default async function HomePage() {
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
           <HomeBuscador />
-          <p className="mt-4 text-on-primary text-[14px] opacity-90">¿No sabés por dónde empezar? <Link href="/asesor/" className="underline font-medium hover:no-underline">Armá tu perfil y te recomendamos a tu medida →</Link></p>
+          <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
+            <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[18px]">forum</span> Averiguá precio y cuota
+            </Link>
+            <span className="text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</span>
+          </div>
         </div>
       </section>
 
