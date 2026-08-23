@@ -6,13 +6,14 @@ import CatalogoFiltros from './CatalogoFiltros';
 import Container from '../_ui/Container';
 import JsonLd from '../_ui/JsonLd';
 import Faq from '../_ui/Faq';
+import AlertaCTA from '../_ui/AlertaCTA';
 import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 
 // ISR: la lista se regenera sola con los datos (además del revalidate del fetch).
 export const revalidate = 600;
 
 export const metadata = {
-  title: 'Desarrollos inmobiliarios en pozo en CABA: catálogo 2026 | Departamentos en Pozo',
+  title: 'Departamentos en pozo en CABA: catálogo 2026 con precio y financiación | Departamentos en Pozo',
   description:
     'Catálogo de desarrollos inmobiliarios en pozo (preventa) en CABA: precio, financiación, desarrolladora, tipologías, avance de obra y entrega. Compará proyectos por barrio con análisis independiente.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
@@ -86,6 +87,11 @@ export default async function CatalogoPage() {
           </div>
         </section>
       )}
+
+      <AlertaCTA
+        titulo="No te pierdas los próximos lanzamientos en pozo"
+        texto="Dejá tu email y te avisamos cuando aparezca un proyecto nuevo en tu barrio y presupuesto, antes de que salga a los portales."
+        cta="Crear alerta gratis" />
 
       <Faq items={FAQ} title="Preguntas frecuentes sobre desarrollos inmobiliarios" />
 
