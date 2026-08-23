@@ -18,9 +18,9 @@ export default function AuthButton({ onNavigate }) {
         onClick={onNavigate}
         className="inline-flex items-center gap-1.5 whitespace-nowrap rounded border border-outline-variant px-3 py-1.5 text-label-caps font-label-caps text-primary hover:border-secondary transition-colors"
       >
-        <span className="material-symbols-outlined text-[18px]">favorite</span>
-        <span className="hidden lg:inline">MI SELECCIÓN</span>
-        <span className="lg:hidden">SELECCIÓN</span>
+        <span className="material-symbols-outlined text-[18px]">space_dashboard</span>
+        <span className="hidden lg:inline">MI PLAN</span>
+        <span className="lg:hidden">MI PLAN</span>
         {showCount ? ` (${count})` : ""}
       </Link>
       {enabled && user && (
