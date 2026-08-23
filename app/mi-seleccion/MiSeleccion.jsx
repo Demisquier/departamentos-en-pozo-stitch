@@ -151,9 +151,9 @@ function LoginGate({ login }) {
   return (
     <div className="max-w-lg mx-auto text-center border border-outline-variant rounded-2xl p-8 md:p-10 bg-surface-container-low">
       <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center">
-        <span className="material-symbols-outlined text-[30px] text-secondary icon-fill" aria-hidden="true">favorite</span>
+        <span className="material-symbols-outlined text-[30px] text-secondary icon-fill" aria-hidden="true">space_dashboard</span>
       </div>
-      <h2 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver tu selección</h2>
+      <h2 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver Mi Plan</h2>
       <p className="text-on-surface-variant text-[15px] mb-6">
         Guardá los proyectos que te interesan y tu perfil de búsqueda en tu cuenta, y accedé desde cualquier dispositivo. Es gratis y sin contraseñas.
       </p>
@@ -181,7 +181,7 @@ function CuentaBloque({ enabled, user, login, logout }) {
       <div className="border border-outline-variant rounded-xl p-4 flex items-center justify-between gap-4 bg-surface-container-low">
         <p className="text-[13.5px] text-on-surface flex items-center gap-2">
           <span className="material-symbols-outlined text-[18px] text-green-600 icon-fill">check_circle</span>
-          Conectado como <strong className="font-medium">{email}</strong> — tu selección y perfil se guardan en todos tus dispositivos.
+          Conectado como <strong className="font-medium">{email}</strong> — tu plan se guarda en todos tus dispositivos.
         </p>
         <button type="button" onClick={logout} className="shrink-0 rounded border border-outline-variant px-4 py-2 text-[13px] text-primary hover:border-secondary transition-colors">Salir</button>
       </div>
@@ -191,7 +191,7 @@ function CuentaBloque({ enabled, user, login, logout }) {
     <div className="border border-outline-variant rounded-xl p-5 md:flex md:items-center md:justify-between gap-6 bg-surface-container-low">
       <div>
         <h2 className="font-headline-sm text-headline-sm text-primary mb-1">Ingresá con Google</h2>
-        <p className="text-on-surface-variant text-[14px]">Guardá tu selección y tu perfil en tu cuenta para verlos desde cualquier dispositivo. Sin contraseñas.</p>
+        <p className="text-on-surface-variant text-[14px]">Guardá tu plan —proyectos, objetivo y presupuesto— en tu cuenta para verlo desde cualquier dispositivo. Sin contraseñas.</p>
       </div>
       <button type="button" onClick={login} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
         <span className="material-symbols-outlined text-[18px]">login</span> Ingresar con Google
