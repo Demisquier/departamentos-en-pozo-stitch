@@ -34,9 +34,13 @@ export default function AccionesFicha({
             )}
           </dl>
 
+          <p className="text-[12px] text-on-surface-variant mb-2 flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[15px] text-green-700">bolt</span>
+            Respondemos en el día · Sin costo · Análisis independiente
+          </p>
           <button type="button" onClick={() => setAsesorOpen(true)}
             className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
-            QUIERO MÁS INFO
+            VER PRECIOS Y DISPONIBILIDAD
             <span className="material-symbols-outlined text-[18px]">forum</span>
           </button>
 
@@ -54,7 +58,7 @@ export default function AccionesFicha({
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
         <button type="button" onClick={() => setAsesorOpen(true)}
           className="w-full px-8 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
-          QUIERO MÁS INFORMACIÓN
+          VER PRECIOS Y DISPONIBILIDAD
           <span className="material-symbols-outlined fill-icon">send</span>
         </button>
       </div>
