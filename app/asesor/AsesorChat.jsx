@@ -170,7 +170,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
           setFase("okBuscar");
         } else {
           if (q.length < BUSCADOR.length) await say("Retomo lo que ya me contaste, me falta un dato.", 750);
-          else await say("Te ayudo a ver listados de lo que estás buscando. Un par de preguntas cortas.", 750);
+          else await say("Decime qué buscás y te paso los proyectos que encajan, con precio y cuota. Un par de toques y listo.", 750);
           setEtapa("buscar"); setQueue(q); setIdx(0); setFase("chat");
           await say(q[0].p, 700);
         }
@@ -413,7 +413,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
             {/* Alerta por mail (opcional) */}
             {!leadRef.current.sent && !alertaOk ? (
               <form onSubmit={enviarAlerta} className="pt-2 border-t border-outline-variant">
-                <p className="text-[13px] text-on-surface-variant mb-2">¿Te aviso cuando entre algo así? Dejame tu mail (opcional).</p>
+                <p className="text-[13px] text-on-surface-variant mb-2">Te armo un resumen con precios y te lo mando a tu mail (y te aviso si entra algo nuevo). ¿A qué mail?</p>
                 <div className="flex items-center gap-2">
                   <input value={txt} onChange={(e) => setTxt(e.target.value)} inputMode="email" placeholder="tucorreo@mail.com"
                     className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
