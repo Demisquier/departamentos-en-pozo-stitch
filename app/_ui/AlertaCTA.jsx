@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 // Banner reusable para captar suscriptores a las alertas de lanzamientos (email-first).
-// Guarda el email + criterio (barrio) en el Sheet vía el webhook (origen "Alerta").
-const WEBHOOK = "https://script.google.com/macros/s/AKfycbyITcB1Ob6drt8Kfh_WnWbNeD02GxjH5pkBYJGFrfKwUOh_c158KXHGxyUk3rXmxvLy0w/exec";
+// Guarda el email + criterio (barrio) en el Sheet vía el proxy server-side /api/lead
+// (antes pegaba directo al webhook, que quedaba expuesto en el cliente).
 
 export default function AlertaCTA({
   titulo = "No te pierdas el próximo lanzamiento",
@@ -21,11 +21,11 @@ export default function AlertaCTA({
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val)) { setErr("Ingresá un email válido."); return; }
     setErr("");
     try {
-      const body = new URLSearchParams({
+      const sheet = {
         origen: "Alerta", tipo: "alerta_lanzamiento", email: val,
         zonas: contexto || "", mensaje: "Suscripción a alertas de lanzamientos" + (contexto ? " · " + contexto : ""),
-      });
-      fetch(WEBHOOK, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body });
+      };
+      fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sheet }) });
     } catch {}
     try { if (window.gtag) window.gtag("event", "alerta_lead", { contexto }); else if (window.dataLayer) window.dataLayer.push({ event: "alerta_lead", contexto }); } catch {}
     setSent(true);
