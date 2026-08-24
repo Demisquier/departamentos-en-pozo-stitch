@@ -1,0 +1,5249 @@
+[
+  {
+    "id": 40192,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40192"
+    },
+    "slug": "carlos-calvo-3700-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/carlos-calvo-3700-boedo/",
+    "title": {
+      "rendered": "Carlos Calvo 3700 — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Marzo 2029. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Marzo 2029. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19772682"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 86000,
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40193,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40193"
+    },
+    "slug": "av-san-juan-3984-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/av-san-juan-3984-boedo/",
+    "title": {
+      "rendered": "Av. San Juan 3984 — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 amb. entrega Mayo 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 amb. entrega Mayo 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19187744"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 64000,
+      "moneda": "USD",
+      "fecha_entrega": "Mayo 2026",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40194,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40194"
+    },
+    "slug": "avenida-san-juan-3600-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/avenida-san-juan-3600-boedo/",
+    "title": {
+      "rendered": "Avenida San Juan 3600 — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Junio 2028. Comercializa Lo Ponte Catalina.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Junio 2028. Comercializa Lo Ponte Catalina.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19800565"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lo Ponte Catalina",
+      "precio_desde": 77500,
+      "moneda": "USD",
+      "fecha_entrega": "Junio 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40195,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40195"
+    },
+    "slug": "castro-barros-826-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/castro-barros-826-boedo/",
+    "title": {
+      "rendered": "Castro Barros 826 — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Febrero 2027. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1 y 2 amb. entrega Febrero 2027. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19221262"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 94500,
+      "moneda": "USD",
+      "fecha_entrega": "Febrero 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40196,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40196"
+    },
+    "slug": "av-san-juan-3600-estudios-1-a-5-amb-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/av-san-juan-3600-estudios-1-a-5-amb-boedo/",
+    "title": {
+      "rendered": "Av. San Juan 3600 (Estudios, 1 a 5 amb) — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1, 2, 3, 4 y 5 amb. entrega Febrero 2028. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1, 2, 3, 4 y 5 amb. entrega Febrero 2028. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19787250"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 74000,
+      "moneda": "USD",
+      "fecha_entrega": "Febrero 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes",
+        "5_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40197,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40197"
+    },
+    "slug": "muniz-737-boedo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/muniz-737-boedo/",
+    "title": {
+      "rendered": "Muñiz 737 — Boedo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1, 2 y 3 amb. entrega Marzo 2027. Comercializa Rossotti Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Boedo. Unidades de 1, 2 y 3 amb. entrega Marzo 2027. Comercializa Rossotti Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Boedo",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-boedo--19228783"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Rossotti Propiedades",
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40198,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40198"
+    },
+    "slug": "avenida-caseros-2956-parque-patricios",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/avenida-caseros-2956-parque-patricios/",
+    "title": {
+      "rendered": "Avenida Caseros 2956 — Parque Patricios"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Parque Patricios. Unidades de 1 y 2 amb. entrega 06/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Parque Patricios. Unidades de 1 y 2 amb. entrega 06/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Parque Patricios",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/avenida-caseros-2956-emprendimiento-en-venta-859228"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 65175,
+      "moneda": "USD",
+      "fecha_entrega": "06/2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/6896784/photo_1742300762971427709_24997945_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40199,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40199"
+    },
+    "slug": "altos-de-achala-parque-patricios",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/altos-de-achala-parque-patricios/",
+    "title": {
+      "rendered": "Altos de Achala — Parque Patricios"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Parque Patricios. Unidades de 1, 2 y 3 amb. entrega Diciembre 2025. Comercializa Nesnech Inmobiliaria.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Parque Patricios. Unidades de 1, 2 y 3 amb. entrega Diciembre 2025. Comercializa Nesnech Inmobiliaria.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Parque Patricios",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-parque-patricios--7655488"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Nesnech Inmobiliaria",
+      "precio_desde": 65000,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2025",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40200,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40200"
+    },
+    "slug": "moca-2-dr-e-finochietto-900-barracas",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/moca-2-dr-e-finochietto-900-barracas/",
+    "title": {
+      "rendered": "MOCA 2 - Dr. E. Finochietto 900 — Barracas"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2, 3 y 4 amb. entrega Junio 2025. Comercializa Gimenez Inmuebles / Assanelli Negocios Inmobiliarios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2, 3 y 4 amb. entrega Junio 2025. Comercializa Gimenez Inmuebles / Assanelli Negocios Inmobiliarios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Barracas",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-barracas--15449392"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Gimenez Inmuebles / Assanelli Negocios Inmobiliarios",
+      "precio_desde": 50800,
+      "moneda": "USD",
+      "fecha_entrega": "Junio 2025",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40201,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40201"
+    },
+    "slug": "canvas-barracas-suarez-1700-barracas",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/canvas-barracas-suarez-1700-barracas/",
+    "title": {
+      "rendered": "CANVAS Barracas - Suarez 1700 — Barracas"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2, 3 y 4 amb. entrega Julio 2027. Comercializa Gimenez Inmuebles.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2, 3 y 4 amb. entrega Julio 2027. Comercializa Gimenez Inmuebles.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Barracas",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-barracas--9041765"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Gimenez Inmuebles",
+      "precio_desde": 91300,
+      "moneda": "USD",
+      "fecha_entrega": "Julio 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/1986/photo_1773142548073883756_30429783_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40202,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40202"
+    },
+    "slug": "crystall-5-av-patricios-100-barracas",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/crystall-5-av-patricios-100-barracas/",
+    "title": {
+      "rendered": "CRYSTALL 5 - Av. Patricios 100 — Barracas"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1 y 2 amb. entrega Octubre 2025. Comercializa Alfie Negocios & Emprendimientos Inmobiliarios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1 y 2 amb. entrega Octubre 2025. Comercializa Alfie Negocios & Emprendimientos Inmobiliarios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Barracas",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-barracas--17767929"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Alfie Negocios & Emprendimientos Inmobiliarios",
+      "precio_desde": 61000,
+      "moneda": "USD",
+      "fecha_entrega": "Octubre 2025",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40203,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40203"
+    },
+    "slug": "finochietto-967-barracas",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/finochietto-967-barracas/",
+    "title": {
+      "rendered": "Finochietto 967 — Barracas"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2 y 3 amb. entrega 06/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Barracas. Unidades de 1, 2 y 3 amb. entrega 06/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Barracas",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/finochietto-967-emprendimiento-en-venta-185368"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 67100,
+      "moneda": "USD",
+      "fecha_entrega": "06/2025",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/4607981/photo_1742237807381525008_25011438_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40204,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40204"
+    },
+    "slug": "san-cristobal-estados-unidos-1700-san-cristobal",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/san-cristobal-estados-unidos-1700-san-cristobal/",
+    "title": {
+      "rendered": "San Cristóbal - Estados Unidos 1700 — San Cristóbal"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2, 3 y 4 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2, 3 y 4 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Cristóbal",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-cristobal--19174846"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 67268,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40205,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40205"
+    },
+    "slug": "av-san-juan-3127-san-cristobal",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/av-san-juan-3127-san-cristobal/",
+    "title": {
+      "rendered": "Av. San Juan 3127 — San Cristóbal"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1 y 2 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1 y 2 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Cristóbal",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-cristobal--19787248"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 59160,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40206,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40206"
+    },
+    "slug": "torre-bah-av-san-juan-2500-san-cristobal",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/torre-bah-av-san-juan-2500-san-cristobal/",
+    "title": {
+      "rendered": "Torre BAH - Av. San Juan 2500 — San Cristóbal"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2 y 3 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2 y 3 amb. entrega Diciembre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Cristóbal",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-cristobal--18169082"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 75200,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40207,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40207"
+    },
+    "slug": "san-cristobal-av-san-juan-2400-estudios-a-4-amb-san-cristobal",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/san-cristobal-av-san-juan-2400-estudios-a-4-amb-san-cristobal/",
+    "title": {
+      "rendered": "San Cristóbal - Av. San Juan 2400 (Estudios a 4 amb) — San Cristóbal"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2, 3 y 4 amb. entrega Diciembre 2029. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1, 2, 3 y 4 amb. entrega Diciembre 2029. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Cristóbal",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-cristobal--17953067"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 50737,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40208,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40208"
+    },
+    "slug": "san-juan-2758-san-cristobal",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/san-juan-2758-san-cristobal/",
+    "title": {
+      "rendered": "San Juan 2758 — San Cristóbal"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1 y 2 amb. entrega Abril 2028. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Cristóbal. Unidades de 1 y 2 amb. entrega Abril 2028. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Cristóbal",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-cristobal--17574322"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 57310,
+      "moneda": "USD",
+      "fecha_entrega": "Abril 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40209,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40209"
+    },
+    "slug": "mexico-1131-1133-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/mexico-1131-1133-monserrat/",
+    "title": {
+      "rendered": "Mexico 1131/1133 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb. entrega Septiembre 2029. amenities: Balcón, laundry común. Comercializa Situar Realty.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb. entrega Septiembre 2029. amenities: Balcón, laundry común. Comercializa Situar Realty.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mexico-1131-1133-59868128.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Situar Realty",
+      "precio_desde": 67600,
+      "moneda": "USD",
+      "fecha_entrega": "Septiembre 2029",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/86/81/28/720x532/2071666699.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40210,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40210"
+    },
+    "slug": "edificio-virrey-cevallos-700-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/edificio-virrey-cevallos-700-monserrat/",
+    "title": {
+      "rendered": "Edificio Virrey Cevallos 700 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb. entrega Diciembre 2029.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb. entrega Diciembre 2029.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-edificio-en-virrey-cevallos-al-700-58377089.html"
+    },
+    "acf": {
+      "precio_desde": 54500,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2029",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/37/70/89/720x532/2033198327.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40211,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40211"
+    },
+    "slug": "alberti-1205-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/alberti-1205-monserrat/",
+    "title": {
+      "rendered": "Alberti 1205 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 2 amb. entrega Marzo 2027.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 2 amb. entrega Marzo 2027.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/alberti-1205-piso-11-departamento-e-emprendimiento-en-venta-390182"
+    },
+    "acf": {
+      "precio_desde": 66834,
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2027",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/13427692/photo_1774506732645266800_photo-85f3121d-28dd-11f1-8a5f-52f5e1fa024c.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40212,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40212"
+    },
+    "slug": "chacabuco-154-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/chacabuco-154-monserrat/",
+    "title": {
+      "rendered": "Chacabuco 154 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 y 2 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 y 2 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/chacabuco-154-emprendimiento-en-venta-563303"
+    },
+    "acf": {
+      "precio_desde": 72000,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/8264487/photo_1741479047373057385_24993739_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40213,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40213"
+    },
+    "slug": "mexico-1288-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/mexico-1288-monserrat/",
+    "title": {
+      "rendered": "Mexico 1288 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/mexico-1288-caba-dev-cnhw"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40214,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40214"
+    },
+    "slug": "av-independencia-1520-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/av-independencia-1520-monserrat/",
+    "title": {
+      "rendered": "Av. Independencia 1520 — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1, 2, 3, 4 y 5 amb. entrega Abril 2025 (entrega inmediata/avanzada).</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1, 2, 3, 4 y 5 amb. entrega Abril 2025 (entrega inmediata/avanzada).</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/av-independencia-1520-8d-emprendimiento-en-venta-424506"
+    },
+    "acf": {
+      "precio_desde": 95000,
+      "moneda": "USD",
+      "fecha_entrega": "Abril 2025 (entrega inmediata/avanzada)",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes",
+        "5_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/6650092/photo_1740702896538146724_23747182_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40215,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40215"
+    },
+    "slug": "emprendimiento-en-pozo-monserrat-monoambiente-divisible-monserrat",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/emprendimiento-en-pozo-monserrat-monoambiente-divisible-monserrat/",
+    "title": {
+      "rendered": "Emprendimiento en pozo Monserrat (monoambiente divisible) — Monserrat"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Monserrat. Unidades de 1 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Monserrat",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://pulppo.ar/propiedades/departamento-monserrat-capital-federal-0-37m2-venta-usd-104275-6808ede5c63a17b9b31b1474"
+    },
+    "acf": {
+      "precio_desde": 104275,
+      "moneda": "USD",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40216,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40216"
+    },
+    "slug": "casa-viva-av-independencia-1216-constitucion",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/casa-viva-av-independencia-1216-constitucion/",
+    "title": {
+      "rendered": "Casa Viva - Av. Independencia 1216 — Constitución"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Constitución. Unidades de 1 y 2 amb. entrega Agosto 2028. amenities: Coworking en planta baja, pileta, solárium, gym, SUM, terraza con parrilla, microcine, sala de juegos, laundry, jardín, cafetería, seguridad 24h. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Constitución. Unidades de 1 y 2 amb. entrega Agosto 2028. amenities: Coworking en planta baja, pileta, solárium, gym, SUM, terraza con parrilla, microcine, sala de juegos, laundry, jardín, cafetería, seguridad 24h. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Constitución",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-av-independencia-1216-casa-viva-monserrat-58427430.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 73700,
+      "moneda": "USD",
+      "fecha_entrega": "Agosto 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/42/74/30/720x532/2034601819.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40217,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40217"
+    },
+    "slug": "torres-del-sur-ii-santiago-del-estero-1791-constitucion",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/torres-del-sur-ii-santiago-del-estero-1791-constitucion/",
+    "title": {
+      "rendered": "Torres del Sur II - Santiago del Estero 1791 — Constitución"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Constitución. Unidades de 1 y 2 amb. entrega Marzo 2027. amenities: Balcón. Comercializa Century 21 Portela.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Constitución. Unidades de 1 y 2 amb. entrega Marzo 2027. amenities: Balcón. Comercializa Century 21 Portela.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Constitución",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememhoin-torres-del-sur-ii-57823184.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Century 21 Portela",
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/82/31/84/720x532/2018018192.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40218,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40218"
+    },
+    "slug": "lezzama-defensa-1635-san-telmo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/lezzama-defensa-1635-san-telmo/",
+    "title": {
+      "rendered": "Lezzama - Defensa 1635 — San Telmo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1, 2 y 3 amb. entrega Junio 2028. amenities: Piscina de 20 m, solárium, gym, coworking, SUM 300 m², rooftop 300 m², sala de yoga, concierge/front desk, seguridad 24h, cocheras, bauleras, cargador de autos eléctricos. Comercializa KOT Asesores Inmobiliarios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1, 2 y 3 amb. entrega Junio 2028. amenities: Piscina de 20 m, solárium, gym, coworking, SUM 300 m², rooftop 300 m², sala de yoga, concierge/front desk, seguridad 24h, cocheras, bauleras, cargador de autos eléctricos. Comercializa KOT Asesores Inmobiliarios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Telmo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-lezzama-54722858.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa KOT Asesores Inmobiliarios",
+      "precio_desde": 107145,
+      "moneda": "USD",
+      "fecha_entrega": "Junio 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230246.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40219,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40219"
+    },
+    "slug": "9-de-julio-estudio-3-bernardo-de-irigoyen-1122-san-telmo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/9-de-julio-estudio-3-bernardo-de-irigoyen-1122-san-telmo/",
+    "title": {
+      "rendered": "9 de Julio Estudio 3 - Bernardo de Irigoyen 1122 — San Telmo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1 y 2 amb. entrega Julio 2025 (entrega inmediata/avanzada). amenities: SUM con parrilla, solárium con ducha, laundry, grupo electrógeno, bicicleteros.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1 y 2 amb. entrega Julio 2025 (entrega inmediata/avanzada). amenities: SUM con parrilla, solárium con ducha, laundry, grupo electrógeno, bicicleteros.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Telmo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-9-de-julio-estudio-3-53696972.html"
+    },
+    "acf": {
+      "precio_desde": 70200,
+      "moneda": "USD",
+      "fecha_entrega": "Julio 2025 (entrega inmediata/avanzada)",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/53/69/69/72/720x532/1912246029.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40220,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40220"
+    },
+    "slug": "tacuari-946-san-telmo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/tacuari-946-san-telmo/",
+    "title": {
+      "rendered": "Tacuari 946 — San Telmo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 2 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 2 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Telmo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/tacuari-946-2deg-i-emprendimiento-en-venta-866356"
+    },
+    "acf": {
+      "precio_desde": 82120,
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/2036909/photo_1740658658855787656_24062770_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40221,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40221"
+    },
+    "slug": "balcarce-630-san-telmo",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/balcarce-630-san-telmo/",
+    "title": {
+      "rendered": "Balcarce 630 — San Telmo"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1, 2 y 3 amb. entrega Mayo 2026. amenities: Apto profesional y alquiler temporario. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en San Telmo. Unidades de 1, 2 y 3 amb. entrega Mayo 2026. amenities: Apto profesional y alquiler temporario. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "San Telmo",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-telmo--16146385"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 37000,
+      "moneda": "USD",
+      "fecha_entrega": "Mayo 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://www.argenprop.com/static-content/58364161/9a316194-cbaf-4189-91d7-343fdc6c8b15.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40222,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40222"
+    },
+    "slug": "lavalle-plaza-lavalle-4000-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/lavalle-plaza-lavalle-4000-almagro/",
+    "title": {
+      "rendered": "Lavalle Plaza (Lavalle 4000) — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Julio 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Julio 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--16455893"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 70800,
+      "moneda": "USD",
+      "fecha_entrega": "Julio 2026",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40223,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40223"
+    },
+    "slug": "torre-muniz-230-muniz-200-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/torre-muniz-230-muniz-200-almagro/",
+    "title": {
+      "rendered": "Torre Muñiz 230 (Muñiz 200) — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3, 4 y 5 amb. entrega Julio 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3, 4 y 5 amb. entrega Julio 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--13455673"
+    },
+    "acf": {
+      "precio_desde": 100000,
+      "moneda": "USD",
+      "fecha_entrega": "Julio 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes",
+        "5_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40224,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40224"
+    },
+    "slug": "mexico-4354-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/mexico-4354-almagro/",
+    "title": {
+      "rendered": "México 4354 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3 y 4 amb. entrega Julio 2027. amenities: Full amenities. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3 y 4 amb. entrega Julio 2027. amenities: Full amenities. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--18220299"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 95100,
+      "moneda": "USD",
+      "fecha_entrega": "Julio 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40225,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40225"
+    },
+    "slug": "yatay-641-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/yatay-641-almagro/",
+    "title": {
+      "rendered": "Yatay 641 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Abril-Mayo 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Abril-Mayo 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--15815956"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 76000,
+      "moneda": "USD",
+      "fecha_entrega": "Abril-Mayo 2026",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40226,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40226"
+    },
+    "slug": "treinta-y-tres-orientales-200-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/treinta-y-tres-orientales-200-almagro/",
+    "title": {
+      "rendered": "Treinta y Tres Orientales 200 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3 y 4 amb. entrega Octubre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1, 2, 3 y 4 amb. entrega Octubre 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--18617832"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 73000,
+      "moneda": "USD",
+      "fecha_entrega": "Octubre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40227,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40227"
+    },
+    "slug": "jose-marmol-200-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/jose-marmol-200-almagro/",
+    "title": {
+      "rendered": "José Mármol 200 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 2, 3 y 4 amb. entrega Enero 2027. amenities: Parrilla propia. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 2, 3 y 4 amb. entrega Enero 2027. amenities: Parrilla propia. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--19787246"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 140000,
+      "moneda": "USD",
+      "fecha_entrega": "Enero 2027",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40228,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40228"
+    },
+    "slug": "bigua-valentin-gomez-3600-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/bigua-valentin-gomez-3600-almagro/",
+    "title": {
+      "rendered": "Biguá (Valentín Gómez 3600) — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. entrega Marzo 2027. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. entrega Marzo 2027. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--13724107"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 118900,
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2027",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40229,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40229"
+    },
+    "slug": "palestina-500-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/palestina-500-almagro/",
+    "title": {
+      "rendered": "Palestina 500 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Noviembre 2025. Comercializa Magma Emprendimientos Inmobiliarios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Noviembre 2025. Comercializa Magma Emprendimientos Inmobiliarios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--16932682"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Magma Emprendimientos Inmobiliarios",
+      "precio_desde": 78400,
+      "moneda": "USD",
+      "fecha_entrega": "Noviembre 2025",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40230,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40230"
+    },
+    "slug": "sarmiento-4088-almagro",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/sarmiento-4088-almagro/",
+    "title": {
+      "rendered": "Sarmiento 4088 — Almagro"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Marzo 2025 (fecha publicada, verificar). Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Almagro. Unidades de 1 amb. entrega Marzo 2025 (fecha publicada, verificar). Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Almagro",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--14442382"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 73000,
+      "moneda": "USD",
+      "fecha_entrega": "Marzo 2025 (fecha publicada, verificar)",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40231,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40231"
+    },
+    "slug": "corrientes-2100-balvanera",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/corrientes-2100-balvanera/",
+    "title": {
+      "rendered": "Corrientes 2100 — Balvanera"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera. Unidades de 1, 2 y 3 amb. entrega Julio-Agosto 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera. Unidades de 1, 2 y 3 amb. entrega Julio-Agosto 2026. Comercializa Lepore Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Balvanera",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-balvanera--16426433"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore Propiedades",
+      "precio_desde": 73000,
+      "moneda": "USD",
+      "fecha_entrega": "Julio-Agosto 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40232,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40232"
+    },
+    "slug": "alsina-1888-balvanera",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/alsina-1888-balvanera/",
+    "title": {
+      "rendered": "Alsina 1888 — Balvanera"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera. Unidades de 1 y 2 amb. entrega Noviembre 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera. Unidades de 1 y 2 amb. entrega Noviembre 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Balvanera",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-balvanera--15779867"
+    },
+    "acf": {
+      "precio_desde": 29000,
+      "moneda": "USD",
+      "fecha_entrega": "Noviembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40233,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40233"
+    },
+    "slug": "sky-corrientes-2140-balvanera-once",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/sky-corrientes-2140-balvanera-once/",
+    "title": {
+      "rendered": "Sky Corrientes 2140 — Balvanera (Once)"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera (Once). Unidades de 1, 2 y 3 amb. entrega Agosto 2027. amenities: Salón de eventos, piscina con solárium, parrillas, gimnasio, laundry, juegos infantiles, cocheras. Sky Desarrollos.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera (Once). Unidades de 1, 2 y 3 amb. entrega Agosto 2027. amenities: Salón de eventos, piscina con solárium, parrillas, gimnasio, laundry, juegos infantiles, cocheras. Sky Desarrollos.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Balvanera (Once)",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-sky-corrientes-2140-59459266.html"
+    },
+    "acf": {
+      "desarrolladora": "Sky Desarrollos",
+      "precio_desde": 68850,
+      "moneda": "USD",
+      "fecha_entrega": "Agosto 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/45/92/66/720x532/2065986657.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40234,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40234"
+    },
+    "slug": "avenida-corrientes-2800-corrientes-y-pueyrredon-balvanera-once",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/avenida-corrientes-2800-corrientes-y-pueyrredon-balvanera-once/",
+    "title": {
+      "rendered": "Avenida Corrientes 2800 (Corrientes y Pueyrredón) — Balvanera (Once)"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera (Once). Unidades de 1, 2 y 3 amb. entrega Mayo 2026. amenities: Laundry, SUM.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Balvanera (Once). Unidades de 1, 2 y 3 amb. entrega Mayo 2026. amenities: Laundry, SUM.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Balvanera (Once)",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-once--17341505"
+    },
+    "acf": {
+      "precio_desde": 51870,
+      "moneda": "USD",
+      "fecha_entrega": "Mayo 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40235,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40235"
+    },
+    "slug": "san-pedrito-512-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/san-pedrito-512-flores/",
+    "title": {
+      "rendered": "San Pedrito 512 — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega enero 2028. amenities: Balcón. Comercializa Irujo Bienes Raíces.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega enero 2028. amenities: Balcón. Comercializa Irujo Bienes Raíces.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-san-pedrito-512-58993535.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Irujo Bienes Raíces",
+      "precio_desde": 67000,
+      "moneda": "USD",
+      "fecha_entrega": "enero 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/99/35/35/720x532/2052823025.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40236,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40236"
+    },
+    "slug": "terrero-54-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/terrero-54-flores/",
+    "title": {
+      "rendered": "Terrero 54 — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2, 3 y 4 amb. entrega julio 2028. amenities: Gimnasio, Parrilla, CoWork, Quincho, Balcón, Cochera de cortesía. Comercializa Justevila.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2, 3 y 4 amb. entrega julio 2028. amenities: Gimnasio, Parrilla, CoWork, Quincho, Balcón, Cochera de cortesía. Comercializa Justevila.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-terrero-54-54698005.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Justevila",
+      "precio_desde": 89000,
+      "moneda": "USD",
+      "fecha_entrega": "julio 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/69/80/05/720x532/2051275708.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40237,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40237"
+    },
+    "slug": "cuenca-point-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/cuenca-point-flores/",
+    "title": {
+      "rendered": "Cuenca Point — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1 y 2 amb. entrega julio 2029. amenities: Parrilla, Jacuzzi, Solarium, Balcón. Comercializa Fera.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1 y 2 amb. entrega julio 2029. amenities: Parrilla, Jacuzzi, Solarium, Balcón. Comercializa Fera.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-cuenca-point-59619730.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Fera",
+      "precio_desde": 96000,
+      "moneda": "USD",
+      "fecha_entrega": "julio 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/61/97/30/720x532/2065617032.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40238,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40238"
+    },
+    "slug": "av-directorio-2395-esq-rivera-indarte-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/av-directorio-2395-esq-rivera-indarte-flores/",
+    "title": {
+      "rendered": "Av. Directorio 2395 esq. Rivera Indarte — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega marzo 2028. amenities: Solárium, Parrilla, Bicicletero. Comercializa Lepore.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega marzo 2028. amenities: Solárium, Parrilla, Bicicletero. Comercializa Lepore.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-av-directorio-2395-esq.-rivera-indarte-390-flores-58492847.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lepore",
+      "precio_desde": 73000,
+      "moneda": "USD",
+      "fecha_entrega": "marzo 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/49/28/47/720x532/2050661019.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40239,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40239"
+    },
+    "slug": "altos-de-la-misericordia-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/altos-de-la-misericordia-flores/",
+    "title": {
+      "rendered": "Altos de La Misericordia — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega septiembre 2029. amenities: Parrilla, Solárium, Balcón. Comercializa Héctor D'Odorico.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 1, 2 y 3 amb. entrega septiembre 2029. amenities: Parrilla, Solárium, Balcón. Comercializa Héctor D'Odorico.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-altos-de-la-misericordia-59715862.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Héctor D'Odorico",
+      "precio_desde": 67800,
+      "moneda": "USD",
+      "fecha_entrega": "septiembre 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/71/58/62/720x532/2067943656.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40240,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40240"
+    },
+    "slug": "yerbal-1830-flores",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/yerbal-1830-flores/",
+    "title": {
+      "rendered": "Yerbal 1830 — Flores"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 3 amb. entrega agosto 2028. Comercializa Calvagna Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Flores. Unidades de 3 amb. entrega agosto 2028. Comercializa Calvagna Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Flores",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-yerbal-1830-59912242.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Calvagna Propiedades",
+      "precio_desde": 140000,
+      "moneda": "USD",
+      "fecha_entrega": "agosto 2028",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/91/22/42/720x532/2072687510.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40241,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40241"
+    },
+    "slug": "nitium-rivadavia-av-rivadavia-8526-floresta",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nitium-rivadavia-av-rivadavia-8526-floresta/",
+    "title": {
+      "rendered": "Nitium Rivadavia (Av. Rivadavia 8526) — Floresta"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Floresta. Unidades de 1, 2 y 3 amb. entrega septiembre 2029. amenities: SUM, Parrilla, Solárium, Laundry, Bicicletero, Balcón, Terraza. Comercializa Soldati Conecta.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Floresta. Unidades de 1, 2 y 3 amb. entrega septiembre 2029. amenities: SUM, Parrilla, Solárium, Laundry, Bicicletero, Balcón, Terraza. Comercializa Soldati Conecta.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Floresta",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nitium-rivadavia-59556896.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Soldati Conecta",
+      "precio_desde": 69345,
+      "moneda": "USD",
+      "fecha_entrega": "septiembre 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/55/68/96/720x532/2064106257.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40242,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40242"
+    },
+    "slug": "pisos-de-tres-ambientes-murature-4810-velez-sarsfield",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/pisos-de-tres-ambientes-murature-4810-velez-sarsfield/",
+    "title": {
+      "rendered": "Pisos de Tres Ambientes (Murature 4810) — Vélez Sársfield"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Vélez Sársfield. Unidades de 1, 2 y 3 amb. entrega 1° trimestre 2028.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Vélez Sársfield. Unidades de 1, 2 y 3 amb. entrega 1° trimestre 2028.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Vélez Sársfield",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-pisos-de-tres-ambientes-59676265.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "1° trimestre 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016927.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40243,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40243"
+    },
+    "slug": "nazca-3093-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nazca-3093-villa-del-parque/",
+    "title": {
+      "rendered": "Nazca 3093 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega diciembre 2028. amenities: Pileta, Solárium, Balcón. Nemovi.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega diciembre 2028. amenities: Pileta, Solárium, Balcón. Nemovi.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nazca-3093-villa-del-parque-en-pozo-58958867.html"
+    },
+    "acf": {
+      "desarrolladora": "Nemovi",
+      "precio_desde": 56702,
+      "moneda": "USD",
+      "fecha_entrega": "diciembre 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/95/88/67/720x532/2071782084.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40244,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40244"
+    },
+    "slug": "nazarre-3069-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nazarre-3069-villa-del-parque/",
+    "title": {
+      "rendered": "Nazarre 3069 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega octubre 2028. amenities: Balcón, Terraza. Comercializa Micaela Llamedo Real Estate.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega octubre 2028. amenities: Balcón, Terraza. Comercializa Micaela Llamedo Real Estate.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nazarre-3069-villa-del-parque-58896911.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Micaela Llamedo Real Estate",
+      "precio_desde": 82500,
+      "moneda": "USD",
+      "fecha_entrega": "octubre 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/89/69/11/720x532/2055327365.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40245,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40245"
+    },
+    "slug": "simbron-3410-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/simbron-3410-villa-del-parque/",
+    "title": {
+      "rendered": "Simbrón 3410 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1 y 2 amb. entrega octubre 2027. amenities: Parrilla, Solárium. Comercializa Prodigy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1 y 2 amb. entrega octubre 2027. amenities: Parrilla, Solárium. Comercializa Prodigy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-departamentos-en-villa-del-parque:-dos-ambientes-56921117.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Prodigy",
+      "precio_desde": 80993,
+      "moneda": "USD",
+      "fecha_entrega": "octubre 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/11/17/720x532/2010677302.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40246,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40246"
+    },
+    "slug": "bolivia-3098-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/bolivia-3098-villa-del-parque/",
+    "title": {
+      "rendered": "Bolivia 3098 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega entrega inmediata. Comercializa Jakim Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2, 3 y 4 amb. entrega entrega inmediata. Comercializa Jakim Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-bolivia-3098-villa-del-parque-capital-federal-54584013.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Jakim Propiedades",
+      "precio_desde": 93800,
+      "moneda": "USD",
+      "fecha_entrega": "entrega inmediata",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/54/58/40/13/720x532/1935519364.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40247,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40247"
+    },
+    "slug": "nazarre-3501-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nazarre-3501-villa-del-parque/",
+    "title": {
+      "rendered": "Nazarre 3501 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 2 amb. entrega entrega inmediata. amenities: Parrilla. Comercializa Prodigy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 2 amb. entrega entrega inmediata. amenities: Parrilla. Comercializa Prodigy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-ultimos-disponibles!-deptos-en-villa-del-parque:-55467787.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Prodigy",
+      "precio_desde": 164400,
+      "moneda": "USD",
+      "fecha_entrega": "entrega inmediata",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/46/77/87/720x532/1957402505.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40248,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40248"
+    },
+    "slug": "jose-pedro-varela-3295-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/jose-pedro-varela-3295-villa-del-parque/",
+    "title": {
+      "rendered": "José Pedro Varela 3295 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 2 y 3 amb. entrega marzo 2029. amenities: Solárium. Comercializa MMCV.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 2 y 3 amb. entrega marzo 2029. amenities: Solárium. Comercializa MMCV.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-jose-pedro-varela-3295-57810120.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa MMCV",
+      "precio_desde": 116184,
+      "moneda": "USD",
+      "fecha_entrega": "marzo 2029",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/81/01/20/720x532/2017715235.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40249,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40249"
+    },
+    "slug": "del-parque-avenue-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/del-parque-avenue-villa-del-parque/",
+    "title": {
+      "rendered": "Del Parque Avenue — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 3 amb. entrega junio 2029. amenities: Balcón. Comercializa Laurenzano Matías Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 3 amb. entrega junio 2029. amenities: Balcón. Comercializa Laurenzano Matías Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-del-parque-avenue-58984249.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Laurenzano Matías Propiedades",
+      "precio_desde": 160600,
+      "moneda": "USD",
+      "fecha_entrega": "junio 2029",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/98/42/49/720x532/2049497013.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40250,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40250"
+    },
+    "slug": "melincue-3200-villa-del-parque",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/melincue-3200-villa-del-parque/",
+    "title": {
+      "rendered": "Melincué 3200 — Villa del Parque"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2 y 3 amb. entrega septiembre 2026. Grupo Nocito.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa del Parque. Unidades de 1, 2 y 3 amb. entrega septiembre 2026. Grupo Nocito.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa del Parque",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-villa-del-parque--17536884"
+    },
+    "acf": {
+      "desarrolladora": "Grupo Nocito",
+      "precio_desde": 93500,
+      "moneda": "USD",
+      "fecha_entrega": "septiembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40251,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40251"
+    },
+    "slug": "cespedes-chacarita",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/cespedes-chacarita/",
+    "title": {
+      "rendered": "Céspedes — Chacarita"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1 y 2 amb. entrega diciembre 2027. amenities: Parrilla, Terraza, Balcón. Comercializa Pohulanik Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1 y 2 amb. entrega diciembre 2027. amenities: Parrilla, Terraza, Balcón. Comercializa Pohulanik Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Chacarita",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-cespedes-57020070.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Pohulanik Propiedades",
+      "precio_desde": 116910,
+      "moneda": "USD",
+      "fecha_entrega": "diciembre 2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/02/00/70/720x532/1996872779.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40252,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40252"
+    },
+    "slug": "mirabilia-hype-chacarita",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/mirabilia-hype-chacarita/",
+    "title": {
+      "rendered": "Mirabilia Hype — Chacarita"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1, 2, 3 y 4 amb. entrega 2° trimestre 2029. amenities: Gimnasio, Parrilla, Pileta, Solárium.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1, 2, 3 y 4 amb. entrega 2° trimestre 2029. amenities: Gimnasio, Parrilla, Pileta, Solárium.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Chacarita",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mirabilia-hype-57855795.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "2° trimestre 2029",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/57/85/57/95/720x532/2022476960.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40253,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40253"
+    },
+    "slug": "palta-desarrollos-newbery-3710-chacarita",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/palta-desarrollos-newbery-3710-chacarita/",
+    "title": {
+      "rendered": "Palta Desarrollos - Newbery 3710 — Chacarita"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1, 2, 3, 4 y 5 amb. amenities: Balcones amplios, amenities. Palta Desarrollos.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Chacarita. Unidades de 1, 2, 3, 4 y 5 amb. amenities: Balcones amplios, amenities. Palta Desarrollos.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Chacarita",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-palta-desarrollos-newbery-3710-49999732.html"
+    },
+    "acf": {
+      "desarrolladora": "Palta Desarrollos",
+      "moneda": "USD",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes",
+        "5_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40254,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40254"
+    },
+    "slug": "villa-ortuzar-2-y-3-ambientes-bioi-villa-ortuzar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/villa-ortuzar-2-y-3-ambientes-bioi-villa-ortuzar/",
+    "title": {
+      "rendered": "Villa Ortúzar 2 y 3 Ambientes (Bioi) — Villa Ortúzar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 2 y 3 amb. entrega enero 2027. Comercializa Bioi.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 2 y 3 amb. entrega enero 2027. Comercializa Bioi.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa Ortúzar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-2-y-3-ambientes-en-construccion-villa-ortuzar-56723817.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Bioi",
+      "precio_desde": 126900,
+      "moneda": "USD",
+      "fecha_entrega": "enero 2027",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/56/72/38/17/720x532/2059259784.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40255,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40255"
+    },
+    "slug": "glow-7-plus-alvarez-thomas-villa-ortuzar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/glow-7-plus-alvarez-thomas-villa-ortuzar/",
+    "title": {
+      "rendered": "Glow 7 Plus (Álvarez Thomas) — Villa Ortúzar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1, 2, 3 y 4 amb. entrega abril 2028. amenities: Gimnasio, Parrilla, Pileta, Solárium, Balcón, Terraza. Go-Building.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1, 2, 3 y 4 amb. entrega abril 2028. amenities: Gimnasio, Parrilla, Pileta, Solárium, Balcón, Terraza. Go-Building.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa Ortúzar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-glow-7-alvarez-thomas-52734710.html"
+    },
+    "acf": {
+      "desarrolladora": "Go-Building",
+      "moneda": "USD",
+      "fecha_entrega": "abril 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/52/73/47/10/720x532/2068338016.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40256,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40256"
+    },
+    "slug": "estomba-1069-villa-ortuzar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/estomba-1069-villa-ortuzar/",
+    "title": {
+      "rendered": "Estomba 1069 — Villa Ortúzar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 3 amb. entrega junio 2028. amenities: Balcón, Terraza. Comercializa L.A. Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 3 amb. entrega junio 2028. amenities: Balcón, Terraza. Comercializa L.A. Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa Ortúzar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-estomba-en-villa-ortuzar-capital-58607995.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa L.A. Propiedades",
+      "moneda": "USD",
+      "fecha_entrega": "junio 2028",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/58/60/79/95/720x532/2039633749.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40257,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40257"
+    },
+    "slug": "nyra-hub-roseti-1733-villa-ortuzar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/nyra-hub-roseti-1733-villa-ortuzar/",
+    "title": {
+      "rendered": "Nyra Hub (Roseti 1733) — Villa Ortúzar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1, 2, 3 y 4 amb. entrega julio 2028. amenities: Parrilla, Solárium. Hanok Desarrollos.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1, 2, 3 y 4 amb. entrega julio 2028. amenities: Parrilla, Solárium. Hanok Desarrollos.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa Ortúzar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememhoin-nyra-hub-roseti-1733-59052403.html"
+    },
+    "acf": {
+      "desarrolladora": "Hanok Desarrollos",
+      "moneda": "USD",
+      "fecha_entrega": "julio 2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/59/05/24/03/720x532/2051579579.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40258,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40258"
+    },
+    "slug": "elcano-palm-villa-ortuzar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/elcano-palm-villa-ortuzar/",
+    "title": {
+      "rendered": "Elcano Palm — Villa Ortúzar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1 amb. entrega entrega inmediata. amenities: Balcón. Comercializa Lincoln Negocios Inmobiliarios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Villa Ortúzar. Unidades de 1 amb. entrega entrega inmediata. amenities: Balcón. Comercializa Lincoln Negocios Inmobiliarios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Villa Ortúzar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-elcano-palm-55102639.html"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Lincoln Negocios Inmobiliarios",
+      "moneda": "USD",
+      "fecha_entrega": "entrega inmediata",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://imgar.zonapropcdn.com/avisos/1/00/55/10/26/39/720x532/2026731422.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40259,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40259"
+    },
+    "slug": "complejo-acqua-marinas-nordelta-pb-4-bahia-grande-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/complejo-acqua-marinas-nordelta-pb-4-bahia-grande-nordelta-tigre/",
+    "title": {
+      "rendered": "Complejo Acqua Marinas - Nordelta (PB 4) — Bahía Grande, Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Bahía Grande, Nordelta, Tigre. Unidades de 2 amb. entrega 06/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Bahía Grande, Nordelta, Tigre. Unidades de 2 amb. entrega 06/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Bahía Grande, Nordelta, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/complejo-acqua-marinas-nordelta-tigre-pb-4-emprendimiento-en-venta-153832"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 243398,
+      "moneda": "USD",
+      "fecha_entrega": "06/2026",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/3868/photo_1742268296660802610_24984977_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40260,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40260"
+    },
+    "slug": "lagunita-nordelta-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/lagunita-nordelta-nordelta-tigre/",
+    "title": {
+      "rendered": "Lagunita Nordelta — Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 2 amb. entrega 08/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 2 amb. entrega 08/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Nordelta, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/lagunita-nordelta-emprendimiento-en-venta-377049"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 138500,
+      "moneda": "USD",
+      "fecha_entrega": "08/2026",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/2899699/photo_1742305517699281292_24986557_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40261,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40261"
+    },
+    "slug": "barrio-el-palmar-quara-nordelta-el-palmar-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/barrio-el-palmar-quara-nordelta-el-palmar-nordelta-tigre/",
+    "title": {
+      "rendered": "Barrio El Palmar - Quara Nordelta — El Palmar, Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en El Palmar, Nordelta, Tigre. Unidades de 1, 2 y 3 amb. entrega 07/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en El Palmar, Nordelta, Tigre. Unidades de 1, 2 y 3 amb. entrega 07/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "El Palmar, Nordelta, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/barrio-el-palmar-quara-nordelta-emprendimiento-en-venta-622375"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 142723,
+      "moneda": "USD",
+      "fecha_entrega": "07/2028",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/10984296/photo_1756393388591159391_26996459_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40262,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40262"
+    },
+    "slug": "departamento-2-amb-zafiro-nordelta-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/departamento-2-amb-zafiro-nordelta-nordelta-tigre/",
+    "title": {
+      "rendered": "Departamento 2 amb - Zafiro Nordelta — Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 2 amb. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 2 amb. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Nordelta, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/departamento-en-venta-2-amb-zafiro-nordelta-emprendimiento-en-venta-548090"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 219800,
+      "moneda": "USD",
+      "fecha_entrega": "12/2027",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/11325925/photo_1757844998559414414_27422030_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40263,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40263"
+    },
+    "slug": "boulevard-chico-y-calle-del-portal-torre-3-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/boulevard-chico-y-calle-del-portal-torre-3-nordelta-tigre/",
+    "title": {
+      "rendered": "Boulevard Chico y Calle del Portal - Torre 3 — Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 3 amb. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 3 amb. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Nordelta, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/boulevard-chico-y-calle-del-portal-0-torre-3-3-amb-emprendimiento-en-venta-087020"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 219800,
+      "moneda": "USD",
+      "fecha_entrega": "12/2027",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/8962331/photo_1743879270539387176_25180501_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40264,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40264"
+    },
+    "slug": "town-kiri-nordelta-av-de-los-colegios-100-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/town-kiri-nordelta-av-de-los-colegios-100-nordelta-tigre/",
+    "title": {
+      "rendered": "Town Kiri Nordelta (Av. de los Colegios 100) — Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 1 amb. entrega 08/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Nordelta, Tigre. Unidades de 1 amb. entrega 08/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Nordelta, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/av-de-los-colegios-100-uf-211-town-kiri-nordelta-emprendimiento-en-venta-471263"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 89000,
+      "moneda": "USD",
+      "fecha_entrega": "08/2025",
+      "tipologias": [
+        "1_ambiente"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/958392/photo_1757863982195336479_27416624_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40265,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40265"
+    },
+    "slug": "esmeralda-puerto-escondido-nordelta-3-amb-al-agua-puerto-escondido-nordelta-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/esmeralda-puerto-escondido-nordelta-3-amb-al-agua-puerto-escondido-nordelta-tigre/",
+    "title": {
+      "rendered": "Esmeralda - Puerto Escondido, Nordelta (3 amb al agua) — Puerto Escondido, Nordelta, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Puerto Escondido, Nordelta, Tigre. Unidades de 3 amb. entrega 04/2028. amenities: balcón. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Puerto Escondido, Nordelta, Tigre. Unidades de 3 amb. entrega 04/2028. amenities: balcón. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Puerto Escondido, Nordelta, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/financiado-esmeralda-3-amb-al-agua-2-balcones-puerto-escondido-nordel-emprendimiento-en-venta-159112"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 408000,
+      "moneda": "USD",
+      "fecha_entrega": "04/2028",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/12839508/photo_1769418398955214050_28251494_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40266,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40266"
+    },
+    "slug": "remeros-beach-departamento-3-ambientes-remeros-beach-rincon-de-milberg-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/remeros-beach-departamento-3-ambientes-remeros-beach-rincon-de-milberg-tigre/",
+    "title": {
+      "rendered": "Remeros Beach - Departamento 3 ambientes — Remeros Beach, Rincón de Milberg, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Remeros Beach, Rincón de Milberg, Tigre. Unidades de 3 amb. amenities: balcón, vista a la crystal lagoon. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Remeros Beach, Rincón de Milberg, Tigre. Unidades de 3 amb. amenities: balcón, vista a la crystal lagoon. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Remeros Beach, Rincón de Milberg, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/remeros-beach-departamento-3-ambientes-amoblado-y-equipado-100-espect-emprendimiento-en-venta-785202"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 295000,
+      "moneda": "USD",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/14558711/photo_1785500897622138018_39531533_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40267,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40267"
+    },
+    "slug": "esquiu-al-400-rincon-de-milberg-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/esquiu-al-400-rincon-de-milberg-tigre/",
+    "title": {
+      "rendered": "Esquiú al 400 — Rincón de Milberg, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Rincón de Milberg, Tigre. entrega 03/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Rincón de Milberg, Tigre. entrega 03/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Rincón de Milberg, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/esquiu-al-400-emprendimiento-en-venta-528143"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 135207,
+      "moneda": "USD",
+      "fecha_entrega": "03/2028",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/12646297/photo_1767174400616973831_28017969_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40268,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40268"
+    },
+    "slug": "albor-nordelta-la-reconquista-2400-rincon-de-milberg-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/albor-nordelta-la-reconquista-2400-rincon-de-milberg-tigre/",
+    "title": {
+      "rendered": "Albor Nordelta (La Reconquista 2400) — Rincón de Milberg, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Rincón de Milberg, Tigre. entrega 09/2027. amenities: gimnasio, parrilla, pileta, solarium, balcón, terraza.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Rincón de Milberg, Tigre. entrega 09/2027. amenities: gimnasio, parrilla, pileta, solarium, balcón, terraza.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Rincón de Milberg, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-nordelta-etapa-en-pozo.html"
+    },
+    "acf": {
+      "precio_desde": 121392,
+      "moneda": "USD",
+      "fecha_entrega": "09/2027",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40269,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40269"
+    },
+    "slug": "vicente-lopez-733-benavidez-benavidez-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/vicente-lopez-733-benavidez-benavidez-tigre/",
+    "title": {
+      "rendered": "Vicente López 733, Benavídez — Benavídez, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. entrega 06/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. entrega 06/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Benavídez, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/vicente-lopez-733-benavidez-733-emprendimiento-en-venta-923521"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 202000,
+      "moneda": "USD",
+      "fecha_entrega": "06/2028",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/13576980/photo_1775643345272757819_33648818_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40270,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40270"
+    },
+    "slug": "departamento-duplex-4-amb-benavidez-entrega-2027-benavidez-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/departamento-duplex-4-amb-benavidez-entrega-2027-benavidez-tigre/",
+    "title": {
+      "rendered": "Departamento Dúplex 4 amb Benavídez (entrega 2027) — Benavídez, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. Unidades de 4 amb. entrega 07/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. Unidades de 4 amb. entrega 07/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Benavídez, Tigre",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/venta-en-pozo-departamento-duplex-4-amb-benavidez-entrega-2027-antici-emprendimiento-en-venta-021909"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 215141,
+      "moneda": "USD",
+      "fecha_entrega": "07/2027",
+      "tipologias": [
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/11241925/photo_1757313836050303574_27376246_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40271,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40271"
+    },
+    "slug": "tao-parque-benavidez-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/tao-parque-benavidez-tigre/",
+    "title": {
+      "rendered": "TAO Parque — Benavídez, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. Unidades de 2, 3 y 4 amb. entrega 12/2026. amenities: pileta central climatizada (aerotermia), balcones con parrilla. Grupo Dinal.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Benavídez, Tigre. Unidades de 2, 3 y 4 amb. entrega 12/2026. amenities: pileta central climatizada (aerotermia), balcones con parrilla. Grupo Dinal.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Benavídez, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.lanacion.com.ar/propiedades/tao-parque-el-emprendimiento-premium-de-zona-norte-que-ofrece-departamentos-en-360-cuotas-nid07032023/"
+    },
+    "acf": {
+      "desarrolladora": "Grupo Dinal",
+      "moneda": "USD",
+      "fecha_entrega": "12/2026",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40272,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40272"
+    },
+    "slug": "ingeniero-adolfo-guiraldes-476-bloque-2-don-torcuato-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/ingeniero-adolfo-guiraldes-476-bloque-2-don-torcuato-tigre/",
+    "title": {
+      "rendered": "Ingeniero Adolfo Güiraldes 476 (Bloque 2) — Don Torcuato, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Don Torcuato, Tigre. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Don Torcuato, Tigre. entrega 12/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Don Torcuato, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/ingeniero-adolfo-guiraldes-476-bloque-2-1-er-piso-dpto-c-emprendimiento-en-venta-047537"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 69900,
+      "moneda": "USD",
+      "fecha_entrega": "12/2027",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/7830755/photo_1744622187527338875_25273515_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40273,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40273"
+    },
+    "slug": "juan-diaz-de-solis-6259-dique-lujan-dique-lujan-tigre",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/juan-diaz-de-solis-6259-dique-lujan-dique-lujan-tigre/",
+    "title": {
+      "rendered": "Juan Díaz de Solís 6259, Dique Luján — Dique Luján, Tigre"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Dique Luján, Tigre. entrega 11/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Dique Luján, Tigre. entrega 11/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Dique Luján, Tigre",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/c-juan-diaz-de-solis-6259-dique-lujan-provincia-de-buenos-aires-emprendimiento-en-venta-095481"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 310000,
+      "moneda": "USD",
+      "fecha_entrega": "11/2025",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/8643277/photo_1741286484461398596_24971621_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40274,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40274"
+    },
+    "slug": "condominio-dos-cedros-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/condominio-dos-cedros-pilar/",
+    "title": {
+      "rendered": "Condominio Dos Cedros — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 01/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 01/2028. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/condominio-dos-cedros-pilar-emprendimiento-en-venta-960195"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 84000,
+      "moneda": "USD",
+      "fecha_entrega": "01/2028",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/14559087/photo_1785499321453828134_39531763_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40275,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40275"
+    },
+    "slug": "bosque-tortugas-hipolito-yrigoyen-1400-con-rooftop-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/bosque-tortugas-hipolito-yrigoyen-1400-con-rooftop-pilar/",
+    "title": {
+      "rendered": "Bosque Tortugas - Hipólito Yrigoyen 1400 (con rooftop) — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 12/2026. amenities: rooftop. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 12/2026. amenities: rooftop. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/oportunidad-con-rooftop-bosque-tortugas-hipolito-yrigoyen-1400-pilar-emprendimiento-en-venta-408010"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 179000,
+      "moneda": "USD",
+      "fecha_entrega": "12/2026",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/9164756/photo_1744405807965288625_25240943_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40276,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40276"
+    },
+    "slug": "pueblo-caamano-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/pueblo-caamano-pilar/",
+    "title": {
+      "rendered": "Pueblo Caamaño — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 12/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 12/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/pueblo-caamano-pilar-emprendimiento-en-venta-968818"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 123750,
+      "moneda": "USD",
+      "fecha_entrega": "12/2026",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/5916179/photo_1740680959557367013_24800082_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40277,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40277"
+    },
+    "slug": "caamano-al-600-piso-1-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/caamano-al-600-piso-1-pilar/",
+    "title": {
+      "rendered": "Caamaño al 600 (Piso 1) — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 06/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. entrega 06/2025. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/caamano-al-600-piso-1-179-emprendimiento-en-venta-207125"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 123750,
+      "moneda": "USD",
+      "fecha_entrega": "06/2025",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/3787/photo_1741332535121406938_24881690_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40278,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40278"
+    },
+    "slug": "casa-4-amb-barrio-las-margaritas-pilar-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/casa-4-amb-barrio-las-margaritas-pilar-pilar/",
+    "title": {
+      "rendered": "Casa 4 amb Barrio Las Margaritas, Pilar — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. Unidades de 4 amb. entrega 10/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. Unidades de 4 amb. entrega 10/2026. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/casa-en-venta-barrio-4-amb-las-margaritas-pilar-emprendimiento-en-venta-432458"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 129000,
+      "moneda": "USD",
+      "fecha_entrega": "10/2026",
+      "tipologias": [
+        "4_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/14558557/photo_1785514970214890676_39529383_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40279,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40279"
+    },
+    "slug": "campus-village-pilar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/campus-village-pilar/",
+    "title": {
+      "rendered": "Campus Village — Pilar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. Unidades de 3 amb. entrega 01/2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Pilar. Unidades de 3 amb. entrega 01/2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Pilar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.micapropiedades.com.ar/propiedad/1124"
+    },
+    "acf": {
+      "precio_desde": 124863,
+      "moneda": "USD",
+      "fecha_entrega": "01/2026",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40280,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40280"
+    },
+    "slug": "palmera-golf-8-105-el-canton-el-canton-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/palmera-golf-8-105-el-canton-el-canton-escobar/",
+    "title": {
+      "rendered": "Palmera Golf 8 (105) - El Cantón — El Cantón, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en El Cantón, Escobar. Unidades de 1, 2 y 3 amb. entrega 01/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en El Cantón, Escobar. Unidades de 1, 2 y 3 amb. entrega 01/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "El Cantón, Escobar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/palmera-golf-8-105-el-canton-escobar-emprendimiento-en-venta-138718"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 97966,
+      "moneda": "USD",
+      "fecha_entrega": "01/2027",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/2670928/photo_1762084767957640588_27671918_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40281,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40281"
+    },
+    "slug": "palmera-golf-7-102-el-canton-el-canton-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/palmera-golf-7-102-el-canton-el-canton-escobar/",
+    "title": {
+      "rendered": "Palmera Golf 7 (102) - El Cantón — El Cantón, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en El Cantón, Escobar. entrega 11/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en El Cantón, Escobar. entrega 11/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "El Cantón, Escobar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/palmera-golf-7-102-el-canton-emprendimiento-en-venta-191227"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 120767,
+      "moneda": "USD",
+      "fecha_entrega": "11/2027",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/9508186/photo_1746528524731769898_25502717_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40282,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40282"
+    },
+    "slug": "araucarias-80-puertos-del-lago-puertos-del-lago-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/araucarias-80-puertos-del-lago-puertos-del-lago-escobar/",
+    "title": {
+      "rendered": "Araucarias 80 - Puertos del Lago — Puertos del Lago, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Puertos del Lago, Escobar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/araucarias-80-emprendimiento-en-venta-323441"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 78000,
+      "moneda": "USD",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/2357/photo_1742261814251419960_25039119_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40283,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40283"
+    },
+    "slug": "aora-puertos-puertos-del-lago-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/aora-puertos-puertos-del-lago-escobar/",
+    "title": {
+      "rendered": "AORA - Puertos — Puertos del Lago, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Unidades de 1, 2 y 3 amb. entrega 12/2026. amenities: cocheras en subsuelo, oficinas.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Unidades de 1, 2 y 3 amb. entrega 12/2026. amenities: cocheras en subsuelo, oficinas.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Puertos del Lago, Escobar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-escobar-etapa-en-pozo.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "12/2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40284,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40284"
+    },
+    "slug": "jochy-puertos-puertos-del-lago-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/jochy-puertos-puertos-del-lago-escobar/",
+    "title": {
+      "rendered": "Jochy Puertos — Puertos del Lago, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Unidades de 2, 3 y 4 amb. amenities: pileta, gimnasio, parrilla, spa, SUM, solárium, pileta de niños.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Puertos del Lago, Escobar. Unidades de 2, 3 y 4 amb. amenities: pileta, gimnasio, parrilla, spa, SUM, solárium, pileta de niños.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Puertos del Lago, Escobar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/departamentos/puertos-del-lago"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40285,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40285"
+    },
+    "slug": "avenida-de-los-lagos-km-45-panamericana-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/avenida-de-los-lagos-km-45-panamericana-escobar/",
+    "title": {
+      "rendered": "Avenida de los Lagos Km 45 Panamericana — Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Escobar. entrega 06/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Escobar. entrega 06/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Escobar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/avenida-de-los-lagos-km-45-panamericana-emprendimiento-en-venta-513207"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 103722,
+      "moneda": "USD",
+      "fecha_entrega": "06/2027",
+      "tipologias": [],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/11675376/photo_1760435877297386964_27582676_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40286,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40286"
+    },
+    "slug": "naudir-delta-belen-de-escobar-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/naudir-delta-belen-de-escobar-escobar/",
+    "title": {
+      "rendered": "Naudir Delta — Belén de Escobar, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Belén de Escobar, Escobar. entrega 01/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Belén de Escobar, Escobar. entrega 01/2027. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Belén de Escobar, Escobar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/naudir-delta-escobar-emprendimiento-en-venta-103507"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 42465,
+      "moneda": "USD",
+      "fecha_entrega": "01/2027",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/11247368/photo_1757494406700827445_27391237_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40287,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40287"
+    },
+    "slug": "aconcagua-130-condominio-altos-de-maschwitz-edificio-6-ingeniero-maschwitz-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/aconcagua-130-condominio-altos-de-maschwitz-edificio-6-ingeniero-maschwitz-escobar/",
+    "title": {
+      "rendered": "Aconcagua 130 - Condominio Altos de Maschwitz (Edificio 6) — Ingeniero Maschwitz, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ingeniero Maschwitz, Escobar. Unidades de 2 amb. entrega 01/2025. amenities: cochera, pileta. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ingeniero Maschwitz, Escobar. Unidades de 2 amb. entrega 01/2025. amenities: cochera, pileta. Comercializa Mudafy.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ingeniero Maschwitz, Escobar",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://mudafy.com.ar/emprendimientos/venta-departamento-2-ambientes-integrado-en-aconcagua-130-edificio-6--emprendimiento-en-venta-155291"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Mudafy",
+      "precio_desde": 71500,
+      "moneda": "USD",
+      "fecha_entrega": "01/2025",
+      "tipologias": [
+        "2_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    },
+    "_embedded": {
+      "wp:featuredmedia": [
+        {
+          "source_url": "https://mfy-files-api-prod.mudafy.com/AR/publications/2609/photo_1741975387999143041_25033014_medium.webp"
+        }
+      ]
+    }
+  },
+  {
+    "id": 40288,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40288"
+    },
+    "slug": "green-palmers-ingeniero-maschwitz-escobar",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/green-palmers-ingeniero-maschwitz-escobar/",
+    "title": {
+      "rendered": "Green Palmers — Ingeniero Maschwitz, Escobar"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ingeniero Maschwitz, Escobar. Unidades de 3 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ingeniero Maschwitz, Escobar. Unidades de 3 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ingeniero Maschwitz, Escobar",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://casas.mitula.com.ar/casas/departamentos-emprendimiento-ingeniero-maschwitz"
+    },
+    "acf": {
+      "precio_desde": 139000,
+      "moneda": "USD",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40289,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40289"
+    },
+    "slug": "arenales-146-ramos-mejia-la-matanza-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/arenales-146-ramos-mejia-la-matanza-gba-oeste/",
+    "title": {
+      "rendered": "Arenales 146 — Ramos Mejía (La Matanza) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 2 y 3 amb. entrega Octubre 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 2 y 3 amb. entrega Octubre 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ramos Mejía (La Matanza) - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-ramos-mejia--16647366"
+    },
+    "acf": {
+      "precio_desde": 55000,
+      "moneda": "USD",
+      "fecha_entrega": "Octubre 2026",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40290,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40290"
+    },
+    "slug": "residencial-espora-espora-840-ramos-mejia-la-matanza-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/residencial-espora-espora-840-ramos-mejia-la-matanza-gba-oeste/",
+    "title": {
+      "rendered": "Residencial Espora (Espora 840) — Ramos Mejía (La Matanza) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 1, 2 y 3 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 1, 2 y 3 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ramos Mejía (La Matanza) - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-ramos-mejia--17395768"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40291,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40291"
+    },
+    "slug": "spazio-parque-bartolome-mitre-865-ramos-mejia-sur-la-matanza-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/spazio-parque-bartolome-mitre-865-ramos-mejia-sur-la-matanza-gba-oeste/",
+    "title": {
+      "rendered": "Spazio Parque (Bartolomé Mitre 865) — Ramos Mejía Sur (La Matanza) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía Sur (La Matanza) - GBA Oeste. Unidades de 1, 2, 3 y 4 amb. entrega Agosto 2026. amenities: Pileta, parrillas, SUM, microcine, solarium, coworking, sky lounge, playroom, mirador, bicicletero, bar exterior, terraza verde, local comercial. Spazios.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía Sur (La Matanza) - GBA Oeste. Unidades de 1, 2, 3 y 4 amb. entrega Agosto 2026. amenities: Pileta, parrillas, SUM, microcine, solarium, coworking, sky lounge, playroom, mirador, bicicletero, bar exterior, terraza verde, local comercial. Spazios.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ramos Mejía Sur (La Matanza) - GBA Oeste",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://spazios.com.ar/proyecto/spazio-parque/"
+    },
+    "acf": {
+      "desarrolladora": "Spazios",
+      "precio_desde": 46000,
+      "moneda": "USD",
+      "fecha_entrega": "Agosto 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40292,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40292"
+    },
+    "slug": "mamba-vive-castelli-371-ramos-mejia-la-matanza-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/mamba-vive-castelli-371-ramos-mejia-la-matanza-gba-oeste/",
+    "title": {
+      "rendered": "Mamba Vive (Castelli 371) — Ramos Mejía (La Matanza) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 3 y 4 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ramos Mejía (La Matanza) - GBA Oeste. Unidades de 3 y 4 amb. entrega Diciembre 2026.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ramos Mejía (La Matanza) - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-ramos-mejia--17395768"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2026",
+      "tipologias": [
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40293,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40293"
+    },
+    "slug": "boj-yatay-280-castelar-moron-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/boj-yatay-280-castelar-moron-gba-oeste/",
+    "title": {
+      "rendered": "Boj Yatay 280 — Castelar (Morón) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Castelar (Morón) - GBA Oeste. Unidades de 2 y 3 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Castelar (Morón) - GBA Oeste. Unidades de 2 y 3 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Castelar (Morón) - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-departamentos-castelar-moron-etapa-en-pozo.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40294,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40294"
+    },
+    "slug": "torre-firenze-los-pozos-150-ituzaingo-sur-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/torre-firenze-los-pozos-150-ituzaingo-sur-gba-oeste/",
+    "title": {
+      "rendered": "Torre Firenze (Los Pozos 150) — Ituzaingó Sur - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ituzaingó Sur - GBA Oeste. Unidades de 2 y 3 amb. entrega Diciembre 2027. amenities: SUM, parrilla, balcón, gas natural, cochera, ascensor. Comercializa Sarro Pucheta Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ituzaingó Sur - GBA Oeste. Unidades de 2 y 3 amb. entrega Diciembre 2027. amenities: SUM, parrilla, balcón, gas natural, cochera, ascensor. Comercializa Sarro Pucheta Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ituzaingó Sur - GBA Oeste",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://sarropucheta.com/emprendimiento/los-pozos-150-ituzaingo--4089"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Sarro Pucheta Propiedades",
+      "precio_desde": 91400,
+      "moneda": "USD",
+      "fecha_entrega": "Diciembre 2027",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40295,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40295"
+    },
+    "slug": "edificio-lavalle-3-general-lavalle-1049-ituzaingo-norte-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/edificio-lavalle-3-general-lavalle-1049-ituzaingo-norte-gba-oeste/",
+    "title": {
+      "rendered": "Edificio Lavalle 3 (General Lavalle 1049) — Ituzaingó Norte - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ituzaingó Norte - GBA Oeste. entrega Noviembre 2028.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ituzaingó Norte - GBA Oeste. entrega Noviembre 2028.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ituzaingó Norte - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-departamentos-ituzaingo-etapa-en-pozo.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "Noviembre 2028",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40296,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40296"
+    },
+    "slug": "emprendimiento-en-haedo-sur-emilio-castro-293-esq-las-bases-haedo-moron-gba-oeste",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/emprendimiento-en-haedo-sur-emilio-castro-293-esq-las-bases-haedo-moron-gba-oeste/",
+    "title": {
+      "rendered": "Emprendimiento en Haedo Sur (Emilio Castro 293 esq. Las Bases) — Haedo (Morón) - GBA Oeste"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Haedo (Morón) - GBA Oeste. Unidades de 2 y 3 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Haedo (Morón) - GBA Oeste. Unidades de 2 y 3 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Haedo (Morón) - GBA Oeste",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-haedo--11679305"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40297,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40297"
+    },
+    "slug": "genesis-avellaneda-espana-200-avellaneda-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/genesis-avellaneda-espana-200-avellaneda-gba-sur/",
+    "title": {
+      "rendered": "Genesis Avellaneda (España 200) — Avellaneda - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Avellaneda - GBA Sur. Unidades de 1, 2, 3 y 4 amb. entrega Septiembre 2026. amenities: Balcones vidriados en todas las unidades, amenities de primer nivel, diseño contemporáneo.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Avellaneda - GBA Sur. Unidades de 1, 2, 3 y 4 amb. entrega Septiembre 2026. amenities: Balcones vidriados en todas las unidades, amenities de primer nivel, diseño contemporáneo.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Avellaneda - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.argenprop.com/emprendimientos/emprendimiento-en-avellaneda--15508397"
+    },
+    "acf": {
+      "precio_desde": 76755,
+      "moneda": "USD",
+      "fecha_entrega": "Septiembre 2026",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40298,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40298"
+    },
+    "slug": "edificio-chaggal-avellaneda-centro-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/edificio-chaggal-avellaneda-centro-gba-sur/",
+    "title": {
+      "rendered": "Edificio Chaggal — Avellaneda Centro - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Avellaneda Centro - GBA Sur. Unidades de 2 y 3 amb. entrega 2026 (aprox. 12 meses). Teplisky (comercializa Calzetta Propiedades).</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Avellaneda Centro - GBA Sur. Unidades de 2 y 3 amb. entrega 2026 (aprox. 12 meses). Teplisky (comercializa Calzetta Propiedades).</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Avellaneda Centro - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.calzettapropiedades.com/emprendimientos/272/edif.-chaggal--excelente-precio---avellaneda-centro-----2-y-3-ambientes-en-pozo-teplisky-"
+    },
+    "acf": {
+      "desarrolladora": "Teplisky (comercializa Calzetta Propiedades)",
+      "precio_desde": 69000,
+      "moneda": "USD",
+      "fecha_entrega": "2026 (aprox. 12 meses)",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40299,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40299"
+    },
+    "slug": "olv-342-av-mitre-y-olavarria-quilmes-centro-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/olv-342-av-mitre-y-olavarria-quilmes-centro-gba-sur/",
+    "title": {
+      "rendered": "OLV 342 (Av. Mitre y Olavarría) — Quilmes Centro - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Quilmes Centro - GBA Sur. Unidades de 1, 2 y 3 amb. amenities: Amenities (terraza con áreas comunes), cochera opcional con portón automatizado. Comercializa O'Keefe.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Quilmes Centro - GBA Sur. Unidades de 1, 2 y 3 amb. amenities: Amenities (terraza con áreas comunes), cochera opcional con portón automatizado. Comercializa O'Keefe.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Quilmes Centro - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://okeefe.com.ar/propiedad/departamento-en-venta-3-ambientes-quilmes-centro-en-pozo--4342565"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa O'Keefe",
+      "moneda": "USD",
+      "tipologias": [
+        "1_ambiente",
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40300,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40300"
+    },
+    "slug": "edificio-elyon-ezpeleta-centro-quilmes-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/edificio-elyon-ezpeleta-centro-quilmes-gba-sur/",
+    "title": {
+      "rendered": "Edificio Elyon — Ezpeleta Centro (Quilmes) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Ezpeleta Centro (Quilmes) - GBA Sur. Unidades de 3 amb.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Ezpeleta Centro (Quilmes) - GBA Sur. Unidades de 3 amb.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Ezpeleta Centro (Quilmes) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-departamentos-quilmes-etapa-en-pozo.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40301,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40301"
+    },
+    "slug": "urban-6-bernal-quilmes-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/urban-6-bernal-quilmes-gba-sur/",
+    "title": {
+      "rendered": "Urban 6 — Bernal (Quilmes) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Bernal (Quilmes) - GBA Sur.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Bernal (Quilmes) - GBA Sur.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Bernal (Quilmes) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-departamentos-quilmes-etapa-en-pozo.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40302,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40302"
+    },
+    "slug": "baron-avenue-av-hipolito-yrigoyen-9416-lomas-de-zamora-las-lomitas-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/baron-avenue-av-hipolito-yrigoyen-9416-lomas-de-zamora-las-lomitas-gba-sur/",
+    "title": {
+      "rendered": "Barón Avenue (Av. Hipólito Yrigoyen 9416) — Lomas de Zamora (Las Lomitas) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2 y 3 amb. amenities: 3 ascensores última generación, grupo electrógeno, cocheras en altura, local comercial en PB. Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2 y 3 amb. amenities: 3 ascensores última generación, grupo electrógeno, cocheras en altura, local comercial en PB. Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Lomas de Zamora (Las Lomitas) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.baroninmobiliaria.com.ar/novedad/proyecto-baron-avenue/"
+    },
+    "acf": {
+      "desarrolladora": "Barón Inmobiliaria",
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40303,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40303"
+    },
+    "slug": "grand-baron-lomas-de-zamora-las-lomitas-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/grand-baron-lomas-de-zamora-las-lomitas-gba-sur/",
+    "title": {
+      "rendered": "Grand Barón — Lomas de Zamora (Las Lomitas) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2, 3 y 4 amb. amenities: 3 locales comerciales en PB. Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2, 3 y 4 amb. amenities: 3 locales comerciales en PB. Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Lomas de Zamora (Las Lomitas) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.baroninmobiliaria.com.ar/emprendimientos/"
+    },
+    "acf": {
+      "desarrolladora": "Barón Inmobiliaria",
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40304,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40304"
+    },
+    "slug": "imperio-baron-lomas-de-zamora-las-lomitas-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/imperio-baron-lomas-de-zamora-las-lomitas-gba-sur/",
+    "title": {
+      "rendered": "Imperio Barón — Lomas de Zamora (Las Lomitas) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2, 3 y 4 amb. amenities: Salón social, gimnasio, cocheras en altura (PB, entrepiso, 1° y 2° piso). Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora (Las Lomitas) - GBA Sur. Unidades de 2, 3 y 4 amb. amenities: Salón social, gimnasio, cocheras en altura (PB, entrepiso, 1° y 2° piso). Barón Inmobiliaria.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Lomas de Zamora (Las Lomitas) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.baroninmobiliaria.com.ar/emprendimientos/"
+    },
+    "acf": {
+      "desarrolladora": "Barón Inmobiliaria",
+      "moneda": "USD",
+      "tipologias": [
+        "2_ambientes",
+        "3_ambientes",
+        "4_ambientes"
+      ],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40305,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40305"
+    },
+    "slug": "naza-i-lomas-de-zamora-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/naza-i-lomas-de-zamora-gba-sur/",
+    "title": {
+      "rendered": "Naza I — Lomas de Zamora - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora - GBA Sur. Comercializa Bosque Propiedades.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Lomas de Zamora - GBA Sur. Comercializa Bosque Propiedades.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Lomas de Zamora - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.bosquenet.com.ar/emprendimientos/812/departamentos-en-pozo-lomas-de-zamora---naza-i"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Bosque Propiedades",
+      "moneda": "USD",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40306,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40306"
+    },
+    "slug": "emprendimiento-en-lanus-oeste-3-amb-72-m2-lanus-oeste-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/emprendimiento-en-lanus-oeste-3-amb-72-m2-lanus-oeste-gba-sur/",
+    "title": {
+      "rendered": "Emprendimiento en Lanús Oeste (3 amb, 72 m2) — Lanús Oeste - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Lanús Oeste - GBA Sur. Unidades de 3 amb. entrega Abril 2026. amenities: Coworking, SUM/quincho con parrilla, gimnasio, solarium, ascensores automáticos, grupo electrógeno, cochera opcional.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Lanús Oeste - GBA Sur. Unidades de 3 amb. entrega Abril 2026. amenities: Coworking, SUM/quincho con parrilla, gimnasio, solarium, ascensores automáticos, grupo electrógeno, cochera opcional.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Lanús Oeste - GBA Sur",
+    "estado_obra": "En construcción",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/departamentos-venta-lanus-oeste-q-pozo.html"
+    },
+    "acf": {
+      "precio_desde": 100000,
+      "moneda": "USD",
+      "fecha_entrega": "Abril 2026",
+      "tipologias": [
+        "3_ambientes"
+      ],
+      "estado_obra": "En construcción"
+    }
+  },
+  {
+    "id": 40307,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40307"
+    },
+    "slug": "plaza-brown-29-edificio-en-adrogue-adrogue-almirante-brown-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/plaza-brown-29-edificio-en-adrogue-adrogue-almirante-brown-gba-sur/",
+    "title": {
+      "rendered": "Plaza Brown 29 (Edificio en Adrogué) — Adrogué (Almirante Brown) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Adrogué (Almirante Brown) - GBA Sur. Comercializa Gazda Rossi.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Adrogué (Almirante Brown) - GBA Sur. Comercializa Gazda Rossi.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Adrogué (Almirante Brown) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.gazdarossi.com.ar/3870-emprendimiento-edificio-en-adrogue"
+    },
+    "acf": {
+      "desarrolladora": "Comercializa Gazda Rossi",
+      "moneda": "USD",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  },
+  {
+    "id": 40308,
+    "date": "2026-08-24T12:00:00",
+    "date_gmt": "2026-08-24T12:00:00",
+    "modified": "2026-08-24T12:00:00",
+    "modified_gmt": "2026-08-24T12:00:00",
+    "guid": {
+      "rendered": "https://departamentosenpozo.com.ar/?post_type=desarrollo&p=40308"
+    },
+    "slug": "emprendimiento-en-temperley-17-unidades-temperley-lomas-de-zamora-gba-sur",
+    "status": "publish",
+    "type": "desarrollo",
+    "link": "https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/emprendimiento-en-temperley-17-unidades-temperley-lomas-de-zamora-gba-sur/",
+    "title": {
+      "rendered": "Emprendimiento en Temperley (17 unidades) — Temperley (Lomas de Zamora) - GBA Sur"
+    },
+    "content": {
+      "rendered": "<p>Emprendimiento en pozo en Temperley (Lomas de Zamora) - GBA Sur. entrega Agosto 2026. amenities: SUM en terraza, apto profesional, cámaras 24/7, ascensor, edificio 100% eléctrico.</p>",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>Emprendimiento en pozo en Temperley (Lomas de Zamora) - GBA Sur. entrega Agosto 2026. amenities: SUM en terraza, apto profesional, cámaras 24/7, ascensor, edificio 100% eléctrico.</p>",
+      "protected": false
+    },
+    "featured_media": 0,
+    "barrio": "Temperley (Lomas de Zamora) - GBA Sur",
+    "estado_obra": "En pozo",
+    "meta": {
+      "fuente_url": "https://www.zonaprop.com.ar/emprendimientos-departamentos-temperley.html"
+    },
+    "acf": {
+      "moneda": "USD",
+      "fecha_entrega": "Agosto 2026",
+      "tipologias": [],
+      "estado_obra": "En pozo"
+    }
+  }
+]
