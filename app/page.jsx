@@ -103,7 +103,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop text-center md:text-left">
           <span className="inline-block text-link-gold font-bold tracking-widest uppercase mb-4 text-label-caps font-label-caps">
-            Análisis independiente · {mapped.length} proyectos en pozo · CABA
+            Análisis independiente · {mapped.length} proyectos en pozo · CABA y GBA
           </span>
           <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-10">
             Encontrá tu departamento en pozo en Buenos Aires
@@ -135,6 +135,8 @@ export default async function HomePage() {
         </Container>
       </section>
 
+      <MiPlanHome />
+
       {/* Proyectos Destacados */}
       <Container as="section" className="py-16 md:py-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
@@ -155,7 +157,6 @@ export default async function HomePage() {
         </div>
       </Container>
 
-      <MiPlanHome />
 
       {/* Desarrollos por barrio: catálogo de PROYECTOS por barrio */}
       <section className="py-16 md:py-20 bg-surface-container-low">
