@@ -10,7 +10,20 @@ const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbyITcB1Ob6drt8Kfh_WnWbNeD02GxjH5pkBYJGFrfKwUOh_c158KXHGxyUk3rXmxvLy0w/exec";
 const MAIL_URL = "https://formsubmit.co/ajax/dema2910@gmail.com";
 
+// Rate-limit best-effort en memoria (por instancia serverless): corta ráfagas de spam.
+const HITS = new Map();
+function limited(ip) {
+  const now = Date.now();
+  const arr = (HITS.get(ip) || []).filter((t) => now - t < 60000);
+  arr.push(now);
+  HITS.set(ip, arr);
+  if (HITS.size > 5000) HITS.clear();
+  return arr.length > 8;
+}
+
 export async function POST(req) {
+  const ip = (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "0";
+  if (limited(ip)) return Response.json({ ok: false, error: "rate_limited" }, { status: 429 });
   let data;
   try {
     data = await req.json();
