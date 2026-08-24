@@ -21,7 +21,6 @@ const PASOS = [
   { key: "email", type: "text", p: "Por último, ¿a qué mail corporativo te aviso cuando esté publicado? (lo usamos para verificar que sos de la empresa)", ph: "marketing@tudesarrolladora.com" },
 ];
 
-const WEBHOOK = "https://script.google.com/macros/s/AKfycbyITcB1Ob6drt8Kfh_WnWbNeD02GxjH5pkBYJGFrfKwUOh_c158KXHGxyUk3rXmxvLy0w/exec";
 const extraerMail = (s) => (String(s || "").match(/[^\s@]+@[^\s@]+\.[^\s@]+/) || [""])[0];
 
 export default function IntakeChat({ onClose = null }) {
@@ -119,21 +118,14 @@ export default function IntakeChat({ onClose = null }) {
       payload._autoresponse = `¡Gracias por cargar ${d.nombre || "tu proyecto"}! Lo estamos revisando y te avisamos por mail cuando esté publicado. Para sumar render o amenities, respondé este correo. — Equipo Departamentos en Pozo`;
     }
     try {
-      await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", {
-        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload),
-      });
-      try {
-        fetch(WEBHOOK, {
-          method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({
-            origen: "Intake proyecto (chat)", tipo: "intake", estado: "pendiente",
-            nombre: d.desarrolladora || "", email, whatsapp: "",
-            proyecto: d.nombre || "", zonas: d.barrio || "", ambientes: d.tipologias || "",
-            presupuesto: d.precio || "",
+      const sheet = {
+        origen: "Intake proyecto (chat)", tipo: "intake", estado: "pendiente",
+        nombre: d.desarrolladora || "", email, whatsapp: "",
+        proyecto: d.nombre || "", zonas: d.barrio || "", ambientes: d.tipologias || "",
+        presupuesto: d.precio || "",
             mensaje: `Etapa: ${d.etapa || "—"} | Entrega: ${d.entrega || "—"} | Financiación: ${d.financiacion || "—"}`,
-          }),
-        });
-      } catch {}
+      };
+      await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mail: payload, sheet }) });
       track("intake_submit", { proyecto: d.nombre || "" });
       await say(`Listo ✅ Con esto armo la ficha de ${d.nombre || "tu proyecto"}${d.barrio ? ` (${d.barrio})` : ""}. La revisamos y te aviso${email ? ` a ${email}` : ""} cuando esté online. ¡Gracias!`, 700);
       setFase("ok");
