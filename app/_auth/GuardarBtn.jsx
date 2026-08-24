@@ -17,6 +17,7 @@ export default function GuardarBtn({ card, variant = "icon", className = "" }) {
     e.stopPropagation();
     if (enabled && !user) { openAuthPrompt(card); return; } // pedir login antes de guardar
     toggleFavorito(card);
+    if (!saved) { try { window.dispatchEvent(new CustomEvent("dpp-guardado", { detail: { nombre: card?.nombre || "" } })); } catch (e) {} }
   };
 
   if (variant === "full") {
