@@ -33,14 +33,14 @@ export default function AsesorLauncher() {
       {nudge && !open && (
         <div className="fixed bottom-40 md:bottom-20 right-5 z-[91] max-w-[240px] bg-surface border border-outline-variant shadow-xl rounded-2xl rounded-br-sm p-3.5 text-[13px] text-on-surface leading-snug">
           <button type="button" onClick={cerrarNudge} aria-label="Cerrar" className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-surface border border-outline-variant text-[13px] leading-none text-on-surface-variant hover:text-primary">✕</button>
-          ¿Querés el precio y la cuota de algún proyecto? Te lo consigo en 1 minuto.
+          ¿Te ayudo a elegir el proyecto que más te conviene? Es gratis y sin compromiso.
           <button type="button" onClick={abrir} className="block mt-2 text-secondary font-medium underline hover:no-underline">Sí, dale →</button>
         </div>
       )}
-      <button type="button" onClick={abrir} aria-label="Preguntá por precio con Sofía"
+      <button type="button" onClick={abrir} aria-label="¿Te ayudo a elegir? con Sofía"
         className="fixed bottom-24 md:bottom-5 right-5 z-[90] inline-flex items-center gap-2 rounded-full bg-secondary text-white shadow-xl px-4 py-3 hover:opacity-90 transition-all">
         <span className="material-symbols-outlined text-[22px]">forum</span>
-        <span className="text-[13px] font-medium">Preguntá por precio</span>
+        <span className="text-[13px] font-medium">¿Te ayudo a elegir?</span>
       </button>
       {open && <AsesorModal onClose={() => setOpen(false)} />}
     </>
