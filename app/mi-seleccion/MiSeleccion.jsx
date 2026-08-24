@@ -131,46 +131,50 @@ export default function MiSeleccion({ catalogo = [] }) {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       <PlanResumen perfil={perfil} nGuardados={items.length} onConsultar={() => items[0] && setConsulta({ nombre: items[0].nombre, slug: items[0].slug })} />
       <CuentaBloque enabled={enabled} user={user} login={login} logout={logout} />
-      {perfil && <PerfilBloque perfil={perfil} />}
 
-      <div>
-        <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Tus proyectos guardados</h2>
-        {!ready ? (
-          <p className="text-on-surface-variant">Cargando…</p>
-        ) : items.length === 0 ? (
+      {/* PILAR 1: lo que te interesa */}
+      <section className="flex flex-col gap-5">
+        <SectionHeader icon="favorite" titulo="Lo que te interesa" sub="Tu búsqueda guardada y los proyectos que marcaste." />
+        {perfil && <PerfilBloque perfil={perfil} />}
+        <div>
+          <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">bookmark</span>Proyectos guardados{items.length ? ` (${items.length})` : ""}</h3>
+          {!ready ? (
+            <p className="text-on-surface-variant">Cargando…</p>
+          ) : items.length === 0 ? (
+            <div className="border border-outline-variant rounded-xl p-8 text-center">
+              <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo a tu plan.</p>
+              <Link href="/desarrollos-inmobiliarios/" className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">Explorar proyectos en pozo</Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {items.map((it) => (<ProjectCard key={it.slug} {...it} />))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* PILAR 2: nuevas oportunidades para vos */}
+      <section className="flex flex-col gap-6">
+        <SectionHeader icon="auto_awesome" titulo="Nuevas oportunidades para vos" sub="Proyectos que encajan con tu búsqueda y todavía no viste. Descartá lo que no va y afinamos." />
+        {recomendados.length === 0 && similares.length === 0 ? (
           <div className="border border-outline-variant rounded-xl p-8 text-center">
-            <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo a tu plan.</p>
-            <Link href="/desarrollos-inmobiliarios/" className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">Explorar proyectos en pozo</Link>
+            <p className="text-on-surface-variant mb-4">{perfil ? "Por ahora no hay nuevas coincidencias. Guardá algún proyecto o ampliá tu búsqueda y te traemos más." : "Armá tu perfil en 2 minutos y acá te vamos a mostrar proyectos a tu medida, antes que en los portales."}</p>
+            <Link href={perfil ? "/desarrollos-inmobiliarios/" : "/asesor/"} className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">{perfil ? "Explorar proyectos" : "Armar mi perfil"}</Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((it) => (<ProjectCard key={it.slug} {...it} />))}
-          </div>
+          <>
+            {recomendados.length > 0 && (
+              <FeedCarousel titulo="A tu medida" subtitulo="Por tu objetivo, zona y presupuesto." items={recomendados} onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })} onDescartar={descartar} />
+            )}
+            {similares.length > 0 && (
+              <FeedCarousel titulo="Parecidos a lo que guardaste" subtitulo="Misma zona, etapa de obra y rango de precio." items={similares} onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })} onDescartar={descartar} />
+            )}
+          </>
         )}
-      </div>
-
-      {recomendados.length > 0 && (
-        <FeedCarousel
-          titulo="Recomendados para tu plan"
-          subtitulo="Según tu objetivo, zona y presupuesto. Descartá lo que no va y afinamos."
-          items={recomendados}
-          onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })}
-          onDescartar={descartar}
-        />
-      )}
-
-      {similares.length > 0 && (
-        <FeedCarousel
-          titulo="Similares a lo que guardaste"
-          subtitulo="Por zona, etapa de obra y rango de precio de tu plan."
-          items={similares}
-          onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })}
-          onDescartar={descartar}
-        />
-      )}
+      </section>
 
       {consulta && (<AsesorModal nombre={consulta.nombre} slug={consulta.slug} onClose={() => setConsulta(null)} />)}
     </div>
@@ -178,6 +182,18 @@ export default function MiSeleccion({ catalogo = [] }) {
 }
 
 // Resumen del plan + PRÓXIMO PASO (dashboard proactivo, muestra solo lo relevante).
+// Cabecera de pilar del dashboard: ícono + título + subtítulo con divisoria.
+function SectionHeader({ icon, titulo, sub }) {
+  return (
+    <div className="border-t border-outline-variant pt-6">
+      <h2 className="font-headline-md text-headline-md serif text-primary flex items-center gap-2.5">
+        <span className="material-symbols-outlined text-[24px] text-secondary icon-fill">{icon}</span>{titulo}
+      </h2>
+      {sub && <p className="text-on-surface-variant text-[14.5px] mt-1">{sub}</p>}
+    </div>
+  );
+}
+
 function PlanResumen({ perfil, nGuardados, onConsultar }) {
   if (perfil === undefined) return null;
   let paso, cta, href, action, icon;
