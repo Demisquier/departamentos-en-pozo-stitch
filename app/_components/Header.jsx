@@ -82,7 +82,7 @@ export default function Header() {
           <Link href="/contacto/" className="block font-bold" onClick={() => setOpen(false)}>
             CONTACTO
           </Link>
-          <div className="pt-2"><AuthButton onNavigate={() => setOpen(false)} /></div>
+          <div className="pt-2"><AuthButton onNavigate={() => setOpen(false)} full /></div>
         </div>
       )}
     </header>
