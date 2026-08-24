@@ -111,7 +111,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
         <AlertaCTA
           titulo={`¿Buscás un departamento en pozo en ${label}?`}
           texto={`Activá una alerta y te avisamos apenas se lance un nuevo proyecto en ${label} que encaje con tu presupuesto, antes de que salga a los portales.`}
-          cta="Crear alerta gratis" />
+          cta="Crear alerta gratis" contexto={label} />
 
         {/* Interlinking a las guías de decisión de compra. */}
         <GuiasRelacionadas />
