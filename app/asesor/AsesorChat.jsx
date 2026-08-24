@@ -179,7 +179,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollToBottom = () => { requestAnimationFrame(() => { const el = scrollRef.current; if (el) el.scrollTop = el.scrollHeight; }); };
+  const scrollToBottom = () => { requestAnimationFrame(() => { requestAnimationFrame(() => { const el = scrollRef.current; if (el) el.scrollTop = el.scrollHeight; }); }); };
   useEffect(() => {
     scrollToBottom();
     if ((fase === "email" || fase === "whatsapp") && !typing && inputRef.current) inputRef.current.focus();
