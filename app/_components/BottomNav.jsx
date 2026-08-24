@@ -1,6 +1,9 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-/* Nav inferior mobile — idéntico a Stitch (solo < md) */
+/* Nav inferior mobile — idéntico a Stitch (solo < md). Se OCULTA en la ficha, donde
+   AccionesFicha ya pone una barra CTA fija abajo (evita que se pisen los botones). */
 const ITEMS = [
   { icon: "home", label: "Inicio", href: "/", fill: true },
   { icon: "apartment", label: "Proyectos", href: "/desarrollos-inmobiliarios/" },
@@ -9,6 +12,9 @@ const ITEMS = [
 ];
 
 export default function BottomNav() {
+  const path = usePathname() || "";
+  const enFicha = /^\/desarrollos-inmobiliarios\/[^/]+\/?$/.test(path);
+  if (enFicha) return null;
   return (
     <nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-3 px-margin-mobile z-50 border-t border-outline-variant shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
       {ITEMS.map((it, i) => (
