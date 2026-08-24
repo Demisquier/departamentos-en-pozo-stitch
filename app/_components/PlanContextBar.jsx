@@ -4,6 +4,8 @@
 // proyecto que el usuario tiene guardado en su Plan. En ese caso muestra una tira slim:
 // "En tu plan · X de N · Anterior · Mi Plan · Siguiente", para recorrer los guardados
 // como si fueran items de un carrito, sin salir del flujo de navegación.
+// Las fichas viven en /desarrollos-inmobiliarios/{slug}/. El guardado a veces sólo tiene
+// slug (sin href), así que matcheamos por el ÚLTIMO segmento del path == slug.
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../_auth/AuthProvider";
@@ -15,9 +17,16 @@ function norm(p) {
   return s;
 }
 
+function lastSeg(p) {
+  const segs = norm(p).split("/").filter(Boolean);
+  return segs.length ? segs[segs.length - 1] : "";
+}
+
 function hrefOf(it) {
   if (!it) return "#";
-  return it.href || (it.slug ? "/" + it.slug : "#");
+  if (it.href) return it.href;
+  if (it.slug) return "/desarrollos-inmobiliarios/" + it.slug + "/";
+  return "#";
 }
 
 export default function PlanContextBar() {
@@ -25,10 +34,13 @@ export default function PlanContextBar() {
   const pathname = usePathname();
   const list = Array.isArray(items) ? items : [];
   if (!list.length) return null;
-  const here = norm(pathname);
+  const hereSlug = lastSeg(pathname);
+  if (!hereSlug) return null;
   const idx = list.findIndex((it) => {
-    const h = norm(hrefOf(it));
-    return h && h !== "#" && h === here;
+    if (!it) return false;
+    if (it.slug && it.slug === hereSlug) return true;
+    const h = hrefOf(it);
+    return h && h !== "#" && lastSeg(h) === hereSlug;
   });
   if (idx < 0) return null;
   const prev = idx > 0 ? list[idx - 1] : null;
