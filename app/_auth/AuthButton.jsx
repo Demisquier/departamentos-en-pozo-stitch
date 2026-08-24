@@ -16,7 +16,7 @@ export default function AuthButton({ onNavigate }) {
       <Link
         href="/mi-seleccion/"
         onClick={onNavigate}
-        className="inline-flex items-center gap-1.5 whitespace-nowrap rounded border border-outline-variant px-3 py-1.5 text-label-caps font-label-caps text-primary hover:border-secondary transition-colors"
+        className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-secondary bg-secondary px-3.5 py-1.5 text-label-caps font-label-caps text-white shadow-sm hover:bg-secondary/90 transition-colors"
       >
         <span className="material-symbols-outlined text-[18px]">space_dashboard</span>
         <span className="hidden lg:inline">MI PLAN</span>
