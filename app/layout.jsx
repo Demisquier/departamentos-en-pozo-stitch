@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=add_business,apartment,arrow_back,arrow_forward,arrow_upward,auto_awesome,badge,bolt,bookmark,business,calculate,calendar_today,chat,check,check_circle,chevron_left,chevron_right,close,construction,download,edit_note,event_available,expand_more,explore,fact_check,favorite,forum,gavel,grid_view,groups,history,home,image,info,location_on,login,logout,mail,map,menu,menu_book,notifications_active,open_in_new,payments,photo_library,play_arrow,progress_activity,query_stats,quiz,rate_review,refresh,schedule,search,search_off,send,share,smart_display,space_dashboard,support_agent,table_rows,timeline,trending_up,tune,verified,verified_user&display=swap"
           rel="stylesheet"
         />
       </head>
