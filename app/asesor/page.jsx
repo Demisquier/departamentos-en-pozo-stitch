@@ -11,14 +11,14 @@ export const metadata = {
 
 export default function AsesorPage() {
   return (
-    <Container as="main" className="py-10 md:py-14">
-      <div className="max-w-xl mx-auto text-center mb-8">
+    <Container as="main" className="py-4 md:py-14">
+      <div className="max-w-xl mx-auto text-center mb-4 md:mb-8">
         <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-3">Armá tu perfil, te acompañamos</h1>
         <p className="text-on-surface-variant font-body-lg text-body-lg">
           Contanos qué buscás en 2 minutos. Guardamos tu perfil en tu selección y te ayudamos a encontrar el proyecto en pozo que va con vos — sin presiones.
         </p>
       </div>
-      <div className="max-w-xl mx-auto h-[72vh] min-h-[520px]">
+      <div className="max-w-xl mx-auto h-[calc(100dvh-210px)] min-h-[440px] md:h-[72vh] md:min-h-[520px]">
         <AsesorChat />
       </div>
     </Container>
