@@ -7,6 +7,7 @@ import BottomNav from "./_components/BottomNav";
 import AuthProvider from "./_auth/AuthProvider";
 import AsesorLauncher from "./asesor/AsesorLauncher";
 import PlanToast from "./_components/PlanToast";
+import PlanContextBar from "./_components/PlanContextBar";
 import { SITE, GA_ID } from "../lib/constants";
 
 // Fuentes self-hosteadas por Next (next/font): se sirven desde nuestro dominio, con
@@ -78,6 +79,7 @@ gtag('config', '${GA_ID}');`}
         </Script>
         <AuthProvider>
           <Header />
+          <PlanContextBar />
           <main>{children}</main>
           <Footer />
           <AsesorLauncher />
