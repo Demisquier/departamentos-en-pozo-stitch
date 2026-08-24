@@ -112,19 +112,13 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     if (data.objetivo) payload["Consulta"] = data.objetivo;
     payload["Origen"] = tipo === "alerta" ? "Buscador · alerta" : (proyecto ? "Ficha · quiero más info" : "Asesor · perfil");
     try {
-      await fetch("https://formsubmit.co/ajax/dema2910@gmail.com", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) });
-      // Además del mail: registramos el lead en la planilla (Google Sheet vía Apps Script).
-      try {
-        fetch("https://script.google.com/macros/s/AKfycbyITcB1Ob6drt8Kfh_WnWbNeD02GxjH5pkBYJGFrfKwUOh_c158KXHGxyUk3rXmxvLy0w/exec", {
-          method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({
-            origen: payload["Origen"], tipo,
-            nombre: data.nombre || "", email, whatsapp,
-            proyecto: proyecto || "", proyectoSlug: proyectoSlug || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
-            presupuesto: data.presupuesto || "", mensaje: data.objetivo || "",
-          }),
-        });
-      } catch {}
+      const sheet = {
+        origen: payload["Origen"], tipo,
+        nombre: data.nombre || "", email, whatsapp,
+        proyecto: proyecto || "", proyectoSlug: proyectoSlug || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
+        presupuesto: data.presupuesto || "", mensaje: data.objetivo || "",
+      };
+      await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mail: payload, sheet }) });
       leadRef.current = { sent: true, snap };
       track("lead", { tipo, origen: tipo === "alerta" ? "buscador" : (proyecto ? "ficha" : "asesor"), proyecto: proyecto || "" });
     } catch {}
