@@ -68,6 +68,16 @@ const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zo
 const DESCARTES_KEY = "dpp_descartes_v1";
 const CONTACTADOS_KEY = "dpp_contactados_v1";
 
+// Persiste la memoria del plan (contactados + descartes) DENTRO de perfiles.data, misma fila
+// que el perfil, para que viaje entre dispositivos sin crear una tabla nueva. Best-effort.
+async function savePlanState(contactados, descartes) {
+  let base = {};
+  try { base = JSON.parse(localStorage.getItem("dpp_perfil_v1")) || {}; } catch {}
+  const next = { ...base, contactados, descartes };
+  try { localStorage.setItem("dpp_perfil_v1", JSON.stringify(next)); } catch {}
+  try { if (authEnabled) { const { data: u } = await supabase.auth.getUser(); const uid = u && u.user && u.user.id; if (uid) await supabase.from("perfiles").upsert({ user_id: uid, data: next }); } } catch {}
+}
+
 // Precio legible para cards y modal.
 function precioLabelDe(m) {
   if (m.precioDesde) return "Desde USD " + Number(m.precioDesde).toLocaleString("es-AR");
@@ -89,7 +99,7 @@ export default function MiSeleccion({ catalogo = [] }) {
   const [detalle, setDetalle] = useState(null);   // proyecto para el modal Zillow-style
 
   useEffect(() => {
-    const loadPerfil = () => { try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); } catch { setPerfil(null); } };
+    const loadPerfil = () => { try { const raw = localStorage.getItem("dpp_perfil_v1"); const p = raw ? JSON.parse(raw) : null; setPerfil(p); if (p && p.contactados) setContactados((c) => ({ ...c, ...p.contactados })); if (p && p.descartes) setDescartes((d) => ({ ...d, ...p.descartes })); } catch { setPerfil(null); } };
     loadPerfil();
     try { const d = localStorage.getItem(DESCARTES_KEY); if (d) setDescartes(JSON.parse(d)); } catch {}
     try { const c = localStorage.getItem(CONTACTADOS_KEY); if (c) setContactados(JSON.parse(c)); } catch {}
@@ -111,6 +121,7 @@ export default function MiSeleccion({ catalogo = [] }) {
     setDescartes((prev) => {
       const next = { ...prev, [slug]: motivo };
       try { localStorage.setItem(DESCARTES_KEY, JSON.stringify(next)); } catch {}
+      try { savePlanState(contactados, next); } catch {}
       return next;
     });
     try { track("mi_plan_descarte", { slug, motivo }); } catch {}
@@ -120,8 +131,9 @@ export default function MiSeleccion({ catalogo = [] }) {
     const arr = Array.isArray(slugs) ? slugs : [slugs];
     setContactados((prev) => {
       const next = { ...prev };
-      arr.forEach((s) => { if (on) next[s] = true; else delete next[s]; });
+      arr.forEach((sl) => { if (on) next[sl] = true; else delete next[sl]; });
       try { localStorage.setItem(CONTACTADOS_KEY, JSON.stringify(next)); } catch {}
+      try { savePlanState(next, descartes); } catch {}
       return next;
     });
   }
@@ -333,7 +345,8 @@ const CAMPOS_CONTACTO = [
 
 async function guardarPerfil(next) {
   const clean = {};
-  Object.keys(next).forEach((k) => { const v = String(next[k] == null ? "" : next[k]).trim(); if (v) clean[k] = v; });
+  Object.keys(next).forEach((k) => { if (k === "contactados" || k === "descartes") return; const v = String(next[k] == null ? "" : next[k]).trim(); if (v) clean[k] = v; });
+  try { const prevP = JSON.parse(localStorage.getItem("dpp_perfil_v1")) || {}; if (prevP.contactados) clean.contactados = prevP.contactados; if (prevP.descartes) clean.descartes = prevP.descartes; } catch {}
   try { localStorage.setItem("dpp_perfil_v1", JSON.stringify(clean)); } catch {}
   try {
     if (authEnabled) { const { data: u } = await supabase.auth.getUser(); const uid = u && u.user && u.user.id; if (uid) await supabase.from("perfiles").upsert({ user_id: uid, data: clean }); }
@@ -669,6 +682,7 @@ function DetalleModal({ m, onClose, onConsultar, onDescartar }) {
       else if (e.key === "ArrowLeft") setIdx((i) => (i - 1 + lenRef.current) % lenRef.current);
     };
     window.addEventListener("keydown", onKey);
+    try { track("mi_plan_ver_detalle", { slug: m.slug || "" }); } catch (e) {}
     const ft = setTimeout(() => { try { closeRef.current && closeRef.current.focus(); } catch (e) {} }, 30);
     let vivo = true;
     (async () => {
