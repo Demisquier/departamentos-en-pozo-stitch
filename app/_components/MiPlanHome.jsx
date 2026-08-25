@@ -21,12 +21,12 @@ export default function MiPlanHome() {
       <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <span className="inline-block text-link-gold font-bold tracking-widest uppercase mb-3 text-label-caps font-label-caps">Tu espacio personal</span>
+            <span className="inline-block text-link-gold font-bold tracking-widest uppercase mb-3 text-label-caps font-label-caps">Lo que ningún portal hace</span>
             <h2 className="text-on-primary font-headline-md text-headline-md leading-tight mb-4">
               {logged ? "Retomá tu plan de inversión en pozo" : "Tu plan de inversión en pozo, en un solo lugar"}
             </h2>
             <p className="text-on-primary text-body-lg font-body-lg opacity-90 mb-6 max-w-xl">
-              Guardá proyectos, definí tu objetivo y presupuesto, y mirá qué cambió para vos. Te ayudamos a decidir — sin costo y sin vueltas.
+              No arranques de cero cada vez. Tu plan recuerda qué buscás, compara lo que guardaste y te avisa cuándo aparece o cambia algo que te encaja. Te ayudamos a decidir, sin costo.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link href="/mi-seleccion/" className="inline-flex items-center gap-2 rounded-full bg-surface text-primary px-7 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
