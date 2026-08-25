@@ -1,16 +1,18 @@
 "use client";
 // app/mi-seleccion/MiSeleccion.jsx — "Mi Plan": tu espacio de decisión.
-// Dashboard proactivo (resumen + próximo paso) + perfil + guardados +
-// RECOMENDADOS por tu perfil + SIMILARES a lo guardado, todo con "descartar con motivo".
+// Orden nuevo (redesign): (1) tu perfil EDITABLE arriba de todo (búsqueda + contacto +
+// un "dato clave" libre); (2) tus proyectos guardados divididos en "sin contactar" y "ya
+// contactados", con CTA para contactar a uno o a todos; (3) "Nuevas oportunidades para vos",
+// cuyas fichas se abren como MODAL (estilo Zillow) para no salir de Mi Plan.
 // Sin login funciona en localStorage; con login, cross-device vía el provider.
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../_auth/AuthProvider";
-import ProjectCard from "../_ui/ProjectCard";
 import ComparadorPlan from "../_components/ComparadorPlan";
 import GuardarBtn from "../_auth/GuardarBtn";
 import AsesorModal from "../asesor/AsesorModal";
 import { track } from "../../lib/track";
+import { supabase, authEnabled } from "../../lib/supabase";
 
 // Scoring de "similares" INLINE (client-safe): réplica de lib/catalogo.similaresDesarrollos
 // pero sin importar lib/catalogo → lib/wp (server-only) para no romper el bundle.
@@ -64,20 +66,34 @@ function recomendadosLocal(perfil, catalogo, excluir, limit = 12) {
 
 const ETIQUETAS = { objetivo: "Objetivo", presupuesto: "Presupuesto", zonas: "Zonas", ambientes: "Tipología", entrega: "Entrega", plazo: "Plazo", financiacion: "Financiación" };
 const DESCARTES_KEY = "dpp_descartes_v1";
+const CONTACTADOS_KEY = "dpp_contactados_v1";
+
+// Precio legible para cards y modal.
+function precioLabelDe(m) {
+  if (m.precioDesde) return "Desde USD " + Number(m.precioDesde).toLocaleString("es-AR");
+  const m2 = m.precioM2 ?? m.precio;
+  if (m2) return "USD " + Number(m2).toLocaleString("es-AR") + " /m²";
+  return "Consultar";
+}
+// Dato denormalizado que consume GuardarBtn / comparador (sin releer catálogo).
+function cardDe(m) {
+  return { slug: m.slug, nombre: m.nombre, barrio: m.barrio, direccion: m.direccion, precio: m.precio, precioDesde: m.precioDesde, precioM2: m.precioM2, img: m.imagen || m.img, etapa: m.etapa, ambientes: m.ambientes, entrega: m.entrega, desarrolladora: m.desarrolladora };
+}
 
 export default function MiSeleccion({ catalogo = [] }) {
   const { items, ready, enabled, authReady, user, login, logout } = useAuth();
   const [perfil, setPerfil] = useState(undefined); // undefined = cargando
   const [descartes, setDescartes] = useState({}); // { slug: motivo }
+  const [contactados, setContactados] = useState({}); // { slug: true }
   const [consulta, setConsulta] = useState(null); // { nombre, slug }
+  const [detalle, setDetalle] = useState(null);   // proyecto para el modal Zillow-style
 
   useEffect(() => {
     const loadPerfil = () => { try { const raw = localStorage.getItem("dpp_perfil_v1"); setPerfil(raw ? JSON.parse(raw) : null); } catch { setPerfil(null); } };
     loadPerfil();
     try { const d = localStorage.getItem(DESCARTES_KEY); if (d) setDescartes(JSON.parse(d)); } catch {}
-    // El perfil puede llegar de la nube (Supabase) DESPUÉS del montaje: AuthProvider dispara
-    // "dpp-perfil-updated" al hidratar, y otras pestañas via "storage". Re-leemos para no
-    // mostrar "Armá tu perfil" a alguien que ya lo tiene en su cuenta.
+    try { const c = localStorage.getItem(CONTACTADOS_KEY); if (c) setContactados(JSON.parse(c)); } catch {}
+    // El perfil puede llegar de la nube (Supabase) DESPUÉS del montaje.
     const onStorage = (e) => { if (!e || e.key === "dpp_perfil_v1") loadPerfil(); };
     window.addEventListener("dpp-perfil-updated", loadPerfil);
     window.addEventListener("storage", onStorage);
@@ -86,9 +102,9 @@ export default function MiSeleccion({ catalogo = [] }) {
 
   // Evento norte: "usuario activo de Mi Plan" (se cuenta cada visita a la sección).
   useEffect(() => {
-    if (perfil === undefined) return; // esperamos a saber si hay perfil
+    if (perfil === undefined) return;
     try { track("mi_plan_view", { guardados: items.length, tiene_perfil: !!perfil }); } catch {}
-    // eslint-c�sable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [perfil === undefined]);
 
   function descartar(slug, motivo) {
@@ -100,19 +116,43 @@ export default function MiSeleccion({ catalogo = [] }) {
     try { track("mi_plan_descarte", { slug, motivo }); } catch {}
   }
 
+  function marcarContactado(slugs, on = true) {
+    const arr = Array.isArray(slugs) ? slugs : [slugs];
+    setContactados((prev) => {
+      const next = { ...prev };
+      arr.forEach((s) => { if (on) next[s] = true; else delete next[s]; });
+      try { localStorage.setItem(CONTACTADOS_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  }
+
+  // Abrir consulta = marcar contactado (proxy: el usuario ya inició el contacto por ese proyecto).
+  function consultar(m, marcar = true) {
+    setConsulta({ nombre: m.nombre, slug: m.slug });
+    if (marcar && m.slug) marcarContactado(m.slug, true);
+    try { track("mi_plan_consulta", { slug: m.slug || "" }); } catch {}
+  }
+  function consultarTodos() {
+    const list = items.filter((it) => !contactados[it.slug]);
+    const objetivo = list.length ? list : items;
+    if (!objetivo.length) return;
+    const nombres = objetivo.map((it) => it.nombre).filter(Boolean).slice(0, 6).join(", ");
+    setConsulta({ nombre: nombres || "tus proyectos guardados", slug: "" });
+    marcarContactado(objetivo.map((it) => it.slug), true);
+    try { track("mi_plan_consulta_todos", { n: objetivo.length }); } catch {}
+  }
+
   const excluir = useMemo(() => {
     const set = new Set(Object.keys(descartes));
     for (const it of items) set.add(it.slug);
     return set;
   }, [descartes, items]);
 
-  // Recomendados por perfil (excluye guardados y descartados).
   const recomendados = useMemo(() => {
     if (!ready || !perfil || !catalogo.length) return [];
     return recomendadosLocal(perfil, catalogo, excluir, 12);
   }, [ready, perfil, catalogo, excluir]);
 
-  // Similares a lo guardado (excluye guardados y descartados).
   const similares = useMemo(() => {
     if (!ready || !items.length || !catalogo.length) return [];
     const vistos = new Set(); const out = [];
@@ -122,6 +162,9 @@ export default function MiSeleccion({ catalogo = [] }) {
     }
     return out.slice(0, 12);
   }, [ready, items, catalogo, excluir]);
+
+  const guardadosSinContactar = useMemo(() => items.filter((it) => !contactados[it.slug]), [items, contactados]);
+  const guardadosContactados = useMemo(() => items.filter((it) => contactados[it.slug]), [items, contactados]);
 
   // Con auth activo, "Mi Plan" es privado: sin sesión no se ve.
   if (enabled && !authReady) {
@@ -133,36 +176,59 @@ export default function MiSeleccion({ catalogo = [] }) {
 
   return (
     <div className="flex flex-col gap-10">
-      <PlanResumen perfil={perfil} nGuardados={items.length} onConsultar={() => items[0] && setConsulta({ nombre: items[0].nombre, slug: items[0].slug })} />
+      {/* 1) TU PERFIL — lo primero: editable, con búsqueda + contacto + un dato clave libre. */}
+      <PerfilEditable perfil={perfil} onSaved={setPerfil} />
+
       <CuentaBloque enabled={enabled} user={user} login={login} logout={logout} />
 
-      {/* PILAR 1: lo que te interesa */}
+      {/* 2) TUS PROYECTOS — divididos por estado de contacto. */}
       <section className="flex flex-col gap-5">
-        <SectionHeader icon="favorite" titulo="Lo que te interesa" sub="Tu búsqueda guardada y los proyectos que marcaste." />
-        {perfil && <PerfilBloque perfil={perfil} />}
-        <div>
-          <div className="mb-4 flex items-center justify-between gap-3 flex-wrap">
-            <h3 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">bookmark</span>Proyectos guardados{items.length ? ` (${items.length})` : ""}</h3>
-            <ComparadorPlan items={items} />
+        <SectionHeader icon="bookmark" titulo="Tus proyectos guardados" sub="Lo que marcaste con el corazón. Contactá a la desarrolladora por uno o por todos y seguimos nosotros." />
+        {!ready ? (
+          <p className="text-on-surface-variant">Cargando…</p>
+        ) : items.length === 0 ? (
+          <div className="border border-outline-variant rounded-xl p-8 text-center">
+            <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo a tu plan.</p>
+            <Link href="/desarrollos-inmobiliarios/" className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">Explorar proyectos en pozo</Link>
           </div>
-          {!ready ? (
-            <p className="text-on-surface-variant">Cargando…</p>
-          ) : items.length === 0 ? (
-            <div className="border border-outline-variant rounded-xl p-8 text-center">
-              <p className="text-on-surface-variant mb-4">Todavía no guardaste proyectos. Tocá el corazón en cualquiera para sumarlo a tu plan.</p>
-              <Link href="/desarrollos-inmobiliarios/" className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">Explorar proyectos en pozo</Link>
+        ) : (
+          <>
+            <div className="flex items-center gap-3 flex-wrap">
+              <ComparadorPlan items={items} />
+              {guardadosSinContactar.length > 0 && (
+                <button type="button" onClick={consultarTodos} className="inline-flex items-center gap-2 rounded-full bg-secondary text-white px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+                  <span className="material-symbols-outlined text-[18px]">forum</span> Contactar por {guardadosSinContactar.length === 1 ? "el pendiente" : `los ${guardadosSinContactar.length}`}
+                </button>
+              )}
             </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {items.map((it) => (<ProjectCard key={it.slug} {...it} />))}
-            </div>
-          )}
-        </div>
+
+            {guardadosSinContactar.length > 0 && (
+              <SavedCarousel
+                titulo="Pendientes de contactar"
+                sub="Pedí precio, disponibilidad y forma de pago. Se lo llevamos a la desarrolladora por vos."
+                items={guardadosSinContactar}
+                estado="pendiente"
+                onContactar={(m) => consultar(m)}
+                onMarcar={(slug) => marcarContactado(slug, true)}
+              />
+            )}
+            {guardadosContactados.length > 0 && (
+              <SavedCarousel
+                titulo="Ya contactaste"
+                sub="Estás esperando respuesta de la desarrolladora. Cuando tengas novedades, las sumamos acá."
+                items={guardadosContactados}
+                estado="contactado"
+                onContactar={(m) => consultar(m, false)}
+                onMarcar={(slug) => marcarContactado(slug, false)}
+              />
+            )}
+          </>
+        )}
       </section>
 
-      {/* PILAR 2: nuevas oportunidades para vos */}
+      {/* 3) NUEVAS OPORTUNIDADES — las fichas abren un modal (no salís de Mi Plan). */}
       <section className="flex flex-col gap-6">
-        <SectionHeader icon="auto_awesome" titulo="Nuevas oportunidades para vos" sub="Proyectos que encajan con tu búsqueda y todavía no viste. Descartá lo que no va y afinamos." />
+        <SectionHeader icon="auto_awesome" titulo="Nuevas oportunidades para vos" sub="Proyectos que encajan con tu búsqueda y todavía no viste. Abrilos acá sin perder tu plan; descartá lo que no va y afinamos." />
         {recomendados.length === 0 && similares.length === 0 ? (
           <div className="border border-outline-variant rounded-xl p-8 text-center">
             <p className="text-on-surface-variant mb-4">{perfil ? "Por ahora no hay nuevas coincidencias. Guardá algún proyecto o ampliá tu búsqueda y te traemos más." : "Armá tu perfil en 2 minutos y acá te vamos a mostrar proyectos a tu medida, antes que en los portales."}</p>
@@ -171,22 +237,29 @@ export default function MiSeleccion({ catalogo = [] }) {
         ) : (
           <>
             {recomendados.length > 0 && (
-              <FeedCarousel titulo="A tu medida" subtitulo="Por tu objetivo, zona y presupuesto." items={recomendados} onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })} onDescartar={descartar} />
+              <FeedCarousel titulo="A tu medida" subtitulo="Por tu objetivo, zona y presupuesto." items={recomendados} onVer={setDetalle} onDescartar={descartar} />
             )}
             {similares.length > 0 && (
-              <FeedCarousel titulo="Parecidos a lo que guardaste" subtitulo="Misma zona, etapa de obra y rango de precio." items={similares} onConsultar={(m) => setConsulta({ nombre: m.nombre, slug: m.slug })} onDescartar={descartar} />
+              <FeedCarousel titulo="Parecidos a lo que guardaste" subtitulo="Misma zona, etapa de obra y rango de precio." items={similares} onVer={setDetalle} onDescartar={descartar} />
             )}
           </>
         )}
       </section>
 
+      {detalle && (
+        <DetalleModal
+          m={detalle}
+          onClose={() => setDetalle(null)}
+          onConsultar={(m) => { setDetalle(null); consultar(m); }}
+          onDescartar={(slug, motivo) => { descartar(slug, motivo); setDetalle(null); }}
+        />
+      )}
       {consulta && (<AsesorModal nombre={consulta.nombre} slug={consulta.slug} onClose={() => setConsulta(null)} />)}
     </div>
   );
 }
 
-// Resumen del plan + PRÓXIMO PASO (dashboard proactivo, muestra solo lo relevante).
-// Cabecera de pilar del dashboard: ícono + título + subtítulo con divisoria.
+// Cabecera de pilar: ícono + título + subtítulo con divisoria.
 function SectionHeader({ icon, titulo, sub }) {
   return (
     <div className="border-t border-outline-variant pt-6">
@@ -198,55 +271,285 @@ function SectionHeader({ icon, titulo, sub }) {
   );
 }
 
-function PlanResumen({ perfil, nGuardados, onConsultar }) {
-  if (perfil === undefined) return null;
-  let paso, cta, href, action, icon;
-  if (!perfil) {
-    icon = "support_agent";
-    paso = "Armá tu perfil en 2 minutos y te recomendamos proyectos a tu medida.";
-    cta = "Armar mi perfil"; href = "/asesor/";
-  } else if (nGuardados === 0) {
-    icon = "explore";
-    paso = "Ya tenés tu perfil. Guardá tu primer proyecto de los recomendados para empezar a comparar.";
-    cta = "Ver proyectos"; href = "/desarrollos-inmobiliarios/";
-  } else {
-    icon = "forum";
-    paso = `Tenés ${nGuardados} ${nGuardados === 1 ? "proyecto" : "proyectos"} en tu plan. Consultá precio y forma de pago sin compromiso.`;
-    cta = "Consultar con un asesor"; action = onConsultar;
+/* ============================ PERFIL EDITABLE ============================ */
+
+const CAMPOS_BUSQUEDA = [
+  { key: "objetivo", label: "Objetivo", ph: "Vivienda / Inversión", sug: ["Vivienda", "Inversión / renta", "Vivienda + inversión"] },
+  { key: "presupuesto", label: "Presupuesto (USD)", ph: "USD 120k–180k", sug: ["≤ USD 120k", "USD 120k–180k", "USD 180k–250k", "USD 250k+"] },
+  { key: "zonas", label: "Zonas", ph: "Caballito, Palermo…", sug: ["Caballito", "Villa Urquiza", "Palermo", "Belgrano / Núñez", "Abierto a sugerencias"] },
+  { key: "ambientes", label: "Tipología", ph: "2 ambientes", sug: ["Monoambiente", "2 ambientes", "3 ambientes", "3+ ambientes"] },
+  { key: "entrega", label: "Entrega", ph: "2026 / 2027", sug: ["En pozo", "2026", "2027", "2028+"] },
+  { key: "plazo", label: "Plazo para comprar", ph: "3–6 meses", sug: ["Ya", "3–6 meses", "6–12 meses", "Explorando"] },
+  { key: "financiacion", label: "Financiación", ph: "Cuotas / Contado", sug: ["Contado", "Cuotas", "Mixto"] },
+];
+const CAMPOS_CONTACTO = [
+  { key: "nombre", label: "Nombre", ph: "Tu nombre", type: "text" },
+  { key: "email", label: "Email", ph: "vos@mail.com", type: "email" },
+  { key: "whatsapp", label: "WhatsApp", ph: "+54 9 11 …", type: "tel" },
+];
+
+async function guardarPerfil(next) {
+  const clean = {};
+  Object.keys(next).forEach((k) => { const v = String(next[k] == null ? "" : next[k]).trim(); if (v) clean[k] = v; });
+  try { localStorage.setItem("dpp_perfil_v1", JSON.stringify(clean)); } catch {}
+  try {
+    if (authEnabled) { const { data: u } = await supabase.auth.getUser(); const uid = u && u.user && u.user.id; if (uid) await supabase.from("perfiles").upsert({ user_id: uid, data: clean }); }
+  } catch {}
+  try { window.dispatchEvent(new Event("dpp-perfil-updated")); } catch {}
+  try { track("mi_plan_perfil_edit", {}); } catch {}
+  return clean;
+}
+
+function PerfilEditable({ perfil, onSaved }) {
+  const [editando, setEditando] = useState(false);
+  const [form, setForm] = useState({});
+  const [guardando, setGuardando] = useState(false);
+
+  if (perfil === undefined) return null; // cargando
+
+  function abrirEdicion() {
+    setForm({ ...(perfil || {}) });
+    setEditando(true);
   }
-  return (
-    <div className="rounded-2xl bg-primary-container text-on-primary p-6 md:p-7 md:flex md:items-center md:justify-between gap-6">
-      <div className="flex items-start gap-3">
-        <span className="material-symbols-outlined text-link-gold text-[26px] mt-0.5">{icon}</span>
-        <div>
-          <p className="font-label-caps text-label-caps tracking-widest text-link-gold mb-1">Tu próximo paso</p>
-          <p className="text-on-primary text-[15.5px] leading-snug max-w-xl">{paso}</p>
+  async function onSubmit(e) {
+    e.preventDefault();
+    setGuardando(true);
+    const clean = await guardarPerfil(form);
+    setGuardando(false);
+    setEditando(false);
+    onSaved && onSaved(clean);
+  }
+
+  // Sin perfil aún: onboarding, pero con opción de cargarlo a mano acá mismo.
+  if (!perfil && !editando) {
+    return (
+      <div className="rounded-2xl border border-outline-variant bg-surface-container-low p-6 md:p-7">
+        <div className="md:flex md:items-center md:justify-between gap-6">
+          <div>
+            <h2 className="font-headline-sm text-headline-sm text-primary mb-1 flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">badge</span>Tu perfil de búsqueda</h2>
+            <p className="text-on-surface-variant text-[14px] max-w-xl">Contanos qué buscás y cómo contactarte. Lo guardamos acá para recomendarte a tu medida y acompañarte, sin presiones.</p>
+          </div>
+          <div className="mt-4 md:mt-0 shrink-0 flex flex-wrap gap-2">
+            <Link href="/asesor/" className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[18px]">support_agent</span> Armar con el asesor
+            </Link>
+            <button type="button" onClick={abrirEdicion} className="inline-flex items-center gap-2 rounded border border-outline-variant text-primary px-5 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:border-secondary transition-all">
+              <span className="material-symbols-outlined text-[18px]">edit</span> Cargar a mano
+            </button>
+          </div>
         </div>
       </div>
-      {action ? (
-        <button type="button" onClick={action} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded-full bg-surface text-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-          <span className="material-symbols-outlined text-[18px]">{icon}</span> {cta}
+    );
+  }
+
+  if (editando) {
+    return (
+      <form onSubmit={onSubmit} className="rounded-2xl border border-secondary/40 bg-surface p-6 md:p-7 flex flex-col gap-6">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">edit</span>Editá tu perfil</h2>
+        </div>
+
+        <fieldset>
+          <legend className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-3">Tu búsqueda</legend>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {CAMPOS_BUSQUEDA.map((c) => (
+              <label key={c.key} className="flex flex-col gap-1">
+                <span className="text-[12.5px] text-on-surface-variant">{c.label}</span>
+                <input
+                  list={`sug-${c.key}`}
+                  value={form[c.key] || ""}
+                  onChange={(e) => setForm((f) => ({ ...f, [c.key]: e.target.value }))}
+                  placeholder={c.ph}
+                  className="rounded-lg border border-outline-variant bg-surface px-3 py-2.5 text-[14.5px] text-primary focus:border-secondary focus:outline-none"
+                />
+                {c.sug && (
+                  <datalist id={`sug-${c.key}`}>
+                    {c.sug.map((s) => (<option key={s} value={s} />))}
+                  </datalist>
+                )}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-3">Tus datos de contacto</legend>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {CAMPOS_CONTACTO.map((c) => (
+              <label key={c.key} className="flex flex-col gap-1">
+                <span className="text-[12.5px] text-on-surface-variant">{c.label}</span>
+                <input
+                  type={c.type || "text"}
+                  value={form[c.key] || ""}
+                  onChange={(e) => setForm((f) => ({ ...f, [c.key]: e.target.value }))}
+                  placeholder={c.ph}
+                  className="rounded-lg border border-outline-variant bg-surface px-3 py-2.5 text-[14.5px] text-primary focus:border-secondary focus:outline-none"
+                />
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-3">Un dato clave que no te preguntamos</legend>
+          <textarea
+            value={form.nota || ""}
+            onChange={(e) => setForm((f) => ({ ...f, nota: e.target.value }))}
+            placeholder="Ej: necesito cochera, escritura antes de 2027, prioridad amenities, cuota que no supere X…"
+            rows={2}
+            className="w-full rounded-lg border border-outline-variant bg-surface px-3 py-2.5 text-[14.5px] text-primary focus:border-secondary focus:outline-none resize-y"
+          />
+        </fieldset>
+
+        <div className="flex items-center gap-3 flex-wrap">
+          <button type="submit" disabled={guardando} className="inline-flex items-center gap-2 rounded-full bg-primary-container text-on-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all disabled:opacity-60">
+            <span className="material-symbols-outlined text-[18px]">check</span> {guardando ? "Guardando…" : "Guardar cambios"}
+          </button>
+          <button type="button" onClick={() => setEditando(false)} className="text-[13px] text-on-surface-variant hover:text-primary transition-colors">Cancelar</button>
+        </div>
+      </form>
+    );
+  }
+
+  // Vista de lectura del perfil cargado.
+  const chips = CAMPOS_BUSQUEDA.filter((c) => perfil[c.key]).map((c) => [c.label, perfil[c.key]]);
+  const contacto = CAMPOS_CONTACTO.filter((c) => perfil[c.key]).map((c) => [c.label, perfil[c.key]]);
+  return (
+    <div className="rounded-2xl border border-outline-variant bg-surface p-6 md:p-7">
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">badge</span>Tu perfil</h2>
+          <p className="text-on-surface-variant text-[13px] mt-0.5">Esto es lo que sabemos de tu búsqueda. Editalo cuando quieras.</p>
+        </div>
+        <button type="button" onClick={abrirEdicion} className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-outline-variant text-primary px-4 py-2 text-[13px] hover:border-secondary transition-colors">
+          <span className="material-symbols-outlined text-[16px]">edit</span> Editar
         </button>
+      </div>
+
+      <p className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-2">Tu búsqueda</p>
+      {chips.length ? (
+        <div className="flex flex-wrap gap-2 mb-5">
+          {chips.map(([label, val]) => (
+            <span key={label} className="inline-flex items-baseline gap-1.5 text-[13px] px-3 py-1.5 rounded-full bg-secondary-container text-primary">
+              <span className="text-[11px] uppercase tracking-wide text-secondary">{label}</span>{val}
+            </span>
+          ))}
+        </div>
       ) : (
-        <Link href={href} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded-full bg-surface text-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-          <span className="material-symbols-outlined text-[18px]">{icon}</span> {cta}
-        </Link>
+        <p className="text-on-surface-variant text-[13.5px] mb-5">Todavía no cargaste tus filtros. <button type="button" onClick={abrirEdicion} className="text-secondary underline hover:no-underline">Agregalos</button>.</p>
+      )}
+
+      <p className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-2">Tus datos de contacto</p>
+      {contacto.length ? (
+        <div className="flex flex-wrap gap-x-6 gap-y-1.5 mb-1 text-[14px] text-primary">
+          {contacto.map(([label, val]) => (
+            <span key={label} className="inline-flex items-center gap-1.5"><span className="material-symbols-outlined text-[16px] text-link-gold">{label === "Email" ? "mail" : label === "WhatsApp" ? "call" : "person"}</span>{val}</span>
+          ))}
+        </div>
+      ) : (
+        <p className="text-on-surface-variant text-[13.5px]">Sin datos de contacto. <button type="button" onClick={abrirEdicion} className="text-secondary underline hover:no-underline">Agregalos</button> así te llegan precio y novedades.</p>
+      )}
+
+      {perfil.nota && (
+        <div className="mt-5 rounded-lg bg-surface-container-low border border-outline-variant p-3.5">
+          <p className="font-label-caps text-[10px] uppercase tracking-widest text-secondary mb-1">Tu dato clave</p>
+          <p className="text-[14px] text-primary">{perfil.nota}</p>
+        </div>
       )}
     </div>
   );
 }
 
-// Carrusel genérico (recomendados / similares) con scroll horizontal + snap.
-function FeedCarousel({ titulo, subtitulo, items, onConsultar, onDescartar }) {
+/* ============================ GUARDADOS (carrusel por estado) ============================ */
+
+function SavedCarousel({ titulo, sub, items, estado, onContactar, onMarcar }) {
+  return (
+    <div>
+      <div className="flex items-baseline gap-2 mb-1">
+        <span className={`material-symbols-outlined text-[18px] ${estado === "contactado" ? "text-green-600" : "text-secondary"}`}>{estado === "contactado" ? "mark_email_read" : "schedule"}</span>
+        <h3 className="font-headline-sm text-headline-sm text-primary">{titulo} ({items.length})</h3>
+      </div>
+      {sub && <p className="text-on-surface-variant text-[13.5px] mb-4 ml-6">{sub}</p>}
+      <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
+        {items.map((it) => (
+          <SavedCard key={it.slug} it={it} estado={estado} onContactar={() => onContactar(it)} onMarcar={() => onMarcar(it.slug)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SavedCard({ it, estado, onContactar, onMarcar }) {
+  const card = cardDe(it);
+  const contactado = estado === "contactado";
+  return (
+    <div className="snap-start shrink-0 w-[270px] flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
+      <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
+        <Link href={`/desarrollos-inmobiliarios/${it.slug}/`} className="block w-full h-full">
+          {card.img ? (
+            <img src={card.img} alt={`${it.nombre} — ${it.barrio || ""}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
+              <span className="material-symbols-outlined text-3xl opacity-80">apartment</span>
+              <span className="font-label-caps text-[10px] tracking-widest opacity-80">{it.barrio || "En pozo"}</span>
+            </div>
+          )}
+        </Link>
+        <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(it.etapa || "EN POZO").toUpperCase()}</span>
+        {contactado && <span className="absolute top-3 right-12 bg-green-600 text-white px-2 py-1 rounded font-label-caps text-[10px] tracking-widest inline-flex items-center gap-1"><span className="material-symbols-outlined text-[13px]">check</span>CONTACTADO</span>}
+        <GuardarBtn card={card} />
+      </div>
+      <div className="p-4 flex flex-col flex-1">
+        <Link href={`/desarrollos-inmobiliarios/${it.slug}/`} className="block">
+          <h3 className="serif text-[17px] text-primary leading-tight hover:text-secondary transition-colors">{it.nombre}</h3>
+        </Link>
+        <p className="text-on-surface-variant text-[12.5px] flex items-center gap-1 mt-1">
+          <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{it.barrio || it.direccion}
+        </p>
+        <p className="text-primary font-headline-sm text-[15px] mt-2">{precioLabelDe(it)}</p>
+
+        {/* NOTA (recordatorio de lo que la ficha debería mostrar más adelante, cuando tengamos el dato). */}
+        <p className="mt-2 text-[11.5px] text-on-surface-variant flex items-start gap-1 leading-snug">
+          <span className="material-symbols-outlined text-[13px] mt-[1px] text-link-gold">bolt</span>
+          Pronto acá: precio actualizado, cuota estimada y avance de obra.
+        </p>
+
+        {contactado ? (
+          <div className="mt-3 flex flex-col gap-2">
+            <span className="inline-flex items-center justify-center gap-2 rounded bg-green-50 text-green-700 border border-green-200 px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider">
+              <span className="material-symbols-outlined text-[16px]">mark_email_read</span> Contactado
+            </span>
+            <button type="button" onClick={onContactar} className="text-[12px] text-secondary hover:underline inline-flex items-center gap-1 self-start">
+              <span className="material-symbols-outlined text-[14px]">forum</span> Volver a consultar
+            </button>
+          </div>
+        ) : (
+          <div className="mt-3 flex flex-col gap-2">
+            <button type="button" onClick={onContactar} className="inline-flex items-center justify-center gap-2 rounded bg-secondary text-white px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[16px]">forum</span> Contactar
+            </button>
+            <button type="button" onClick={onMarcar} className="text-[12px] text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-1 self-start">
+              <span className="material-symbols-outlined text-[14px]">check</span> Ya lo contacté
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ============================ OPORTUNIDADES (feed → modal) ============================ */
+
+function FeedCarousel({ titulo, subtitulo, items, onVer, onDescartar }) {
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4 mb-1">
-        <h2 className="font-headline-sm text-headline-sm text-primary">{titulo}</h2>
+        <h3 className="font-headline-sm text-headline-sm text-primary">{titulo}</h3>
       </div>
       {subtitulo && <p className="text-on-surface-variant text-[14px] mb-4">{subtitulo}</p>}
       <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
         {items.map((m) => (
-          <FeedCard key={m.slug} m={m} onConsultar={() => onConsultar(m)} onDescartar={onDescartar} />
+          <FeedCard key={m.slug} m={m} onVer={() => onVer(m)} onDescartar={onDescartar} />
         ))}
       </div>
     </div>
@@ -255,34 +558,31 @@ function FeedCarousel({ titulo, subtitulo, items, onConsultar, onDescartar }) {
 
 const MOTIVOS = ["Zona", "Precio", "Etapa/entrega", "Ya la vi", "Otro"];
 
-function FeedCard({ m, onConsultar, onDescartar }) {
+function FeedCard({ m, onVer, onDescartar }) {
   const [pidiendoMotivo, setPidiendoMotivo] = useState(false);
-  const card = { slug: m.slug, nombre: m.nombre, barrio: m.barrio, direccion: m.direccion, precio: m.precio, precioDesde: m.precioDesde, precioM2: m.precioM2, img: m.imagen, etapa: m.etapa, ambientes: m.ambientes, entrega: m.entrega, desarrolladora: m.desarrolladora };
-  const precioLabel = m.precioDesde ? `Desde USD ${m.precioDesde.toLocaleString("es-AR")}` : (m.precioM2 ? `USD ${m.precioM2.toLocaleString("es-AR")} /m²` : "Consultar");
+  const card = cardDe(m);
   return (
     <div className="snap-start shrink-0 w-64 flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
-      <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">
-        <Link href={`/desarrollos-inmobiliarios/${m.slug}/`} className="block w-full h-full">
-          {m.imagen ? (
-            <img src={m.imagen} alt={`${m.nombre} — ${m.barrio}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
-              <span className="material-symbols-outlined text-3xl opacity-80">apartment</span>
-              <span className="font-label-caps text-[10px] tracking-widest opacity-80">{m.barrio || "En pozo"}</span>
-            </div>
-          )}
-        </Link>
+      <button type="button" onClick={onVer} className="relative aspect-[4/3] overflow-hidden bg-surface-container-high text-left block w-full">
+        {m.imagen ? (
+          <img src={m.imagen} alt={`${m.nombre} — ${m.barrio || ""}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
+            <span className="material-symbols-outlined text-3xl opacity-80">apartment</span>
+            <span className="font-label-caps text-[10px] tracking-widest opacity-80">{m.barrio || "En pozo"}</span>
+          </div>
+        )}
         <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(m.etapa || "EN POZO").toUpperCase()}</span>
         <GuardarBtn card={card} />
-      </div>
+      </button>
       <div className="p-4 flex flex-col flex-1">
-        <Link href={`/desarrollos-inmobiliarios/${m.slug}/`} className="block">
+        <button type="button" onClick={onVer} className="text-left">
           <h3 className="serif text-[17px] text-primary leading-tight hover:text-secondary transition-colors">{m.nombre}</h3>
-        </Link>
+        </button>
         <p className="text-on-surface-variant text-[12.5px] flex items-center gap-1 mt-1">
           <span className="material-symbols-outlined text-[15px] text-link-gold">location_on</span>{m.barrio || m.direccion}
         </p>
-        <p className="text-primary font-headline-sm text-[15px] mt-2">{precioLabel}</p>
+        <p className="text-primary font-headline-sm text-[15px] mt-2">{precioLabelDe(m)}</p>
 
         {pidiendoMotivo ? (
           <div className="mt-3">
@@ -295,12 +595,8 @@ function FeedCard({ m, onConsultar, onDescartar }) {
           </div>
         ) : (
           <>
-            <button
-              type="button"
-              onClick={onConsultar}
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all"
-            >
-              <span className="material-symbols-outlined text-[16px]">forum</span> Consultar
+            <button type="button" onClick={onVer} className="mt-3 inline-flex items-center justify-center gap-2 rounded bg-primary-container text-on-primary px-4 py-2.5 text-[12px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[16px]">visibility</span> Ver detalle
             </button>
             <button type="button" onClick={() => setPidiendoMotivo(true)} className="mt-2 text-[12px] text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-1 self-start">
               <span className="material-symbols-outlined text-[14px]">close</span> No me interesa
@@ -311,6 +607,85 @@ function FeedCard({ m, onConsultar, onDescartar }) {
     </div>
   );
 }
+
+// Modal estilo Zillow: abre la ficha resumida SIN salir de Mi Plan. Al cerrar, volvés a tu plan.
+function DetalleModal({ m, onClose, onConsultar, onDescartar }) {
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onEsc = (e) => { if (e.key === "Escape") onClose && onClose(); };
+    window.addEventListener("keydown", onEsc);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onEsc); };
+  }, [onClose]);
+
+  const card = cardDe(m);
+  const datos = [
+    ["Barrio", m.barrio],
+    ["Etapa de obra", m.etapa],
+    ["Entrega", m.entrega],
+    ["Tipologías", m.ambientes],
+    ["Precio / m²", m.precioM2 ? "USD " + Number(m.precioM2).toLocaleString("es-AR") + "/m²" : null],
+    ["Desarrolladora", m.desarrolladora],
+  ].filter(([, v]) => v);
+
+  return (
+    <div className="fixed inset-0 z-[115] flex items-end sm:items-center justify-center p-0 sm:p-4 scrim-soft" onClick={onClose}>
+      <div className="w-full sm:max-w-lg max-h-[92dvh] bg-surface rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="relative aspect-[16/10] bg-surface-container-high shrink-0">
+          {card.img ? (
+            <img src={card.img} alt={`${m.nombre} — ${m.barrio || ""}`} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-primary-container to-primary text-on-primary">
+              <span className="material-symbols-outlined text-4xl opacity-80">apartment</span>
+              <span className="font-label-caps text-[11px] tracking-widest opacity-80">{m.barrio || "En pozo"}</span>
+            </div>
+          )}
+          <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(m.etapa || "EN POZO").toUpperCase()}</span>
+          <button type="button" onClick={onClose} aria-label="Cerrar" className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-white/95 shadow hover:bg-white transition">
+            <span className="material-symbols-outlined text-[20px] text-primary">close</span>
+          </button>
+          <GuardarBtn card={card} className="!top-3 !right-14" />
+        </div>
+
+        <div className="p-5 md:p-6 overflow-y-auto flex flex-col gap-4">
+          <div>
+            <h2 className="serif text-headline-sm text-primary leading-tight">{m.nombre}</h2>
+            <p className="text-on-surface-variant text-[13px] flex items-center gap-1 mt-1"><span className="material-symbols-outlined text-[16px] text-link-gold">location_on</span>{m.barrio || m.direccion}</p>
+            <p className="text-primary font-headline-md text-headline-sm mt-2">{precioLabelDe(m)}</p>
+          </div>
+
+          {datos.length > 0 && (
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-outline-variant pt-4">
+              {datos.map(([k, v]) => (
+                <div key={k}>
+                  <dt className="font-label-caps text-[10px] uppercase tracking-widest text-on-surface-variant">{k}</dt>
+                  <dd className="text-[14px] text-primary">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
+          <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+            <button type="button" onClick={() => onConsultar(m)} className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-5 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+              <span className="material-symbols-outlined text-[18px]">forum</span> Pedir precio y cuota
+            </button>
+            <Link href={`/desarrollos-inmobiliarios/${m.slug}/`} className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-outline-variant text-primary px-5 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:border-secondary transition-all">
+              <span className="material-symbols-outlined text-[18px]">open_in_new</span> Ver ficha completa
+            </Link>
+          </div>
+
+          <button type="button" onClick={() => onDescartar(m.slug, "Otro")} className="text-[12.5px] text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-1 self-center">
+            <span className="material-symbols-outlined text-[15px]">close</span> No me interesa este proyecto
+          </button>
+
+          <p className="text-center text-[11.5px] text-on-surface-variant">Al cerrar volvés a <strong className="font-medium text-primary">Mi Plan</strong>, que sigue abajo.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================ ACCESO / CUENTA ============================ */
 
 // Pantalla de acceso: sin sesión no se muestra el plan. Entrar = crear/loguear con Google.
 function LoginGate({ login }) {
@@ -362,41 +737,6 @@ function CuentaBloque({ enabled, user, login, logout }) {
       <button type="button" onClick={login} className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
         <span className="material-symbols-outlined text-[18px]">login</span> Ingresar con Google
       </button>
-    </div>
-  );
-}
-
-function PerfilBloque({ perfil }) {
-  if (perfil === undefined) return null;
-
-  if (!perfil) {
-    return (
-      <div className="border border-outline-variant rounded-xl p-6 md:flex md:items-center md:justify-between gap-6 bg-surface-container-low">
-        <div>
-          <h2 className="font-headline-sm text-headline-sm text-primary mb-1">Armá tu perfil y te recomendamos a tu medida</h2>
-          <p className="text-on-surface-variant text-[14px]">Contanos qué buscás en 2 minutos. Lo guardamos acá y te acompañamos, sin presiones.</p>
-        </div>
-        <Link href="/asesor/" className="mt-4 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-          <span className="material-symbols-outlined text-[18px]">support_agent</span> Armar mi perfil
-        </Link>
-      </div>
-    );
-  }
-
-  const chips = Object.keys(ETIQUETAS).filter((k) => perfil[k]).map((k) => [ETIQUETAS[k], perfil[k]]);
-  return (
-    <div className="border border-outline-variant rounded-xl p-6">
-      <div className="flex items-center justify-between gap-4 mb-4">
-        <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">badge</span>Mi perfil</h2>
-        <Link href="/asesor/" className="text-[13px] text-secondary underline hover:no-underline">Actualizar</Link>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {chips.map(([label, val]) => (
-          <span key={label} className="inline-flex items-baseline gap-1.5 text-[13px] px-3 py-1.5 rounded-full bg-secondary-container text-primary">
-            <span className="text-[11px] uppercase tracking-wide text-secondary">{label}</span>{val}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }
