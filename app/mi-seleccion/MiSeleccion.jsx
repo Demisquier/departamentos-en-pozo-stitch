@@ -340,12 +340,12 @@ function CuentaBloque({ enabled, user, login, logout }) {
   if (user) {
     const email = user.email || (user.user_metadata && user.user_metadata.email) || "tu cuenta";
     return (
-      <div className="border border-outline-variant rounded-xl p-4 flex items-center justify-between gap-4 bg-surface-container-low">
-        <p className="text-[13.5px] text-on-surface flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px] text-green-600 icon-fill">check_circle</span>
-          Conectado como <strong className="font-medium">{email}</strong> — tu plan se guarda en todos tus dispositivos.
+      <div className="border border-outline-variant rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-surface-container-low">
+        <p className="text-[13.5px] text-on-surface flex items-start gap-2 min-w-0">
+          <span className="material-symbols-outlined text-[18px] text-green-600 icon-fill shrink-0">check_circle</span>
+          Conectado como <strong className="font-medium break-all">{email}</strong> — tu plan se guarda en todos tus dispositivos.
         </p>
-        <button type="button" onClick={logout} className="shrink-0 rounded border border-outline-variant px-4 py-2 text-[13px] text-primary hover:border-secondary transition-colors">Salir</button>
+        <button type="button" onClick={logout} className="shrink-0 self-start sm:self-auto rounded border border-outline-variant px-4 py-2 text-[13px] text-primary hover:border-secondary transition-colors">Salir</button>
       </div>
     );
   }
