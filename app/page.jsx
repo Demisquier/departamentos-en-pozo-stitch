@@ -102,8 +102,8 @@ export default async function HomePage() {
         <img src={HERO_IMG} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop text-center md:text-left">
-          <span className="inline-block text-link-gold font-bold tracking-widest uppercase mb-4 text-label-caps font-label-caps">
-            Análisis independiente · {mapped.length} proyectos en pozo · CABA y GBA
+          <span className="inline-block text-link-gold font-bold uppercase mb-4 text-label-caps font-label-caps">
+            Análisis independiente · {mapped.length} proyectos · CABA y GBA
           </span>
           <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-10">
             Encontrá tu departamento en pozo en Buenos Aires
@@ -113,11 +113,8 @@ export default async function HomePage() {
             <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
               <span className="material-symbols-outlined text-[18px]">forum</span> Averiguá precio y cuota
             </Link>
-            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/70 text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-white/10 transition-all">
-              <span className="material-symbols-outlined text-[18px]">grid_view</span> Ver los {mapped.length} proyectos
-            </Link>
+            <span className="text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</span>
           </div>
-          <p className="mt-3 text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</p>
         </div>
       </section>
 
