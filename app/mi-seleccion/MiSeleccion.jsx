@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../_auth/AuthProvider";
 import ProjectCard from "../_ui/ProjectCard";
+import ComparadorPlan from "../_components/ComparadorPlan";
 import GuardarBtn from "../_auth/GuardarBtn";
 import AsesorModal from "../asesor/AsesorModal";
 import { track } from "../../lib/track";
@@ -140,7 +141,10 @@ export default function MiSeleccion({ catalogo = [] }) {
         <SectionHeader icon="favorite" titulo="Lo que te interesa" sub="Tu búsqueda guardada y los proyectos que marcaste." />
         {perfil && <PerfilBloque perfil={perfil} />}
         <div>
-          <h3 className="font-headline-sm text-headline-sm text-primary mb-4 flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">bookmark</span>Proyectos guardados{items.length ? ` (${items.length})` : ""}</h3>
+          <div className="mb-4 flex items-center justify-between gap-3 flex-wrap">
+            <h3 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">bookmark</span>Proyectos guardados{items.length ? ` (${items.length})` : ""}</h3>
+            <ComparadorPlan items={items} />
+          </div>
           {!ready ? (
             <p className="text-on-surface-variant">Cargando…</p>
           ) : items.length === 0 ? (
