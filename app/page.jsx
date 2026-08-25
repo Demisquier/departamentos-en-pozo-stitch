@@ -113,8 +113,11 @@ export default async function HomePage() {
             <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
               <span className="material-symbols-outlined text-[18px]">forum</span> Averiguá precio y cuota
             </Link>
-            <span className="text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</span>
+            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/70 text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-white/10 transition-all">
+              <span className="material-symbols-outlined text-[18px]">grid_view</span> Ver los {mapped.length} proyectos
+            </Link>
           </div>
+          <p className="mt-3 text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</p>
         </div>
       </section>
 
