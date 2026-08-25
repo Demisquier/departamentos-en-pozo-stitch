@@ -109,14 +109,13 @@ export default async function HomePage() {
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
           <p className="text-on-primary text-body-lg font-body-lg opacity-90 max-w-2xl mb-8">
-            No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar. Sin costo.
+            No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar.
           </p>
           <HomeBuscador />
           <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
             <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
               <span className="material-symbols-outlined text-[18px]">forum</span> Averiguá precio y cuota
             </Link>
-            <span className="text-on-primary text-[13px] opacity-90">Te ayudamos a elegir, sin costo.</span>
           </div>
         </div>
       </section>
