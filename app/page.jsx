@@ -105,9 +105,12 @@ export default async function HomePage() {
           <span className="inline-block text-link-gold font-bold uppercase mb-4 text-label-caps font-label-caps">
             Análisis independiente · {mapped.length} proyectos · CABA y GBA
           </span>
-          <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-10">
+          <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-4">
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
+          <p className="text-on-primary text-body-lg font-body-lg opacity-90 max-w-2xl mb-8">
+            Análisis independiente + un plan que recuerda qué buscás y te avisa cuándo conviene entrar. Sin costo para el comprador.
+          </p>
           <HomeBuscador />
           <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
             <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
