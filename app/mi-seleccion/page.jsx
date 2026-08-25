@@ -29,7 +29,7 @@ export default async function MiSeleccionPage() {
     <Container as="main" className="py-10 md:py-14">
       <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-2">Mi Plan</h1>
       <p className="text-on-surface-variant font-body-lg text-body-lg mb-8 max-w-2xl">
-        Tu plan de inversión en pozo: los proyectos que guardaste, tu objetivo y presupuesto, y qué cambió para vos. Te ayudamos a decidir. Se guarda en tu cuenta para que lo veas desde cualquier dispositivo.
+        Acá te guiamos en tu búsqueda: lo que te gustó, lo que te puede gustar, y desde dónde te acompañamos y asesoramos.
       </p>
       <MiSeleccion catalogo={catalogo} />
     </Container>
