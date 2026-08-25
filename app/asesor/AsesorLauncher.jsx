@@ -16,7 +16,7 @@ export default function AsesorLauncher() {
   useEffect(() => { setOpen(false); }, [path]);
 
   const enFicha = /^\/desarrollos-inmobiliarios\/[^/]+\/?$/.test(path);
-  const oculto = path.startsWith("/asesor") || enFicha;
+  const oculto = path.startsWith("/asesor") || path.startsWith("/mi-seleccion") || enFicha;
 
   // Visibilidad dinamica: verdadero SOLO mientras estas debajo del hero (>420px).
   useEffect(() => {
