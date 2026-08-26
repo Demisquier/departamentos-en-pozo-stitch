@@ -1,28 +1,28 @@
 "use client";
-// app/asesor/AsesorChat.jsx — Asesora "Sofía" (sin IA). Rediseño lead-capture (2026-08-08):
-// PRINCIPIO "email primero, el resto es bonus":
-//  • LEAD (desde ficha): 1 pregunta de enganche → EMAIL enmarcado como valor → se DISPARA el lead
-//    parcial al instante (speed-to-lead) → WhatsApp opcional → enriquecimiento 100% opcional
-//    (cada pregunta con "Saltar" + "Con esto alcanza"). Cada avance ACTUALIZA el lead.
-//  • BUSCADOR (sin ficha): 2 preguntas (zona, ambientes) + escape al listado → al final ofrece
-//    dejar el mail como ALERTA (opcional).
-// MEMORIA: lee el perfil guardado (localStorage + nube si hay sesión) y NO re-pregunta lo sabido;
-//    retoma y saluda de vuelta. Guarda cada dato (local + nube). Maneja groserías/mensajes raros con humor.
-// Lead por Formsubmit: primario dema2910@gmail.com, _cc contacto@departamentosenpozo.com.ar.
+// app/asesor/AsesorChat.jsx — Asesora "Sofía" (sin IA). Rediseño lead-quality (2026-08-25):
+// APRENDIZAJE de los leads reales: ~45% quedaban solo-email (sin objetivo/zona/WhatsApp) y
+// ~20% eran del rubro (inmobiliarias). Cambios:
+//  1) GATE al inicio: ¿particular o del rubro? → limpia data + abre canal B2B.
+//  2) OBJETIVO (vivir/invertir) se capta ANTES del contacto (1 tap, sin fricción).
+//  3) WhatsApp es el pedido PRIMARIO ("¿a qué WhatsApp te paso precio y cuota?"), el mail es
+//     fallback; después se pide el otro contacto (opcional). Speed-to-lead: se dispara el lead
+//     apenas hay UN contacto.
+// MEMORIA: lee el perfil guardado (localStorage + nube) y no re-pregunta lo sabido.
+// Lead por Formsubmit vía /api/lead: primario dema2910@, _cc contacto@departamentosenpozo.com.ar.
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase, authEnabled } from "../../lib/supabase";
 import { track } from "../../lib/track";
 
 const PASOS = [
+  { key: "objetivo", p: "¿Es para vivir o para invertir?", o: [["Para vivir", "Vivienda propia"], ["Inversión / renta", "Inversión / renta"], ["Las dos", "Vivienda + inversión"]] },
   { key: "zonas", p: "¿En qué zona te gustaría?", o: [["Caballito", "Caballito"], ["Villa Urquiza", "Villa Urquiza"], ["Palermo", "Palermo"], ["Belgrano / Núñez", "Belgrano / Núñez"], ["Me da igual", "Abierto a sugerencias"]] },
   { key: "ambientes", p: "¿Qué tamaño buscás?", o: [["Monoambiente", "Monoambiente"], ["2 amb", "2 ambientes"], ["3 amb", "3 ambientes"], ["Más grande", "3+ ambientes"]] },
   { key: "presupuesto", p: "¿Presupuesto aproximado? (USD)", o: [["Hasta 120k", "≤ USD 120k"], ["120–180k", "USD 120k–180k"], ["180–250k", "USD 180k–250k"], ["+250k", "USD 250k+"], ["Lo charlamos", "A conversar"]] },
 ];
-const ENRICH = PASOS;                    // enriquecimiento opcional (después de captar el mail)
-// El buscador arma un perfil un poco más completo (no solo lo que mapea a filtros) para ayudar mejor.
-const BUSCADOR = PASOS;
-const ETIQUETAS = { zonas: "Zonas", ambientes: "Tipología", presupuesto: "Presupuesto" };
+const BUSCADOR = PASOS;                  // buscador: objetivo + zona + ambientes + presupuesto
+const ENRICH = PASOS;
+const ETIQUETAS = { objetivo: "Objetivo", zonas: "Zonas", ambientes: "Tipología", presupuesto: "Presupuesto" };
 
 const ZONA_BARRIO = { "Caballito": "Caballito", "Villa Urquiza": "Villa Urquiza", "Palermo": "Palermo", "Belgrano / Núñez": "Belgrano" };
 const AMB_FILTRO = { "Monoambiente": "1", "2 ambientes": "2", "3 ambientes": "3", "3+ ambientes": "4+" };
@@ -42,13 +42,11 @@ async function persistPerfil(data) {
   if (authEnabled) { try { const { data: u } = await supabase.auth.getUser(); const uid = u?.user?.id; if (uid) await supabase.from("perfiles").upsert({ user_id: uid, data: clean }); } catch {} }
 }
 
-// Interpretación de mensajes libres (groserías / mail válido) — Sofía amable y con humor.
 const MALAS = ["puta", "puto", "concha", "mierda", "forro", "forra", "pelotudo", "boludo", "idiota", "estupido", "pajero", "sorete", "gil", "imbecil", "carajo", "joder", "trolo", "fuck", "shit", "bitch", "asshole", "wtf"];
 const norm = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 function tieneGroseria(s) { const t = norm(s); return MALAS.some((w) => new RegExp(`(^|[^a-z])${w}([^a-z]|$)`).test(t)); }
 function extraerMail(s) { return (String(s || "").match(/[^\s@]+@[^\s@]+\.[^\s@]+/) || [""])[0]; }
 function extraerWpp(s) { return ((String(s || "").match(/\d/g) || []).length >= 6) ? String(s).trim() : ""; }
-// ¿El texto guardado parece un nombre real? (para no saludar con basura o groserías viejas)
 function esNombreValido(s) {
   const t = String(s || "").trim();
   if (t.length < 2 || t.length > 40) return false;
@@ -56,7 +54,6 @@ function esNombreValido(s) {
   if ((t.match(/[a-záéíóúñ]/gi) || []).length < 2) return false;
   return true;
 }
-
 function resumen(k) {
   const parts = [];
   if (k.ambientes) parts.push(String(k.ambientes).toLowerCase());
@@ -68,20 +65,21 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
   const [msgs, setMsgs] = useState([]);
   const [typing, setTyping] = useState(true);
   const [modo, setModo] = useState(proyectoNombre ? "lead" : "buscador");
-  const [etapa, setEtapa] = useState(null);       // 'engage' | 'enrich' | 'buscar'
+  const [etapa, setEtapa] = useState(null);       // 'buscar' | 'preContacto' | 'enrich'
   const [queue, setQueue] = useState([]);
   const [idx, setIdx] = useState(0);
   const [perfil, setPerfil] = useState({});
-  const [fase, setFase] = useState("intro");      // intro | chat | email | whatsapp | okBuscar | ok | error
+  const [fase, setFase] = useState("intro");      // intro | rubro | chat | contacto | contacto2 | okBuscar | ok | error
   const [txt, setTxt] = useState("");
   const [gotcha, setGotcha] = useState("");
+  const [b2b, setB2b] = useState(false);          // flujo inmobiliaria/rubro
   const [proyecto, setProyecto] = useState(proyectoNombre || "");
   const [buscarUrl, setBuscarUrl] = useState("/desarrollos-inmobiliarios/");
   const [alertaOk, setAlertaOk] = useState(false);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const started = useRef(false);
-  const perfilRef = useRef({});   // fuente de verdad del perfil (merge known + respuestas + contacto)
+  const perfilRef = useRef({});
   const knownRef = useRef({});
   const leadRef = useRef({ sent: false, snap: "" });
 
@@ -96,31 +94,34 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const email = (data.email || "").trim();
     const whatsapp = (data.whatsapp || "").trim();
     if (!email && !whatsapp) return; // sin contacto no hay lead
-    const snap = JSON.stringify({ email, whatsapp, objetivo: data.objetivo, zonas: data.zonas, ambientes: data.ambientes, presupuesto: data.presupuesto, proyecto });
-    if (leadRef.current.sent && leadRef.current.snap === snap) return; // nada nuevo
-    const subj = tipo === "alerta" ? "Nueva alerta de búsqueda (asesor)" : (leadRef.current.sent ? "Perfil de comprador (actualizado)" : "Nuevo perfil de comprador (asesor)");
+    const snap = JSON.stringify({ email, whatsapp, objetivo: data.objetivo, zonas: data.zonas, ambientes: data.ambientes, presupuesto: data.presupuesto, tipoContacto: data.tipoContacto, proyecto });
+    if (leadRef.current.sent && leadRef.current.snap === snap) return;
+    const esInmo = data.tipoContacto === "inmobiliaria";
+    const subj = esInmo ? "Consulta de inmobiliaria / rubro (asesor)" : (tipo === "alerta" ? "Nueva alerta de búsqueda (asesor)" : (leadRef.current.sent ? "Perfil de comprador (actualizado)" : "Nuevo perfil de comprador (asesor)"));
     const payload = { _subject: subj, _template: "table", _captcha: "false", _cc: "contacto@departamentosenpozo.com.ar", Email: email || "—", WhatsApp: whatsapp || "—" };
-    // Speed-to-lead: confirmación automática AL INTERESADO (solo la 1ª vez, para no repetir).
     if (email && !leadRef.current.sent) {
       payload._replyto = email;
-      payload._autoresponse = `¡Hola! Gracias por tu consulta${proyecto ? ` sobre ${proyecto}` : ""}. Ya la recibimos y en breve te escribimos con precio, disponibilidad y formas de pago. Cualquier duda, respondé este mail. — Equipo Departamentos en Pozo`;
+      payload._autoresponse = esInmo
+        ? `¡Hola! Gracias por escribir. Recibimos tu consulta como inmobiliaria/broker y te contactamos para ver cómo trabajamos juntos. — Equipo Departamentos en Pozo`
+        : `¡Hola! Gracias por tu consulta${proyecto ? ` sobre ${proyecto}` : ""}. Ya la recibimos y en breve te escribimos con precio, disponibilidad y formas de pago. Cualquier duda, respondé este mail. — Equipo Departamentos en Pozo`;
     }
+    payload["Tipo de contacto"] = esInmo ? "Inmobiliaria / rubro" : "Particular";
     PASOS.forEach((p) => { payload[ETIQUETAS[p.key]] = data[p.key] || "—"; });
     const guardados = leerFavoritos();
     payload["Proyectos guardados"] = guardados.length ? guardados.join(", ") : "ninguno aún";
     if (proyecto) payload["Proyecto de interés"] = proyecto;
-    if (data.objetivo) payload["Consulta"] = data.objetivo;
-    payload["Origen"] = tipo === "alerta" ? "Buscador · alerta" : (proyecto ? "Ficha · quiero más info" : "Asesor · perfil");
+    payload["Origen"] = esInmo ? "B2B · inmobiliaria" : (tipo === "alerta" ? "Buscador · alerta" : (proyecto ? "Ficha · quiero más info" : "Asesor · perfil"));
     try {
       const sheet = {
         origen: payload["Origen"], tipo,
         nombre: data.nombre || "", email, whatsapp,
+        tipoContacto: data.tipoContacto || "particular",
         proyecto: proyecto || "", proyectoSlug: proyectoSlug || "", zonas: data.zonas || "", ambientes: data.ambientes || "",
         presupuesto: data.presupuesto || "", mensaje: data.objetivo || "",
       };
       await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mail: payload, sheet }) });
       leadRef.current = { sent: true, snap };
-      track("lead", { tipo, origen: tipo === "alerta" ? "buscador" : (proyecto ? "ficha" : "asesor"), proyecto: proyecto || "" });
+      track("lead", { tipo, origen: payload["Origen"], proyecto: proyecto || "" });
     } catch {}
   }
 
@@ -133,41 +134,31 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     knownRef.current = known;
     perfilRef.current = { ...known };
     setPerfil({ ...known });
-    // Nombre guardado: solo lo usamos para saludar si es válido (no grosería ni basura).
+    if (known.tipoContacto === "inmobiliaria") setB2b(true);
     const nombreOk = known.nombre && esNombreValido(known.nombre) && !tieneGroseria(known.nombre);
     const first = nombreOk ? String(known.nombre).split(" ")[0] : "";
 
     (async () => {
+      const saludo = first ? `¡Hola de nuevo, ${first}!` : "Hola, soy Sofía.";
       if (n) {
         setModo("lead"); setProyecto(n);
-        if (pedido) perfilRef.current = { ...perfilRef.current, objetivo: pedido };
-        const saludo = first ? `¡Hola de nuevo, ${first}!` : "Hola, soy Sofía.";
-        if (known.email) {
-          // Ya lo conocemos: disparamos el lead directo y pasamos a los datos opcionales.
-          await say(`${saludo} ${pedido ? `Le pido a la desarrolladora de ${n} ${pedido} y te lo mandamos.` : `Le aviso a la desarrolladora de ${n} que seguís interesado así te contactan.`}`, 400);
-          await mandarLead({ ...perfilRef.current, email: known.email }, "parcial");
-          startEnrich();
-        } else {
-          // Un solo mensaje: saludo + valor + pedido de mail. Cero fricción previa.
-          setFase("email");
-          await say(`${saludo} ${pedido ? `Te consigo ${pedido} directo de la desarrolladora de ${n}.` : `Te paso precios, disponibilidad y formas de pago de ${n} directo de la desarrolladora.`} ¿A qué mail te lo envío?`, 400);
+        // Usuario que vuelve y ya dejó contacto → disparamos interés y empujamos lo que falte.
+        if (known.email || known.whatsapp) {
+          await say(`${saludo} Le aviso a la desarrolladora de ${n} que seguís interesado, así te contactan.`, 400);
+          await mandarLead({ ...perfilRef.current }, "parcial");
+          if (!known.whatsapp) { setFase("contacto2"); await say("¿Me dejás un WhatsApp para que te escriban más rápido? (opcional)", 800); }
+          else { setFase("ok"); await say("Ya está, te van a contactar. Lo guardé también en tu Plan.", 800); }
+          return;
         }
+        // Nuevo: saludo con valor + gate de rubro.
+        await say(`${saludo} ${pedido ? `Te consigo ${pedido} de ${n}` : `Te paso precio, disponibilidad y cuota de ${n}`} directo de la desarrolladora.`, 400);
+        if (known.tipoContacto) { await seguirComo(known.tipoContacto, true); }
+        else { setFase("rubro"); await say("Para pasarte lo justo: ¿buscás para vos o sos del rubro inmobiliario?", 700); }
       } else {
         setModo("buscador");
-        if (first) await say(`¡Hola de nuevo, ${first}!`, 400);
-        else await say("Hola, soy Sofía.", 400);
-        const q = BUSCADOR.filter((p) => !known[p.key]);
-        if (q.length === 0) {
-          setBuscarUrl(urlBuscador(known));
-          const r = resumen(known);
-          await say(r ? `La última vez buscabas ${r}. Te muestro esos.` : "Te muestro los proyectos que tenemos.", 850);
-          setFase("okBuscar");
-        } else {
-          if (q.length < BUSCADOR.length) await say("Retomo lo que ya me contaste, me falta un dato.", 750);
-          else await say("Decime qué buscás y te paso los proyectos que encajan, con precio y cuota. Un par de toques y listo.", 750);
-          setEtapa("buscar"); setQueue(q); setIdx(0); setFase("chat");
-          await say(q[0].p, 700);
-        }
+        await say(saludo, 400);
+        if (known.tipoContacto) { await seguirComo(known.tipoContacto, false); }
+        else { setFase("rubro"); await say("Antes de arrancar: ¿buscás para vos o sos del rubro inmobiliario?", 700); }
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -176,7 +167,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
   const scrollToBottom = () => { requestAnimationFrame(() => { requestAnimationFrame(() => { const el = scrollRef.current; if (el) el.scrollTop = el.scrollHeight; }); }); };
   useEffect(() => {
     scrollToBottom();
-    if ((fase === "email" || fase === "whatsapp") && !typing && inputRef.current) inputRef.current.focus();
+    if ((fase === "contacto" || fase === "contacto2") && !typing && inputRef.current) inputRef.current.focus();
   }, [msgs, typing, fase, idx]);
   useEffect(() => {
     const vv = typeof window !== "undefined" ? window.visualViewport : null;
@@ -186,71 +177,105 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     return () => { vv.removeEventListener("resize", on); vv.removeEventListener("scroll", on); };
   }, []);
 
-  // ── Pedido de EMAIL (enmarcado como valor) ─────────────────────────────────
-  async function pedirEmail() {
-    const k = knownRef.current;
-    if (k.email) { // ya lo tenemos → lead parcial y a enriquecer
-      await mandarLead({ ...perfilRef.current, email: k.email }, "parcial");
-      await say("Ya le avisé a la desarrolladora tu interés. Te hago un par de preguntas para pasarles y ayudarte mejor.", 900);
-      startEnrich();
-    } else {
-      setFase("email");
-      await say(`Vamos a avisarle a la desarrolladora que te interesó ${proyecto || "este proyecto"}, así te contactan. ¿A qué mail te escriben?`, 850);
-    }
+  // ── GATE particular / inmobiliaria ─────────────────────────────────────────
+  async function elegirRubro(tipo, label) {
+    if (typing) return;
+    setMsgs((m) => [...m, { s: "u", t: label }]);
+    const data = { ...perfilRef.current, tipoContacto: tipo };
+    setPerfilAll(data); persistPerfil(data);
+    setB2b(tipo === "inmobiliaria");
+    await seguirComo(tipo);
   }
-  async function enviarEmail(e) {
-    e.preventDefault(); if (gotcha) return;
-    const val = txt.trim(); if (!val || typing) return;
-    setTxt("");
-    const mail = extraerMail(val);
-    if (!mail) {
-      setMsgs((m) => [...m, { s: "u", t: val }]);
-      await say(tieneGroseria(val) ? "Jaja, igual necesito un mail válido (con @) para que te contacten." : "Mmm, ese mail no me cierra. ¿Me lo pasás con @?", 550);
+  async function seguirComo(tipo, isLead = (modo === "lead")) {
+    if (tipo === "inmobiliaria") {
+      setB2b(true);
+      setFase("contacto");
+      await say("¡Buenísimo! Trabajamos con inmobiliarias y brokers. Dejame tu mail y te contactamos para ver cómo sumamos tus proyectos o trabajamos juntos.", 800);
       return;
     }
-    setMsgs((m) => [...m, { s: "u", t: mail }]);
-    const data = { ...perfilRef.current, email: mail };
-    setPerfilAll(data); persistPerfil(data);
-    track("chat_email", { origen: proyecto ? "ficha" : "asesor" });
-    await mandarLead(data, "parcial");
-    await say("¡Listo! Ya le avisé a la desarrolladora tu interés, te van a contactar. ¿Querés dejar también un WhatsApp? (opcional)", 900);
-    setFase("whatsapp");
-  }
-  async function omitirEmail() {
-    if (typing) return;
-    setMsgs((m) => [...m, { s: "u", t: "Ahora no" }]);
-    await say("Sin drama. Igual te muestro los proyectos que te pueden interesar.", 700);
-    startEnrich();
+    // Particular
+    if (isLead) {
+      const pend = BUSCADOR.filter((p) => p.key === "objetivo" && !perfilRef.current[p.key]);
+      if (pend.length) { setEtapa("preContacto"); setQueue(pend); setIdx(0); setFase("chat"); await say(pend[0].p, 650); }
+      else { await irAContacto(); }
+    } else {
+      const q = BUSCADOR.filter((p) => !perfilRef.current[p.key]);
+      if (!q.length) { setBuscarUrl(urlBuscador(perfilRef.current)); await say(resumen(perfilRef.current) ? `Buscás ${resumen(perfilRef.current)}. Te muestro esos.` : "Te muestro los proyectos que tenemos.", 800); setFase("okBuscar"); }
+      else { setEtapa("buscar"); setQueue(q); setIdx(0); setFase("chat"); await say(q[0].p, 700); }
+    }
   }
 
-  // ── WhatsApp opcional ──────────────────────────────────────────────────────
-  async function enviarWhatsapp(e) {
+  async function irAContacto() {
+    setFase("contacto");
+    await say(`Genial. ¿A qué WhatsApp te paso precio, disponibilidad y cuota${proyecto ? ` de ${proyecto}` : ""}? Si preferís, dejame un mail.`, 750);
+  }
+
+  // ── CONTACTO primario (WhatsApp o mail) ────────────────────────────────────
+  async function enviarContacto(e) {
     e.preventDefault(); if (gotcha) return;
     const val = txt.trim(); if (!val || typing) return;
+    const mail = extraerMail(val);
+    const wpp = mail ? "" : extraerWpp(val);
+    if (b2b) {
+      if (!mail) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Para el contacto del rubro necesito un mail válido (con @).", 550); return; }
+      setTxt(""); setMsgs((m) => [...m, { s: "u", t: mail }]);
+      const data = { ...perfilRef.current, email: mail };
+      setPerfilAll(data); persistPerfil(data);
+      track("chat_email", { origen: "b2b" });
+      await mandarLead(data, "final");
+      await say("¡Gracias! Te contactamos a la brevedad para trabajar juntos.", 800);
+      setFase("ok");
+      return;
+    }
+    if (!mail && !wpp) {
+      setMsgs((m) => [...m, { s: "u", t: val }]);
+      await say(tieneGroseria(val) ? "Jaja, en serio: pasame un WhatsApp (con característica) o un mail con @." : "Mmm, eso no me cierra. Pasame un WhatsApp con característica o un mail con @.", 550);
+      setTxt(""); return;
+    }
     setTxt("");
-    const wpp = extraerWpp(val);
-    if (!wpp) { setMsgs((m) => [...m, { s: "u", t: val }]); await say("Ese no parece un WhatsApp. Pasámelo con característica, o seguimos sin eso.", 550); return; }
-    setMsgs((m) => [...m, { s: "u", t: wpp }]);
-    const data = { ...perfilRef.current, whatsapp: wpp };
+    setMsgs((m) => [...m, { s: "u", t: mail || wpp }]);
+    const data = { ...perfilRef.current, ...(mail ? { email: mail } : { whatsapp: wpp }) };
     setPerfilAll(data); persistPerfil(data);
+    track(mail ? "chat_email" : "chat_whatsapp", { origen: proyecto ? "ficha" : "asesor" });
     await mandarLead(data, "parcial");
-    await say("¡Genial! Te hago un par de preguntas más para pasarle a la desarrolladora (o cerramos cuando quieras).", 850);
-    startEnrich();
+    // Pedimos el OTRO contacto (opcional) — WhatsApp es el que más acelera el cierre.
+    if (mail) {
+      setFase("contacto2");
+      await say("¡Listo! Ya avisé a la desarrolladora. ¿Me dejás un WhatsApp así te escriben más rápido? (opcional)", 850);
+    } else {
+      setFase("contacto2");
+      await say("¡Genial! Ya avisé a la desarrolladora, te van a escribir. ¿Me dejás un mail también? (opcional)", 850);
+    }
   }
-  async function omitirWhatsapp() {
+  async function omitirContacto() {
     if (typing) return;
-    setMsgs((m) => [...m, { s: "u", t: "Seguir sin WhatsApp" }]);
-    await say("Perfecto. Un par de preguntas y listo.", 700);
-    startEnrich();
+    if (b2b) { setMsgs((m) => [...m, { s: "u", t: "Ahora no" }]); await say("Sin drama. Cuando quieras nos escribís.", 650); setFase("ok"); return; }
+    setMsgs((m) => [...m, { s: "u", t: "Prefiero no dejar contacto" }]);
+    await say("Sin drama. Igual te muestro los proyectos que te pueden interesar.", 700);
+    setBuscarUrl(urlBuscador(perfilRef.current)); setFase("okBuscar");
   }
 
-  // ── Enriquecimiento (opcional) ─────────────────────────────────────────────
-  async function startEnrich() {
-    const pend = ENRICH.filter((p) => !perfilRef.current[p.key]);
-    if (!pend.length) { cerrarLead(); return; }
-    setEtapa("enrich"); setQueue(pend); setIdx(0); setFase("chat");
-    await say(pend[0].p, 650);
+  // ── CONTACTO secundario (el que falte) ─────────────────────────────────────
+  async function enviarContacto2(e) {
+    e.preventDefault(); if (gotcha) return;
+    const val = txt.trim(); if (!val || typing) return;
+    const mail = extraerMail(val);
+    const wpp = mail ? "" : extraerWpp(val);
+    if (!mail && !wpp) { setMsgs((m) => [...m, { s: "u", t: val }]); await say("Ese dato no me cierra. Pasámelo bien o seguimos sin eso.", 500); setTxt(""); return; }
+    setTxt("");
+    setMsgs((m) => [...m, { s: "u", t: mail || wpp }]);
+    const data = { ...perfilRef.current, ...(mail ? { email: mail } : { whatsapp: wpp }) };
+    setPerfilAll(data); persistPerfil(data);
+    await mandarLead(data, "parcial");
+    await cerrarLead();
   }
+  async function omitirContacto2() {
+    if (typing) return;
+    setMsgs((m) => [...m, { s: "u", t: "Así está bien" }]);
+    await cerrarLead();
+  }
+
+  // ── Enriquecimiento (chips: objetivo/zona/amb/presupuesto) ──────────────────
   function elegir(label, value) {
     if (typing) return;
     const paso = queue[idx]; if (!paso) return;
@@ -270,46 +295,42 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
 
   async function finQueue(data) {
     persistPerfil(data);
-    if (etapa === "buscar") {
-      setBuscarUrl(urlBuscador(data));
-      await say("¡Listo! Acá tenés los proyectos con lo que me dijiste.", 700);
-      setFase("okBuscar");
-      return;
-    }
-    cerrarLead(); // enrich
+    if (etapa === "buscar") { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Acá tenés los proyectos con lo que me dijiste.", 700); setFase("okBuscar"); return; }
+    if (etapa === "preContacto") { await irAContacto(); return; }
+    cerrarLead();
   }
   async function cerrarLead() {
     const data = perfilRef.current;
     persistPerfil(data);
     await mandarLead(data, "final");
-    if (proyecto) { await say("¡Listo! Ya le pasé todo a la desarrolladora, te van a contactar. Guardé tu búsqueda en Mi selección.", 850); setFase("ok"); }
+    if (proyecto || modo === "lead") { await say("¡Listo! Ya le pasé todo a la desarrolladora, te van a contactar. Lo guardé en tu Plan.", 850); setFase("ok"); }
     else { setBuscarUrl(urlBuscador(data)); await say("¡Listo! Acá tenés los proyectos que te pueden interesar.", 800); setFase("okBuscar"); }
   }
 
-  // ── Alerta por mail al final del buscador (opcional) ───────────────────────
+  // ── Alerta por mail/WhatsApp al final del buscador (opcional) ───────────────
   async function enviarAlerta(e) {
     e.preventDefault(); if (gotcha) return;
     const val = txt.trim(); if (!val || typing) return;
     const mail = extraerMail(val);
-    if (!mail) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Ese mail no me cierra. ¿Me lo pasás con @? (o dejalo y listo)", 550); return; }
+    const wpp = mail ? "" : extraerWpp(val);
+    if (!mail && !wpp) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Pasame un WhatsApp o un mail con @ (o dejalo y listo).", 550); return; }
     setTxt("");
-    const data = { ...perfilRef.current, email: mail };
+    const data = { ...perfilRef.current, ...(mail ? { email: mail } : { whatsapp: wpp }) };
     setPerfilAll(data); persistPerfil(data);
-    track("alerta_email", {});
+    track(mail ? "alerta_email" : "alerta_whatsapp", {});
     await mandarLead(data, "alerta");
     setAlertaOk(true);
   }
 
   async function reiniciar() {
-    knownRef.current = {}; perfilRef.current = {}; setPerfil({}); leadRef.current = { sent: false, snap: "" }; setAlertaOk(false);
-    const base = modo === "buscador" ? BUSCADOR : ENRICH;
-    setEtapa(modo === "buscador" ? "buscar" : "enrich"); setQueue(base); setIdx(0); setFase("chat");
+    knownRef.current = {}; perfilRef.current = {}; setPerfil({}); leadRef.current = { sent: false, snap: "" }; setAlertaOk(false); setB2b(false);
+    setEtapa("buscar"); setQueue(BUSCADOR); setIdx(0); setFase("chat");
     await say("Dale, arranquemos de cero.", 400);
-    await say(base[0].p, 600);
+    await say(BUSCADOR[0].p, 600);
   }
 
   const total = queue.length || 1;
-  const progreso = fase === "chat" ? `Paso ${Math.min(idx + 1, total)} de ${total}` : (fase === "email" || fase === "whatsapp" ? "Un dato y seguimos" : ((fase === "ok" || fase === "okBuscar") ? "¡Listo!" : "Encantada de ayudarte"));
+  const progreso = fase === "chat" ? `Paso ${Math.min(idx + 1, total)} de ${total}` : (fase === "contacto" || fase === "contacto2" ? "Un dato y seguimos" : ((fase === "ok" || fase === "okBuscar") ? "¡Listo!" : "Encantada de ayudarte"));
   const escapeUrl = urlBuscador(perfil);
 
   return (
@@ -344,6 +365,13 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
 
       {/* Caja de respuesta fija abajo */}
       <div className="shrink-0 border-t border-outline-variant bg-surface">
+        {fase === "rubro" && !typing && (
+          <div className="p-3 flex flex-wrap gap-2">
+            <button type="button" onClick={() => elegirRubro("particular", "Busco para mí")} className="text-[13px] px-4 py-2.5 rounded-full bg-primary-container text-on-primary hover:opacity-90 transition">Busco para mí</button>
+            <button type="button" onClick={() => elegirRubro("inmobiliaria", "Soy del rubro (inmobiliaria/broker)")} className="text-[13px] px-4 py-2.5 rounded-full border border-outline-variant text-primary hover:border-secondary transition-colors">Soy inmobiliaria / broker</button>
+          </div>
+        )}
+
         {fase === "chat" && !typing && idx < queue.length && (
           <div className="p-3 space-y-2">
             <div className="flex flex-wrap gap-2">
@@ -352,11 +380,11 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
               ))}
             </div>
             <div className="flex items-center gap-4 pt-0.5">
-              {etapa !== "buscar" && (
-                <button type="button" onClick={saltar} className="text-[12.5px] text-on-surface-variant underline underline-offset-2 hover:text-primary">Saltar</button>
-              )}
               {etapa === "enrich" && (
-                <button type="button" onClick={terminarEnrich} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Listo, con esto alcanza</button>
+                <>
+                  <button type="button" onClick={saltar} className="text-[12.5px] text-on-surface-variant underline underline-offset-2 hover:text-primary">Saltar</button>
+                  <button type="button" onClick={terminarEnrich} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Listo, con esto alcanza</button>
+                </>
               )}
               {etapa === "buscar" && (
                 <Link href={escapeUrl} onClick={() => { track("ver_listado", { origen: "chat_escape" }); onClose && onClose(); }} className="text-[12.5px] text-secondary underline underline-offset-2 hover:no-underline">Prefiero ver el listado →</Link>
@@ -365,21 +393,21 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
           </div>
         )}
 
-        {(fase === "email" || fase === "whatsapp") && (
-          <form onSubmit={fase === "email" ? enviarEmail : enviarWhatsapp} className="p-3">
+        {(fase === "contacto" || fase === "contacto2") && (
+          <form onSubmit={fase === "contacto" ? enviarContacto : enviarContacto2} className="p-3">
             <div className="flex items-center gap-2">
               <input ref={inputRef} value={txt} onChange={(e) => setTxt(e.target.value)} disabled={typing}
                 onFocus={() => setTimeout(scrollToBottom, 320)}
-                inputMode={fase === "email" ? "email" : "tel"}
-                placeholder={fase === "email" ? "tucorreo@mail.com" : "Tu WhatsApp con característica…"}
+                inputMode={b2b ? "email" : "text"}
+                placeholder={b2b ? "tucorreo@mail.com" : (fase === "contacto" ? "Tu WhatsApp (o mail)…" : "Sumá el otro dato…")}
                 className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
               <button type="submit" disabled={typing || !txt.trim()} aria-label="Enviar" className="shrink-0 w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 transition disabled:opacity-50">
                 <span className="material-symbols-outlined fill-icon text-[20px]">send</span>
               </button>
             </div>
             <div className="flex items-center justify-between gap-3 mt-2 px-1">
-              <button type="button" onClick={fase === "email" ? omitirEmail : omitirWhatsapp} className="text-[12.5px] text-on-surface-variant underline underline-offset-2 hover:text-primary">
-                {fase === "email" ? "Prefiero no dejar mail" : "Seguir sin WhatsApp"}
+              <button type="button" onClick={fase === "contacto" ? omitirContacto : omitirContacto2} className="text-[12.5px] text-on-surface-variant underline underline-offset-2 hover:text-primary">
+                {fase === "contacto" ? (b2b ? "Ahora no" : "Prefiero no dejar contacto") : "Así está bien"}
               </button>
               <span className="text-[11px] text-on-surface-variant">No lo compartimos con terceros.</span>
             </div>
@@ -392,7 +420,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
             <button type="button" onClick={() => cerrarLead()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
               <span className="material-symbols-outlined text-[18px]">refresh</span> Reintentar
             </button>
-            <Link href="/mi-seleccion/" className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Ver mi selección</Link>
+            <Link href="/mi-seleccion/" className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Ver mi Plan</Link>
           </div>
         )}
 
@@ -404,12 +432,11 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
               </Link>
               <button type="button" onClick={reiniciar} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Buscar otra cosa</button>
             </div>
-            {/* Alerta por mail (opcional) */}
             {!leadRef.current.sent && !alertaOk ? (
               <form onSubmit={enviarAlerta} className="pt-2 border-t border-outline-variant">
-                <p className="text-[13px] text-on-surface-variant mb-2">Te armo un resumen con precios y te lo mando a tu mail (y te aviso si entra algo nuevo). ¿A qué mail?</p>
+                <p className="text-[13px] text-on-surface-variant mb-2">Te aviso por WhatsApp (o mail) apenas entra algo que encaje, antes que en los portales. ¿A qué te escribo?</p>
                 <div className="flex items-center gap-2">
-                  <input value={txt} onChange={(e) => setTxt(e.target.value)} inputMode="email" placeholder="tucorreo@mail.com"
+                  <input value={txt} onChange={(e) => setTxt(e.target.value)} inputMode="text" placeholder="Tu WhatsApp o mail…"
                     className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
                   <button type="submit" disabled={!txt.trim()} className="shrink-0 rounded-full bg-secondary-container text-primary px-4 h-11 text-[13px] hover:opacity-90 transition disabled:opacity-50">Avisame</button>
                 </div>
@@ -424,7 +451,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
         {fase === "ok" && (
           <div className="p-4 flex items-center justify-center gap-3 flex-wrap">
             <Link href="/mi-seleccion/" onClick={() => onClose && onClose()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-              <span className="material-symbols-outlined text-[18px]">favorite</span> Ver mi selección
+              <span className="material-symbols-outlined text-[18px]">space_dashboard</span> Ver mi Plan
             </Link>
             {onClose && (
               <button type="button" onClick={onClose} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Seguir viendo</button>
