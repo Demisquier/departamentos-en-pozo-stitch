@@ -101,7 +101,6 @@ export default function IntakeChat({ onClose = null }) {
       _subject: "Nuevo proyecto (intake desarrolladora)",
       _template: "table",
       _captcha: "false",
-      _cc: "contacto@departamentosenpozo.com.ar",
       Proyecto: d.nombre || "—",
       Barrio: d.barrio || "—",
       Etapa: d.etapa || "—",
