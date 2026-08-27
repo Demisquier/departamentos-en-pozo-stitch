@@ -5,7 +5,7 @@
 // Flujo mínimo (menos mensajes, todos apuntados al dato): saludo con valor → nombre →
 // [proyecto/zona si es buscador] → WhatsApp → email. Speed-to-lead: dispara el lead apenas hay
 // un contacto. MEMORIA: si ya conocemos los datos, no re-pregunta. Lead por Formsubmit vía
-// /api/lead: primario dema2910@, _cc contacto@departamentosenpozo.com.ar.
+// /api/lead: primario contacto@departamentosenpozo.com.ar (dema2910 ya NO recibe leads).
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase, authEnabled } from "../../lib/supabase";
@@ -89,7 +89,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const snap = JSON.stringify({ nombre: data.nombre, email, whatsapp, proy });
     if (leadRef.current.sent && leadRef.current.snap === snap) return;
     const subj = leadRef.current.sent ? "Lead actualizado (asesor)" : "Nuevo lead (asesor)";
-    const payload = { _subject: subj, _template: "table", _captcha: "false", _cc: "contacto@departamentosenpozo.com.ar", Nombre: data.nombre || "—", WhatsApp: whatsapp || "—", Email: email || "—" };
+    const payload = { _subject: subj, _template: "table", _captcha: "false", Nombre: data.nombre || "—", WhatsApp: whatsapp || "—", Email: email || "—" };
     if (email && !leadRef.current.sent) {
       payload._replyto = email;
       payload._autoresponse = `¡Hola${data.nombre ? ` ${primerNombre(data.nombre) || data.nombre}` : ""}! Gracias por tu consulta${proy ? ` sobre ${proy}` : ""}. En breve te paso precio, cuota y formas de pago, por acá o por WhatsApp. Cualquier duda, respondé este mail. — Valentina · Departamentos en Pozo`;
