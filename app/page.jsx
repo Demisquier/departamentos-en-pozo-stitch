@@ -227,6 +227,7 @@ export default async function HomePage() {
               ["domain", "Desarrolladoras en CABA", "Directorio de desarrolladoras con proyectos y track record.", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
               ["real_estate_agent", "Inmobiliarias en CABA", "Directorio de inmobiliarias con matrícula CUCICBA verificable.", "/mejores-inmobiliarias-caba/"],
               ["menu_book", "Guías para invertir", "Todo lo que necesitás entender antes de comprar en pozo.", "/novedades/"],
+              ["language", "Invertir desde el exterior", "Sos argentino afuera o extranjero: cómo comprar en pozo en CABA a distancia, con acompañamiento remoto.", "/invertir-desde-el-exterior/"],
             ].map(([ic, h, p, href]) => (
               <Link key={href} href={href} className="group block border border-outline-variant rounded-xl p-6 hover:border-secondary transition-colors">
                 <span className="material-symbols-outlined text-3xl text-link-gold">{ic}</span>
