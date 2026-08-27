@@ -1,5 +1,5 @@
 "use client";
-// app/asesor/AsesorLauncher.jsx — Botón flotante para abrir a Sofía.
+// app/asesor/AsesorLauncher.jsx — Botón flotante para abrir a Valentina.
 // Se oculta en la ficha (ya tiene su CTA) y en /asesor. Visibilidad DINAMICA por scroll:
 // aparece solo cuando el usuario baja >420px (deja el hero/CTAs) y se OCULTA de nuevo al
 // volver arriba — asi nunca tapa los CTAs del hero. Color navy (bg-primary) para contraste.
@@ -49,7 +49,7 @@ export default function AsesorLauncher() {
           <button type="button" onClick={abrir} className="block mt-2 text-secondary font-medium underline hover:no-underline">Sí, dale →</button>
         </div>
       )}
-      <button type="button" onClick={abrir} aria-label="¿Te ayudo a elegir? con Sofía"
+      <button type="button" onClick={abrir} aria-label="¿Te ayudo a elegir? con Valentina"
         className="fixed bottom-20 md:bottom-5 right-4 z-[90] inline-flex items-center gap-2 rounded-full bg-primary text-white ring-1 ring-white/20 shadow-2xl px-4 py-3 hover:bg-primary/90 transition-all">
         <span className="material-symbols-outlined text-[22px] text-link-gold">forum</span>
         <span className="text-[13px] font-medium">¿Te ayudo a elegir?</span>
