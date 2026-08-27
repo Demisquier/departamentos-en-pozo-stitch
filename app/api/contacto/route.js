@@ -1,14 +1,14 @@
 // Route Handler de leads del formulario de /contacto. Corre server-side en Vercel (sin CORS).
 // Envía cada lead a DOS destinos, en paralelo y best-effort:
 //   (1) Google Sheet "Leads - Departamentos en Pozo" (webhook Apps Script, cuenta dema2910).
-//   (2) Email vía Formsubmit (a dema2910 + cc contacto@).
+//   (2) Email vía Formsubmit (a contacto@departamentosenpozo.com.ar).
 // (Antes apuntaba al WordPress que se dio de baja en la migración → estaba roto.)
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbyITcB1Ob6drt8Kfh_WnWbNeD02GxjH5pkBYJGFrfKwUOh_c158KXHGxyUk3rXmxvLy0w/exec";
-const MAIL_URL = "https://formsubmit.co/ajax/dema2910@gmail.com";
+const MAIL_URL = "https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar";
 
 // Rate-limit best-effort en memoria (por instancia serverless): corta ráfagas de spam.
 const HITS = new Map();
@@ -68,7 +68,6 @@ export async function POST(req) {
     _subject: proyecto ? `Nuevo contacto · ${proyecto}` : "Nuevo contacto (web)",
     _template: "table",
     _captcha: "false",
-    _cc: "contacto@departamentosenpozo.com.ar",
     Nombre: nombreCompleto,
     Email: email || "—",
     WhatsApp: whatsapp || "—",
