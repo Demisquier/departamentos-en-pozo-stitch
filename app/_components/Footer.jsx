@@ -30,6 +30,7 @@ export default function Footer() {
             ["Desarrolladoras", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
             ["Inmobiliarias", "/mejores-inmobiliarias-caba/"],
             ["Corralones y materiales", "/corralones-y-materiales-de-construccion-en-caba/"],
+            ["Invertir desde el exterior", "/invertir-desde-el-exterior/"],
           ]} />
 
           <FootCol title="Herramientas" links={[
