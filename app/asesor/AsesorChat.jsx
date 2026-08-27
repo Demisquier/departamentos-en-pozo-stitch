@@ -71,10 +71,10 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
 
   const promptDe = (c) => {
     const nombre = primerNombre(perfilRef.current.nombre);
-    if (c === "nombre") return "¿Cómo te llamás?";
-    if (c === "interes") return "¿Qué proyecto o zona te interesa? Si estás mirando, escribí \"explorando\".";
-    if (c === "whatsapp") return `¿A qué WhatsApp te escribo${nombre ? `, ${nombre}` : ""}? Te paso todo por ahí.`;
-    if (c === "email") return "¿Y tu email? Por si el WhatsApp falla.";
+    if (c === "nombre") return "Contame, ¿cómo te llamás?";
+    if (c === "interes") return `${nombre ? `Bien, ${nombre}. ` : ""}¿Buscás algún proyecto o zona en particular? Si estás mirando, poné \"explorando\".`;
+    if (c === "whatsapp") return `${nombre ? `Perfecto, ${nombre}. ` : "Perfecto. "}¿A qué WhatsApp te escribo? Es lo más rápido.`;
+    if (c === "email") return "¿Y un email, por las dudas? Así no se pierde nada.";
     return "";
   };
 
@@ -92,7 +92,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const payload = { _subject: subj, _template: "table", _captcha: "false", _cc: "contacto@departamentosenpozo.com.ar", Nombre: data.nombre || "—", WhatsApp: whatsapp || "—", Email: email || "—" };
     if (email && !leadRef.current.sent) {
       payload._replyto = email;
-      payload._autoresponse = `¡Hola${data.nombre ? ` ${primerNombre(data.nombre) || data.nombre}` : ""}! Gracias por tu consulta${proy ? ` sobre ${proy}` : ""}. En breve te escribimos con precio, disponibilidad y formas de pago. Cualquier duda respondé este mail. — Equipo Departamentos en Pozo`;
+      payload._autoresponse = `¡Hola${data.nombre ? ` ${primerNombre(data.nombre) || data.nombre}` : ""}! Gracias por tu consulta${proy ? ` sobre ${proy}` : ""}. En breve te paso precio, cuota y formas de pago, por acá o por WhatsApp. Cualquier duda, respondé este mail. — Valentina · Departamentos en Pozo`;
     }
     payload["Proyecto de interés"] = proy || "—";
     const guardados = leerFavoritos();
@@ -120,10 +120,10 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     (async () => {
       if (esLead) {
         setModo("lead"); setProyecto(n);
-        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te consigo ${pedido ? pedido : "precio, disponibilidad y cuota"} de ${n}, directo de la desarrolladora.`, 450);
+        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En un toque te consigo ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}, directo de la desarrolladora.`, 450);
       } else {
         setModo("buscador");
-        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te ayudo a encontrar tu depto en pozo y te paso precios al toque.`, 450);
+        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En dos o tres preguntas te muestro lo que encaja y te paso precios.`, 450);
       }
       const q = camposFaltantes(esLead, known);
       if (!q.length) { // ya tenemos todo → dispara y cierra
@@ -162,7 +162,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const val = txt.trim(); if (!val || typing) return;
 
     if (campo === "nombre") {
-      if (!esNombreValido(val) || tieneGroseria(val)) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Jaja, ¿tu nombre real? Así te escribo bien.", 500); return; }
+      if (!esNombreValido(val) || tieneGroseria(val)) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("¿Me pasás tu nombre? Así te escribo como corresponde.", 500); return; }
       setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]);
       const data = { ...perfilRef.current, nombre: val }; setPerfilAll(data); persistPerfil(data);
       await avanzar(); return;
@@ -174,7 +174,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     }
     if (campo === "whatsapp") {
       const wpp = extraerWpp(val);
-      if (!wpp) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Ese no parece un WhatsApp. Pasámelo con característica (o tocá \"Ahora no\").", 500); return; }
+      if (!wpp) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Uy, ese número no me cierra. Pasámelo con característica y seguimos.", 500); return; }
       setTxt(""); setMsgs((m) => [...m, { s: "u", t: wpp }]);
       const data = { ...perfilRef.current, whatsapp: wpp }; setPerfilAll(data); persistPerfil(data);
       track("chat_whatsapp", { origen: proyecto ? "ficha" : "asesor" });
@@ -183,7 +183,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     }
     if (campo === "email") {
       const mail = extraerMail(val);
-      if (!mail) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Mmm, ese mail no me cierra. ¿Me lo pasás con @?", 500); return; }
+      if (!mail) { setTxt(""); setMsgs((m) => [...m, { s: "u", t: val }]); await say("Revisá el mail (que tenga @) y lo intentamos de nuevo.", 500); return; }
       setTxt(""); setMsgs((m) => [...m, { s: "u", t: mail }]);
       const data = { ...perfilRef.current, email: mail }; setPerfilAll(data); persistPerfil(data);
       track("chat_email", { origen: proyecto ? "ficha" : "asesor" });
@@ -209,11 +209,11 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const nombre = primerNombre(perfilRef.current.nombre);
     const hay = leadRef.current.sent;
     if (esLead || proyecto) {
-      await say(hay ? `¡Listo${nombre ? `, ${nombre}` : ""}! Te escribo por WhatsApp con precio, disponibilidad y formas de pago. Lo guardé en tu Plan.` : `Cuando quieras dejame un contacto y te paso todo.`, 700);
+      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! En un rato te escribo por WhatsApp con precio, cuota y formas de pago. Lo dejé en tu Plan.` : `Cuando quieras me dejás un contacto y te paso todo.`, 700);
       setFase("ok");
     } else {
       setBuscarUrl("/desarrollos-inmobiliarios/");
-      await say(hay ? `¡Listo${nombre ? `, ${nombre}` : ""}! Te muestro los proyectos y te escribo por WhatsApp con lo que encaje.` : "Te muestro los proyectos que tenemos.", 700);
+      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! Te muestro lo que encaja y te escribo por WhatsApp.` : "Te muestro los proyectos que tenemos.", 700);
       setFase("okBuscar");
     }
   }
