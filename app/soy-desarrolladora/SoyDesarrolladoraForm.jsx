@@ -1,7 +1,7 @@
 "use client";
 // app/soy-desarrolladora/SoyDesarrolladoraForm.jsx — Formulario para desarrolladoras que quieran
 // actualizar sus datos, sumar un proyecto, corregir algo o conversar. Envía por mail vía Formsubmit
-// (SIN WordPress): primario a contacto@departamentosenpozo.com.ar, con copia (_cc) a dema2910@gmail.com.
+// (SIN WordPress): primario a contacto@departamentosenpozo.com.ar (dema2910 ya NO recibe).
 import { useState } from "react";
 
 const MOTIVOS = ["Actualizar mis datos", "Sumar / actualizar un proyecto", "Corregir un dato", "Conversar con el equipo"];
@@ -19,7 +19,7 @@ export default function SoyDesarrolladoraForm() {
     setFase("enviando");
     const payload = {
       _subject: "Desarrolladora: contacto / actualización de datos",
-      _template: "table", _captcha: "false", _cc: "dema2910@gmail.com",
+      _template: "table", _captcha: "false",
       Desarrolladora: form.empresa.trim(),
       Contacto: form.nombre.trim() || "—",
       Email: form.email.trim() || "—",
