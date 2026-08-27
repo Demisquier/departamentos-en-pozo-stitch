@@ -120,7 +120,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     (async () => {
       if (esLead) {
         setModo("lead"); setProyecto(n);
-        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En un toque te consigo ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}, directo de la desarrolladora.`, 450);
+        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te ayudo con ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}: se lo pido al equipo comercial del proyecto y te lo paso.`, 450);
       } else {
         setModo("buscador");
         await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En dos o tres preguntas te muestro lo que encaja y te paso precios.`, 450);
