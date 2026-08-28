@@ -45,7 +45,7 @@ const CLUSTER_HTML = `
     <tr><td>Variedad de proyectos y tipologías</td><td>Mix de unidades (monoambientes, 2 y 3 ambientes) y estado de obra disponible.</td><td>Oferta diversa en distintos barrios y etapas, con fichas técnicas completas por tipología.</td></tr>
   </tbody>
 </table>
-<p>La constante en todos los atributos es la misma: pedir <strong>fideicomiso</strong> con rendición de cuentas, revisar el cumplimiento de la <strong>ley de prehorizontalidad</strong> y visitar <strong>obras ya entregadas</strong> antes de firmar. En el <a href="/desarrollos-inmobiliarios/">catálogo de desarrollos</a> vas a encontrar desarrolladoras con proyectos verificados; para evaluar en profundidad, leé <a href="/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/">cómo evaluar una desarrolladora de pozo</a>; y para ver avances reales, mirá los <a href="/videos-de-emprendimientos-en-pozo/">videos de emprendimientos en pozo por barrio</a>.</p>
+<p>La constante en todos los atributos es la misma: pedir <strong>fideicomiso</strong> con rendición de cuentas, revisar el cumplimiento de la <strong>ley de prehorizontalidad</strong> y visitar <strong>obras ya entregadas</strong> antes de firmar. En el <a href="/desarrollos-inmobiliarios/">catálogo de desarrollos inmobiliarios en pozo</a> vas a encontrar desarrolladoras con proyectos verificados; para evaluar en profundidad, leé <a href="/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/">cómo evaluar una desarrolladora de pozo</a>; y para ver avances reales, mirá los <a href="/videos-de-emprendimientos-en-pozo/">videos de emprendimientos en pozo por barrio</a>.</p>
 `;
 
 // Bloque metodología / E-E-A-T (señal de independencia y confianza para Google/IA) +
@@ -221,7 +221,7 @@ export default async function HubDesarrolladorasPage() {
               Estamos actualizando este directorio. Mientras tanto, explorá el catálogo de proyectos en pozo por barrio.
             </p>
             <a href="/desarrollos-inmobiliarios/" className="inline-block mt-5 text-secondary underline underline-offset-4">
-              Ver catálogo de desarrollos →
+              Ver el catálogo de desarrollos inmobiliarios en pozo →
             </a>
           </div>
         )}
