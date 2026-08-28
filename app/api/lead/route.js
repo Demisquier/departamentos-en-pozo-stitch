@@ -70,7 +70,7 @@ export async function POST(req) {
     tasks.push(
       fetch(MAIL_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: "https://departamentosenpozo.com.ar/", Origin: "https://departamentosenpozo.com.ar" },
         body: JSON.stringify(mail),
         signal: ctrl.signal,
       })
