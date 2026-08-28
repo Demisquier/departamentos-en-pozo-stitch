@@ -69,7 +69,7 @@ export default async function CatalogoPage() {
           Un desarrollo inmobiliario es el emprendimiento completo —en general un edificio de departamentos— que una desarrolladora concibe, financia y construye. El <strong>departamento en pozo</strong> es una unidad de ese desarrollo comprada antes de que esté terminado: es la parte, no el todo.
         </p>
         <p>
-          Comprar en pozo suele tener un precio de entrada menor que el usado de la zona, a cambio del riesgo de obra. Cada ficha reúne precio, desarrolladora, tipologías, etapa de obra, estructura de pago y entrega, para que compares proyectos con criterio.
+          Comprar en pozo suele tener un precio de entrada menor que el usado de la zona, a cambio del riesgo de obra. Cada ficha reúne precio, desarrolladora, tipologías, etapa de obra, estructura de pago y entrega, para que compares proyectos con criterio. Detrás de cada desarrollo hay una desarrolladora: antes de decidir, revisá el <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-secondary underline underline-offset-2">directorio de desarrolladoras de CABA</Link>.
         </p>
       </section>
 
