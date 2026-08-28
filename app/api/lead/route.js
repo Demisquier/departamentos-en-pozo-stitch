@@ -66,7 +66,7 @@ export async function POST(req) {
       })
     );
   }
-  if (mail) {
+  if (false) { // FormSubmit desactivado: el Apps Script (webhook) ya manda 1 solo mail al dev con Bcc a contacto@ (o a contacto@ si el proyecto no está mapeado).
     tasks.push(
       fetch(MAIL_URL, {
         method: "POST",
