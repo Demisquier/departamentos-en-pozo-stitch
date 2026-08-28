@@ -11,6 +11,9 @@ function landingSlugForBarrio(label) {
   return null;
 }
 
+// Normaliza un nombre de barrio (saca acentos, minúsculas) para dedupe/match acento-insensible.
+const NORM = (s) => String(s || '').normalize('NFD').split('').filter((c) => { const k = c.charCodeAt(0); return k < 768 || k > 879; }).join('').toLowerCase().trim();
+
 // Barrios con landing propia (para el dropdown de barrio en las páginas por barrio).
 const LANDING_BARRIOS = Object.keys(BARRIO_CATALOGO).map((slug) => ({ slug, label: BARRIO_CATALOGO[slug].label }));
 
@@ -184,10 +187,17 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
     return () => document.removeEventListener('keydown', onKey);
   }, [sheetOpen]);
 
-  const barrios = useMemo(
-    () => Array.from(new Set(items.map((i) => i.barrio).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'es')),
-    [items]
-  );
+  const barrios = useMemo(() => {
+    // Dropdown limpio: dedupe acento-insensible + saca 'barrios' que son direcciones (con número).
+    const seen = new Map();
+    for (const i of items) {
+      const b = i.barrio;
+      if (!b || [...b].some((c) => c >= '0' && c <= '9')) continue;
+      const k = NORM(b);
+      if (!seen.has(k)) seen.set(k, b);
+    }
+    return Array.from(seen.values()).sort((a, b) => a.localeCompare(b, 'es'));
+  }, [items]);
   const desarrolladoras = useMemo(
     () => Array.from(new Set(items.map((i) => i.desarrolladora).filter(Boolean))).sort((a, b) => a.localeCompare(b, 'es')),
     [items]
@@ -199,7 +209,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
 
   const filtered = useMemo(() => {
     let out = items.filter((i) => {
-      if (barrio && i.barrio !== barrio) return false;
+      if (barrio && NORM(i.barrio) !== NORM(barrio)) return false;
       if (amb) {
         const nums = i.ambientesNums || [];
         const match = amb === '4+' ? nums.some((n) => n === '4+' || n === '4' || n === '5+') : nums.includes(amb);
