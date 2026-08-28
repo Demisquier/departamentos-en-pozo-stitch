@@ -44,14 +44,14 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
         <nav className="text-[13px] text-on-surface-variant mb-5 flex flex-wrap gap-1.5" aria-label="Ruta de navegación">
           <Link href="/" className="hover:text-secondary">Inicio</Link>
           <span>/</span>
-          <Link href="/desarrollos-inmobiliarios/" className="hover:text-secondary">Departamentos en pozo</Link>
+          <Link href="/desarrollos-inmobiliarios/" className="hover:text-secondary">Desarrollos inmobiliarios</Link>
           <span>/</span>
           <span className="text-primary">{label}</span>
         </nav>
 
         <div className="mb-8">
           <h1 className="font-headline-md text-headline-md md:text-display-lg serif text-primary max-w-2xl leading-tight">
-            Departamentos en pozo en {label}: {n} proyecto{n === 1 ? "" : "s"}
+            Desarrollos inmobiliarios en pozo en {label}: {n} proyecto{n === 1 ? "" : "s"}
           </h1>
           {(desde || medianaM2) && (
             <p className="mt-2 text-[14px] text-on-surface-variant">
@@ -70,7 +70,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
 
         {/* Cierre: variante de keyword (desarrollos inmobiliarios) + enlaces a las otras capas. */}
         <section className="mt-12 pt-8 border-t border-outline-variant text-[15px] text-on-surface-variant">
-          <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Desarrollos inmobiliarios en pozo en {label}</h2>
+          <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Comprar un desarrollo inmobiliario en pozo en {label}</h2>
           <p>
             Estás viendo los {n} desarrollos inmobiliarios en pozo de {label}
             {conPrecio ? ` (${conPrecio} con precio publicado)` : ""}. Si comprás en preventa, el
