@@ -88,7 +88,7 @@ export async function POST(req) {
       }),
       fetch(MAIL_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: "https://departamentosenpozo.com.ar/", Origin: "https://departamentosenpozo.com.ar" },
         body: mailBody,
         signal: ctrl.signal,
       }),
