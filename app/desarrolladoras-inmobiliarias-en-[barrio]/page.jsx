@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getPageBySlug, getRankMathSchema, getDesarrollos, getDesarrolladoras, featuredImage, acf } from "../../lib/wp";
 import CalcInversion from "./CalcInversion";
 import DirectorioDevs from "../desarrolladoras-inmobiliarias-en-capital-federal/DirectorioDevs";
-import { BARRIO_CPT, BARRIOS_SLUGS, barrioNombre } from "../../lib/barrios";
+import { BARRIO_CPT, BARRIOS_SLUGS, barrioNombre, BARRIO_CATALOGO } from "../../lib/barrios";
 import { deaccent, toNumber as num } from "../../lib/format";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
@@ -52,6 +52,7 @@ const FAQ = [
 
 export default async function GuiaBarrioPage({ params }) {
   const barrio = barrioNombre(params.barrio);
+  const catSlug = BARRIO_CATALOGO[BARRIO_CPT[params.barrio]] ? BARRIO_CPT[params.barrio] : null;
   const base = barrioBase(params.barrio);
 
   let page = null;
@@ -114,8 +115,8 @@ export default async function GuiaBarrioPage({ params }) {
             <p className="text-body-lg mb-8 opacity-90 max-w-xl">
               Análisis independiente de {proyectos.length} proyecto{proyectos.length === 1 ? "" : "s"} en pozo en {barrio}: precio por m², desarrolladora y financiación.
             </p>
-            <Button as={Link} variant="gold" href="/desarrollos-inmobiliarios/?barrio=" className="px-10 py-4 text-label-caps uppercase tracking-widest inline-flex items-center gap-3">
-              Ver proyectos en {barrio}
+            <Button as={Link} variant="gold" href={catSlug ? `/desarrollos-inmobiliarios-en-${catSlug}/` : "/desarrollos-inmobiliarios/"} className="px-10 py-4 text-label-caps uppercase tracking-widest inline-flex items-center gap-3">
+              Ver los {proyectos.length} desarrollos inmobiliarios en pozo en {barrio}
               <span className="material-symbols-outlined">arrow_forward</span>
             </Button>
           </div>
@@ -153,7 +154,7 @@ export default async function GuiaBarrioPage({ params }) {
           <Container>
             <div className="mb-12 text-center">
               <span className="text-label-caps text-secondary-fixed mb-3 block">PROYECTOS EN POZO</span>
-              <h2 className="text-headline-md font-headline-md text-on-primary">Desarrollos en {barrio}</h2>
+              <h2 className="text-headline-md font-headline-md text-on-primary">Desarrollos inmobiliarios en pozo en {barrio}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
               {destacados.map((p) => (
@@ -173,6 +174,14 @@ export default async function GuiaBarrioPage({ params }) {
                 </Link>
               ))}
             </div>
+            {catSlug && (
+              <div className="text-center mt-10">
+                <Link href={`/desarrollos-inmobiliarios-en-${catSlug}/`} className="inline-flex items-center gap-2 text-secondary-fixed font-label-caps uppercase tracking-widest hover:gap-3 transition-all">
+                  Ver todos los desarrollos inmobiliarios en pozo en {barrio}
+                  <span className="material-symbols-outlined">arrow_forward</span>
+                </Link>
+              </div>
+            )}
           </Container>
         </section>
       )}
