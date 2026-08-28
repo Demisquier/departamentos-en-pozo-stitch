@@ -104,7 +104,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
       // Mail directo a Formsubmit desde el navegador: Formsubmit descarta los envíos server-side
       // (Vercel) al endpoint contacto@ recién activado, pero los del navegador (Origin del dominio) sí
       // entregan. El proxy /api/lead ya guardó el lead en la planilla; esto asegura la notificación por mail.
-      try { await fetch("https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) }); } catch {}
+      if(false) try { await fetch("https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar" /* FormSubmit directo desactivado: el Apps Script ya manda 1 solo mail */, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(payload) }); } catch {}
       leadRef.current = { sent: true, snap };
       track("lead", { tipo, origen: payload["Origen"], proyecto: proy });
     } catch {}
