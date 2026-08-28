@@ -13,7 +13,7 @@ import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 export const revalidate = 600;
 
 export const metadata = {
-  title: 'Departamentos en pozo en CABA: catálogo 2026 con precio y financiación | Departamentos en Pozo',
+  title: 'Desarrollos inmobiliarios en pozo en CABA: catálogo 2026 con precio y financiación | Departamentos en Pozo',
   description:
     'Catálogo de desarrollos inmobiliarios en pozo (preventa) en CABA: precio, financiación, desarrolladora, tipologías, avance de obra y entrega. Compará proyectos por barrio con análisis independiente.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
