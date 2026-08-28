@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SITE } from "../../lib/wp";
-import { NEARBY_CATALOGO, BARRIO_CATALOGO } from "../../lib/barrios";
+import { NEARBY_CATALOGO, BARRIO_CATALOGO, BARRIO_URL } from "../../lib/barrios";
 import CatalogoFiltros from "../desarrollos-inmobiliarios/CatalogoFiltros";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
@@ -13,6 +13,7 @@ import GuiasRelacionadas from "../_ui/GuiasRelacionadas";
 // `items` YA viene filtrado y mapeado por barrio desde app/[slug]/page.jsx.
 export default function CatalogoBarrioView({ slug, label, items, intro, schema }) {
   const n = items.length;
+  const devSlug = BARRIO_URL[slug] || null;
   const conPrecio = items.filter((i) => i.precioDesde || i.precioM2).length;
 
   // Stats de precio del listado (datos propios) para el resumen + el FAQ.
@@ -75,8 +76,8 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
             Estás viendo los {n} desarrollos inmobiliarios en pozo de {label}
             {conPrecio ? ` (${conPrecio} con precio publicado)` : ""}. Si comprás en preventa, el
             riesgo de entrega depende de quién construye: revisá también las{" "}
-            <Link href="/desarrolladoras-inmobiliarias-en-capital-federal/" className="text-secondary underline underline-offset-2">
-              desarrolladoras de CABA
+            <Link href={devSlug ? `/desarrolladoras-inmobiliarias-en-${devSlug}/` : "/desarrolladoras-inmobiliarias-en-capital-federal/"} className="text-secondary underline underline-offset-2">
+              {devSlug ? `desarrolladoras inmobiliarias en ${label}` : "desarrolladoras de CABA"}
             </Link>{" "}
             y las{" "}
             <Link href="/mejores-inmobiliarias-caba/" className="text-secondary underline underline-offset-2">
