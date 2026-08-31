@@ -364,6 +364,8 @@ function PerfilEditable({ perfil, onSaved }) {
   const [editando, setEditando] = useState(false);
   const [form, setForm] = useState({});
   const [guardando, setGuardando] = useState(false);
+  const [abierto, setAbierto] = useState(true);
+  useEffect(() => { try { if (!window.matchMedia("(min-width: 768px)").matches) setAbierto(false); } catch {} }, []);
 
   if (perfil === undefined) return null; // cargando
 
@@ -487,6 +489,9 @@ function PerfilEditable({ perfil, onSaved }) {
         </button>
       </div>
 
+      <button type="button" onClick={() => setAbierto((v) => !v)} className="md:hidden mb-3 inline-flex items-center gap-1 text-[13px] text-secondary underline underline-offset-2">{abierto ? "Ocultar mis datos" : "Ver mis datos"}</button>
+      {abierto && (
+        <>
       <p className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-2">Tu búsqueda</p>
       {chips.length ? (
         <div className="flex flex-wrap gap-2 mb-5">
@@ -516,6 +521,8 @@ function PerfilEditable({ perfil, onSaved }) {
           <p className="font-label-caps text-[10px] uppercase tracking-widest text-secondary mb-1">Tu dato clave</p>
           <p className="text-[14px] text-primary">{perfil.nota}</p>
         </div>
+      )}
+        </>
       )}
     </div>
   );
