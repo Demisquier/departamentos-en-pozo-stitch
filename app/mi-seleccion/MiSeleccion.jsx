@@ -11,6 +11,7 @@ import { useAuth } from "../_auth/AuthProvider";
 import ComparadorPlan from "../_components/ComparadorPlan";
 import GuardarBtn from "../_auth/GuardarBtn";
 import AsesorModal from "../asesor/AsesorModal";
+import AgregarExterno from "../_components/AgregarExterno";
 import { track } from "../../lib/track";
 import { supabase, authEnabled } from "../../lib/supabase";
 
@@ -243,6 +244,9 @@ export default function MiSeleccion({ catalogo = [] }) {
           </>
         )}
       </section>
+
+      {/* Otros proyectos que el usuario suma a mano (no están en el catálogo). */}
+      <AgregarExterno />
 
       {/* 3) NUEVAS OPORTUNIDADES — las fichas abren un modal (no salís de Mi Plan). */}
       <section id="mp-oportunidades" className="scroll-mt-28 flex flex-col gap-6">
