@@ -27,6 +27,8 @@ export default async function sitemap() {
     for (const c of cats || []) if (c.slug && c.slug !== "uncategorized" && (c.count || 0) > 0) out.push({ url: BASE + `/category/${c.slug}/`, lastModified: new Date() });
     // Landings de desarrolladora: TODAS (cada dev tiene su perfil, con o sin proyectos cargados).
     for (const d of devs || []) if (d.slug) out.push({ url: BASE + `/desarrolladoras/${d.slug}/`, lastModified: new Date() });
+    // Landings de inmobiliaria: solo las que tienen proyectos comercializados cargados (evita thin content).
+    for (const d of inmo || []) if (d.slug && d.landeable) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
   } catch (e) {
     // WP no disponible en build: devolvemos al menos las rutas fijas
   }
