@@ -78,6 +78,14 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     return "";
   };
 
+  const promptBare = (c) => {
+    if (c === "nombre") return "Contame, ¿cómo te llamás?";
+    if (c === "interes") return "¿Buscás algún proyecto o zona en particular? Si estás mirando, poné 'explorando'.";
+    if (c === "whatsapp") return "¿A qué WhatsApp te escribo? Es lo más rápido.";
+    if (c === "email") return "¿Y un email, por las dudas? Así no se pierde nada.";
+    return "";
+  };
+
   async function preguntar(c) { setCampo(c); setFase("input"); await say(promptDe(c), 600); }
 
   // Lead a Formsubmit + Sheet. Solo los datos que importan: Nombre, WhatsApp, Email, Proyecto.
@@ -122,21 +130,25 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const first = primerNombre(known.nombre);
 
     (async () => {
+      let intro;
       if (esLead) {
         setModo("lead"); setProyecto(n);
-        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te ayudo con ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}: se lo pido al equipo comercial del proyecto y te lo paso.`, 450);
+        intro = `¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te ayudo con ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}: se lo pido al equipo comercial del proyecto y te lo paso.`;
       } else {
         setModo("buscador");
-        await say(`¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En dos o tres preguntas te muestro lo que encaja y te paso precios.`, 450);
+        intro = `¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En dos o tres preguntas te muestro lo que encaja y te paso precios.`;
       }
       const q = camposFaltantes(esLead, known);
       if (!q.length) { // ya tenemos todo → dispara y cierra
+        await say(intro, 450);
         await mandarLead(perfilRef.current, "final");
         await cerrarOk(esLead, true);
         return;
       }
       setQueue(q); setIdx(0);
-      await preguntar(q[0]);
+      // 1 solo globo: saludo + primera pregunta juntos (menos mensajes)
+      setCampo(q[0]); setFase("input");
+      await say(`${intro} ${promptBare(q[0])}`, 450);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -226,8 +238,8 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     perfilRef.current = {}; leadRef.current = { sent: false, snap: "" };
     const q = camposFaltantes(modo === "lead", {});
     setQueue(q); setIdx(0);
-    await say("Dale, de nuevo.", 350);
-    await preguntar(q[0]);
+    setCampo(q[0]); setFase("input");
+    await say(`Dale, de nuevo. ${promptBare(q[0])}`, 350);
   }
 
   const total = queue.length || 1;
