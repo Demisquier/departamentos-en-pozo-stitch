@@ -27,7 +27,7 @@ function Card({ d }) {
         <LogoAvatar web={d.web} iniciales={d.iniciales} />
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.nombre}</h3>
+            <h3 className="font-headline-sm text-[16px] leading-tight text-primary">{d.slug && d.landeable ? <Link href={`/inmobiliaria/${d.slug}/`} className="hover:text-secondary hover:underline">{d.nombre}</Link> : d.nombre}</h3>
             {showBadge ? (
               <span className="shrink-0 text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{d.badge}</span>
             ) : d.destacada ? (
@@ -76,6 +76,9 @@ function Card({ d }) {
         {d.web ? (
           <a href={d.web.startsWith("http") ? d.web : `https://${d.web}`} target="_blank" rel="nofollow noopener" className="text-[13px] text-on-surface-variant hover:text-secondary">Sitio oficial ↗</a>
         ) : <span className="text-[13px] text-on-surface-variant/60">Sin sitio verificado</span>}
+        {d.slug && d.landeable && (
+          <Link href={`/inmobiliaria/${d.slug}/`} className="text-[13px] text-secondary hover:underline font-medium">Proyectos que comercializa →</Link>
+        )}
       </div>
     </li>
   );
