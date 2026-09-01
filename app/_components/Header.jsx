@@ -5,7 +5,8 @@ import AuthButton from "../_auth/AuthButton";
 
 const NAV = [
   // "INICIO" salió del menú: el logo ya lleva al home.
-  { label: "PROYECTOS EN POZO", href: "/desarrollos-inmobiliarios/" },
+  { label: "BUSCADOR IA", href: "/buscar/", primary: true },
+  { label: "PROYECTOS EN POZO", href: "/desarrollos-inmobiliarios/", primary: true },
 ];
 
 // Las 9 páginas de barrio salieron del menú (decisión de producto: el header queda
@@ -45,7 +46,7 @@ export default function Header() {
             <Link
               key={n.href}
               href={n.href}
-              className={`${i === 0 ? "text-secondary font-bold" : "text-on-surface-variant"} whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
+              className={`${n.primary ? "text-secondary font-bold" : "text-on-surface-variant"} whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
             >
               {n.label}
             </Link>
