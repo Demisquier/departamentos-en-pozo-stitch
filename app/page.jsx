@@ -113,11 +113,6 @@ export default async function HomePage() {
             No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar.
           </p>
           <HomeBuscador />
-          <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-3">
-            <Link href="/asesor/" className="inline-flex items-center justify-center gap-2 rounded-full bg-secondary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-              <span className="material-symbols-outlined text-[18px]">forum</span> Averiguá precio y cuota
-            </Link>
-          </div>
         </div>
       </section>
 
