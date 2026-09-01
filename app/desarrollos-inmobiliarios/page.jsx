@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getDesarrollos, SITE } from '../../lib/wp';
 import { mapDesarrollos } from '../../lib/catalogo';
 import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
-import CatalogoFiltros from './CatalogoFiltros';
+import BuscadorModo from '../_ui/BuscadorModo';
 import Container from '../_ui/Container';
 import JsonLd from '../_ui/JsonLd';
 import Faq from '../_ui/Faq';
@@ -75,7 +75,7 @@ export default async function CatalogoPage() {
         </p>
       </div>
 
-      <CatalogoFiltros items={mapped} />
+      <BuscadorModo items={mapped} />
 
       {/* Bloque semántico: DEBAJO del directorio (H1 → bajada → grid → contexto). */}
       <section className="mt-12 pt-8 border-t border-outline-variant max-w-3xl text-on-surface-variant font-body-lg text-body-lg space-y-3">
