@@ -1,0 +1,579 @@
+[
+  {
+    "id": 90001,
+    "slug": "ladder-propiedades",
+    "title": {
+      "rendered": "LADDER PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "araoz-2174-palermo-soho",
+      "inm_web": "ladderpropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90002,
+    "slug": "hus-realty",
+    "title": {
+      "rendered": "HÚS REALTY"
+    },
+    "meta": {
+      "inm_proyectos_slug": "kubus-bonpland-palermo-hollywood",
+      "inm_web": "hus-realty.com"
+    }
+  },
+  {
+    "id": 90003,
+    "slug": "justevila-fabian-achaval",
+    "title": {
+      "rendered": "Justevila — Fabián Achával"
+    },
+    "meta": {
+      "inm_proyectos_slug": "aurian-caballito,azul-171-floresta,beauchef-766-caballito,caballito-plaza-caballito,donna-ambra-caballito,donna-grigia-caballito,donna-salvia-caballito,donna-zaffira-caballito,haaus-palermo-soho,life-caballito-caballito,maiten-thorne-446-caballito,mii-zuviria-caballito,moreno-rent-congreso,parral-59-caballito,senillosa-461-caballito",
+      "inm_web": "justevila.com.ar"
+    }
+  },
+  {
+    "id": 90004,
+    "slug": "bmd-consultores",
+    "title": {
+      "rendered": "BMD CONSULTORES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "paysandu-449-caballito",
+      "inm_web": "bmdprop.com.ar"
+    }
+  },
+  {
+    "id": 90005,
+    "slug": "mapro-inmuebles",
+    "title": {
+      "rendered": "MAPRO INMUEBLES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "nicasio-orono-78-caballito",
+      "inm_web": "mapro.com.ar"
+    }
+  },
+  {
+    "id": 90006,
+    "slug": "irujo-bienes-raices",
+    "title": {
+      "rendered": "Irujo Bienes Raices"
+    },
+    "meta": {
+      "inm_proyectos_slug": "doblas-409-caballito,san-pedrito-512-flores",
+      "inm_web": "irujo.com.ar"
+    }
+  },
+  {
+    "id": 90007,
+    "slug": "premium-brokers-s-a-s",
+    "title": {
+      "rendered": "PREMIUM BROKERS S.A.S"
+    },
+    "meta": {
+      "inm_proyectos_slug": "urban-cramer-belgrano",
+      "inm_web": "premiumbrokers.net"
+    }
+  },
+  {
+    "id": 90008,
+    "slug": "d-aria",
+    "title": {
+      "rendered": "D'ARIA"
+    },
+    "meta": {
+      "inm_proyectos_slug": "cotta-nunez",
+      "inm_web": "daria.com.ar"
+    }
+  },
+  {
+    "id": 90009,
+    "slug": "bridge-argentina",
+    "title": {
+      "rendered": "Bridge Argentina"
+    },
+    "meta": {
+      "inm_proyectos_slug": "grand-atlantida-puerto-madero",
+      "inm_web": "bridge-argentina.com.ar"
+    }
+  },
+  {
+    "id": 90010,
+    "slug": "tovado-propiedades",
+    "title": {
+      "rendered": "TOVADO PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "echeverria-4340-villa-urquiza",
+      "inm_web": "tovado.com.ar"
+    }
+  },
+  {
+    "id": 90011,
+    "slug": "gomez-servicios-inmobiliarios",
+    "title": {
+      "rendered": "GOMEZ SERVICIOS INMOBILIARIOS"
+    },
+    "meta": {
+      "inm_proyectos_slug": "millennials-ix-villa-urquiza",
+      "inm_web": "gomezserviciosinmobiliarios.com.ar"
+    }
+  },
+  {
+    "id": 90012,
+    "slug": "morano-propiedades",
+    "title": {
+      "rendered": "Morano Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "congreso-4077-vu-villa-urquiza",
+      "inm_web": "moranopropiedades.com"
+    }
+  },
+  {
+    "id": 90013,
+    "slug": "levy-mayo-negocios-inmobiliarios",
+    "title": {
+      "rendered": "Levy Mayo Negocios Inmobiliarios"
+    },
+    "meta": {
+      "inm_proyectos_slug": "olazabal-4715-villa-urquiza",
+      "inm_web": "levymayopropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90014,
+    "slug": "beme",
+    "title": {
+      "rendered": "BEME"
+    },
+    "meta": {
+      "inm_proyectos_slug": "cramer-urban-colegiales",
+      "inm_web": "bemearquitectos.com"
+    }
+  },
+  {
+    "id": 90015,
+    "slug": "gustavo-de-simone",
+    "title": {
+      "rendered": "Gustavo De Simone"
+    },
+    "meta": {
+      "inm_proyectos_slug": "alvarez-thomas-892-colegiales,conde-4885-saavedra",
+      "inm_web": "gustavodesimone.com"
+    }
+  },
+  {
+    "id": 90016,
+    "slug": "bez-propiedades",
+    "title": {
+      "rendered": "BEZ PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "teodoro-garcia-3054-colegiales",
+      "inm_web": "bezpropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90017,
+    "slug": "inteligencia-urbana",
+    "title": {
+      "rendered": "Inteligencia Urbana"
+    },
+    "meta": {
+      "inm_proyectos_slug": "aranguren-2040-flores,virrey-aviles-2758-colegiales"
+    }
+  },
+  {
+    "id": 90018,
+    "slug": "crecer",
+    "title": {
+      "rendered": "CRECER"
+    },
+    "meta": {
+      "inm_proyectos_slug": "par-3957-saavedra",
+      "inm_web": "crecer.com.ar"
+    }
+  },
+  {
+    "id": 90019,
+    "slug": "adm-ing-marcelo-g-fridman",
+    "title": {
+      "rendered": "Adm. Ing. Marcelo G. Fridman"
+    },
+    "meta": {
+      "inm_proyectos_slug": "san-isidro-labrador-4556-saavedra"
+    }
+  },
+  {
+    "id": 90020,
+    "slug": "fabiana-melillo-propiedades",
+    "title": {
+      "rendered": "Fabiana Melillo Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "urban-designer-saavedra"
+    }
+  },
+  {
+    "id": 90021,
+    "slug": "calle-real",
+    "title": {
+      "rendered": "Calle Real"
+    },
+    "meta": {
+      "inm_proyectos_slug": "essentia-acuna-almagro",
+      "inm_web": "calle-real.com.ar"
+    }
+  },
+  {
+    "id": 90022,
+    "slug": "krell-brokers",
+    "title": {
+      "rendered": "Krell Brokers"
+    },
+    "meta": {
+      "inm_proyectos_slug": "potosi-aparts-almagro",
+      "inm_web": "krellbrokers.com"
+    }
+  },
+  {
+    "id": 90023,
+    "slug": "rg-montes",
+    "title": {
+      "rendered": "RG Montes"
+    },
+    "meta": {
+      "inm_proyectos_slug": "blason-recoleta-recoleta",
+      "inm_web": "rgmontes.com"
+    }
+  },
+  {
+    "id": 90024,
+    "slug": "click-aparts",
+    "title": {
+      "rendered": "Click Aparts"
+    },
+    "meta": {
+      "inm_proyectos_slug": "mansilla-2626-recoleta",
+      "inm_web": "clickapartsprop.com.ar"
+    }
+  },
+  {
+    "id": 90025,
+    "slug": "besso-propiedades",
+    "title": {
+      "rendered": "Besso Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "charcas-2886-recoleta",
+      "inm_web": "bessopropiedades.com"
+    }
+  },
+  {
+    "id": 90026,
+    "slug": "d-amato-propiedades",
+    "title": {
+      "rendered": "D'Amato Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "glow-6-jpv-villa-devoto,glow-7-plus-villa-ortuzar",
+      "inm_web": "damatopropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90027,
+    "slug": "situar-realty",
+    "title": {
+      "rendered": "SITUAR REALTY"
+    },
+    "meta": {
+      "inm_proyectos_slug": "bahia-blanca-y-santo-tome-monte-castro,navarro-4200-villa-devoto",
+      "inm_web": "situar.com"
+    }
+  },
+  {
+    "id": 90028,
+    "slug": "mgl-accion-inmobiliaria",
+    "title": {
+      "rendered": "MGL Acción Inmobiliaria"
+    },
+    "meta": {
+      "inm_proyectos_slug": "concordia-4141-villa-devoto,navarro-3875-villa-devoto",
+      "inm_web": "mglinmobiliaria.com.ar"
+    }
+  },
+  {
+    "id": 90029,
+    "slug": "lincoln-negocios-inmobiliarios",
+    "title": {
+      "rendered": "LINCOLN NEGOCIOS INMOBILIARIOS"
+    },
+    "meta": {
+      "inm_proyectos_slug": "bahia-villa-devoto,habana-4557-villa-devoto",
+      "inm_web": "lincolnpropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90030,
+    "slug": "mikaelian-propiedades",
+    "title": {
+      "rendered": "Mikaelian Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "preventa-navarro-3120-villa-devoto,semipisos-navarro-3424-doble-lote-villa-devoto",
+      "inm_web": "mikaelianpropiedades.com"
+    }
+  },
+  {
+    "id": 90031,
+    "slug": "llamedo-propiedades",
+    "title": {
+      "rendered": "Llamedo Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "nazarre-3069-villa-del-parque,vera-lyria-caballito,vera-nubia-caballito",
+      "inm_web": "llamedopropiedades.com"
+    }
+  },
+  {
+    "id": 90032,
+    "slug": "prodigy",
+    "title": {
+      "rendered": "PRODIGY"
+    },
+    "meta": {
+      "inm_proyectos_slug": "helguera-3298-villa-del-parque,nazarre-3501-villa-del-parque,simbron-3410-villa-del-parque",
+      "inm_web": "prodigylot.com.ar"
+    }
+  },
+  {
+    "id": 90033,
+    "slug": "laurenzano-matias-propiedades",
+    "title": {
+      "rendered": "Laurenzano Matias Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "del-parque-avenue-villa-del-parque",
+      "inm_web": "laurenzanomatias.com.ar"
+    }
+  },
+  {
+    "id": 90034,
+    "slug": "remax-data-gold",
+    "title": {
+      "rendered": "REMAX Data Gold"
+    },
+    "meta": {
+      "inm_proyectos_slug": "obispo-san-alberto-2205-villa-pueyrredon",
+      "inm_web": "remax.com.ar"
+    }
+  },
+  {
+    "id": 90035,
+    "slug": "bonillo-centro-inmobiliario",
+    "title": {
+      "rendered": "BONILLO CENTRO INMOBILIARIO"
+    },
+    "meta": {
+      "inm_proyectos_slug": "griveo-2222-villa-pueyrredon",
+      "inm_web": "bonillopropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90036,
+    "slug": "bioi",
+    "title": {
+      "rendered": "BIOI"
+    },
+    "meta": {
+      "inm_proyectos_slug": "alvarez-thomas-1362-villa-ortuzar"
+    }
+  },
+  {
+    "id": 90037,
+    "slug": "filippo-propiedades",
+    "title": {
+      "rendered": "FILIPPO PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "granaderos-288-flores",
+      "inm_web": "filippopropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90038,
+    "slug": "dost-propiedades",
+    "title": {
+      "rendered": "DÖST PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "gavilan-1052-flores",
+      "inm_web": "dost.com.ar"
+    }
+  },
+  {
+    "id": 90039,
+    "slug": "morana-propiedades",
+    "title": {
+      "rendered": "Morana Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "olivera-95-floresta,puerta-del-sol-villa-luro",
+      "inm_web": "morana.com.ar"
+    }
+  },
+  {
+    "id": 90040,
+    "slug": "re-max-legado",
+    "title": {
+      "rendered": "RE/MAX Legado"
+    },
+    "meta": {
+      "inm_proyectos_slug": "desarrollo-lacarra-floresta",
+      "inm_web": "remax-legado.com.ar"
+    }
+  },
+  {
+    "id": 90041,
+    "slug": "norde-propiedades",
+    "title": {
+      "rendered": "Norde Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "av-rivadavia-9540-villa-luro,av-rivadavia-9999-villa-luro,miralla-745-villa-luro,pola-265-villa-luro",
+      "inm_web": "nordepropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90042,
+    "slug": "golden-haus-real-estate",
+    "title": {
+      "rendered": "GOLDEN HAUS Real Estate"
+    },
+    "meta": {
+      "inm_proyectos_slug": "eco-lascano-versalles",
+      "inm_web": "goldenhaus.com.ar"
+    }
+  },
+  {
+    "id": 90043,
+    "slug": "re-max",
+    "title": {
+      "rendered": "RE/MAX"
+    },
+    "meta": {
+      "inm_proyectos_slug": "arcadia-art-residence-coghlan,boedo-1098-boedo,carabobo-782-parque-chacabuco,torres-zafiro-nordelta",
+      "inm_web": "remax.com.ar"
+    }
+  },
+  {
+    "id": 90044,
+    "slug": "lopez-castromil-propiedades",
+    "title": {
+      "rendered": "LOPEZ CASTROMIL PROPIEDADES"
+    },
+    "meta": {
+      "inm_proyectos_slug": "boho-botanico-palermo-botanico",
+      "inm_web": "lopezcastromil.com"
+    }
+  },
+  {
+    "id": 90045,
+    "slug": "concretio-desarrollos",
+    "title": {
+      "rendered": "Concretio Desarrollos"
+    },
+    "meta": {
+      "inm_proyectos_slug": "delgado-926-colegiales",
+      "inm_web": "concretiodesarrollos.com"
+    }
+  },
+  {
+    "id": 90046,
+    "slug": "muv-propiedades",
+    "title": {
+      "rendered": "MUV Propiedades"
+    },
+    "meta": {
+      "inm_proyectos_slug": "cabildo-2502-colegiales",
+      "inm_web": "muvpropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90047,
+    "slug": "estudio-rcr",
+    "title": {
+      "rendered": "Estudio RCR"
+    },
+    "meta": {
+      "inm_proyectos_slug": "matienzo-2424-palermo-hollywood",
+      "inm_web": "estudiorcr.com"
+    }
+  },
+  {
+    "id": 90048,
+    "slug": "gps-real-estate",
+    "title": {
+      "rendered": "GPS real estate"
+    },
+    "meta": {
+      "inm_proyectos_slug": "besares-3764-saavedra",
+      "inm_web": "gpsrealestate.com.ar"
+    }
+  },
+  {
+    "id": 90049,
+    "slug": "remax-buro",
+    "title": {
+      "rendered": "REMAX Buró"
+    },
+    "meta": {
+      "inm_proyectos_slug": "conde-2757-coghlan",
+      "inm_web": "remax-buro.com.ar"
+    }
+  },
+  {
+    "id": 90050,
+    "slug": "plus-barracas",
+    "title": {
+      "rendered": "Plus Barracas"
+    },
+    "meta": {
+      "inm_proyectos_slug": "plus-barracas-isabel-la-catolica-355-barracas",
+      "inm_web": "plusbarracas.com.ar"
+    }
+  },
+  {
+    "id": 90051,
+    "slug": "kot-asesores-inmobiliarios",
+    "title": {
+      "rendered": "Kot Asesores Inmobiliarios"
+    },
+    "meta": {
+      "inm_proyectos_slug": "defensa-1635-barracas",
+      "inm_web": "kotpropiedades.com.ar"
+    }
+  },
+  {
+    "id": 90052,
+    "slug": "a-suarez-real-estate",
+    "title": {
+      "rendered": "A. Suárez Real Estate"
+    },
+    "meta": {
+      "inm_proyectos_slug": "vibe-deheza-saavedra"
+    }
+  },
+  {
+    "id": 90053,
+    "slug": "le-bleu",
+    "title": {
+      "rendered": "Le Bleu"
+    },
+    "meta": {
+      "inm_proyectos_slug": "live-belgrano-colegiales"
+    }
+  }
+]
