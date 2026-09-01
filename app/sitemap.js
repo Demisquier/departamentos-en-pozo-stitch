@@ -1,4 +1,4 @@
-import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, getInmobiliarias, rel } from "../lib/wp";
+import { getAllPages, getPosts, getDesarrollos, getCategories, getDesarrolladoras, getInmobiliarias, getInmobiliariasExtra, rel } from "../lib/wp";
 import { SITE as BASE } from "../lib/constants";
 import { ZONA_INMO_LABEL, BARRIO_CATALOGO, matchBarrioCatalogo } from "../lib/barrios";
 import { mapDesarrollos } from "../lib/catalogo";
@@ -13,7 +13,7 @@ export default async function sitemap() {
 
   const out = [...fixed];
   try {
-    const [pages, posts, desa, cats, devs, inmo] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(1000), getCategories(), getDesarrolladoras(), getInmobiliarias()]);
+    const [pages, posts, desa, cats, devs, inmo, inmoExtra] = await Promise.all([getAllPages(), getPosts(100), getDesarrollos(1000), getCategories(), getDesarrolladoras(), getInmobiliarias(), getInmobiliariasExtra()]);
     // Páginas de inmobiliarias por barrio (sintéticas, no son páginas WP): zonas con ≥3 inmobiliarias.
     const zonaCount = {};
     for (const d of inmo || []) for (const k of String(d.zonasKey || "").split(/\s+/).filter(Boolean)) zonaCount[k] = (zonaCount[k] || 0) + 1;
@@ -29,6 +29,7 @@ export default async function sitemap() {
     for (const d of devs || []) if (d.slug) out.push({ url: BASE + `/desarrolladoras/${d.slug}/`, lastModified: new Date() });
     // Landings de inmobiliaria: solo las que tienen proyectos comercializados cargados (evita thin content).
     for (const d of inmo || []) if (d.slug && d.landeable) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
+    for (const d of inmoExtra || []) if (d.slug && d.landeable && (d.proyectosSlug || []).length >= 2) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
   } catch (e) {
     // WP no disponible en build: devolvemos al menos las rutas fijas
   }
