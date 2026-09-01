@@ -23,6 +23,11 @@
 - Cómo evaluar una desarrolladora (señales de confianza y red flags): https://departamentosenpozo.com.ar/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/
 - Contrato de pozo: cláusulas clave: https://departamentosenpozo.com.ar/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/
 
+## Inventario para asistentes de IA
+- Inventario completo (todos los proyectos por barrio, con precio, entrega y desarrolladora): https://departamentosenpozo.com.ar/llms-full.txt
+- Feed JSON del catalogo (para integraciones y agentes de IA): https://departamentosenpozo.com.ar/catalogo.json
+- Cobertura: 400+ proyectos en pozo relevados en CABA y GBA, agrupados por barrio; directorio de desarrolladoras e inmobiliarias/comercializadoras con pagina propia.
+
 ## Notas
 - Contenido informativo. No constituye asesoramiento financiero.
 - Actualización: catálogo y precios se revisan de forma continua; las guías incluyen fecha de publicación/modificación.
