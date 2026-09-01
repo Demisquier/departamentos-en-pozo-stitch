@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 // Buscador conversacional: interpreta una frase en lenguaje natural y filtra el
@@ -75,7 +75,7 @@ function match(p, f) {
   return true;
 }
 
-export default function BuscadorConversacional() {
+export default function BuscadorConversacional({ initialQuery = "" }) {
   const [q, setQ] = useState("");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -114,6 +114,8 @@ export default function BuscadorConversacional() {
       .slice(0, 30);
     setRes({ items, f });
   }
+
+  useEffect(() => { if (initialQuery) buscar(initialQuery); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, []);
 
   const chips = res ? [
     ...res.f.barrios.map((b) => "📍 " + b.charAt(0).toUpperCase() + b.slice(1)),
