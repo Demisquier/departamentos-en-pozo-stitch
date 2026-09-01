@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getInmobiliariaBySlug, getInmobiliarias, featuredImage, acf } from "../../../lib/wp";
+import { getInmobiliariaBySlug, getInmobiliarias, getInmobiliariasExtra, featuredImage, acf } from "../../../lib/wp";
 import Container from "../../_ui/Container";
 import Breadcrumb from "../../_ui/Breadcrumb";
 import LogoAvatar from "../../_ui/LogoAvatar";
@@ -14,8 +14,10 @@ const CUCICBA_URL = "https://colegioinmobiliario.org.ar/servicios/guia-de-matric
 
 // Solo pre-generamos las inmobiliarias con proyectos comercializados cargados (evita thin content).
 export async function generateStaticParams() {
-  const inmo = await getInmobiliarias();
-  return (inmo || []).filter((d) => d.slug && d.landeable).map((d) => ({ slug: d.slug }));
+  const [inmo, extra] = await Promise.all([getInmobiliarias(), getInmobiliariasExtra()]);
+  const dir = (inmo || []).filter((d) => d.slug && d.landeable).map((d) => ({ slug: d.slug }));
+  const ext = (extra || []).filter((d) => d.slug && d.landeable).map((d) => ({ slug: d.slug }));
+  return [...dir, ...ext];
 }
 
 export async function generateMetadata({ params }) {
@@ -25,6 +27,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${nombre} — inmobiliaria en CABA con proyectos en pozo | Departamentos en Pozo`,
     description: `${nombre}: ${n > 0 ? `${n} proyecto${n === 1 ? "" : "s"} en pozo que comercializa en Capital Federal, con precio por m², forma de pago y avance de obra. ` : ""}Matrícula CUCICBA verificable. Análisis independiente, sin pauta.`,
+    robots: (r?.inmo?.sintetica && (r?.proyectos?.length || 0) < 2) ? { index: false, follow: true } : undefined,
     alternates: { canonical: `/inmobiliaria/${params.slug}/` },
   };
 }
