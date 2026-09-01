@@ -176,6 +176,13 @@ export default function MiSeleccion({ catalogo = [] }) {
     return out.slice(0, 12);
   }, [ready, items, catalogo, excluir]);
 
+  // Sugerencias UNIFICADAS: recomendados + similares, deduplicado por slug. Un solo carrusel.
+  const sugerencias = useMemo(() => {
+    const seen = new Set(); const out = [];
+    for (const pr of [...recomendados, ...similares]) { if (!pr || seen.has(pr.slug)) continue; seen.add(pr.slug); out.push(pr); }
+    return out.slice(0, 16);
+  }, [recomendados, similares]);
+
   const guardadosSinContactar = useMemo(() => items.filter((it) => !contactados[it.slug]), [items, contactados]);
   const guardadosContactados = useMemo(() => items.filter((it) => contactados[it.slug]), [items, contactados]);
 
@@ -257,14 +264,7 @@ export default function MiSeleccion({ catalogo = [] }) {
             <Link href={perfil ? "/desarrollos-inmobiliarios/" : "/asesor/"} className="inline-block rounded bg-primary-container px-6 py-3 text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90 transition-all">{perfil ? "Explorar proyectos" : "Armar mi perfil"}</Link>
           </div>
         ) : (
-          <>
-            {recomendados.length > 0 && (
-              <FeedCarousel titulo="A tu medida" subtitulo="Por tu objetivo, zona y presupuesto." items={recomendados} onVer={setDetalle} onDescartar={descartar} />
-            )}
-            {similares.length > 0 && (
-              <FeedCarousel titulo="Parecidos a lo que guardaste" subtitulo="Misma zona, etapa de obra y rango de precio." items={similares} onVer={setDetalle} onDescartar={descartar} />
-            )}
-          </>
+          <FeedCarousel titulo="Los que te recomendamos" subtitulo="Por tu objetivo, zona y presupuesto — y parecidos a lo que ya guardaste." items={sugerencias} onVer={setDetalle} onDescartar={descartar} />
         )}
       </section>
 
@@ -364,8 +364,6 @@ function PerfilEditable({ perfil, onSaved }) {
   const [editando, setEditando] = useState(false);
   const [form, setForm] = useState({});
   const [guardando, setGuardando] = useState(false);
-  const [abierto, setAbierto] = useState(true);
-  useEffect(() => { try { if (!window.matchMedia("(min-width: 768px)").matches) setAbierto(false); } catch {} }, []);
 
   if (perfil === undefined) return null; // cargando
 
@@ -478,7 +476,7 @@ function PerfilEditable({ perfil, onSaved }) {
   const chips = CAMPOS_BUSQUEDA.filter((c) => perfil[c.key]).map((c) => [c.label, perfil[c.key]]);
   const contacto = CAMPOS_CONTACTO.filter((c) => perfil[c.key]).map((c) => [c.label, perfil[c.key]]);
   return (
-    <div className="rounded-2xl border border-outline-variant bg-surface p-6 md:p-7">
+    <div className="rounded-2xl border border-outline-variant bg-surface p-4 md:p-6">
       <div className="flex items-start justify-between gap-4 mb-4">
         <div>
           <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2"><span className="material-symbols-outlined text-[20px] text-secondary">badge</span>Tu perfil</h2>
@@ -489,12 +487,9 @@ function PerfilEditable({ perfil, onSaved }) {
         </button>
       </div>
 
-      <button type="button" onClick={() => setAbierto((v) => !v)} className="md:hidden mb-3 inline-flex items-center gap-1 text-[13px] text-secondary underline underline-offset-2">{abierto ? "Ocultar mis datos" : "Ver mis datos"}</button>
-      {abierto && (
-        <>
       <p className="font-label-caps text-[11px] uppercase tracking-widest text-secondary mb-2">Tu búsqueda</p>
       {chips.length ? (
-        <div className="flex flex-wrap gap-2 mb-5">
+        <div className="flex gap-2 mb-5 overflow-x-auto pb-1 -mx-1 px-1 [scrollbar-width:thin] snap-x">
           {chips.map(([label, val]) => (
             <span key={label} className="inline-flex items-baseline gap-1.5 text-[13px] px-3 py-1.5 rounded-full bg-secondary-container text-primary">
               <span className="text-[11px] uppercase tracking-wide text-secondary">{label}</span>{val}
@@ -521,8 +516,6 @@ function PerfilEditable({ perfil, onSaved }) {
           <p className="font-label-caps text-[10px] uppercase tracking-widest text-secondary mb-1">Tu dato clave</p>
           <p className="text-[14px] text-primary">{perfil.nota}</p>
         </div>
-      )}
-        </>
       )}
     </div>
   );
