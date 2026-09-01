@@ -30,6 +30,7 @@ export async function GET() {
       financiacion_en_cuotas: !!p.financiacion,
       desarrolladora: p.desarrolladora || null,
       etapa: p.etapa || null,
+      imagen: p.imagen || null,
       lat: p.lat || null,
       lng: p.lng || null,
       url: `${SITE}/desarrollos-inmobiliarios/${p.slug}/`,
