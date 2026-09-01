@@ -28,6 +28,13 @@ const FAQ = [
 export default async function CatalogoPage() {
   const items = await getDesarrollos();
   const mapped = mapDesarrollos(items);
+  // Stats para el bloque answer-first (dato real, citeable por IA).
+  const nBarrios = new Set(mapped.map((i) => i.barrio).filter(Boolean)).size;
+  const conFin = mapped.filter((i) => i.financiacion).length;
+  const m2s = mapped.map((i) => i.precioM2).filter(Boolean).sort((a, b) => a - b);
+  const minM2 = m2s[0] || null;
+  const anios = mapped.map((i) => i.entregaAnio).filter(Boolean).sort((a, b) => a - b);
+  const aMin = anios[0] || null, aMax = anios[anios.length - 1] || null;
 
   // Barrios con >=3 proyectos -> links internos a las URLs LIMPIAS por barrio (long-tail SEO).
   const barrios = Object.keys(BARRIO_CATALOGO)
@@ -37,7 +44,7 @@ export default async function CatalogoPage() {
 
   const schema = [
     { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Desarrollos inmobiliarios en pozo en CABA',
-      url: `${SITE}/desarrollos-inmobiliarios/`, description: 'Catálogo independiente de desarrollos inmobiliarios en pozo (preventa) en CABA.' },
+      url: `${SITE}/desarrollos-inmobiliarios/`, description: 'Catálogo independiente de desarrollos inmobiliarios en pozo (preventa) en CABA.', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.answer-first'] } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: 'Desarrollos inmobiliarios en pozo', item: `${SITE}/desarrollos-inmobiliarios/` },
@@ -57,6 +64,14 @@ export default async function CatalogoPage() {
         </h1>
         <p className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl">
           Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en CABA: precio, desarrolladora, obra y entrega, proyecto por proyecto.
+        </p>
+      </div>
+
+      <div className="answer-first mb-6 rounded-xl border border-secondary/30 bg-secondary/[0.05] p-5 max-w-3xl">
+        <p className="font-label-caps text-label-caps text-secondary mb-1">RESPUESTA RÁPIDA</p>
+        <p className="text-body-md text-primary leading-relaxed">
+          Hay <strong>{mapped.length} proyectos en pozo</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, con valores desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}. {conFin > 0 ? <><strong>{conFin}</strong> ofrecen financiación en cuotas durante la obra. </> : null}{aMin ? <>Entregas estimadas entre {aMin} y {aMax}. </> : null}
+          <Link href="/buscar/" className="text-secondary font-medium hover:underline whitespace-nowrap">Buscá hablando →</Link>
         </p>
       </div>
 
