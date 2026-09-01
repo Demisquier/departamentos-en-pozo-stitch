@@ -4,7 +4,7 @@ import Link from "next/link";
 
 // Buscador conversacional: interpreta una frase en lenguaje natural y filtra el
 // catálogo (leído de /catalogo.json en el cliente). Sin LLM en runtime = gratis.
-const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
 const NUMW = { un: 1, uno: 1, mono: 1, monoambiente: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5 };
 const money = (n) => (n ? "USD " + Number(n).toLocaleString("es-AR") : null);
 
