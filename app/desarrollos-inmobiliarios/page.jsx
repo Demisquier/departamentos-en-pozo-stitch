@@ -44,7 +44,7 @@ export default async function CatalogoPage() {
 
   const schema = [
     { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Desarrollos inmobiliarios en pozo en CABA',
-      url: `${SITE}/desarrollos-inmobiliarios/`, description: 'Catálogo independiente de desarrollos inmobiliarios en pozo (preventa) en CABA.', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.answer-first'] } },
+      url: `${SITE}/desarrollos-inmobiliarios/`, description: 'Catálogo independiente de desarrollos inmobiliarios en pozo (preventa) en CABA.', speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '#catalogo-bajada'] } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: 'Desarrollos inmobiliarios en pozo', item: `${SITE}/desarrollos-inmobiliarios/` },
@@ -62,15 +62,8 @@ export default async function CatalogoPage() {
         <h1 className="font-headline-sm text-headline-sm md:font-display-lg md:text-display-lg serif text-primary max-w-3xl leading-tight">
           Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
         </h1>
-        <p className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl">
-          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa) en CABA: precio, desarrolladora, obra y entrega, proyecto por proyecto.
-        </p>
-      </div>
-
-      <div className="answer-first mb-6 rounded-xl border border-secondary/30 bg-secondary/[0.05] p-5 max-w-3xl">
-        <p className="font-label-caps text-label-caps text-secondary mb-1">RESPUESTA RÁPIDA</p>
-        <p className="text-body-md text-primary leading-relaxed">
-          Hay <strong>{mapped.length} proyectos en pozo</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, con valores desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}. {conFin > 0 ? <><strong>{conFin}</strong> ofrecen financiación en cuotas durante la obra. </> : null}{aMin ? <>Entregas estimadas entre {aMin} y {aMax}. </> : null}
+        <p id="catalogo-bajada" className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl leading-relaxed">
+          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa): hay <strong>{mapped.length} proyectos</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}.{conFin > 0 ? <> <strong>{conFin}</strong> con financiación en cuotas durante la obra.</> : null}{aMin ? <> Entregas estimadas entre {aMin} y {aMax}.</> : null}{' '}
           <Link href="/buscar/" className="text-secondary font-medium hover:underline whitespace-nowrap">Buscá hablando →</Link>
         </p>
       </div>
