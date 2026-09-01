@@ -1,12 +1,59 @@
 {
-  "10187": { "inm_proyectos_slug": "niu-mansilla-barrio-norte,paz-boulevard-nunez" },
-  "10181": { "inm_proyectos_slug": "laprida-1432-recoleta" },
-  "10082": { "inm_proyectos_slug": "wow-charcas-barrio-norte" },
-  "10172": { "inm_proyectos_slug": "ato-paraguay-recoleta" },
-  "10072": { "inm_proyectos_slug": "amenna-nunez,mendoza-y-11-de-septiembre-belgrano,solar-french-recoleta,sucre-garden-belgrano" },
-  "10183": { "inm_proyectos_slug": "carlos-calvo-3700-boedo,ecuador-1368-recoleta,larrea-844-barrio-norte" },
-  "10081": { "inm_proyectos_slug": "newbery-place-colegiales" },
-  "10182": { "inm_proyectos_slug": "atrium-la-isla-recoleta,be-boulevard-puerto-madero,maior-recoleta-ii-recoleta" },
-  "10083": { "inm_proyectos_slug": "via-cramer-colegiales" },
-  "10079": { "inm_proyectos_slug": "cassa-junin-d-t-recoleta,quo-gutierrez-recoleta" }
+  "10213": {
+    "inm_proyectos_slug": "inspira-way-palermo-soho"
+  },
+  "10209": {
+    "inm_proyectos_slug": "maure-1892-las-canitas,niceto-vega-5210-palermo-soho,serena-belgrano"
+  },
+  "10181": {
+    "inm_proyectos_slug": "laprida-1432-recoleta,vibe-bonpland-palermo-hollywood"
+  },
+  "10183": {
+    "inm_proyectos_slug": "avellaneda-996-caballito,carlos-calvo-3700-boedo,ciudad-de-la-paz-488-colegiales,ecuador-1368-recoleta,larrea-844-barrio-norte,llavallol-2720-villa-del-parque,pinto-4785-saavedra,san-ireneo-353-caballito,valle-841-caballito,viel-490-caballito"
+  },
+  "10083": {
+    "inm_proyectos_slug": "aura-nunez-nunez,bacacay-877-caballito,edificio-beaumont-monte-castro,editorial-z740-caballito,nitium-floresta,via-cramer-colegiales"
+  },
+  "10072": {
+    "inm_proyectos_slug": "amenna-nunez,bnh-la-pampa-belgrano,bold-belgrano,conde-vista-belgrano,corner-place-belgrano,green-built-xiv-belgrano,habitual-belgrano,la-pampa-2447-belgrano,maior-plaza-belgrano,maker-belgrano-belgrano,mendoza-y-11-de-septiembre-belgrano,ochava-belgrano,residenza-caballito,sky-cramer-belgrano,solar-cavia-palermo-chico,solar-french-recoleta,stories-zabala-belgrano,sucre-garden-belgrano,zeta-belgrano-belgrano"
+  },
+  "10081": {
+    "inm_proyectos_slug": "andonaegui-2129-villa-urquiza,donado-2695-luma-doho-villa-urquiza,echeverria-4374-villa-urquiza,mendoza-5195-villa-urquiza,newbery-place-colegiales,olazabal-5402-villa-urquiza,virrey-del-pino-2340-belgrano,virrey-loreto-1740-belgrano"
+  },
+  "10182": {
+    "inm_proyectos_slug": "atrium-la-isla-recoleta,be-boulevard-puerto-madero,maior-recoleta-ii-recoleta"
+  },
+  "10170": {
+    "inm_proyectos_slug": "dr-pedro-i-rivera-4927-villa-urquiza,ruiz-huidobro-3075-saavedra"
+  },
+  "10202": {
+    "inm_proyectos_slug": "aria-garcia-del-rio-saavedra"
+  },
+  "10128": {
+    "inm_proyectos_slug": "avenida-caseros-2900-parque-patricios,espacio-besares-saavedra"
+  },
+  "10240": {
+    "inm_proyectos_slug": "av-maipu-3872-olivos"
+  },
+  "10199": {
+    "inm_proyectos_slug": "quara-nordelta-nordelta"
+  },
+  "10079": {
+    "inm_proyectos_slug": "cassa-junin-d-t-recoleta,central-acuna-palermo,quo-gutierrez-recoleta"
+  },
+  "10247": {
+    "inm_proyectos_slug": "bolivia-3098-villa-del-parque"
+  },
+  "10200": {
+    "inm_proyectos_slug": "edificio-3-de-febrero-181-san-isidro"
+  },
+  "10187": {
+    "inm_proyectos_slug": "niu-mansilla-barrio-norte,paz-boulevard-nunez"
+  },
+  "10082": {
+    "inm_proyectos_slug": "wow-charcas-barrio-norte"
+  },
+  "10172": {
+    "inm_proyectos_slug": "ato-paraguay-recoleta"
+  }
 }
