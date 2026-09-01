@@ -103,9 +103,6 @@ export default async function HomePage() {
         <img src={HERO_IMG} alt="" aria-hidden="true" fetchPriority="high" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop text-center md:text-left">
-          <span className="inline-block text-link-gold font-bold uppercase mb-4 text-label-caps font-label-caps">
-            Análisis independiente · CABA y GBA
-          </span>
           <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-4">
             Encontrá tu departamento en pozo en Buenos Aires
           </h1>
