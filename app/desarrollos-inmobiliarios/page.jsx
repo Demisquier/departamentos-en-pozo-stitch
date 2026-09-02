@@ -63,9 +63,7 @@ export default async function CatalogoPage() {
           Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
         </h1>
         <p id="catalogo-bajada" className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl leading-relaxed">
-          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa): hay <strong>{mapped.length} proyectos</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}.{conFin > 0 ? <> <strong>{conFin}</strong> con financiación en cuotas durante la obra.</> : null}{aMin ? <> Entregas estimadas entre {aMin} y {aMax}.</> : null}{' '}
-          <Link href="/buscar/" className="text-secondary font-medium hover:underline whitespace-nowrap">Buscá hablando →</Link>
-        </p>
+          Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa): hay <strong>{mapped.length} proyectos</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}.{conFin > 0 ? <> <strong>{conFin}</strong> con financiación en cuotas durante la obra.</> : null}{aMin ? <> Entregas estimadas entre {aMin} y {aMax}.</> : null}        </p>
       </div>
 
       <BuscadorModo items={mapped} />
