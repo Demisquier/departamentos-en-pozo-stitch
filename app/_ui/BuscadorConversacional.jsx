@@ -3,21 +3,32 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 // Buscador conversacional: caja de texto + dictado por voz. Filtra el catálogo
-// (leído de /catalogo.json) EN VIVO mientras escribís o hablás. Sin LLM = gratis.
-// Matching híbrido: filtros estructurados (barrio, ambientes, precio, año) que
-// EXCLUYEN + señales blandas (financiación) que PRIORIZAN + texto libre con score.
+// (leído de /catalogo.json) EN VIVO. Sin LLM = gratis. Tolerante a errores de
+// ortografía (fuzzy match) y con lógica argentina de ambientes = dormitorios + 1.
 const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
 const NUMW = { un: 1, uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5 };
-// Palabras de intención (ya interpretadas) + genéricas: NO deben quedar como texto libre.
 const STOP = new Set("de del en el la los las un una unos unas y o u con que para por a al su sus mi mis tu busco quiero necesito buscando busca departamento departamentos depto deptos dept ambiente ambientes amb ambient dormitorio dormitorios dorm dormitor habitacion habitaciones hab pozo preventa proyecto proyectos zona zonas barrio barrios hasta desde entre menos mas precio presupuesto dolares dolar usd algo tipo cerca financiacion financiado financiada financian cuotas cuota entrega entregas entregar terminado terminada construccion construida mil miles millon millones mono monoambiente monoamb estudio inmediata listo listos estrenar inversion invertir comprar compra aproximadamente aprox nuevo nueva unidades unidad m2 metro metros barato baratos economico".split(" "));
+const STOPARR = [...STOP].filter((s) => s.length >= 4);
+const INTENT_PREFIX = ["amb", "dorm", "habitac", "financ", "cuota", "mono", "estudi", "entrega", "termin", "construc", "pozo", "preventa", "invers", "invert", "depart"];
 const money = (n) => (n ? "USD " + Number(n).toLocaleString("es-AR") : null);
 
-// LÓGICA ARGENTINA: "ambientes" incluye el living. 1 amb = monoambiente (0 dorm).
-// 2 amb = 1 dormitorio; 3 amb = 2 dormitorios. Es decir: ambientes = dormitorios + 1.
+// Levenshtein acotado + igualdad difusa (tolera 1–2 errores según largo).
+function lev(a, b) {
+  const m = a.length, n = b.length;
+  if (Math.abs(m - n) > 2) return 9;
+  const dp = [];
+  for (let i = 0; i <= m; i++) { dp[i] = [i]; for (let j = 1; j <= n; j++) dp[i][j] = i === 0 ? j : 0; }
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return dp[m][n];
+}
+const fuzzyEq = (a, b) => { if (a === b) return true; const L = Math.max(a.length, b.length); if (L <= 4) return a === b; return lev(a, b) <= (L <= 7 ? 1 : 2); };
+
+// LÓGICA ARGENTINA: ambientes = dormitorios + 1. mono/estudio = 1 amb.
 function interpretar(q, barrioLabels) {
   const qn = norm(q);
+  const toks = qn.split(" ").filter(Boolean);
   const f = { amb: [], barrios: [], maxTotal: null, maxM2: null, anio: null, etapa: null, fin: false, text: [] };
-  if (/\b(mono|monoambiente|monoamb|estudio)\b/.test(qn)) f.amb.push(1);
+  if (/\bmono/.test(qn) || /\bestudi/.test(qn)) f.amb.push(1); // tolera "monoanbiente", "estudioo"
   let m;
   const reAmb = /(\d+)\s*(?:amb|ambient)/g;
   while ((m = reAmb.exec(qn))) f.amb.push(parseInt(m[1], 10));
@@ -28,13 +39,12 @@ function interpretar(q, barrioLabels) {
     if (new RegExp("\\b" + w + "\\s*(?:dorm|dormitor|habitac)").test(qn)) f.amb.push(NUMW[w] + 1);
   }
   f.amb = [...new Set(f.amb)];
-  // Precio: capta números con unidad (mil/millón/k) o montos grandes; ignora años.
   const pm = qn.match(/(\d[\d.]*)\s*(millones?|mill?|mil|k|m)?/g) || [];
   for (const seg of pm) {
     const mm = seg.match(/(\d[\d.]*)\s*(millones?|mill?|mil|k|m)?/);
     if (!mm) continue;
     const raw = mm[1].replace(/\./g, "");
-    if (/^20\d{2}$/.test(raw) && !mm[2]) continue; // es un año, no un precio
+    if (/^20\d{2}$/.test(raw) && !mm[2]) continue;
     let n = parseFloat(raw);
     const u = mm[2] || "";
     if (/millon|^m$|^mill/.test(u)) n *= 1000000;
@@ -49,33 +59,51 @@ function interpretar(q, barrioLabels) {
   else if (/construc/.test(qn)) f.etapa = "construccion";
   else if (/\bpozo\b/.test(qn)) f.etapa = "pozo";
   if (/financ|cuota/.test(qn)) f.fin = true;
-  // Barrios: cualquier barrio del catálogo cuyo nombre aparezca en la consulta.
-  for (const b of barrioLabels) { if (b.length >= 4 && qn.includes(b)) f.barrios.push(b); }
+  // Barrios FUZZY: un barrio matchea si TODAS sus palabras aparecen (exacto/fuzzy/prefijo) en los tokens.
+  const barrioWords = new Set();
+  for (const b of barrioLabels) {
+    const words = b.split(" ").filter((w) => w.length >= 4);
+    if (!words.length) continue;
+    const ok = words.every((w) => toks.some((t) => t === w || fuzzyEq(t, w) || (t.length >= w.length && t.startsWith(w))));
+    if (ok) { f.barrios.push(b); words.forEach((w) => barrioWords.add(w)); }
+  }
   f.barrios = [...new Set(f.barrios)];
-  // Texto libre: tokens sin interpretar (nombre de proyecto, desarrolladora, etc.).
-  const consumed = new Set();
-  f.barrios.forEach((b) => b.split(" ").forEach((w) => consumed.add(w)));
-  f.text = [...new Set(qn.split(" ").filter((w) => w.length >= 3 && !STOP.has(w) && !/^\d+$/.test(w) && !consumed.has(w)))];
+  const bw = [...barrioWords];
+  const consumidoPorBarrio = (t) => bw.some((w) => t === w || fuzzyEq(t, w) || (t.length >= w.length && t.startsWith(w)));
+  // Texto libre: saca stop, prefijos de intención, barrios (con typos) y números.
+  f.text = [...new Set(toks.filter((w) =>
+    w.length >= 3 && !STOP.has(w) && !/^\d+$/.test(w)
+    && !consumidoPorBarrio(w)
+    && !INTENT_PREFIX.some((p) => w.startsWith(p))
+    && !STOPARR.some((s) => fuzzyEq(w, s))
+  ))];
   return f;
 }
 
-// Score >= 0 incluye; < 0 excluye. Filtros duros excluyen; financiación prioriza.
+// score >= 0 incluye. Filtros duros excluyen; financiación prioriza; texto libre
+// es blando si ya hay filtros estructurales (así un typo no vacía resultados).
 function scoreProyecto(p, f) {
   const barrio = norm(p.barrio);
   const tipo = norm(p.tipologias);
   const hay = [norm(p.nombre), barrio, norm(p.desarrolladora), norm(p.direccion), tipo].join(" ");
+  const structural = f.barrios.length || f.amb.length || f.maxTotal || f.maxM2 || f.anio;
   let s = 0;
   if (f.barrios.length) { if (!f.barrios.some((b) => barrio.includes(b))) return -1; s += 6; }
   if (f.amb.length) {
     const nums = (tipo.match(/\d+/g) || []).map(Number);
-    if (nums.length) { if (!f.amb.some((a) => nums.includes(a))) return -1; s += 4; }
-    else s -= 0.5; // sin tipologías cargadas: no excluyo, penalizo apenas
+    if (nums.length) { if (!f.amb.some((a) => nums.includes(a))) return -1; s += 4; } else s -= 0.5;
   }
   if (f.maxTotal) { if (p.precio_desde_usd) { if (p.precio_desde_usd > f.maxTotal) return -1; s += 3; } else s -= 1; }
   if (f.maxM2 && p.precio_m2_usd) { if (p.precio_m2_usd > f.maxM2) return -1; s += 2; }
   if (f.anio && p.entrega_anio) { if (p.entrega_anio > f.anio) return -1; s += 1; }
-  if (f.fin && p.financiacion_en_cuotas) s += 4; // BLANDO: prioriza, no excluye (dato incompleto)
-  if (f.text.length) { let hits = 0; for (const t of f.text) { if (hay.includes(t)) hits++; } if (hits === 0) return -2; s += hits * 5; }
+  if (f.fin && p.financiacion_en_cuotas) s += 4;
+  if (f.text.length) {
+    const hw = hay.split(" ");
+    let hits = 0;
+    for (const t of f.text) { if (hay.includes(t) || hw.some((w) => fuzzyEq(w, t))) hits++; }
+    if (hits === 0 && !structural) return -2;
+    s += hits * 5;
+  }
   if (p.imagen) s += 1;
   if (p.precio_desde_usd) s += 0.4;
   return s;
@@ -83,7 +111,7 @@ function scoreProyecto(p, f) {
 
 export default function BuscadorConversacional({ initialQuery = "" }) {
   const [q, setQ] = useState(initialQuery);
-  const [res, setRes] = useState(null); // {items, f, total}
+  const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(true);
   const [listening, setListening] = useState(false);
   const [voiceOk, setVoiceOk] = useState(false);
@@ -112,7 +140,7 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
         const arr = (j && j.proyectos) || [];
         barrioLabels.current = [...new Set(arr.map((p) => norm(p.barrio)).filter(Boolean))];
         data.current = arr;
-        run(initialQuery, arr); // por default muestra TODO (query vacía)
+        run(initialQuery, arr);
       } catch { data.current = []; setRes({ items: [], f: {}, total: 0 }); }
       finally { setLoading(false); }
     })();
@@ -122,14 +150,13 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
   function onChange(v) {
     setQ(v);
     clearTimeout(deb.current);
-    deb.current = setTimeout(() => run(v), 220);
+    deb.current = setTimeout(() => run(v), 200);
   }
 
   async function toggleVoz() {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) { setVozMsg("Tu navegador no permite dictado. Usá Chrome (fuera de incógnito) o escribí tu búsqueda."); return; }
     if (listening && rec.current) { rec.current.stop(); return; }
-    // Pedir permiso de micrófono explícitamente (dispara el prompt y detecta bloqueos).
     try {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         const st = await navigator.mediaDevices.getUserMedia({ audio: true });
