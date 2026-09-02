@@ -5,6 +5,7 @@ import BuscadorConversacional from "./BuscadorConversacional";
 
 // Wrapper de LISTADOS: una sola sección con dos formas de buscar (toggle).
 // Default = Filtros. Si llega ?q= (desde el hero de la home), abre modo IA con la frase.
+// En desktop el toggle va inline a la izquierda de la barra de filtros; en mobile se apila.
 export default function BuscadorModo({ items }) {
   const [modo, setModo] = useState("filtros");
   const [initial, setInitial] = useState("");
@@ -15,19 +16,29 @@ export default function BuscadorModo({ items }) {
     } catch {}
   }, []);
 
+  const toggleEl = (
+    <div className="inline-flex items-center rounded-full border border-outline-variant p-1 bg-surface shrink-0" role="tablist" aria-label="Forma de buscar">
+      <button type="button" role="tab" aria-selected={modo === "filtros"} onClick={() => setModo("filtros")}
+        className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${modo === "filtros" ? "bg-primary text-white" : "text-on-surface-variant hover:text-primary"}`}>
+        Filtros
+      </button>
+      <button type="button" role="tab" aria-selected={modo === "ia"} onClick={() => setModo("ia")}
+        className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors flex items-center gap-1 ${modo === "ia" ? "bg-secondary text-white" : "text-on-surface-variant hover:text-primary"}`}>
+        <span className="material-symbols-outlined text-[16px]">auto_awesome</span> Buscar hablando
+      </button>
+    </div>
+  );
+
   return (
     <div>
-      <div className="inline-flex items-center rounded-full border border-outline-variant p-1 mb-6 bg-surface" role="tablist" aria-label="Forma de buscar">
-        <button type="button" role="tab" aria-selected={modo === "filtros"} onClick={() => setModo("filtros")}
-          className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors ${modo === "filtros" ? "bg-primary text-white" : "text-on-surface-variant hover:text-primary"}`}>
-          Filtros
-        </button>
-        <button type="button" role="tab" aria-selected={modo === "ia"} onClick={() => setModo("ia")}
-          className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors flex items-center gap-1 ${modo === "ia" ? "bg-secondary text-white" : "text-on-surface-variant hover:text-primary"}`}>
-          <span className="material-symbols-outlined text-[16px]">auto_awesome</span> Buscar hablando
-        </button>
-      </div>
-      {modo === "filtros" ? <CatalogoFiltros items={items} /> : <BuscadorConversacional initialQuery={initial} />}
+      {modo === "filtros" ? (
+        <CatalogoFiltros items={items} toggle={toggleEl} />
+      ) : (
+        <>
+          <div className="mb-6">{toggleEl}</div>
+          <BuscadorConversacional initialQuery={initial} />
+        </>
+      )}
     </div>
   );
 }
