@@ -107,7 +107,7 @@ function MapaListado({ items }) {
 
 // item: { slug, nombre, barrio, direccion, precio, precioM2, precioDesde, precioLabel,
 //         ambientes, ambientesNums, entrega, entregaAnio, financiacion, desarrolladora, etapa, imagen, lat, lng }
-export default function CatalogoFiltros({ items, barrioFijo = null }) {
+export default function CatalogoFiltros({ items, barrioFijo = null, toggle = null }) {
   // Principales
   const [barrio, setBarrio] = useState('');
   const [amb, setAmb] = useState('');
@@ -405,6 +405,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
   return (
     <>
       <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
+        {toggle && <div className="md:hidden">{toggle}</div>}
         {/* ── Barra compacta MOBILE: botón Filtrar (con contador) + resultados ── */}
         <div className="md:hidden flex items-center justify-between gap-3">
           <button
@@ -426,6 +427,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null }) {
 
         {/* ── Barra principal DESKTOP: 4 filtros principales + "Más filtros" ── */}
         <div className="hidden md:flex flex-wrap items-center gap-2.5">
+          {toggle && <>{toggle}<span className="h-6 w-px bg-outline-variant mx-1" /></>}
           {barrioDropdown()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {ambChips()}
