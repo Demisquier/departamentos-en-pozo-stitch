@@ -9,10 +9,11 @@ import BuscadorConversacional from "./BuscadorConversacional";
 export default function BuscadorModo({ items }) {
   const [modo, setModo] = useState("filtros");
   const [initial, setInitial] = useState("");
+  const [query, setQuery] = useState(""); // se conserva al cambiar de modo
   useEffect(() => {
     try {
       const q = new URLSearchParams(window.location.search).get("q");
-      if (q) { setInitial(q); setModo("ia"); }
+      if (q) { setInitial(q); setQuery(q); setModo("ia"); }
     } catch {}
   }, []);
 
@@ -36,7 +37,7 @@ export default function BuscadorModo({ items }) {
       ) : (
         <>
           <div className="mb-6">{toggleEl}</div>
-          <BuscadorConversacional initialQuery={initial} />
+          <BuscadorConversacional initialQuery={query || initial} onQueryChange={setQuery} />
         </>
       )}
     </div>
