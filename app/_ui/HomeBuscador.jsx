@@ -14,7 +14,7 @@ export default function HomeBuscador() {
   const [q, setQ] = useState('');
 
   const goBarrio = (e) => { e.preventDefault(); window.location.assign(slug ? `/desarrollos-inmobiliarios-en-${slug}/` : '/desarrollos-inmobiliarios/'); };
-  const goIA = (e) => { e.preventDefault(); const t = q.trim(); window.location.assign('/desarrollos-inmobiliarios/' + (t ? '?q=' + encodeURIComponent(t) : '')); };
+  const goIA = (e) => { e.preventDefault(); const t = q.trim(); window.location.assign('/desarrollos-inmobiliarios/' + (t ? '#q=' + encodeURIComponent(t) : '')); };
 
   const tab = (id, label, icon) => (
     <button type="button" onClick={() => setModo(id)} aria-selected={modo === id}
