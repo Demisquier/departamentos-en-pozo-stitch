@@ -28,7 +28,7 @@ export default function HomeBuscador() {
       {/* Toggle integrado a la caja */}
       <div className="flex items-center gap-1 rounded-full bg-surface-container p-1 mb-4 w-full sm:w-fit">
         {tab('barrio', 'Por barrio', 'location_on')}
-        {tab('ia', 'Buscar hablando', 'auto_awesome')}
+        {tab('ia', 'Búsqueda inteligente', 'auto_awesome')}
       </div>
 
       {modo === 'barrio' ? (
