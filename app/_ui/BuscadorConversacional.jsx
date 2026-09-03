@@ -2,9 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
-// Buscador conversacional: caja de texto + dictado por voz. Filtra el catálogo
-// (leído de /catalogo.json) EN VIVO. Sin LLM = gratis. Tolerante a errores de
-// ortografía (fuzzy match) y con lógica argentina de ambientes = dormitorios + 1.
+// Búsqueda inteligente: caja de texto (escribí o pegá lo que buscás). Filtra el
+// catálogo (/catalogo.json) EN VIVO. Sin LLM = gratis. Tolerante a errores de
+// ortografía (fuzzy) y con lógica argentina de ambientes = dormitorios + 1.
 const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
 const NUMW = { un: 1, uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5 };
 const STOP = new Set("de del en el la los las un una unos unas y o u con que para por a al su sus mi mis tu busco quiero necesito buscando busca departamento departamentos depto deptos dept ambiente ambientes amb ambient dormitorio dormitorios dorm dormitor habitacion habitaciones hab pozo preventa proyecto proyectos zona zonas barrio barrios hasta desde entre menos mas precio presupuesto dolares dolar usd algo tipo cerca financiacion financiado financiada financian cuotas cuota entrega entregas entregar terminado terminada construccion construida mil miles millon millones mono monoambiente monoamb estudio inmediata listo listos estrenar inversion invertir comprar compra aproximadamente aprox nuevo nueva unidades unidad m2 metro metros barato baratos economico".split(" "));
@@ -12,7 +12,6 @@ const STOPARR = [...STOP].filter((s) => s.length >= 4);
 const INTENT_PREFIX = ["amb", "dorm", "habitac", "financ", "cuota", "mono", "estudi", "entrega", "termin", "construc", "pozo", "preventa", "invers", "invert", "depart"];
 const money = (n) => (n ? "USD " + Number(n).toLocaleString("es-AR") : null);
 
-// Levenshtein acotado + igualdad difusa (tolera 1–2 errores según largo).
 function lev(a, b) {
   const m = a.length, n = b.length;
   if (Math.abs(m - n) > 2) return 9;
@@ -28,7 +27,7 @@ function interpretar(q, barrioLabels) {
   const qn = norm(q);
   const toks = qn.split(" ").filter(Boolean);
   const f = { amb: [], barrios: [], maxTotal: null, maxM2: null, anio: null, etapa: null, fin: false, text: [] };
-  if (/\bmono/.test(qn) || /\bestudi/.test(qn)) f.amb.push(1); // tolera "monoanbiente", "estudioo"
+  if (/\bmono/.test(qn) || /\bestudi/.test(qn)) f.amb.push(1);
   let m;
   const reAmb = /(\d+)\s*(?:amb|ambient)/g;
   while ((m = reAmb.exec(qn))) f.amb.push(parseInt(m[1], 10));
@@ -59,7 +58,6 @@ function interpretar(q, barrioLabels) {
   else if (/construc/.test(qn)) f.etapa = "construccion";
   else if (/\bpozo\b/.test(qn)) f.etapa = "pozo";
   if (/financ|cuota/.test(qn)) f.fin = true;
-  // Barrios FUZZY: un barrio matchea si TODAS sus palabras aparecen (exacto/fuzzy/prefijo) en los tokens.
   const barrioWords = new Set();
   for (const b of barrioLabels) {
     const words = b.split(" ").filter((w) => w.length >= 4);
@@ -70,7 +68,6 @@ function interpretar(q, barrioLabels) {
   f.barrios = [...new Set(f.barrios)];
   const bw = [...barrioWords];
   const consumidoPorBarrio = (t) => bw.some((w) => t === w || fuzzyEq(t, w) || (t.length >= w.length && t.startsWith(w)));
-  // Texto libre: saca stop, prefijos de intención, barrios (con typos) y números.
   f.text = [...new Set(toks.filter((w) =>
     w.length >= 3 && !STOP.has(w) && !/^\d+$/.test(w)
     && !consumidoPorBarrio(w)
@@ -80,8 +77,6 @@ function interpretar(q, barrioLabels) {
   return f;
 }
 
-// score >= 0 incluye. Filtros duros excluyen; financiación prioriza; texto libre
-// es blando si ya hay filtros estructurales (así un typo no vacía resultados).
 function scoreProyecto(p, f) {
   const barrio = norm(p.barrio);
   const tipo = norm(p.tipologias);
@@ -113,13 +108,9 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
   const [q, setQ] = useState(initialQuery);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [listening, setListening] = useState(false);
-  const [voiceOk, setVoiceOk] = useState(false);
-  const [vozMsg, setVozMsg] = useState("");
   const data = useRef(null);
   const barrioLabels = useRef([]);
   const deb = useRef(null);
-  const rec = useRef(null);
 
   const ejemplos = ["2 ambientes en Palermo con financiación", "3 dormitorios en Núñez", "Belgrano hasta USD 200.000 entrega 2026", "Monoambiente en pozo en Caballito"];
 
@@ -132,7 +123,6 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
   }
 
   useEffect(() => {
-    setVoiceOk(typeof window !== "undefined" && !!(window.SpeechRecognition || window.webkitSpeechRecognition));
     (async () => {
       try {
         const r = await fetch("/catalogo.json");
@@ -153,32 +143,6 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
     deb.current = setTimeout(() => run(v), 200);
   }
 
-  async function toggleVoz() {
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) { setVozMsg("Tu navegador no permite dictado. Usá Chrome (fuera de incógnito) o escribí tu búsqueda."); return; }
-    if (listening && rec.current) { rec.current.stop(); return; }
-    try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const st = await navigator.mediaDevices.getUserMedia({ audio: true });
-        st.getTracks().forEach((t) => t.stop());
-      }
-    } catch {
-      setVozMsg("No pudimos acceder al micrófono. Activá el permiso del navegador (o probá fuera de una ventana de incógnito).");
-      return;
-    }
-    const rc = new SR();
-    rc.lang = "es-AR"; rc.interimResults = true; rc.continuous = false; rc.maxAlternatives = 1;
-    rc.onresult = (e) => { const txt = Array.from(e.results).map((x) => x[0].transcript).join(""); setQ(txt); run(txt); };
-    rc.onerror = (e) => {
-      setListening(false);
-      const map = { "no-speech": "No te escuché. Tocá el micrófono y hablá de nuevo.", "not-allowed": "El micrófono está bloqueado. Activá el permiso en el navegador.", "service-not-allowed": "El dictado no está disponible acá (probá en Chrome, fuera de incógnito).", "audio-capture": "No detectamos ningún micrófono.", network: "Se cortó la conexión del dictado. Probá de nuevo." };
-      setVozMsg(map[e.error] || "No pudimos usar el dictado. Escribí tu búsqueda y funciona igual.");
-    };
-    rc.onend = () => setListening(false);
-    rec.current = rc; setVozMsg(""); setListening(true);
-    try { rc.start(); } catch { setListening(false); }
-  }
-
   const f = res && res.f ? res.f : {};
   const chips = res ? [
     ...(f.barrios || []).map((b) => "📍 " + b.charAt(0).toUpperCase() + b.slice(1)),
@@ -194,19 +158,14 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
     <div className="w-full">
       <form onSubmit={(e) => { e.preventDefault(); run(q); }} className="flex flex-col sm:flex-row gap-2">
         <div className="relative flex-1">
+          <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary text-[22px] pointer-events-none">auto_awesome</span>
           <input
             value={q}
             onChange={(e) => onChange(e.target.value)}
-            placeholder="Ej: 2 ambientes en Palermo con financiación… (o tocá el micrófono)"
-            aria-label="Buscar en lenguaje natural"
-            className="w-full border-2 border-outline-variant focus:border-secondary rounded-xl pl-5 pr-14 py-3.5 text-[16px] bg-surface focus:outline-none"
+            placeholder="Escribí o pegá lo que buscás. Ej: 2 ambientes en Palermo con financiación"
+            aria-label="Búsqueda inteligente en lenguaje natural"
+            className="w-full border-2 border-outline-variant focus:border-secondary rounded-xl pl-12 pr-4 py-3.5 text-[16px] bg-surface focus:outline-none"
           />
-          {voiceOk && (
-            <button type="button" onClick={toggleVoz} aria-label={listening ? "Detener dictado" : "Buscar por voz"}
-              className={`absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-colors ${listening ? "bg-red-500 text-white animate-pulse" : "text-secondary hover:bg-secondary/10"}`}>
-              <span className="material-symbols-outlined text-[22px]">{listening ? "stop" : "mic"}</span>
-            </button>
-          )}
         </div>
         <button type="submit" className="bg-secondary text-white font-medium px-6 py-3.5 rounded-xl hover:opacity-90 whitespace-nowrap">Buscar</button>
       </form>
@@ -217,8 +176,6 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
           <button key={e} onClick={() => { setQ(e); run(e); }} className="text-[12px] border border-outline-variant rounded-full px-3 py-1 text-primary hover:border-secondary">{e}</button>
         ))}
       </div>
-      {listening && <p className="text-[13px] text-red-500 mt-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px]">graphic_eq</span> Escuchando… hablá ahora</p>}
-      {vozMsg && <p className="text-[13px] text-on-surface-variant mt-2 flex items-start gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">info</span> {vozMsg}</p>}
 
       {loading ? (
         <p className="text-on-surface-variant mt-6">Cargando el catálogo…</p>
