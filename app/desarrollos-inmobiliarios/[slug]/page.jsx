@@ -660,7 +660,7 @@ export default async function FichaProyecto({ params }) {
                 ))}
               </ul>
               <p className="text-[12px] text-on-surface-variant mt-4">
-                Ver también nuestras guías de <a href="/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/" className="text-secondary hover:underline">due diligence</a> y <a href="/fideicomiso-al-costo-vs-sociedad-anonima/" className="text-secondary hover:underline">fideicomiso vs. SA</a>.
+                Ver también nuestras guías de <a href="/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/" className="text-secondary hover:underline">due diligence</a> y <a href="/fideicomiso-al-costo-vs-llave-en-mano-departamentos-en-pozo/" className="text-secondary hover:underline">fideicomiso vs. SA</a>.
               </p>
             </div>
 
