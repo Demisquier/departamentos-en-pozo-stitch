@@ -12,7 +12,9 @@ export default function BuscadorModo({ items }) {
   const [query, setQuery] = useState(""); // se conserva al cambiar de modo
   useEffect(() => {
     try {
-      const q = new URLSearchParams(window.location.search).get("q");
+      const h = window.location.hash || "";
+      const hm = h.match(/[#&]q=([^&]*)/);
+      const q = hm ? decodeURIComponent(hm[1].replace(/\+/g, " ")) : new URLSearchParams(window.location.search).get("q");
       if (q) { setInitial(q); setQuery(q); setModo("ia"); }
     } catch {}
   }, []);
