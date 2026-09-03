@@ -104,7 +104,7 @@ function scoreProyecto(p, f) {
   return s;
 }
 
-export default function BuscadorConversacional({ initialQuery = "" }) {
+export default function BuscadorConversacional({ initialQuery = "", onQueryChange }) {
   const [q, setQ] = useState(initialQuery);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -139,8 +139,14 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
 
   function onChange(v) {
     setQ(v);
+    onQueryChange && onQueryChange(v);
     clearTimeout(deb.current);
     deb.current = setTimeout(() => run(v), 200);
+  }
+  function setQuick(v) {
+    setQ(v);
+    onQueryChange && onQueryChange(v);
+    run(v);
   }
 
   const f = res && res.f ? res.f : {};
@@ -164,8 +170,14 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
             onChange={(e) => onChange(e.target.value)}
             placeholder="Escribí o pegá lo que buscás. Ej: 2 ambientes en Palermo con financiación"
             aria-label="Búsqueda inteligente en lenguaje natural"
-            className="w-full border-2 border-outline-variant focus:border-secondary rounded-xl pl-12 pr-4 py-3.5 text-[16px] bg-surface focus:outline-none"
+            className="w-full border-2 border-outline-variant focus:border-secondary rounded-xl pl-12 pr-11 py-3.5 text-[16px] bg-surface focus:outline-none"
           />
+          {q && (
+            <button type="button" onClick={() => { setQ(""); onQueryChange && onQueryChange(""); run(""); }} aria-label="Limpiar búsqueda"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high">
+              <span className="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          )}
         </div>
         <button type="submit" className="bg-secondary text-white font-medium px-6 py-3.5 rounded-xl hover:opacity-90 whitespace-nowrap">Buscar</button>
       </form>
@@ -173,12 +185,19 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
       <div className="flex flex-wrap gap-2 mt-3">
         <span className="text-[12px] text-on-surface-variant self-center">Probá:</span>
         {ejemplos.map((e) => (
-          <button key={e} onClick={() => { setQ(e); run(e); }} className="text-[12px] border border-outline-variant rounded-full px-3 py-1 text-primary hover:border-secondary">{e}</button>
+          <button key={e} onClick={() => setQuick(e)} className="text-[12px] border border-outline-variant rounded-full px-3 py-1 text-primary hover:border-secondary">{e}</button>
         ))}
       </div>
 
       {loading ? (
-        <p className="text-on-surface-variant mt-6">Cargando el catálogo…</p>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-hidden="true">
+          {[0, 1, 2, 3, 4, 5].map((k) => (
+            <div key={k} className="rounded-xl border border-outline-variant overflow-hidden animate-pulse">
+              <div className="aspect-[4/3] bg-surface-container-high" />
+              <div className="p-4 space-y-2"><div className="h-4 bg-surface-container-high rounded w-3/4" /><div className="h-3 bg-surface-container-high rounded w-1/2" /></div>
+            </div>
+          ))}
+        </div>
       ) : res && (
         <div className="mt-6">
           {chips.length > 0 && (
@@ -190,8 +209,13 @@ export default function BuscadorConversacional({ initialQuery = "" }) {
           )}
           <p className="text-[14px] text-on-surface-variant mb-4">{res.total} proyecto{res.total === 1 ? "" : "s"} en pozo{chips.length ? " que matchean" : ""}</p>
           {res.items.length === 0 ? (
-            <div className="border border-outline-variant rounded-xl p-8 text-center text-on-surface-variant">
-              No encontramos proyectos con esos criterios. Probá con menos condiciones o cambiá el barrio/precio.
+            <div className="border border-outline-variant rounded-xl p-8 text-center">
+              <p className="text-on-surface-variant mb-4">No encontramos proyectos con esos criterios. Probá con menos condiciones o cambiá el barrio/precio.</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {ejemplos.map((e) => (
+                  <button key={e} type="button" onClick={() => setQuick(e)} className="text-[12px] border border-outline-variant rounded-full px-3 py-1 text-secondary hover:border-secondary">{e}</button>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
