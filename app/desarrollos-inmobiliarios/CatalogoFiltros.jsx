@@ -560,6 +560,11 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           <p className="mt-3 text-[12px] text-on-surface-variant">
             Mostrando {conCoord} de {filtered.length} en el mapa. Ubicaciones aproximadas según la dirección del proyecto — verificá la ubicación exacta en cada ficha.
           </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter mt-8">
+            {filtered.map((i) => (
+              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
