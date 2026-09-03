@@ -24,7 +24,7 @@ export default function BuscadorModo({ items }) {
       </button>
       <button type="button" role="tab" aria-selected={modo === "ia"} onClick={() => setModo("ia")}
         className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-colors flex items-center gap-1 ${modo === "ia" ? "bg-secondary text-white" : "text-on-surface-variant hover:text-primary"}`}>
-        <span className="material-symbols-outlined text-[16px]">auto_awesome</span> Buscar hablando
+        <span className="material-symbols-outlined text-[16px]">auto_awesome</span> Búsqueda inteligente
       </button>
     </div>
   );
