@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Libre_Caslon_Text, Work_Sans } from "next/font/google";
+import { Libre_Caslon_Text, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -21,7 +21,7 @@ const fontSerif = Libre_Caslon_Text({
   variable: "--font-serif",
   fallback: ["Georgia", "serif"],
 });
-const fontSans = Work_Sans({
+const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
