@@ -555,7 +555,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       )}
 
       {vista === 'mapa' ? (
-        <div>
+        <div key="v-mapa">
           <MapaListado items={filtered} />
           <p className="mt-3 text-[12px] text-on-surface-variant">
             Mostrando {conCoord} de {filtered.length} en el mapa. Ubicaciones aproximadas según la dirección del proyecto — verificá la ubicación exacta en cada ficha.
@@ -567,7 +567,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+        <div key="v-lista" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filtered.map((i) => (
             <ProjectCard
               key={i.slug}
