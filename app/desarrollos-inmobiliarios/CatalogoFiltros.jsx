@@ -65,8 +65,8 @@ function MapaListado({ items }) {
       if (cancel || !ref.current) return;
       if (!mapRef.current) {
         mapRef.current = L.map(ref.current, { scrollWheelZoom: false }).setView([-34.6, -58.44], 12);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19,
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+          attribution: 'Tiles &copy; Esri', maxZoom: 16,
         }).addTo(mapRef.current);
       }
       const map = mapRef.current;
