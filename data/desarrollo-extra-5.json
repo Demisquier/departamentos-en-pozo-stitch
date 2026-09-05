@@ -1,0 +1,370 @@
+[
+ {
+  "id": 41001,
+  "slug": "bnh-warnes-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Bnh Warnes — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Bnh Warnes</strong> es un desarrollo en pozo en Palermo, CABA, sobre warnes 430. Ofrece unidades de 1 y 2 ambientes con entrega estimada hacia 2026. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Bnh Warnes: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/841855900340363383775405655943769360679521669026815846459514165634556688458616382.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "warnes 430",
+   "estado_obra": "En pozo",
+   "lat": -34.602119,
+   "lng": -58.44273,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bnh-warnes--warnes-430"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bnh-warnes--warnes-430",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41002,
+  "slug": "bah-arenales-recoleta",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Bah Arenales — Recoleta"
+  },
+  "content": {
+   "rendered": "<p><strong>Bah Arenales</strong> es un desarrollo en pozo en Recoleta, CABA, sobre arenales 2521. Ofrece unidades de 2 y 3 ambientes. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Bah Arenales: desarrollo en pozo en Recoleta."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/56400_62567291885302133374574867865405246041381079708173742624891803723454158731124.jpg"
+    }
+   ]
+  },
+  "barrio": "Recoleta",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "arenales 2521",
+   "estado_obra": "En pozo",
+   "lat": -34.593243,
+   "lng": -58.402091,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bah-arenales--arenales-2521"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bah-arenales--arenales-2521",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41003,
+  "slug": "human-abasto-towers-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Human Abasto Towers — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Human Abasto Towers</strong> es un desarrollo en pozo en Palermo, CABA, sobre torre 1 aguero lavalle 3252. Ofrece unidades de 2 y 3 ambientes con entrega estimada hacia 2027. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Human Abasto Towers: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/58955_47238592308794855585134867072760378212447063005530912991053167669925268607582.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "202712",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "torre 1 aguero lavalle 3252",
+   "estado_obra": "En pozo",
+   "lat": null,
+   "lng": null,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/human-abasto-towers--torre-1-aguero--lavalle-3252"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/human-abasto-towers--torre-1-aguero--lavalle-3252",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41004,
+  "slug": "kasa-nunez-etapa-i-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Kasa Nunez Etapa I — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Kasa Nunez Etapa I</strong> es un desarrollo en pozo en Belgrano, CABA, sobre congreso 1694. Ofrece unidades de 3 y 4 ambientes. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Kasa Nunez Etapa I: desarrollo en pozo en Belgrano."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/40276_98662920515841324284541313009405613175834980407068646147279364906668805123469.jpg"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "3_ambientes",
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "congreso 1694",
+   "estado_obra": "En pozo",
+   "lat": -34.551756,
+   "lng": -58.455398,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/kasa-nunez-etapa-i--congreso-1694"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/kasa-nunez-etapa-i--congreso-1694",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41005,
+  "slug": "bnh-oro-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Bnh Oro — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Bnh Oro</strong> es un desarrollo en pozo en Palermo, CABA, sobre oro 2476. Ofrece unidades de 1 y 2 ambientes. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Bnh Oro: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/841846834500667881078653778955287054243766975715924771317444115013190644613051789.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "oro 2476",
+   "estado_obra": "En pozo",
+   "lat": -34.579539,
+   "lng": -58.424604,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bnh-oro--oro-2476"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/bnh-oro--oro-2476",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41006,
+  "slug": "jbj-829-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Jbj 829 — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Jbj 829</strong> es un desarrollo en pozo en Palermo, CABA, sobre juan b. justo 829. Ofrece unidades de 2 y 3 ambientes. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Jbj 829: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/841855264884965861037904354154659262601758574439695838406123765315682087449502253.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "juan b. justo 829",
+   "estado_obra": "En pozo",
+   "lat": -34.58027,
+   "lng": -58.428325,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/jbj-829--juan-b.-justo-829"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/jbj-829--juan-b.-justo-829",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41007,
+  "slug": "habitual-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Habitual — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Habitual</strong> es un desarrollo en pozo en Palermo, CABA, sobre soldado de la independencia 1288. Ofrece unidades de 1 y 2 ambientes con entrega estimada hacia 2026. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Habitual: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/63445_59421838659675607756842791402439687904315351580015636530501466504205210976742.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "soldado de la independencia 1288",
+   "estado_obra": "En pozo",
+   "lat": -34.56397,
+   "lng": -58.440483,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/habitual--soldado-de-la-independencia-1288"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/habitual--soldado-de-la-independencia-1288",
+   "comercializadora": "Interwin"
+  }
+ },
+ {
+  "id": 41008,
+  "slug": "green-built-xvi-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Green Built Xvi — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Green Built Xvi</strong> es un desarrollo en pozo en Palermo, CABA, sobre guatemala 4487. Ofrece unidades de 1 a 3 ambientes con entrega estimada hacia 2029. Comercializa <strong>Interwin</strong>.</p><p>Comprar en pozo suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra: revisá la trayectoria de la desarrolladora, la estructura legal y el ajuste de las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Green Built Xvi: desarrollo en pozo en Palermo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://static.tokkobroker.com/dw_pics/61482_88439257000445578714215474649609993470618121472723251950258284761135263525204.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Interwin",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "202912",
+   "tipologias": [
+    "1_ambiente",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "guatemala 4487",
+   "estado_obra": "En pozo",
+   "lat": -34.587916,
+   "lng": -58.422437,
+   "fuente": "https://www.interwin.com.ar/emprendimientos/green-built-xvi--guatemala-4487"
+  },
+  "meta": {
+   "fuente": "https://www.interwin.com.ar/emprendimientos/green-built-xvi--guatemala-4487",
+   "comercializadora": "Interwin"
+  }
+ }
+]
