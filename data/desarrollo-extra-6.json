@@ -1,0 +1,452 @@
+[
+ {
+  "id": 42001,
+  "slug": "blanco-encalada-5656-villa-urquiza",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Blanco Encalada 5656 — Villa Urquiza"
+  },
+  "content": {
+   "rendered": "<p><strong>Blanco Encalada 5656</strong> es un desarrollo en pozo en Villa Urquiza, CABA. Ofrece unidades de 4 ambiente desde USD 148.559 con entrega estimada hacia 2028. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Blanco Encalada 5656: desarrollo en pozo en Villa Urquiza, desde USD 148.559."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/09/65905_38988215970175720422505012731360852924805149537826088779711684759600023360718.jpg"
+    }
+   ]
+  },
+  "barrio": "Villa Urquiza",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 148559,
+   "moneda": "USD",
+   "fecha_entrega": "202812",
+   "tipologias": [
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Blanco Encalada 5656",
+   "estado_obra": "En pozo",
+   "lat": -34.579545,
+   "lng": -58.493161,
+   "fuente": "https://predial.ar/propiedad/65905-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/65905-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42002,
+  "slug": "billinghurst-425-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Billinghurst 425 — Almagro"
+  },
+  "content": {
+   "rendered": "<p><strong>Billinghurst 425</strong> es un desarrollo en pozo en Almagro, CABA. Ofrece unidades de 1 y 2 ambientes desde USD 129.000 con entrega estimada hacia 2026. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Billinghurst 425: desarrollo en pozo en Almagro, desde USD 129.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/08/57408_112974616173929885282060281488625407281634708872343628769199238279971515514851.jpg"
+    }
+   ]
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 129000,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Billinghurst 425",
+   "estado_obra": "En pozo",
+   "lat": -34.608525,
+   "lng": -58.432503,
+   "fuente": "https://predial.ar/propiedad/57408-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/57408-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42003,
+  "slug": "atacalco-1765-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Atacalco 1765 — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Atacalco 1765</strong> es un desarrollo en pozo en Palermo, CABA. Ofrece unidades de 1 ambiente desde USD 170.000 con entrega estimada hacia 2026. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Atacalco 1765: desarrollo en pozo en Palermo, desde USD 170.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/08/66518_7765457780418807425670416113474077783341754092403659737069882549501591336090.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 170000,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "Atacalco 1765",
+   "estado_obra": "En pozo",
+   "lat": -34.580816,
+   "lng": -58.435785,
+   "fuente": "https://predial.ar/propiedad/66518-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/66518-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42004,
+  "slug": "lambare-847-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Lambaré 847 — Almagro"
+  },
+  "content": {
+   "rendered": "<p><strong>Lambaré 847</strong> es un desarrollo en pozo en Almagro, CABA. Ofrece unidades de 1 ambiente desde USD 97.000. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Lambaré 847: desarrollo en pozo en Almagro, desde USD 97.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/07/33096982811540889903921032056330184864940884255179249886696361754265295088538.jpg"
+    }
+   ]
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 97000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "Lambaré 847",
+   "estado_obra": "En pozo",
+   "lat": -34.607691,
+   "lng": -58.421427,
+   "fuente": "https://predial.ar/propiedad/43395-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/43395-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42005,
+  "slug": "lavalle-4018-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Lavalle 4018 — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Lavalle 4018</strong> es un desarrollo en pozo en Palermo, CABA. Ofrece unidades de 2 ambiente desde USD 74.900. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Lavalle 4018: desarrollo en pozo en Palermo, desde USD 74.900."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/06/60831_67019880456488670227161977317771754620553393064076927837600868191480245547714.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 74900,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Lavalle 4018",
+   "estado_obra": "En pozo",
+   "lat": -34.58405,
+   "lng": -58.435905,
+   "fuente": "https://predial.ar/propiedad/60831-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/60831-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42006,
+  "slug": "estado-de-palestina-528-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Estado de Palestina 528 — Almagro"
+  },
+  "content": {
+   "rendered": "<p><strong>Estado de Palestina 528</strong> es un desarrollo en pozo en Almagro, CABA. Ofrece unidades de 1 ambiente desde USD 101.860. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Estado de Palestina 528: desarrollo en pozo en Almagro, desde USD 101.860."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/06/43392_102325664688606986708528702359412904205417439711542304598960466840822388923860.jpg"
+    }
+   ]
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 101860,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "Estado de Palestina 528",
+   "estado_obra": "En pozo",
+   "lat": -34.605502,
+   "lng": -58.426046,
+   "fuente": "https://predial.ar/propiedad/43392-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/43392-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42007,
+  "slug": "ciudad-de-la-paz-3299-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Ciudad de la Paz 3299 — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Ciudad de la Paz 3299</strong> es un desarrollo en pozo en Belgrano, CABA. Ofrece unidades en pozo desde USD 125.400. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Ciudad de la Paz 3299: desarrollo en pozo en Belgrano, desde USD 125.400."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/06/88447_88356735618336568910062844868166929182287260485501387862757820997926685868813.jpg"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 125400,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "Ciudad de la Paz 3299",
+   "estado_obra": "En pozo",
+   "lat": -34.552262,
+   "lng": -58.467251,
+   "fuente": "https://predial.ar/propiedad/88447-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/88447-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42008,
+  "slug": "manuel-ugarte-2504-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Manuel Ugarte 2504 — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Manuel Ugarte 2504</strong> es un desarrollo en pozo en Palermo, CABA. Ofrece unidades de 2 ambiente desde USD 400.000. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Manuel Ugarte 2504: desarrollo en pozo en Palermo, desde USD 400.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/05/59422_75871798639236653436873836539968110471486594013751017463886950591018996884557.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 400000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Manuel Ugarte 2504",
+   "estado_obra": "En pozo",
+   "lat": -34.55668,
+   "lng": -58.462798,
+   "fuente": "https://predial.ar/propiedad/59422-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/59422-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42009,
+  "slug": "camargo-915-villa-crespo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Camargo 915 — Villa Crespo"
+  },
+  "content": {
+   "rendered": "<p><strong>Camargo 915</strong> es un desarrollo en pozo en Villa Crespo, CABA. Ofrece unidades de 1 ambiente desde USD 250.000. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Camargo 915: desarrollo en pozo en Villa Crespo, desde USD 250.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/05/72224_95568872136848531908740662348889487577071637783828376908018219033146162841020.jpg"
+    }
+   ]
+  },
+  "barrio": "Villa Crespo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 250000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "Camargo 915",
+   "estado_obra": "En pozo",
+   "lat": -34.595769,
+   "lng": -58.445972,
+   "fuente": "https://predial.ar/propiedad/72224-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/72224-2/",
+   "comercializadora": "Predial"
+  }
+ },
+ {
+  "id": 42010,
+  "slug": "lambare-851-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Lambaré 851 — Almagro"
+  },
+  "content": {
+   "rendered": "<p><strong>Lambaré 851</strong> es un desarrollo en pozo en Almagro, CABA. Ofrece unidades de 2 y 3 ambientes desde USD 125.852. Comercializa <strong>Predial</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Lambaré 851: desarrollo en pozo en Almagro, desde USD 125.852."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://predial.ar/wp-content/uploads/2026/05/71607_46022901397980546374221531778771420570441986055590671131195534019541445743327.jpg"
+    }
+   ]
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Predial",
+   "precio_desde": 125852,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Lambaré 851",
+   "estado_obra": "En pozo",
+   "lat": -34.609605,
+   "lng": -58.429023,
+   "fuente": "https://predial.ar/propiedad/71607-2/"
+  },
+  "meta": {
+   "fuente": "https://predial.ar/propiedad/71607-2/",
+   "comercializadora": "Predial"
+  }
+ }
+]
