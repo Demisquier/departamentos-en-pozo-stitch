@@ -1,0 +1,1180 @@
+[
+ {
+  "id": 40001,
+  "slug": "arce-523-las-canitas",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Arce 523 — Las Cañitas"
+  },
+  "content": {
+   "rendered": "<p><strong>Arce 523</strong> es un desarrollo en pozo en Las Cañitas, CABA, sobre arce 523. Ofrece unidades de 2 y 3 ambientes desde USD 105.814 con entrega estimada hacia 2029. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Arce 523: desarrollo en pozo en Las Cañitas, desde USD 105.814."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/17/17803.jpg"
+    }
+   ]
+  },
+  "barrio": "Las Cañitas",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 105814,
+   "moneda": "USD",
+   "fecha_entrega": "202912",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "arce 523",
+   "estado_obra": "En pozo",
+   "lat": -34.569885,
+   "lng": -58.432646,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/arce-523-en-las-canitas-capital-federal-1005"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/arce-523-en-las-canitas-capital-federal-1005",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40002,
+  "slug": "atelier-grand-atlantida-monserrat",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Atelier Grand Atlantida — Monserrat"
+  },
+  "content": {
+   "rendered": "<p><strong>Atelier Grand Atlantida</strong> es un desarrollo en pozo en Monserrat, CABA. Ofrece unidades de 1 ambiente desde USD 165.000 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Atelier Grand Atlantida: desarrollo en pozo en Monserrat, desde USD 165.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/15/15589.jpg"
+    }
+   ]
+  },
+  "barrio": "Monserrat",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 165000,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.608211,
+   "lng": -58.381029,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/atelier-grand-atlantida-en-monserrat-capital-federal-964"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/atelier-grand-atlantida-en-monserrat-capital-federal-964",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40003,
+  "slug": "avalos-1090-parque-chas",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Avalos 1090 — Parque Chas"
+  },
+  "content": {
+   "rendered": "<p><strong>Avalos 1090</strong> es un desarrollo en pozo en Parque Chas, CABA, sobre avalos 1090. Ofrece unidades de 2 ambiente desde USD 82.800 con entrega estimada hacia 2027. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Avalos 1090: desarrollo en pozo en Parque Chas, desde USD 82.800."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/16/16684.jpg"
+    }
+   ]
+  },
+  "barrio": "Parque Chas",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 82800,
+   "moneda": "USD",
+   "fecha_entrega": "202712",
+   "tipologias": [
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "avalos 1090",
+   "estado_obra": "En pozo",
+   "lat": -34.587143,
+   "lng": -58.474577,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/avalos-1090-en-parque-chas-capital-federal-979"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/avalos-1090-en-parque-chas-capital-federal-979",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40004,
+  "slug": "black-arcos-1100-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Black Arcos 1100 — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Black Arcos 1100</strong> es un desarrollo en pozo en Belgrano, CABA, sobre black arcos 1100. Ofrece unidades de 1 y 2 ambientes desde USD 189.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Black Arcos 1100: desarrollo en pozo en Belgrano, desde USD 189.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/16/16090.jpg"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 189000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "black arcos 1100",
+   "estado_obra": "En pozo",
+   "lat": -34.560575,
+   "lng": -58.461661,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/black-arcos-1100-en-belgrano-capital-federal-887"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/black-arcos-1100-en-belgrano-capital-federal-887",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40005,
+  "slug": "black-newbery-1890-las-canitas",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Black Newbery 1890 — Las Cañitas"
+  },
+  "content": {
+   "rendered": "<p><strong>Black Newbery 1890</strong> es un desarrollo en pozo en Las Cañitas, CABA, sobre black newbery 1890. Ofrece unidades de 1 ambiente desde USD 150.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Black Newbery 1890: desarrollo en pozo en Las Cañitas, desde USD 150.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/16/16163.jpg"
+    }
+   ]
+  },
+  "barrio": "Las Cañitas",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 150000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "black newbery 1890",
+   "estado_obra": "En pozo",
+   "lat": -34.5671,
+   "lng": -58.441495,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/black-newbery-1890-en-las-canitas-capital-federal-907"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/black-newbery-1890-en-las-canitas-capital-federal-907",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40006,
+  "slug": "bosque-urbano-nunez",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Bosque Urbano — Núñez"
+  },
+  "content": {
+   "rendered": "<p><strong>Bosque Urbano</strong> es un desarrollo en pozo en Núñez, CABA. Ofrece unidades de 1 y 2 ambientes desde USD 109.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Bosque Urbano: desarrollo en pozo en Núñez, desde USD 109.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/17/17547.jpg"
+    }
+   ]
+  },
+  "barrio": "Núñez",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 109000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.551212,
+   "lng": -58.466858,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/bosque-urbano-en-nunez-capital-federal-799"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/bosque-urbano-en-nunez-capital-federal-799",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40007,
+  "slug": "callao-clasico-recoleta",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Callao Clasico — Recoleta"
+  },
+  "content": {
+   "rendered": "<p><strong>Callao Clasico</strong> es un desarrollo en pozo en Recoleta, CABA. Ofrece unidades de 3 y 4 ambientes. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Callao Clasico: desarrollo en pozo en Recoleta."
+  },
+  "featured_media": 0,
+  "barrio": "Recoleta",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": null,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "3_ambientes",
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.594842,
+   "lng": -58.399835,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/callao-clasico-en-recoleta-capital-federal-590"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/callao-clasico-en-recoleta-capital-federal-590",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40008,
+  "slug": "casa-las-heras-recoleta",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Casa Las Heras — Recoleta"
+  },
+  "content": {
+   "rendered": "<p><strong>Casa Las Heras</strong> es un desarrollo en pozo en Recoleta, CABA. Ofrece unidades de 1 ambiente desde USD 123.000 con entrega estimada hacia 2028. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Casa Las Heras: desarrollo en pozo en Recoleta, desde USD 123.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/18/18326.jpg"
+    }
+   ]
+  },
+  "barrio": "Recoleta",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 123000,
+   "moneda": "USD",
+   "fecha_entrega": "202807",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.590174,
+   "lng": -58.400303,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/casa-las-heras-en-recoleta-capital-federal-971"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/casa-las-heras-en-recoleta-capital-federal-971",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40009,
+  "slug": "cassa-solis-monserrat",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Cassa Solis — Monserrat"
+  },
+  "content": {
+   "rendered": "<p><strong>Cassa Solis</strong> es un desarrollo en pozo en Monserrat, CABA. Ofrece unidades de 1 y 2 ambientes desde USD 105.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Cassa Solis: desarrollo en pozo en Monserrat, desde USD 105.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/12/12414.jpg"
+    }
+   ]
+  },
+  "barrio": "Monserrat",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 105000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.611175,
+   "lng": -58.382679,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/cassa-solis-en-monserrat-capital-federal-655"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/cassa-solis-en-monserrat-capital-federal-655",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40010,
+  "slug": "comu-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Comu — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Comu</strong> es un desarrollo en pozo en Belgrano, CABA. Ofrece unidades de 3 y 4 ambientes desde USD 124.133 con entrega estimada hacia 2027. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Comu: desarrollo en pozo en Belgrano, desde USD 124.133."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/14/14868.png"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 124133,
+   "moneda": "USD",
+   "fecha_entrega": "202706",
+   "tipologias": [
+    "3_ambientes",
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.564217,
+   "lng": -58.452001,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/comu-en-belgrano-capital-federal-909"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/comu-en-belgrano-capital-federal-909",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40011,
+  "slug": "estar-austria",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Estar Austria — Recoleta"
+  },
+  "content": {
+   "rendered": "<p><strong>Estar Austria</strong> es un desarrollo en pozo en Recoleta, CABA, sobre Austria. Ofrece unidades de 2 y 3 ambientes desde USD 143.385 con entrega estimada hacia 2028. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Estar Austria: desarrollo en pozo en Recoleta, desde USD 143.385."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/17/17113.jpg"
+    }
+   ]
+  },
+  "barrio": "Recoleta",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 143385,
+   "moneda": "USD",
+   "fecha_entrega": "202812",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Austria, Recoleta",
+   "estado_obra": "En pozo",
+   "lat": -34.59279,
+   "lng": -58.405889,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/estar-en-austria-en-recoleta-capital-federal-993"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/estar-en-austria-en-recoleta-capital-federal-993",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40012,
+  "slug": "estar-migueletes",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Estar Migueletes — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Estar Migueletes</strong> es un desarrollo en pozo en Belgrano, CABA, sobre Migueletes. Ofrece unidades de 2 ambiente desde USD 245.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Estar Migueletes: desarrollo en pozo en Belgrano, desde USD 245.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/16/16716.jpg"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 245000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "Migueletes, Belgrano",
+   "estado_obra": "En pozo",
+   "lat": -34.561979,
+   "lng": -58.454245,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/estar-en-migueletes-en-belgrano-capital-federal-980"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/estar-en-migueletes-en-belgrano-capital-federal-980",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40013,
+  "slug": "gasset-las-canitas",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Gasset — Las Cañitas"
+  },
+  "content": {
+   "rendered": "<p><strong>Gasset</strong> es un desarrollo en pozo en Las Cañitas, CABA. Ofrece unidades de 1 y 2 ambientes desde USD 235.000 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Gasset: desarrollo en pozo en Las Cañitas, desde USD 235.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/17/17786.jpg"
+    }
+   ]
+  },
+  "barrio": "Las Cañitas",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 235000,
+   "moneda": "USD",
+   "fecha_entrega": "202610",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.56968,
+   "lng": -58.435327,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/gasset-en-las-canitas-capital-federal-1006"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/gasset-en-las-canitas-capital-federal-1006",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40014,
+  "slug": "grand-atlantida-residences-monserrat",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Grand Atlantida Residences — Monserrat"
+  },
+  "content": {
+   "rendered": "<p><strong>Grand Atlantida Residences</strong> es un desarrollo en pozo en Monserrat, CABA. Ofrece unidades de 2 y 3 ambientes desde USD 200.000 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Grand Atlantida Residences: desarrollo en pozo en Monserrat, desde USD 200.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/13/13498.jpg"
+    }
+   ]
+  },
+  "barrio": "Monserrat",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 200000,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.607413,
+   "lng": -58.383333,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/grand-atlantida-residences-en-monserrat-capital-federal-845"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/grand-atlantida-residences-en-monserrat-capital-federal-845",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40015,
+  "slug": "habita-freire-belgrano",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Habita Freire — Belgrano"
+  },
+  "content": {
+   "rendered": "<p><strong>Habita Freire</strong> es un desarrollo en pozo en Belgrano, CABA. Ofrece unidades de 4 ambiente desde USD 135.000 con entrega estimada hacia 2027. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Habita Freire: desarrollo en pozo en Belgrano, desde USD 135.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/15/15375.jpg"
+    }
+   ]
+  },
+  "barrio": "Belgrano",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 135000,
+   "moneda": "USD",
+   "fecha_entrega": "202703",
+   "tipologias": [
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.561235,
+   "lng": -58.460389,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/habita-freire-en-belgrano-capital-federal-863"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/habita-freire-en-belgrano-capital-federal-863",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40016,
+  "slug": "jaramillo-4737-saavedra",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Jaramillo 4737 — Saavedra"
+  },
+  "content": {
+   "rendered": "<p><strong>Jaramillo 4737</strong> es un desarrollo en pozo en Saavedra, CABA, sobre jaramillo 4737. Ofrece unidades de 1 ambiente desde USD 115.000 con entrega estimada hacia 2027. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Jaramillo 4737: desarrollo en pozo en Saavedra, desde USD 115.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/17/17060.jpg"
+    }
+   ]
+  },
+  "barrio": "Saavedra",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 115000,
+   "moneda": "USD",
+   "fecha_entrega": "202712",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "jaramillo 4737",
+   "estado_obra": "En pozo",
+   "lat": -34.559015,
+   "lng": -58.490177,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/jaramillo-4737-en-saavedra-capital-federal-989"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/jaramillo-4737-en-saavedra-capital-federal-989",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40017,
+  "slug": "lavenue-palermo",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Lavenue — Palermo"
+  },
+  "content": {
+   "rendered": "<p><strong>Lavenue</strong> es un desarrollo en pozo en Palermo, CABA. Ofrece unidades de 3 ambiente desde USD 2.100.000 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Lavenue: desarrollo en pozo en Palermo, desde USD 2.100.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/15/15729.png"
+    }
+   ]
+  },
+  "barrio": "Palermo",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 2100000,
+   "moneda": "USD",
+   "fecha_entrega": "202603",
+   "tipologias": [
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.582328,
+   "lng": -58.433877,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/lavenue-en-palermo-capital-federal-966"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/lavenue-en-palermo-capital-federal-966",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40018,
+  "slug": "niu-ramallo-nunez",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Niu Ramallo — Núñez"
+  },
+  "content": {
+   "rendered": "<p><strong>Niu Ramallo</strong> es un desarrollo en pozo en Núñez, CABA. Ofrece unidades de 3 y 4 ambientes desde USD 144.092 con entrega estimada hacia 2029. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Niu Ramallo: desarrollo en pozo en Núñez, desde USD 144.092."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/18/18385.png"
+    }
+   ]
+  },
+  "barrio": "Núñez",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 144092,
+   "moneda": "USD",
+   "fecha_entrega": "202912",
+   "tipologias": [
+    "3_ambientes",
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.546928,
+   "lng": -58.469174,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/niu-ramallo-en-nunez-capital-federal-1018"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/niu-ramallo-en-nunez-capital-federal-1018",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40019,
+  "slug": "pereyra-lucena-palermo-chico",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Pereyra Lucena — Palermo Chico"
+  },
+  "content": {
+   "rendered": "<p><strong>Pereyra Lucena</strong> es un desarrollo en pozo en Palermo Chico, CABA. Ofrece unidades de 2 y 3 ambientes desde USD 227.768 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Pereyra Lucena: desarrollo en pozo en Palermo Chico, desde USD 227.768."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/14/14651.jpg"
+    }
+   ]
+  },
+  "barrio": "Palermo Chico",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 227768,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.578088,
+   "lng": -58.413705,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/pereyra-lucena-en-palermo-chico-capital-federal-932"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/pereyra-lucena-en-palermo-chico-capital-federal-932",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40020,
+  "slug": "rio-de-janeiro-645-almagro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Rio De Janeiro 645 — Almagro"
+  },
+  "content": {
+   "rendered": "<p><strong>Rio De Janeiro 645</strong> es un desarrollo en pozo en Almagro, CABA, sobre rio de janeiro 645. Ofrece unidades de 2 y 3 ambientes desde USD 129.000 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Rio De Janeiro 645: desarrollo en pozo en Almagro, desde USD 129.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/14/14950.jpg"
+    }
+   ]
+  },
+  "barrio": "Almagro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 129000,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "rio de janeiro 645",
+   "estado_obra": "En pozo",
+   "lat": -34.608014,
+   "lng": -58.430544,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/rio-de-janeiro-645-en-almagro-capital-federal-914"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/rio-de-janeiro-645-en-almagro-capital-federal-914",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40021,
+  "slug": "spot-studios-retiro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Spot Studios — Retiro"
+  },
+  "content": {
+   "rendered": "<p><strong>Spot Studios</strong> es un desarrollo en pozo en Retiro, CABA. Ofrece unidades de 1 ambiente desde USD 135.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Spot Studios: desarrollo en pozo en Retiro, desde USD 135.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/15/15856.jpg"
+    }
+   ]
+  },
+  "barrio": "Retiro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 135000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.593949,
+   "lng": -58.387594,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/spot-studios-en-retiro-capital-federal-969"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/spot-studios-en-retiro-capital-federal-969",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40022,
+  "slug": "treba-monserrat",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Treba — Monserrat"
+  },
+  "content": {
+   "rendered": "<p><strong>Treba</strong> es un desarrollo en pozo en Monserrat, CABA. Ofrece unidades de 1 y 2 ambientes desde USD 111.372 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Treba: desarrollo en pozo en Monserrat, desde USD 111.372."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/18/18578.jpg"
+    }
+   ]
+  },
+  "barrio": "Monserrat",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 111372,
+   "moneda": "USD",
+   "fecha_entrega": "202608",
+   "tipologias": [
+    "1_ambiente",
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.609315,
+   "lng": -58.383309,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/treba-en-monserrat-capital-federal-816"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/treba-en-monserrat-capital-federal-816",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40023,
+  "slug": "velo-miller-saavedra",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Velo Miller — Saavedra"
+  },
+  "content": {
+   "rendered": "<p><strong>Velo Miller</strong> es un desarrollo en pozo en Saavedra, CABA. Ofrece unidades de 2 ambiente desde USD 166.500 con entrega estimada hacia 2026. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Velo Miller: desarrollo en pozo en Saavedra, desde USD 166.500."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/15/15562.jpg"
+    }
+   ]
+  },
+  "barrio": "Saavedra",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 166500,
+   "moneda": "USD",
+   "fecha_entrega": "202612",
+   "tipologias": [
+    "2_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.550378,
+   "lng": -58.484143,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/velo-miller-en-saavedra-capital-federal-963"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/velo-miller-en-saavedra-capital-federal-963",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40024,
+  "slug": "vilo-colegiales",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Vilo — Colegiales"
+  },
+  "content": {
+   "rendered": "<p><strong>Vilo</strong> es un desarrollo en pozo en Colegiales, CABA. Ofrece unidades de 1 ambiente desde USD 109.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Vilo: desarrollo en pozo en Colegiales, desde USD 109.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/14/14981.jpg"
+    }
+   ]
+  },
+  "barrio": "Colegiales",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 109000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "1_ambiente"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.574235,
+   "lng": -58.453345,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vilo-en-colegiales-capital-federal-817"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vilo-en-colegiales-capital-federal-817",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40025,
+  "slug": "vizion-juncal-recoleta",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Vizion Juncal — Recoleta"
+  },
+  "content": {
+   "rendered": "<p><strong>Vizion Juncal</strong> es un desarrollo en pozo en Recoleta, CABA. Ofrece unidades de 2 y 3 ambientes desde USD 265.000. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Vizion Juncal: desarrollo en pozo en Recoleta, desde USD 265.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/12/12907.jpg"
+    }
+   ]
+  },
+  "barrio": "Recoleta",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 265000,
+   "moneda": "USD",
+   "fecha_entrega": "",
+   "tipologias": [
+    "2_ambientes",
+    "3_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.593726,
+   "lng": -58.408685,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vizion-juncal-en-recoleta-capital-federal-766"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vizion-juncal-en-recoleta-capital-federal-766",
+   "comercializadora": "Toribio Achával"
+  }
+ },
+ {
+  "id": 40026,
+  "slug": "vo-live-nunez",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Vo Live — Núñez"
+  },
+  "content": {
+   "rendered": "<p><strong>Vo Live</strong> es un desarrollo en pozo en Núñez, CABA. Ofrece unidades de 3 y 4 ambientes desde USD 141.000 con entrega estimada hacia 2027. Comercializa <strong>Toribio Achával</strong>.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene revisar la trayectoria de la desarrolladora, la estructura legal y cómo se ajustan las cuotas antes de decidir.</p>"
+  },
+  "excerpt": {
+   "rendered": "Vo Live: desarrollo en pozo en Núñez, desde USD 141.000."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://proaimg.s3-sa-east-1.amazonaws.com/contenedora/original/18/18632.jpeg"
+    }
+   ]
+  },
+  "barrio": "Núñez",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Toribio Achával",
+   "precio_desde": 141000,
+   "moneda": "USD",
+   "fecha_entrega": "202703",
+   "tipologias": [
+    "3_ambientes",
+    "4_ambientes"
+   ],
+   "amenities": "",
+   "direccion": "",
+   "estado_obra": "En pozo",
+   "lat": -34.54655,
+   "lng": -58.464014,
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vo-live-en-nunez-capital-federal-904"
+  },
+  "meta": {
+   "fuente": "https://www.toribioachaval.com/divisiones/emprendimientos/emprendimientos-gral/propiedades/vo-live-en-nunez-capital-federal-904",
+   "comercializadora": "Toribio Achával"
+  }
+ }
+]
