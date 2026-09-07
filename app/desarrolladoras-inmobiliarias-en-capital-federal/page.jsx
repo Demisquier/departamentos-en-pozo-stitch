@@ -169,6 +169,12 @@ export default async function HubDesarrolladorasPage() {
   // Schema estructurado propio (el hub no traía ItemList/FAQ/Breadcrumb).
   const extraSchema = [
     {
+      "@context": "https://schema.org", "@type": "WebPage",
+      name: "Desarrolladoras Inmobiliarias en Capital Federal 2026",
+      url: SITE + "/desarrolladoras-inmobiliarias-en-capital-federal/",
+      datePublished: "2026-05-14", dateModified: "2026-09-07", inLanguage: "es-AR",
+    },
+    {
       "@context": "https://schema.org", "@type": "ItemList", name: "Mejores desarrolladoras inmobiliarias en Buenos Aires",
       numberOfItems: devs.length,
       itemListElement: devs.map((d, i) => ({
