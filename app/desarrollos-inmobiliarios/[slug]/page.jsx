@@ -119,7 +119,8 @@ export default async function FichaProyecto({ params }) {
   const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes']));
   const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
   const constructora = expandComercializa(acfAny(d, ['desarrolladora', 'constructora']));
-  const _wa = waParaDev(constructora);
+  const _devWa = constructora || expandComercializa(acfAny(d, ['comercializadora'])) || '';
+  const _wa = waParaDev(_devWa);
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
@@ -798,7 +799,7 @@ export default async function FichaProyecto({ params }) {
               waPhone={_wa.phone}
               waEsDelDev={_wa.esDelDev}
               barrio={barrio}
-              dev={constructora}
+              dev={_devWa}
             />
             <GuardarBtn
               variant="full"
