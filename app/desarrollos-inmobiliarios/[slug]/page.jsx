@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import { toNumber, expandComercializa } from '../../../lib/format';
+import { waParaDev } from '../../../lib/wa';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
 import GuardarBtn from '../../_auth/GuardarBtn';
@@ -118,6 +119,7 @@ export default async function FichaProyecto({ params }) {
   const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes']));
   const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
   const constructora = expandComercializa(acfAny(d, ['desarrolladora', 'constructora']));
+  const _wa = waParaDev(constructora);
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
@@ -793,6 +795,10 @@ export default async function FichaProyecto({ params }) {
               cuotas={cuotasReal}
               ajuste={ajuste}
               comparableNum={comparableNum}
+              waPhone={_wa.phone}
+              waEsDelDev={_wa.esDelDev}
+              barrio={barrio}
+              dev={constructora}
             />
             <GuardarBtn
               variant="full"
