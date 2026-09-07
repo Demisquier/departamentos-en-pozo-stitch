@@ -129,8 +129,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido).
   return {
     ...m,
+    title: "Desarrolladoras Inmobiliarias en Capital Federal 2026",
     description:
-      "Directorio de las mejores desarrolladoras inmobiliarias de Buenos Aires 2026: desarrolladoras con obra en pozo por barrio, trayectoria, estructura de fideicomiso y proyecto insignia. Análisis independiente, sin ranking pago.",
+      "Directorio independiente de desarrolladoras inmobiliarias en Capital Federal 2026: trayectoria, fideicomiso y proyecto insignia, por barrio. Sin ranking pago.",
   };
 }
 
@@ -197,7 +198,7 @@ export default async function HubDesarrolladorasPage() {
 
   return (
     <>
-      <JsonLd data={[...rmSchema, ...extraSchema]} />
+      <JsonLd data={[...rmSchema.filter((s) => !["ItemList","FAQPage","BreadcrumbList"].includes(s && s["@type"])), ...extraSchema]} />
 
       <Container as="main" className="py-10 md:py-14">
         {html ? (
