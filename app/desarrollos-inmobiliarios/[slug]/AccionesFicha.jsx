@@ -2,6 +2,7 @@
 import { useState, useMemo, useRef } from "react";
 import { track } from "../../../lib/track";
 import AsesorModal from "../../asesor/AsesorModal";
+import WhatsAppGate from "./WhatsAppGate";
 
 const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 
@@ -9,6 +10,7 @@ const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 // abre el asesor como MODAL sobre la ficha (sin perder la navegación).
 export default function AccionesFicha({
   slug, nombre, precioHeroLabel, precioDesdeNum, refM2Label, cuotaEstim, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
+  waPhone, waEsDelDev, barrio, dev,
 }) {
   const [asesorOpen, setAsesorOpen] = useState(false);
 
@@ -43,6 +45,7 @@ export default function AccionesFicha({
             VER PRECIOS Y DISPONIBILIDAD
             <span className="material-symbols-outlined text-[18px]">forum</span>
           </button>
+          {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="full" />}
 
           <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
             <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
@@ -55,12 +58,13 @@ export default function AccionesFicha({
       </div>
 
       {/* Barra fija móvil */}
-      <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden">
+      <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden flex gap-2">
         <button type="button" onClick={() => setAsesorOpen(true)}
-          className="w-full px-8 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-3">
-          VER PRECIOS Y DISPONIBILIDAD
-          <span className="material-symbols-outlined fill-icon">send</span>
+          className="flex-1 px-4 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-2">
+          VER PRECIOS
+          <span className="material-symbols-outlined fill-icon text-[18px]">send</span>
         </button>
+        {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="bar" />}
       </div>
 
       {asesorOpen && <AsesorModal nombre={nombre} slug={slug} onClose={() => setAsesorOpen(false)} />}
