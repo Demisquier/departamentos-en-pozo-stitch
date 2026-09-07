@@ -11,6 +11,7 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
   const [form, setForm] = useState({ nombre: "", whatsapp: "", email: "" });
   const [err, setErr] = useState("");
   const [sending, setSending] = useState(false);
+  const [objetivo, setObjetivo] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -49,8 +50,8 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
       proyecto: nombre,
       proyectoSlug: slug,
       desarrolladora: dev || "",
-      interes: "",
-      mensaje: "Consulta por WhatsApp — " + nombre,
+      interes: objetivo,
+      mensaje: "Consulta por WhatsApp — " + nombre + (objetivo ? " · " + objetivo : ""),
     };
     const mail = {
       _subject: "Nuevo lead (WhatsApp) — " + nombre,
@@ -110,6 +111,17 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
                 <input value={form.email} onChange={set("email")} placeholder="tu@email.com" type="email"
                   className="w-full mt-1 px-3 py-2.5 border border-outline-variant rounded-lg text-[14px] outline-none focus:border-secondary bg-white" />
               </label>
+              <div>
+                <span className="text-[12px] text-on-surface-variant">¿Para qué buscás? <span className="opacity-60">(opcional)</span></span>
+                <div className="flex gap-2 mt-1">
+                  {["Para vivir", "Inversión", "Ambos"].map((op) => (
+                    <button key={op} type="button" onClick={() => setObjetivo(objetivo === op ? "" : op)}
+                      className={"flex-1 py-2 rounded-lg border text-[13px] transition-colors " + (objetivo === op ? "border-secondary bg-secondary/10 text-secondary font-medium" : "border-outline-variant text-on-surface-variant")}>
+                      {op}
+                    </button>
+                  ))}
+                </div>
+              </div>
               {err && <p className="text-[13px] text-red-600">{err}</p>}
               <button type="submit" disabled={sending}
                 className="w-full py-3.5 rounded font-label-caps text-label-caps tracking-widest flex justify-center items-center gap-2 disabled:opacity-60"
