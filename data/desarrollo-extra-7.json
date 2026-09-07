@@ -1,0 +1,217 @@
+[
+ {
+  "id": 43001,
+  "slug": "o-nunez-nunez",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "O'Núñez — Núñez"
+  },
+  "content": {
+   "rendered": "<p><strong>O'Núñez</strong> es un desarrollo en pozo en Núñez, CABA, ubicado estratégicamente en la esquina de O'Higgins y Manuela Pedraza. Comercializa <strong>Achaval Cornejo</strong>. Entrega estimada hacia diciembre de 2028.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene verificar la trayectoria de la desarrolladora, la estructura legal del fideicomiso y cómo se ajustan las cuotas antes de decidir.</p><p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_97319575389700085494507414218877934375825585305348264351154408161162991942362.jpg&w=1600&output=webp&q=80\" alt=\"O'Núñez\"/></p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_109268802484179029200124930501721928992075669600076421243055165942381283932889.jpg&w=1600&output=webp&q=80\" alt=\"O'Núñez\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_78134764246944086405353051660469180569962798937033863392774586354730572994168.jpg&w=1600&output=webp&q=80\" alt=\"O'Núñez\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_3851727757124977829287516510716518896577685520895599410229351402127366335402.jpg&w=1600&output=webp&q=80\" alt=\"O'Núñez\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_77568665572927979889640238964413018677851896345432589524270069807734776451171.jpg&w=1600&output=webp&q=80\" alt=\"O'Núñez\" />"
+  },
+  "excerpt": {
+   "rendered": "O'Núñez: desarrollo en pozo, comercializa Achaval Cornejo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F71750_97319575389700085494507414218877934375825585305348264351154408161162991942362.jpg&w=1600&output=webp&q=80"
+    }
+   ]
+  },
+  "barrio": "Núñez",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Achaval Cornejo",
+   "precio_desde": "",
+   "moneda": "USD",
+   "fecha_entrega": "202812",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "O'Higgins y Manuela Pedraza",
+   "estado_obra": "En pozo",
+   "lat": -34.5455,
+   "lng": -58.459,
+   "fuente": "https://achavalcornejo.com/desarrollos/"
+  },
+  "meta": {
+   "fuente": "https://achavalcornejo.com/desarrollos/",
+   "comercializadora": "Achaval Cornejo"
+  }
+ },
+ {
+  "id": 43002,
+  "slug": "wayra-nunez",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Wayra — Núñez"
+  },
+  "content": {
+   "rendered": "<p><strong>Wayra</strong> es un desarrollo en pozo en el corazón de Núñez, CABA, sobre un terreno de 1.200 m² con cerca de 8.000 m² construibles y amplios espacios verdes. Comercializa <strong>Achaval Cornejo</strong>. Entrega estimada hacia octubre de 2027.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene verificar la trayectoria de la desarrolladora, la estructura legal del fideicomiso y cómo se ajustan las cuotas antes de decidir.</p><p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_40528585591599023757113521049250852439735442446124387563816445525994616444028.jpg&w=1600&output=webp&q=80\" alt=\"Wayra\"/></p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_72816222364366148908813596812608623508511049121423598103616694284012145766196.jpg&w=1600&output=webp&q=80\" alt=\"Wayra\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_20187553565545600016727962243081401449711811159291770174302749101517114822714.jpg&w=1600&output=webp&q=80\" alt=\"Wayra\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_94025870495741356614322871342785839186851849038055317947431989457218752359913.jpg&w=1600&output=webp&q=80\" alt=\"Wayra\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_26106659682688959725238839987049176405673432750734953189322102610968612401688.jpg&w=1600&output=webp&q=80\" alt=\"Wayra\" />"
+  },
+  "excerpt": {
+   "rendered": "Wayra: desarrollo en pozo, comercializa Achaval Cornejo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61188_40528585591599023757113521049250852439735442446124387563816445525994616444028.jpg&w=1600&output=webp&q=80"
+    }
+   ]
+  },
+  "barrio": "Núñez",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Achaval Cornejo",
+   "precio_desde": "",
+   "moneda": "USD",
+   "fecha_entrega": "202710",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "Núñez",
+   "estado_obra": "En pozo",
+   "lat": -34.547,
+   "lng": -58.4625,
+   "fuente": "https://achavalcornejo.com/desarrollos/"
+  },
+  "meta": {
+   "fuente": "https://achavalcornejo.com/desarrollos/",
+   "comercializadora": "Achaval Cornejo"
+  }
+ },
+ {
+  "id": 43003,
+  "slug": "la-clementina-san-isidro",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "La Clementina — San Isidro"
+  },
+  "content": {
+   "rendered": "<p><strong>La Clementina</strong> es un desarrollo en pozo en las Lomas de San Isidro, sobre la calle Nicolás Avellaneda, en un terreno de 4,2 hectáreas rodeado de verde. Comercializa <strong>Achaval Cornejo</strong>. Entrega estimada hacia abril de 2028.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene verificar la trayectoria de la desarrolladora, la estructura legal del fideicomiso y cómo se ajustan las cuotas antes de decidir.</p><p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_43126614502741397282869709784674294172198370768979176931718952952835106159558.jpg&w=1600&output=webp&q=80\" alt=\"La Clementina\"/></p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_16128778530127275081473192977116633311041178978096836001580038529371506755144.jpg&w=1600&output=webp&q=80\" alt=\"La Clementina\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_15768315409613439478599152368571991013787160987952566998322188669709188894473.jpg&w=1600&output=webp&q=80\" alt=\"La Clementina\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_18418758437576015243743202308979575182802602714570994628247578349125903733651.jpg&w=1600&output=webp&q=80\" alt=\"La Clementina\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_20546032980419546912511110055068243784404649333551265434047845318672141613211.jpg&w=1600&output=webp&q=80\" alt=\"La Clementina\" />"
+  },
+  "excerpt": {
+   "rendered": "La Clementina: desarrollo en pozo, comercializa Achaval Cornejo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66942_43126614502741397282869709784674294172198370768979176931718952952835106159558.jpg&w=1600&output=webp&q=80"
+    }
+   ]
+  },
+  "barrio": "San Isidro",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Achaval Cornejo",
+   "precio_desde": "",
+   "moneda": "USD",
+   "fecha_entrega": "202804",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "Nicolás Avellaneda, Lomas de San Isidro",
+   "estado_obra": "En pozo",
+   "lat": -34.479,
+   "lng": -58.518,
+   "fuente": "https://achavalcornejo.com/desarrollos/"
+  },
+  "meta": {
+   "fuente": "https://achavalcornejo.com/desarrollos/",
+   "comercializadora": "Achaval Cornejo"
+  }
+ },
+ {
+  "id": 43004,
+  "slug": "open-buenavista-san-fernando",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Open Buenavista — San Fernando"
+  },
+  "content": {
+   "rendered": "<p><strong>Open Buenavista</strong> es un conjunto residencial de cuatro edificios (planta baja y 8 pisos) en Buena Vista, San Fernando, una de las zonas de mayor crecimiento de Zona Norte, con acceso a colegios, clubes y locales comerciales. Comercializa <strong>Achaval Cornejo</strong>. Entrega estimada hacia enero de 2028.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene verificar la trayectoria de la desarrolladora, la estructura legal del fideicomiso y cómo se ajustan las cuotas antes de decidir.</p><p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_92485823953384640455042503150514496849754315379587544844038158765331376086983.jpg&w=1600&output=webp&q=80\" alt=\"Open Buenavista\"/></p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_16999600372803803387163662148657909641429372811667555227106460344750856102186.jpg&w=1600&output=webp&q=80\" alt=\"Open Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_6445304921813366121232417202303234791152707519306086953845450668794150940506.jpg&w=1600&output=webp&q=80\" alt=\"Open Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_87420022426116474788905642742507292102538772853703750144681065133130025018227.jpg&w=1600&output=webp&q=80\" alt=\"Open Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_10207488601581909379608285585229416820603698041028154517880950679836656134405.jpg&w=1600&output=webp&q=80\" alt=\"Open Buenavista\" />"
+  },
+  "excerpt": {
+   "rendered": "Open Buenavista: desarrollo en pozo, comercializa Achaval Cornejo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F66146_92485823953384640455042503150514496849754315379587544844038158765331376086983.jpg&w=1600&output=webp&q=80"
+    }
+   ]
+  },
+  "barrio": "San Fernando",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Achaval Cornejo",
+   "precio_desde": "",
+   "moneda": "USD",
+   "fecha_entrega": "202801",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "Buena Vista, San Fernando",
+   "estado_obra": "En pozo",
+   "lat": -34.452,
+   "lng": -58.556,
+   "fuente": "https://achavalcornejo.com/desarrollos/"
+  },
+  "meta": {
+   "fuente": "https://achavalcornejo.com/desarrollos/",
+   "comercializadora": "Achaval Cornejo"
+  }
+ },
+ {
+  "id": 43005,
+  "slug": "pueblo-buenavista-san-fernando",
+  "status": "publish",
+  "type": "desarrollo",
+  "title": {
+   "rendered": "Pueblo Buenavista — San Fernando"
+  },
+  "content": {
+   "rendered": "<p><strong>Pueblo Buenavista</strong> es un emprendimiento en Buena Vista, San Fernando, sobre la calle Renée Favaloro, con obra avanzada y últimas unidades disponibles. Comercializa <strong>Achaval Cornejo</strong>. Entrega estimada hacia enero de 2027.</p><p>En pozo, el precio de entrada suele ubicarse por debajo del usado terminado de la zona a cambio del riesgo de obra: conviene verificar la trayectoria de la desarrolladora, la estructura legal del fideicomiso y cómo se ajustan las cuotas antes de decidir.</p><p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_98907444640120861762527131599335917601910486361045151168397521005852548132010.jpg&w=1600&output=webp&q=80\" alt=\"Pueblo Buenavista\"/></p><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_53058656899124505378675438532184204911655500293517640092972738694708470094590.jpg&w=1600&output=webp&q=80\" alt=\"Pueblo Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_72979733162679367006411932555929789417708163860085404403992320221383070864796.jpg&w=1600&output=webp&q=80\" alt=\"Pueblo Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_88335400602523737787358578250973793965250897195084338781763763226483149152835.jpg&w=1600&output=webp&q=80\" alt=\"Pueblo Buenavista\" /><img src=\"https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_12234192219879049683331652160333892980205077096406135969117877683597827172139.jpg&w=1600&output=webp&q=80\" alt=\"Pueblo Buenavista\" />"
+  },
+  "excerpt": {
+   "rendered": "Pueblo Buenavista: desarrollo en pozo, comercializa Achaval Cornejo."
+  },
+  "featured_media": 1,
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "https://images.weserv.nl/?url=static.tokkobroker.com%2Fdev_original_pictures%2F61229_98907444640120861762527131599335917601910486361045151168397521005852548132010.jpg&w=1600&output=webp&q=80"
+    }
+   ]
+  },
+  "barrio": "San Fernando",
+  "estado_obra": "En pozo",
+  "acf": {
+   "desarrolladora": "",
+   "comercializadora": "Achaval Cornejo",
+   "precio_desde": "",
+   "moneda": "USD",
+   "fecha_entrega": "202701",
+   "tipologias": [],
+   "amenities": "",
+   "direccion": "Renée Favaloro, Buena Vista, San Fernando",
+   "estado_obra": "En pozo",
+   "lat": -34.4485,
+   "lng": -58.56,
+   "fuente": "https://achavalcornejo.com/desarrollos/"
+  },
+  "meta": {
+   "fuente": "https://achavalcornejo.com/desarrollos/",
+   "comercializadora": "Achaval Cornejo"
+  }
+ }
+]
