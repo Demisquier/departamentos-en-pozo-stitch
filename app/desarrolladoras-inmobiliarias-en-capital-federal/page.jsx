@@ -189,7 +189,9 @@ export default async function HubDesarrolladorasPage() {
     },
   ];
 
-  const html = page?.content?.rendered || "";
+  const rawHtml = page?.content?.rendered || "";
+  // Dedupe schema: el HTML de WP ya embebe ItemList/FAQPage/BreadcrumbList (RankMath); los quitamos y dejamos solo extraSchema (code-gen, mas rico).
+  const html = rawHtml.replace(/<script[^>]*application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi, "");
   // Si el contenido WP tiene el marcador Y hay datos en el CPT, partimos y montamos el
   // directorio nuevo en el medio. Si no, renderizamos el contenido completo (fallback
   // seguro: nunca dejamos la página sin su directorio).
