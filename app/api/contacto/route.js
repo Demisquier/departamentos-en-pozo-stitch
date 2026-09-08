@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const SHEET_WEBHOOK =
-  "https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec";
+  "https://script.google.com/macros/s/AKfycbzHwJyt4eAZLsanWsawLpukgn0iCZ-qoNRXSbdDLlH3cCsaGaO1uif4OCnT3KBNkHat/exec";
 const MAIL_URL = "https://formsubmit.co/ajax/contacto@departamentosenpozo.com.ar";
 
 // Rate-limit best-effort en memoria (por instancia serverless): corta ráfagas de spam.
