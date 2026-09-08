@@ -1,6 +1,7 @@
 import Container from "../_ui/Container";
 import Breadcrumb from "../_ui/Breadcrumb";
 import BuscadorConversacional from "../_ui/BuscadorConversacional";
+import BuscadorIA from "./BuscadorIA";
 import { SITE } from "../../lib/wp";
 
 export const revalidate = 3600;
@@ -30,6 +31,8 @@ export default function BuscarPage() {
       <div className="mt-8">
         <BuscadorConversacional />
       </div>
+
+      <BuscadorIA />
 
       <p className="text-[12px] text-on-surface-variant mt-10 max-w-3xl leading-relaxed">
         La búsqueda corre sobre nuestro catálogo de proyectos en pozo relevados en CABA y GBA. Los datos son de
