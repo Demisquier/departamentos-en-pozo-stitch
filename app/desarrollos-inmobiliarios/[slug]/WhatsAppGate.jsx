@@ -25,6 +25,11 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
     } catch {}
   }, [open]);
 
+  // Si no tenemos el WhatsApp del dev/comercializadora, el boton NO se muestra (el chat sigue
+  // disponible para todos). Nunca se rutea a una linea del sitio. La cobertura de WhatsApp crece
+  // a medida que cargamos numeros en data/dev-whatsapp.json.
+  if (!esDelDev) return null;
+
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const mensaje = "Hola, soy " + (form.nombre || "...") + ". Me interesa " + nombre + (barrio ? " en " + barrio : "") + ". Los vi en Departamentos en Pozo — ¿me pasás precio, disponibilidad y forma de pago?";
