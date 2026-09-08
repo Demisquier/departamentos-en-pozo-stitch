@@ -11,6 +11,7 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
   const [form, setForm] = useState({ nombre: "", whatsapp: "", email: "" });
   const [err, setErr] = useState("");
   const [sending, setSending] = useState(false);
+  const [enviado, setEnviado] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -65,10 +66,17 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
       await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sheet, mail }) });
     } catch {}
     track("wa_lead", { proyecto: nombre, del_dev: !!esDelDev });
-    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(mensaje);
-    window.open(url, "_blank", "noopener");
     setSending(false);
-    setOpen(false);
+    if (esDelDev && phone) {
+      const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank", "noopener");
+      setOpen(false);
+    } else {
+      // Sin WhatsApp del dev: NO abrimos wa.me a la linea del sitio (evita que el lead caiga
+      // en un WhatsApp personal). El lead ya quedo capturado y ruteado por mail a la
+      // desarrolladora/comercializadora + aviso a contacto@.
+      setEnviado(true);
+    }
   }
 
   const btnCls =
@@ -90,8 +98,17 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
               <h3 className="font-headline-sm text-headline-sm text-primary">Consultar por WhatsApp</h3>
               <button type="button" onClick={() => setOpen(false)} className="material-symbols-outlined text-on-surface-variant">close</button>
             </div>
+            {enviado ? (
+              <div className="text-center py-4">
+                <span className="material-symbols-outlined text-[42px]" style={{ color: "#1FA855" }}>check_circle</span>
+                <h4 className="font-headline-sm text-headline-sm text-primary mt-2">¡Listo, lo tomamos!</h4>
+                <p className="text-[13px] text-on-surface-variant mt-1">Le pasamos tu consulta por <strong>{nombre}</strong> a la desarrolladora y te vamos a contactar. No te soltamos: seguimos acompañándote desde Departamentos en Pozo.</p>
+                <button type="button" onClick={() => { setOpen(false); setEnviado(false); }} className="mt-4 w-full py-3 rounded font-label-caps text-label-caps tracking-widest bg-primary-container text-on-primary hover:opacity-90 transition-all">Cerrar</button>
+              </div>
+            ) : (
+            <>
             <p className="text-[13px] text-on-surface-variant mb-4">
-              Dejanos tus datos y te conectamos {esDelDev ? "con la comercializadora de" : "por"} <strong>{nombre}</strong>. Sin costo.
+              Dejanos tus datos y {esDelDev ? "te conectamos por WhatsApp con la comercializadora de" : "le pasamos tu consulta a la desarrolladora de"} <strong>{nombre}</strong>. Sin costo.
             </p>
             <form onSubmit={enviar} className="space-y-3">
               <label className="block">
@@ -113,11 +130,13 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
               <button type="submit" disabled={sending}
                 className="w-full py-3.5 rounded font-label-caps text-label-caps tracking-widest flex justify-center items-center gap-2 disabled:opacity-60"
                 style={{ backgroundColor: "#1FA855", color: "#fff" }}>
-                {sending ? "ABRIENDO…" : "ABRIR WHATSAPP"}
+                {sending ? "ENVIANDO…" : (esDelDev ? "ABRIR WHATSAPP" : "ENVIAR CONSULTA")}
                 <span className="material-symbols-outlined text-[18px]">send</span>
               </button>
               <p className="text-[11px] text-on-surface-variant text-center">Al continuar aceptás que te contactemos por tu consulta. No compartimos tus datos con terceros.</p>
             </form>
+            </>
+            )}
           </div>
         </div>
       )}
