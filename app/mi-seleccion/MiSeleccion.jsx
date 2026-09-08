@@ -587,7 +587,7 @@ function SavedCard({ it, estado, onContactar, onMarcar, onVer }) {
   const card = cardDe(it);
   const contactado = estado === "contactado";
   return (
-    <div className="snap-start shrink-0 w-[270px] flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
+    <div className="w-full flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
       <button type="button" onClick={onVer} className="relative aspect-[4/3] overflow-hidden bg-surface-container-high text-left block w-full">
         {card.img ? (
           <img src={card.img} alt={`${it.nombre} — ${it.barrio || ""}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
@@ -664,7 +664,7 @@ function FeedCard({ m, onVer, onDescartar }) {
   const [pidiendoMotivo, setPidiendoMotivo] = useState(false);
   const card = cardDe(m);
   return (
-    <div className="w-full flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
+    <div className="snap-start shrink-0 w-[270px] flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
       <button type="button" onClick={onVer} className="relative aspect-[4/3] overflow-hidden bg-surface-container-high text-left block w-full">
         {m.imagen ? (
           <img src={m.imagen} alt={`${m.nombre} — ${m.barrio || ""}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
