@@ -198,6 +198,37 @@ export default function MiSeleccion({ catalogo = [] }) {
     <div className="flex flex-col gap-8">
       <PlanNav mostrarGuardados={items.length > 0} />
 
+      {/* HERO — resumen del inversor (rediseño Stitch) */}
+      {ready && (items.length > 0 || perfil) && (
+        <section className="flex flex-col gap-3 -mt-3">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#8a6d2f] tracking-wide uppercase">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Portal del inversor · sesión activa</span>
+          </div>
+          <div>
+            <h1 className="text-2xl md:text-3xl font-normal text-primary leading-snug">
+              Hola{perfil?.nombre ? " " + String(perfil.nombre).split(" ")[0] : ""}, este es tu <span className="italic font-bold underline decoration-[#B89758]/60 decoration-2">Plan de Inversión</span>
+            </h1>
+            <p className="text-[13px] text-on-surface-variant mt-1 leading-relaxed">
+              Acá te acompañamos: tus proyectos analizados, las consultas que hiciste y las oportunidades según tu perfil. No te soltamos en la decisión.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-2 bg-white rounded-2xl p-3 border border-outline-variant shadow-sm text-center">
+            <div className="py-1">
+              <p className="text-2xl font-bold text-primary leading-none">{items.length}</p>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-on-surface-variant mt-1 block">Guardados</span>
+            </div>
+            <div className="py-1 border-x border-outline-variant">
+              <p className="text-2xl font-bold text-[#B89758] leading-none">{guardadosSinContactar.length}</p>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-on-surface-variant mt-1 block">Pendientes</span>
+            </div>
+            <div className="py-1">
+              <p className="text-2xl font-bold text-emerald-600 leading-none">{guardadosContactados.length}</p>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-on-surface-variant mt-1 block">Contactados</span>
+            </div>
+          </div>
+        </section>
+      )}
       {/* 1) TU PERFIL — lo primero: editable, con búsqueda + contacto + un dato clave libre. */}
       <div id="mp-perfil" className="scroll-mt-28">
         <PerfilEditable perfil={perfil} onSaved={setPerfil} />
@@ -255,6 +286,18 @@ export default function MiSeleccion({ catalogo = [] }) {
       {/* Otros proyectos que el usuario suma a mano (no están en el catálogo). */}
       <AgregarExterno />
 
+      {/* Banner asesoría neutral CAC (rediseño Stitch) */}
+      <section className="bg-[#0B1528] text-white rounded-2xl p-4 shadow-md border border-white/10">
+        <div className="flex flex-col gap-2">
+          <span className="self-start inline-flex items-center gap-1 bg-white/10 text-[#e9cf9b] text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide">Asesoría neutral e imparcial</span>
+          <h2 className="text-base italic font-medium leading-snug">¿Dudas con la forma de pago o el índice CAC?</h2>
+          <p className="text-[12px] text-white/70 leading-relaxed">No somos intermediarios comisionistas de las desarrolladoras. Analizamos números reales, de tu lado.</p>
+          <button type="button" onClick={() => setConsulta({ nombre: "Asesoría (forma de pago / CAC)", slug: "" })} className="mt-2 w-full bg-[#B89758] hover:opacity-90 text-white font-semibold text-[13px] py-2.5 px-4 rounded-xl shadow transition-all inline-flex items-center justify-center gap-2">
+            Hablar con un asesor neutral
+            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </div>
+      </section>
       {/* 3) NUEVAS OPORTUNIDADES — las fichas abren un modal (no salís de Mi Plan). */}
       <section id="mp-oportunidades" className="scroll-mt-28 flex flex-col gap-6">
         <SectionHeader icon="auto_awesome" titulo="Nuevas oportunidades para vos" sub="Proyectos que encajan con tu búsqueda y todavía no viste. Abrilos acá sin perder tu plan; descartá lo que no va y afinamos." />
