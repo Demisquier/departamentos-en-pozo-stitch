@@ -34,6 +34,7 @@ export default function Footer() {
           ]} />
 
           <FootCol title="Herramientas" links={[
+            ["Asesor IA (beta)", "/asesor-ia/"],
             ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],
             ["Alertas de lanzamientos", "/alertas-de-lanzamientos-en-pozo/"],
             ["Videos de emprendimientos", "/videos-de-emprendimientos-en-pozo/"],
