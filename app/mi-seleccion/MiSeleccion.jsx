@@ -897,7 +897,6 @@ function CuentaBloque({ enabled, user, login, logout }) {
           <span className="material-symbols-outlined text-[18px] text-green-600 icon-fill shrink-0">check_circle</span>
           Conectado como <strong className="font-medium break-all">{email}</strong> — tu plan se guarda en todos tus dispositivos.
         </p>
-        <button type="button" onClick={logout} className="shrink-0 self-start sm:self-auto rounded border border-outline-variant px-4 py-2 text-[13px] text-primary hover:border-secondary transition-colors">Salir</button>
       </div>
     );
   }
