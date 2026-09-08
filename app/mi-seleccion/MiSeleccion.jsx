@@ -574,7 +574,7 @@ function SavedCarousel({ titulo, sub, items, estado, onContactar, onMarcar, onVe
         <h3 className="font-headline-sm text-headline-sm text-primary">{titulo} ({items.length})</h3>
       </div>
       {sub && <p className="text-on-surface-variant text-[13.5px] mb-4 ml-6">{sub}</p>}
-      <div className="flex gap-4 overflow-x-auto pb-3 -mx-1 px-1 snap-x snap-mandatory [scrollbar-width:thin]">
+      <div className="grid grid-cols-2 gap-3">
         {items.map((it) => (
           <SavedCard key={it.slug} it={it} estado={estado} onContactar={() => onContactar(it)} onMarcar={() => onMarcar(it.slug)} onVer={() => onVer && onVer(it)} />
         ))}
@@ -664,7 +664,7 @@ function FeedCard({ m, onVer, onDescartar }) {
   const [pidiendoMotivo, setPidiendoMotivo] = useState(false);
   const card = cardDe(m);
   return (
-    <div className="snap-start shrink-0 w-64 flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
+    <div className="w-full flex flex-col bg-surface rounded-xl overflow-hidden border border-outline-variant">
       <button type="button" onClick={onVer} className="relative aspect-[4/3] overflow-hidden bg-surface-container-high text-left block w-full">
         {m.imagen ? (
           <img src={m.imagen} alt={`${m.nombre} — ${m.barrio || ""}`} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
