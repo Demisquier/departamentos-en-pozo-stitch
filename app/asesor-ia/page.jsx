@@ -14,17 +14,17 @@ export const metadata = {
 
 export default function AsesorIAPage() {
   return (
-    <Container as="main" className="py-4 md:py-14">
-      <div className="max-w-xl mx-auto text-center mb-4 md:mb-8">
-        <span className="inline-flex items-center gap-1.5 text-[12px] font-label-caps uppercase tracking-wider text-secondary border border-outline-variant rounded-full px-3 py-1 mb-3">
-          <span className="material-symbols-outlined text-[16px]">auto_awesome</span> Beta
+    <Container as="main" className="py-3 md:py-14">
+      <div className="max-w-xl mx-auto text-center mb-3 md:mb-8">
+        <span className="inline-flex items-center gap-1.5 text-[11px] md:text-[12px] font-label-caps uppercase tracking-wider text-secondary border border-outline-variant rounded-full px-2.5 py-0.5 md:py-1 mb-2 md:mb-3">
+          <span className="material-symbols-outlined text-[15px] md:text-[16px]">auto_awesome</span> Beta
         </span>
-        <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-3">Asesor IA</h1>
-        <p className="text-on-surface-variant font-body-lg text-body-lg">
+        <h1 className="font-headline-md text-[26px] md:text-display-lg text-primary leading-tight mb-1.5 md:mb-3">Asesor IA</h1>
+        <p className="text-on-surface-variant font-body-lg text-body-md md:text-body-lg hidden sm:block">
           Preguntá sobre proyectos, barrios, precios o riesgos del pozo. Respuestas basadas en nuestro catálogo independiente — no somos comercial de las desarrolladoras.
         </p>
       </div>
-      <div className="max-w-xl mx-auto h-[calc(100dvh-230px)] min-h-[440px] md:h-[72vh] md:min-h-[520px]">
+      <div className="max-w-xl mx-auto h-[calc(100dvh-190px)] min-h-[440px] md:h-[72vh] md:min-h-[520px]">
         <AsesorIA />
       </div>
       <p className="text-[12px] text-on-surface-variant mt-6 max-w-xl mx-auto text-center leading-relaxed">
