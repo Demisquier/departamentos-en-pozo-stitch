@@ -4,14 +4,18 @@ import Link from "next/link";
 import { interpretar, scoreProyecto, money } from "../../lib/busqueda";
 import { track } from "../../lib/track";
 
-// Búsqueda inteligente: caja de texto (escribí o pegá lo que buscás). Filtra el
-// catálogo (/catalogo.json) EN VIVO. Sin LLM = gratis. La lógica de interpretación
-// (barrio, ambientes, precio, sinónimos, fuzzy) vive en lib/busqueda.js (single source).
+// Búsqueda inteligente AI-FIRST. Al ENVIAR (submit/Enter/chip), si /api/buscar-ia está
+// disponible (GET ready:true) → POST la consulta y muestra los matches de la IA (con
+// "motivo"). Si no hay IA (ready:false), error, o la IA no devuelve nada → filtro LOCAL
+// sobre /catalogo.json (plan B, gratis). Mientras tipeás corre el filtro local en vivo
+// (snappy). La interpretación local (barrio, ambientes, precio, sinónimos, fuzzy) vive en
+// lib/busqueda.js (single source). Sin key/crédito → se comporta EXACTO como antes.
 
 export default function BuscadorConversacional({ initialQuery = "", onQueryChange }) {
   const [q, setQ] = useState(initialQuery);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [iaReady, setIaReady] = useState(false);
   const data = useRef(null);
   const barrioLabels = useRef([]);
   const deb = useRef(null);
@@ -38,27 +42,56 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
     }, 900);
   }
 
+  // PLAN B — filtro local del catálogo en memoria. Instantáneo y gratis.
   function run(texto, arr) {
     const list = arr || data.current;
     if (!list) return;
     const f = interpretar(texto || "", barrioLabels.current);
     const scored = list.map((p) => [scoreProyecto(p, f), p]).filter((x) => x[0] >= 0).sort((a, b) => b[0] - a[0] || (Number(!!b[1].imagen) - Number(!!a[1].imagen)));
-    setRes({ items: scored.slice(0, 60).map((x) => x[1]), f, total: scored.length });
+    setRes({ items: scored.slice(0, 60).map((x) => x[1]), f, total: scored.length, ia: false });
     syncUrl(texto);
     trackBusqueda(texto, scored.length);
   }
 
+  // PRIMARIO — búsqueda semántica con IA. Si falla o viene vacía, cae al filtro local.
+  async function doIA(t) {
+    setLoading(true);
+    syncUrl(t);
+    let items = null;
+    try {
+      const r = await fetch("/api/buscar-ia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q: t }) });
+      const d = await r.json();
+      const arr = Array.isArray(d?.resultados) ? d.resultados : [];
+      if (arr.length) items = arr.map((p) => ({ slug: p.slug, nombre: p.nombre, barrio: p.barrio, imagen: p.imagen, precio_desde_usd: p.precioDesde || 0, motivo: p.motivo || "" }));
+    } catch {}
+    if (items) { setRes({ items, f: {}, total: items.length, ia: true }); trackBusqueda(t, items.length); }
+    else { run(t); } // plan B
+    setLoading(false);
+  }
+
+  // Envío explícito (submit / Enter / chip de ejemplo): IA si está lista, si no local.
+  function submit(texto) {
+    const t = (texto || "").trim();
+    if (iaReady && t) doIA(t);
+    else run(texto);
+  }
+
   useEffect(() => {
     (async () => {
+      let arr = [];
       try {
         const r = await fetch("/catalogo.json");
         const j = await r.json();
-        const arr = (j && j.proyectos) || [];
+        arr = (j && j.proyectos) || [];
         barrioLabels.current = [...new Set(arr.map((p) => (p.barrio || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")).filter(Boolean))];
         data.current = arr;
-        run(initialQuery, arr);
-      } catch { data.current = []; setRes({ items: [], f: {}, total: 0 }); }
-      finally { setLoading(false); }
+      } catch { data.current = []; }
+      let ready = false;
+      try { const rr = await fetch("/api/buscar-ia"); ready = !!(await rr.json())?.ready; } catch {}
+      setIaReady(ready);
+      const q0 = (initialQuery || "").trim();
+      if (q0 && ready) { await doIA(q0); }        // handoff desde el hero → IA
+      else { run(initialQuery, arr); setLoading(false); }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -67,12 +100,12 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
     setQ(v);
     onQueryChange && onQueryChange(v);
     clearTimeout(deb.current);
-    deb.current = setTimeout(() => run(v), 200);
+    deb.current = setTimeout(() => run(v), 200); // vivo y local mientras tipeás
   }
   function setQuick(v) {
     setQ(v);
     onQueryChange && onQueryChange(v);
-    run(v);
+    submit(v);
   }
 
   const f = res && res.f ? res.f : {};
@@ -88,7 +121,7 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
 
   return (
     <div className="w-full">
-      <form onSubmit={(e) => { e.preventDefault(); run(q); }} className="flex flex-col sm:flex-row gap-2">
+      <form onSubmit={(e) => { e.preventDefault(); submit(q); }} className="flex flex-col sm:flex-row gap-2">
         <div className="relative flex-1">
           <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary text-[22px] pointer-events-none">auto_awesome</span>
           <input
@@ -133,7 +166,10 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
               <button type="button" onClick={() => { setQ(""); run(""); }} className="text-[12px] text-on-surface-variant underline ml-1">limpiar</button>
             </div>
           )}
-          <p className="text-[14px] text-on-surface-variant mb-4">{res.total} proyecto{res.total === 1 ? "" : "s"} en pozo{chips.length ? " que matchean" : ""}</p>
+          <p className="text-[14px] text-on-surface-variant mb-4">
+            {res.total} proyecto{res.total === 1 ? "" : "s"} en pozo{chips.length ? " que matchean" : ""}
+            {res.ia && <span className="ml-2 text-[12px] text-secondary"><span className="material-symbols-outlined text-[14px] align-middle mr-0.5">auto_awesome</span>elegidos por IA</span>}
+          </p>
           {res.items.length === 0 ? (
             <div className="border border-outline-variant rounded-xl p-8 text-center">
               <p className="text-on-surface-variant mb-4">No encontramos proyectos con esos criterios. Probá con menos condiciones o cambiá el barrio/precio.</p>
@@ -155,6 +191,7 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
                   <div className="p-4 flex flex-col flex-1">
                     <h3 className="font-headline-sm text-[16px] text-primary leading-tight">{p.nombre}</h3>
                     {p.barrio && <p className="text-on-surface-variant text-[13px] mt-0.5">{p.barrio}{p.entrega_anio ? " · entrega " + p.entrega_anio : ""}</p>}
+                    {p.motivo && <p className="text-[12.5px] text-secondary mt-1 leading-snug"><span className="material-symbols-outlined text-[14px] align-middle mr-0.5">auto_awesome</span>{p.motivo}</p>}
                     <div className="mt-3 pt-3 border-t border-outline-variant flex items-end justify-between">
                       <span className="text-primary font-headline-sm text-[15px]">{p.precio_desde_usd ? money(p.precio_desde_usd) : (p.precio_m2_usd ? money(p.precio_m2_usd) + "/m²" : "Consultar")}</span>
                       <span className="text-[12px] text-secondary group-hover:underline">Ver ficha →</span>
