@@ -133,6 +133,11 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
 
   return (
     <div className="w-full">
+      {/* ModeToggleFiltros: cambia de modo llevando la búsqueda aplicada (q) a Conversar (/explorar). */}
+      <div className="flex items-center gap-1 rounded-full bg-surface-container p-1 w-full max-w-xs mb-4">
+        <span className="flex-1 text-center px-3 py-1.5 rounded-full text-[13px] font-semibold bg-primary-container text-white inline-flex items-center justify-center gap-1"><span className="material-symbols-outlined text-[15px]">tune</span> Filtros y lista</span>
+        <button type="button" onClick={() => { const t = (q || "").trim(); try { if (t) sessionStorage.setItem("dpp_iaq", t); } catch {} window.location.assign("/explorar/" + (t ? "#q=" + encodeURIComponent(t) : "")); }} className="flex-1 px-3 py-1.5 rounded-full text-[13px] font-semibold text-on-surface-variant hover:text-secondary inline-flex items-center justify-center gap-1"><span className="material-symbols-outlined text-[15px]">forum</span> Conversar</button>
+      </div>
       <form onSubmit={(e) => { e.preventDefault(); submit(q); }} className="flex flex-col sm:flex-row gap-2">
         <div className="relative flex-1">
           <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary text-[22px] pointer-events-none">auto_awesome</span>
