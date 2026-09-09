@@ -22,6 +22,17 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
   const [leadSent, setLeadSent] = useState(false);
   const scrollRef = useRef(null);
 
+  // ¿Ya hubo al menos 1 respuesta útil del asistente? (saludo inicial + >=1 reply).
+  const gotReply = msgs.filter((m) => m.role === "assistant").length > 1;
+  // ¿Chat vacío? (solo el saludo, el usuario todavía no escribió nada).
+  const chatVacio = !msgs.some((m) => m.role === "user");
+  // Chips deterministas (0 tokens). Prompts iniciales contextuales al proyecto.
+  const quickPrompts = proyectoNombre
+    ? ["¿Cuál es la forma de pago?", "¿Qué riesgos tiene?", "Mostrame similares", "¿Cuándo entrega?"]
+    : ["2 ambientes en Palermo hasta 200k", "Algo para alquilar en Núñez", "Monoambiente en pozo barato", "¿Conviene pozo o usado?"];
+  // Follow-ups tras cada respuesta (evita el dead-end).
+  const followUps = ["Más barato", "Otro barrio", "Con financiación", "Comparar los primeros 2"];
+
   useEffect(() => {
     if (embedded) return; // el modal ya validó readiness → no re-chequear
     let ok = true;
@@ -34,9 +45,15 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
     if (el) el.scrollTop = el.scrollHeight;
   }, [msgs, sending]);
 
-  async function enviar(e) {
+  function enviar(e) {
     e.preventDefault();
-    const val = txt.trim();
+    sendText(txt);
+  }
+
+  // Envía una consulta (desde el input o desde un chip determinista). 0 tokens extra:
+  // los chips solo pre-cargan el texto, la llamada al LLM es la misma de siempre.
+  async function sendText(raw) {
+    const val = (raw || "").trim();
     if (!val || sending) return;
     const next = [...msgs, { role: "user", content: val }];
     setMsgs(next); setTxt(""); setSending(true); setSugeridos([]); setVerMas("");
@@ -123,6 +140,16 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
             <div className={`text-[14px] leading-relaxed px-3.5 py-2.5 rounded-2xl whitespace-pre-wrap ${m.role === "user" ? "bg-primary-container text-on-primary rounded-br-md" : "bg-surface-container-low text-on-surface border border-outline-variant rounded-bl-md"}`}>{m.content}</div>
           </div>
         ))}
+        {chatVacio && !sending && (
+          <div className="self-start w-full mt-1 flex flex-wrap gap-2">
+            {quickPrompts.map((qp) => (
+              <button key={qp} type="button" onClick={() => sendText(qp)}
+                className="text-[13px] border border-outline-variant rounded-full px-3 py-1.5 text-primary bg-surface hover:border-secondary hover:text-secondary transition">
+                {qp}
+              </button>
+            ))}
+          </div>
+        )}
         {sugeridos.length > 0 && (
           <div className="self-start w-full mt-1">
             <div className="flex gap-2.5 overflow-x-auto pb-1.5 -mx-1 px-1 snap-x">
@@ -139,7 +166,7 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
                     <div className="text-[12.5px] font-medium text-primary leading-snug line-clamp-2">{s.nombre}</div>
                     {s.barrio && <div className="text-[11px] text-on-surface-variant truncate mt-0.5">{s.barrio}</div>}
                     <div className="text-[12px] text-secondary font-medium mt-1">{s.precioDesde ? `Desde USD ${Number(s.precioDesde).toLocaleString("es-AR")}` : "Consultar"}</div>
-                    {(s.ambientes || s.entrega) && <div className="text-[10.5px] text-on-surface-variant mt-0.5 truncate">{[s.ambientes, s.entrega ? "entrega " + s.entrega : ""].filter(Boolean).join(" · ")}</div>}
+                    {(s.ambientes || s.entregaLabel) && <div className="text-[10.5px] text-on-surface-variant mt-0.5 truncate">{[s.ambientes, s.entregaLabel].filter(Boolean).join(" · ")}</div>}
                   </div>
                 </Link>
               ))}
@@ -147,6 +174,16 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
             <Link href={verMas || "/desarrollos-inmobiliarios/"} className="inline-flex items-center gap-1 text-[12.5px] text-secondary hover:text-primary transition mt-1.5 font-medium">
               Ver listado completo <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
+          </div>
+        )}
+        {gotReply && !sending && (
+          <div className="self-start w-full mt-0.5 flex flex-wrap gap-2">
+            {followUps.map((fu) => (
+              <button key={fu} type="button" onClick={() => sendText(fu)}
+                className="text-[12.5px] border border-outline-variant rounded-full px-3 py-1 text-on-surface-variant bg-surface hover:border-secondary hover:text-secondary transition">
+                {fu}
+              </button>
+            ))}
           </div>
         )}
         {sending && (
@@ -158,7 +195,8 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         )}
       </div>
 
-      {!leadSent ? (
+      {/* Captura de contacto: aparece SOLO después de la 1ª respuesta útil (valor antes de pedir el dato). */}
+      {gotReply && (!leadSent ? (
         <form onSubmit={enviarLead} className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 flex items-center gap-2">
           <input value={lead.nombre} onChange={(e) => setLead((l) => ({ ...l, nombre: e.target.value }))} placeholder="Nombre" autoComplete="given-name" className="w-24 shrink-0 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
           <input value={lead.whatsapp} onChange={(e) => setLead((l) => ({ ...l, whatsapp: e.target.value }))} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
@@ -168,7 +206,7 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
           <span className="material-symbols-outlined text-[18px]">check_circle</span> ¡Listo! Un asesor te va a escribir por WhatsApp.
         </div>
-      )}
+      ))}
 
       <form onSubmit={enviar} className="shrink-0 border-t border-outline-variant bg-surface p-3">
         <div className="flex items-center gap-2">
