@@ -15,8 +15,10 @@ export default function AsesorLauncher() {
   const path = usePathname() || "";
   useEffect(() => { setOpen(false); }, [path]);
 
-  const enFicha = /^\/desarrollos-inmobiliarios\/[^/]+\/?$/.test(path);
-  const oculto = path.startsWith("/asesor") || path.startsWith("/mi-seleccion") || enFicha;
+  // FAB global: visible en home, catálogo y fichas. Oculto SOLO donde ya hay un chat
+  // propio (/asesor, /asesor-ia) o el panel Mi Plan (/mi-seleccion). Antes se ocultaba
+  // también en la ficha; ahora se muestra (la ficha tiene su CTA + el FAB no molesta).
+  const oculto = path.startsWith("/asesor") || path.startsWith("/mi-seleccion");
 
   // Visibilidad dinamica: verdadero SOLO mientras estas debajo del hero (>420px).
   useEffect(() => {
