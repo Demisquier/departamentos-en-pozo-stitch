@@ -2,7 +2,7 @@
 // GET  → { ready }.
 // POST { q } → { resultados:[{slug,nombre,barrio,precioDesde,imagen,url,motivo}] }.
 // Sin OPENAI_API_KEY: 200 { needsKey:true }. Errores → 200 { error:true, resultados:[] }.
-import { hasKey, loadCatalogo, prefiltrar, fichaUrl, openaiChat } from "../../../lib/ia";
+import { hasKey, loadCatalogo, prefiltrar, cardFrom, openaiChat } from "../../../lib/ia";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -50,15 +50,9 @@ export async function POST(req) {
       const p = byId.get(slug);
       if (!p) continue;
       seen.add(slug);
-      resultados.push({
-        slug: p.slug,
-        nombre: p.nombre,
-        barrio: p.barrio || "",
-        precioDesde: p.precioDesde || null,
-        imagen: p.imagen || null,
-        url: fichaUrl(p.slug),
-        motivo: (r.motivo || "").toString().slice(0, 160),
-      });
+      // Card sanitizada (dedupe por slug ya garantizado por `seen`; ambientes/entrega
+      // normalizados) + el motivo semántico del LLM.
+      resultados.push({ ...cardFrom(p), motivo: (r.motivo || "").toString().slice(0, 160) });
       if (resultados.length >= 12) break;
     }
 
