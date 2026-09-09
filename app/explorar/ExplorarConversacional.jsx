@@ -25,6 +25,7 @@ export default function ExplorarConversacional() {
   const [pane, setPane] = useState("chat"); // mobile: "chat" | "res"
   const [lead, setLead] = useState({ nombre: "", whatsapp: "" });
   const [leadSent, setLeadSent] = useState(false);
+  const [lastQuery, setLastQuery] = useState("");
   const scrollRef = useRef(null);
   const ranSeed = useRef(false);
 
@@ -63,7 +64,7 @@ export default function ExplorarConversacional() {
     const val = (raw || "").trim();
     if (!val || sending) return;
     const next = [...msgs, { role: "user", content: val }];
-    setMsgs(next); setTxt(""); setSending(true);
+    setMsgs(next); setTxt(""); setSending(true); setLastQuery(val);
     track("explorar_msg", {});
     try {
       const r = await fetch("/api/chat", {
@@ -151,6 +152,11 @@ export default function ExplorarConversacional() {
 
   return (
     <div className="h-full flex flex-col">
+      {/* ModeToggleConversar: cambia a Filtros llevando la última consulta (lastQuery) a /buscar. */}
+      <div className="shrink-0 flex items-center gap-1 rounded-full bg-surface-container p-1 w-full max-w-xs mb-3">
+        <button type="button" onClick={() => { const t = (lastQuery || "").trim(); try { if (t) sessionStorage.setItem("dpp_iaq", t); } catch {} window.location.assign("/buscar/" + (t ? "#q=" + encodeURIComponent(t) : "")); }} className="flex-1 px-3 py-1.5 rounded-full text-[13px] font-semibold text-on-surface-variant hover:text-secondary inline-flex items-center justify-center gap-1"><span className="material-symbols-outlined text-[15px]">tune</span> Filtros y lista</button>
+        <span className="flex-1 text-center px-3 py-1.5 rounded-full text-[13px] font-semibold bg-secondary text-white inline-flex items-center justify-center gap-1"><span className="material-symbols-outlined text-[15px]">forum</span> Conversar</span>
+      </div>
       {/* Toggle mobile Conversar / Resultados */}
       <div className="lg:hidden shrink-0 flex items-center gap-1 p-1 bg-surface-container rounded-full mb-3 w-full max-w-sm mx-auto">
         <button type="button" onClick={() => setPane("chat")} aria-selected={pane === "chat"} className={`flex-1 px-4 py-2 rounded-full text-[13px] font-semibold transition-colors ${pane === "chat" ? "bg-secondary text-white" : "text-on-surface-variant"}`}>Conversar</button>
