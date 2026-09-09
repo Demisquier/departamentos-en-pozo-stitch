@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import ProjectCard from '../../_ui/ProjectCard';
+import Link from 'next/link';
 
 // Carrusel horizontal de proyectos similares (mismo barrio / precio cercano).
 // Scroll con snap + botones prev/next en desktop. Los items ya vienen puntuados/ordenados.
@@ -21,6 +22,11 @@ export default function ProyectosSimilares({ items = [], barrio }) {
           <h2 className="font-headline-sm text-headline-sm text-primary">Proyectos similares</h2>
           {barrio && (
             <p className="text-on-surface-variant text-[14px] mt-1">Otros desarrollos en pozo parecidos por zona y precio.</p>
+          )}
+          {barrio && (
+            <Link href={`/explorar/#q=${encodeURIComponent('departamentos en pozo en ' + barrio)}`} className="inline-flex items-center gap-1 text-[13px] text-secondary hover:text-primary font-medium mt-1.5">
+              <span className="material-symbols-outlined text-[16px]">forum</span> Explorá similares conversando
+            </Link>
           )}
         </div>
         <div className="hidden md:flex gap-2 shrink-0">
