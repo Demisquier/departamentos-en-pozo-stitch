@@ -1,13 +1,27 @@
 "use client";
 // app/asesor/AsesorModal.jsx — Abre el asesor como modal SOBRE la ficha, sin perder navegación.
+// AI-FIRST: al montar chequea GET /api/chat. Si ready===true → chat IA (AsesorIA embebido).
+// Si ready===false / error → chat GUIONADO actual (Valentina, AsesorChat) = PLAN B. Cero
+// ruptura: si se acaba el crédito de OpenAI, el modal vuelve solo al chat que ya funciona.
 // Fix mobile: cuando el teclado aparece, el panel se ancla EXACTAMENTE al viewport visible
 // (top + height del visualViewport), así la caja de escritura nunca queda tapada ni corrida.
-// En desktop usa el centrado normal con altura fija.
 import { useEffect, useState } from "react";
 import AsesorChat from "./AsesorChat";
+import AsesorIA from "../asesor-ia/AsesorIA";
 
 export default function AsesorModal({ nombre = "", slug = "", pedido = "", onClose }) {
   const [vp, setVp] = useState(null); // { top, height } en mobile, o null en desktop
+  const [modo, setModo] = useState(null); // null=chequeando · "ia" · "scripted"
+
+  // AI-first: preguntamos si el chat IA está disponible; si no, plan B = guionado.
+  useEffect(() => {
+    let ok = true;
+    fetch("/api/chat")
+      .then((r) => r.json())
+      .then((d) => { if (ok) setModo(d?.ready ? "ia" : "scripted"); })
+      .catch(() => { if (ok) setModo("scripted"); });
+    return () => { ok = false; };
+  }, []);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -39,7 +53,15 @@ export default function AsesorModal({ nombre = "", slug = "", pedido = "", onClo
         style={vp ? { top: vp.top + "px", height: vp.height + "px" } : undefined}
         onClick={(e) => e.stopPropagation()}
       >
-        <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
+        {modo === null ? (
+          <div className="flex h-full items-center justify-center bg-surface border border-outline-variant rounded-2xl">
+            <span className="material-symbols-outlined animate-spin text-secondary text-[28px]">progress_activity</span>
+          </div>
+        ) : modo === "ia" ? (
+          <AsesorIA embedded proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
+        ) : (
+          <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
+        )}
       </div>
     </div>
   );
