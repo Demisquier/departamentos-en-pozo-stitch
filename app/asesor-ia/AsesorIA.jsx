@@ -1,17 +1,21 @@
 "use client";
 // app/asesor-ia/AsesorIA.jsx — Chat real contra /api/chat (GPT, env-gated).
-// Al montar hace GET /api/chat: si ready===false muestra "en preparación" (NO el chat).
+// Standalone (/asesor-ia): al montar hace GET /api/chat; si ready===false muestra "en
+// preparación". EMBEBIDO (dentro de AsesorModal): recibe embedded=true → asume ready
+// (el modal ya chequeó) y NO muestra placeholder; el modal decide IA vs chat guionado.
 // Si ready: burbujas + input + tarjetas de `sugeridos` + captura de lead (nombre+WhatsApp).
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { track } from "../../lib/track";
 
-const HOLA = "¡Hola! Soy tu asesor con IA. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos en pozo de nuestro catálogo. También te aviso los riesgos a mirar.";
-
-export default function AsesorIA() {
-  const [ready, setReady] = useState(null); // null=cargando, false=off, true=on
-  const [msgs, setMsgs] = useState([{ role: "assistant", content: HOLA }]);
+export default function AsesorIA({ embedded = false, proyectoNombre = "", proyectoSlug = "", pedido = "", onClose = null }) {
+  const hola = proyectoNombre
+    ? `¡Hola! Soy tu asesor con IA. Te ayudo con ${pedido || "precio, cuota y disponibilidad"} de ${proyectoNombre} y proyectos similares en pozo. ¿Qué querés saber?`
+    : "¡Hola! Soy tu asesor con IA. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos en pozo de nuestro catálogo. También te aviso los riesgos a mirar.";
+  const [ready, setReady] = useState(embedded ? true : null); // null=cargando, false=off, true=on
+  const [msgs, setMsgs] = useState([{ role: "assistant", content: hola }]);
   const [sugeridos, setSugeridos] = useState([]);
+  const [verMas, setVerMas] = useState("");
   const [txt, setTxt] = useState("");
   const [sending, setSending] = useState(false);
   const [lead, setLead] = useState({ nombre: "", whatsapp: "" });
@@ -19,10 +23,11 @@ export default function AsesorIA() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
+    if (embedded) return; // el modal ya validó readiness → no re-chequear
     let ok = true;
     fetch("/api/chat").then((r) => r.json()).then((d) => { if (ok) setReady(!!d?.ready); }).catch(() => { if (ok) setReady(false); });
     return () => { ok = false; };
-  }, []);
+  }, [embedded]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -34,19 +39,20 @@ export default function AsesorIA() {
     const val = txt.trim();
     if (!val || sending) return;
     const next = [...msgs, { role: "user", content: val }];
-    setMsgs(next); setTxt(""); setSending(true); setSugeridos([]);
+    setMsgs(next); setTxt(""); setSending(true); setSugeridos([]); setVerMas("");
     track("chat_ia_msg", {});
     try {
       const r = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next.slice(-12) }),
+        body: JSON.stringify({ messages: next.slice(-12), proyecto: proyectoNombre || "" }),
       });
       const d = await r.json();
       setMsgs((m) => [...m, { role: "assistant", content: d?.reply || "Disculpá, no pude responder. Probá de nuevo." }]);
       if (Array.isArray(d?.sugeridos)) setSugeridos(d.sugeridos);
+      if (typeof d?.verMas === "string") setVerMas(d.verMas);
     } catch {
-      setMsgs((m) => [...m, { role: "assistant", content: "Se cortó la conexión. Probá de nuevo en un momento." }]);
+      setMsgs((m) => [...m, { role: "assistant", content: "Se cortó la conexión. Probá de nuevo en un momento, o dejanos tu WhatsApp y te contactamos." }]);
     } finally {
       setSending(false);
     }
@@ -57,14 +63,14 @@ export default function AsesorIA() {
     const nombre = lead.nombre.trim();
     const whatsapp = lead.whatsapp.trim();
     if ((whatsapp.match(/\d/g) || []).length < 6) return;
-    const proy = sugeridos[0]?.nombre || "";
+    const proy = sugeridos[0]?.nombre || proyectoNombre || "";
     try {
       await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           mail: { _subject: "Nuevo lead (chat IA)", _template: "table", _captcha: "false", Nombre: nombre || "—", WhatsApp: whatsapp, "Proyecto de interés": proy || "—", Origen: "Chat IA" },
-          sheet: { origen: "chat-ia", tipo: "chat", nombre, email: "", whatsapp, proyecto: proy },
+          sheet: { origen: "chat-ia", tipo: "chat", nombre, email: "", whatsapp, proyecto: proy, proyectoSlug: proyectoSlug || "" },
         }),
       });
       track("lead", { tipo: "chat", origen: "chat-ia", proyecto: proy });
@@ -106,6 +112,9 @@ export default function AsesorIA() {
           <div className="text-[14px] font-medium text-primary">Asesor IA</div>
           <div className="text-[12px] text-secondary">Análisis independiente · beta</div>
         </div>
+        {onClose && (
+          <button type="button" onClick={onClose} aria-label="Cerrar" className="w-9 h-9 flex items-center justify-center rounded-full text-[22px] leading-none text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition">✕</button>
+        )}
       </div>
 
       <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto p-4 flex flex-col gap-2.5">
@@ -115,14 +124,29 @@ export default function AsesorIA() {
           </div>
         ))}
         {sugeridos.length > 0 && (
-          <div className="self-start w-full flex flex-col gap-2 mt-1">
-            {sugeridos.map((s) => (
-              <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} className="flex items-center gap-2 text-[13px] text-primary border border-outline-variant rounded-xl px-3 py-2 hover:border-secondary transition">
-                <span className="material-symbols-outlined text-[18px] text-secondary">apartment</span>
-                <span className="flex-1 truncate">{s.nombre}</span>
-                <span className="material-symbols-outlined text-[16px] text-on-surface-variant">chevron_right</span>
-              </Link>
-            ))}
+          <div className="self-start w-full mt-1">
+            <div className="flex gap-2.5 overflow-x-auto pb-1.5 -mx-1 px-1 snap-x">
+              {sugeridos.map((s) => (
+                <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} className="shrink-0 w-[160px] snap-start rounded-xl border border-outline-variant bg-surface overflow-hidden hover:border-secondary transition group">
+                  <div className="h-[92px] bg-surface-container-high overflow-hidden">
+                    {s.imagen ? (
+                      <img src={s.imagen} alt={s.nombre} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-[1.03] transition" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-secondary"><span className="material-symbols-outlined text-[26px]">apartment</span></div>
+                    )}
+                  </div>
+                  <div className="p-2">
+                    <div className="text-[12.5px] font-medium text-primary leading-snug line-clamp-2">{s.nombre}</div>
+                    {s.barrio && <div className="text-[11px] text-on-surface-variant truncate mt-0.5">{s.barrio}</div>}
+                    <div className="text-[12px] text-secondary font-medium mt-1">{s.precioDesde ? `Desde USD ${Number(s.precioDesde).toLocaleString("es-AR")}` : "Consultar"}</div>
+                    {(s.ambientes || s.entrega) && <div className="text-[10.5px] text-on-surface-variant mt-0.5 truncate">{[s.ambientes, s.entrega ? "entrega " + s.entrega : ""].filter(Boolean).join(" · ")}</div>}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <Link href={verMas || "/desarrollos-inmobiliarios/"} className="inline-flex items-center gap-1 text-[12.5px] text-secondary hover:text-primary transition mt-1.5 font-medium">
+              Ver listado completo <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
           </div>
         )}
         {sending && (
