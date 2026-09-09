@@ -89,8 +89,20 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
       let ready = false;
       try { const rr = await fetch("/api/buscar-ia"); ready = !!(await rr.json())?.ready; } catch {}
       setIaReady(ready);
-      const q0 = (initialQuery || "").trim();
-      if (q0 && ready) { await doIA(q0); }        // handoff desde el hero → IA
+      // Handoff: si no vino initialQuery por props, leelo yo del #q= (o de dpp_iaq del
+      // hero). Así /buscar auto-ejecuta la búsqueda cuando se llega con #q= (p.ej. desde
+      // "Ver listado completo" del chat) sin exigir un segundo clic.
+      let q0 = (initialQuery || "").trim();
+      if (!q0) {
+        try {
+          let ss = sessionStorage.getItem("dpp_iaq"); if (ss) sessionStorage.removeItem("dpp_iaq");
+          const hm = (window.location.hash || "").match(/[#&]q=([^&]*)/);
+          q0 = (ss || (hm ? decodeURIComponent(hm[1].replace(/\+/g, " ")) : "")).trim();
+        } catch {}
+        if (q0) { setQ(q0); onQueryChange && onQueryChange(q0); }
+      }
+      if (q0 && ready) { await doIA(q0); }        // handoff → IA, se dispara solo
+      else if (q0) { run(q0, arr); setLoading(false); } // sin IA: filtro local, igual auto-corre
       else { run(initialQuery, arr); setLoading(false); }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
