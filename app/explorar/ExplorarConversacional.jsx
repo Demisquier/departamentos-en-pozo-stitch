@@ -129,7 +129,7 @@ export default function ExplorarConversacional() {
   }
 
   const Card = (s) => (
-    <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all">
+    <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} target="_blank" rel="noopener noreferrer" className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all">
       <div className="relative aspect-[4/3] bg-surface-container-high overflow-hidden">
         {s.imagen ? (
           <img src={s.imagen} alt={s.nombre} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
