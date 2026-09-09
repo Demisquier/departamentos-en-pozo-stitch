@@ -64,7 +64,7 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
       const arr = Array.isArray(d?.resultados) ? d.resultados : [];
       if (arr.length) items = arr.map((p) => ({ slug: p.slug, nombre: p.nombre, barrio: p.barrio, imagen: p.imagen, precio_desde_usd: p.precioDesde || 0, motivo: p.motivo || "" }));
     } catch {}
-    if (items) { setRes({ items, f: {}, total: items.length, ia: true }); trackBusqueda(t, items.length); }
+    if (items) { setRes({ items, f: interpretar(t, barrioLabels.current), total: items.length, ia: true }); trackBusqueda(t, items.length); }
     else { run(t); } // plan B
     setLoading(false);
   }
