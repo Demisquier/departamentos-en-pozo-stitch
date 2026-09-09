@@ -19,7 +19,6 @@ export default function ExplorarPage() {
       <div className="shrink-0 px-4 md:px-6 pt-3 md:pt-4 pb-2 max-w-6xl mx-auto w-full">
         <div className="flex items-center gap-x-3 gap-y-1 flex-wrap">
           <span className="inline-flex items-center gap-1.5 text-[11px] font-label-caps uppercase tracking-wider text-secondary border border-outline-variant rounded-full px-2.5 py-0.5"><span className="material-symbols-outlined text-[15px]">auto_awesome</span> Modo conversar</span>
-          <span className="text-[12px] text-on-surface-variant">¿Preferís filtrar? <a href="/buscar/" className="text-secondary hover:underline font-medium">Buscar con filtros →</a></span>
         </div>
       </div>
       <div className="flex-1 min-h-0 px-4 md:px-6 pb-4 max-w-6xl mx-auto w-full">
