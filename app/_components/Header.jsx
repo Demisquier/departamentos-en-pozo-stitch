@@ -41,6 +41,9 @@ export default function Header() {
         </button>
 
         <nav className="hidden md:flex items-center gap-3 lg:gap-4">
+          <Link href="/explorar/" className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-secondary/10 text-secondary px-3 py-1.5 text-label-caps font-label-caps hover:bg-secondary hover:text-white transition-colors">
+            <span className="material-symbols-outlined text-[16px]">auto_awesome</span> EXPLORAR
+          </Link>
           {NAV.map((n, i) => (
             <Link
               key={n.href}
@@ -69,6 +72,9 @@ export default function Header() {
 
       {open && (
         <div id="mobile-nav" className="md:hidden bg-surface border-t border-outline-variant absolute w-full left-0 p-margin-mobile space-y-4 shadow-xl font-label-caps">
+          <Link href="/explorar/" className="flex items-center gap-2 text-secondary font-bold" onClick={() => setOpen(false)}>
+            <span className="material-symbols-outlined text-[18px]">auto_awesome</span> EXPLORAR CON IA
+          </Link>
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="block" onClick={() => setOpen(false)}>
               {n.label}
