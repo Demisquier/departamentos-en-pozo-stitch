@@ -4,7 +4,7 @@
 // `sugeridos` = top del PREFILTRO determinístico (hasta 8) → hay cards aunque el LLM no
 // nombre proyectos, y el LLM NO gasta tokens enumerándolos (las cards salen del catálogo).
 // Sin OPENAI_API_KEY: 200 { needsKey:true } (degrada, no rompe). Errores → 200 { error:true }.
-import { hasKey, loadCatalogo, prefiltrar, lineaProyecto, fichaUrl, openaiChat } from "../../../lib/ia";
+import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat } from "../../../lib/ia";
 import { SITE } from "../../../lib/wp";
 
 export const runtime = "nodejs";
@@ -44,20 +44,15 @@ export async function POST(req) {
     const lastUser = [...messages].reverse().find((m) => m?.role === "user");
     const q = ((lastUser?.content || "") + " " + proyecto).trim();
     const catalogo = await loadCatalogo();
-    const top = prefiltrar(catalogo, q, 15);
-    const contexto = top.map(lineaProyecto).join("\n") || "(sin proyectos que matcheen la consulta)";
+    const { hit, hits } = prefiltrarHits(catalogo, q, 15);
+    const top = dedupeBySlug(hits); // nunca el mismo proyecto 2 veces
+    // Si NO hubo match real (cayó al fallback), no le damos proyectos al LLM ni pintamos
+    // cards: mejor orientar sin nombrar fichas random.
+    const contexto = hit ? top.map(lineaProyecto).join("\n") : "(sin proyectos que matcheen la consulta)";
 
-    // Cards = top del prefiltro (hasta 8), armadas desde el catálogo (sin costo de tokens).
-    const sugeridos = top.slice(0, 8).map((p) => ({
-      slug: p.slug,
-      nombre: p.nombre,
-      barrio: p.barrio || "",
-      precioDesde: p.precioDesde || null,
-      ambientes: p.ambientes || "",
-      entrega: p.entrega || "",
-      imagen: p.imagen || "",
-      url: fichaUrl(p.slug),
-    }));
+    // Cards = top del prefiltro (hasta 8), armadas y sanitizadas desde el catálogo
+    // (sin costo de tokens). Vacío cuando no hubo match real.
+    const sugeridos = hit ? top.slice(0, 8).map(cardFrom) : [];
     const verMas = q
       ? SITE + "/buscar/#q=" + encodeURIComponent(q).slice(0, 300)
       : CATALOGO_URL;
