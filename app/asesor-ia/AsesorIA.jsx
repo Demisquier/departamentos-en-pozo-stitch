@@ -10,8 +10,8 @@ import { track } from "../../lib/track";
 
 export default function AsesorIA({ embedded = false, proyectoNombre = "", proyectoSlug = "", pedido = "", onClose = null }) {
   const hola = proyectoNombre
-    ? `¡Hola! Soy tu asesor con IA. Te ayudo con ${pedido || "precio, cuota y disponibilidad"} de ${proyectoNombre} y proyectos similares en pozo. ¿Qué querés saber?`
-    : "¡Hola! Soy tu asesor con IA. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos en pozo de nuestro catálogo. También te aviso los riesgos a mirar.";
+    ? `¡Hola! Soy Valentina. Te ayudo con ${pedido || "precio, cuota y disponibilidad"} de ${proyectoNombre} y proyectos similares en pozo. Cuando quieras, el desarrollador te pasa los datos actualizados por WhatsApp. ¿Qué querés saber?`
+    : "¡Hola! Soy Valentina, tu asesora en pozo. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos de nuestro catálogo. Si te interesa alguno, te consigo precio, cuota y disponibilidad.";
   const [ready, setReady] = useState(embedded ? true : null); // null=cargando, false=off, true=on
   const [msgs, setMsgs] = useState([{ role: "assistant", content: hola }]);
   const [sugeridos, setSugeridos] = useState([]);
@@ -126,7 +126,7 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
       <div className="shrink-0 flex items-center gap-3 px-4 py-3 border-b border-outline-variant bg-surface-container-low">
         <span className="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center"><span className="material-symbols-outlined text-[20px]">auto_awesome</span></span>
         <div className="leading-tight flex-1">
-          <div className="text-[14px] font-medium text-primary">Asesor IA</div>
+          <div className="text-[14px] font-medium text-primary">Valentina</div>
           <div className="text-[12px] text-secondary">Análisis independiente · beta</div>
         </div>
         {onClose && (
@@ -197,11 +197,14 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
 
       {/* Captura de contacto: aparece SOLO después de la 1ª respuesta útil (valor antes de pedir el dato). */}
       {gotReply && (!leadSent ? (
-        <form onSubmit={enviarLead} className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 flex items-center gap-2">
+        <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
+            <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>{proyectoNombre ? `Dejá tu WhatsApp y te pasamos precio, cuota y disponibilidad de ${proyectoNombre}.` : "¿Te paso precio, cuota y disponibilidad por WhatsApp?"}</p>
+            <form onSubmit={enviarLead} className="flex items-center gap-2">
           <input value={lead.nombre} onChange={(e) => setLead((l) => ({ ...l, nombre: e.target.value }))} placeholder="Nombre" autoComplete="given-name" className="w-24 shrink-0 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
           <input value={lead.whatsapp} onChange={(e) => setLead((l) => ({ ...l, whatsapp: e.target.value }))} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
           <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-3.5 py-2 text-[12px] font-medium hover:opacity-90 transition">Que me contacten</button>
         </form>
+            </div>
       ) : (
         <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
           <span className="material-symbols-outlined text-[18px]">check_circle</span> ¡Listo! Un asesor te va a escribir por WhatsApp.
