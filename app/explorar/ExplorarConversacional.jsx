@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { track } from "../../lib/track";
 
-const HOLA = "¡Hola! Soy Valentina, tu asesora en pozo. Contame en una frase qué buscás — barrio o zona, ambientes, presupuesto, si es para vivir o invertir — y te armo una lista de proyectos. Si te interesa alguno, el desarrollador te pasa precio, cuota y disponibilidad por WhatsApp.
+const HOLA = "¡Hola! Soy Valentina, tu asesora en pozo. Contame en una frase qué buscás — barrio o zona, ambientes, presupuesto, si es para vivir o invertir — y te armo una lista de proyectos. Si te interesa alguno, el desarrollador te pasa precio, cuota y disponibilidad por WhatsApp.";
 const EJEMPLOS = ["2 ambientes en Palermo para invertir, hasta USD 200.000", "Lo más barato con financiación en cuotas", "Monoambiente cerca del subte, entrega 2026", "3 ambientes en Núñez o Belgrano para vivir"];
 const FOLLOWUPS = ["Más barato", "Otra zona", "Con más financiación", "Entrega más cercana", "Comparar los 2 primeros"];
 const RELAX = ["Ampliar la zona", "Subir el presupuesto", "Sacar un requisito"];
