@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { track } from "../../lib/track";
 
-const HOLA = "¡Hola! Soy tu buscador conversacional. Contame en una frase qué estás buscando — barrio o zona, ambientes, presupuesto, si es para vivir o invertir — y te armo una lista de proyectos en pozo. Te aviso también qué mirar: avance de obra, fideicomiso, entrega.";
+const HOLA = "¡Hola! Soy Valentina, tu asesora en pozo. Contame en una frase qué buscás — barrio o zona, ambientes, presupuesto, si es para vivir o invertir — y te armo una lista de proyectos. Si te interesa alguno, el desarrollador te pasa precio, cuota y disponibilidad por WhatsApp.
 const EJEMPLOS = ["2 ambientes en Palermo para invertir, hasta USD 200.000", "Lo más barato con financiación en cuotas", "Monoambiente cerca del subte, entrega 2026", "3 ambientes en Núñez o Belgrano para vivir"];
 const FOLLOWUPS = ["Más barato", "Otra zona", "Con más financiación", "Entrega más cercana", "Comparar los 2 primeros"];
 const RELAX = ["Ampliar la zona", "Subir el presupuesto", "Sacar un requisito"];
@@ -169,7 +169,7 @@ export default function ExplorarConversacional() {
           <div className="shrink-0 flex items-center gap-3 px-4 py-3 border-b border-outline-variant bg-surface-container-low">
             <span className="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center"><span className="material-symbols-outlined text-[20px]">auto_awesome</span></span>
             <div className="leading-tight">
-              <div className="text-[14px] font-medium text-primary">Buscador conversacional</div>
+              <div className="text-[14px] font-medium text-primary">Valentina</div>
               <div className="text-[12px] text-secondary">Análisis independiente · beta</div>
             </div>
           </div>
@@ -204,11 +204,14 @@ export default function ExplorarConversacional() {
           </div>
 
           {gotReply && (!leadSent ? (
-            <form onSubmit={enviarLead} className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 flex items-center gap-2">
+            <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
+            <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>¿Te paso precio, cuota y disponibilidad por WhatsApp?</p>
+            <form onSubmit={enviarLead} className="flex items-center gap-2">
               <input value={lead.nombre} onChange={(e) => setLead((l) => ({ ...l, nombre: e.target.value }))} placeholder="Nombre" autoComplete="given-name" className="w-24 shrink-0 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
               <input value={lead.whatsapp} onChange={(e) => setLead((l) => ({ ...l, whatsapp: e.target.value }))} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
               <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-3.5 py-2 text-[12px] font-medium hover:opacity-90 transition">Que me contacten</button>
             </form>
+            </div>
           ) : (
             <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
               <span className="material-symbols-outlined text-[18px]">check_circle</span> ¡Listo! Un asesor te va a escribir por WhatsApp.
