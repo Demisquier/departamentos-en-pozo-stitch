@@ -215,6 +215,15 @@ export default async function HubDesarrolladorasPage() {
               className="wp-content prose max-w-none text-body-md text-on-surface-variant"
               dangerouslySetInnerHTML={{ __html: before }}
             />
+            {/* CTA conversacional para COMPRADORES: captura el tráfico del hub (alto volumen, baja conversión) → Valentina en /explorar. */}
+            <a href="/explorar/" className="my-8 flex items-center gap-4 rounded-2xl border border-secondary/30 bg-secondary/5 p-5 hover:border-secondary hover:bg-secondary/10 transition-colors group no-underline">
+              <span className="shrink-0 w-11 h-11 rounded-full bg-secondary text-white flex items-center justify-center"><span className="material-symbols-outlined">auto_awesome</span></span>
+              <span className="flex-1 block">
+                <span className="block font-headline-sm text-[16px] text-primary">¿Buscás un depto en pozo? Decíselo a Valentina.</span>
+                <span className="block text-on-surface-variant text-[13.5px]">Contale zona, presupuesto y ambientes y te arma la lista de proyectos que encajan — gratis, en 1 minuto.</span>
+              </span>
+              <span className="shrink-0 hidden sm:inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps group-hover:underline whitespace-nowrap">Buscar con IA <span className="material-symbols-outlined text-[18px]">arrow_forward</span></span>
+            </a>
             {useCpt && <DirectorioDevs devs={devs} chipsComoLinks />}
             {after && (
               <div
