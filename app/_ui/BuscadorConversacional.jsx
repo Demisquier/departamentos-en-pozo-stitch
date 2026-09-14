@@ -97,7 +97,8 @@ export default function BuscadorConversacional({ initialQuery = "", onQueryChang
         try {
           let ss = sessionStorage.getItem("dpp_iaq"); if (ss) sessionStorage.removeItem("dpp_iaq");
           const hm = (window.location.hash || "").match(/[#&]q=([^&]*)/);
-          q0 = (ss || (hm ? decodeURIComponent(hm[1].replace(/\+/g, " ")) : "")).trim();
+          const qp = new URLSearchParams(window.location.search).get("q") || ""; // ?q= (SearchAction / sitelinks searchbox de Google)
+          q0 = (ss || (hm ? decodeURIComponent(hm[1].replace(/\+/g, " ")) : "") || qp).trim();
         } catch {}
         if (q0) { setQ(q0); onQueryChange && onQueryChange(q0); }
       }
