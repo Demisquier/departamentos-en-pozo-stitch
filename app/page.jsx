@@ -26,6 +26,8 @@ const ENTITY_SCHEMA = [
     "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE}/#website`,
     name: BRAND, url: `${SITE}/`, inLanguage: "es-AR",
     publisher: { "@id": `${SITE}/#organization` },
+    // Sitelinks searchbox (Google) + accion de busqueda declarada para asistentes: /buscar?q=
+    potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${SITE}/buscar?q={search_term_string}` }, "query-input": "required name=search_term_string" },
   },
 ];
 
