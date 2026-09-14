@@ -35,10 +35,14 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
   ];
   const faqSchema = [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqBarrio.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }];
 
+  // GEO/AEO: WebPage con speakable apuntando al H1 + el resumen de datos propios (answer-first citable).
+  const speakableSchema = [{ "@context": "https://schema.org", "@type": "WebPage", name: `Desarrollos en pozo en ${label}`, speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "#barrio-resumen"] } }];
+
   return (
     <>
       <JsonLd data={schema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={speakableSchema} />
 
       <Container as="main" className="py-10 md:py-14">
         {/* Breadcrumb */}
@@ -55,7 +59,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
             Desarrollos inmobiliarios en pozo en {label}: {n} proyecto{n === 1 ? "" : "s"}
           </h1>
           {(desde || medianaM2) && (
-            <p className="mt-2 text-[14px] text-on-surface-variant">
+            <p id="barrio-resumen" className="mt-2 text-[14px] text-on-surface-variant">
               {n} proyecto{n === 1 ? "" : "s"} en pozo en {label}{desde ? ` · desde ${fmt(desde)}` : ""}{medianaM2 ? ` · mediana ${fmt(medianaM2)}/m²` : ""}.
             </p>
           )}
