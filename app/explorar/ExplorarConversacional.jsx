@@ -311,7 +311,7 @@ function DetalleDrawer({ slug, nombre, perfil, onClose, onLead }) {
   }, [slug, onClose]);
 
   const d = data || {};
-  const img = d.imagen || d.img || "";
+  const img = (Array.isArray(d.galeria) && d.galeria[0]) || d.imagen || d.img || "";
   const precio = d.precioDesde ? `Desde USD ${Number(d.precioDesde).toLocaleString("es-AR")}` : (d.precioM2 ? `USD ${Number(d.precioM2).toLocaleString("es-AR")} /m²` : "Consultar");
 
   return (
@@ -331,11 +331,11 @@ function DetalleDrawer({ slug, nombre, perfil, onClose, onLead }) {
             {d.barrio && <p className="text-on-surface-variant text-[13px] mt-0.5">{d.barrio}{d.direccion ? ` · ${d.direccion}` : ""}</p>}
             <p className="text-primary font-headline-sm text-[17px] mt-2">{precio}</p>
             <dl className="mt-3 grid grid-cols-2 gap-2 text-[13px]">
-              {d.ambientes && <div className="bg-surface-container-low rounded-lg px-3 py-2"><dt className="text-on-surface-variant text-[11px]">Tipología</dt><dd className="text-primary font-medium">{d.ambientes}</dd></div>}
+              {(d.tipologias || d.ambientes) && <div className="bg-surface-container-low rounded-lg px-3 py-2"><dt className="text-on-surface-variant text-[11px]">Tipología</dt><dd className="text-primary font-medium truncate">{Array.isArray(d.tipologias) ? d.tipologias.join(", ") : (d.tipologias || d.ambientes)}</dd></div>}
               {(d.entregaLabel || d.entrega) && <div className="bg-surface-container-low rounded-lg px-3 py-2"><dt className="text-on-surface-variant text-[11px]">Entrega</dt><dd className="text-primary font-medium">{d.entregaLabel || d.entrega}</dd></div>}
               {d.desarrolladora && <div className="bg-surface-container-low rounded-lg px-3 py-2 col-span-2"><dt className="text-on-surface-variant text-[11px]">Desarrolladora</dt><dd className="text-primary font-medium truncate">{d.desarrolladora}</dd></div>}
             </dl>
-            {d.descripcion && <p className="text-[13px] text-on-surface-variant leading-relaxed mt-3 line-clamp-6">{String(d.descripcion).replace(/<[^>]+>/g, "").slice(0, 420)}</p>}
+            {(d.descripcionHtml || d.descripcion) && <p className="text-[13px] text-on-surface-variant leading-relaxed mt-3 line-clamp-6">{String(d.descripcionHtml || d.descripcion).replace(/<[^>]+>/g, "").slice(0, 420)}</p>}
           </div>
         </div>
         <div className="shrink-0 border-t border-outline-variant bg-surface-container-low p-3">
