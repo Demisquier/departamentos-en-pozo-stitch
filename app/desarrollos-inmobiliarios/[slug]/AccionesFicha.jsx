@@ -67,7 +67,7 @@ export default function AccionesFicha({
         {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="bar" />}
       </div>
 
-      {asesorOpen && <AsesorModal nombre={nombre} slug={slug} onClose={() => setAsesorOpen(false)} />}
+      {asesorOpen && <AsesorModal nombre={nombre} slug={slug} leadFirst onClose={() => setAsesorOpen(false)} />}
     </>
   );
 }
