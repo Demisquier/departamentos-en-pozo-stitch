@@ -238,16 +238,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       return m ? Number(m[2]) * 100 + Number(m[1]) : 999999;
     };
     if (orden === 'destacados') {
-      // Orden PRO-CONVERSIÓN: destacados (monetizables) primero, luego las fichas más
-      // completas (más señales = más chance de convertir un lead): foto, precio, financiación…
       const score = (i) => {
         let s = 0;
-        if (DESTACADOS.includes(i.slug)) s += 1000;               // slots destacados
-        if (i.imagen) s += 40;                                    // con foto convierte más
-        if (i.precioDesde != null || i.precio != null) s += 30;   // con precio
-        if (i.financiacion) s += 20;                              // financiación = señal de compra
-        if (i.desarrolladora) s += 10;                            // confianza
-        if (i.ambientesNums && i.ambientesNums.length) s += 5;    // tipologías cargadas
+        if (DESTACADOS.includes(i.slug)) s += 1000;
+        if (i.imagen) s += 40;
+        if (i.precioDesde != null || i.precio != null) s += 30;
+        if (i.financiacion) s += 20;
+        if (i.desarrolladora) s += 10;
+        if (i.ambientesNums && i.ambientesNums.length) s += 5;
         if (i.entregaAnio) s += 3;
         return s;
       };
@@ -260,7 +258,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     return out;
   }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden]);
 
-  // Chips toggle (con aria-pressed, focus visible y tap target 44px).
   const chip = (active) =>
     `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
       active ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'
@@ -270,13 +267,11 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa('');
     setEntregaMax(''); setFin(false); setDesarrolladora(''); setPrecioTotal('todos');
   };
-  // Precio TOTAL es ahora el filtro PRINCIPAL (85% de cobertura); precio/m² pasó a secundario (20%).
   const secundariosCount = [entregaMax, fin, desarrolladora, precio !== 'todos'].filter(Boolean).length;
   const activeCount = [barrio, amb, precioTotal !== 'todos', etapa].filter(Boolean).length + secundariosCount;
   const hayFiltros = activeCount > 0;
   const conCoord = filtered.filter((i) => i.lat != null).length;
 
-  // Chips de filtros activos (patrón principal para quitar un filtro). [label, clearFn]
   const activeChips = () => {
     const a = [];
     if (barrio) a.push([barrio, () => setBarrio('')]);
@@ -290,11 +285,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     return a;
   };
 
-  // ── Bloques reutilizables ────────────────────────────────────────────────
-
   const barrioDropdown = () => {
-    // Type-ahead: filtramos por texto tolerante a acentos (NORM). Los sitios de referencia
-    // (Idealista/Zillow) buscan tipeando en vez de scrollear una lista larga.
     const q = NORM(barrioQuery.trim());
     const filtLanding = q ? LANDING_BARRIOS.filter((b) => NORM(b.label).includes(q)) : LANDING_BARRIOS;
     const filtBarrios = q ? barrios.filter((b) => NORM(b).includes(q)) : barrios;
@@ -314,7 +305,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       </button>
       {barrioOpen && (
         <div role="listbox" aria-label="Elegir barrio" className="absolute z-40 mt-2 w-64 bg-surface border border-outline-variant shadow-xl rounded-lg overflow-hidden">
-          {/* Buscador type-ahead */}
           <div className="p-2 border-b border-outline-variant">
             <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-full border border-outline-variant focus-within:border-secondary">
               <span className="material-symbols-outlined text-[16px] text-on-surface-variant" aria-hidden="true">search</span>
@@ -363,7 +353,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     </>
   );
 
-  // Precio TOTAL (principal): mejor cobertura de dato (85%).
   const precioTotalChips = () => (
     <>
       {Object.entries(PRECIO_TOTAL).map(([k, v]) => (
@@ -379,16 +368,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     </>
   );
 
-  // Campos secundarios ("Más filtros"). stack=true los apila (mobile sheet).
   const masFields = (stack = false) => (
     <div className={stack ? 'flex flex-col gap-5' : 'flex flex-wrap items-end gap-x-6 gap-y-4'}>
-      {/* Forma de pago — diferencial pozo (Fase 4) */}
       <fieldset>
         <legend className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Forma de pago</legend>
         <button type="button" aria-pressed={fin} className={chip(fin)} onClick={() => setFin((v) => !v)}>Con financiación (cuotas)</button>
       </fieldset>
-
-      {/* Entrega hasta */}
       {aniosEntrega.length > 0 && (
         <div>
           <label htmlFor="f-entrega" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Entrega hasta</label>
@@ -398,8 +383,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </select>
         </div>
       )}
-
-      {/* Precio por m² — secundario (dato parcial ~20%). El principal es precio total. */}
       <div>
         <label htmlFor="f-pm2" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Precio por m²</label>
         <select id="f-pm2" value={precio} onChange={(e) => setPrecio(e.target.value)} className="min-h-[44px] w-full sm:w-auto border border-outline-variant rounded-lg px-3 py-2 text-[14px] text-primary bg-surface">
@@ -409,8 +392,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           <option value="mas4500">+USD 4.500/m²</option>
         </select>
       </div>
-
-      {/* Desarrolladora (Fase 2) */}
       {desarrolladoras.length > 0 && (
         <div>
           <label htmlFor="f-dev" className="block text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Desarrolladora</label>
@@ -425,9 +406,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
 
   return (
     <>
-      <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3">
-        {toggle && <div className="md:hidden">{toggle}</div>}
-        {/* ── Barra compacta MOBILE: botón Filtrar (con contador) + resultados ── */}
+      <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3 md:sticky md:top-[60px] md:z-30 md:bg-surface">
         <div className="md:hidden flex items-center justify-between gap-3">
           <button
             type="button"
@@ -445,10 +424,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
           </p>
         </div>
+        {toggle && <div className="md:hidden flex justify-end opacity-80 scale-95 origin-right">{toggle}</div>}
 
-        {/* ── Barra principal DESKTOP: 4 filtros principales + "Más filtros" ── */}
         <div className="hidden md:flex flex-wrap items-center gap-2.5">
-          {toggle && <>{toggle}<span className="h-6 w-px bg-outline-variant mx-1" /></>}
           {barrioDropdown()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {ambChips()}
@@ -456,7 +434,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           {precioTotalChips()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {etapaChips()}
-
           <button
             type="button"
             onClick={() => setMasOpen((o) => !o)}
@@ -469,20 +446,18 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
               <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-secondary text-white text-[11px] font-medium flex items-center justify-center">{secundariosCount}</span>
             )}
           </button>
-
           {hayFiltros && (
             <button type="button" onClick={limpiar} className="min-h-[44px] px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar todo</button>
           )}
+          {toggle && <div className="ml-auto opacity-80 scale-95 origin-right">{toggle}</div>}
         </div>
 
-        {/* Panel "Más filtros" (desktop, colapsable) */}
         {masOpen && (
           <div className="hidden md:block border border-outline-variant rounded-xl p-4 bg-surface-container-low">
             {masFields()}
           </div>
         )}
 
-        {/* ── Chips de filtros activos (patrón principal para quitar filtros) ── */}
         {activeChips().length > 0 && (
           <div className="hidden md:flex flex-wrap items-center gap-2">
             {activeChips().map(([label, fn], idx) => (
@@ -500,7 +475,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </div>
         )}
 
-        {/* ── Controles de vista: resultados (desktop) + Lista/Mapa + Orden ── */}
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <p className="hidden md:block text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
@@ -531,7 +505,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         </div>
       </div>
 
-      {/* ── Bottom-sheet MOBILE (Fase 3): todos los filtros + Aplicar/Limpiar ── */}
       {sheetOpen && (
         <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Filtrar proyectos">
           <div className="absolute inset-0 scrim-soft" onClick={() => setSheetOpen(false)} />
@@ -542,7 +515,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
                 <span className="material-symbols-outlined" aria-hidden="true">close</span>
               </button>
             </div>
-
             <div className="overflow-y-auto flex-1 px-4 py-4 space-y-6">
               <div>
                 <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Barrio</p>
@@ -564,7 +536,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
                 {masFields(true)}
               </div>
             </div>
-
             <div className="flex items-center gap-3 px-4 py-3 border-t border-outline-variant bg-surface">
               <button type="button" onClick={limpiar} className="min-h-[44px] px-4 text-[14px] text-on-surface-variant underline underline-offset-2">Limpiar</button>
               <button type="button" onClick={() => setSheetOpen(false)} className="flex-1 min-h-[48px] rounded-full bg-primary-container text-on-primary text-[15px] font-medium">
@@ -577,7 +548,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
 
       {vista === 'mapa' ? (
         <div key="v-mapa">
-          {/* Mobile (Zillow-style): el mapa queda fijo arriba mientras se scrollean las cards. Desktop: mapa completo + grilla debajo. */}
           <div className="sticky top-2 z-20 -mx-margin-mobile md:mx-0 md:static md:z-auto">
             <MapaListado items={filtered} heightClass="h-[56vh] md:h-[640px]" />
           </div>
@@ -593,21 +563,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       ) : (
         <div key="v-lista" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filtered.map((i) => (
-            <ProjectCard
-              key={i.slug}
-              slug={i.slug}
-              nombre={i.nombre}
-              barrio={i.barrio}
-              direccion={i.direccion}
-              precioDesde={i.precioDesde}
-              precioM2={i.precioM2}
-              img={i.imagen}
-              etapa={i.etapa}
-              ambientes={i.ambientes}
-              entrega={i.entrega}
-              desarrolladora={i.desarrolladora}
-              destacado={DESTACADOS.includes(i.slug)}
-            />
+            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} />
           ))}
         </div>
       )}
