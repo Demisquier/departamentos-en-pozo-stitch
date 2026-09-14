@@ -9,19 +9,20 @@ import { useEffect, useState } from "react";
 import AsesorChat from "./AsesorChat";
 import AsesorIA from "../asesor-ia/AsesorIA";
 
-export default function AsesorModal({ nombre = "", slug = "", pedido = "", onClose }) {
+export default function AsesorModal({ nombre = "", slug = "", pedido = "", leadFirst = false, onClose }) {
   const [vp, setVp] = useState(null); // { top, height } en mobile, o null en desktop
   const [modo, setModo] = useState(null); // null=chequeando · "ia" · "scripted"
 
   // AI-first: preguntamos si el chat IA está disponible; si no, plan B = guionado.
   useEffect(() => {
+    if (leadFirst) { setModo("scripted"); return; }
     let ok = true;
     fetch("/api/chat")
       .then((r) => r.json())
       .then((d) => { if (ok) setModo(d?.ready ? "ia" : "scripted"); })
       .catch(() => { if (ok) setModo("scripted"); });
     return () => { ok = false; };
-  }, []);
+  }, [leadFirst]);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
