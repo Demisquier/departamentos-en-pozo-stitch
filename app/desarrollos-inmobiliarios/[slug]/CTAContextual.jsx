@@ -22,7 +22,7 @@ export default function CTAContextual({ pedido, nombre, slug, label, icon = "for
         <span className="material-symbols-outlined text-[18px]">{icon}</span>
         {label}
       </button>
-      {open && <AsesorModal nombre={nombre} slug={slug} pedido={pedido} onClose={() => setOpen(false)} />}
+      {open && <AsesorModal nombre={nombre} slug={slug} pedido={pedido} leadFirst onClose={() => setOpen(false)} />}
     </>
   );
 }
