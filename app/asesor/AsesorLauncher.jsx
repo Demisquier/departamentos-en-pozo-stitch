@@ -38,7 +38,7 @@ export default function AsesorLauncher() {
   }, [oculto, scrolled]);
 
   const cerrarNudge = () => { setNudge(false); try { localStorage.setItem("dpp_nudge_v1", String(Date.now())); } catch {} };
-  const abrir = () => { cerrarNudge(); setOpen(true); };
+  const abrir = () => { cerrarNudge(); window.location.assign("/explorar/"); };
 
   if (oculto || !scrolled) return null;
 
