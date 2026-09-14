@@ -354,6 +354,10 @@ export default async function FichaProyecto({ params }) {
   const schema = { '@context': 'https://schema.org', '@type': precioDesdeNum ? 'Product' : 'Apartment', name: nombre };
   if (descLimpia) schema.description = descLimpia.slice(0, 300);
   if (imagen) schema.image = imagen;
+  // GEO/rich-results: la marca = desarrolladora (atribuye el proyecto a su dev), y speakable
+  // marca el nombre + el precio como el fragmento que la IA/asistentes leen en voz.
+  if (constructora) schema.brand = { '@type': 'Organization', name: constructora };
+  schema.speakable = { '@type': 'SpeakableSpecification', cssSelector: ['h1', '#precio-hero'] };
   {
     const address = {};
     if (direccion) address.streetAddress = direccion;
@@ -414,7 +418,7 @@ export default async function FichaProyecto({ params }) {
             {/* Precio + resumen. Héroe = precio TOTAL "desde"; el /m² baja a referencia. */}
             <div className="border-b border-outline-variant pb-6 mb-6">
               <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="font-display-lg text-display-lg text-primary leading-none">{precioHeroLabel}</span>
+                <span id="precio-hero" className="font-display-lg text-display-lg text-primary leading-none">{precioHeroLabel}</span>
                 {cuotaEstim && <span className="text-body-lg text-secondary font-medium">≈ {String(cuotaEstim)}</span>}
               </div>
               {refM2Label && (
