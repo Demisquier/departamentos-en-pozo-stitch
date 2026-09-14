@@ -1,40 +1,41 @@
 "use client";
 // app/asesor-ia/AsesorIA.jsx — Chat real contra /api/chat (GPT, env-gated).
 // Standalone (/asesor-ia): al montar hace GET /api/chat; si ready===false muestra "en
-// preparación". EMBEBIDO (dentro de AsesorModal): recibe embedded=true → asume ready
-// (el modal ya chequeó) y NO muestra placeholder; el modal decide IA vs chat guionado.
-// Si ready: burbujas + input + tarjetas de `sugeridos` + captura de lead (nombre+WhatsApp).
+// preparación". EMBEBIDO (dentro de AsesorModal): recibe embedded=true → asume ready.
+// Perfil ÚNICO (dpp_perfil_v1, mismo que Mi Plan): pre-carga tus datos, te saluda por
+// nombre y NO re-pregunta si ya te conocemos. Post-captura: incentiva a seguir mirando
+// otro proyecto similar (no dead-end). Lead a contacto@ vía /api/lead + perfil unificado.
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { track } from "../../lib/track";
+import { readPerfil, enviarLead, primerNombre, wppValido } from "../../lib/perfil";
 
 export default function AsesorIA({ embedded = false, proyectoNombre = "", proyectoSlug = "", pedido = "", onClose = null }) {
+  const [perfil] = useState(() => readPerfil());
+  const nom = primerNombre(perfil.nombre);
+  const yaLead = wppValido(perfil.whatsapp);
   const hola = proyectoNombre
-    ? `¡Hola! Soy Valentina. Te ayudo con ${pedido || "precio, cuota y disponibilidad"} de ${proyectoNombre} y proyectos similares en pozo. Cuando quieras, el desarrollador te pasa los datos actualizados por WhatsApp. ¿Qué querés saber?`
-    : "¡Hola! Soy Valentina, tu asesora en pozo. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos de nuestro catálogo. Si te interesa alguno, te consigo precio, cuota y disponibilidad.";
+    ? `¡Hola${nom ? " " + nom : ""}! Soy Valentina. Te ayudo con ${pedido || "precio, cuota y disponibilidad"} de ${proyectoNombre} y proyectos similares en pozo. Cuando quieras, el desarrollador te pasa los datos actualizados por WhatsApp. ¿Qué querés saber?`
+    : `¡Hola${nom ? " " + nom : ""}! Soy Valentina, tu asesora en pozo. Contame qué buscás — barrio, ambientes, presupuesto — y te oriento con proyectos de nuestro catálogo. Si te interesa alguno, te consigo precio, cuota y disponibilidad.`;
   const [ready, setReady] = useState(embedded ? true : null); // null=cargando, false=off, true=on
   const [msgs, setMsgs] = useState([{ role: "assistant", content: hola }]);
   const [sugeridos, setSugeridos] = useState([]);
   const [verMas, setVerMas] = useState("");
   const [txt, setTxt] = useState("");
   const [sending, setSending] = useState(false);
-  const [lead, setLead] = useState({ nombre: "", whatsapp: "" });
-  const [leadSent, setLeadSent] = useState(false);
+  const [wpp, setWpp] = useState("");
+  const [leadSent, setLeadSent] = useState(yaLead);
   const scrollRef = useRef(null);
 
-  // ¿Ya hubo al menos 1 respuesta útil del asistente? (saludo inicial + >=1 reply).
   const gotReply = msgs.filter((m) => m.role === "assistant").length > 1;
-  // ¿Chat vacío? (solo el saludo, el usuario todavía no escribió nada).
   const chatVacio = !msgs.some((m) => m.role === "user");
-  // Chips deterministas (0 tokens). Prompts iniciales contextuales al proyecto.
   const quickPrompts = proyectoNombre
     ? ["¿Cuál es la forma de pago?", "¿Qué riesgos tiene?", "Mostrame similares", "¿Cuándo entrega?"]
     : ["2 ambientes en Palermo hasta 200k", "Algo para alquilar en Núñez", "Monoambiente en pozo barato", "¿Conviene pozo o usado?"];
-  // Follow-ups tras cada respuesta (evita el dead-end).
   const followUps = ["Más barato", "Otro barrio", "Con financiación", "Comparar los primeros 2"];
 
   useEffect(() => {
-    if (embedded) return; // el modal ya validó readiness → no re-chequear
+    if (embedded) return;
     let ok = true;
     fetch("/api/chat").then((r) => r.json()).then((d) => { if (ok) setReady(!!d?.ready); }).catch(() => { if (ok) setReady(false); });
     return () => { ok = false; };
@@ -45,13 +46,8 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
     if (el) el.scrollTop = el.scrollHeight;
   }, [msgs, sending]);
 
-  function enviar(e) {
-    e.preventDefault();
-    sendText(txt);
-  }
+  function enviar(e) { e.preventDefault(); sendText(txt); }
 
-  // Envía una consulta (desde el input o desde un chip determinista). 0 tokens extra:
-  // los chips solo pre-cargan el texto, la llamada al LLM es la misma de siempre.
   async function sendText(raw) {
     const val = (raw || "").trim();
     if (!val || sending) return;
@@ -75,23 +71,13 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
     }
   }
 
-  async function enviarLead(e) {
+  function enviarLeadForm(e) {
     e.preventDefault();
-    const nombre = lead.nombre.trim();
-    const whatsapp = lead.whatsapp.trim();
-    if ((whatsapp.match(/\d/g) || []).length < 6) return;
+    const w = wpp.trim();
+    if (!wppValido(w)) return;
     const proy = sugeridos[0]?.nombre || proyectoNombre || "";
-    try {
-      await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mail: { _subject: "Nuevo lead (chat IA)", _template: "table", _captcha: "false", Nombre: nombre || "—", WhatsApp: whatsapp, "Proyecto de interés": proy || "—", Origen: "Chat IA" },
-          sheet: { origen: "chat-ia", tipo: "chat", nombre, email: "", whatsapp, proyecto: proy, proyectoSlug: proyectoSlug || "" },
-        }),
-      });
-      track("lead", { tipo: "chat", origen: "chat-ia", proyecto: proy });
-    } catch {}
+    const cur = readPerfil();
+    enviarLead({ nombre: cur.nombre || "", whatsapp: w, email: cur.email || "", proyecto: proy, proyectoSlug: sugeridos[0]?.slug || proyectoSlug || "", origen: "chat-ia", track });
     setLeadSent(true);
   }
 
@@ -127,7 +113,7 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         <span className="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center"><span className="material-symbols-outlined text-[20px]">auto_awesome</span></span>
         <div className="leading-tight flex-1">
           <div className="text-[14px] font-medium text-primary">Valentina</div>
-          <div className="text-[12px] text-secondary">Análisis independiente · beta</div>
+          <div className="text-[12px] text-secondary">Tu asesora en pozo</div>
         </div>
         {onClose && (
           <button type="button" onClick={onClose} aria-label="Cerrar" className="w-9 h-9 flex items-center justify-center rounded-full text-[22px] leading-none text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition">✕</button>
@@ -152,9 +138,10 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         )}
         {sugeridos.length > 0 && (
           <div className="self-start w-full mt-1">
+            {leadSent && <p className="text-[12.5px] text-primary font-medium mb-1.5 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">explore</span>Mientras te contactan, seguí mirando estos:</p>}
             <div className="flex gap-2.5 overflow-x-auto pb-1.5 -mx-1 px-1 snap-x">
               {sugeridos.map((s) => (
-                <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} className="shrink-0 w-[160px] snap-start rounded-xl border border-outline-variant bg-surface overflow-hidden hover:border-secondary transition group">
+                <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} target="_blank" rel="noopener noreferrer" className="shrink-0 w-[160px] snap-start rounded-xl border border-outline-variant bg-surface overflow-hidden hover:border-secondary transition group">
                   <div className="h-[92px] bg-surface-container-high overflow-hidden">
                     {s.imagen ? (
                       <img src={s.imagen} alt={s.nombre} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-[1.03] transition" />
@@ -195,19 +182,17 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         )}
       </div>
 
-      {/* Captura de contacto: aparece SOLO después de la 1ª respuesta útil (valor antes de pedir el dato). */}
       {gotReply && (!leadSent ? (
         <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
-            <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>{proyectoNombre ? `Dejá tu WhatsApp y te pasamos precio, cuota y disponibilidad de ${proyectoNombre}.` : "¿Te paso precio, cuota y disponibilidad por WhatsApp?"}</p>
-            <form onSubmit={enviarLead} className="flex items-center gap-2">
-          <input value={lead.nombre} onChange={(e) => setLead((l) => ({ ...l, nombre: e.target.value }))} placeholder="Nombre" autoComplete="given-name" className="w-24 shrink-0 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
-          <input value={lead.whatsapp} onChange={(e) => setLead((l) => ({ ...l, whatsapp: e.target.value }))} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
+            <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>{nom ? nom + ", ¿" : "¿"}te paso precio, cuota y disponibilidad {proyectoNombre ? "de " + proyectoNombre + " " : ""}por WhatsApp?</p>
+            <form onSubmit={enviarLeadForm} className="flex items-center gap-2">
+          <input value={wpp} onChange={(e) => setWpp(e.target.value)} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
           <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-3.5 py-2 text-[12px] font-medium hover:opacity-90 transition">Que me contacten</button>
         </form>
             </div>
       ) : (
         <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px]">check_circle</span> ¡Listo! Un asesor te va a escribir por WhatsApp.
+          <span className="material-symbols-outlined text-[18px]">check_circle</span> {nom ? "¡Listo, " + nom + "!" : "¡Listo!"} Un asesor te va a escribir por WhatsApp. Guardado en tu Plan.
         </div>
       ))}
 
