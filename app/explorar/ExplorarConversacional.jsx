@@ -1,21 +1,26 @@
 "use client";
 // app/explorar/ExplorarConversacional.jsx — Modo CONVERSAR (tipo Roomix): búsqueda 100%
-// conversacional a pantalla completa. Panel IZQ = charla con la IA; panel DER = resultados
-// que se actualizan a medida que la conversación refina. Mobile: toggle Conversar/Resultados.
-// Usa /api/chat (reply + sugeridos; las cards salen del catálogo = 0 tokens de LLM). Si no
-// hay match, la IA orienta y el panel ofrece aflojar criterios. Sin IA/crédito degrada a un
-// CTA al buscador con filtros (plan B). Es el "modo distinto" al portal clásico (/buscar).
+// conversacional a pantalla completa. Panel IZQ = charla con Valentina; panel DER = LISTA
+// vertical de resultados. Click en un resultado → DRAWER lateral (fetch /api/proyecto/{slug})
+// SIN salir del chat (la conversación se conserva). Mobile: toggle Conversar/Resultados +
+// bottom-sheet. Captura de lead PROGRESIVA (un dato por vez, arranca por lo que falta) que
+// escribe el PERFIL ÚNICO (dpp_perfil_v1, mismo que Mi Plan): si ya te conocemos, no
+// re-preguntamos y te saludamos por tu nombre. Sin IA/crédito degrada a CTA /buscar (plan B).
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { track } from "../../lib/track";
+import { readPerfil, writePerfil, enviarLead, primerNombre, wppValido } from "../../lib/perfil";
 
 const HOLA = "¡Hola! Soy Valentina. Decime zona, presupuesto y ambientes (o lo que busques) y te armo la lista de proyectos en pozo.";
 const EJEMPLOS = ["2 ambientes en Palermo para invertir, hasta USD 200.000", "Lo más barato con financiación en cuotas", "Monoambiente cerca del subte, entrega 2026", "3 ambientes en Núñez o Belgrano para vivir"];
 const FOLLOWUPS = ["Más barato", "Otra zona", "Con más financiación", "Entrega más cercana", "Comparar los 2 primeros"];
 const RELAX = ["Ampliar la zona", "Subir el presupuesto", "Sacar un requisito"];
 
+const precioLabel = (s) => (s.precioDesde ? `USD ${Number(s.precioDesde).toLocaleString("es-AR")}` : "Consultar");
+
 export default function ExplorarConversacional() {
   const [ready, setReady] = useState(null); // null=cargando · false=off · true=on
+  const [perfil, setPerfil] = useState({});
   const [msgs, setMsgs] = useState([{ role: "assistant", content: HOLA }]);
   const [results, setResults] = useState([]);
   const [verMas, setVerMas] = useState("/buscar/");
@@ -23,9 +28,11 @@ export default function ExplorarConversacional() {
   const [txt, setTxt] = useState("");
   const [sending, setSending] = useState(false);
   const [pane, setPane] = useState("chat"); // mobile: "chat" | "res"
-  const [lead, setLead] = useState({ nombre: "", whatsapp: "" });
+  const [detalle, setDetalle] = useState(null); // { slug, nombre } → abre drawer, NO nueva pestaña
+  // Lead progresivo: paso "nombre" → "whatsapp" → "done". Arranca en el 1er dato que falta.
+  const [leadPaso, setLeadPaso] = useState("nombre");
+  const [leadVal, setLeadVal] = useState("");
   const [leadSent, setLeadSent] = useState(false);
-  const [lastQuery, setLastQuery] = useState("");
   const scrollRef = useRef(null);
   const ranSeed = useRef(false);
 
@@ -33,12 +40,21 @@ export default function ExplorarConversacional() {
   const chatVacio = !msgs.some((m) => m.role === "user");
 
   useEffect(() => {
+    // Perfil unificado: pre-cargamos lo que ya sabemos del usuario (Mi Plan / chats previos).
+    const p = readPerfil();
+    setPerfil(p);
+    if (wppValido(p.whatsapp)) { setLeadSent(true); setLeadPaso("done"); }
+    else if (primerNombre(p.nombre)) setLeadPaso("whatsapp");
+    else setLeadPaso("nombre");
+    // Saludo personalizado si ya te conocemos.
+    const nom = primerNombre(p.nombre);
+    if (nom) setMsgs([{ role: "assistant", content: `¡Hola de nuevo, ${nom}! Soy Valentina. ¿Seguimos buscando? Decime zona, presupuesto y ambientes y te actualizo la lista.` }]);
+
     let ok = true;
     fetch("/api/chat").then((r) => r.json()).then((d) => {
       if (!ok) return;
       const on = !!d?.ready;
       setReady(on);
-      // Handoff desde el home ("Conversando") o desde una ficha: #q= o sessionStorage → auto-consulta.
       if (on && !ranSeed.current) {
         ranSeed.current = true;
         let q0 = "";
@@ -64,7 +80,7 @@ export default function ExplorarConversacional() {
     const val = (raw || "").trim();
     if (!val || sending) return;
     const next = [...msgs, { role: "user", content: val }];
-    setMsgs(next); setTxt(""); setSending(true); setLastQuery(val);
+    setMsgs(next); setTxt(""); setSending(true);
     track("explorar_msg", {});
     try {
       const r = await fetch("/api/chat", {
@@ -87,24 +103,25 @@ export default function ExplorarConversacional() {
 
   function enviar(e) { e.preventDefault(); sendText(txt); }
 
-  async function enviarLead(e) {
+  // Captura PROGRESIVA: un dato por vez. Guarda cada paso en el perfil único y dispara el
+  // lead apenas hay WhatsApp (speed-to-lead). El nombre se pide solo si no lo tenemos.
+  function avanzarLead(e) {
     e.preventDefault();
-    const nombre = lead.nombre.trim();
-    const whatsapp = lead.whatsapp.trim();
-    if ((whatsapp.match(/\d/g) || []).length < 6) return;
-    const proy = results[0]?.nombre || "";
-    try {
-      await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mail: { _subject: "Nuevo lead (Explorar IA)", _template: "table", _captcha: "false", Nombre: nombre || "—", WhatsApp: whatsapp, "Proyecto de interés": proy || "—", Origen: "Explorar IA" },
-          sheet: { origen: "explorar-ia", tipo: "chat", nombre, email: "", whatsapp, proyecto: proy, proyectoSlug: results[0]?.slug || "" },
-        }),
-      });
-      track("lead", { tipo: "chat", origen: "explorar-ia", proyecto: proy });
-    } catch {}
-    setLeadSent(true);
+    const v = leadVal.trim();
+    if (leadPaso === "nombre") {
+      const nom = primerNombre(v) || v;
+      if (v.length < 2) return;
+      writePerfil({ nombre: nom });
+      setPerfil((p) => ({ ...p, nombre: nom }));
+      setLeadVal(""); setLeadPaso("whatsapp");
+    } else if (leadPaso === "whatsapp") {
+      if (!wppValido(v)) return;
+      const proy = results[0]?.nombre || "";
+      const cur = readPerfil();
+      enviarLead({ nombre: cur.nombre || "", whatsapp: v, email: cur.email || "", proyecto: proy, proyectoSlug: results[0]?.slug || "", origen: "explorar-ia", track });
+      setPerfil((p) => ({ ...p, whatsapp: v }));
+      setLeadVal(""); setLeadPaso("done"); setLeadSent(true);
+    }
   }
 
   if (ready === null) {
@@ -128,27 +145,56 @@ export default function ExplorarConversacional() {
     );
   }
 
-  const Card = (s) => (
-    <Link key={s.slug} href={`/desarrollos-inmobiliarios/${s.slug}/`} target="_blank" rel="noopener noreferrer" className="group flex flex-col bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-lg transition-all">
-      <div className="relative aspect-[4/3] bg-surface-container-high overflow-hidden">
+  // Fila de resultado: LISTA vertical. Click → drawer (no nueva pestaña) para no perder el chat.
+  const Row = (s) => (
+    <button key={s.slug} type="button" onClick={() => { setDetalle({ slug: s.slug, nombre: s.nombre }); track("explorar_ver_detalle", { slug: s.slug }); }}
+      className="group w-full text-left flex gap-3 bg-surface border border-outline-variant rounded-xl overflow-hidden hover:border-secondary hover:shadow-md transition-all">
+      <div className="relative w-[104px] shrink-0 aspect-[4/3] bg-surface-container-high overflow-hidden">
         {s.imagen ? (
           <img src={s.imagen} alt={s.nombre} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-secondary"><span className="material-symbols-outlined text-3xl">apartment</span></div>
+          <div className="w-full h-full flex items-center justify-center text-secondary"><span className="material-symbols-outlined text-2xl">apartment</span></div>
         )}
-        <span className="absolute top-2 left-2 bg-primary/90 text-white px-2 py-0.5 rounded text-[9px] font-label-caps tracking-widest">EN POZO</span>
+        <span className="absolute top-1.5 left-1.5 bg-primary/90 text-white px-1.5 py-0.5 rounded text-[8.5px] font-label-caps tracking-widest">EN POZO</span>
       </div>
-      <div className="p-3 flex flex-col flex-1">
-        <h3 className="font-headline-sm text-[14.5px] text-primary leading-tight line-clamp-2">{s.nombre}</h3>
+      <div className="py-2.5 pr-3 flex flex-col flex-1 min-w-0">
+        <h3 className="font-headline-sm text-[14.5px] text-primary leading-tight line-clamp-1">{s.nombre}</h3>
         {s.barrio && <p className="text-on-surface-variant text-[12px] mt-0.5">{s.barrio}</p>}
-        {(s.ambientes || s.entregaLabel) && <p className="text-[10.5px] text-on-surface-variant mt-0.5 truncate">{[s.ambientes, s.entregaLabel].filter(Boolean).join(" · ")}</p>}
-        <div className="mt-auto pt-2.5 border-t border-outline-variant flex items-end justify-between">
-          <span className="text-primary font-headline-sm text-[14px]">{s.precioDesde ? `USD ${Number(s.precioDesde).toLocaleString("es-AR")}` : "Consultar"}</span>
-          <span className="text-[11.5px] text-secondary group-hover:underline">Ver ficha →</span>
+        {(s.ambientes || s.entregaLabel) && <p className="text-[11px] text-on-surface-variant mt-0.5 truncate">{[s.ambientes, s.entregaLabel].filter(Boolean).join(" · ")}</p>}
+        <div className="mt-auto pt-1.5 flex items-end justify-between">
+          <span className="text-primary font-headline-sm text-[14px]">{precioLabel(s)}</span>
+          <span className="text-[11.5px] text-secondary group-hover:underline inline-flex items-center gap-0.5">Ver <span className="material-symbols-outlined text-[15px]">chevron_right</span></span>
         </div>
       </div>
-    </Link>
+    </button>
   );
+
+  // Barra de lead progresiva (un input, cambia según el paso). Value-first: aparece tras la 1ª respuesta.
+  const leadBar = () => {
+    if (leadSent || leadPaso === "done") {
+      return (
+        <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
+          <span className="material-symbols-outlined text-[18px]">check_circle</span>
+          {perfil.nombre ? `¡Listo, ${primerNombre(perfil.nombre)}!` : "¡Listo!"} Un asesor te escribe por WhatsApp. Guardado en tu Plan.
+        </div>
+      );
+    }
+    const esNombre = leadPaso === "nombre";
+    return (
+      <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
+        <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1">
+          <span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>
+          {esNombre ? "¿Te paso precio, cuota y disponibilidad? Empecemos: ¿cómo te llamás?" : `Gracias${primerNombre(perfil.nombre) ? ", " + primerNombre(perfil.nombre) : ""}. ¿A qué WhatsApp te contactamos?`}
+        </p>
+        <form onSubmit={avanzarLead} className="flex items-center gap-2">
+          <input value={leadVal} onChange={(e) => setLeadVal(e.target.value)} autoComplete={esNombre ? "given-name" : "tel"} inputMode={esNombre ? "text" : "tel"}
+            placeholder={esNombre ? "Tu nombre" : "WhatsApp con característica"}
+            className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
+          <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-4 py-2 text-[12px] font-medium hover:opacity-90 transition">{esNombre ? "Seguir" : "Que me contacten"}</button>
+        </form>
+      </div>
+    );
+  };
 
   return (
     <div className="h-full flex flex-col">
@@ -165,7 +211,7 @@ export default function ExplorarConversacional() {
             <span className="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center"><span className="material-symbols-outlined text-[20px]">auto_awesome</span></span>
             <div className="leading-tight">
               <div className="text-[14px] font-medium text-primary">Valentina</div>
-              <div className="text-[12px] text-secondary">Análisis independiente · beta</div>
+              <div className="text-[12px] text-secondary">Tu asesora en pozo</div>
             </div>
           </div>
 
@@ -198,20 +244,7 @@ export default function ExplorarConversacional() {
             )}
           </div>
 
-          {gotReply && (!leadSent ? (
-            <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
-            <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1"><span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>¿Te paso precio, cuota y disponibilidad por WhatsApp?</p>
-            <form onSubmit={enviarLead} className="flex items-center gap-2">
-              <input value={lead.nombre} onChange={(e) => setLead((l) => ({ ...l, nombre: e.target.value }))} placeholder="Nombre" autoComplete="given-name" className="w-24 shrink-0 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
-              <input value={lead.whatsapp} onChange={(e) => setLead((l) => ({ ...l, whatsapp: e.target.value }))} placeholder="WhatsApp con característica" inputMode="tel" autoComplete="tel" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
-              <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-3.5 py-2 text-[12px] font-medium hover:opacity-90 transition">Que me contacten</button>
-            </form>
-            </div>
-          ) : (
-            <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
-              <span className="material-symbols-outlined text-[18px]">check_circle</span> ¡Listo! Un asesor te va a escribir por WhatsApp.
-            </div>
-          ))}
+          {gotReply && leadBar()}
 
           <form onSubmit={enviar} className="shrink-0 border-t border-outline-variant bg-surface p-3">
             <div className="flex items-center gap-2">
@@ -223,7 +256,7 @@ export default function ExplorarConversacional() {
           </form>
         </div>
 
-        {/* PANEL RESULTADOS */}
+        {/* PANEL RESULTADOS — lista vertical */}
         <div className={`${pane === "res" ? "flex" : "hidden"} lg:flex flex-col min-h-0 bg-surface-container-low border border-outline-variant rounded-2xl overflow-hidden`}>
           <div className="shrink-0 flex items-center justify-between px-4 py-3 border-b border-outline-variant bg-surface">
             <div className="text-[14px] font-medium text-primary">{results.length ? `${results.length} proyectos sugeridos` : "Resultados"}</div>
@@ -243,11 +276,81 @@ export default function ExplorarConversacional() {
                 )}
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {results.map((s) => Card(s))}
+              <div className="flex flex-col gap-2.5">
+                {results.map((s) => Row(s))}
               </div>
             )}
           </div>
+        </div>
+      </div>
+
+      {detalle && (
+        <DetalleDrawer slug={detalle.slug} nombre={detalle.nombre} perfil={perfil}
+          onClose={() => setDetalle(null)}
+          onLead={(v) => { const cur = readPerfil(); enviarLead({ nombre: cur.nombre || "", whatsapp: v, email: cur.email || "", proyecto: detalle.nombre, proyectoSlug: detalle.slug, origen: "explorar-ia", track }); setPerfil((p) => ({ ...p, whatsapp: v })); setLeadSent(true); setLeadPaso("done"); }} />
+      )}
+    </div>
+  );
+}
+
+// Drawer lateral (desktop) / bottom-sheet (mobile) con el detalle del proyecto. Trae el dato
+// completo de /api/proyecto/{slug} SIN sacarte del chat. CTA de contacto por este proyecto +
+// link a la ficha completa (nueva pestaña) como fallback.
+function DetalleDrawer({ slug, nombre, perfil, onClose, onLead }) {
+  const [data, setData] = useState(null);
+  const [wpp, setWpp] = useState("");
+  const [sent, setSent] = useState(wppValido(perfil?.whatsapp));
+
+  useEffect(() => {
+    let vivo = true;
+    (async () => { try { const r = await fetch(`/api/proyecto/${slug}`); if (r.ok) { const j = await r.json(); if (vivo && !j.error) setData(j); } } catch {} })();
+    const onEsc = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onEsc);
+    const prev = document.body.style.overflow; document.body.style.overflow = "hidden";
+    return () => { vivo = false; window.removeEventListener("keydown", onEsc); document.body.style.overflow = prev; };
+  }, [slug, onClose]);
+
+  const d = data || {};
+  const img = d.imagen || d.img || "";
+  const precio = d.precioDesde ? `Desde USD ${Number(d.precioDesde).toLocaleString("es-AR")}` : (d.precioM2 ? `USD ${Number(d.precioM2).toLocaleString("es-AR")} /m²` : "Consultar");
+
+  return (
+    <div className="fixed inset-0 z-[120] flex justify-end scrim-soft" onClick={onClose}>
+      <div className="w-full sm:max-w-md h-full bg-surface shadow-2xl flex flex-col animate-[slidein_.2s_ease-out]" onClick={(e) => e.stopPropagation()}>
+        <div className="shrink-0 flex items-center justify-between px-4 py-3 border-b border-outline-variant">
+          <span className="text-[13px] font-label-caps tracking-widest text-secondary">DETALLE · SEGUÍS EN EL CHAT</span>
+          <button type="button" onClick={onClose} aria-label="Cerrar" className="w-9 h-9 flex items-center justify-center rounded-full text-[20px] text-on-surface-variant hover:bg-surface-container-high transition">✕</button>
+        </div>
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          <div className="relative aspect-[16/10] bg-surface-container-high">
+            {img ? <img src={img} alt={nombre} referrerPolicy="no-referrer" className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-secondary"><span className="material-symbols-outlined text-4xl">apartment</span></div>}
+            <span className="absolute top-2 left-2 bg-primary/90 text-white px-2 py-0.5 rounded text-[9px] font-label-caps tracking-widest">EN POZO</span>
+          </div>
+          <div className="p-4">
+            <h2 className="font-headline-md text-headline-sm text-primary leading-tight">{d.nombre || nombre}</h2>
+            {d.barrio && <p className="text-on-surface-variant text-[13px] mt-0.5">{d.barrio}{d.direccion ? ` · ${d.direccion}` : ""}</p>}
+            <p className="text-primary font-headline-sm text-[17px] mt-2">{precio}</p>
+            <dl className="mt-3 grid grid-cols-2 gap-2 text-[13px]">
+              {d.ambientes && <div className="bg-surface-container-low rounded-lg px-3 py-2"><dt className="text-on-surface-variant text-[11px]">Tipología</dt><dd className="text-primary font-medium">{d.ambientes}</dd></div>}
+              {(d.entregaLabel || d.entrega) && <div className="bg-surface-container-low rounded-lg px-3 py-2"><dt className="text-on-surface-variant text-[11px]">Entrega</dt><dd className="text-primary font-medium">{d.entregaLabel || d.entrega}</dd></div>}
+              {d.desarrolladora && <div className="bg-surface-container-low rounded-lg px-3 py-2 col-span-2"><dt className="text-on-surface-variant text-[11px]">Desarrolladora</dt><dd className="text-primary font-medium truncate">{d.desarrolladora}</dd></div>}
+            </dl>
+            {d.descripcion && <p className="text-[13px] text-on-surface-variant leading-relaxed mt-3 line-clamp-6">{String(d.descripcion).replace(/<[^>]+>/g, "").slice(0, 420)}</p>}
+          </div>
+        </div>
+        <div className="shrink-0 border-t border-outline-variant bg-surface-container-low p-3">
+          {sent ? (
+            <div className="text-[12.5px] text-secondary flex items-center gap-2 py-1"><span className="material-symbols-outlined text-[18px]">check_circle</span> Te contactamos por este proyecto. Seguí mirando otros.</div>
+          ) : (
+            <>
+              <p className="text-[12.5px] text-primary font-medium mb-2">Dejá tu WhatsApp y te pasamos precio, cuota y disponibilidad de {d.nombre || nombre}.</p>
+              <form onSubmit={(e) => { e.preventDefault(); if (!wppValido(wpp)) return; onLead(wpp.trim()); setSent(true); }} className="flex items-center gap-2">
+                <input value={wpp} onChange={(e) => setWpp(e.target.value)} inputMode="tel" autoComplete="tel" placeholder="WhatsApp con característica" className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
+                <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-4 py-2 text-[12px] font-medium hover:opacity-90 transition">Que me contacten</button>
+              </form>
+            </>
+          )}
+          <Link href={`/desarrollos-inmobiliarios/${slug}/`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-[12px] text-secondary hover:text-primary transition">Ver ficha completa <span className="material-symbols-outlined text-[15px]">open_in_new</span></Link>
         </div>
       </div>
     </div>
