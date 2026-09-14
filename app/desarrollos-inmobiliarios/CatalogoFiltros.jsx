@@ -122,6 +122,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   const [orden, setOrden] = useState('destacados');
   const [vista, setVista] = useState('lista');        // 'lista' | 'mapa'
   const [barrioOpen, setBarrioOpen] = useState(false);
+  const [barrioQuery, setBarrioQuery] = useState(''); // type-ahead del dropdown de barrio
   const [masOpen, setMasOpen] = useState(false);      // panel secundarios (desktop)
   const [sheetOpen, setSheetOpen] = useState(false);  // bottom-sheet (mobile)
 
@@ -291,11 +292,18 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
 
   // ── Bloques reutilizables ────────────────────────────────────────────────
 
-  const barrioDropdown = () => (
+  const barrioDropdown = () => {
+    // Type-ahead: filtramos por texto tolerante a acentos (NORM). Los sitios de referencia
+    // (Idealista/Zillow) buscan tipeando en vez de scrollear una lista larga.
+    const q = NORM(barrioQuery.trim());
+    const filtLanding = q ? LANDING_BARRIOS.filter((b) => NORM(b.label).includes(q)) : LANDING_BARRIOS;
+    const filtBarrios = q ? barrios.filter((b) => NORM(b).includes(q)) : barrios;
+    const cerrar = () => { setBarrioOpen(false); setBarrioQuery(''); };
+    return (
     <div className="relative">
       <button
         type="button"
-        onClick={() => setBarrioOpen((o) => !o)}
+        onClick={() => { setBarrioOpen((o) => !o); setBarrioQuery(''); }}
         aria-expanded={barrioOpen}
         aria-haspopup="listbox"
         className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${(barrio || barrioFijo) ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
@@ -305,21 +313,31 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         <span className="material-symbols-outlined text-[16px]" aria-hidden="true">expand_more</span>
       </button>
       {barrioOpen && (
-        <div role="listbox" aria-label="Elegir barrio" className="absolute z-40 mt-2 w-60 max-h-80 overflow-auto bg-surface border border-outline-variant shadow-xl rounded-lg py-2">
+        <div role="listbox" aria-label="Elegir barrio" className="absolute z-40 mt-2 w-64 bg-surface border border-outline-variant shadow-xl rounded-lg overflow-hidden">
+          {/* Buscador type-ahead */}
+          <div className="p-2 border-b border-outline-variant">
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-full border border-outline-variant focus-within:border-secondary">
+              <span className="material-symbols-outlined text-[16px] text-on-surface-variant" aria-hidden="true">search</span>
+              <input autoFocus value={barrioQuery} onChange={(e) => setBarrioQuery(e.target.value)} placeholder="Buscar barrio…" aria-label="Buscar barrio" className="flex-1 bg-transparent outline-none text-[13px] text-primary" />
+              {barrioQuery && <button type="button" onClick={() => setBarrioQuery('')} aria-label="Limpiar" className="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-primary">close</button>}
+            </div>
+          </div>
+          <div className="max-h-72 overflow-auto py-1">
           {barrioFijo ? (
             <>
-              <button type="button" onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-              {LANDING_BARRIOS.map((b) => (
+              {!q && <button type="button" onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>}
+              {filtLanding.map((b) => (
                 <button type="button" key={b.slug} onClick={() => window.location.assign(`/desarrollos-inmobiliarios-en-${b.slug}/`)} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b.label === barrioFijo ? 'text-secondary font-medium' : ''}`}>{b.label}</button>
               ))}
+              {filtLanding.length === 0 && <p className="px-4 py-3 text-[13px] text-on-surface-variant">Sin barrios que coincidan.</p>}
             </>
           ) : (
             <>
-              <button type="button" onClick={() => { setBarrio(''); setBarrioOpen(false); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>
-              {barrios.map((b) => {
+              {!q && <button type="button" onClick={() => { setBarrio(''); cerrar(); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>}
+              {filtBarrios.map((b) => {
                 const slug = landingSlugForBarrio(b);
                 const go = () => {
-                  setBarrioOpen(false);
+                  cerrar();
                   if (slug) window.location.assign(`/desarrollos-inmobiliarios-en-${slug}/`);
                   else setBarrio(b);
                 };
@@ -327,12 +345,15 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
                   <button type="button" key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
                 );
               })}
+              {filtBarrios.length === 0 && <p className="px-4 py-3 text-[13px] text-on-surface-variant">Sin barrios que coincidan.</p>}
             </>
           )}
+          </div>
         </div>
       )}
     </div>
-  );
+    );
+  };
 
   const ambChips = () => (
     <>
