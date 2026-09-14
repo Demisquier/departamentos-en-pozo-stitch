@@ -19,6 +19,8 @@ const ENTITY_SCHEMA = [
     logo: { "@type": "ImageObject", url: LOGO_URL },
     description: "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías.",
     contactPoint: { "@type": "ContactPoint", email: CONTACT_EMAIL, contactType: "customer support", areaServed: "AR", availableLanguage: "Spanish" },
+    // sameAs: perfiles propios de la marca -> senal de ENTIDAD (Knowledge Graph + citabilidad IA/GEO).
+    sameAs: ["https://medium.com/@contacto_86481", "https://www.linkedin.com/company/144533011/"],
   },
   {
     "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE}/#website`,
