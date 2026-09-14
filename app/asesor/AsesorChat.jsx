@@ -133,7 +133,10 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
       let intro;
       if (esLead) {
         setModo("lead"); setProyecto(n);
-        intro = `¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. Te ayudo con ${pedido ? pedido : "precio, cuota y disponibilidad"} de ${n}: se lo pido al equipo comercial del proyecto y te lo paso.`;
+        // Ficha: tono cálido + directo. Saludo humano, explica el porqué de pedir los datos
+        // (pasarte info de ESTE desarrollo) y arranca la captura. Corto y cordial. Objetivo: lead.
+        const saludo = first ? `¡Hola de nuevo, ${first}!` : "¡Hola! ¿Cómo estás?";
+        intro = `${saludo} Soy ${BOT} y te ayudo en tu búsqueda. Para pasarte info actualizada de ${n} —${pedido ? pedido : "precio, cuota y disponibilidad"}— te pido unos datos rápidos.`;
       } else {
         setModo("buscador");
         intro = `¡Hola${first ? ` de nuevo, ${first}` : ""}! Soy ${BOT}. En dos o tres preguntas te muestro lo que encaja y te paso precios.`;
