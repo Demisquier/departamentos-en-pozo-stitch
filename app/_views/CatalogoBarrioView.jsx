@@ -8,9 +8,6 @@ import Faq from "../_ui/Faq";
 import AlertaCTA from "../_ui/AlertaCTA";
 import GuiasRelacionadas from "../_ui/GuiasRelacionadas";
 
-// Landing de catálogo por barrio: el listado de proyectos en pozo pre-filtrado por barrio.
-// Reusa CatalogoFiltros (con barrioFijo) y el mismo shape de items del catálogo general.
-// `items` YA viene filtrado y mapeado por barrio desde app/[slug]/page.jsx.
 export default function CatalogoBarrioView({ slug, label, items, intro, schema }) {
   const n = items.length;
   const devSlug = BARRIO_URL[slug] || null;
@@ -21,15 +18,25 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
   const desde = desdeArr[0] || null;
   const m2Arr = items.filter((i) => i.precioM2).map((i) => i.precioM2).sort((a, b) => a - b);
   const medianaM2 = m2Arr.length ? m2Arr[Math.floor(m2Arr.length / 2)] : null;
+  // Datos propios extra (answer-first + FAQ data-driven): precio "típico" (mediana desde),
+  // cuántos proyectos financian en cuotas, y el rango de años de entrega.
+  const medianaDesde = desdeArr.length ? desdeArr[Math.floor(desdeArr.length / 2)] : null;
+  const conFinanciacion = items.filter((i) => i.financiacion).length;
+  const entregaAnios = items.filter((i) => i.entregaAnio).map((i) => i.entregaAnio).sort((a, b) => a - b);
+  const entregaMin = entregaAnios[0] || null;
+  const entregaMax = entregaAnios[entregaAnios.length - 1] || null;
   const fmt = (x) => "USD " + Math.round(x).toLocaleString("es-AR");
 
-  // FAQ con datos propios del barrio → captura long-tail/AEO ("cuánto cuesta / conviene / qué
-  // desarrolladoras — departamento en pozo en {barrio}"). Se renderiza VISIBLE (matchea el schema).
+  // FAQ con datos propios del barrio → captura long-tail/AEO. Se renderiza VISIBLE (matchea el schema).
   const faqBarrio = [
     [`¿Cuánto cuesta un departamento en pozo en ${label}?`,
-     `En ${label} relevamos ${n} proyecto${n === 1 ? "" : "s"} en pozo${desde ? `, con precios desde ${fmt(desde)}` : ""}${medianaM2 ? ` y un valor de referencia mediano de ${fmt(medianaM2)}/m²` : ""}. El precio final depende del piso, la orientación, las amenities y el avance de obra.`],
+     `En ${label} relevamos ${n} proyecto${n === 1 ? "" : "s"} en pozo${desde ? `, con precios desde ${fmt(desde)}` : ""}${medianaDesde && medianaDesde !== desde ? ` y un precio típico de ${fmt(medianaDesde)}` : ""}${medianaM2 ? ` (valor de referencia mediano de ${fmt(medianaM2)}/m²)` : ""}. El precio final depende del piso, la orientación, las amenities y el avance de obra.`],
     [`¿Conviene comprar en pozo en ${label}?`,
      `Comprar en pozo en ${label} suele tener un precio de entrada menor que el usado terminado de la zona, a cambio del riesgo de obra. Conviene verificar la trayectoria de la desarrolladora, la estructura legal (fideicomiso) y el índice de ajuste de las cuotas (CAC).`],
+    [`¿Se puede comprar en pozo en ${label} en cuotas?`,
+     `${conFinanciacion > 0 ? `Sí: ${conFinanciacion} de los ${n} proyectos en pozo de ${label} que relevamos ofrecen financiación en cuotas` : `Algunos proyectos en pozo de ${label} ofrecen financiación en cuotas`}, normalmente con un anticipo inicial y el saldo en cuotas durante la obra, ajustadas por el índice CAC de la construcción. El plan exacto lo confirma cada desarrolladora.`],
+    [`¿Qué riesgos tiene comprar en pozo en ${label}?`,
+     `Los principales son el avance de obra y los plazos de entrega${entregaMin ? ` (las entregas en ${label} van de ${entregaMin} a ${entregaMax || entregaMin})` : ""}, el ajuste de las cuotas por CAC y la estructura legal del proyecto (fideicomiso). Los mitigan la trayectoria de la desarrolladora y el estado de avance al momento de comprar.`],
     [`¿Qué desarrolladoras construyen en pozo en ${label}?`,
      `En este listado figuran los proyectos en pozo de ${label} con su desarrolladora, precio, tipologías y fecha de entrega, para comparar proyecto por proyecto con criterio propio.`],
   ];
@@ -60,7 +67,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
           </h1>
           {(desde || medianaM2) && (
             <p id="barrio-resumen" className="mt-2 text-[14px] text-on-surface-variant">
-              {n} proyecto{n === 1 ? "" : "s"} en pozo en {label}{desde ? ` · desde ${fmt(desde)}` : ""}{medianaM2 ? ` · mediana ${fmt(medianaM2)}/m²` : ""}.
+              {n} proyecto{n === 1 ? "" : "s"} en pozo en {label}{desde ? ` · desde ${fmt(desde)}` : ""}{medianaDesde && medianaDesde !== desde ? ` · precio típico ${fmt(medianaDesde)}` : ""}{medianaM2 ? ` · mediana ${fmt(medianaM2)}/m²` : ""}{conFinanciacion ? ` · ${conFinanciacion} con financiación en cuotas` : ""}{entregaMin ? ` · entregas ${entregaMin}${entregaMax && entregaMax !== entregaMin ? `–${entregaMax}` : ""}` : ""}.
             </p>
           )}
           {intro && (
