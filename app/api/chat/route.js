@@ -3,8 +3,10 @@
 // POST { messages:[{role,content}], proyecto? } → { reply, sugeridos:[{slug,nombre,barrio,precioDesde,imagen,url}], verMas }.
 // `sugeridos` = top del PREFILTRO determinístico (hasta 8) → hay cards aunque el LLM no
 // nombre proyectos, y el LLM NO gasta tokens enumerándolos (las cards salen del catálogo).
+// Cuando la consulta menciona un barrio, inyecta DATOS DE MERCADO (precio/m² y desde
+// mediana) para que Valentina responda con datos reales = más confianza y conversión.
 // Sin OPENAI_API_KEY: 200 { needsKey:true } (degrada, no rompe). Errores → 200 { error:true }.
-import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat } from "../../../lib/ia";
+import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat, detectBarrio, statsBarrio } from "../../../lib/ia";
 import { SITE } from "../../../lib/wp";
 
 export const runtime = "nodejs";
@@ -17,6 +19,7 @@ Tu objetivo doble: (1) ayudar de verdad y (2) conseguir que la persona deje su c
 Reglas:
 - Usá SOLO los proyectos del CONTEXTO. NUNCA inventes proyectos, precios ni desarrolladoras.
 - No enumeres más de 1-2 proyectos en el texto: el usuario ve TARJETAS con más opciones abajo. Orientá con criterio (barrio, presupuesto, riesgos).
+- Si en el CONTEXTO hay "DATOS DE MERCADO" del barrio, usalos para dar una lectura corta y con números (cantidad de proyectos, precio/m² o precio desde mediana). Da confianza y te posiciona como analista, no como vendedor.
 - Sé honesta con los riesgos del pozo: fideicomiso, avance de obra, ajuste por CAC (índice de la construcción), plazos de entrega. No prometas rentabilidad.
 - CONVERSIÓN (value-first): cuando muestres proyectos o la persona pregunte precio, cuota, entrega, financiación o disponibilidad, ofrecé de forma concreta que el desarrollador le pase esos datos actualizados por WhatsApp y pedile NOMBRE y WHATSAPP. Ej: "Si querés, el desarrollador te pasa precio, cuota y disponibilidad de [proyecto] por WhatsApp — ¿me dejás tu nombre y número?". Una sola vez por turno, sin insistir de más.
 - Respuestas breves (máx ~90 palabras). No uses tablas markdown.`;
@@ -50,6 +53,13 @@ export async function POST(req) {
     // cards: mejor orientar sin nombrar fichas random.
     const contexto = hit ? top.map(lineaProyecto).join("\n") : "(sin proyectos que matcheen la consulta)";
 
+    // Analista de barrio: si la consulta nombra un barrio, sumamos datos de mercado reales.
+    const barrioDet = detectBarrio(catalogo, q);
+    const mkt = statsBarrio(catalogo, barrioDet);
+    const contextoMkt = mkt
+      ? `\n\nDATOS DE MERCADO (${mkt.barrio}): ${mkt.n} proyectos en pozo${mkt.desdeMed ? `, precio desde mediana USD ${mkt.desdeMed.toLocaleString("es-AR")}` : ""}${mkt.m2Med ? `, precio/m² mediana USD ${mkt.m2Med.toLocaleString("es-AR")}` : ""}.`
+      : "";
+
     // Cards = top del prefiltro (hasta 8), armadas y sanitizadas desde el catálogo
     // (sin costo de tokens). Vacío cuando no hubo match real.
     const sugeridos = hit ? top.slice(0, 8).map(cardFrom) : [];
@@ -59,7 +69,7 @@ export async function POST(req) {
 
     const chat = [
       { role: "system", content: SYSTEM },
-      { role: "system", content: `CONTEXTO — proyectos del catálogo relevantes a la consulta:\n${contexto}` },
+      { role: "system", content: `CONTEXTO — proyectos del catálogo relevantes a la consulta:\n${contexto}${contextoMkt}` },
       ...messages
         .filter((m) => m && (m.role === "user" || m.role === "assistant") && m.content)
         .slice(-10)
