@@ -67,7 +67,7 @@ function parseQuery(q, barriosSet) {
   let mn = s.match(/(?:desde|mas de|más de|minimo|mínimo|>=?)\s*u?\$?s?\s*([\d.,]+)\s*(k|mil)?/);
   if (mn) { const v = toUsd(mn[1], mn[2]); if (v) f.precio_min = v; }
   // Entrega: "entrega 2027", "antes de 2027", "listo en 2027".
-  let me = s.match(/(?:entrega|entregar|listo|terminado|antes de|hasta)\s*(?:en\s*)?(20\d\d)/);
+  let me = s.match(/(?:entrega|entregar|listo|terminado|posesion|antes de)\s*(?:en\s*)?(20[23]\d)(?!\d)/);
   if (me) f.entrega_hasta_anio = Number(me[1]);
   // Financiación / cuotas.
   if (/financ|cuotas?|en pozo con cuota|plan de pago/.test(s)) f.financiacion = true;
