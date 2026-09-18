@@ -44,11 +44,19 @@ function score(t, c) {
 export async function GET(req) {
   const url = new URL(req.url);
   const slug = (url.searchParams.get("slug") || "").trim();
+  const q = (url.searchParams.get("nombre") || url.searchParams.get("q") || "").trim();
   const limit = Math.min(Math.max(parseInt(url.searchParams.get("limit") || "4", 10) || 4, 1), 8);
   const cat = await loadCatalogo();
-  const target = cat.find((x) => x.slug === slug);
+  // Resuelve el proyecto objetivo por slug; si no hay, por nombre (para leads que traen el
+  // nombre pero no el slug). Match exacto y, si no, por inclusión normalizada.
+  let target = slug ? cat.find((x) => x.slug === slug) : null;
+  if (!target && q) {
+    const nq = norm(q);
+    target = cat.find((x) => norm(x.nombre) === nq) ||
+             cat.find((x) => { const n = norm(x.nombre); return n && (n.includes(nq) || nq.includes(n)); });
+  }
   if (!target) {
-    return Response.json({ error: "not_found", slug, similares: [] }, { status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
+    return Response.json({ error: "not_found", slug, nombre: q, similares: [] }, { status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
   }
   const ranked = cat
     .filter((x) => x.slug && x.slug !== slug)
