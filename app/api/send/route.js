@@ -2,7 +2,7 @@
 // Lo llama el Apps Script (server-to-server) en vez de usar el Gmail de dema2910, así el
 // remitente real de todo pasa a ser contacto@. Protegido con un secreto compartido (MAIL_SECRET).
 // Body: { secret, to, subject, html?, text?, replyTo?, bcc?, fromName? }
-import { sendMail } from "../../../lib/mailer";
+import { sendMail } from "../../../lib/resend";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
