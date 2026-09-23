@@ -556,14 +556,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </p>
           <div className="relative z-10 bg-surface rounded-t-2xl md:rounded-none shadow-[0_-8px_24px_rgba(0,0,0,0.06)] md:shadow-none pt-4 md:pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter mt-4 md:mt-8">
             {filtered.map((i) => (
-              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} />
+              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
             ))}
           </div>
         </div>
       ) : (
         <div key="v-lista" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filtered.map((i) => (
-            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} />
+            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
           ))}
         </div>
       )}

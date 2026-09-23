@@ -35,6 +35,7 @@ export default function ProjectCard({
   entrega,
   desarrolladora,
   destacado,     // slot destacado (monetizable) → badge + prioridad de orden
+  nuevaPestana,  // abrir en pestaña nueva (se usa desde el catálogo filtrado para no perder los filtros)
 }) {
   const m2 = precioM2 ?? precio;  // compat con llamadas viejas
   // Dato denormalizado que guarda el botón favorito (lo consume /mi-seleccion sin releer catálogo).
@@ -42,6 +43,7 @@ export default function ProjectCard({
   return (
     <Link
       href={`/desarrollos-inmobiliarios/${slug}/`}
+      {...(nuevaPestana ? { target: "_blank", rel: "noopener" } : {})}
       className={`group relative flex flex-col bg-surface rounded-xl overflow-hidden transition-all duration-300 ${destacado ? 'border-2 border-link-gold ring-1 ring-link-gold/40 shadow-lg hover:shadow-xl' : 'border border-outline-variant hover:shadow-lg'}`}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-container-high">

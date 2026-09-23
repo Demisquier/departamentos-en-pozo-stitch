@@ -42,7 +42,7 @@ export default function AccionesFicha({
           </p>
           <button type="button" onClick={() => setAsesorOpen(true)}
             className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
-            VER PRECIOS Y DISPONIBILIDAD
+            QUIERO QUE ME CONTACTEN
             <span className="material-symbols-outlined text-[18px]">forum</span>
           </button>
           {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="full" />}
@@ -61,7 +61,7 @@ export default function AccionesFicha({
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden flex gap-2">
         <button type="button" onClick={() => setAsesorOpen(true)}
           className="flex-1 px-4 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-2">
-          VER PRECIOS
+          QUIERO QUE ME CONTACTEN
           <span className="material-symbols-outlined fill-icon text-[18px]">send</span>
         </button>
         {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="bar" />}

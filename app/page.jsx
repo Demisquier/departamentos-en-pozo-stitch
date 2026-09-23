@@ -6,6 +6,7 @@ import { SITE, BRAND, LOGO_URL, CONTACT_EMAIL } from "../lib/constants";
 import Container from "./_ui/Container";
 import ProjectCard from "./_ui/ProjectCard";
 import HomeBuscador from "./_ui/HomeBuscador";
+import DestacadosHome from "./_ui/DestacadosHome";
 import JsonLd from "./_ui/JsonLd";
 import MiPlanHome from "./_components/MiPlanHome";
 import MiPlanHeroBanner from "./_components/MiPlanHeroBanner";
@@ -65,19 +66,31 @@ export default async function HomePage() {
     return { slug: node.slug, nombre, barrio, topBarrio, precio: num(acf(node, "precio_m2")), img: featuredImage(node) };
   });
 
-  // Destacados: con imagen y precio, variados por barrio, de mayor a menor precio.
-  const destacados = [];
-  const usados = new Set();
-  for (const m of mapped.filter((x) => x.img && x.precio).sort((a, b) => b.precio - a.precio)) {
-    if (usados.has(m.topBarrio)) continue;
-    usados.add(m.topBarrio);
-    destacados.push(m);
-    if (destacados.length === 3) break;
+  // Destacados por PROBABILIDAD DE CONVERSIÓN (no por precio): premiamos las señales que hacen
+  // que un proyecto convierta mejor — tiene foto/render, tiene precio de referencia y está en un
+  // barrio con inventario profundo (más opciones = mejor experiencia y más chance de lead).
+  // Armamos un POOL (~9, máx 2 por barrio para dar variedad) que DestacadosHome reordena en cliente
+  // para los usuarios que reingresan, priorizando SUS barrios (perfil + guardados). Ver DestacadosHome.
+  const barrioCount = {};
+  mapped.forEach((m) => { const b = m.topBarrio || m.barrio; if (b) barrioCount[b] = (barrioCount[b] || 0) + 1; });
+  const scored = mapped
+    .filter((x) => x.img && x.precio)
+    .map((x) => ({ ...x, _score: 3 + 2 + Math.min(2, (barrioCount[x.topBarrio || x.barrio] || 0) / 10) }))
+    .sort((a, b) => (b._score - a._score) || (b.precio - a.precio));
+
+  const pool = [];
+  const porBarrio = {};
+  for (const m of scored) {
+    const b = m.topBarrio || m.barrio || "";
+    if ((porBarrio[b] || 0) >= 2) continue;
+    porBarrio[b] = (porBarrio[b] || 0) + 1;
+    pool.push(m);
+    if (pool.length === 9) break;
   }
-  while (destacados.length < 3) {
-    const extra = mapped.find((x) => x.img && !destacados.includes(x));
+  while (pool.length < 3) {
+    const extra = scored.find((x) => !pool.includes(x)) || mapped.find((x) => x.img && !pool.includes(x));
     if (!extra) break;
-    destacados.push(extra);
+    pool.push(extra);
   }
 
   // Tiles "Desarrolladoras por barrio": links a los directorios de desarrolladoras por barrio.
@@ -114,6 +127,17 @@ export default async function HomePage() {
             No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar.
           </p>
           <HomeBuscador />
+          {/* #203 — La caja principal es el buscador por barrio. Las otras dos formas de buscar
+              (catálogo con TODOS los filtros y búsqueda conversacional con IA) quedan como LINKS
+              secundarios debajo, para que no compitan visualmente con la caja ni confundan. */}
+          <div className="max-w-4xl mt-4 flex flex-col sm:flex-row items-center gap-x-6 gap-y-2 text-on-primary/90">
+            <Link href="/desarrollos-inmobiliarios/" className="inline-flex items-center gap-1.5 text-label-caps font-label-caps hover:text-link-gold transition-colors">
+              <span className="material-symbols-outlined text-[18px]">tune</span> Buscar con todos los filtros
+            </Link>
+            <Link href="/explorar/" className="inline-flex items-center gap-1.5 text-label-caps font-label-caps hover:text-link-gold transition-colors">
+              <span className="material-symbols-outlined text-[18px]">forum</span> Buscar conversando con IA
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -151,11 +175,12 @@ export default async function HomePage() {
             VER TODOS <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {destacados.map((d) => (
+        <DestacadosHome
+          cards={pool.map((d) => (
             <ProjectCard key={d.slug} slug={d.slug} nombre={d.nombre} barrio={d.barrio} precio={d.precio} img={d.img} />
           ))}
-        </div>
+          meta={pool.map((d) => ({ slug: d.slug, barrio: d.topBarrio || d.barrio }))}
+        />
       </Container>
 
 

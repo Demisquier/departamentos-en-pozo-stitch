@@ -228,7 +228,8 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const nombre = primerNombre(perfilRef.current.nombre);
     const hay = leadRef.current.sent;
     if (esLead || proyecto) {
-      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! En un rato te escribo por WhatsApp con precio, cuota y formas de pago. Lo dejé en tu Plan.` : `Cuando quieras me dejás un contacto y te paso todo.`, 700);
+      setBuscarUrl("/desarrollos-inmobiliarios/");
+      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! Le paso tu interés a la desarrolladora, te van a contactar con precio, cuota y formas de pago. Lo dejé en tu Plan. Mientras, ¿seguimos viendo proyectos parecidos?` : `Cuando quieras me dejás un contacto y coordino que la desarrolladora te contacte.`, 700);
       setFase("ok");
     } else {
       setBuscarUrl("/desarrollos-inmobiliarios/");
@@ -322,13 +323,19 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
         )}
 
         {fase === "ok" && (
-          <div className="p-4 flex items-center justify-center gap-3 flex-wrap">
-            <Link href="/mi-seleccion/" onClick={() => onClose && onClose()} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
-              <span className="material-symbols-outlined text-[18px]">space_dashboard</span> Ver mi Plan
-            </Link>
-            {onClose && (
-              <button type="button" onClick={onClose} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Seguir viendo</button>
-            )}
+          <div className="p-4 space-y-3">
+            <p className="text-[13px] text-on-surface-variant text-center">Seguí viendo proyectos parecidos — si alguno te gusta, con un toque le avisamos a su desarrolladora.</p>
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <Link href={buscarUrl} onClick={() => { track("ver_listado", { origen: "chat_post_lead" }); onClose && onClose(); }} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
+                <span className="material-symbols-outlined text-[18px]">search</span> Ver proyectos similares
+              </Link>
+              <Link href="/mi-seleccion/" onClick={() => onClose && onClose()} className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors inline-flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">space_dashboard</span> Mi Plan
+              </Link>
+              {onClose && (
+                <button type="button" onClick={onClose} className="text-[13px] text-on-surface-variant underline underline-offset-2 hover:text-primary px-2">Cerrar</button>
+              )}
+            </div>
           </div>
         )}
       </div>

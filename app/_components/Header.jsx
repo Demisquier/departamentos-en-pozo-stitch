@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AuthButton from "../_auth/AuthButton";
 
@@ -19,6 +20,12 @@ const NAV_END = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname() || "/";
+  const norm = (s) => (String(s || "/").split("#")[0].replace(/\/+$/, "") || "/");
+  const cur = norm(pathname);
+  // Solo se destaca la sección donde estoy parado (o una subruta); nunca un link a un hash del home.
+  const isActive = (href) => { const t = norm(href); if (t === "/") return false; return cur === t || cur.startsWith(t + "/"); };
+  const linkClass = (href) => `${isActive(href) ? "text-secondary font-bold" : "text-on-surface-variant"} whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`;
 
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300 py-3">
@@ -41,11 +48,12 @@ export default function Header() {
           <Link href="/explorar/" className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-secondary/10 text-secondary px-3 py-1.5 text-label-caps font-label-caps hover:bg-secondary hover:text-white transition-colors">
             <span className="material-symbols-outlined text-[16px]">auto_awesome</span> BUSCAR CON IA
           </Link>
-          {NAV.map((n, i) => (
+          {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className={`${n.primary ? "text-secondary font-bold" : "text-on-surface-variant"} whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300`}
+              aria-current={isActive(n.href) ? "page" : undefined}
+              className={linkClass(n.href)}
             >
               {n.label}
             </Link>
@@ -55,7 +63,8 @@ export default function Header() {
             <Link
               key={n.label}
               href={n.href}
-              className="text-on-surface-variant whitespace-nowrap text-label-caps font-label-caps hover:text-secondary transition-colors duration-300"
+              aria-current={isActive(n.href) ? "page" : undefined}
+              className={linkClass(n.href)}
             >
               {n.label}
             </Link>

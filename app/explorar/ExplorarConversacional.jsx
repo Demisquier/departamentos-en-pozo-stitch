@@ -18,6 +18,17 @@ const RELAX = ["Ampliar la zona", "Subir el presupuesto", "Sacar un requisito"];
 
 const precioLabel = (s) => (s.precioDesde ? `USD ${Number(s.precioDesde).toLocaleString("es-AR")}` : "Consultar");
 
+// Captura conversacional en un solo input: ¿el mensaje trae un WhatsApp válido?
+const soloDigitos = (s) => String(s || "").replace(/[^\d]/g, "");
+const detectaWpp = (s) => {
+  const m = String(s || "").match(/(\+?\d[\d\s().-]{7,}\d)/);
+  if (!m) return "";
+  const cand = m[1].trim();
+  if (wppValido(cand)) return cand;
+  const dig = soloDigitos(cand);
+  return wppValido(dig) ? dig : "";
+};
+
 export default function ExplorarConversacional() {
   const [ready, setReady] = useState(null); // null=cargando · false=off · true=on
   const [perfil, setPerfil] = useState({});
@@ -29,12 +40,13 @@ export default function ExplorarConversacional() {
   const [sending, setSending] = useState(false);
   const [pane, setPane] = useState("chat"); // mobile: "chat" | "res"
   const [detalle, setDetalle] = useState(null); // { slug, nombre } → abre drawer, NO nueva pestaña
-  // Lead progresivo: paso "nombre" → "whatsapp" → "done". Arranca en el 1er dato que falta.
+  // Estado de lead: leadSent = ya dejó WhatsApp (perfil unificado). leadPaso se conserva por
+  // compatibilidad con el drawer de detalle. La captura ocurre en el único input del chat.
   const [leadPaso, setLeadPaso] = useState("nombre");
-  const [leadVal, setLeadVal] = useState("");
   const [leadSent, setLeadSent] = useState(false);
   const scrollRef = useRef(null);
   const ranSeed = useRef(false);
+  const nudged = useRef(false); // una sola invitación a dejar el WhatsApp (sin insistir)
 
   const gotReply = msgs.filter((m) => m.role === "assistant").length > 1;
   const chatVacio = !msgs.some((m) => m.role === "user");
@@ -79,6 +91,30 @@ export default function ExplorarConversacional() {
   async function sendText(raw) {
     const val = (raw || "").trim();
     if (!val || sending) return;
+
+    // Captura de lead CONVERSACIONAL en el ÚNICO input del chat: si todavía no tenemos WhatsApp y
+    // el mensaje trae un número válido, lo tomamos como lead y confirmamos como un mensaje más —
+    // sin segundo input ni barra aparte (un solo bloque visual). Speed-to-lead.
+    if (!leadSent) {
+      const wpp = detectaWpp(val);
+      if (wpp) {
+        const cur = readPerfil();
+        const proy = results[0]?.nombre || "";
+        writePerfil({ whatsapp: wpp });
+        enviarLead({ nombre: cur.nombre || "", whatsapp: wpp, email: cur.email || "", proyecto: proy, proyectoSlug: results[0]?.slug || "", origen: "explorar-ia", track });
+        setPerfil((p) => ({ ...p, whatsapp: wpp }));
+        setLeadSent(true); setLeadPaso("done");
+        const nom = primerNombre(cur.nombre);
+        setMsgs((m) => [...m,
+          { role: "user", content: val },
+          { role: "assistant", content: `¡Listo${nom ? `, ${nom}` : ""}! La desarrolladora te va a contactar por WhatsApp con precio, cuota y formas de pago. Lo dejé en tu Plan. ¿Seguimos viendo proyectos parecidos?` },
+        ]);
+        setTxt("");
+        track("explorar_lead", {});
+        return;
+      }
+    }
+
     const next = [...msgs, { role: "user", content: val }];
     setMsgs(next); setTxt(""); setSending(true);
     track("explorar_msg", {});
@@ -89,8 +125,16 @@ export default function ExplorarConversacional() {
         body: JSON.stringify({ messages: next.slice(-12) }),
       });
       const d = await r.json();
-      setMsgs((m) => [...m, { role: "assistant", content: d?.reply || "Disculpá, no pude responder. Probá reformular en una frase." }]);
       const sug = Array.isArray(d?.sugeridos) ? d.sugeridos : [];
+      setMsgs((m) => {
+        const out = [...m, { role: "assistant", content: d?.reply || "Disculpá, no pude responder. Probá reformular en una frase." }];
+        // Invitación ÚNICA a dejar el WhatsApp, en el mismo hilo (no un segundo input).
+        if (sug.length && !leadSent && !nudged.current) {
+          nudged.current = true;
+          out.push({ role: "assistant", content: "Si querés que la desarrolladora te contacte con precios y formas de pago, dejame tu WhatsApp acá mismo. Si preferís, seguimos afinando la búsqueda." });
+        }
+        return out;
+      });
       if (sug.length) { setResults(sug); setNoMatch(false); setPane("res"); }
       else { setNoMatch(true); }
       if (typeof d?.verMas === "string") setVerMas(d.verMas);
@@ -102,27 +146,6 @@ export default function ExplorarConversacional() {
   }
 
   function enviar(e) { e.preventDefault(); sendText(txt); }
-
-  // Captura PROGRESIVA: un dato por vez. Guarda cada paso en el perfil único y dispara el
-  // lead apenas hay WhatsApp (speed-to-lead). El nombre se pide solo si no lo tenemos.
-  function avanzarLead(e) {
-    e.preventDefault();
-    const v = leadVal.trim();
-    if (leadPaso === "nombre") {
-      const nom = primerNombre(v) || v;
-      if (v.length < 2) return;
-      writePerfil({ nombre: nom });
-      setPerfil((p) => ({ ...p, nombre: nom }));
-      setLeadVal(""); setLeadPaso("whatsapp");
-    } else if (leadPaso === "whatsapp") {
-      if (!wppValido(v)) return;
-      const proy = results[0]?.nombre || "";
-      const cur = readPerfil();
-      enviarLead({ nombre: cur.nombre || "", whatsapp: v, email: cur.email || "", proyecto: proy, proyectoSlug: results[0]?.slug || "", origen: "explorar-ia", track });
-      setPerfil((p) => ({ ...p, whatsapp: v }));
-      setLeadVal(""); setLeadPaso("done"); setLeadSent(true);
-    }
-  }
 
   if (ready === null) {
     return (
@@ -168,33 +191,6 @@ export default function ExplorarConversacional() {
       </div>
     </button>
   );
-
-  // Barra de lead progresiva (un input, cambia según el paso). Value-first: aparece tras la 1ª respuesta.
-  const leadBar = () => {
-    if (leadSent || leadPaso === "done") {
-      return (
-        <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px]">check_circle</span>
-          {perfil.nombre ? `¡Listo, ${primerNombre(perfil.nombre)}!` : "¡Listo!"} Un asesor te escribe por WhatsApp. Guardado en tu Plan.
-        </div>
-      );
-    }
-    const esNombre = leadPaso === "nombre";
-    return (
-      <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5">
-        <p className="text-[12.5px] text-primary font-medium mb-2 flex items-center gap-1">
-          <span className="material-symbols-outlined text-[16px] text-secondary">bolt</span>
-          {esNombre ? "¿Te paso precio, cuota y disponibilidad? Empecemos: ¿cómo te llamás?" : `Gracias${primerNombre(perfil.nombre) ? ", " + primerNombre(perfil.nombre) : ""}. ¿A qué WhatsApp te contactamos?`}
-        </p>
-        <form onSubmit={avanzarLead} className="flex items-center gap-2">
-          <input value={leadVal} onChange={(e) => setLeadVal(e.target.value)} autoComplete={esNombre ? "given-name" : "tel"} inputMode={esNombre ? "text" : "tel"}
-            placeholder={esNombre ? "Tu nombre" : "WhatsApp con característica"}
-            className="flex-1 px-3 py-2 rounded-full border border-outline-variant bg-surface text-[13px] outline-none focus:border-secondary" />
-          <button type="submit" className="shrink-0 rounded-full bg-secondary text-white px-4 py-2 text-[12px] font-medium hover:opacity-90 transition">{esNombre ? "Seguir" : "Que me contacten"}</button>
-        </form>
-      </div>
-    );
-  };
 
   return (
     <div className="h-full flex flex-col">
@@ -244,11 +240,16 @@ export default function ExplorarConversacional() {
             )}
           </div>
 
-          {gotReply && leadBar()}
+          {leadSent && (
+            <div className="shrink-0 border-t border-outline-variant bg-surface-container-low px-3 py-2.5 text-[12.5px] text-secondary flex items-center gap-2">
+              <span className="material-symbols-outlined text-[18px]">check_circle</span>
+              {perfil.nombre ? `¡Listo, ${primerNombre(perfil.nombre)}!` : "¡Listo!"} La desarrolladora te contacta por WhatsApp. Guardado en tu Plan.
+            </div>
+          )}
 
           <form onSubmit={enviar} className="shrink-0 border-t border-outline-variant bg-surface p-3">
             <div className="flex items-center gap-2">
-              <input value={txt} onChange={(e) => setTxt(e.target.value)} disabled={sending} placeholder="Describí lo que buscás…" className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
+              <input value={txt} onChange={(e) => setTxt(e.target.value)} disabled={sending} inputMode="text" placeholder={leadSent ? "Describí lo que buscás…" : "Describí lo que buscás… o dejá tu WhatsApp"} className="flex-1 px-3.5 py-2.5 rounded-full border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary disabled:opacity-60" />
               <button type="submit" disabled={sending || !txt.trim()} aria-label="Enviar" className="shrink-0 w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:opacity-90 transition disabled:opacity-50">
                 <span className="material-symbols-outlined fill-icon text-[20px]">send</span>
               </button>
