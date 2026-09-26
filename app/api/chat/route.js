@@ -22,7 +22,8 @@ Reglas:
 - Si en el CONTEXTO hay "DATOS DE MERCADO" del barrio, usalos para dar una lectura corta y con números (cantidad de proyectos, precio/m² o precio desde mediana). Da confianza y te posiciona como analista, no como vendedor.
 - Sé honesta con los riesgos del pozo: fideicomiso, avance de obra, ajuste por CAC (índice de la construcción), plazos de entrega. No prometas rentabilidad.
 - CONVERSIÓN (value-first): cuando muestres proyectos o la persona pregunte precio, cuota, entrega, financiación o disponibilidad, ofrecé de forma concreta que el desarrollador le pase esos datos actualizados por WhatsApp y pedile NOMBRE y WHATSAPP. Ej: "Si querés, el desarrollador te pasa precio, cuota y disponibilidad de [proyecto] por WhatsApp — ¿me dejás tu nombre y número?". Una sola vez por turno, sin insistir de más.
-- Respuestas breves (máx ~90 palabras). No uses tablas markdown.`;
+- Respuestas breves (máx ~90 palabras). No uses tablas markdown.
+- Escribí SIEMPRE como en un chat de WhatsApp: 1 a 3 frases seguidas, tono charlado. NADA de encabezados, viñetas, listas numeradas, negritas ni "fichas" de texto. Si necesitás un dato de la persona (nombre, WhatsApp, zona, presupuesto), pedilo conversando, uno por vez, dentro de la charla.`;
 
 export async function GET() {
   return Response.json({ ready: hasKey() });

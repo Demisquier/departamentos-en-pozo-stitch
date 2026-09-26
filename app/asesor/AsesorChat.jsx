@@ -229,7 +229,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     const hay = leadRef.current.sent;
     if (esLead || proyecto) {
       setBuscarUrl("/desarrollos-inmobiliarios/");
-      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! Le paso tu interés a la desarrolladora, te van a contactar con precio, cuota y formas de pago. Lo dejé en tu Plan. Mientras, ¿seguimos viendo proyectos parecidos?` : `Cuando quieras me dejás un contacto y coordino que la desarrolladora te contacte.`, 700);
+      await say(hay ? `¡Gracias${nombre ? `, ${nombre}` : ""}! Le paso tu interés a la desarrolladora o comercializadora del proyecto para que te contacten con precio, cuota y formas de pago. Lo dejé en tu Plan. Mientras, ¿seguimos viendo proyectos parecidos?` : `Cuando quieras me dejás un contacto y coordino que la desarrolladora o comercializadora te contacte.`, 700);
       setFase("ok");
     } else {
       setBuscarUrl("/desarrollos-inmobiliarios/");
@@ -324,7 +324,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
 
         {fase === "ok" && (
           <div className="p-4 space-y-3">
-            <p className="text-[13px] text-on-surface-variant text-center">Seguí viendo proyectos parecidos — si alguno te gusta, con un toque le avisamos a su desarrolladora.</p>
+            <p className="text-[13px] text-on-surface-variant text-center">Seguí viendo proyectos parecidos — si alguno te gusta, con un toque le pasamos tu interés a su desarrolladora o comercializadora para que te contacte.</p>
             <div className="flex items-center justify-center gap-3 flex-wrap">
               <Link href={buscarUrl} onClick={() => { track("ver_listado", { origen: "chat_post_lead" }); onClose && onClose(); }} className="inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 text-[13px] font-label-caps uppercase tracking-wider hover:opacity-90 transition-all">
                 <span className="material-symbols-outlined text-[18px]">search</span> Ver proyectos similares

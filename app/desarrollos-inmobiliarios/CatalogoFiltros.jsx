@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
-import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
+import { BARRIO_CATALOGO, matchBarrioCatalogo, zonificarBarrios } from '../../lib/barrios';
 
 // Barrio (granular, ej. "Palermo Hollywood") -> slug de landing propia, si existe.
 // Palermo Soho/Hollywood/Botánico -> "palermo". Barrios sin landing (Saavedra, Coghlan) -> null.
@@ -125,6 +125,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   const [barrioQuery, setBarrioQuery] = useState(''); // type-ahead del dropdown de barrio
   const [masOpen, setMasOpen] = useState(false);      // panel secundarios (desktop)
   const [sheetOpen, setSheetOpen] = useState(false);  // bottom-sheet (mobile)
+  // Reingresantes: barrios de interés del usuario (perfil + guardados) para FLOTAR proyectos de SUS
+  // barrios dentro del orden "Destacados". Vacío en SSR/1ª pintura → sin desajuste de hidratación.
+  const [prefBarrios, setPrefBarrios] = useState([]);
 
   // ── URL <-> filtros (vista compartible). Leemos los query params al montar y
   // reflejamos los filtros en la URL con replaceState (sin recargar ni navegar).
@@ -143,6 +146,22 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     if (sp.get('ptot')) setPrecioTotal(sp.get('ptot'));
     if (sp.get('orden')) setOrden(sp.get('orden'));
     hydrated.current = true;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Reingresantes: leer barrios de interés del localStorage (perfil + favoritos) tras montar.
+  useEffect(() => {
+    const topB = (b) => { const n = NORM(b); return n.startsWith('palermo') ? 'palermo' : n; };
+    const pref = new Set();
+    try {
+      const p = JSON.parse(localStorage.getItem('dpp_perfil_v1') || '{}');
+      const z = p && p.zonas;
+      if (z && !/igual|abierto|sugerenc/i.test(String(z))) String(z).split(/[/,]/).forEach((x) => { const t = topB(x); if (t) pref.add(t); });
+    } catch {}
+    try {
+      const favs = JSON.parse(localStorage.getItem('dpp_favoritos_v1') || '[]');
+      (Array.isArray(favs) ? favs : []).forEach((f) => { if (f && f.barrio) { const t = topB(f.barrio); if (t) pref.add(t); } });
+    } catch {}
+    if (pref.size) setPrefBarrios([...pref]);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!hydrated.current) return;
@@ -238,9 +257,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       return m ? Number(m[2]) * 100 + Number(m[1]) : 999999;
     };
     if (orden === 'destacados') {
+      const topB = (b) => { const n = NORM(b); return n.startsWith('palermo') ? 'palermo' : n; };
       const score = (i) => {
         let s = 0;
         if (DESTACADOS.includes(i.slug)) s += 1000;
+        // Reingresantes: proyectos en los barrios de interés del usuario suben (bajo los DESTACADOS pagos).
+        if (prefBarrios.length && prefBarrios.includes(topB(i.barrio))) s += 500;
         if (i.imagen) s += 40;
         if (i.precioDesde != null || i.precio != null) s += 30;
         if (i.financiacion) s += 20;
@@ -256,7 +278,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden]);
+  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden, prefBarrios]);
 
   const chip = (active) =>
     `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
@@ -324,17 +346,23 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           ) : (
             <>
               {!q && <button type="button" onClick={() => { setBarrio(''); cerrar(); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>}
-              {filtBarrios.map((b) => {
-                const slug = landingSlugForBarrio(b);
-                const go = () => {
-                  cerrar();
-                  if (slug) window.location.assign(`/desarrollos-inmobiliarios-en-${slug}/`);
-                  else setBarrio(b);
-                };
-                return (
-                  <button type="button" key={b} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b === barrio ? 'text-secondary font-medium' : ''}`}>{b}</button>
-                );
-              })}
+              {/* Agrupado por ZONA (Capital Federal / GBA · Zona Norte…), estilo portal, para no
+                  mezclar CABA con GBA. Consolida sub-barrios de Palermo bajo "Palermo". */}
+              {zonificarBarrios(filtBarrios).map((g) => (
+                <div key={g.zona}>
+                  <div className="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant">{g.zona}</div>
+                  {g.items.map((it) => {
+                    const go = () => {
+                      cerrar();
+                      if (it.slug) window.location.assign(`/desarrollos-inmobiliarios-en-${it.slug}/`);
+                      else setBarrio(it.label);
+                    };
+                    return (
+                      <button type="button" key={g.zona + it.label} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${it.label === barrio ? 'text-secondary font-medium' : ''}`}>{it.label}</button>
+                    );
+                  })}
+                </div>
+              ))}
               {filtBarrios.length === 0 && <p className="px-4 py-3 text-[13px] text-on-surface-variant">Sin barrios que coincidan.</p>}
             </>
           )}

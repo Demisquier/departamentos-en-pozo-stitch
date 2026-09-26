@@ -129,9 +129,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido).
   return {
     ...m,
-    title: "Desarrolladoras Inmobiliarias en Capital Federal 2026",
+    title: "Desarrolladoras Inmobiliarias en Capital Federal 2026: Directorio por Barrio",
     description:
-      "Directorio independiente de desarrolladoras inmobiliarias en Capital Federal 2026: trayectoria, fideicomiso y proyecto insignia, por barrio. Sin ranking pago.",
+      "Directorio independiente de desarrolladoras inmobiliarias en Capital Federal: mirá trayectoria, obras entregadas, fideicomiso y proyecto insignia antes de comprar en pozo. Por barrio, sin ranking pago.",
   };
 }
 
