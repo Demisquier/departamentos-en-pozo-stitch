@@ -106,7 +106,7 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
             <div className="overflow-y-auto flex-1 py-1">
               {!nq && (
                 <button type="button" onClick={() => pick(null)} className="flex items-center gap-2 w-full text-left px-4 py-3 text-[14px] text-primary hover:bg-surface-container border-b border-outline-variant/60">
-                  <span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">public</span> Todos los barrios
+                  <span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">location_city</span> Todos los barrios
                 </button>
               )}
               {filtered.map((g) => {
