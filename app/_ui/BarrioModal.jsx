@@ -118,9 +118,8 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
                       {!nq && <span className={`material-symbols-outlined text-[18px] transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true">expand_more</span>}
                     </button>
                     {isOpen && g.items.map((it) => (
-                      <button type="button" key={g.zona + it.label} onClick={() => pick(it)} className={`flex items-center justify-between gap-2 w-full text-left pl-7 pr-4 py-2.5 text-[14px] hover:bg-surface-container ${it.label === sel ? 'text-secondary font-medium' : 'text-primary'}`}>
+                      <button type="button" key={g.zona + it.label} onClick={() => pick(it)} className={`block w-full text-left pl-7 pr-4 py-2.5 text-[14px] hover:bg-surface-container ${it.label === sel ? 'text-secondary font-medium' : 'text-primary'}`}>
                         <span className="truncate">{it.label}</span>
-                        {it.slug && <span className="shrink-0 text-[10px] uppercase tracking-wide text-on-surface-variant border border-outline-variant rounded-full px-1.5 py-0.5">página propia</span>}
                       </button>
                     ))}
                   </div>

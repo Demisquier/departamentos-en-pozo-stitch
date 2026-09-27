@@ -364,7 +364,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
 
   return (
     <>
-      <div className="border-y border-outline-variant py-4 mb-6 flex flex-col gap-3 md:sticky md:top-[60px] md:z-30 md:bg-surface">
+      <div className="border-y border-outline-variant py-2.5 mb-4 flex flex-col gap-2 md:sticky md:top-[60px] md:z-30 md:bg-surface">
         <div className="md:hidden flex items-center justify-between gap-3">
           <button
             type="button"
@@ -410,29 +410,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           {toggle && <div className="ml-auto opacity-80 scale-95 origin-right">{toggle}</div>}
         </div>
 
-        {masOpen && (
-          <div className="hidden md:block border border-outline-variant rounded-xl p-4 bg-surface-container-low">
-            {masFields()}
-          </div>
-        )}
-
-        {activeChips().length > 0 && (
-          <div className="hidden md:flex flex-wrap items-center gap-2">
-            {activeChips().map(([label, fn], idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={fn}
-                aria-label={`Quitar filtro ${label}`}
-                className="inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-primary-container text-on-primary text-[12px]"
-              >
-                {label}
-                <span className="material-symbols-outlined text-[15px]" aria-hidden="true">close</span>
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <p className="hidden md:block text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
@@ -462,6 +439,29 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </div>
         </div>
       </div>
+
+      {/* Panel "Más filtros" y chips activos: FUERA del sticky para no comerse alto fijo (scrollean). */}
+      {masOpen && (
+        <div className="hidden md:block border border-outline-variant rounded-xl p-4 bg-surface-container-low mb-4">
+          {masFields()}
+        </div>
+      )}
+      {activeChips().length > 0 && (
+        <div className="hidden md:flex flex-wrap items-center gap-2 mb-4">
+          {activeChips().map(([label, fn], idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={fn}
+              aria-label={`Quitar filtro ${label}`}
+              className="inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-primary-container text-on-primary text-[12px]"
+            >
+              {label}
+              <span className="material-symbols-outlined text-[15px]" aria-hidden="true">close</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {sheetOpen && (
         <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Filtrar proyectos">
