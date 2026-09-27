@@ -95,6 +95,41 @@ function MapaListado({ items, heightClass = "h-[560px] md:h-[640px]" }) {
   return <div ref={ref} className={`w-full ${heightClass} rounded-xl overflow-hidden border border-outline-variant bg-surface-container-high`} />;
 }
 
+// Menú-dropdown de filtro estilo portal (Zonaprop/Idealista): un botón con label (o el valor
+// elegido) que abre un popover con las opciones. Mantiene TODOS los filtros en una sola línea.
+function FiltroMenu({ label, activeLabel, children, panelClass = 'min-w-[240px]' }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('mousedown', onDoc); document.removeEventListener('keydown', onKey); };
+  }, [open]);
+  const on = !!activeLabel;
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={`inline-flex items-center gap-1.5 min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] whitespace-nowrap transition-colors ${on ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
+      >
+        <span>{activeLabel || label}</span>
+        <span className={`material-symbols-outlined text-[16px] transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true">expand_more</span>
+      </button>
+      {open && (
+        <div className={`absolute z-40 mt-2 bg-surface border border-outline-variant shadow-xl rounded-xl p-3 ${panelClass}`} onClick={() => setOpen(false)}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // item: { slug, nombre, barrio, direccion, precio, precioM2, precioDesde, precioLabel,
 //         ambientes, ambientesNums, entrega, entregaAnio, financiacion, desarrolladora, etapa, imagen, lat, lng }
 export default function CatalogoFiltros({ items, barrioFijo = null, toggle = null }) {
@@ -384,19 +419,24 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         </div>
         {toggle && <div className="md:hidden flex justify-end opacity-80 scale-95 origin-right">{toggle}</div>}
 
-        <div className="hidden md:flex flex-wrap items-center gap-2.5">
+        {/* Filtros en UNA sola línea (estilo portal): barrio + dropdowns de ambientes/precio/etapa
+            + Más filtros. Cada dropdown muestra el valor elegido en su label. */}
+        <div className="hidden md:flex flex-wrap items-center gap-2">
           {barrioSelector()}
-          <span className="h-6 w-px bg-outline-variant mx-1" />
-          {ambChips()}
-          <span className="h-6 w-px bg-outline-variant mx-1" />
-          {precioTotalChips()}
-          <span className="h-6 w-px bg-outline-variant mx-1" />
-          {etapaChips()}
+          <FiltroMenu label="Ambientes" activeLabel={amb ? `${amb} amb` : null} panelClass="min-w-[220px]">
+            <div className="flex flex-wrap gap-2">{ambChips()}</div>
+          </FiltroMenu>
+          <FiltroMenu label="Precio" activeLabel={precioTotal !== 'todos' ? PRECIO_TOTAL[precioTotal].chip : null} panelClass="w-[260px]">
+            <div className="flex flex-wrap gap-2">{precioTotalChips()}</div>
+          </FiltroMenu>
+          <FiltroMenu label="Etapa" activeLabel={etapa ? (etapa === 'en pozo' ? 'En pozo' : 'En construcción') : null} panelClass="min-w-[200px]">
+            <div className="flex flex-wrap gap-2">{etapaChips()}</div>
+          </FiltroMenu>
           <button
             type="button"
             onClick={() => setMasOpen((o) => !o)}
             aria-expanded={masOpen}
-            className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] transition-colors ${masOpen || secundariosCount > 0 ? 'border-secondary text-secondary' : 'border-outline-variant text-primary hover:border-secondary'}`}
+            className={`inline-flex items-center gap-1.5 min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] whitespace-nowrap transition-colors ${masOpen || secundariosCount > 0 ? 'border-secondary text-secondary' : 'border-outline-variant text-primary hover:border-secondary'}`}
           >
             <span className="material-symbols-outlined text-[16px]" aria-hidden="true">tune</span>
             Más filtros
@@ -405,9 +445,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
             )}
           </button>
           {hayFiltros && (
-            <button type="button" onClick={limpiar} className="min-h-[44px] px-3 py-2 text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar todo</button>
+            <button type="button" onClick={limpiar} className="min-h-[44px] px-2.5 py-2 text-[13px] whitespace-nowrap text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar</button>
           )}
-          {toggle && <div className="ml-auto opacity-80 scale-95 origin-right">{toggle}</div>}
+          {toggle && <div className="ml-auto opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
         </div>
 
         <div className="flex items-center justify-between gap-3 flex-wrap">
@@ -446,23 +486,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           {masFields()}
         </div>
       )}
-      {activeChips().length > 0 && (
-        <div className="hidden md:flex flex-wrap items-center gap-2 mb-4">
-          {activeChips().map(([label, fn], idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={fn}
-              aria-label={`Quitar filtro ${label}`}
-              className="inline-flex items-center gap-1.5 pl-3 pr-2 py-1 rounded-full bg-primary-container text-on-primary text-[12px]"
-            >
-              {label}
-              <span className="material-symbols-outlined text-[15px]" aria-hidden="true">close</span>
-            </button>
-          ))}
-        </div>
-      )}
-
       {sheetOpen && (
         <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Filtrar proyectos">
           <div className="absolute inset-0 scrim-soft" onClick={() => setSheetOpen(false)} />
