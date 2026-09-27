@@ -2,20 +2,10 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
-import { BARRIO_CATALOGO, matchBarrioCatalogo, zonificarBarrios } from '../../lib/barrios';
-
-// Barrio (granular, ej. "Palermo Hollywood") -> slug de landing propia, si existe.
-// Palermo Soho/Hollywood/Botánico -> "palermo". Barrios sin landing (Saavedra, Coghlan) -> null.
-function landingSlugForBarrio(label) {
-  for (const slug of Object.keys(BARRIO_CATALOGO)) if (matchBarrioCatalogo(label, slug)) return slug;
-  return null;
-}
+import BarrioModal from '../_ui/BarrioModal';
 
 // Normaliza un nombre de barrio (saca acentos, minúsculas) para dedupe/match acento-insensible.
 const NORM = (s) => String(s || '').normalize('NFD').split('').filter((c) => { const k = c.charCodeAt(0); return k < 768 || k > 879; }).join('').toLowerCase().trim();
-
-// Barrios con landing propia (para el dropdown de barrio en las páginas por barrio).
-const LANDING_BARRIOS = Object.keys(BARRIO_CATALOGO).map((slug) => ({ slug, label: BARRIO_CATALOGO[slug].label }));
 
 // Rangos de precio total (USD) — sobre precioDesde. Datos parciales: el filtro excluye
 // proyectos sin precio total cargado (mismo criterio que el de precio/m²).
@@ -121,8 +111,6 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   // UI
   const [orden, setOrden] = useState('destacados');
   const [vista, setVista] = useState('lista');        // 'lista' | 'mapa'
-  const [barrioOpen, setBarrioOpen] = useState(false);
-  const [barrioQuery, setBarrioQuery] = useState(''); // type-ahead del dropdown de barrio
   const [masOpen, setMasOpen] = useState(false);      // panel secundarios (desktop)
   const [sheetOpen, setSheetOpen] = useState(false);  // bottom-sheet (mobile)
   // Reingresantes: barrios de interés del usuario (perfil + guardados) para FLOTAR proyectos de SUS
@@ -307,71 +295,13 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     return a;
   };
 
-  const barrioDropdown = () => {
-    const q = NORM(barrioQuery.trim());
-    const filtLanding = q ? LANDING_BARRIOS.filter((b) => NORM(b.label).includes(q)) : LANDING_BARRIOS;
-    const filtBarrios = q ? barrios.filter((b) => NORM(b).includes(q)) : barrios;
-    const cerrar = () => { setBarrioOpen(false); setBarrioQuery(''); };
-    return (
-    <div className="relative">
-      <button
-        type="button"
-        onClick={() => { setBarrioOpen((o) => !o); setBarrioQuery(''); }}
-        aria-expanded={barrioOpen}
-        aria-haspopup="listbox"
-        className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 border rounded-full text-[14px] md:text-[13px] transition-colors ${(barrio || barrioFijo) ? 'bg-primary-container text-on-primary border-primary-container' : 'border-outline-variant text-primary hover:border-secondary'}`}
-      >
-        <span className="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
-        <span>{barrio || barrioFijo || 'Barrio'}</span>
-        <span className="material-symbols-outlined text-[16px]" aria-hidden="true">expand_more</span>
-      </button>
-      {barrioOpen && (
-        <div role="listbox" aria-label="Elegir barrio" className="absolute z-40 mt-2 w-64 bg-surface border border-outline-variant shadow-xl rounded-lg overflow-hidden">
-          <div className="p-2 border-b border-outline-variant">
-            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-full border border-outline-variant focus-within:border-secondary">
-              <span className="material-symbols-outlined text-[16px] text-on-surface-variant" aria-hidden="true">search</span>
-              <input autoFocus value={barrioQuery} onChange={(e) => setBarrioQuery(e.target.value)} placeholder="Buscar barrio…" aria-label="Buscar barrio" className="flex-1 bg-transparent outline-none text-[13px] text-primary" />
-              {barrioQuery && <button type="button" onClick={() => setBarrioQuery('')} aria-label="Limpiar" className="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-primary">close</button>}
-            </div>
-          </div>
-          <div className="max-h-72 overflow-auto py-1">
-          {barrioFijo ? (
-            <>
-              {!q && <button type="button" onClick={() => window.location.assign('/desarrollos-inmobiliarios/')} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>}
-              {filtLanding.map((b) => (
-                <button type="button" key={b.slug} onClick={() => window.location.assign(`/desarrollos-inmobiliarios-en-${b.slug}/`)} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${b.label === barrioFijo ? 'text-secondary font-medium' : ''}`}>{b.label}</button>
-              ))}
-              {filtLanding.length === 0 && <p className="px-4 py-3 text-[13px] text-on-surface-variant">Sin barrios que coincidan.</p>}
-            </>
-          ) : (
-            <>
-              {!q && <button type="button" onClick={() => { setBarrio(''); cerrar(); }} className="block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container">Todos los barrios</button>}
-              {/* Agrupado por ZONA (Capital Federal / GBA · Zona Norte…), estilo portal, para no
-                  mezclar CABA con GBA. Consolida sub-barrios de Palermo bajo "Palermo". */}
-              {zonificarBarrios(filtBarrios).map((g) => (
-                <div key={g.zona}>
-                  <div className="px-4 pt-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant">{g.zona}</div>
-                  {g.items.map((it) => {
-                    const go = () => {
-                      cerrar();
-                      if (it.slug) window.location.assign(`/desarrollos-inmobiliarios-en-${it.slug}/`);
-                      else setBarrio(it.label);
-                    };
-                    return (
-                      <button type="button" key={g.zona + it.label} onClick={go} className={`block w-full text-left px-4 py-2.5 text-[14px] hover:bg-surface-container ${it.label === barrio ? 'text-secondary font-medium' : ''}`}>{it.label}</button>
-                    );
-                  })}
-                </div>
-              ))}
-              {filtBarrios.length === 0 && <p className="px-4 py-3 text-[13px] text-on-surface-variant">Sin barrios que coincidan.</p>}
-            </>
-          )}
-          </div>
-        </div>
-      )}
-    </div>
-    );
-  };
+  // Selector de barrio unificado con el del home (BarrioModal). En una landing de barrio
+  // (barrioFijo) no pasamos onSelect → cualquier elección NAVEGA (a la landing del barrio o
+  // al catálogo). En el listado normal, un barrio sin landing FILTRA en el lugar (onSelect).
+  const onBarrioSelect = (label) => setBarrio(label || '');
+  const barrioSelector = () => (
+    <BarrioModal barrios={barrios} value={barrio} barrioFijo={barrioFijo} onSelect={barrioFijo ? null : onBarrioSelect} />
+  );
 
   const ambChips = () => (
     <>
@@ -455,7 +385,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         {toggle && <div className="md:hidden flex justify-end opacity-80 scale-95 origin-right">{toggle}</div>}
 
         <div className="hidden md:flex flex-wrap items-center gap-2.5">
-          {barrioDropdown()}
+          {barrioSelector()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
           {ambChips()}
           <span className="h-6 w-px bg-outline-variant mx-1" />
@@ -546,7 +476,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
             <div className="overflow-y-auto flex-1 px-4 py-4 space-y-6">
               <div>
                 <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Barrio</p>
-                {barrioDropdown()}
+                {barrioSelector()}
               </div>
               <div>
                 <p className="text-[12px] uppercase tracking-wide text-on-surface-variant mb-2">Ambientes</p>

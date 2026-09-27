@@ -27,9 +27,9 @@ const MAILTO =
   `mailto:${CONTACT_EMAIL}` +
   `?subject=${encodeURIComponent("Quiero publicar mi proyecto en Departamentos en Pozo")}` +
   `&body=${encodeURIComponent(
-    "Hola, somos [desarrolladora / comercializadora].\n\n" +
-      "Proyecto: \nBarrio: \nEstado de obra / entrega: \nWeb o material: \nContacto (nombre, mail, WhatsApp): \n\n" +
-      "Queremos publicar / actualizar nuestra ficha. ¡Gracias!"
+    "Hola, les escribo de una desarrolladora / comercializadora y queremos publicar (o actualizar) nuestro proyecto.\n\n" +
+      "Proyecto:\nBarrio:\nEstado de obra / entrega:\nWeb o material:\nContacto (nombre, mail, WhatsApp):\n\n" +
+      "¡Gracias!"
   )}`;
 
 const FAQ = [

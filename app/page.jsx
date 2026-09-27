@@ -108,6 +108,12 @@ export default async function HomePage() {
     return { slug: k, name: BARRIO_CATALOGO[k].label, count: en.length, img: conImg ? conImg.img : null };
   }).filter((t) => t.count >= 3).sort((a, b) => b.count - a.count);
 
+  // Universo de barrios para el selector del hero (BarrioModal). Sacamos "barrios" que son
+  // direcciones (traen números) y deduplicamos; BarrioModal los agrupa por zona.
+  const barriosUniverse = Array.from(
+    new Set(mapped.map((m) => m.barrio).filter((b) => b && ![...b].some((c) => c >= '0' && c <= '9')))
+  ).sort((a, b) => a.localeCompare(b, 'es'));
+
   return (
     <>
       <JsonLd data={ENTITY_SCHEMA} />
@@ -126,7 +132,7 @@ export default async function HomePage() {
           <p className="text-on-primary text-body-lg font-body-lg opacity-90 max-w-2xl mb-8">
             No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar.
           </p>
-          <HomeBuscador />
+          <HomeBuscador barrios={barriosUniverse} />
           {/* #203 — La caja principal es el buscador por barrio. Las otras dos formas de buscar
               (catálogo con TODOS los filtros y búsqueda conversacional con IA) quedan como LINKS
               secundarios debajo, para que no compitan visualmente con la caja ni confundan. */}
