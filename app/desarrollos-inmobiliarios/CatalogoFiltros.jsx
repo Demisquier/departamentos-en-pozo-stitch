@@ -210,6 +210,16 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     return () => { document.body.style.overflow = prev; };
   }, [sheetOpen]);
 
+  // Modal "Más filtros" (desktop): bloqueo de scroll + Escape para cerrar.
+  useEffect(() => {
+    if (!masOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => { if (e.key === 'Escape') setMasOpen(false); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = prev; document.removeEventListener('keydown', onKey); };
+  }, [masOpen]);
+
   // Focus-trap + Escape en el bottom-sheet (accesibilidad).
   const sheetRef = useRef(null);
   useEffect(() => {
@@ -480,10 +490,25 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         </div>
       </div>
 
-      {/* Panel "Más filtros" y chips activos: FUERA del sticky para no comerse alto fijo (scrollean). */}
+      {/* "Más filtros" (desktop): MODAL centrado (no un panel que se despega al scrollear). */}
       {masOpen && (
-        <div className="hidden md:block border border-outline-variant rounded-xl p-4 bg-surface-container-low mb-4">
-          {masFields()}
+        <div className="hidden md:block fixed inset-0 z-[70]" role="dialog" aria-modal="true" aria-label="Más filtros">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setMasOpen(false)} />
+          <div className="absolute inset-0 m-auto h-fit max-h-[82vh] w-[560px] bg-surface rounded-2xl shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-outline-variant">
+              <h2 className="text-[16px] font-medium text-primary">Más filtros</h2>
+              <button type="button" onClick={() => setMasOpen(false)} aria-label="Cerrar" className="p-2 -mr-2 text-on-surface-variant hover:text-primary">
+                <span className="material-symbols-outlined" aria-hidden="true">close</span>
+              </button>
+            </div>
+            <div className="overflow-y-auto flex-1 p-5">{masFields(true)}</div>
+            <div className="flex items-center justify-between gap-3 px-5 py-3.5 border-t border-outline-variant">
+              <button type="button" onClick={() => { setFin(false); setEntregaMax(''); setPrecio('todos'); setDesarrolladora(''); }} className="text-[13px] text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar estos</button>
+              <button type="button" onClick={() => setMasOpen(false)} className="rounded-full bg-primary-container text-on-primary px-6 py-2.5 text-[14px] font-medium hover:opacity-90 transition-opacity">
+                Ver {filtered.length} {filtered.length === 1 ? 'proyecto' : 'proyectos'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
       {sheetOpen && (
