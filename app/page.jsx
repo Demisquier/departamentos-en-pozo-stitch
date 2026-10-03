@@ -141,7 +141,7 @@ export default async function HomePage() {
               <span className="material-symbols-outlined text-[18px]">tune</span> Buscar con todos los filtros
             </Link>
             <Link href="/explorar/" className="inline-flex items-center gap-1.5 text-label-caps font-label-caps hover:text-link-gold transition-colors">
-              <span className="material-symbols-outlined text-[18px]">forum</span> Buscar conversando con IA
+              <span className="material-symbols-outlined text-[18px]">forum</span> Buscá conversando
             </Link>
           </div>
         </div>

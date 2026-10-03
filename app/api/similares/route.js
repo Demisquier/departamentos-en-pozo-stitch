@@ -6,6 +6,14 @@
 import { loadCatalogo, cardFrom, fichaUrl } from "../../../lib/ia";
 import { SITE } from "../../../lib/wp";
 
+// UTMs para medir el mail de similares en GA4 (source=email, medium=similares).
+const UTM_BASE = "utm_source=email&utm_medium=similares&utm_campaign=recomendados";
+const withUtm = (u, content) => {
+  if (!u) return u;
+  const sep = u.includes("?") ? "&" : "?";
+  return u + sep + UTM_BASE + (content ? "&utm_content=" + encodeURIComponent(content) : "");
+};
+
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
@@ -59,7 +67,7 @@ function emailCard(s) {
       ).join("") + '</td></tr>'
     : "";
   const img = s.imagen
-    ? '<a href="' + esc(s.url) + '" style="text-decoration:none"><img src="' + esc(s.imagen) + '" width="600" alt="' + esc(s.nombre) + '" style="display:block;width:100%;max-width:600px;height:auto;border-radius:14px 14px 0 0;object-fit:cover"></a>'
+    ? '<a href="' + esc(withUtm(s.url)) + '" style="text-decoration:none"><img src="' + esc(s.imagen) + '" width="600" alt="' + esc(s.nombre) + '" style="display:block;width:100%;max-width:600px;height:auto;border-radius:14px 14px 0 0;object-fit:cover"></a>'
     : '<div style="height:8px;border-radius:14px 14px 0 0;background:' + NAVY + '"></div>';
   return (
     '<tr><td style="padding:0 0 18px 0">' +
@@ -67,11 +75,11 @@ function emailCard(s) {
     '<tr><td>' + img + '</td></tr>' +
     '<tr><td style="padding:16px 18px 18px 18px;font-family:Arial,Helvetica,sans-serif">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">' +
-    '<tr><td><a href="' + esc(s.url) + '" style="color:' + NAVY + ';font-size:17px;font-weight:bold;text-decoration:none;line-height:1.25">' + esc(s.nombre) + '</a></td></tr>' +
+    '<tr><td><a href="' + esc(withUtm(s.url)) + '" style="color:' + NAVY + ';font-size:17px;font-weight:bold;text-decoration:none;line-height:1.25">' + esc(s.nombre) + '</a></td></tr>' +
     meta +
     '<tr><td style="padding-top:10px;font-size:15px;color:' + GOLD + ';font-weight:bold">desde ' + esc(precio) + '</td></tr>' +
     '<tr><td style="padding-top:12px">' +
-    '<a href="' + esc(s.url) + '" style="display:inline-block;background:' + NAVY + ';color:#ffffff;font-size:13px;font-weight:bold;text-decoration:none;padding:9px 16px;border-radius:8px">Ver ficha &rarr;</a>' +
+    '<a href="' + esc(withUtm(s.url)) + '" style="display:inline-block;background:' + NAVY + ';color:#ffffff;font-size:13px;font-weight:bold;text-decoration:none;padding:9px 16px;border-radius:8px">Ver ficha &rarr;</a>' +
     '</td></tr></table></td></tr></table></td></tr>'
   );
 }
@@ -80,8 +88,8 @@ function buildEmail(proy, cards, saludo) {
   const proyNombre = esc(proy.nombre || "el proyecto que viste");
   const hola = saludo ? "Hola " + esc(saludo) + "," : "Hola,";
   const cardsHtml = cards.map(emailCard).join("");
-  const cta = esc(proy.url || SITE);
-  const pre = "Elegimos " + cards.length + " proyectos en pozo parecidos a " + (proy.nombre || "") + " en barrio, precio, ambientes y entrega.";
+  const cta = esc(withUtm(proy.url || SITE, "cta"));
+  const pre = "Precio, financiación y entrega de " + cards.length + " proyectos parecidos a " + (proy.nombre || "") + " — para comparar y elegir.";
 
   const html =
 '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
@@ -119,12 +127,12 @@ function buildEmail(proy, cards, saludo) {
   const text =
     "Proyectos similares a " + (proy.nombre || "") + "\n\n" +
     cards.map((s) => "- " + s.nombre + (s.barrio ? " (" + s.barrio + ")" : "") +
-      (s.precioDesde ? " desde " + money(s.precioDesde) : "") + "\n  " + s.url).join("\n") +
-    "\n\nVer más: " + (proy.url || SITE) +
+      (s.precioDesde ? " desde " + money(s.precioDesde) : "") + "\n  " + withUtm(s.url)).join("\n") +
+    "\n\nVer más: " + withUtm(proy.url || SITE, "cta") +
     "\n\nDepartamentos en Pozo — análisis independiente de proyectos en pozo en CABA y GBA. Para dejar de recibir, respondé BAJA.";
 
   return {
-    emailSubject: "Proyectos similares a " + (proy.nombre || "el que viste") + " | Departamentos en Pozo",
+    emailSubject: cards.length + (cards.length === 1 ? " opción" : " opciones") + " en pozo parecidas a " + (proy.nombre || "el que viste") + (proy.barrio ? " en " + proy.barrio : ""),
     emailText: text,
     emailHtml: html,
   };

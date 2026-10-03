@@ -222,7 +222,7 @@ export default async function HubDesarrolladorasPage() {
                 <span className="block font-headline-sm text-[16px] text-primary">¿Buscás un depto en pozo? Decíselo a Valentina.</span>
                 <span className="block text-on-surface-variant text-[13.5px]">Contale zona, presupuesto y ambientes y te arma la lista de proyectos que encajan — gratis, en 1 minuto.</span>
               </span>
-              <span className="shrink-0 hidden sm:inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps group-hover:underline whitespace-nowrap">Buscar con IA <span className="material-symbols-outlined text-[18px]">arrow_forward</span></span>
+              <span className="shrink-0 hidden sm:inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps group-hover:underline whitespace-nowrap">Buscá conversando <span className="material-symbols-outlined text-[18px]">arrow_forward</span></span>
             </a>
             {useCpt && <DirectorioDevs devs={devs} chipsComoLinks />}
             {after && (
