@@ -58,11 +58,11 @@ export default async function CatalogoPage() {
     <Container as="main" className="py-10 md:py-14">
       <JsonLd data={schema} />
 
-      <div className="mb-5 md:mb-8">
-        <h1 className="font-headline-sm text-headline-sm md:font-display-lg md:text-display-lg serif text-primary max-w-3xl leading-tight">
+      <div className="mb-4 md:mb-5">
+        <h1 className="font-headline-md text-headline-md md:text-[30px] serif text-primary leading-tight">
           Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
         </h1>
-        <p id="catalogo-bajada" className="mt-2 md:mt-4 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl leading-relaxed">
+        <p id="catalogo-bajada" className="mt-1.5 text-on-surface-variant text-body-md md:text-body-lg leading-snug line-clamp-2">
           Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa): hay <strong>{mapped.length} proyectos</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}.{conFin > 0 ? <> <strong>{conFin}</strong> con financiación en cuotas durante la obra.</> : null}{aMin ? <> Entregas estimadas entre {aMin} y {aMax}.</> : null}        </p>
       </div>
 

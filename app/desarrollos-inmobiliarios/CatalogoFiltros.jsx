@@ -407,9 +407,36 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     </div>
   );
 
+  // Vista (Lista/Mapa) + Ordenar — reutilizable en desktop (fila de filtros) y mobile.
+  const vistaOrden = () => (
+    <div className="flex items-center gap-3">
+      <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden" role="group" aria-label="Vista">
+        <button type="button" onClick={() => setVista('lista')} aria-pressed={vista === 'lista'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+          <span className="material-symbols-outlined text-[16px]" aria-hidden="true">grid_view</span>Lista
+        </button>
+        <button type="button" onClick={() => setVista('mapa')} aria-pressed={vista === 'mapa'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
+          <span className="material-symbols-outlined text-[16px]" aria-hidden="true">map</span>Mapa
+        </button>
+      </div>
+      {vista === 'lista' && (
+        <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
+          <span className="hidden sm:inline">Ordenar por</span>
+          <select value={orden} onChange={(e) => setOrden(e.target.value)} aria-label="Ordenar por" className="min-h-[44px] border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
+            <option value="destacados">Destacados</option>
+            <option value="precio_asc">Precio/m² ↑</option>
+            <option value="precio_desc">Precio/m² ↓</option>
+            <option value="entrega">Entrega más próxima</option>
+            <option value="nombre">Nombre (A–Z)</option>
+          </select>
+        </label>
+      )}
+    </div>
+  );
+
   return (
     <>
-      <div className="border-y border-outline-variant py-2.5 mb-4 flex flex-col gap-2 md:sticky md:top-[60px] md:z-30 md:bg-surface">
+      <div className="border-y border-outline-variant py-2.5 mb-4 flex flex-col gap-2.5 md:sticky md:top-[60px] md:z-30 md:bg-surface">
+        {/* ── MOBILE ── barra Filtrar + cantidad; luego Vista/Orden + toggle ── */}
         <div className="md:hidden flex items-center justify-between gap-3">
           <button
             type="button"
@@ -427,10 +454,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
           </p>
         </div>
-        {toggle && <div className="md:hidden flex justify-end opacity-80 scale-95 origin-right">{toggle}</div>}
+        <div className="md:hidden flex items-center justify-between gap-2">
+          {vistaOrden()}
+          {toggle && <div className="opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
+        </div>
 
-        {/* Filtros en UNA sola línea (estilo portal): barrio + dropdowns de ambientes/precio/etapa
-            + Más filtros. Cada dropdown muestra el valor elegido en su label. */}
+        {/* ── DESKTOP ── Fila 1: filtros + Vista/Orden a la misma altura ── */}
         <div className="hidden md:flex flex-wrap items-center gap-2">
           {barrioSelector()}
           <FiltroMenu label="Ambientes" activeLabel={amb ? `${amb} amb` : null} panelClass="min-w-[220px]">
@@ -457,36 +486,16 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           {hayFiltros && (
             <button type="button" onClick={limpiar} className="min-h-[44px] px-2.5 py-2 text-[13px] whitespace-nowrap text-on-surface-variant hover:text-primary underline underline-offset-2">Limpiar</button>
           )}
-          {toggle && <div className="ml-auto opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
+          <div className="ml-auto shrink-0">{vistaOrden()}</div>
         </div>
 
-        <div className="flex items-center justify-between gap-3 flex-wrap">
-          <p className="hidden md:block text-[13px] text-on-surface-variant">
+        {/* ── DESKTOP ── Fila 2: cantidad de proyectos + toggle Filtros|Conversar ── */}
+        <div className="hidden md:flex items-center justify-between gap-3">
+          <p className="text-[13px] text-on-surface-variant">
             <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
             {filtered.length !== items.length && <span> de {items.length}</span>}
           </p>
-          <div className="flex items-center gap-3 flex-wrap ml-auto">
-            <div className="flex items-center border border-outline-variant rounded-lg overflow-hidden" role="group" aria-label="Vista">
-              <button type="button" onClick={() => setVista('lista')} aria-pressed={vista === 'lista'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'lista' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
-                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">grid_view</span>Lista
-              </button>
-              <button type="button" onClick={() => setVista('mapa')} aria-pressed={vista === 'mapa'} className={`flex items-center gap-1.5 min-h-[44px] px-3 py-2 text-[13px] ${vista === 'mapa' ? 'bg-primary-container text-on-primary' : 'text-primary hover:bg-surface-container'}`}>
-                <span className="material-symbols-outlined text-[16px]" aria-hidden="true">map</span>Mapa
-              </button>
-            </div>
-            {vista === 'lista' && (
-              <label className="flex items-center gap-2 text-[13px] text-on-surface-variant">
-                <span className="hidden sm:inline">Ordenar por</span>
-                <select value={orden} onChange={(e) => setOrden(e.target.value)} aria-label="Ordenar por" className="min-h-[44px] border border-outline-variant rounded-lg px-2.5 py-2 text-[13px] text-primary bg-surface">
-                  <option value="destacados">Destacados</option>
-                  <option value="precio_asc">Precio/m² ↑</option>
-                  <option value="precio_desc">Precio/m² ↓</option>
-                  <option value="entrega">Entrega más próxima</option>
-                  <option value="nombre">Nombre (A–Z)</option>
-                </select>
-              </label>
-            )}
-          </div>
+          {toggle && <div className="opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
         </div>
       </div>
 
