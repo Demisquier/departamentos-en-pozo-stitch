@@ -61,9 +61,9 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
           <span className="text-primary">{label}</span>
         </nav>
 
-        <div className="mb-8">
-          <h1 className="font-headline-md text-headline-md md:text-display-lg serif text-primary max-w-2xl leading-tight">
-            Desarrollos inmobiliarios en pozo en {label}: {n} proyecto{n === 1 ? "" : "s"}
+        <div className="mb-4 md:mb-5">
+          <h1 className="font-headline-md text-headline-md md:text-[30px] serif text-primary leading-tight">
+            {n} desarrollo{n === 1 ? "" : "s"} inmobiliario{n === 1 ? "" : "s"} en pozo en {label}
           </h1>
           {(desde || medianaM2) && (
             <p id="barrio-resumen" className="mt-2 text-[14px] text-on-surface-variant">

@@ -11,12 +11,17 @@ import GuardarBtn from "../_auth/GuardarBtn";
 function devLine(desarrolladora) {
   const d = String(desarrolladora || "").trim();
   if (!d) return null;
-  const m = d.match(/^(.*?)\s*\(\s*com\.?\s*(.+?)\)\s*$/i);
+  // "Dev (\u2026 comercializa X)" / "Dev (com. X)" \u2192 separa desarrolladora y comercializadora.
+  // Acepta "com", "com." y "comercializa", con o sin ":" y un prefijo opcional "\u2026; ".
+  const m = d.match(/^(.*?)\s*\(\s*(?:[^)]*?;\s*)?com(?:ercializa|\.)?\s*:?\s*(.+?)\)\s*$/i);
   if (m) {
     const dev = m[1].trim(); const com = m[2].trim();
-    if (!dev || /^a\s*confirmar$/i.test(dev)) return "Comercializa: " + com;
+    if (!dev || /^a\s*confirmar$/i.test(dev)) return com ? "Comercializa: " + com : null;
     return "Desarrolla: " + dev + " \u00b7 Comercializa: " + com;
   }
+  // "Comercializa X" suelto (sin desarrolladora) \u2192 es la inmobiliaria, no el dev.
+  const mc = d.match(/^com(?:ercializa|\.)?\s*:?\s*(.+)$/i);
+  if (mc) return "Comercializa: " + mc[1].trim();
   if (/^a\s*confirmar$/i.test(d)) return null;
   return "Desarrolla: " + d;
 }

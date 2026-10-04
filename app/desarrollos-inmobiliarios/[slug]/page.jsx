@@ -13,7 +13,7 @@ import Container from '../../_ui/Container';
 import JsonLd from '../../_ui/JsonLd';
 import Breadcrumb from '../../_ui/Breadcrumb';
 import AlertaCTA from '../../_ui/AlertaCTA';
-import { mapDesarrollos, similaresDesarrollos } from '../../../lib/catalogo';
+import { mapDesarrollos, similaresDesarrollos, resolveComercializadora, parseDevCom } from '../../../lib/catalogo';
 import ProyectosSimilares from './ProyectosSimilares';
 import CTAContextual from './CTAContextual';
 import IntakeLauncher from '../../_ui/IntakeLauncher';
@@ -118,8 +118,11 @@ export default async function FichaProyecto({ params }) {
   const entrega = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega']));
   const ambientes = fmtTipologias(acfAny(d, ['tipologias', 'ambientes']));
   const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
-  const constructora = expandComercializa(acfAny(d, ['desarrolladora', 'constructora']));
-  const _devWa = constructora || expandComercializa(acfAny(d, ['comercializadora'])) || '';
+  // Dev vs. inmobiliaria por separado (la ficha muestra las dos). Comercializadora: override > ACF > parseo.
+  const _rawDev = acfAny(d, ['desarrolladora', 'constructora']) || '';
+  const constructora = expandComercializa(parseDevCom(_rawDev).dev || '');
+  const comercializadora = resolveComercializadora(d.slug, _rawDev, acfAny(d, ['comercializadora']) || '');
+  const _devWa = constructora || comercializadora || '';
   const _wa = waParaDev(_devWa);
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
@@ -244,6 +247,7 @@ export default async function FichaProyecto({ params }) {
   // --- Facts & features (estilo Zillow), solo filas con dato real ---
   const grupoDesarrollo = [
     ['Desarrolladora', constructora],
+    ['Comercializa', comercializadora || null],
     ['Entrega estimada', entrega || null],
     ['Tipologías', ambientes || null],
     ['Avance de obra', obraPct != null ? `${obraPct}%` : (obra && !looksLikeHtml(obra) ? obra : null)],

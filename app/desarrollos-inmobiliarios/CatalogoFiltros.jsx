@@ -450,13 +450,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
               <span className="ml-0.5 min-w-[20px] h-5 px-1 rounded-full bg-secondary text-white text-[11px] font-medium flex items-center justify-center">{activeCount}</span>
             )}
           </button>
-          <p className="text-[13px] text-on-surface-variant">
-            <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
-          </p>
+          {filtered.length !== items.length && (
+            <p className="text-[13px] text-on-surface-variant">
+              <span className="text-primary font-medium">{filtered.length}</span> de {items.length}
+            </p>
+          )}
         </div>
-        <div className="md:hidden flex items-center justify-between gap-2">
+        <div className="md:hidden flex items-center">
           {vistaOrden()}
-          {toggle && <div className="opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
         </div>
 
         {/* ── DESKTOP ── Fila 1: filtros + Vista/Orden a la misma altura ── */}
@@ -489,14 +490,13 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           <div className="ml-auto shrink-0">{vistaOrden()}</div>
         </div>
 
-        {/* ── DESKTOP ── Fila 2: cantidad de proyectos + toggle Filtros|Conversar ── */}
-        <div className="hidden md:flex items-center justify-between gap-3">
-          <p className="text-[13px] text-on-surface-variant">
-            <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'proyecto' : 'proyectos'}
-            {filtered.length !== items.length && <span> de {items.length}</span>}
-          </p>
-          {toggle && <div className="opacity-80 scale-95 origin-right shrink-0">{toggle}</div>}
-        </div>
+        {/* La cantidad total ya está en el título y el toggle Filtros|Conversar se quitó (está en el
+            header "Buscá conversando"). Solo mostramos el contador cuando hay filtros activos (feedback). */}
+        {filtered.length !== items.length && (
+          <div className="hidden md:block text-[13px] text-on-surface-variant">
+            <span className="text-primary font-medium">{filtered.length}</span> {filtered.length === 1 ? 'resultado' : 'resultados'} de {items.length}
+          </div>
+        )}
       </div>
 
       {/* "Más filtros" (desktop): MODAL centrado (no un panel que se despega al scrollear). */}

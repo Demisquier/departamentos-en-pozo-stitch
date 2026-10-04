@@ -60,7 +60,7 @@ export default async function CatalogoPage() {
 
       <div className="mb-4 md:mb-5">
         <h1 className="font-headline-md text-headline-md md:text-[30px] serif text-primary leading-tight">
-          Desarrollos inmobiliarios en pozo en CABA: {mapped.length} proyectos
+          {mapped.length} desarrollos inmobiliarios en pozo en CABA
         </h1>
         <p id="catalogo-bajada" className="mt-1.5 text-on-surface-variant text-body-md md:text-body-lg leading-snug line-clamp-2">
           Catálogo independiente de <strong>desarrollos inmobiliarios en pozo</strong> (preventa): hay <strong>{mapped.length} proyectos</strong> relevados en CABA y GBA{nBarrios ? <> en <strong>{nBarrios} barrios</strong></> : null}{minM2 ? <>, desde <strong>USD {minM2.toLocaleString('es-AR')}/m²</strong></> : null}.{conFin > 0 ? <> <strong>{conFin}</strong> con financiación en cuotas durante la obra.</> : null}{aMin ? <> Entregas estimadas entre {aMin} y {aMax}.</> : null}        </p>
