@@ -4,8 +4,45 @@
 // cualquiera podía spamear la planilla y disparar mails a las desarrolladoras.
 // Ahora el cliente postea acá (mismo origen, sin CORS) y el server reenvía. Suma honeypot
 // + rate-limit best-effort. Recibe { sheet?, mail? } y reenvía cada uno tal cual.
+import { inmobiliariaDelProyecto } from "../../../lib/inmobiliarias";
+import { sendMail, resendReady } from "../../../lib/resend";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+// #6 — Ruteo del lead a la INMOBILIARIA que comercializa el proyecto (en vez de la
+// desarrolladora). Resuelve proyectoSlug -> comercializadora -> contacto verificado.
+// Gateado por INMO_NOTIFY=1: sin la env var el comportamiento es idéntico al actual
+// (el Apps Script sigue ruteando/mandando). Con la flag, además le llega a la inmobiliaria.
+// NOTA: hasta redeployar el Apps Script, con la flag ON los proyectos mapeados generan
+// doble aviso (inmobiliaria vía este endpoint + dev/contacto@ vía Apps Script).
+const INMO_NOTIFY = process.env.INMO_NOTIFY === "1";
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+}
+// Arma el mail del lead para la inmobiliaria a partir del payload sheet.
+function leadMailInmo(sheet, inmo) {
+  const rows = [
+    ["Nombre", sheet.nombre],
+    ["WhatsApp", sheet.whatsapp],
+    ["Email", sheet.email],
+    ["Proyecto", sheet.proyecto],
+    ["Interés", sheet.interes],
+    ["Origen", sheet.origen],
+    ["Mensaje", sheet.mensaje],
+  ].filter(([, v]) => v);
+  const html =
+    '<div style="font-family:system-ui,Arial,sans-serif;font-size:15px;color:#1a1a1a">' +
+    "<p>Nuevo lead para <strong>" + esc(sheet.proyecto || "tu proyecto") + "</strong> (lo comercializa " + esc(inmo.nombre) + ").</p>" +
+    '<table style="border-collapse:collapse;margin-top:8px">' +
+    rows.map(([k, v]) => '<tr><td style="padding:3px 10px 3px 0;color:#666">' + esc(k) + '</td><td style="padding:3px 0"><strong>' + esc(v) + "</strong></td></tr>").join("") +
+    "</table>" +
+    '<p style="margin-top:12px;color:#666;font-size:13px">Respondé a este mail para contactar al interesado (queda en copia departamentosenpozo.com.ar).</p>' +
+    "</div>";
+  const text = rows.map(([k, v]) => k + ": " + v).join("\n");
+  return { html, text };
+}
 
 const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec";
@@ -66,6 +103,27 @@ export async function POST(req) {
       })
     );
   }
+  // #6 — Si el proyecto lo comercializa una inmobiliaria con contacto verificado y la flag
+  // INMO_NOTIFY está activa, le mandamos el lead a la inmobiliaria (reply-to = comprador,
+  // Bcc a contacto@). Fallback silencioso: si no hay inmobiliaria mapeada/sin email, no hace nada.
+  if (INMO_NOTIFY && sheet && resendReady()) {
+    const inmo = inmobiliariaDelProyecto(sheet.proyectoSlug);
+    if (inmo && inmo.email) {
+      const { html, text } = leadMailInmo(sheet, inmo);
+      tasks.push(
+        sendMail({
+          to: inmo.email,
+          bcc: "contacto@departamentosenpozo.com.ar",
+          replyTo: (sheet.email || "").trim() || undefined,
+          subject: "Nuevo lead — " + (sheet.proyecto || "tu proyecto"),
+          html,
+          text,
+          fromName: "Departamentos en Pozo",
+        })
+      );
+    }
+  }
+
   if (false) { // FormSubmit desactivado: el Apps Script (webhook) ya manda 1 solo mail al dev con Bcc a contacto@ (o a contacto@ si el proyecto no está mapeado).
     tasks.push(
       fetch(MAIL_URL, {

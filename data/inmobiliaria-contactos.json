@@ -1,0 +1,27 @@
+{
+  "_doc": "Contactos verificados de inmobiliarias/comercializadoras. SOLO con email confirmado se rutea el lead (ver /api/lead + INMO_NOTIFY). key = nombre tal cual aparece en comercializadora-overrides.json (match case-insensitive, normalizado). Email vacío = pendiente de verificar, NO se rutea.",
+  "contactos": {
+    "Toribio Achával": {
+      "email": "emprendimientos@toribioachaval.com",
+      "whatsapp": "+541148194000",
+      "web": "https://www.toribioachaval.com",
+      "fuente": "websearch 2026-10, confirmado sitio oficial"
+    },
+    "Interwin": {
+      "email": "",
+      "whatsapp": "+541152754300",
+      "web": "https://www.interwin.com.ar",
+      "fuente": "websearch 2026-10, email pendiente verificar (redactado en fuente)"
+    },
+    "OSLO Propiedades": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "ONE BROKERS": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "D'Aria Propiedades": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "Carrillo Ourens Bienes Raices": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "inred": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "BAIGÚN RyN": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "Tesler Propiedades": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "Martín Pinus": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "CASSAGNE REAL ESTATE": { "email": "", "whatsapp": "", "web": "", "fuente": "" },
+    "Laurenzano Matias Propiedades": { "email": "", "whatsapp": "", "web": "", "fuente": "" }
+  }
+}
