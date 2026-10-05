@@ -51,7 +51,7 @@ export default function AlertaCTA({
           </form>
         )}
         {err && <p className="mt-2 text-[13px] text-white/90">{err}</p>}
-        <p className="mt-3 text-[12px] text-white/60">Sin spam. Solo lanzamientos que matcheen tu búsqueda.</p>
+        <p className="mt-3 text-[12px] text-white/60">Sin spam. Solo lanzamientos que matcheen tu búsqueda. <a href="/politica-de-privacidad/" target="_blank" rel="noopener" className="underline hover:text-white">Privacidad</a>.</p>
       </div>
     </div>
   );

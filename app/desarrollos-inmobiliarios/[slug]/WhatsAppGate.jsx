@@ -138,7 +138,7 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
                 {sending ? "ENVIANDO…" : (esDelDev ? "ABRIR WHATSAPP" : "ENVIAR CONSULTA")}
                 <span className="material-symbols-outlined text-[18px]">send</span>
               </button>
-              <p className="text-[11px] text-on-surface-variant text-center">Al continuar aceptás que te contactemos por tu consulta. No compartimos tus datos con terceros.</p>
+              <p className="text-[11px] text-on-surface-variant text-center">Al enviar, aceptás que compartamos tus datos con la inmobiliaria o desarrolladora de {nombre} para que te contacte por tu consulta. Ver <a href="/politica-de-privacidad/" target="_blank" rel="noopener" className="underline hover:text-secondary">política de privacidad</a>.</p>
             </form>
             </>
             )}
