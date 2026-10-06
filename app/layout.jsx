@@ -8,6 +8,7 @@ import AuthProvider from "./_auth/AuthProvider";
 import AsesorLauncher from "./asesor/AsesorLauncher";
 import PlanToast from "./_components/PlanToast";
 import PlanContextBar from "./_components/PlanContextBar";
+import CookieBanner from "./_components/CookieBanner";
 import { SITE, GA_ID } from "../lib/constants";
 
 // Fuentes self-hosteadas por Next (next/font): se sirven desde nuestro dominio, con
@@ -74,6 +75,9 @@ export default function RootLayout({ children }) {
         <Script id="ga4" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});
+gtag('consent','default',{analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','GB','CH']});
+try{var c=localStorage.getItem('dpp_cookies_v1');if(c){gtag('consent','update',{analytics_storage:c==='aceptado'?'granted':'denied'});}}catch(e){}
 gtag('js', new Date());
 gtag('config', '${GA_ID}');`}
         </Script>
@@ -84,6 +88,7 @@ gtag('config', '${GA_ID}');`}
           <Footer />
           <AsesorLauncher />
           <PlanToast />
+          <CookieBanner />
         </AuthProvider>
       </body>
     </html>

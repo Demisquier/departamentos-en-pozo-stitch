@@ -63,7 +63,7 @@ export default async function HomePage() {
     const nombre = t.split("—")[0].trim() || t;
     const barrio = (t.split("—")[1] || "").trim();
     const topBarrio = barrio.startsWith("Palermo") ? "Palermo" : barrio;
-    return { slug: node.slug, nombre, barrio, topBarrio, precio: num(acf(node, "precio_m2")), img: featuredImage(node) };
+    return { slug: node.slug, nombre, barrio, topBarrio, precio: num(acf(node, "precio_m2")), precioDesde: num(acf(node, "precio_desde")), img: featuredImage(node) };
   });
 
   // Destacados por PROBABILIDAD DE CONVERSIÓN (no por precio): premiamos las señales que hacen
@@ -185,7 +185,7 @@ export default async function HomePage() {
           cards={pool.map((d) => (
             <ProjectCard key={d.slug} slug={d.slug} nombre={d.nombre} barrio={d.barrio} precio={d.precio} img={d.img} />
           ))}
-          meta={pool.map((d) => ({ slug: d.slug, barrio: d.topBarrio || d.barrio }))}
+          meta={pool.map((d) => ({ slug: d.slug, barrio: d.topBarrio || d.barrio, precioDesde: d.precioDesde || null }))}
         />
       </Container>
 

@@ -129,9 +129,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido).
   return {
     ...m,
-    title: "Desarrolladoras Inmobiliarias en Capital Federal 2026: Directorio por Barrio",
+    title: "Desarrolladoras Inmobiliarias en Capital Federal y Argentina 2026: Directorio por Barrio",
     description:
-      "Directorio independiente de desarrolladoras inmobiliarias en Capital Federal: mirá trayectoria, obras entregadas, fideicomiso y proyecto insignia antes de comprar en pozo. Por barrio, sin ranking pago.",
+      "Directorio independiente de 190 desarrolladoras inmobiliarias de Capital Federal y Argentina: mirá trayectoria, obras entregadas, fideicomiso y proyecto insignia antes de comprar en pozo. Por barrio, sin ranking pago.",
   };
 }
 
@@ -223,6 +223,11 @@ export default async function HubDesarrolladorasPage() {
                 <span className="block text-on-surface-variant text-[13.5px]">Contale zona, presupuesto y ambientes y te arma la lista de proyectos que encajan — gratis, en 1 minuto.</span>
               </span>
               <span className="shrink-0 hidden sm:inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps group-hover:underline whitespace-nowrap">Buscá conversando <span className="material-symbols-outlined text-[18px]">arrow_forward</span></span>
+            </a>
+            {/* Interlinking al ranking nacional (captura "desarrolladoras más grandes de argentina"). */}
+            <a href="/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/" className="mb-6 flex items-center justify-between gap-4 rounded-xl border border-outline-variant p-4 hover:border-secondary transition-colors no-underline">
+              <span className="text-[14.5px] text-primary"><strong>Ranking:</strong> las desarrolladoras inmobiliarias más grandes de Argentina, por m² construidos y trayectoria</span>
+              <span className="material-symbols-outlined text-secondary shrink-0">arrow_forward</span>
             </a>
             {useCpt && <DirectorioDevs devs={devs} chipsComoLinks />}
             {after && (

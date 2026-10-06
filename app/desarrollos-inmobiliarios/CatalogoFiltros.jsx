@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
 import BarrioModal from '../_ui/BarrioModal';
+import { leerAfinidad, puntajeAfinidad, grupoPers } from '../../lib/afinidad';
 
 // Normaliza un nombre de barrio (saca acentos, minúsculas) para dedupe/match acento-insensible.
 const NORM = (s) => String(s || '').normalize('NFD').split('').filter((c) => { const k = c.charCodeAt(0); return k < 768 || k > 879; }).join('').toLowerCase().trim();
@@ -151,6 +152,8 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   // Reingresantes: barrios de interés del usuario (perfil + guardados) para FLOTAR proyectos de SUS
   // barrios dentro del orden "Destacados". Vacío en SSR/1ª pintura → sin desajuste de hidratación.
   const [prefBarrios, setPrefBarrios] = useState([]);
+  // Afinidad implícita (fichas vistas + perfil + favoritos) para TODOS; null en SSR → sin desajuste.
+  const [afinidad, setAfinidad] = useState(null);
 
   // ── URL <-> filtros (vista compartible). Leemos los query params al montar y
   // reflejamos los filtros en la URL con replaceState (sin recargar ni navegar).
@@ -185,6 +188,16 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       (Array.isArray(favs) ? favs : []).forEach((f) => { if (f && f.barrio) { const t = topB(f.barrio); if (t) pref.add(t); } });
     } catch {}
     if (pref.size) setPrefBarrios([...pref]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    // Grupo 'control' (20%) mantiene el orden genérico: así medimos el lift real en GA4.
+    const g = grupoPers();
+    if (g !== 'pers') return;
+    const af = leerAfinidad();
+    if (af.senales) {
+      setAfinidad(af);
+      try { window.gtag && window.gtag('event', 'personalizacion_listado', { senales: af.senales }); } catch {}
+    }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!hydrated.current) return;
@@ -295,7 +308,9 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         let s = 0;
         if (DESTACADOS.includes(i.slug)) s += 1000;
         // Reingresantes: proyectos en los barrios de interés del usuario suben (bajo los DESTACADOS pagos).
-        if (prefBarrios.length && prefBarrios.includes(topB(i.barrio))) s += 500;
+        // Afinidad del usuario (barrio, precio, ambientes; penaliza ya vistas). Si no hay, fallback a sus barrios declarados.
+        if (afinidad) s += puntajeAfinidad(i, afinidad);
+        else if (prefBarrios.length && prefBarrios.includes(topB(i.barrio))) s += 500;
         if (i.imagen) s += 40;
         if (i.precioDesde != null || i.precio != null) s += 30;
         if (i.financiacion) s += 20;
@@ -311,7 +326,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden, prefBarrios]);
+  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden, prefBarrios, afinidad]);
 
   const chip = (active) =>
     `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${

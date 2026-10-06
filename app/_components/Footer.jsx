@@ -48,6 +48,7 @@ export default function Footer() {
 
           <FootCol title="Contacto" links={[
             ["Soy desarrolladora", "/soy-desarrolladora/"],
+            ["Soy inmobiliaria", "/soy-inmobiliaria/"],
             [CONTACT_EMAIL, `mailto:${CONTACT_EMAIL}`],
             ["Guías y novedades", "/novedades/"],
             ["Nosotros", "/sobre-nosotros/"],

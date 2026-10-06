@@ -140,7 +140,7 @@ export default function PublicaTuProyectoPage() {
           </p>
         </Bloque>
 
-        <Bloque icon="how_to_reg" titulo="Cómo funciona">
+        <Bloque icon="verified_user" titulo="Cómo funciona">
           <p><strong className="text-primary">1. Nos pasás el material.</strong> Un brief del proyecto: ubicación, tipologías, precio y financiación, avance de obra, entrega, renders y el contacto de comercialización.</p>
           <p><strong className="text-primary">2. Armamos (o corregimos) la ficha.</strong> La publicamos con buen contenido, foto y datos claros, y la mantenemos actualizada con lo que nos vayas pasando.</p>
           <p><strong className="text-primary">3. Recibís las consultas.</strong> Cada consulta de tu proyecto se rutea directo a tu equipo, con los datos del interesado, para que tu comercial cierre.</p>

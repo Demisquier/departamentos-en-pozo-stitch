@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
+import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, getInmobiliarias, getInmobiliariasExtra, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import { toNumber, expandComercializa } from '../../../lib/format';
 import { waParaDev } from '../../../lib/wa';
 import Galeria from './Galeria';
@@ -15,6 +15,7 @@ import Breadcrumb from '../../_ui/Breadcrumb';
 import AlertaCTA from '../../_ui/AlertaCTA';
 import { mapDesarrollos, similaresDesarrollos, resolveComercializadora, parseDevCom } from '../../../lib/catalogo';
 import ProyectosSimilares from './ProyectosSimilares';
+import VistoTracker from './VistoTracker';
 import CTAContextual from './CTAContextual';
 import IntakeLauncher from '../../_ui/IntakeLauncher';
 
@@ -159,6 +160,19 @@ export default async function FichaProyecto({ params }) {
       const hit = (devs || []).find((x) => { const n = norm(x.nombre); return n && (n === t || (n.length > 4 && t.length > 4 && (n.includes(t) || t.includes(n)))); });
       if (hit && hit.slug) devHref = `/desarrolladoras/${hit.slug}/`;
     } catch (e) { devHref = null; }
+  }
+
+  // Link a la landing de la INMOBILIARIA que comercializa (interlinking ficha → marca, SEO).
+  let inmoHref = null;
+  if (comercializadora) {
+    try {
+      const [a, b] = await Promise.all([getInmobiliarias(), getInmobiliariasExtra().catch(() => [])]);
+      const GEN = /(propiedades|propiedad|bienesraices|inmobiliaria|brokers|broker|realestate|negociosinmobiliarios|grupo)/g;
+      const core = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').split(/[\/;(]/)[0].replace(/[^a-z0-9]/g, '').replace(GEN, '');
+      const t = core(comercializadora);
+      const hit = t.length >= 3 && [...(a || []), ...(b || [])].find((x) => x && x.slug && x.landeable && core(x.nombre) === t);
+      if (hit) inmoHref = `/inmobiliaria/${hit.slug}/`;
+    } catch (e) { inmoHref = null; }
   }
 
   // Etapa de obra para el stepper visual (En pozo · Construcción · Terminado).
@@ -586,6 +600,8 @@ export default async function FichaProyecto({ params }) {
                           <dd className="text-primary font-medium text-right">
                             {k === 'Desarrolladora' && devHref
                               ? <Link href={devHref} className="text-secondary underline underline-offset-2 hover:text-primary">{v}</Link>
+                              : k === 'Comercializa' && inmoHref
+                              ? <Link href={inmoHref} className="text-secondary underline underline-offset-2 hover:text-primary">{v}</Link>
                               : v}
                           </dd>
                         </div>
@@ -814,6 +830,7 @@ export default async function FichaProyecto({ params }) {
               className="w-full mt-3"
               card={{ slug: d.slug, nombre, barrio, precioDesde: precioDesdeNum, img: imagen, etapa: estado, entrega, desarrolladora: constructora }}
             />
+            <VistoTracker slug={d.slug} barrio={barrio} precio={precioDesdeNum} ambientes={ambientes} />
           </aside>
         </div>
 

@@ -6,6 +6,7 @@
 // localStorage) y REORDENAMOS el pool para mostrarle 3 destacados de SUS barrios — manteniendo
 // diversidad. Estado inicial = [0,1,2] = lo que renderizó el server → sin desajuste de hidratación.
 import { useState, useEffect } from "react";
+import { leerAfinidad, puntajeAfinidad, grupoPers } from "../../lib/afinidad";
 
 const NORM = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
 // Colapsa "Palermo Hollywood/Soho/…" en "palermo" (mismo criterio que topBarrio del server).
@@ -33,10 +34,19 @@ export default function DestacadosHome({ cards = [], meta = [] }) {
   const [idxs, setIdxs] = useState(Array.from({ length: n }, (_, i) => i));
 
   useEffect(() => {
-    const pref = preferredBarrios();
-    if (!pref.size || !meta.length) return;
-    // Preferidos primero; a igualdad, respetamos el orden original (score de conversión).
-    const order = meta.map((m, i) => ({ i, pref: pref.has(topB(m.barrio)) ? 1 : 0 }));
+    if (!meta.length) return;
+    // Grupo 'pers' (80%): afinidad implícita (fichas vistas + perfil + favoritos).
+    // Grupo 'control' (20%): lógica anterior (sólo barrios declarados) → medimos el lift en GA4.
+    let order;
+    const af = grupoPers() === "pers" ? leerAfinidad() : null;
+    if (af && af.senales) {
+      order = meta.map((m, i) => ({ i, pref: puntajeAfinidad(m, af) }));
+    } else {
+      const pref = preferredBarrios();
+      if (!pref.size) return;
+      order = meta.map((m, i) => ({ i, pref: pref.has(topB(m.barrio)) ? 1 : 0 }));
+    }
+    // Más afinidad primero; a igualdad, respetamos el orden original (score de conversión).
     order.sort((a, b) => (b.pref - a.pref) || (a.i - b.i));
     // Elegimos 3 con diversidad de barrio; completamos si faltan.
     const pick = [];

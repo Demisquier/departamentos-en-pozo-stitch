@@ -62,7 +62,7 @@ export default function PrivacidadPage() {
           </p>
         </Bloque>
 
-        <Bloque icon="contact_page" titulo="Qué datos recopilamos">
+        <Bloque icon="person" titulo="Qué datos recopilamos">
           <p>
             Recogemos únicamente los datos que nos dejás de forma voluntaria en los formularios del sitio (contacto por
             un proyecto, WhatsApp, chat con el asesor, alta de alertas de lanzamientos): típicamente{" "}
@@ -75,7 +75,7 @@ export default function PrivacidadPage() {
           </p>
         </Bloque>
 
-        <Bloque icon="target" titulo="Para qué usamos tus datos (finalidad)">
+        <Bloque icon="fact_check" titulo="Para qué usamos tus datos (finalidad)">
           <p>
             Usamos tus datos de contacto con una finalidad concreta: <strong className="text-primary">ponerte en
             contacto con quien comercializa el proyecto que te interesó</strong> —la inmobiliaria o, en su defecto, la
@@ -100,7 +100,7 @@ export default function PrivacidadPage() {
           </p>
         </Bloque>
 
-        <Bloque icon="cookie" titulo="Cookies y analítica">
+        <Bloque icon="info" titulo="Cookies y analítica">
           <p>
             Usamos cookies y herramientas de analítica (como Google Analytics) para entender cómo se usa el sitio y
             mejorarlo. Esta información se trata de forma agregada y no identifica a personas de forma directa. Podés
@@ -121,7 +121,7 @@ export default function PrivacidadPage() {
           </p>
         </Bloque>
 
-        <Bloque icon="lock" titulo="Conservación y seguridad">
+        <Bloque icon="gavel" titulo="Conservación y seguridad">
           <p>
             Conservamos tus datos solo durante el tiempo necesario para la finalidad para la que los diste y aplicamos
             medidas razonables para protegerlos. Si pedís la baja, los eliminamos de nuestros registros activos.

@@ -26,6 +26,12 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Barrio confiable del proyecto (título "Nombre — Barrio" > ACF).
+function barrioDe(p) {
+  return ((p?.title?.rendered || "").split("—")[1] || "").trim() || String(acf(p, "barrio") || "").trim();
+}
+const n0 = (arr) => (arr || []).length > 0;
+
 // Año de entrega desde fecha_entrega "20270901" -> 2027.
 function anioEntrega(p) {
   const fe = String(acf(p, "fecha_entrega") || "");
@@ -39,8 +45,11 @@ export default async function DesarrolladoraLanding({ params }) {
   const barrios = (dev.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);
 
   // --- Stats verificables desde los proyectos cargados (nada inventado) ---
-  const barriosProyectos = [...new Set(proyectos.map((p) => (acf(p, "barrio") || "").trim()).filter(Boolean))];
-  const barriosMostrar = barriosProyectos.length ? barriosProyectos : barrios;
+  // Barrio real de cada proyecto: el del título ("Nombre — Barrio", mismo criterio que el catálogo)
+  // y si no, el ACF. Nunca el barrio "genérico" de la desarrolladora (era la causa de textos
+  // tipo "obra en Recoleta" con el proyecto en Belgrano).
+  const barriosProyectos = [...new Set(proyectos.map(barrioDe).filter(Boolean))];
+  const barriosMostrar = n0(proyectos) ? barriosProyectos : barrios;
   const anios = proyectos.map(anioEntrega).filter(Boolean).sort((a, b) => a - b);
   const anioMin = anios[0] || null;
   const anioMax = anios[anios.length - 1] || null;
@@ -56,7 +65,7 @@ export default async function DesarrolladoraLanding({ params }) {
       a: `Listamos ${n} proyecto${n === 1 ? "" : "s"} en pozo de ${dev.nombre}${barriosMostrar.length ? ` en ${barriosTxt}` : ""}. Cada ficha muestra precio por m², forma de pago y avance de obra, con análisis independiente.`,
     },
     barriosMostrar.length > 0 && {
-      q: `¿En qué barrios de CABA desarrolla ${dev.nombre}?`,
+      q: `¿En qué barrios desarrolla ${dev.nombre}?`,
       a: `Según nuestro relevamiento, ${dev.nombre} tiene obra en pozo en ${barriosTxt}. Podés ver el detalle de cada proyecto más arriba o comparar con otros desarrollos del mismo barrio.`,
     },
     {
@@ -147,7 +156,7 @@ export default async function DesarrolladoraLanding({ params }) {
           {proyectos.map((p) => {
             const img = featuredImage(p);
             const nombre = p.title?.rendered || "";
-            const barrio = acf(p, "barrio") || acf(p, "direccion") || "";
+            const barrio = barrioDe(p) || acf(p, "direccion") || "";
             const precio = acf(p, "precio_m2");
             const fe = String(acf(p, "fecha_entrega") || "");
             const entrega = /^\d{6}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : (/^\d{8}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : fe);

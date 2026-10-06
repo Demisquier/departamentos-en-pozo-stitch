@@ -46,8 +46,9 @@ export default async function InmobiliariaLanding({ params }) {
   const zonas = (inmo.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);
   const matNum = inmo.matricula && !/no\s*public/i.test(inmo.matricula) ? inmo.matricula : "";
 
-  const barriosProyectos = [...new Set(proyectos.map((p) => (acf(p, "barrio") || "").trim()).filter(Boolean))];
-  const barriosMostrar = barriosProyectos.length ? barriosProyectos : zonas;
+  // Barrio real de cada proyecto (título "Nombre — Barrio" > ACF), nunca la zona genérica de la firma.
+  const barriosProyectos = [...new Set(proyectos.map((p) => ((p?.title?.rendered || "").split("—")[1] || "").trim() || String(acf(p, "barrio") || "").trim()).filter(Boolean))];
+  const barriosMostrar = proyectos.length ? barriosProyectos : zonas;
   const anios = proyectos.map(anioEntrega).filter(Boolean).sort((a, b) => a - b);
   const anioMin = anios[0] || null;
   const anioMax = anios[anios.length - 1] || null;
@@ -66,7 +67,7 @@ export default async function InmobiliariaLanding({ params }) {
       a: `Según nuestro relevamiento, ${inmo.nombre} figura con matrícula ${matNum}. Podés verificarla gratis en el padrón público de CUCICBA antes de operar.`,
     },
     barriosMostrar.length > 0 && {
-      q: `¿En qué barrios de CABA opera ${inmo.nombre}?`,
+      q: `¿En qué barrios opera ${inmo.nombre}?`,
       a: `Los proyectos en pozo que releva ${inmo.nombre} están en ${barriosTxt}. Podés ver el detalle de cada uno más arriba o compararlos con otros desarrollos del mismo barrio.`,
     },
     {
@@ -155,7 +156,7 @@ export default async function InmobiliariaLanding({ params }) {
         {proyectos.map((p) => {
           const img = featuredImage(p);
           const nombre = p.title?.rendered || "";
-          const barrio = acf(p, "barrio") || acf(p, "direccion") || "";
+          const barrio = ((p?.title?.rendered || "").split("—")[1] || "").trim() || acf(p, "barrio") || acf(p, "direccion") || "";
           const precio = acf(p, "precio_m2");
           const fe = String(acf(p, "fecha_entrega") || "");
           const entrega = /^\d{6}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : (/^\d{8}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : fe);
@@ -213,6 +214,17 @@ export default async function InmobiliariaLanding({ params }) {
           <Link href="/desarrollos-inmobiliarios/" className="text-secondary hover:underline">Ver todos los proyectos en pozo →</Link>
         </div>
       </section>
+
+      {/* Captación B2B: que la firma cargue su contacto y reciba los leads directo. */}
+      <aside className="mt-6 max-w-3xl border border-outline-variant rounded-xl p-5 md:flex md:items-center md:justify-between gap-6">
+        <div>
+          <h2 className="font-headline-sm text-[16px] text-primary mb-1">¿Sos {inmo.nombre}?</h2>
+          <p className="text-on-surface-variant text-[13.5px]">Recibí directo las consultas de compradores por estos proyectos. Sin costo.</p>
+        </div>
+        <a href="/soy-inmobiliaria/" className="mt-3 md:mt-0 shrink-0 inline-flex items-center gap-2 rounded bg-primary-container text-on-primary px-5 py-2.5 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90">
+          <span className="material-symbols-outlined text-[18px]">mail</span> Recibir los leads
+        </a>
+      </aside>
     </Container>
   );
 }
