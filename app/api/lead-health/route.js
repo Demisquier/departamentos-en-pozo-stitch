@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const out = {
-    modo: process.env.LEADS_PIPELINE === "vercel" ? "vercel" : "apps-script",
+    modo: process.env.LEADS_PIPELINE === "vercel" ? (sheetsReady() ? "vercel (planilla directa)" : "vercel híbrido (planilla vía Apps Script)") : "apps-script",
     envSheets: sheetsReady(),
     envMail: resendReady(),
     sheetsOk: false,
@@ -23,6 +23,6 @@ export async function GET() {
       out.sheetsOk = true;
     } catch (e) { out.error = String(e.message || e).slice(0, 200); }
   }
-  out.listoParaActivar = out.envSheets && out.envMail && out.sheetsOk && out.encabezadosLeads.length > 0;
+  out.listoParaActivar = out.envMail && (!out.envSheets || (out.sheetsOk && out.encabezadosLeads.length > 0));
   return Response.json(out, { headers: { "Cache-Control": "no-store" } });
 }

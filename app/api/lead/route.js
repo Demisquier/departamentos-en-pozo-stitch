@@ -5,14 +5,12 @@
 //    API, ruteo inmobiliaria > desarrolladora > contacto@, copia interna y similares (lib/leadPipeline).
 //    El Apps Script deja de intervenir en los leads → sin doble mail y sin depender de su redeploy.
 //  • Por defecto: reenvía al webhook del Apps Script (comportamiento histórico).
-import { pipelineVercelActivo, procesarLead } from "../../../lib/leadPipeline";
+import { pipelineVercelActivo, procesarLead, SHEET_WEBHOOK } from "../../../lib/leadPipeline";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
-const SHEET_WEBHOOK =
-  "https://script.google.com/macros/s/AKfycbxQYPNfcKOdHuATx7f7XvXKFPJ7eVvmD7EJwJmSqN4C6PXZIauk59dOgwQE3nMlYvZf0Q/exec";
 
 // Rate-limit best-effort en memoria (por instancia serverless).
 const HITS = new Map();

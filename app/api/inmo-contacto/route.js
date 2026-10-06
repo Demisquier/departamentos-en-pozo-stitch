@@ -5,6 +5,7 @@
 import { sheetsReady, ensureTab, appendRow } from "../../../lib/googleSheets";
 import { TAB_CONTACTOS, HEAD_CONTACTOS, invalidateLearned } from "../../../lib/leadRouting";
 import { firmar } from "../../../lib/leadPipeline";
+import { sendMail, resendReady } from "../../../lib/resend";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,7 +40,12 @@ export async function POST(req) {
   const email = String(f.get("email") || "").trim(), wa = String(f.get("whatsapp") || "").trim();
   if (!valido(n, t)) return page("<p>Link inválido o vencido.</p>");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return page("<p>Email inválido. Volvé atrás y corregilo.</p>");
-  if (!sheetsReady()) return page("<p>La planilla no está configurada todavía.</p>");
+  if (!sheetsReady()) {
+    // Sin planilla conectada: te llega por mail y se incorpora al directorio de contactos.
+    if (resendReady()) await sendMail({ to: "contacto@departamentosenpozo.com.ar", subject: "[Contacto inmobiliaria cargado] " + n,
+      html: "<p>Cargaste el contacto de <b>" + esc(n) + "</b>: " + esc(email) + (wa ? " · WhatsApp " + esc(wa) : "") + (p ? "<br>Proyecto: " + esc(p) : "") + "</p><p>Se incorpora al ruteo en la próxima actualización del directorio.</p>" }).catch(() => {});
+    return page("<h2 style=\"color:#0f1f3d\">Recibido ✓</h2><p>Guardamos el contacto de <b>" + esc(n) + "</b> (" + esc(email) + "). Se activa en la próxima actualización del ruteo.</p>");
+  }
   await ensureTab(TAB_CONTACTOS, HEAD_CONTACTOS);
   await appendRow(TAB_CONTACTOS, [n, email, wa, "aprobado", new Date().toISOString(), "link copia lead", p]);
   invalidateLearned();
