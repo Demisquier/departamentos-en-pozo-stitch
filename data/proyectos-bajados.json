@@ -1,0 +1,12 @@
+{
+  "_doc": "Proyectos dados de baja a pedido de la desarrolladora o de quien los comercializa. NO volver a publicar (ni por scraping ni por import) hasta que el titular lo pida explicitamente por escrito. lib/content.js los filtra del catalogo, fichas, sitemap, landings y ruteo.",
+  "slugs": {
+    "obispo-san-alberto-2205-villa-pueyrredon": {
+      "fecha": "2026-10-15",
+      "pedido_por": "Gonzalo Olivera (dice tenerlo en exclusiva)",
+      "motivo": "Pide la baja: no hay autorizacion de la desarrolladora ni de su oficina para publicarlo.",
+      "direccion": "Obispo San Alberto 2205, Villa Pueyrredon"
+    }
+  },
+  "inmobiliarias": ["remax-data-gold"]
+}
