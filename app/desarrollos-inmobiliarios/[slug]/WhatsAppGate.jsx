@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { track } from "../../../lib/track";
+import { postLead } from "../../../lib/leadOnce";
 
 // Botón de WhatsApp con CAPTURA previa: pide nombre + WhatsApp (email opcional) antes de
 // abrir la conversación. Así el lead queda registrado (Sheet + mail a la desarrolladora vía
@@ -68,7 +69,7 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
       Origen: "WhatsApp ficha",
     };
     try {
-      await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sheet, mail }) });
+      await postLead({ sheet, mail });
     } catch {}
     track("wa_lead", { proyecto: nombre, del_dev: !!esDelDev });
     setSending(false);

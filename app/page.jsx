@@ -207,7 +207,7 @@ export default async function HomePage() {
                 )}
                 <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/40 transition-all duration-300" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
-                  <h4 className="font-headline-sm text-headline-sm">{b.name}</h4>
+                  <h3 className="font-headline-sm text-headline-sm">{b.name}</h3>
                   <p className="text-label-caps font-label-caps opacity-90 uppercase text-[11px]">{b.count} {b.count === 1 ? "proyecto" : "proyectos"}</p>
                 </div>
               </Link>
@@ -233,7 +233,7 @@ export default async function HomePage() {
                 )}
                 <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/40 transition-all duration-300" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
-                  <h4 className="font-headline-sm text-headline-sm">{b.name}</h4>
+                  <h3 className="font-headline-sm text-headline-sm">{b.name}</h3>
                   <p className="text-label-caps font-label-caps opacity-90 uppercase text-[11px]">Ver desarrolladoras</p>
                 </div>
               </Link>

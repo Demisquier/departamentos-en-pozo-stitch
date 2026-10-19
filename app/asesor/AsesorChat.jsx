@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase, authEnabled } from "../../lib/supabase";
 import { track } from "../../lib/track";
+import { postLead } from "../../lib/leadOnce";
 
 const BOT = "Valentina";
 
@@ -108,7 +109,7 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
     payload["Origen"] = proyecto ? "Ficha · quiero más info" : "Asesor";
     try {
       const sheet = { origen: payload["Origen"], tipo, nombre: data.nombre || "", email, whatsapp, proyecto: proyecto || "", proyectoSlug: proyectoSlug || "", interes: data.interes || "", mensaje: proy };
-      await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mail: payload, sheet }) });
+      await postLead({ mail: payload, sheet });
       // Mail directo a Formsubmit desde el navegador: Formsubmit descarta los envíos server-side
       // (Vercel) al endpoint contacto@ recién activado, pero los del navegador (Origin del dominio) sí
       // entregan. El proxy /api/lead ya guardó el lead en la planilla; esto asegura la notificación por mail.

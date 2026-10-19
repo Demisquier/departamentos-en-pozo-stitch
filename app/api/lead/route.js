@@ -25,6 +25,30 @@ function limited(ip) {
   return arr.length > MAX_PER_WINDOW;
 }
 
+// Dedup: misma persona (WhatsApp o email) + mismo proyecto dentro de 12 h = 1 solo lead.
+// Evita que la desarrolladora reciba 2-3 mails cuando alguien usa "quiero info" + WhatsApp
+// + chat en la misma ficha. Best-effort en memoria (por instancia; Fluid reutiliza instancias).
+const SEEN = new Map();
+const DEDUP_MS = 12 * 3600 * 1000;
+function dedupKey(s) {
+  const wa = String(s.whatsapp || "").replace(/\D/g, "").slice(-8);
+  const em = String(s.email || "").trim().toLowerCase();
+  const who = wa.length >= 8 ? "w" + wa : em ? "e" + em : "";
+  if (!who) return "";
+  const proj = String(s.proyectoSlug || s.proyecto || s.mensaje || "").toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 60);
+  return who + "|" + proj;
+}
+function esDuplicado(s) {
+  const k = dedupKey(s);
+  if (!k) return false;
+  const now = Date.now();
+  if (SEEN.size > 5000) for (const [kk, t] of SEEN) if (now - t > DEDUP_MS) SEEN.delete(kk);
+  const prev = SEEN.get(k);
+  if (prev && now - prev < DEDUP_MS) return true;
+  SEEN.set(k, now);
+  return false;
+}
+
 export async function POST(req) {
   let body;
   try { body = await req.json(); } catch { return Response.json({ ok: false, error: "bad_request" }, { status: 400 }); }
@@ -45,6 +69,7 @@ export async function POST(req) {
   const isIntake = sheet && sheet.tipo === "intake";
   if (!isIntake && !email && !whatsapp) return Response.json({ ok: false, error: "missing_contact" }, { status: 422 });
   if (!sheet) return Response.json({ ok: true }); // sólo "mail" (legacy FormSubmit, desactivado)
+  if (!isIntake && esDuplicado(sheet)) return Response.json({ ok: true, dedup: true });
 
   // Modo Vercel: pipeline propio.
   if (pipelineVercelActivo()) {
