@@ -19,7 +19,8 @@ const ENTITY_SCHEMA = [
     name: BRAND, url: `${SITE}/`,
     logo: { "@type": "ImageObject", url: LOGO_URL },
     description: "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías.",
-    contactPoint: { "@type": "ContactPoint", email: CONTACT_EMAIL, contactType: "customer support", areaServed: "AR", availableLanguage: "Spanish" },
+    contactPoint: { "@type": "ContactPoint", email: CONTACT_EMAIL, contactType: "customer support", areaServed: "AR", availableLanguage: "Spanish", url: `${SITE}/contacto/` },
+    address: { "@type": "PostalAddress", addressLocality: "Ciudad Autónoma de Buenos Aires", addressRegion: "CABA", addressCountry: "AR" },
     // sameAs: perfiles propios de la marca -> senal de ENTIDAD (Knowledge Graph + citabilidad IA/GEO).
     sameAs: ["https://medium.com/@contacto_86481", "https://www.linkedin.com/company/144533011/"],
   },
