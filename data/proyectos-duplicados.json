@@ -1,0 +1,24 @@
+{
+ "_doc": "Fichas duplicadas del mismo proyecto: la clave se oculta y redirige 301 a la canónica.",
+ "map": {
+  "lelis-residence-palermo-soho": "le-lis-residence-palermo-soho",
+  "donado-2695-villa-urquiza": "donado-2695-luma-doho-villa-urquiza",
+  "cramer-urban-colegiales": "cramer-680-colegiales",
+  "rivera-haus-3190-coghlan": "rivera-haus-coghlan",
+  "navarro-3120-villa-devoto": "preventa-navarro-3120-villa-devoto",
+  "glow-7-alvarez-thomas-villa-ortuzar": "glow-7-plus-villa-ortuzar",
+  "donizetti-118-villa-luro-villa-luro": "donizetti-118-villa-luro",
+  "av-boedo-1098-boedo": "boedo-1098-boedo",
+  "barlovento-puerto-de-olivos-olivos-puerto-de-olivos-zona-rio": "barlovento-puerto-de-olivos-olivos",
+  "krystal-park-tower-av-maipu-3872-olivos": "av-maipu-3872-olivos",
+  "rojas-1700-villa-crespo": "emprendimiento-rojas-villa-crespo",
+  "besares-haus-nunez": "besares-2334-nunez",
+  "e6-parque-de-innovacion-nunez": "e6-parque-de-la-innovacion-nunez",
+  "vona-maure-ii-chacarita": "distrito-maure-2-chacarita",
+  "aguirre-villa-crespo": "beton-aguirre-villa-crespo",
+  "senillosa-caballito": "beton-senillosa-869-caballito",
+  "one-vicente-lopez-one-residential-tower-one-maipu-1272-vicente-lopez": "one-residential-tower-vicente-lopez",
+  "defensa-1635-barracas": "lezzama-san-telmo",
+  "andonaegui-2129-villa-urquiza": "ando-villa-urquiza"
+ }
+}

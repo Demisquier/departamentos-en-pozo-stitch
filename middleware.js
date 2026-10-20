@@ -5,6 +5,8 @@
 //  2) Trust pages en inglés: /about, /contact, /privacy sirven (rewrite, 200) las páginas reales
 //     /sobre-nosotros/, /contacto/, /politica-de-privacidad/ (canonical sigue en la versión ES).
 import { NextResponse } from "next/server";
+import DUPS_FILE from "./data/proyectos-duplicados.json";
+const DUPS = (DUPS_FILE && DUPS_FILE.map) || {};
 
 const ALIAS = { "/about": "/sobre-nosotros/", "/contact": "/contacto/", "/privacy": "/politica-de-privacidad/" };
 
@@ -24,6 +26,8 @@ const BARRIO_VIEJO = /^\/desarrollo-en-pozo-(villa-urquiza|caballito|palermo|bel
 
 function redirect301(path) {
   if (R301[path]) return R301[path];
+  const d = path.match(/^\/desarrollos-inmobiliarios\/([^/]+)$/);
+  if (d && DUPS[d[1]]) return "/desarrollos-inmobiliarios/" + DUPS[d[1]] + "/";
   if (DEV_VIEJAS.test(path)) return "/desarrolladoras-inmobiliarias-en-capital-federal/";
   const b = path.match(BARRIO_VIEJO);
   if (b) return "/desarrollos-inmobiliarios-en-" + b[1] + "/";
