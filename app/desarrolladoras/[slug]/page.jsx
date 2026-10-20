@@ -19,9 +19,19 @@ export async function generateMetadata({ params }) {
   const r = await getDesarrolladoraBySlug(params.slug);
   const nombre = r?.dev?.nombre || "Desarrolladora";
   const n = r?.proyectos?.length || 0;
+  // CTR (Search Console): la gente busca "{marca}" o "{marca} {barrio}" → título con cantidad,
+  // barrios reales y año; descripción con lo que encuentra al hacer clic.
+  const cnt = {};
+  for (const p of r?.proyectos || []) { const b = barrioDe(p); if (b) cnt[b] = (cnt[b] || 0) + 1; }
+  const barrios = Object.entries(cnt).sort((a, b) => b[1] - a[1]).map(([b]) => b).slice(0, 2);
+  const enB = barrios.length ? ` en ${barrios.join(" y ")}` : "";
   return {
-    title: `${nombre} — proyectos en pozo en CABA | Departamentos en Pozo`,
-    description: `${nombre}: ${n > 0 ? `${n} proyecto${n === 1 ? "" : "s"} en pozo en Capital Federal con precio por m², estructura de pago y avance de obra. ` : ""}Análisis independiente, sin pauta.`,
+    title: n > 0
+      ? `${nombre}: ${n} proyecto${n === 1 ? "" : "s"} en pozo${enB} — precios 2026 | Departamentos en Pozo`
+      : `${nombre} — desarrolladora inmobiliaria: proyectos y obras | Departamentos en Pozo`,
+    description: n > 0
+      ? `Todos los proyectos en pozo de ${nombre}${enB}: precios desde, tipologías, fecha de entrega y avance de obra. Consultá sin costo y compará con otras desarrolladoras.`
+      : `${nombre}: proyectos, obras entregadas y trayectoria como desarrolladora en CABA. Análisis independiente, sin pauta.`,
     alternates: { canonical: `/desarrolladoras/${params.slug}/` },
   };
 }

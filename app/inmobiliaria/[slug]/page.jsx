@@ -24,9 +24,17 @@ export async function generateMetadata({ params }) {
   const r = await getInmobiliariaBySlug(params.slug);
   const nombre = r?.inmo?.nombre || "Inmobiliaria";
   const n = r?.proyectos?.length || 0;
+  const cnt = {};
+  for (const p of r?.proyectos || []) { const b = ((p?.title?.rendered || "").split("—")[1] || "").trim() || String(acf(p, "barrio") || "").trim(); if (b) cnt[b] = (cnt[b] || 0) + 1; }
+  const barrios = Object.entries(cnt).sort((a, b) => b[1] - a[1]).map(([b]) => b).slice(0, 2);
+  const enB = barrios.length ? ` en ${barrios.join(" y ")}` : "";
   return {
-    title: `${nombre} — inmobiliaria en CABA con proyectos en pozo | Departamentos en Pozo`,
-    description: `${nombre}: ${n > 0 ? `${n} proyecto${n === 1 ? "" : "s"} en pozo que comercializa en Capital Federal, con precio por m², forma de pago y avance de obra. ` : ""}Matrícula CUCICBA verificable. Análisis independiente, sin pauta.`,
+    title: n > 0
+      ? `${nombre}: ${n} proyecto${n === 1 ? "" : "s"} en pozo${enB} — precios 2026 | Departamentos en Pozo`
+      : `${nombre} — inmobiliaria en CABA con proyectos en pozo | Departamentos en Pozo`,
+    description: n > 0
+      ? `Los proyectos en pozo que comercializa ${nombre}${enB}: precios desde, tipologías, entrega y avance de obra. Matrícula CUCICBA verificable. Consultá sin costo.`
+      : `${nombre}: inmobiliaria en Capital Federal. Matrícula CUCICBA verificable. Análisis independiente, sin pauta.`,
     robots: (r?.inmo?.sintetica && (r?.proyectos?.length || 0) < 2) ? { index: false, follow: true } : undefined,
     alternates: { canonical: `/inmobiliaria/${params.slug}/` },
   };

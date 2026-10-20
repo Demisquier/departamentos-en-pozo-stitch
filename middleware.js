@@ -8,6 +8,34 @@ import { NextResponse } from "next/server";
 
 const ALIAS = { "/about": "/sobre-nosotros/", "/contact": "/contacto/", "/privacy": "/politica-de-privacidad/" };
 
+// 301 de URLs viejas (WordPress) que Search Console reporta como 404 → su equivalente actual.
+const R301 = {
+  "/fideicomiso-al-costo-vs-sociedad-anonima": "/fideicomiso-al-costo-vs-llave-en-mano-departamentos-en-pozo/",
+  "/anticipo-y-sena-en-un-departamento-en-pozo-cuanto-se-paga-y-como-se-protege": "/anticipo-sena-y-reserva-en-pozo-cuanto-se-paga-al-inicio/",
+  "/que-revisar-antes-de-comprar-un-departamento-en-pozo": "/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/",
+  "/invertir-en-pozo-rentabilidad": "/invertir-en-pozo-cuanto-se-gana-y-como-calcular-la-rentabilidad-paso-a-paso/",
+  "/invertir-en-pozo-en-argentina": "/guia-invertir-departamentos-en-pozo-argentina/",
+  "/desarrollos-en-pozo-por-barrio-caba": "/desarrollos-en-pozo-por-barrio/",
+  "/herramientas/calculadora-pozo": "/simulador-cuota-cac-pozo/",
+  "/category/guias": "/novedades/",
+};
+const DEV_VIEJAS = /^\/desarrolladoras\/(aterno|sycsa|gha-argentina|pur-desarrollos|soa-desarrollos|mosaico-real-estate)$/;
+const BARRIO_VIEJO = /^\/desarrollo-en-pozo-(villa-urquiza|caballito|palermo|belgrano)-/;
+
+function redirect301(path) {
+  if (R301[path]) return R301[path];
+  if (DEV_VIEJAS.test(path)) return "/desarrolladoras-inmobiliarias-en-capital-federal/";
+  const b = path.match(BARRIO_VIEJO);
+  if (b) return "/desarrollos-inmobiliarios-en-" + b[1] + "/";
+  // Paginación / feeds / archivos de fecha y autor del WP viejo.
+  let m;
+  if ((m = path.match(/^\/category\/([^/]+)\/(feed|page\/\d+)$/))) return "/category/" + m[1] + "/";
+  if (/^\/(novedades\/)?page\/\d+$/.test(path)) return "/novedades/";
+  if (/^\/20\d\d(\/\d\d)?(\/page\/\d+)?$/.test(path)) return "/novedades/";
+  if (/^\/author\/[^/]+\/(feed|page\/\d+)$/.test(path)) return "/";
+  return null;
+}
+
 function quiereMarkdown(accept) {
   const a = String(accept || "").toLowerCase();
   if (!a.includes("text/markdown")) return false;
@@ -19,6 +47,14 @@ function quiereMarkdown(accept) {
 export function middleware(req) {
   const url = req.nextUrl;
   const path = url.pathname.replace(/\/+$/, "") || "/";
+
+  const to = redirect301(path);
+  if (to) {
+    const dest = url.clone();
+    dest.pathname = to;
+    dest.search = "";
+    return NextResponse.redirect(dest, 301);
+  }
 
   if (quiereMarkdown(req.headers.get("accept"))) {
     const dest = url.clone();
