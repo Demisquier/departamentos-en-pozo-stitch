@@ -124,8 +124,10 @@ export default async function FichaProyecto({ params }) {
   const _rawDev = acfAny(d, ['desarrolladora', 'constructora']) || '';
   const constructora = expandComercializa(parseDevCom(_rawDev).dev || '');
   const comercializadora = resolveComercializadora(d.slug, _rawDev, acfAny(d, ['comercializadora']) || '');
-  const _devWa = constructora || comercializadora || '';
-  const _wa = waParaDev(_devWa);
+  // Contactabilidad (misma regla que el ruteo de leads por mail): primero la comercializadora /
+  // inmobiliaria; si no tiene WhatsApp cargado, la desarrolladora; si ninguna, la línea del sitio.
+  const _waCom = comercializadora ? waParaDev(comercializadora) : null;
+  const _wa = (_waCom && _waCom.esDelDev) ? _waCom : waParaDev(constructora || comercializadora || '');
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
@@ -817,7 +819,7 @@ export default async function FichaProyecto({ params }) {
               waPhone={_wa.phone}
               waEsDelDev={_wa.esDelDev}
               barrio={barrio}
-              dev={_devWa}
+              dev={(_waCom && _waCom.esDelDev) ? comercializadora : (constructora || comercializadora || "")}
             />
             <GuardarBtn
               variant="full"

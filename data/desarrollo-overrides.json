@@ -452,9 +452,56 @@
 "desarrolladora": "Grupo Chomer (GCH)"
 },
 "30200": {
-"desarrolladora": "PvG Desarrollos (marca Tempus)"
+"desarrolladora": "PvG Desarrollos (marca Tempus)",
+"render_url": "https://www.pvgdesarrollos.com.ar/assets/202605031232.webp"
 },
 "30206": {
-"desarrolladora": "CBSC (marca Domus)"
+"desarrolladora": "CBSC (marca Domus)",
+"render_url": "https://www.cbsc.com.ar/wp-content/uploads/2020/01/principal.jpg"
+},
+"9660": {
+"precio_desde": 85636
+},
+"10207": {
+"render_url": "https://bmaestudio.com.ar/wp-content/uploads/2025/02/Segunda-etapa-ViaViva-02.webp"
+},
+"30179": {
+"render_url": "https://static.tokkobroker.com/dw_pics/66872_21350617368706920129588704241601602258576952249777170059127936088071614960116.jpg"
+},
+"30188": {
+"render_url": "https://plusbarracas.com.ar/wp-content/uploads/2024/06/maqueta3-jpeg.webp"
+},
+"40196": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/25452186/1783544498.jpg"
+},
+"40231": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/26009157/1785787363.jpg"
+},
+"40207": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/21600222/1772740832.jpg"
+},
+"40206": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/26209004/1786464094.jpg"
+},
+"40208": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/27075350/1789588933.jpg"
+},
+"40205": {
+"render_url": "https://d1v2p1s05qqabi.cloudfront.net/27118924/1789754421.jpg"
+},
+"40289": {
+"render_url": "https://cdn.roomix.ai/1/30053620/59631157/2065886066_exterior.jpg"
+},
+"41003": {
+"desarrolladora": "IRSA"
+},
+"30135": {
+"precio_desde": 513900
+},
+"41002": {
+"precio_desde": 93000
+},
+"40222": {
+"render_url": "https://www.argenprop.com/static-content/98894191/610e0192-246b-48ea-9f5a-0b9a8bd696ce_u_medium.jpg"
 }
 }

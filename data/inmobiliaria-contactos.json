@@ -1,269 +1,449 @@
 {
-  "_doc": "Contactos verificados de inmobiliarias/comercializadoras. SOLO con email confirmado se rutea el lead (ver /api/lead + INMO_NOTIFY). key = nombre tal cual aparece en comercializadora-overrides.json (match case-insensitive, normalizado). Email vacío = pendiente de verificar, NO se rutea.",
-  "contactos": {
-    "Toribio Achával": {
-      "email": "emprendimientos@toribioachaval.com",
-      "whatsapp": "+541148194000",
-      "web": "https://www.toribioachaval.com",
-      "fuente": "websearch 2026-10, confirmado sitio oficial"
-    },
-    "Interwin": {
-      "email": "",
-      "whatsapp": "+541152754300",
-      "web": "https://www.interwin.com.ar",
-      "fuente": "websearch 2026-10, email pendiente verificar (redactado en fuente)"
-    },
-    "OSLO Propiedades": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "ONE BROKERS": {
-      "email": "info@onebrokers.com.ar",
-      "whatsapp": "5491167243645",
-      "web": "https://www.onebrokers.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.onebrokers.com.ar/"
-    },
-    "D'Aria Propiedades": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "Carrillo Ourens Bienes Raices": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "inred": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "BAIGÚN RyN": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "Tesler Propiedades": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "Martín Pinus": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "CASSAGNE REAL ESTATE": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "Laurenzano Matias Propiedades": {
-      "email": "",
-      "whatsapp": "",
-      "web": "",
-      "fuente": ""
-    },
-    "RE/MAX Cosmopolita": {
-      "email": "cosmopolita@remax.com.ar",
-      "whatsapp": "+541146331121",
-      "web": "https://www.remax.com.ar/cosmopolita",
-      "fuente": "remax.com.ar oficina, verificado 2026-10-05"
-    },
-    "Ramos Couriel Real Estate": {
-      "email": "",
-      "whatsapp": "+5491168536671",
-      "web": "https://www.ramoscouriel.com.ar",
-      "fuente": "info@ rebota (550 user unknown); sólo WhatsApp"
-    },
-    "Predial": {
-      "email": "",
-      "whatsapp": "5491126717777",
-      "web": "https://predial.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://predial.ar/"
-    },
-    "Fera": {
-      "email": "info@ferayasociados.com",
-      "whatsapp": "5491130929613",
-      "web": "https://www.ferayasociados.com/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.ferayasociados.com/contacto"
-    },
-    "Prodigy": {
-      "email": "",
-      "whatsapp": "5491154851567",
-      "web": "https://prodigylot.com.ar/real-estate.php",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://prodigylot.com.ar/real-estate.php"
-    },
-    "MGL Acción Inmobiliaria": {
-      "email": "info@mglinmobiliaria.com.ar",
-      "whatsapp": "",
-      "web": "http://www.mglinmobiliaria.com.ar/deptos17.html",
-      "fuente": "verificado en sitio oficial 2026-10-05: http://www.mglinmobiliaria.com.ar/deptos17.html"
-    },
-    "Micaela Llamedo Real Estate": {
-      "email": "info@llamedopropiedades.com",
-      "whatsapp": "5491130973100",
-      "web": "https://www.llamedopropiedades.com/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.llamedopropiedades.com/"
-    },
-    "Juliana Profitos": {
-      "email": "profitospropiedades@gmail.com",
-      "whatsapp": "5491153854029",
-      "web": "https://www.jprofitospropiedades.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.jprofitospropiedades.com.ar/"
-    },
-    "Young Propiedades": {
-      "email": "info@youngpropiedades.com.ar",
-      "whatsapp": "5491131680664",
-      "web": "https://www.young-propiedades.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.young-propiedades.com.ar/"
-    },
-    "Elisabet Costa Propiedades": {
-      "email": "elicostaprop@gmail.com",
-      "whatsapp": "5491132824222",
-      "web": "https://www.elisabetcostaprop.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.elisabetcostaprop.com.ar/"
-    },
-    "Emprendimientos Soldati": {
-      "email": "hola@soldati.com",
-      "whatsapp": "5491153769874",
-      "web": "https://soldatiemprendimientos.com/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://soldatiemprendimientos.com/contacto"
-    },
-    "Lepore Caballito": {
-      "email": "caballito@lepore.com.ar",
-      "whatsapp": "5491140281318",
-      "web": "https://lepore.com.ar/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://lepore.com.ar/contacto (caballito@ ya en uso sin rebote)"
-    },
-    "Grupo Galcerán": {
-      "email": "info@grupogalceran.com",
-      "whatsapp": "5491154287771",
-      "web": "https://grupogalceran.com/emprendimiento/nice-cordoba-proyecto--4136",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://grupogalceran.com/emprendimiento/nice-cordoba-proyecto--4136"
-    },
-    "Gastón Buratti Propiedades": {
-      "email": "gaston@burattipropiedades.com",
-      "whatsapp": "5491169250386",
-      "web": "https://burattipropiedades.com/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://burattipropiedades.com/"
-    },
-    "Situar Realty": {
-      "email": "hola@situar.com",
-      "whatsapp": "5491173077377",
-      "web": "https://situar.com/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://situar.com/contacto"
-    },
-    "Jakim Propiedades": {
-      "email": "comercial@jakimpropiedades.com",
-      "whatsapp": "5491145016030",
-      "web": "https://jakimpropiedades.com/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://jakimpropiedades.com/contacto"
-    },
-    "RE/MAX Data Gold": {
-      "email": "datagold@remax.com.ar",
-      "whatsapp": "",
-      "web": "https://www.remax.com.ar/datagold",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.remax.com.ar/datagold"
-    },
-    "Casa Central San Isidro (Narváez)": {
-      "email": "",
-      "whatsapp": "5491128299141",
-      "web": "https://www.narvaez.com.ar/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.narvaez.com.ar/contacto"
-    },
-    "Novoa Propiedades": {
-      "email": "marchettioscar2@gmail.com",
-      "whatsapp": "5491125007796",
-      "web": "https://www.novoainmobiliaria.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.novoainmobiliaria.com.ar/"
-    },
-    "German Berretti": {
-      "email": "lanus@berrettipropiedades.com.ar",
-      "whatsapp": "5491163621753",
-      "web": "https://www.berrettipropiedades.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.berrettipropiedades.com.ar/"
-    },
-    "Building Inmobiliaria": {
-      "email": "info@buildinginmobiliaria.com",
-      "whatsapp": "5492214637251",
-      "web": "https://buildinginmobiliaria.com/emprendimiento/building-after-office--787",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://buildinginmobiliaria.com/emprendimiento/building-after-office--787"
-    },
-    "Bioi": {
-      "email": "ventas@bioi.com.ar",
-      "whatsapp": "5491128705889",
-      "web": "https://www.bioi.com.ar/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.bioi.com.ar/contacto"
-    },
-    "Ykonos Desarrollos Inmobiliarios": {
-      "email": "info@ykonos.com",
-      "whatsapp": "5491139425934",
-      "web": "https://ykonos.com/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://ykonos.com/"
-    },
-    "Equipo 6C Real Estate": {
-      "email": "ventas@equipo6c.com",
-      "whatsapp": "5491176208615",
-      "web": "https://equipo6c.com/contacto.php",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://equipo6c.com/contacto.php"
-    },
-    "Le Bleu": {
-      "email": "",
-      "whatsapp": "5491130579208",
-      "web": "https://lebleu.com.ar/contacto",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://lebleu.com.ar/contacto"
-    },
-    "Ocampo Propiedades": {
-      "email": "info@ocampopropiedades.com",
-      "whatsapp": "5491136613234",
-      "web": "https://ocampopropiedades.com/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://ocampopropiedades.com/"
-    },
-    "Muv Propiedades": {
-      "email": "info@muvpropiedades.com",
-      "whatsapp": "5491122862000",
-      "web": "https://www.muvpropiedades.com/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.muvpropiedades.com/"
-    },
-    "Conecta Real Estate": {
-      "email": "ventasconectarealestate@gmail.com",
-      "whatsapp": "5491144173217",
-      "web": "https://www.conectarealestate.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.conectarealestate.com.ar/"
-    },
-    "KOT Asesores Inmobiliarios S.R.L.": {
-      "email": "info@kotpropiedades.com.ar",
-      "whatsapp": "5491122772455",
-      "web": "https://www.kotpropiedades.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.kotpropiedades.com.ar/"
-    },
-    "Lincoln Negocios Inmobiliarios": {
-      "email": "info@lincolnpropiedades.com.ar",
-      "whatsapp": "5491150611422",
-      "web": "https://www.lincolnpropiedades.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.lincolnpropiedades.com.ar/"
-    },
-    "A. Suárez Real Estate": {
-      "email": "asuarez@asrealestate.com.ar",
-      "whatsapp": "5491136126913",
-      "web": "https://www.asrealestate.com.ar/",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.asrealestate.com.ar/"
-    },
-    "R.R. Franchino S.R.L.": {
-      "email": "info@franchino.com",
-      "whatsapp": "5491121546045",
-      "web": "https://www.franchino.com.ar/en/segui-adrogue",
-      "fuente": "verificado en sitio oficial 2026-10-05: https://www.franchino.com.ar/en/segui-adrogue"
-    }
+ "_doc": "Contactos verificados de inmobiliarias/comercializadoras. SOLO con email confirmado se rutea el lead (ver /api/lead + INMO_NOTIFY). key = nombre tal cual aparece en comercializadora-overrides.json (match case-insensitive, normalizado). Email vacío = pendiente de verificar, NO se rutea.",
+ "contactos": {
+  "Toribio Achával": {
+   "email": "emprendimientos@toribioachaval.com",
+   "whatsapp": "+541148194000",
+   "web": "https://www.toribioachaval.com",
+   "fuente": "websearch 2026-10, confirmado sitio oficial"
+  },
+  "Interwin": {
+   "email": "",
+   "whatsapp": "+541152754300",
+   "web": "https://www.interwin.com.ar",
+   "fuente": "websearch 2026-10, email pendiente verificar (redactado en fuente)"
+  },
+  "OSLO Propiedades": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "ONE BROKERS": {
+   "email": "info@onebrokers.com.ar",
+   "whatsapp": "5491167243645",
+   "web": "https://www.onebrokers.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.onebrokers.com.ar/"
+  },
+  "D'Aria Propiedades": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "Carrillo Ourens Bienes Raices": {
+   "email": "contacto@carrilloourens.com.ar",
+   "whatsapp": "5491125058197",
+   "web": "https://www.carrilloourens.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.carrilloourens.com.ar/"
+  },
+  "inred": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "BAIGÚN RyN": {
+   "email": "inmobiliaria@baigunryn.com",
+   "whatsapp": "",
+   "web": "https://baigunryn.com",
+   "fuente": "harvest 2026-10-19: https://baigunryn.com/contacto"
+  },
+  "Tesler Propiedades": {
+   "email": "tesler@teslerpropiedades.com",
+   "whatsapp": "",
+   "web": "https://teslerpropiedades.com",
+   "fuente": "harvest 2026-10-19: https://teslerpropiedades.com/contacto/"
+  },
+  "Martín Pinus": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "CASSAGNE REAL ESTATE": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "Laurenzano Matias Propiedades": {
+   "email": "",
+   "whatsapp": "",
+   "web": "",
+   "fuente": ""
+  },
+  "RE/MAX Cosmopolita": {
+   "email": "cosmopolita@remax.com.ar",
+   "whatsapp": "+541146331121",
+   "web": "https://www.remax.com.ar/cosmopolita",
+   "fuente": "remax.com.ar oficina, verificado 2026-10-05"
+  },
+  "Ramos Couriel Real Estate": {
+   "email": "",
+   "whatsapp": "+5491168536671",
+   "web": "https://www.ramoscouriel.com.ar",
+   "fuente": "info@ rebota (550 user unknown); sólo WhatsApp"
+  },
+  "Predial": {
+   "email": "",
+   "whatsapp": "5491126717777",
+   "web": "https://predial.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://predial.ar/"
+  },
+  "Fera": {
+   "email": "info@ferayasociados.com",
+   "whatsapp": "5491130929613",
+   "web": "https://www.ferayasociados.com/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.ferayasociados.com/contacto"
+  },
+  "Prodigy": {
+   "email": "",
+   "whatsapp": "5491154851567",
+   "web": "https://prodigylot.com.ar/real-estate.php",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://prodigylot.com.ar/real-estate.php"
+  },
+  "MGL Acción Inmobiliaria": {
+   "email": "info@mglinmobiliaria.com.ar",
+   "whatsapp": "",
+   "web": "http://www.mglinmobiliaria.com.ar/deptos17.html",
+   "fuente": "verificado en sitio oficial 2026-10-05: http://www.mglinmobiliaria.com.ar/deptos17.html"
+  },
+  "Micaela Llamedo Real Estate": {
+   "email": "info@llamedopropiedades.com",
+   "whatsapp": "5491130973100",
+   "web": "https://www.llamedopropiedades.com/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.llamedopropiedades.com/"
+  },
+  "Juliana Profitos": {
+   "email": "profitospropiedades@gmail.com",
+   "whatsapp": "5491153854029",
+   "web": "https://www.jprofitospropiedades.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.jprofitospropiedades.com.ar/"
+  },
+  "Young Propiedades": {
+   "email": "info@youngpropiedades.com.ar",
+   "whatsapp": "5491131680664",
+   "web": "https://www.young-propiedades.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.young-propiedades.com.ar/"
+  },
+  "Elisabet Costa Propiedades": {
+   "email": "elicostaprop@gmail.com",
+   "whatsapp": "5491132824222",
+   "web": "https://www.elisabetcostaprop.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.elisabetcostaprop.com.ar/"
+  },
+  "Emprendimientos Soldati": {
+   "email": "hola@soldati.com",
+   "whatsapp": "5491153769874",
+   "web": "https://soldatiemprendimientos.com/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://soldatiemprendimientos.com/contacto"
+  },
+  "Lepore Caballito": {
+   "email": "caballito@lepore.com.ar",
+   "whatsapp": "5491140281318",
+   "web": "https://lepore.com.ar/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://lepore.com.ar/contacto (caballito@ ya en uso sin rebote)"
+  },
+  "Grupo Galcerán": {
+   "email": "info@grupogalceran.com",
+   "whatsapp": "5491154287771",
+   "web": "https://grupogalceran.com/emprendimiento/nice-cordoba-proyecto--4136",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://grupogalceran.com/emprendimiento/nice-cordoba-proyecto--4136"
+  },
+  "Gastón Buratti Propiedades": {
+   "email": "gaston@burattipropiedades.com",
+   "whatsapp": "5491169250386",
+   "web": "https://burattipropiedades.com/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://burattipropiedades.com/"
+  },
+  "Situar Realty": {
+   "email": "hola@situar.com",
+   "whatsapp": "5491173077377",
+   "web": "https://situar.com/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://situar.com/contacto"
+  },
+  "Jakim Propiedades": {
+   "email": "comercial@jakimpropiedades.com",
+   "whatsapp": "5491145016030",
+   "web": "https://jakimpropiedades.com/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://jakimpropiedades.com/contacto"
+  },
+  "RE/MAX Data Gold": {
+   "email": "datagold@remax.com.ar",
+   "whatsapp": "",
+   "web": "https://www.remax.com.ar/datagold",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.remax.com.ar/datagold"
+  },
+  "Casa Central San Isidro (Narváez)": {
+   "email": "",
+   "whatsapp": "5491128299141",
+   "web": "https://www.narvaez.com.ar/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.narvaez.com.ar/contacto"
+  },
+  "Novoa Propiedades": {
+   "email": "marchettioscar2@gmail.com",
+   "whatsapp": "5491125007796",
+   "web": "https://www.novoainmobiliaria.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.novoainmobiliaria.com.ar/"
+  },
+  "German Berretti": {
+   "email": "lanus@berrettipropiedades.com.ar",
+   "whatsapp": "5491163621753",
+   "web": "https://www.berrettipropiedades.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.berrettipropiedades.com.ar/"
+  },
+  "Building Inmobiliaria": {
+   "email": "info@buildinginmobiliaria.com",
+   "whatsapp": "5492214637251",
+   "web": "https://buildinginmobiliaria.com/emprendimiento/building-after-office--787",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://buildinginmobiliaria.com/emprendimiento/building-after-office--787"
+  },
+  "Bioi": {
+   "email": "ventas@bioi.com.ar",
+   "whatsapp": "5491128705889",
+   "web": "https://www.bioi.com.ar/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.bioi.com.ar/contacto"
+  },
+  "Ykonos Desarrollos Inmobiliarios": {
+   "email": "info@ykonos.com",
+   "whatsapp": "5491139425934",
+   "web": "https://ykonos.com/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://ykonos.com/"
+  },
+  "Equipo 6C Real Estate": {
+   "email": "ventas@equipo6c.com",
+   "whatsapp": "5491176208615",
+   "web": "https://equipo6c.com/contacto.php",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://equipo6c.com/contacto.php"
+  },
+  "Le Bleu": {
+   "email": "",
+   "whatsapp": "5491130579208",
+   "web": "https://lebleu.com.ar/contacto",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://lebleu.com.ar/contacto"
+  },
+  "Ocampo Propiedades": {
+   "email": "info@ocampopropiedades.com",
+   "whatsapp": "5491136613234",
+   "web": "https://ocampopropiedades.com/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://ocampopropiedades.com/"
+  },
+  "Muv Propiedades": {
+   "email": "info@muvpropiedades.com",
+   "whatsapp": "5491122862000",
+   "web": "https://www.muvpropiedades.com/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.muvpropiedades.com/"
+  },
+  "Conecta Real Estate": {
+   "email": "ventasconectarealestate@gmail.com",
+   "whatsapp": "5491144173217",
+   "web": "https://www.conectarealestate.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.conectarealestate.com.ar/"
+  },
+  "KOT Asesores Inmobiliarios S.R.L.": {
+   "email": "info@kotpropiedades.com.ar",
+   "whatsapp": "5491122772455",
+   "web": "https://www.kotpropiedades.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.kotpropiedades.com.ar/"
+  },
+  "Lincoln Negocios Inmobiliarios": {
+   "email": "info@lincolnpropiedades.com.ar",
+   "whatsapp": "5491150611422",
+   "web": "https://www.lincolnpropiedades.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.lincolnpropiedades.com.ar/"
+  },
+  "A. Suárez Real Estate": {
+   "email": "asuarez@asrealestate.com.ar",
+   "whatsapp": "5491136126913",
+   "web": "https://www.asrealestate.com.ar/",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.asrealestate.com.ar/"
+  },
+  "R.R. Franchino S.R.L.": {
+   "email": "info@franchino.com",
+   "whatsapp": "5491121546045",
+   "web": "https://www.franchino.com.ar/en/segui-adrogue",
+   "fuente": "verificado en sitio oficial 2026-10-05: https://www.franchino.com.ar/en/segui-adrogue"
+  },
+  "Gimenez Inmuebles / MEL Propiedades": {
+   "email": "mel.info@melpropiedades.com.ar",
+   "whatsapp": "5491132107070",
+   "web": "https://www.melpropiedades.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.melpropiedades.com.ar/"
+  },
+  "Cifre": {
+   "email": "info@cifre.com.ar",
+   "whatsapp": "5491122626961",
+   "web": "https://www.cifre.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.cifre.com.ar/"
+  },
+  "Gazda Rossi Propiedades": {
+   "email": "propiedades@gazda.com.ar",
+   "whatsapp": "",
+   "web": "https://www.gazdarossi.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.gazdarossi.com.ar/contacto"
+  },
+  "Beton bsas": {
+   "email": "info@betonbsas.com",
+   "whatsapp": "5491147812802",
+   "web": "https://www.betonbsas.com",
+   "fuente": "harvest 2026-10-19: https://www.betonbsas.com/"
+  },
+  "Inmobiliaria O'Keefe": {
+   "email": "quilmes@okeefe.com.ar",
+   "whatsapp": "5491165470142",
+   "web": "https://okeefe.com.ar",
+   "fuente": "harvest 2026-10-19: https://okeefe.com.ar/contacto"
+  },
+  "Laura Farías Propiedades": {
+   "email": "info@laurafarias.com.ar",
+   "whatsapp": "5491131868559",
+   "web": "https://www.laurafarias.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.laurafarias.com.ar/"
+  },
+  "Solimano Dal Pos Real Estate": {
+   "email": "info@solimanodalpos.com.ar",
+   "whatsapp": "5491126653430",
+   "web": "https://www.solimanodalposrealestate.com",
+   "fuente": "harvest 2026-10-19: https://www.solimanodalposrealestate.com/"
+  },
+  "Salaya Romera Propiedades": {
+   "email": "olivos@salayaromera.com.ar",
+   "whatsapp": "5491165643207",
+   "web": "https://salayaromera.com.ar",
+   "fuente": "harvest 2026-10-19: https://salayaromera.com.ar/emprendimiento/two--4306"
+  },
+  "Tizado Propiedades": {
+   "email": "emprendimientos@tizado.com",
+   "whatsapp": "5491130281000",
+   "web": "https://www.tizado.com",
+   "fuente": "harvest 2026-10-19: https://tizado.com/obras/bliss-buenos-aires--edificio-crucero-san-fernando-g-b-a-zona-norte-argentina-e4290 ; WA: https://www.tizado.com/whatsapp (sucursal Emprendimientos)"
+  },
+  "Llense Negocios Inmobiliarios": {
+   "email": "info@llense.com.ar",
+   "whatsapp": "5491122540513",
+   "web": "https://www.llense.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.llense.com.ar/"
+  },
+  "San Miguel Propiedades": {
+   "email": "info@sanmiguelprop.com.ar",
+   "whatsapp": "5491161309006",
+   "web": "https://www.sanmiguelprop.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.sanmiguelprop.com.ar/"
+  },
+  "Studio 1+1": {
+   "email": "info@studio1mas1.com",
+   "whatsapp": "",
+   "web": "https://www.studio1mas1.com",
+   "fuente": "harvest 2026-10-19: https://www.studio1mas1.com/contacto/"
+  },
+  "Diaz Mayer Brie Propiedades": {
+   "email": "info@diazmayerbrie.com",
+   "whatsapp": "5491137966352",
+   "web": "https://www.diazmayerbrie.com",
+   "fuente": "harvest 2026-10-19: https://www.diazmayerbrie.com/"
+  },
+  "Pagano Propiedades": {
+   "email": "inmobiliaria@paganopropiedades.com",
+   "whatsapp": "5492213504040",
+   "web": "https://www.paganopropiedades.com",
+   "fuente": "harvest 2026-10-19: https://www.paganopropiedades.com/propiedad/departamento-en-pozo-en-venta-la-plata/"
+  },
+  "Century 21 Portela": {
+   "email": "contacto@c21portela.com.ar",
+   "whatsapp": "",
+   "web": "https://www.c21portela.com.ar",
+   "fuente": "harvest 2026-10-19: https://century21.com.ar/oficina/85-portela-sabrina"
+  },
+  "Magma Emprendimientos Inmobiliarios": {
+   "email": "info@magmaemprendimientos.com",
+   "whatsapp": "",
+   "web": "https://www.magmaemprendimientos.com",
+   "fuente": "harvest 2026-10-19: https://www.magmaemprendimientos.com/contacto"
+  },
+  "Coldwell Banker Ser": {
+   "email": "ser@coldwellbanker.com.ar",
+   "whatsapp": "",
+   "web": "https://coldwellbanker.com.ar/propiedades?company=115",
+   "fuente": "harvest 2026-10-19: https://coldwellbanker.com.ar/oficinas"
+  },
+  "Unbox Devs": {
+   "email": "hola@unbox.com.ar",
+   "whatsapp": "",
+   "web": "https://www.unbox.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.unbox.com.ar/contactus"
+  },
+  "Urbanestate": {
+   "email": "contacto@urban.com.ar",
+   "whatsapp": "",
+   "web": "https://www.urbanestate.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.urbanestate.com.ar/"
+  },
+  "CID": {
+   "email": "ventas@cid.com.ar",
+   "whatsapp": "5491167097797",
+   "web": "https://cid.com.ar",
+   "fuente": "harvest 2026-10-19: https://cid.com.ar/contacto/"
+  },
+  "Migale Barre Propiedades": {
+   "email": "camila@migalebarrepropiedades.com",
+   "whatsapp": "5491164410317",
+   "web": "https://www.migalebarre.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.migalebarre.com.ar/"
+  },
+  "Connection Negocios Inmobiliarios SRL": {
+   "email": "info@connectioninmobiliaria.com.ar",
+   "whatsapp": "5491139560605",
+   "web": "https://connectioninmobiliaria.com.ar",
+   "fuente": "harvest 2026-10-19: https://connectioninmobiliaria.com.ar/property/7140732-2/"
+  },
+  "Mateo Brokers": {
+   "email": "info@mateobrokers.com",
+   "whatsapp": "",
+   "web": "https://mateobrokers.com",
+   "fuente": "harvest 2026-10-19: https://mateobrokers.com/comunicate-con-nosotros/"
+  },
+  "Bonillo Centro Inmobiliario": {
+   "email": "info@bonillopropiedades.com.ar",
+   "whatsapp": "5491178312004",
+   "web": "https://www.bonillopropiedades.com.ar",
+   "fuente": "harvest 2026-10-19: https://www.bonillopropiedades.com.ar/"
+  },
+  "Lepore Caballito Sur": {
+   "email": "info@lepore.com.ar",
+   "whatsapp": "5491140281318",
+   "web": "https://lepore.com.ar",
+   "fuente": "harvest 2026-10-19: https://lepore.com.ar/contacto"
+  },
+  "5411 Estate": {
+   "email": "info@5411estate.com.ar",
+   "whatsapp": "5491150576145",
+   "web": "https://5411estate.com.ar",
+   "fuente": "harvest 2026-10-19: https://5411estate.com.ar/contacto"
+  },
+  "Mancini Propiedades": {
+   "email": "info@manciniprop.com",
+   "whatsapp": "5491134273094",
+   "web": "https://manciniprop.com",
+   "fuente": "harvest 2026-10-19: https://manciniprop.com/contacto"
+  },
+  "Lepore Palermo": {
+   "email": "info@lepore.com.ar",
+   "whatsapp": "5491140281318",
+   "web": "https://lepore.com.ar",
+   "fuente": "harvest 2026-10-19: https://lepore.com.ar/contacto"
+  },
+  "Palermo Propiedades": {
+   "email": "clientes@palermopropiedades.com",
+   "whatsapp": "5491136016634",
+   "web": "https://www.palermopropiedades.com",
+   "fuente": "harvest 2026-10-19: https://www.palermopropiedades.com/Emprendimientos"
+  },
+  "Coldwell Banker Seniority": {
+   "email": "seniority@coldwellbanker.com.ar",
+   "whatsapp": "",
+   "web": "https://coldwellbanker.com.ar/propiedades?company=113",
+   "fuente": "harvest 2026-10-19: https://coldwellbanker.com.ar/oficinas"
   }
+ }
 }
