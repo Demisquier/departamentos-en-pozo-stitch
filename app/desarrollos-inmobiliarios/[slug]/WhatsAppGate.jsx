@@ -119,17 +119,17 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
             <form onSubmit={enviar} className="space-y-3">
               <label className="block">
                 <span className="text-[12px] text-on-surface-variant">Nombre</span>
-                <input value={form.nombre} onChange={set("nombre")} placeholder="Tu nombre"
+                <input aria-label="Tu nombre" value={form.nombre} onChange={set("nombre")} placeholder="Tu nombre"
                   className="w-full mt-1 px-3 py-2.5 border border-outline-variant rounded-lg text-[14px] outline-none focus:border-secondary bg-white" />
               </label>
               <label className="block">
                 <span className="text-[12px] text-on-surface-variant">WhatsApp</span>
-                <input value={form.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …" type="tel"
+                <input aria-label="+54 9 11 …" value={form.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …" type="tel"
                   className="w-full mt-1 px-3 py-2.5 border border-outline-variant rounded-lg text-[14px] outline-none focus:border-secondary bg-white" />
               </label>
               <label className="block">
                 <span className="text-[12px] text-on-surface-variant">Email <span className="opacity-60">(opcional)</span></span>
-                <input value={form.email} onChange={set("email")} placeholder="tu@email.com" type="email"
+                <input aria-label="tu@email.com" value={form.email} onChange={set("email")} placeholder="tu@email.com" type="email"
                   className="w-full mt-1 px-3 py-2.5 border border-outline-variant rounded-lg text-[14px] outline-none focus:border-secondary bg-white" />
               </label>
               {err && <p className="text-[13px] text-red-600">{err}</p>}

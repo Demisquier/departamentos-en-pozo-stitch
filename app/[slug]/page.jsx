@@ -58,7 +58,7 @@ const EXPLICIT = new Set([
 
 // Pre-genera todas las páginas (barrios y otras) + posts que viven en la raíz (paridad con WordPress)
 export async function generateStaticParams() {
-  const [pages, posts, inmoSlugs, catSlugs] = await Promise.all([getAllPages(), getPosts(100), inmoBarrioSlugs(), catalogoBarrioSlugs()]);
+  const [pages, posts, inmoSlugs, catSlugs] = await Promise.all([getAllPages(), getPosts(5000), inmoBarrioSlugs(), catalogoBarrioSlugs()]);
   const slugs = new Set();
   for (const p of pages || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);
   for (const p of posts || []) if (p.slug && !EXPLICIT.has(p.slug)) slugs.add(p.slug);

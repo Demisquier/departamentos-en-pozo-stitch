@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getDesarrollos, getDesarrolloBySlug, getDesarrolladoras, featuredImage, proxyImage, acf, stripHtml, SITE, fixImgs } from '../../../lib/wp';
 import { toNumber, expandComercializa } from '../../../lib/format';
 import { waParaDev } from '../../../lib/wa';
+import { resolverDestino } from '../../../lib/leadRouting';
 import Galeria from './Galeria';
 import AccionesFicha, { Calculadora } from './AccionesFicha';
 import GuardarBtn from '../../_auth/GuardarBtn';
@@ -126,8 +127,15 @@ export default async function FichaProyecto({ params }) {
   const comercializadora = resolveComercializadora(d.slug, _rawDev, acfAny(d, ['comercializadora']) || '');
   // Contactabilidad (misma regla que el ruteo de leads por mail): primero la comercializadora /
   // inmobiliaria; si no tiene WhatsApp cargado, la desarrolladora; si ninguna, la línea del sitio.
+  // Regla: si hay comercializadora, el WhatsApp es SOLO el suyo. Si no tiene WhatsApp pero sí email,
+  // no mostramos el de la desarrolladora (la consulta va por formulario a la comercializadora).
+  // Sólo si la comercializadora no tiene ningún canal, cae a la desarrolladora.
   const _waCom = comercializadora ? waParaDev(comercializadora) : null;
-  const _wa = (_waCom && _waCom.esDelDev) ? _waCom : waParaDev(constructora || comercializadora || '');
+  let _dst = null;
+  try { _dst = await resolverDestino({ proyectoSlug: d.slug, desarrolladora: _rawDev }); } catch (e) { _dst = null; }
+  const _comTieneMail = !!(_dst && _dst.tipo === 'inmobiliaria');
+  const _wa = (_waCom && _waCom.esDelDev) ? _waCom
+    : (_comTieneMail ? { phone: null, esDelDev: false } : waParaDev(constructora || comercializadora || ''));
   const estado = acfAny(d, ['estado', 'pozo_estado', 'estado_obra']);
   const lat = acfAny(d, ['lat', 'latitud']);
   const lng = acfAny(d, ['lng', 'longitud']);
@@ -818,6 +826,7 @@ export default async function FichaProyecto({ params }) {
               comparableNum={comparableNum}
               waPhone={_wa.phone}
               waEsDelDev={_wa.esDelDev}
+              soloWhatsApp={!!(_wa.esDelDev && _dst && _dst.tipo === 'contacto')}
               barrio={barrio}
               dev={(_waCom && _waCom.esDelDev) ? comercializadora : (constructora || comercializadora || "")}
             />

@@ -1,34 +1,111 @@
 # Departamentos en Pozo
 
-> Portal de análisis independiente sobre inversión en departamentos "en pozo" (preventa) en CABA y GBA, Argentina. Directorio de desarrolladoras y proyectos, precios por m², guías para invertir con criterio y herramientas propias. No cobramos por aparecer ni vendemos posiciones.
+> Portal independiente de análisis de departamentos en pozo (preventa / pre-construcción) en CABA y GBA, Argentina. 701 proyectos relevados con precio, entrega, desarrolladora y comercializadora; las consultas se derivan sin costo a quien comercializa cada proyecto. No cobramos por aparecer ni vendemos posiciones.
 
-## Qué es
-- Sitio editorial + directorio independiente. Cobertura: Ciudad de Buenos Aires (CABA) y Gran Buenos Aires (GBA).
-- Vocabulario clave: pozo / preventa, fideicomiso al costo, boleto de compraventa, ajuste CAC (Cámara Argentina de la Construcción), brecha pozo vs. usado, entrega/posesión.
+Datos clave: cobertura CABA + GBA (+ La Plata); moneda USD; vocabulario local: pozo/preventa, fideicomiso al costo, boleto de compraventa, ajuste CAC. Contenido informativo, no es asesoramiento financiero. Contacto: contacto@departamentosenpozo.com.ar
 
 ## Páginas principales
-- Home: https://departamentosenpozo.com.ar/
-- Catálogo de proyectos en pozo: https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/
-- Directorio de desarrolladoras (CABA): https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-en-capital-federal/
-- Directorio de inmobiliarias (CABA): https://departamentosenpozo.com.ar/mejores-inmobiliarias-caba/
-- Guías y novedades: https://departamentosenpozo.com.ar/novedades/
-- Índice de precios en pozo por barrio: https://departamentosenpozo.com.ar/indice-precios-pozo-caba-por-barrio/
+- [Catálogo de proyectos en pozo](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios/): todos los proyectos con filtros por barrio, precio, ambientes y entrega.
+- [Búsqueda inteligente](https://departamentosenpozo.com.ar/buscar/): búsqueda en lenguaje natural.
+- [Directorio de desarrolladoras](https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-en-capital-federal/): desarrolladoras con proyectos en pozo en CABA.
+- [Desarrolladoras más grandes de Argentina](https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/)
+- [Inmobiliarias que comercializan pozo en CABA](https://departamentosenpozo.com.ar/mejores-inmobiliarias-caba/)
+- [Índice de precios en pozo por barrio](https://departamentosenpozo.com.ar/indice-precios-pozo-caba-por-barrio/): USD/m² por barrio.
+- [Guías y novedades](https://departamentosenpozo.com.ar/novedades/)
+- [Sobre nosotros / metodología](https://departamentosenpozo.com.ar/sobre-nosotros/)
+- [Contacto](https://departamentosenpozo.com.ar/contacto/)
 
 ## Herramientas
-- Simulador de cuota con ajuste CAC: https://departamentosenpozo.com.ar/simulador-cuota-cac-pozo/
-- Alertas de lanzamientos: https://departamentosenpozo.com.ar/alertas-de-lanzamientos-en-pozo/
+- [Simulador de cuota con ajuste CAC](https://departamentosenpozo.com.ar/simulador-cuota-cac-pozo/)
+- [Alertas de lanzamientos en pozo](https://departamentosenpozo.com.ar/alertas-de-lanzamientos-en-pozo/)
+- [Invertir en pozo desde el exterior](https://departamentosenpozo.com.ar/invertir-desde-el-exterior/)
 
-## Guías destacadas
-- Guía para invertir en pozo: https://departamentosenpozo.com.ar/guia-invertir-departamentos-en-pozo-argentina/
-- Cómo evaluar una desarrolladora (señales de confianza y red flags): https://departamentosenpozo.com.ar/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/
-- Contrato de pozo: cláusulas clave: https://departamentosenpozo.com.ar/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/
+## Proyectos en pozo por barrio
+- [Departamentos en pozo en palermo](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-palermo/): 68 proyectos.
+- [Departamentos en pozo en belgrano](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-belgrano/): 52 proyectos.
+- [Departamentos en pozo en villa-crespo](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-crespo/): 42 proyectos.
+- [Departamentos en pozo en nunez](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-nunez/): 37 proyectos.
+- [Departamentos en pozo en almagro](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-almagro/): 37 proyectos.
+- [Departamentos en pozo en caballito](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-caballito/): 35 proyectos.
+- [Departamentos en pozo en villa-urquiza](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-urquiza/): 34 proyectos.
+- [Departamentos en pozo en la-plata](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-la-plata/): 28 proyectos.
+- [Departamentos en pozo en colegiales](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-colegiales/): 24 proyectos.
+- [Departamentos en pozo en recoleta](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-recoleta/): 22 proyectos.
+- [Departamentos en pozo en chacarita](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-chacarita/): 21 proyectos.
+- [Departamentos en pozo en villa-del-parque](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-del-parque/): 20 proyectos.
+- [Departamentos en pozo en saavedra](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-saavedra/): 18 proyectos.
+- [Departamentos en pozo en flores](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-flores/): 14 proyectos.
+- [Departamentos en pozo en boedo](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-boedo/): 13 proyectos.
+- [Departamentos en pozo en moron](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-moron/): 13 proyectos.
+- [Departamentos en pozo en villa-devoto](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-devoto/): 12 proyectos.
+- [Departamentos en pozo en coghlan](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-coghlan/): 11 proyectos.
+- [Departamentos en pozo en villa-ortuzar](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-ortuzar/): 9 proyectos.
+- [Departamentos en pozo en monserrat](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-monserrat/): 9 proyectos.
+- [Departamentos en pozo en las-canitas](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-las-canitas/): 9 proyectos.
+- [Departamentos en pozo en lanus](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-lanus/): 9 proyectos.
+- [Departamentos en pozo en barracas](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-barracas/): 8 proyectos.
+- [Departamentos en pozo en puerto-madero](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-puerto-madero/): 7 proyectos.
+- [Departamentos en pozo en san-telmo](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-san-telmo/): 6 proyectos.
+- [Departamentos en pozo en floresta](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-floresta/): 6 proyectos.
+- [Departamentos en pozo en villa-luro](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-luro/): 6 proyectos.
+- [Departamentos en pozo en barrio-norte](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-barrio-norte/): 6 proyectos.
+- [Departamentos en pozo en wilde](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-wilde/): 6 proyectos.
+- [Departamentos en pozo en lomas-de-zamora](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-lomas-de-zamora/): 6 proyectos.
+- [Departamentos en pozo en parque-chacabuco](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-parque-chacabuco/): 5 proyectos.
+- [Departamentos en pozo en monte-castro](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-monte-castro/): 5 proyectos.
+- [Departamentos en pozo en san-cristobal](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-san-cristobal/): 5 proyectos.
+- [Departamentos en pozo en vicente-lopez](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-vicente-lopez/): 5 proyectos.
+- [Departamentos en pozo en quilmes](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-quilmes/): 5 proyectos.
+- [Departamentos en pozo en berazategui](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-berazategui/): 5 proyectos.
+- [Departamentos en pozo en avellaneda](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-avellaneda/): 5 proyectos.
+- [Departamentos en pozo en villa-pueyrredon](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-pueyrredon/): 4 proyectos.
+- [Departamentos en pozo en olivos](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-olivos/): 4 proyectos.
+- [Departamentos en pozo en san-isidro](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-san-isidro/): 4 proyectos.
+- [Departamentos en pozo en san-fernando](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-san-fernando/): 4 proyectos.
+- [Departamentos en pozo en ramos-mejia](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-ramos-mejia/): 4 proyectos.
+- [Departamentos en pozo en parque-patricios](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-parque-patricios/): 3 proyectos.
+- [Departamentos en pozo en balvanera](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-balvanera/): 3 proyectos.
+- [Departamentos en pozo en villa-santa-rita](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-villa-santa-rita/): 3 proyectos.
+- [Departamentos en pozo en nordelta](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-nordelta/): 3 proyectos.
+- [Departamentos en pozo en adrogue](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-adrogue/): 3 proyectos.
+- [Departamentos en pozo en benavidez](https://departamentosenpozo.com.ar/desarrollos-inmobiliarios-en-benavidez/): 3 proyectos.
 
-## Inventario para asistentes de IA
-- Inventario completo (todos los proyectos por barrio, con precio, entrega y desarrolladora): https://departamentosenpozo.com.ar/llms-full.txt
-- Feed JSON del catalogo (para integraciones y agentes de IA): https://departamentosenpozo.com.ar/catalogo.json
-- Cobertura: 400+ proyectos en pozo relevados en CABA y GBA, agrupados por barrio; directorio de desarrolladoras e inmobiliarias/comercializadoras con pagina propia.
+## Guías
+- [Fideicomiso al costo vs. llave en mano en departamentos en pozo](https://departamentosenpozo.com.ar/fideicomiso-al-costo-vs-llave-en-mano-departamentos-en-pozo/)
+- [Pozo vs. crédito hipotecario UVA en 2026: qué conviene](https://departamentosenpozo.com.ar/pozo-vs-credito-hipotecario-uva-2026/)
+- [Boleto de compraventa en pozo: qué firmás y cómo protegerte](https://departamentosenpozo.com.ar/boleto-de-compraventa-en-pozo-que-firmas-y-como-protegerte/)
+- [Desregulación inmobiliaria: qué cambia para el inversor](https://departamentosenpozo.com.ar/desregulacion-inmobiliaria-gobierno-2026-inversor-pozo/)
+- [RIGI Inmobiliario y Pozo: Beneficios, Riesgos y Que Mirar en 2026](https://departamentosenpozo.com.ar/rigi-inmobiliario-pozo-beneficios-riesgos-2026/)
+- [Precio de cierre por m² CABA Abril 2026: que mira el inversor en pozo](https://departamentosenpozo.com.ar/precio-cierre-m2-caba-abril-2026-inversor-pozo/)
+- [Desarrollos en pozo por barrio en CABA: guía 2026](https://departamentosenpozo.com.ar/desarrollos-en-pozo-por-barrio/)
+- [Departamentos en pozo en Caballito: mejores proyectos y desarrolladoras para invertir en CABA](https://departamentosenpozo.com.ar/departamentos-en-pozo-en-caballito-mejores-proyectos-y-desarrolladoras-para-invertir-en-caba/)
+- [Contrato de pozo: 12 clausulas clave que deberias entender antes de firmar](https://departamentosenpozo.com.ar/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/)
+- [Riesgos de comprar en pozo: 9 riesgos reales y como bajarlos sin humo](https://departamentosenpozo.com.ar/riesgos-de-comprar-en-pozo-9-riesgos-reales-y-como-bajarlos-sin-humo/)
+- [Etapas de un proyecto en pozo: desde el pozo hasta la entrega, que mirar en cada fase](https://departamentosenpozo.com.ar/etapas-de-un-proyecto-en-pozo-desde-el-pozo-hasta-la-entrega-que-mirar-en-cada-fase/)
+- [Como evaluar una desarrolladora de pozo: señales de confianza y red flags](https://departamentosenpozo.com.ar/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/)
+- [Dolar, construccion y pozo: como afectan al precio final y que mirar en el ajuste](https://departamentosenpozo.com.ar/dolar-construccion-y-pozo-como-afectan-al-precio-final-y-que-mirar-en-el-ajuste/)
+- [Tendencias en departamentos en pozo: tipologias, amenities y que se vende mas facil](https://departamentosenpozo.com.ar/tendencias-en-departamentos-en-pozo-tipologias-amenities-y-que-se-vende-mas-facil/)
+- [Checklist para visitar una obra y comparar proyectos en pozo sin perderte nada](https://departamentosenpozo.com.ar/checklist-para-visitar-una-obra-y-comparar-proyectos-en-pozo-sin-perderte-nada/)
+- [Plantilla para calcular rentabilidad en pozo en Google Sheets: que campos usar](https://departamentosenpozo.com.ar/plantilla-para-calcular-rentabilidad-en-pozo-en-google-sheets-que-campos-usar/)
+- [Contrato de pozo en Argentina: clausulas clave que deberias entender antes de firmar](https://departamentosenpozo.com.ar/contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar/)
+- [Como elegir un emprendimiento en pozo: guia completa para reducir riesgo](https://departamentosenpozo.com.ar/como-elegir-un-emprendimiento-en-pozo-guia-completa-para-reducir-riesgo/)
+- [Estrategia alquiler en pozo: que tipologia comprar y como asegurar demanda](https://departamentosenpozo.com.ar/estrategia-alquiler-en-pozo-que-tipologia-comprar-y-como-asegurar-demanda/)
+- [Estrategia reventa en pozo: cuando entrar, cuando salir y como maximizar ganancia](https://departamentosenpozo.com.ar/estrategia-reventa-en-pozo-cuando-entrar-cuando-salir-y-como-maximizar-ganancia/)
+- [Comprar en pozo sin crédito: anticipo, cuotas y estrategias (2026)](https://departamentosenpozo.com.ar/como-financiar-un-departamento-en-pozo-cuotas-ajustes-y-estrategias-para-no-ahogarte/)
+- [Cuanto cuesta comprar en pozo: costos ocultos y como armar el costo total](https://departamentosenpozo.com.ar/cuanto-cuesta-comprar-en-pozo-costos-ocultos-y-como-armar-el-costo-total/)
+- [GBA Norte vs GBA Oeste para invertir en pozo: diferencias reales y como decidir](https://departamentosenpozo.com.ar/gba-norte-vs-gba-oeste-para-invertir-en-pozo-diferencias-reales-y-como-decidir/)
+- [Mejores barrios para invertir en pozo en CABA: como elegir zona sin equivocarte](https://departamentosenpozo.com.ar/mejores-barrios-para-invertir-en-pozo-en-caba-como-elegir-zona-sin-equivocarte/)
+- [8 desarrolladoras de departamentos en pozo en CABA con proyectos entregados](https://departamentosenpozo.com.ar/8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados/)
 
-## Notas
-- Contenido informativo. No constituye asesoramiento financiero.
-- Actualización: catálogo y precios se revisan de forma continua; las guías incluyen fecha de publicación/modificación.
-- Contacto: contacto@departamentosenpozo.com.ar
+## Datos para asistentes de IA
+- [Inventario completo en texto](https://departamentosenpozo.com.ar/llms-full.txt): todos los proyectos por barrio con precio, entrega y desarrolladora.
+- [Catálogo JSON](https://departamentosenpozo.com.ar/catalogo.json): feed estructurado del catálogo.
+- [Resumen del sitio (JSON)](https://departamentosenpozo.com.ar/ai/summary.json)
+- [Preguntas frecuentes (JSON)](https://departamentosenpozo.com.ar/ai/faq.json)
+- [Servicios (JSON)](https://departamentosenpozo.com.ar/ai/service.json)
+- [Feed RSS de guías](https://departamentosenpozo.com.ar/feed/)
+- Cada página acepta `Accept: text/markdown` y devuelve su versión en Markdown.
+
+## Optional
+- [Política de privacidad](https://departamentosenpozo.com.ar/politica-de-privacidad/)
+- [Créditos y fuentes](https://departamentosenpozo.com.ar/creditos-y-fuentes/)

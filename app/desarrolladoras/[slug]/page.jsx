@@ -168,6 +168,7 @@ export default async function DesarrolladoraLanding({ params }) {
             const nombre = p.title?.rendered || "";
             const barrio = barrioDe(p) || acf(p, "direccion") || "";
             const precio = acf(p, "precio_m2");
+            const precioDesdeCard = acf(p, "precio_desde");
             const fe = String(acf(p, "fecha_entrega") || "");
             const entrega = /^\d{6}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : (/^\d{8}$/.test(fe) ? `${fe.slice(4, 6)}/${fe.slice(0, 4)}` : fe);
             return (
@@ -182,7 +183,7 @@ export default async function DesarrolladoraLanding({ params }) {
                   <div className="mt-4 pt-4 border-t border-outline-variant flex items-end justify-between">
                     <div>
                       <span className="font-label-caps text-[10px] tracking-widest text-on-surface-variant block">DESDE</span>
-                      {precio ? <span className="text-primary font-headline-sm text-headline-sm">USD {String(precio).replace(/[^\d]/g, "")}<span className="text-[13px] text-on-surface-variant"> /m²</span></span> : <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>}
+                      {precio ? <span className="text-primary font-headline-sm text-headline-sm">USD {String(precio).replace(/[^\d]/g, "")}<span className="text-[13px] text-on-surface-variant"> /m²</span></span> : (precioDesdeCard ? <span className="text-primary font-headline-sm text-headline-sm">USD {Number(String(precioDesdeCard).replace(/[^\d]/g, "")).toLocaleString("es-AR")}</span> : <span className="text-on-surface-variant font-headline-sm text-headline-sm">Consultar</span>)}
                     </div>
                     {entrega && <span className="text-[12px] text-on-surface-variant">Entrega {entrega}</span>}
                   </div>

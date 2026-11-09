@@ -54,16 +54,16 @@ export default function AlertasForm() {
     <div className="bg-white p-6 md:p-9 shadow-sm rounded-lg border border-outline-variant">
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Honeypot */}
-        <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" value={form._gotcha} onChange={handleChange} className="hidden" aria-hidden="true" />
+        <input aria-label=" gotcha" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" value={form._gotcha} onChange={handleChange} className="hidden" aria-hidden="true" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-2">
             <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-nombre">Nombre</label>
-            <input id="a-nombre" name="nombre" type="text" required placeholder="Ej: Juan" value={form.nombre} onChange={handleChange} className={inpCls} />
+            <input aria-label="Ej: Juan" id="a-nombre" name="nombre" type="text" required placeholder="Ej: Juan" value={form.nombre} onChange={handleChange} className={inpCls} />
           </div>
           <div className="space-y-2">
             <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-email">Email</label>
-            <input id="a-email" name="email" type="email" required placeholder="juan@email.com" value={form.email} onChange={handleChange} className={inpCls} />
+            <input aria-label="juan@email.com" id="a-email" name="email" type="email" required placeholder="juan@email.com" value={form.email} onChange={handleChange} className={inpCls} />
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function AlertasForm() {
           <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-wa">WhatsApp <span className="normal-case tracking-normal text-on-surface-variant/70">(opcional)</span></label>
           <div className="flex">
             <span className="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-outline-variant bg-surface-container-low text-on-surface-variant">+54</span>
-            <input id="a-wa" name="whatsapp" type="tel" placeholder="11 1234 5678" value={form.whatsapp} onChange={handleChange} className="w-full border border-outline-variant rounded-r-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" />
+            <input aria-label="11 1234 5678" id="a-wa" name="whatsapp" type="tel" placeholder="11 1234 5678" value={form.whatsapp} onChange={handleChange} className="w-full border border-outline-variant rounded-r-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" />
           </div>
         </div>
 

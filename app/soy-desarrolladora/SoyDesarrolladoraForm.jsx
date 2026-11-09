@@ -52,12 +52,12 @@ export default function SoyDesarrolladoraForm() {
       <div className="flex flex-col sm:flex-row gap-3.5">
         <label className="flex-1 block">
           <span className="text-[12px] text-on-surface-variant">Desarrolladora *</span>
-          <input value={form.empresa} onChange={set("empresa")} required placeholder="Nombre de la empresa"
+          <input aria-label="Nombre de la empresa" value={form.empresa} onChange={set("empresa")} required placeholder="Nombre de la empresa"
             className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
         </label>
         <label className="flex-1 block">
           <span className="text-[12px] text-on-surface-variant">Tu nombre</span>
-          <input value={form.nombre} onChange={set("nombre")} placeholder="Con quién hablamos"
+          <input aria-label="Con quién hablamos" value={form.nombre} onChange={set("nombre")} placeholder="Con quién hablamos"
             className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
         </label>
       </div>
@@ -65,12 +65,12 @@ export default function SoyDesarrolladoraForm() {
       <div className="flex flex-col sm:flex-row gap-3.5">
         <label className="flex-1 block">
           <span className="text-[12px] text-on-surface-variant">Email</span>
-          <input value={form.email} onChange={set("email")} type="email" placeholder="tu@empresa.com"
+          <input aria-label="tu@empresa.com" value={form.email} onChange={set("email")} type="email" placeholder="tu@empresa.com"
             className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
         </label>
         <label className="flex-1 block">
           <span className="text-[12px] text-on-surface-variant">WhatsApp</span>
-          <input value={form.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …"
+          <input aria-label="+54 9 11 …" value={form.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …"
             className="w-full mt-1 px-3.5 py-2.5 rounded-lg border border-outline-variant bg-surface text-[14px] outline-none focus:border-secondary" />
         </label>
       </div>

@@ -288,6 +288,216 @@
    "tipo": "sin_evidencia_vigencia",
    "revisable": true,
    "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+  },
+  "campus-village-pilar": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Posesión inmediata: ya no es pozo"
+  },
+  "los-molinos-building-puerto-madero": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Edificio terminado, sólo reventas"
+  },
+  "la-portena-ii-residences-puerto-madero": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Edificio terminado, sólo reventas"
+  },
+  "fitz-roy-2027-palermo-hollywood": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "Ficha oficial de Home54 dada de baja y aviso no publicado"
+  },
+  "edificio-elyon-ezpeleta-centro-quilmes-gba-sur": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_contacto_verificable",
+   "revisable": true,
+   "motivo": "Sin contacto oficial de quien lo comercializa (Ricci) y Abriola ya no lo tiene"
+  },
+  "cuenca-4586-villa-pueyrredon": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_contacto_verificable",
+   "revisable": true,
+   "motivo": "El único email era de un portal (Argenprop) y no hay WhatsApp oficial de Enrique García."
+  },
+  "viaviva-libertador-belgrano": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "ViaViva es un corredor comercial/urbano bajo el viaducto (locales), no un edificio de departamentos; no hay unidades residenciales en venta. Revisar si corresponde al catálogo."
+  },
+  "catalinas-rio-retiro": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "Consultatio lista 'Catalinas Río' solo en su sección Landmark (cartera de tierras / futuros proyectos), sin unidades en venta ni datos. No aparece en Zonaprop."
+  },
+  "link-towers-puerto-madero": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "El sitio de Fernández Prieto hoy solo muestra un video de 'Link Diamond Tower I', sin datos de precio, entrega ni tipologías. No figura 'Link Towers' en Zonaprop. Confirmar si es el mismo proyecto."
+  },
+  "godoy-cruz-1724-palermo-soho": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "No aparece en el listado de emprendimientos CABA de Toribio Achával ni en Zonaprop (búsqueda 'godoy cruz 1724/1700'). Sin evidencia de que siga en venta."
+  },
+  "obra-campillo-campillo-3093-99-parque-chas": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "INGCAN lista 'Campillo' entre sus obras, pero con texto de relleno (lorem ipsum) y sin link de detalle; no hay precio ni entrega. No figura en Zonaprop ni Argenprop (Parque Chas)."
+  },
+  "southpoint-premium-parque-patricios": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Web oficial (página 'Jujuy 1779'): 11 pisos, 18 deptos de 3 y 4 amb, sin precio ni fecha. La home dice '6 Proyectos Terminados' bajo 'Proyectos finalizados' y lista 6 edificios, incluido Jujuy 1779. Conviene confirmarlo."
+  },
+  "moca-2-dr-e-finochietto-900-barracas": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Zonaprop: 'Terminado · Entrega Inmediata', con unidades aún en venta. Ya no es pozo."
+  },
+  "crystall-5-av-patricios-100-barracas": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Argenprop: 'Edificio a estrenar', entrega oct-2025; unidades remanentes (mono, 1 y 2 dorm)."
+  },
+  "palestina-500-almagro": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Argenprop (MAE-MAE-41): entrega nov-2025, 1 monoambiente remanente. La altura '500' es aproximada (el aviso dice 'Palestina 500')."
+  },
+  "sarmiento-4088-almagro": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Lepore (LEP-L10-476): entrega mar-2025, quedan 2 unidades remanentes."
+  },
+  "melincue-3200-villa-del-parque": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "REAL AIRES: 'Melincue 3200 Tower I', 'Terminado · Entrega Inmediata', 4 unidades en venta."
+  },
+  "elcano-palm-villa-ortuzar": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Lincoln (comercializadora): Elcano 3875, 34 UF de 1, 2 y 3 amb, fecha de entrega Diciembre 2025 (ya vencida; la ficha original decía 'entrega inmediata'). Sección Unidades = 0 publicadas, sin precio. Probablemente termin"
+  },
+  "aora-puertos-puertos-del-lago-escobar": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "MMCV (estudio/desarrollador) muestra AORA Puertos como proyecto de usos mixtos (oficinas, viviendas, comercios) en herradura en Puertos, Escobar, con renders. No publica dirección, precio, fecha ni estado comercial; no h"
+  },
+  "green-palmers-ingeniero-maschwitz-escobar": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "La web de Mieres Propiedades (mierespropiedades.com.ar) no respondió y el cupo de búsquedas web se agotó antes de poder buscar en portales. Sin datos verificados."
+  },
+  "spazio-parque-bartolome-mitre-865-ramos-mejia-sur-la-matanza-gba-oeste": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "La web de Spazios no lista 'Spazio Parque' entre sus proyectos activos (solo Hidalgo, Fader, Vivanti San Pedro, Vivant, Black, Poetas, Golf; zonas CABA/Ituzaingó/3 de Febrero). Ficha decía entrega Agosto 2026 (ya pasada)"
+  },
+  "genesis-avellaneda-espana-200-avellaneda-gba-sur": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "Real Props ya no publica 'Genesis Avellaneda (España 200)'; su único emprendimiento es 'Neo Génesis Avellaneda', España 275, 1-3 amb, entrega Diciembre 2027, sin precios (render: https://static.tokkobroker.com/dev_pictur"
+  },
+  "olv-342-av-mitre-y-olavarria-quilmes-centro-gba-sur": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "No se encontró en la primera página del listado de O'Keefe (186 emprendimientos, 19 páginas, sin buscador por palabra clave funcional) y el cupo de búsquedas web se agotó. Pendiente: revisar okeefe.com.ar/emprendimientos"
+  },
+  "naza-i-lomas-de-zamora-gba-sur": {
+   "fecha": "2026-10-27",
+   "tipo": "sin_evidencia_vigencia",
+   "revisable": true,
+   "motivo": "bosquepropiedades.com.ar no respondió y el cupo de búsquedas web se agotó antes de buscar en portales. Sin datos verificados."
+  },
+  "plaza-brown-29-edificio-en-adrogue-adrogue-almirante-brown-gba-sur": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Gazda Rossi: Estado 'Construcción Terminada'. Edificio 'Aldariz' (estudio Martínez y Hermida), 4 plantas, 17 UF de 1 y 2 amb, frente a Plaza Brown, Adrogué. No publica calle/altura ni precios."
+  },
+  "bosque-urbano-nunez": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Estado 'Terminados', entrega inmediata; aún con unidades en venta (desde USD 108.000, mono 34 m2). Duplex 3 amb en pisos 12-13."
+  },
+  "callao-clasico-recoleta": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Estado 'Terminados', entrega inmediata. Unidades de 1 a 4 dormitorios (=2 a 5 amb). Sin tabla de precios publicada. Dirección figura como Av. Callao 1834/56."
+  },
+  "cassa-solis-monserrat": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Terminado con final de obra, entrega inmediata; quedan monoambientes desde USD 90.000."
+  },
+  "spot-studios-retiro": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Estado 'Terminados', entrega inmediata; quedan unidades 1 amb desde USD 149.000."
+  },
+  "vilo-colegiales": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Terminado, entrega inmediata; queda 1 unidad PB USD 109.000."
+  },
+  "vizion-juncal-recoleta": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Terminado, entrega inmediata; disponible sólo 2 amb USD 230.000."
+  },
+  "kasa-nunez-etapa-i-belgrano": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA' (Etapa I, posesión estimada feb-2026). Etapa II posesión est. julio 2028 (otra ficha). Tabla de precios vacía."
+  },
+  "bnh-oro-palermo": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
+  },
+  "jbj-829-palermo": {
+   "fecha": "2026-10-27",
+   "tipo": "entregado",
+   "revisable": true,
+   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
+  },
+  "mosconi-2885-cocheras-disponibles-villa-pueyrredon": {
+   "fecha": "2026-10-27",
+   "tipo": "no_es_departamentos",
+   "revisable": true,
+   "motivo": "Aviso de cocheras, no de departamentos en pozo."
   }
  },
  "inmobiliarias": [

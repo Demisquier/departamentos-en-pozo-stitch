@@ -35,18 +35,18 @@ export default function SoyInmobiliariaForm() {
     <form onSubmit={enviar} className="border border-outline-variant rounded-2xl p-6 bg-surface flex flex-col gap-3.5">
       <div className="flex flex-col sm:flex-row gap-3.5">
         <label className="flex-1 block"><span className="text-[12px] text-on-surface-variant">Inmobiliaria *</span>
-          <input value={f.firma} onChange={set("firma")} required placeholder="Nombre de la firma" className={cls} /></label>
+          <input aria-label="Nombre de la firma" value={f.firma} onChange={set("firma")} required placeholder="Nombre de la firma" className={cls} /></label>
         <label className="flex-1 block"><span className="text-[12px] text-on-surface-variant">Matrícula CUCICBA</span>
-          <input value={f.matricula} onChange={set("matricula")} placeholder="N° de matrícula" className={cls} /></label>
+          <input aria-label="N° de matrícula" value={f.matricula} onChange={set("matricula")} placeholder="N° de matrícula" className={cls} /></label>
       </div>
       <div className="flex flex-col sm:flex-row gap-3.5">
         <label className="flex-1 block"><span className="text-[12px] text-on-surface-variant">Email comercial * (donde recibís los leads)</span>
-          <input value={f.email} onChange={set("email")} type="email" required placeholder="ventas@tuinmobiliaria.com" className={cls} /></label>
+          <input aria-label="ventas@tuinmobiliaria.com" value={f.email} onChange={set("email")} type="email" required placeholder="ventas@tuinmobiliaria.com" className={cls} /></label>
         <label className="flex-1 block"><span className="text-[12px] text-on-surface-variant">WhatsApp</span>
-          <input value={f.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …" className={cls} /></label>
+          <input aria-label="+54 9 11 …" value={f.whatsapp} onChange={set("whatsapp")} placeholder="+54 9 11 …" className={cls} /></label>
       </div>
       <label className="block"><span className="text-[12px] text-on-surface-variant">Tu nombre</span>
-        <input value={f.nombre} onChange={set("nombre")} placeholder="Con quién hablamos" className={cls} /></label>
+        <input aria-label="Con quién hablamos" value={f.nombre} onChange={set("nombre")} placeholder="Con quién hablamos" className={cls} /></label>
       <label className="block"><span className="text-[12px] text-on-surface-variant">Proyectos en pozo que comercializan</span>
         <textarea value={f.proyectos} onChange={set("proyectos")} rows={3} placeholder="Nombres o links de las fichas (uno por línea)" className={cls + " resize-none"} /></label>
       <input value={gotcha} onChange={(e) => setGotcha(e.target.value)} tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />

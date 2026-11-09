@@ -58,6 +58,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Warm-up de conexión para GTM/GA (antes se cargaban en frío). */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {/* Descubrimiento para buscadores IA (GEO): feed RSS + llms.txt */}
+        <link rel="alternate" type="application/rss+xml" title="Departamentos en Pozo — Guías y novedades" href="/feed/" />
+        <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link

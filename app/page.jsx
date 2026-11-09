@@ -10,6 +10,7 @@ import DestacadosHome from "./_ui/DestacadosHome";
 import JsonLd from "./_ui/JsonLd";
 import MiPlanHome from "./_components/MiPlanHome";
 import MiPlanHeroBanner from "./_components/MiPlanHeroBanner";
+import { AI_FAQ } from "./_lib_geo/ai";
 
 // Schema de ENTIDAD para el home: consolida "Departamentos en Pozo" como Organization/WebSite
 // (ancla a la que apunta cada publisher del resto del sitio) — clave para Google y buscadores IA.
@@ -117,7 +118,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={ENTITY_SCHEMA} />
+      <JsonLd data={[...ENTITY_SCHEMA, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: AI_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }]} />
       {/* Preload del hero: arranca la descarga de la imagen LCP lo antes posible. */}
       <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
@@ -287,6 +288,21 @@ export default async function HomePage() {
               <h3 className="font-headline-sm text-headline-sm text-primary">{h}</h3>
               <p className="text-on-surface-variant text-body-md font-body-md leading-relaxed">{p}</p>
             </div>
+          ))}
+        </div>
+      </Container>
+
+      {/* FAQ visible (respuestas directas, citables por buscadores e IA) — misma fuente que FAQPage y /ai/faq.json */}
+      <Container as="section" className="pb-20 md:pb-24">
+        <h2 className="font-headline-md text-headline-md text-primary mb-6">Preguntas frecuentes sobre comprar en pozo</h2>
+        <div className="divide-y divide-outline-variant border-y border-outline-variant">
+          {AI_FAQ.map((f) => (
+            <details key={f.q} className="group py-4">
+              <summary className="cursor-pointer list-none flex justify-between items-center gap-4 font-headline-sm text-[17px] text-primary">
+                {f.q}<span className="material-symbols-outlined text-link-gold group-open:rotate-180 transition-transform">expand_more</span>
+              </summary>
+              <p className="mt-3 text-on-surface-variant text-body-md leading-relaxed">{f.a}</p>
+            </details>
           ))}
         </div>
       </Container>

@@ -10,7 +10,7 @@ const fmtUSD = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
 // abre el asesor como MODAL sobre la ficha (sin perder la navegación).
 export default function AccionesFicha({
   slug, nombre, precioHeroLabel, precioDesdeNum, refM2Label, cuotaEstim, anticipoLabel, entrega, cuotas, ajuste, comparableNum,
-  waPhone, waEsDelDev, barrio, dev,
+  waPhone, waEsDelDev, barrio, dev, soloWhatsApp = false,
 }) {
   const [asesorOpen, setAsesorOpen] = useState(false);
 
@@ -40,11 +40,11 @@ export default function AccionesFicha({
             <span className="material-symbols-outlined text-[15px] text-green-700">bolt</span>
             Respondemos en el día · Sin costo · Análisis independiente
           </p>
-          <button type="button" onClick={() => setAsesorOpen(true)}
+          {!soloWhatsApp && <button type="button" onClick={() => setAsesorOpen(true)}
             className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
             QUIERO QUE ME CONTACTEN
             <span className="material-symbols-outlined text-[18px]">forum</span>
-          </button>
+          </button>}
           {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="full" />}
 
           <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
@@ -59,11 +59,11 @@ export default function AccionesFicha({
 
       {/* Barra fija móvil */}
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden flex gap-2">
-        <button type="button" onClick={() => setAsesorOpen(true)}
+        {!soloWhatsApp && <button type="button" onClick={() => setAsesorOpen(true)}
           className="flex-1 px-4 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-2">
           QUIERO QUE ME CONTACTEN
           <span className="material-symbols-outlined fill-icon text-[18px]">send</span>
-        </button>
+        </button>}
         {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="bar" />}
       </div>
 
@@ -135,7 +135,7 @@ export function Calculadora({ precioNum, comparableNum }) {
         <a href="/simulador-cuota-cac-pozo/" className="text-secondary font-medium hover:underline">Simular el ajuste CAC →</a>
       </p>
 
-      {r.terminado != null && (
+      {r.terminado != null && r.upside >= 0 && (
         <div className="mt-4 pt-4 border-t border-outline-variant">
           <div className="flex justify-between text-[13px]"><dt className="text-on-surface-variant">Valor estimado terminado</dt><dd className="text-primary font-medium">{fmtUSD(r.terminado)}</dd></div>
           <div className="flex justify-between items-baseline mt-1">

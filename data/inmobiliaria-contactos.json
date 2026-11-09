@@ -1,6 +1,11 @@
 {
  "_doc": "Contactos verificados de inmobiliarias/comercializadoras. SOLO con email confirmado se rutea el lead (ver /api/lead + INMO_NOTIFY). key = nombre tal cual aparece en comercializadora-overrides.json (match case-insensitive, normalizado). Email vacío = pendiente de verificar, NO se rutea.",
  "contactos": {
+  "1416": {
+   "email": "info@1416.com.ar",
+   "web": "https://1416.com.ar/",
+   "fuente": "https://1416.com.ar/ 2026-10-27"
+  },
   "Toribio Achával": {
    "email": "emprendimientos@toribioachaval.com",
    "whatsapp": "+541148194000",
@@ -56,16 +61,16 @@
    "fuente": "harvest 2026-10-19: https://teslerpropiedades.com/contacto/"
   },
   "Martín Pinus": {
-   "email": "",
-   "whatsapp": "",
-   "web": "",
-   "fuente": ""
+   "email": "hola@martinpinus.net",
+   "whatsapp": "+5491156002673",
+   "web": "https://www.martinpinus.net",
+   "fuente": "https://www.martinpinus.net/ 2026-10-27"
   },
   "CASSAGNE REAL ESTATE": {
-   "email": "",
+   "email": "info@cassagnere.com",
    "whatsapp": "",
    "web": "",
-   "fuente": ""
+   "fuente": "https://www.cassagnere.com/Contacto 2026-10-27"
   },
   "Laurenzano Matias Propiedades": {
    "email": "",
@@ -77,7 +82,7 @@
    "email": "cosmopolita@remax.com.ar",
    "whatsapp": "+541146331121",
    "web": "https://www.remax.com.ar/cosmopolita",
-   "fuente": "remax.com.ar oficina, verificado 2026-10-05"
+   "fuente": "https://www.remax.com.ar/cosmopolita 2026-10-27"
   },
   "Ramos Couriel Real Estate": {
    "email": "",
@@ -86,10 +91,10 @@
    "fuente": "info@ rebota (550 user unknown); sólo WhatsApp"
   },
   "Predial": {
-   "email": "",
-   "whatsapp": "5491126717777",
-   "web": "https://predial.ar/",
-   "fuente": "verificado en sitio oficial 2026-10-05: https://predial.ar/"
+   "email": "info@predial.ar",
+   "whatsapp": "+5491126717777",
+   "web": "https://predial.ar",
+   "fuente": "https://lp.predial.ar/ 2026-10-27"
   },
   "Fera": {
    "email": "info@ferayasociados.com",
@@ -195,9 +200,9 @@
   },
   "Building Inmobiliaria": {
    "email": "info@buildinginmobiliaria.com",
-   "whatsapp": "5492214637251",
-   "web": "https://buildinginmobiliaria.com/emprendimiento/building-after-office--787",
-   "fuente": "verificado en sitio oficial 2026-10-05: https://buildinginmobiliaria.com/emprendimiento/building-after-office--787"
+   "whatsapp": "+5492214637251",
+   "web": "https://buildinginmobiliaria.com",
+   "fuente": "https://buildinginmobiliaria.com 2026-10-27"
   },
   "Bioi": {
    "email": "ventas@bioi.com.ar",
@@ -249,9 +254,9 @@
   },
   "Lincoln Negocios Inmobiliarios": {
    "email": "info@lincolnpropiedades.com.ar",
-   "whatsapp": "5491150611422",
+   "whatsapp": "+5491150611422",
    "web": "https://www.lincolnpropiedades.com.ar/",
-   "fuente": "verificado en sitio oficial 2026-10-05: https://www.lincolnpropiedades.com.ar/"
+   "fuente": "web oficial 2026-10-27"
   },
   "A. Suárez Real Estate": {
    "email": "asuarez@asrealestate.com.ar",
@@ -463,7 +468,8 @@
   "RE/MAX Legado": {
    "email": "legado@remax.com.ar",
    "whatsapp": "5491137963702",
-   "fuente": "https://www.remax.com.ar/legado (verificado 2026-10-20)"
+   "fuente": "https://www.remax.com.ar/legado 2026-10-27",
+   "web": "https://www.remax.com.ar/legado"
   },
   "ARQ Constructora": {
    "email": "info@florestaavant.com",
@@ -514,6 +520,420 @@
    "email": "info@nirabrokers.com",
    "whatsapp": "5491140983331",
    "fuente": "https://www.nirabrokers.com/"
+  },
+  "Khabbaz Propiedades": {
+   "email": "info@khabbazpropiedades.com.ar",
+   "web": "https://www.khabbazpropiedades.com.ar/",
+   "fuente": "https://www.khabbazpropiedades.com.ar/ 2026-10-27"
+  },
+  "CAPITAL BROKERS PROPIEDADES": {
+   "email": "info@capitalbrokers.com.ar",
+   "web": "https://www.capitalbrokers.com.ar/",
+   "fuente": "https://www.capitalbrokers.com.ar/ 2026-10-27"
+  },
+  "L.A. Propiedades": {
+   "email": "lapropiedadesrealestate@gmail.com",
+   "web": "https://lapropiedades.com.ar/",
+   "fuente": "https://lapropiedades.com.ar/ 2026-10-27"
+  },
+  "Carella Norte Propiedades": {
+   "email": "info@carellanorte.com.ar",
+   "web": "https://www.carellanorte.com.ar/",
+   "fuente": "https://www.carellanorte.com.ar/ 2026-10-27"
+  },
+  "RE/MAX Premium": {
+   "email": "premium@remax.com.ar",
+   "web": "https://www.remax.com.ar/premium",
+   "fuente": "https://www.remax.com.ar/premium 2026-10-27"
+  },
+  "RE/MAX Express": {
+   "email": "express@remax.com.ar",
+   "web": "https://www.remax.com.ar/express",
+   "fuente": "https://www.remax.com.ar/express 2026-10-27"
+  },
+  "RE/MAX Diagonal II": {
+   "email": "diagonal2@remax.com.ar",
+   "web": "https://www.remax.com.ar/diagonalii",
+   "fuente": "https://www.remax.com.ar/diagonalii 2026-10-27"
+  },
+  "RE/MAX Roble": {
+   "email": "roble@remax.com.ar",
+   "web": "https://www.remax.com.ar/roble",
+   "fuente": "https://www.remax.com.ar/roble 2026-10-27"
+  },
+  "LADDER PROPIEDADES": {
+   "email": "info@ladderpropiedades.com.ar",
+   "web": "https://www.ladderpropiedades.com.ar",
+   "fuente": "https://www.ladderpropiedades.com.ar/ 2026-10-27"
+  },
+  "Lepore Nuñez": {
+   "email": "info@lepore.com.ar",
+   "web": "https://lepore.com.ar",
+   "fuente": "https://lepore.com.ar/contacto 2026-10-27"
+  },
+  "Unité Quartier": {
+   "email": "comercial@unitequartier.com",
+   "web": "https://unitequartier.com",
+   "fuente": "https://unitequartier.com/contacto 2026-10-27"
+  },
+  "Gardey Urbana - Talatinian Broker": {
+   "email": "gardeyurbana@gmail.com",
+   "web": "https://www.gardeyurbana.com",
+   "fuente": "https://www.gardeyurbana.com/Contacto 2026-10-27"
+  },
+  "Izrastzoff": {
+   "email": "tasaciones@izr.com.ar",
+   "web": "https://www.izr.com.ar",
+   "fuente": "https://www.izr.com.ar/contacto 2026-10-27"
+  },
+  "Inteligencia Urbana": {
+   "email": "info@inteligenciaurbana.com.ar",
+   "whatsapp": "+5491138167193",
+   "web": "https://www.inteligenciaurbana.com.ar",
+   "fuente": "https://www.inteligenciaurbana.com.ar/ 2026-10-27"
+  },
+  "REMAX URBANA III": {
+   "email": "urbana3@remax.com.ar",
+   "web": "https://www.remax.com.ar/urbanaiii",
+   "fuente": "https://www.remax.com.ar/urbanaiii 2026-10-27"
+  },
+  "Lepore Almagro": {
+   "email": "info@lepore.com.ar",
+   "web": "https://lepore.com.ar",
+   "fuente": "https://lepore.com.ar/contacto 2026-10-27"
+  },
+  "Century 21 Billion": {
+   "email": "contacto@c21billion.com.ar",
+   "whatsapp": "+5491133920303",
+   "web": "https://www.c21billion.com.ar",
+   "fuente": "https://www.century21.com.ar/directorio-de-oficinas 2026-10-27"
+  },
+  "CONCRETIO DESARROLLOS": {
+   "email": "info@concretio.com.ar",
+   "web": "https://www.proyectoviena.com",
+   "fuente": "https://www.proyectoviena.com 2026-10-27"
+  },
+  "Ruiz Propiedades": {
+   "email": "online@ruizpropiedades.com",
+   "web": "https://www.ruizpropiedades.com",
+   "fuente": "https://www.ruizpropiedades.com/ 2026-10-27"
+  },
+  "INGCAN Desarrollos": {
+   "email": "info@ingcan.com.ar",
+   "whatsapp": "+5491133327741",
+   "web": "https://ingcan.com.ar",
+   "fuente": "https://ingcan.com.ar/campillo/ 2026-10-27"
+  },
+  "MAR REAL ESTATE": {
+   "email": "contacto@marrealstate.com",
+   "whatsapp": "+5491164946032",
+   "web": "https://marrealstate.com",
+   "fuente": "https://marrealstate.com/ 2026-10-27"
+  },
+  "L.A PROPIEDADES": {
+   "email": "lapropiedadesrealestate@gmail.com",
+   "web": "https://lapropiedades.com.ar",
+   "fuente": "https://lapropiedades.com.ar/ 2026-10-27"
+  },
+  "INMOBILIARIA MARTING": {
+   "email": "ventas@grupomarting.com",
+   "web": "https://grupomarting.com",
+   "fuente": "https://grupomarting.com/ 2026-10-27"
+  },
+  "BURAFI - G. Fiore": {
+   "email": "info@burafi.com",
+   "web": "https://www.burafi.com",
+   "fuente": "https://www.burafi.com/Contacto 2026-10-27"
+  },
+  "Peyras Bienes Raíces": {
+   "email": "peyrasbienesraices@gmail.com",
+   "web": "https://www.peyras.com",
+   "fuente": "https://www.peyras.com/ 2026-10-27"
+  },
+  "Agote & Asociados": {
+   "email": "info@agoteyasociados.com",
+   "web": "https://www.agoteyasociados.com",
+   "fuente": "https://www.agoteyasociados.com/ 2026-10-27"
+  },
+  "Bosque Propiedades": {
+   "email": "bosquepropiedades2@gmail.com",
+   "web": "https://www.bosquenet.com.ar",
+   "fuente": "https://www.bosquenet.com.ar/contacto 2026-10-27"
+  },
+  "Pablo Rodriguez Servicios Inmobiliarios": {
+   "email": "info@prodriguez.com.ar",
+   "web": "https://prodriguez.com.ar",
+   "fuente": "https://prodriguez.com.ar/ 2026-10-27"
+  },
+  "Ismo Propiedades": {
+   "email": "consultas@ismo.ar",
+   "fuente": "https://www.instagram.com/ismo.arg/ 2026-10-27"
+  },
+  "Fabián Achával / Selectia": {
+   "email": "info@fabianachaval.com",
+   "web": "https://fabianachaval.com",
+   "fuente": "https://fabianachaval.com/contacto 2026-10-27"
+  },
+  "Slutsky Negocios Inmobiliarios": {
+   "email": "info@sni.com.ar",
+   "whatsapp": "+5491133865084",
+   "web": "https://www.sni.com.ar",
+   "fuente": "https://www.sni.com.ar/ 2026-10-27"
+  },
+  "Dacal Bienes Raices": {
+   "email": "info@dacal.com.ar",
+   "whatsapp": "+5492215561164",
+   "web": "https://dacal.com.ar",
+   "fuente": "https://dacal.com.ar/contacto 2026-10-27"
+  },
+  "Levy Mayo Negocios Inmobiliarios": {
+   "email": "levymayopropiedades@gmail.com",
+   "web": "http://www.levymayopropiedades.com.ar",
+   "fuente": "https://www.facebook.com/levymayo.propiedades/about 2026-10-27"
+  },
+  "Lepore Villa Crespo": {
+   "email": "info@lepore.com.ar",
+   "web": "https://lepore.com.ar",
+   "fuente": "https://lepore.com.ar/nuestras-sucursales 2026-10-27"
+  },
+  "KOT Asesores Inmobiliarios": {
+   "email": "info@kotpropiedades.com.ar",
+   "whatsapp": "+5491122772455",
+   "web": "https://www.kotpropiedades.com.ar",
+   "fuente": "https://www.kotpropiedades.com.ar/ 2026-10-27"
+  },
+  "Lepore Recoleta": {
+   "email": "info@lepore.com.ar",
+   "whatsapp": "+5491141693982",
+   "web": "https://lepore.com.ar",
+   "fuente": "https://lepore.com.ar/nuestras-sucursales 2026-10-27"
+  },
+  "Sabrina Vidarte Negocios Inmobiliarios": {
+   "email": "info@sabrinavidarte.com",
+   "whatsapp": "+5491165221919",
+   "web": "https://www.sabrinavidarte.com",
+   "fuente": "https://www.sabrinavidarte.com/ 2026-10-27"
+  },
+  "Urban DNA Group": {
+   "email": "info@urbandnagroup.com",
+   "web": "https://www.urbandnagroup.com",
+   "fuente": "https://www.urbandnagroup.com/contacto.html 2026-10-27"
+  },
+  "TOVADO PROPIEDADES": {
+   "email": "info@tovado.com.ar",
+   "whatsapp": "+5491144277489",
+   "web": "https://www.tovado.com.ar",
+   "fuente": "https://www.tovado.com.ar/ 2026-10-27"
+  },
+  "RE/MAX Fly": {
+   "email": "fly@remax.com.ar",
+   "web": "https://www.remax.com.ar/fly",
+   "fuente": "https://www.remax.com.ar/fly 2026-10-27"
+  },
+  "Ruca Inmuebles": {
+   "email": "ruca@ruca.com.ar",
+   "whatsapp": "+5491163532750",
+   "web": "https://www.ruca.com.ar",
+   "fuente": "https://www.ruca.com.ar/ 2026-10-27"
+  },
+  "Desarrolla Zanara S.A. — comercializa Z Díaz Saubidet Propiedades": {
+   "email": "info@zdiazsaubidet.com",
+   "whatsapp": "+5491141927779",
+   "web": "https://zdiazsaubidet.com",
+   "fuente": "https://zdiazsaubidet.com/contacto/ 2026-10-27"
+  },
+  "Ezequiel Díaz Saubidet": {
+   "email": "info@zdiazsaubidet.com",
+   "whatsapp": "+5491141927779",
+   "web": "https://zdiazsaubidet.com",
+   "fuente": "https://zdiazsaubidet.com/contacto/ 2026-10-27"
+  },
+  "DGS Desarrollos Inmobiliarios": {
+   "email": "info@dgsdesarrollosinmobiliarios.com.ar",
+   "whatsapp": "+5491134647429",
+   "web": "https://www.dgsdesarrollosinmobiliarios.com.ar",
+   "fuente": "https://www.dgsdesarrollosinmobiliarios.com.ar/ 2026-10-27"
+  },
+  "PREDIAL": {
+   "email": "info@predial.ar",
+   "whatsapp": "+5491126717777",
+   "web": "https://predial.ar",
+   "fuente": "https://lp.predial.ar/ 2026-10-27"
+  },
+  "MIERES PROPIEDADES": {
+   "email": "escobar@mieres.com.ar",
+   "whatsapp": "+5491141985004",
+   "web": "https://mieres.com.ar",
+   "fuente": "https://mieres.com.ar/sucursales 2026-10-27"
+  },
+  "AG NEGOCIOS INMOBIILIARIOS": {
+   "email": "ventas@agserviciossrl.com",
+   "web": "https://www.agserviciossrl.com",
+   "fuente": "https://www.facebook.com/ag.negociosinmobiliario/about 2026-10-27"
+  },
+  "G D Real Estate": {
+   "email": "info@gddevelopers.com",
+   "whatsapp": "+5491131296417",
+   "web": "https://www.gddevelopers.com",
+   "fuente": "https://www.gddevelopers.com/ 2026-10-27"
+  },
+  "Pink Desarrollos Urbanos": {
+   "email": "info@estudiopink.com.ar",
+   "whatsapp": "+5491124740067",
+   "web": "https://www.estudiopink.com.ar",
+   "fuente": "https://www.estudiopink.com.ar/ 2026-10-27"
+  },
+  "ABATTE DAGA LUXURY ESTATE": {
+   "email": "info@abattedaga.com",
+   "web": "https://www.abattedaga.com",
+   "fuente": "https://www.abattedaga.com/ 2026-10-27"
+  },
+  "DAVID CIPOLLA PROPIEDADES": {
+   "email": "consultas@davidcipolla.com",
+   "web": "https://davidcipolla.com.ar",
+   "fuente": "https://davidcipolla.com.ar/contacto 2026-10-27"
+  },
+  "SACCA REAL ESTATE": {
+   "email": "ssacca.sacca@gmail.com",
+   "web": "https://www.sacca.com.ar",
+   "fuente": "https://www.sacca.com.ar/ 2026-10-27"
+  },
+  "CMNV Comunidad de Inversión": {
+   "email": "ventas@cmnv.com.ar",
+   "web": "https://www.cmnv.com.ar",
+   "fuente": "https://www.cmnv.com.ar/ 2026-10-27"
+  },
+  "REMAX Buró": {
+   "email": "buro@remax.com.ar",
+   "web": "https://www.remax.com.ar/buro",
+   "fuente": "https://www.remax.com.ar/buro 2026-10-27"
+  },
+  "Real Props": {
+   "email": "info@realprops.com.ar",
+   "web": "https://www.realprops.com.ar",
+   "fuente": "https://www.realprops.com.ar/ 2026-10-27"
+  },
+  "Remax Free": {
+   "email": "free@remax.com.ar",
+   "web": "https://www.remax.com.ar/free",
+   "fuente": "https://www.remax.com.ar/free?tab=propiedades 2026-10-27"
+  },
+  "Gamaca Real Estate": {
+   "email": "info@gamaca.com",
+   "whatsapp": "+5491152214360",
+   "fuente": "web proyecto Entrecasas Crespo 2026-10-27"
+  },
+  "GPS Real Estate": {
+   "email": "info@gpsrealestate.com.ar",
+   "whatsapp": "+5491124052071",
+   "fuente": "web oficial 2026-10-27"
+  },
+  "Gustavo De Simone Soluciones Inmobiliarias": {
+   "whatsapp": "+5491165252190",
+   "fuente": "web oficial 2026-10-27"
+  },
+  "Damico Propiedades": {
+   "email": "damicopropiedades@gmail.com",
+   "whatsapp": "+5491133764050",
+   "fuente": "web oficial 2026-10-27"
+  },
+  "Coldwell Banker Desiderio Group": {
+   "email": "desideriogroup@coldwellbanker.com.ar",
+   "whatsapp": "+5491161925939",
+   "fuente": "ficha oficial Coldwell Banker 2026-10-27"
+  },
+  "Abriola Propiedades": {
+   "email": "abriolapropiedades@gmail.com",
+   "whatsapp": "+5491163723335",
+   "fuente": "web oficial 2026-10-27"
+  },
+  "TISCORNIA PROPIEDADES": {
+   "email": "info@tiscornia.com.ar",
+   "fuente": "https://www.tiscornia.com.ar/ 2026-10-27"
+  },
+  "BMD CONSULTORES": {
+   "email": "info@bmdprop.com.ar",
+   "fuente": "https://www.bmdprop.com.ar/ 2026-10-27"
+  },
+  "Gomez Servicios Inmobiliarios": {
+   "email": "info@gomezserviciosinmobiliarios.com.ar",
+   "fuente": "https://www.gomezserviciosinmobiliarios.com.ar/ 2026-10-27"
+  },
+  "METRO Bienes Raices": {
+   "email": "contacto@metrobienesraices.com.ar",
+   "fuente": "https://metrobienesraices.com.ar/ 2026-10-27"
+  },
+  "Calle Real": {
+   "email": "info@calle-real.com",
+   "fuente": "https://calle-real.com.ar/ 2026-10-27"
+  },
+  "Fernando J. Vaz Bienes Raices": {
+   "email": "info.haka@coldwellbanker.com.ar",
+   "fuente": "https://www.cbhaka.com.ar/ 2026-10-27"
+  },
+  "MUTUVERRIA PROPIEDADES": {
+   "email": "mutuprop@gmail.com",
+   "fuente": "https://mutuprop.com/contacto/ 2026-10-27"
+  },
+  "Sabatini Negocios Inmobiliarios": {
+   "email": "contacto@sabatiniprop.com.ar",
+   "fuente": "https://sabatiniprop.com.ar/ 2026-10-27"
+  },
+  "Laszlo": {
+   "email": "info@laszlodesarrollos.com.ar",
+   "fuente": "https://laszlodesarrollos.com.ar/ 2026-10-27"
+  },
+  "GRUPO MARVAL Servicios Inmobiliarios": {
+   "email": "contacto@imarval.com",
+   "fuente": "http://imarval.com/ 2026-10-27"
+  },
+  "MKS Propiedades": {
+   "email": "info@mkspropiedades.com.ar",
+   "fuente": "https://mkspropiedades.com/ 2026-10-27"
+  },
+  "Afianzar Consultora Inmobiliaria": {
+   "email": "info@afianzarpropiedades.com.ar",
+   "fuente": "https://www.afianzarpropiedades.com.ar/Contacto 2026-10-27"
+  },
+  "Inmobiliaria MEILERMAN Real state": {
+   "email": "a.meilerman@meilerman.com",
+   "fuente": "https://www.facebook.com/Meilerman.Real.Estate 2026-10-27"
+  },
+  "Baron Inmobiliaria": {
+   "email": "mariainesk@baron-sa.com.ar",
+   "fuente": "https://baroninmobiliaria.com.ar/contacto 2026-10-27"
+  },
+  "Bernat Buildings": {
+   "email": "axel.demarco@bernatbuildings.com.ar",
+   "fuente": "https://bernatbuildings.com.ar/ 2026-10-27"
+  },
+  "Barón Inmobiliaria": {
+   "email": "mariainesk@baron-sa.com.ar",
+   "fuente": "https://baroninmobiliaria.com.ar/contacto 2026-10-27"
+  },
+  "Parra Desarrollos Urbanos": {
+   "email": "parra.desarrollos.urbanos@gmail.com",
+   "fuente": "https://parrapropiedades.com.ar/ 2026-10-27"
+  },
+  "Top Bait Real Estate": {
+   "email": "carolina.remondino@topbaitrealty.com",
+   "fuente": "https://www.topbaitrealestate.com.ar/contacto/ 2026-10-27"
+  },
+  "Carella Inversiones Inmobiliarias": {
+   "email": "info@carella.com.ar",
+   "fuente": "https://carella.com.ar/ 2026-10-27"
+  },
+  "Larocca Propiedades": {
+   "email": "info@laroccapropiedades.com",
+   "fuente": "https://www.laroccapropiedades.com/ 2026-10-27"
+  },
+  "AG Negocios Inmobiliarios": {
+   "email": "ventas@agserviciossrl.com",
+   "fuente": "Facebook oficial AG Servicios SRL 2026-10-27"
+  },
+  "Lepore San Cristobal": {
+   "email": "info@lepore.com.ar",
+   "fuente": "web oficial Lepore (email general) 2026-10-27"
   }
  }
 }

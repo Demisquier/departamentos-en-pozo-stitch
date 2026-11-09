@@ -84,7 +84,7 @@ export default function ContactoPage() {
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Honeypot: oculto para humanos, los bots lo rellenan */}
-              <input
+              <input aria-label=" gotcha"
                 type="text"
                 name="_gotcha"
                 tabIndex={-1}
@@ -99,7 +99,7 @@ export default function ContactoPage() {
                   <label className="font-label-caps text-on-surface-variant uppercase" htmlFor="nombre">
                     Nombre
                   </label>
-                  <input
+                  <input aria-label="Ej: Juan"
                     className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="nombre"
                     name="nombre"
@@ -114,7 +114,7 @@ export default function ContactoPage() {
                   <label className="font-label-caps text-on-surface-variant uppercase" htmlFor="apellido">
                     Apellido
                   </label>
-                  <input
+                  <input aria-label="Ej: Perez"
                     className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="apellido"
                     name="apellido"
@@ -130,7 +130,7 @@ export default function ContactoPage() {
                 <label className="font-label-caps text-on-surface-variant uppercase" htmlFor="email">
                   Email
                 </label>
-                <input
+                <input aria-label="juan.perez@email.com"
                   className="w-full border-outline-variant rounded-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                   id="email"
                   name="email"
@@ -149,7 +149,7 @@ export default function ContactoPage() {
                   <span className="inline-flex items-center px-4 rounded-l-lg border border-r-0 border-outline-variant bg-surface-container-low text-on-surface-variant">
                     +54
                   </span>
-                  <input
+                  <input aria-label="11 1234 5678"
                     className="w-full border-outline-variant rounded-r-lg p-3 focus:ring-2 focus:ring-secondary focus:border-secondary transition-all"
                     id="whatsapp"
                     name="whatsapp"

@@ -22,7 +22,7 @@ export default async function PostView({ node, slug, content, img, title, rmSche
   const tituloPlano = stripHtml(title);
   let related = [];
   try {
-    const allPosts = await getPosts(100);
+    const allPosts = await getPosts(5000);
     related = relatedPosts(node, allPosts, 3);
   } catch (e) { related = []; }
 
