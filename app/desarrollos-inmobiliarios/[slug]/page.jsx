@@ -826,7 +826,7 @@ export default async function FichaProyecto({ params }) {
               comparableNum={comparableNum}
               waPhone={_wa.phone}
               waEsDelDev={_wa.esDelDev}
-              soloWhatsApp={!!(_wa.esDelDev && _dst && _dst.tipo === 'contacto')}
+              soloWhatsApp={!!(_wa.esDelDev && _dst && (_dst.tipo === 'contacto' || (_waCom && _waCom.esDelDev && _dst.tipo !== 'inmobiliaria')))}
               barrio={barrio}
               dev={(_waCom && _waCom.esDelDev) ? comercializadora : (constructora || comercializadora || "")}
             />
