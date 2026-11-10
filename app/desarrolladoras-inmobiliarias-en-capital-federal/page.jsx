@@ -129,9 +129,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido).
   return {
     ...m,
-    title: "Desarrolladoras Inmobiliarias en Capital Federal y Argentina 2026: Directorio por Barrio",
+    title: "Desarrolladoras Inmobiliarias y Constructoras en CABA (2026)",
     description:
-      "Directorio independiente de 190 desarrolladoras inmobiliarias de Capital Federal y Argentina: mirá trayectoria, obras entregadas, fideicomiso y proyecto insignia antes de comprar en pozo. Por barrio, sin ranking pago.",
+      "Directorio de 190 desarrolladoras y constructoras de Capital Federal: obras entregadas, proyectos en pozo con precio y contacto directo por WhatsApp o email. Independiente, sin ranking pago.",
   };
 }
 

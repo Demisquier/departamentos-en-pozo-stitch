@@ -32,9 +32,9 @@ export async function generateMetadata() {
   // cubre "mejores inmobiliarias caba", "listado de inmobiliarias en capital federal" y "por barrio".
   return {
     ...m,
-    title: "Mejores Inmobiliarias en CABA y Capital Federal: Listado 2026 con Matrícula",
+    title: "Mejores Inmobiliarias de CABA 2026: Listado por Barrio",
     description:
-      "Listado de inmobiliarias en CABA y Capital Federal con matrícula CUCICBA verificable, por barrio (Palermo, Belgrano, Núñez, Puerto Madero y más). Especializadas en pozo, sin ranking pago ni comisión. Independiente 2026.",
+      "Listado de inmobiliarias de Capital Federal por barrio, con matrícula CUCICBA verificable y los proyectos en pozo que comercializa cada una. Compará y contactalas directo, sin costo.",
   };
 }
 

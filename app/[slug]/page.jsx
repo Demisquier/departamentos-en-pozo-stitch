@@ -90,8 +90,10 @@ export async function generateMetadata({ params }) {
   const cm = params.slug.match(/^desarrollos-inmobiliarios-en-(.+)$/);
   if (cm && BARRIO_CATALOGO[cm[1]]) {
     const label = BARRIO_CATALOGO[cm[1]].label;
+    let nB = 0;
+    try { nB = mapDesarrollos(await getDesarrollos(5000)).filter((i) => matchBarrioCatalogo(i.barrio, cm[1])).length; } catch (e) { nB = 0; }
     return {
-      title: `Desarrollos inmobiliarios en pozo en ${label}: proyectos y precios 2026 | Departamentos en Pozo`,
+      title: nB >= 3 ? `Desarrollos Inmobiliarios en ${label}: ${nB} en Pozo (2026)` : `Desarrollos Inmobiliarios en Pozo en ${label} (2026)`,
       description: `Desarrollos inmobiliarios en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará departamentos en pozo por proyecto con análisis independiente.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };

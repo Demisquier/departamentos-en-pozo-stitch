@@ -13,9 +13,9 @@ import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 export const revalidate = 600;
 
 export const metadata = {
-  title: 'Departamentos en Pozo en CABA 2026: Catálogo con Precio y Financiación',
+  title: 'Desarrollos Inmobiliarios en Pozo en CABA 2026: +700 con Precio',
   description:
-    'Catálogo independiente de departamentos y desarrollos en pozo (preventa) en CABA: precio, financiación en cuotas, desarrolladora, tipologías, avance de obra y entrega. Compará proyectos por barrio.',
+    'Más de 700 desarrollos y departamentos en pozo en CABA y GBA con precio desde, cuotas, entrega y desarrolladora. Filtrá por barrio y ambientes y consultá directo a quien lo vende.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
 };
 

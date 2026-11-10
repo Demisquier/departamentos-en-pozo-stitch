@@ -30,10 +30,10 @@ export async function generateMetadata({ params }) {
   const enB = barrios.length ? ` en ${barrios.join(" y ")}` : "";
   return {
     title: n > 0
-      ? `${nombre}: ${n} proyecto${n === 1 ? "" : "s"} en pozo${enB} — precios 2026 | Departamentos en Pozo`
+      ? `${nombre}: proyectos en pozo, precios y contacto (2026)`
       : `${nombre} — inmobiliaria en CABA con proyectos en pozo | Departamentos en Pozo`,
     description: n > 0
-      ? `Los proyectos en pozo que comercializa ${nombre}${enB}: precios desde, tipologías, entrega y avance de obra. Matrícula CUCICBA verificable. Consultá sin costo.`
+      ? `${n} proyecto${n === 1 ? "" : "s"} en pozo que comercializa ${nombre}${enB}: precio desde, tipologías, entrega y contacto directo por WhatsApp o email. Sin costo.`
       : `${nombre}: inmobiliaria en Capital Federal. Matrícula CUCICBA verificable. Análisis independiente, sin pauta.`,
     robots: (r?.inmo?.sintetica && (r?.proyectos?.length || 0) < 2) ? { index: false, follow: true } : undefined,
     alternates: { canonical: `/inmobiliaria/${params.slug}/` },
