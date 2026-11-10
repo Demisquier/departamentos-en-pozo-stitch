@@ -93,7 +93,7 @@ export async function generateMetadata({ params }) {
     let nB = 0;
     try { nB = mapDesarrollos(await getDesarrollos(5000)).filter((i) => matchBarrioCatalogo(i.barrio, cm[1])).length; } catch (e) { nB = 0; }
     return {
-      title: nB >= 3 ? `Desarrollos Inmobiliarios en ${label}: ${nB} en Pozo (2026)` : `Desarrollos Inmobiliarios en Pozo en ${label} (2026)`,
+      title: { absolute: nB >= 3 ? `Desarrollos Inmobiliarios en ${label}: ${nB} Departamentos en Pozo (2026)` : `Departamentos en Pozo en ${label}: Desarrollos Inmobiliarios (2026)` },
       description: `Desarrollos inmobiliarios en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará departamentos en pozo por proyecto con análisis independiente.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };

@@ -197,7 +197,9 @@ export default async function HubDesarrolladorasPage() {
 
   const rawHtml = page?.content?.rendered || "";
   // Dedupe schema: el HTML de WP ya embebe ItemList/FAQPage/BreadcrumbList (RankMath); los quitamos y dejamos solo extraSchema (code-gen, mas rico).
-  const html = rawHtml.replace(/<script[^>]*application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi, "");
+  const html = rawHtml.replace(/<script[^>]*application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi, "")
+    // H1 con las 2 keywords del cluster (GSC: "desarrolladora inmobiliaria" pos 6, "constructoras caba" pos 7).
+    .replace(/(<h1[^>]*>)[\s\S]*?(<\/h1>)/i, "$1Desarrolladoras inmobiliarias y constructoras en CABA 2026: directorio con proyectos en pozo$2");
   // Si el contenido WP tiene el marcador Y hay datos en el CPT, partimos y montamos el
   // directorio nuevo en el medio. Si no, renderizamos el contenido completo (fallback
   // seguro: nunca dejamos la página sin su directorio).

@@ -80,7 +80,8 @@ export default async function InmobiliariasPage() {
     },
   ];
 
-  const html = page?.content?.rendered || "";
+  // H1 con "listado de inmobiliarias en Capital Federal" (GSC pos 10.6) además de "mejores inmobiliarias caba".
+  const html = (page?.content?.rendered || "").replace(/(<h1[^>]*>)[\s\S]*?(<\/h1>)/i, "$1Mejores inmobiliarias de CABA 2026: listado de inmobiliarias en Capital Federal por barrio$2");
   const useCpt = html.includes(MARKER) && items.length > 0;
   const [before, after] = useCpt ? html.split(MARKER) : [html, ""];
 

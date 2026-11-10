@@ -63,7 +63,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
 
         <div className="mb-4 md:mb-5">
           <h1 className="font-headline-md text-headline-md md:text-[30px] serif text-primary leading-tight">
-            {n} desarrollo{n === 1 ? "" : "s"} inmobiliario{n === 1 ? "" : "s"} en pozo en {label}
+            Departamentos en pozo en {label}: {n} desarrollo{n === 1 ? "" : "s"} inmobiliario{n === 1 ? "" : "s"}
           </h1>
           {(desde || medianaM2) && (
             <p id="barrio-resumen" className="mt-2 text-[14px] text-on-surface-variant">
@@ -82,7 +82,7 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
 
         {/* Cierre: variante de keyword (desarrollos inmobiliarios) + enlaces a las otras capas. */}
         <section className="mt-12 pt-8 border-t border-outline-variant text-[15px] text-on-surface-variant">
-          <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Comprar un desarrollo inmobiliario en pozo en {label}</h2>
+          <h2 className="font-headline-sm text-headline-sm text-primary mb-3">Comprar un departamento en pozo en {label}</h2>
           <p>
             Estás viendo los {n} desarrollos inmobiliarios en pozo de {label}
             {conPrecio ? ` (${conPrecio} con precio publicado)` : ""}. Si comprás en preventa, el

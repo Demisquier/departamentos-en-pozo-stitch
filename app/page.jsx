@@ -38,13 +38,13 @@ export const revalidate = 600;
 
 // Metadata propia de la home (antes heredaba el título genérico del layout).
 export const metadata = {
-  title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA | Departamentos en Pozo",
+  title: { absolute: "Departamentos en Pozo en CABA y GBA 2026: +700 Proyectos con Precio" },
   description:
-    "Portal de análisis independiente de inversión en departamentos en pozo (preventa) en CABA y GBA: directorio de desarrolladoras, proyectos, precios por m² y guías para invertir con criterio.",
+    "Departamentos en pozo en CABA y GBA: +700 proyectos en preventa con precio desde, financiación, desarrolladora y entrega. Compará por barrio y consultá directo, sin costo.",
   alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
-    title: "Invertir en Departamentos en Pozo 2026: Análisis Independiente CABA y GBA",
+    title: "Departamentos en Pozo en CABA y GBA 2026: +700 Proyectos con Precio",
     description:
       "Directorio de desarrolladoras, proyectos en pozo, precios por m² y guías. Análisis independiente para inversores.",
     url: `${SITE}/`,
@@ -110,6 +110,16 @@ export default async function HomePage() {
     return { slug: k, name: BARRIO_CATALOGO[k].label, count: en.length, img: conImg ? conImg.img : null };
   }).filter((t) => t.count >= 3).sort((a, b) => b.count - a.count);
 
+  // Tabla "Departamentos en pozo por barrio" (SEO: ataca "departamentos en pozo" + "{barrio}" con
+  // datos propios y links con anchor exacto a cada landing de barrio).
+  const usd = (n) => `USD ${Math.round(n).toLocaleString("es-AR")}`;
+  const tablaBarrios = catTiles.slice(0, 15).map((t) => {
+    const en = mapped.filter((m) => matchBarrioCatalogo(m.barrio, t.slug));
+    const desdes = en.map((m) => m.precioDesde).filter((v) => v && v > 10000).sort((a, b) => a - b);
+    const m2s = en.map((m) => m.precio).filter((v) => v && v > 300).sort((a, b) => a - b);
+    return { ...t, desde: desdes[0] || null, m2: m2s.length ? m2s[Math.floor(m2s.length / 2)] : null };
+  });
+
   // Universo de barrios para el selector del hero (BarrioModal). Sacamos "barrios" que son
   // direcciones (traen números) y deduplicamos; BarrioModal los agrupa por zona.
   const barriosUniverse = Array.from(
@@ -129,10 +139,10 @@ export default async function HomePage() {
         <div className="absolute inset-0 hero-gradient" />
         <div className="relative z-10 w-full max-w-container-max px-margin-mobile md:px-margin-desktop text-center md:text-left">
           <h1 className="text-on-primary font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg max-w-3xl mb-4">
-            Encontrá tu departamento en pozo en Buenos Aires
+            Departamentos en pozo en CABA y GBA
           </h1>
           <p className="text-on-primary text-body-lg font-body-lg opacity-90 max-w-2xl mb-8">
-            No somos un portal más: somos un equipo que te acompaña en tu próxima inversión o en tu nuevo hogar.
+            {mapped.length} proyectos en pozo con precio, desarrolladora y entrega. Te acompañamos en tu próxima inversión o en tu nuevo hogar.
           </p>
           <HomeBuscador barrios={barriosUniverse} />
           {/* #203 — La caja principal es el buscador por barrio. Las otras dos formas de buscar
@@ -191,6 +201,35 @@ export default async function HomePage() {
         />
       </Container>
 
+
+
+      {/* Departamentos en pozo por barrio: tabla con datos propios (señal de contenido único) */}
+      <Container as="section" className="py-16 md:py-20">
+        <h2 className="font-headline-md text-headline-md text-primary mb-3">Departamentos en pozo en CABA por barrio: precios 2026</h2>
+        <p className="text-on-surface-variant max-w-3xl text-body-lg font-body-lg mb-6">
+          Un departamento en pozo se compra antes o durante la construcción: pagás un anticipo y el saldo en cuotas hasta la entrega, normalmente a un precio por m² menor que el de una unidad terminada.
+          Si recién empezás, leé <Link href="/invertir-en-pozo-que-es-un-departamento-en-pozo-y-que-significa-en-la-practica/" className="text-secondary underline underline-offset-2">qué significa comprar un departamento en pozo</Link> y
+          {" "}<Link href="/anticipo-sena-y-reserva-en-pozo-cuanto-se-paga-al-inicio/" className="text-secondary underline underline-offset-2">cuánto se paga de anticipo</Link>. Estos son los barrios con más proyectos relevados:
+        </p>
+        <div className="overflow-x-auto border border-outline-variant rounded-xl">
+          <table className="w-full text-left text-body-md">
+            <thead className="bg-surface-container-low text-primary">
+              <tr><th className="px-4 py-3">Barrio</th><th className="px-4 py-3">Proyectos en pozo</th><th className="px-4 py-3">Precio desde</th><th className="px-4 py-3">Mediana USD/m²</th></tr>
+            </thead>
+            <tbody className="divide-y divide-outline-variant">
+              {tablaBarrios.map((b) => (
+                <tr key={b.slug}>
+                  <td className="px-4 py-3"><Link href={`/desarrollos-inmobiliarios-en-${b.slug}/`} className="text-secondary hover:underline">Departamentos en pozo en {b.name}</Link></td>
+                  <td className="px-4 py-3">{b.count}</td>
+                  <td className="px-4 py-3">{b.desde ? usd(b.desde) : "—"}</td>
+                  <td className="px-4 py-3">{b.m2 ? usd(b.m2) : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-[12px] text-on-surface-variant mt-3">Fuente: relevamiento propio de {mapped.length} proyectos en pozo publicados. Precios de referencia informados por cada desarrolladora; se actualizan con cada cambio de lista. Ver el <Link href="/desarrollos-inmobiliarios/" className="underline">catálogo completo de desarrollos inmobiliarios en pozo</Link>.</p>
+      </Container>
 
       {/* Desarrollos por barrio: catálogo de PROYECTOS por barrio */}
       <section className="py-16 md:py-20 bg-surface-container-low">
