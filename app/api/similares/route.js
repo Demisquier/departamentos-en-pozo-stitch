@@ -1,23 +1,28 @@
-// app/api/similares/route.js — Proyectos "similares" a uno dado (para el mail de
-// recomendación automatizado) + arma el HTML del email premium listo para enviar.
-// Similar = parecido en TODO: barrio, precio, ambientes, entrega y financiación.
-// GET ?slug=<slug>&limit=4  → { proyecto, similares:[cards], emailSubject, emailText, emailHtml }.
-// El HTML del mail vive acá (repo, fácil de editar) y el Apps Script sólo lo envía.
-import { loadCatalogo, cardFrom, fichaUrl } from "../../../lib/ia";
-import { SITE } from "../../../lib/wp";
-
-// UTMs para medir el mail de similares en GA4 (source=email, medium=similares).
-const UTM_BASE = "utm_source=email&utm_medium=similares&utm_campaign=recomendados";
-const withUtm = (u, content) => {
-  if (!u) return u;
-  const sep = u.includes("?") ? "&" : "?";
-  return u + sep + UTM_BASE + (content ? "&utm_content=" + encodeURIComponent(content) : "");
-};
+// app/api/similares/route.js — Proyectos "similares" a uno dado + HTML del mail listo para enviar.
+// Similar = parecido en barrio, precio, ambientes, entrega y financiación.
+//
+// GET params:
+//   slug      slug del proyecto consultado (preferido)
+//   nombre|q  nombre del proyecto si no hay slug (se resuelve el slug y se EXCLUYE igual)
+//   lead      nombre del lead (para el saludo / subject)
+//   email     email del destinatario → link de baja firmado en el footer + `unsubscribe` en el JSON
+//   excluir   slugs separados por coma que NO se deben mostrar (ya enviados/vistos)
+//   modo      "similares" (default) | "seguimiento"
+//   limit     1..8 (default 4)
+//
+// Respuesta: { proyecto, similares:[card+porque], slugs:[...], modo, subject, preheader, html, text,
+//   unsubscribe, ctaUrl, emailSubject, emailText, emailHtml (alias compat) }
+import { loadCatalogo, cardFrom } from "../../../lib/ia";
+import { NEARBY_CATALOGO, landingDeBarrio } from "../../../lib/barrios";
+import { urlBaja } from "../../../lib/emailBaja";
+import {
+  SITE, CONTACTO, CATALOGO_URL, INK, MUTE, GOLD, NAVY, LINE,
+  esc, money, norm, withUtm, fichaUrl, landingBarrio, emailCard, emailLayout, botonPrimario,
+} from "../../../lib/emailTemplate";
 
 export const runtime = "nodejs";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
-const norm = (s) => (s || "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 const barrioBase = (b) => norm(b).split(/\s+/)[0] || ""; // "palermo hollywood" -> "palermo"
 
 // Puntúa qué tan parecido es `c` al proyecto objetivo `t` (mismo criterio en todos los ejes).
@@ -28,156 +33,174 @@ function score(t, c) {
     if (norm(t.barrio) === norm(c.barrio)) s += 6;      // mismo barrio granular
     else if (tb === cb) s += 4;                          // misma base (Palermo Soho ~ Palermo Hollywood)
   }
-  // Precio "desde": cuanto más cerca, más puntos.
   if (t.precioDesde && c.precioDesde) {
     const d = Math.abs(t.precioDesde - c.precioDesde) / t.precioDesde;
     if (d <= 0.15) s += 5; else if (d <= 0.3) s += 3; else if (d <= 0.5) s += 1; else s -= 1;
   }
-  // Ambientes: solapamiento de tipologías.
   const ta = new Set((t.ambientesNums || []).map((x) => String(x).replace(/\D/g, "")));
   const ca = (c.ambientesNums || []).map((x) => String(x).replace(/\D/g, ""));
   if (ta.size && ca.some((x) => ta.has(x))) s += 3;
-  // Entrega: mismo año (o ±1).
   if (t.entregaAnio && c.entregaAnio) {
     const dd = Math.abs(t.entregaAnio - c.entregaAnio);
     if (dd === 0) s += 2; else if (dd === 1) s += 1;
   }
-  // Financiación: mismo esquema.
   if (t.financiacion && c.financiacion) s += 1;
-  // Pequeño bonus por tener imagen/precio (mejor card).
   if (c.imagen) s += 0.5;
   if (c.precioDesde) s += 0.3;
   return s;
 }
 
-// ---------- Email premium ----------
-const esc = (s) => String(s == null ? "" : s)
-  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const money = (n) => { try { return "USD " + Number(n).toLocaleString("es-AR"); } catch (e) { return "USD " + n; } };
+const fmtN = (n) => Math.round(n).toLocaleString("es-AR");
 
-// Paleta de marca (navy + oro) — consistente con el sitio.
-const NAVY = "#0f1f3d", NAVY2 = "#16294d", GOLD = "#c19a3e", INK = "#1c2431", MUTE = "#6b7480", LINE = "#e8ebf0", BG = "#eef1f6";
-
-function emailCard(s) {
-  const precio = s.precioDesde ? money(s.precioDesde) : "Consultar precio";
-  const chips = [s.barrio, s.ambientes, s.entregaLabel].filter(Boolean).map(esc);
-  const meta = chips.length
-    ? '<tr><td style="padding-top:6px">' + chips.map((c) =>
-        '<span style="display:inline-block;background:#f2f4f8;color:' + MUTE + ';font-size:12px;line-height:1;padding:6px 9px;border-radius:20px;margin:0 6px 6px 0">' + c + '</span>'
-      ).join("") + '</td></tr>'
-    : "";
-  const img = s.imagen
-    ? '<a href="' + esc(withUtm(s.url)) + '" style="text-decoration:none"><img src="' + esc(s.imagen) + '" width="600" alt="' + esc(s.nombre) + '" style="display:block;width:100%;max-width:600px;height:auto;border-radius:14px 14px 0 0;object-fit:cover"></a>'
-    : '<div style="height:8px;border-radius:14px 14px 0 0;background:' + NAVY + '"></div>';
-  return (
-    '<tr><td style="padding:0 0 18px 0">' +
-    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;border:1px solid ' + LINE + ';border-radius:14px;overflow:hidden">' +
-    '<tr><td>' + img + '</td></tr>' +
-    '<tr><td style="padding:16px 18px 18px 18px;font-family:Arial,Helvetica,sans-serif">' +
-    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">' +
-    '<tr><td><a href="' + esc(withUtm(s.url)) + '" style="color:' + NAVY + ';font-size:17px;font-weight:bold;text-decoration:none;line-height:1.25">' + esc(s.nombre) + '</a></td></tr>' +
-    meta +
-    '<tr><td style="padding-top:10px;font-size:15px;color:' + GOLD + ';font-weight:bold">desde ' + esc(precio) + '</td></tr>' +
-    '<tr><td style="padding-top:12px">' +
-    '<a href="' + esc(withUtm(s.url)) + '" style="display:inline-block;background:' + NAVY + ';color:#ffffff;font-size:13px;font-weight:bold;text-decoration:none;padding:9px 16px;border-radius:8px">Ver ficha &rarr;</a>' +
-    '</td></tr></table></td></tr></table></td></tr>'
-  );
+// "Por qué" de cada card, SÓLO con datos reales (si falta el dato, no se dice nada).
+function porQue(t, c) {
+  const partes = [];
+  const tl = landingDeBarrio(t.barrio), cl = landingDeBarrio(c.barrio);
+  if ((tl && cl && tl === cl) || (t.barrio && norm(t.barrio) === norm(c.barrio))) partes.push("Mismo barrio");
+  else if (tl && cl && (NEARBY_CATALOGO[tl] || []).includes(cl)) partes.push("Barrio cercano");
+  // Precio: primero por m² (comparación justa), si no por precio de entrada.
+  if (t.precioM2 && c.precioM2) {
+    const d = c.precioM2 - t.precioM2;
+    if (d <= -50) partes.push("USD " + fmtN(-d) + "/m² menos");
+    else if (Math.abs(d) < 50) partes.push("mismo precio por m²");
+  } else if (t.precioDesde && c.precioDesde) {
+    const d = c.precioDesde - t.precioDesde;
+    if (d <= -5000) partes.push("USD " + fmtN(-d) + " menos de entrada");
+    else if (Math.abs(d) / t.precioDesde <= 0.1) partes.push("precio de entrada similar");
+  }
+  if (c.entregaAnio) {
+    if (t.entregaAnio && c.entregaAnio < t.entregaAnio) partes.push("entrega antes (" + c.entregaAnio + ")");
+    else partes.push("entrega " + c.entregaAnio);
+  }
+  if (c.financiacion && !t.financiacion && partes.length < 3) partes.push("con financiación");
+  if (!partes.length) return "";
+  const s = partes.slice(0, 3).join(" · ");
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-function buildEmail(proy, cards, saludo) {
-  const proyNombre = esc(proy.nombre || "el proyecto que viste");
-  const hola = saludo ? "Hola " + esc(saludo) + "," : "Hola,";
-  const cardsHtml = cards.map(emailCard).join("");
-  const cta = esc(withUtm(proy.url || SITE, "cta"));
-  const pre = "Precio, financiación y entrega de " + cards.length + " proyectos parecidos a " + (proy.nombre || "") + " — para comparar y elegir.";
-
-  const html =
-'<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
-'<meta name="x-apple-disable-message-reformatting"><title>Proyectos similares</title></head>' +
-'<body style="margin:0;padding:0;background:' + BG + '">' +
-'<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:' + BG + ';font-size:1px;line-height:1px">' + esc(pre) + '</div>' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:' + BG + '"><tr><td align="center" style="padding:24px 12px">' +
-'<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px">' +
-// Header
-'<tr><td style="background:' + NAVY + ';background-image:linear-gradient(135deg,' + NAVY + ',' + NAVY2 + ');border-radius:16px 16px 0 0;padding:26px 24px">' +
-'<div style="font-family:Arial,Helvetica,sans-serif;color:' + GOLD + ';font-size:12px;letter-spacing:2px;font-weight:bold">DEPARTAMENTOS EN POZO</div>' +
-'<div style="font-family:Georgia,\'Times New Roman\',serif;color:#ffffff;font-size:23px;line-height:1.25;margin-top:8px">Proyectos similares a ' + proyNombre + '</div>' +
-'</td></tr>' +
-// Intro
-'<tr><td style="background:#ffffff;padding:22px 24px 6px 24px;font-family:Arial,Helvetica,sans-serif">' +
-'<p style="margin:0;font-size:15px;line-height:1.6;color:' + INK + '">' + hola + ' viste <b>' + proyNombre + '</b>.</p>' +
-'<p style="margin:10px 0 0 0;font-size:15px;line-height:1.6;color:' + MUTE + '">Seleccionamos estos proyectos en pozo, parecidos en <b>barrio, precio, ambientes y entrega</b>, que también pueden encajar con lo que buscás:</p>' +
-'</td></tr>' +
-// Cards
-'<tr><td style="background:#ffffff;padding:18px 24px 4px 24px">' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">' + cardsHtml + '</table></td></tr>' +
-// CTA
-'<tr><td style="background:#ffffff;padding:6px 24px 26px 24px" align="center">' +
-'<a href="' + cta + '" style="display:inline-block;background:' + GOLD + ';color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;text-decoration:none;padding:14px 26px;border-radius:10px">Ver más proyectos en pozo</a>' +
-'<p style="margin:14px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:' + MUTE + '">Comparamos precio por m&sup2;, entrega y desarrolladora de cada proyecto para que decidas con datos.</p>' +
-'</td></tr>' +
-// Footer
-'<tr><td style="background:#0b1730;border-radius:0 0 16px 16px;padding:20px 24px;font-family:Arial,Helvetica,sans-serif">' +
-'<div style="color:' + GOLD + ';font-size:11px;letter-spacing:1.5px;font-weight:bold">DEPARTAMENTOS EN POZO</div>' +
-'<p style="margin:8px 0 0 0;font-size:11px;line-height:1.6;color:#98a4bd">Portal de an&aacute;lisis independiente de departamentos en pozo en CABA y GBA. No somos la desarrolladora ni la comercializadora de estos proyectos.</p>' +
-'<p style="margin:8px 0 0 0;font-size:11px;line-height:1.6;color:#7c88a3">Si no quer&eacute;s recibir estas recomendaciones, respond&eacute; <b>BAJA</b> a este correo.</p>' +
-'</td></tr>' +
-'</table></td></tr></table></body></html>';
-
-  const text =
-    "Proyectos similares a " + (proy.nombre || "") + "\n\n" +
-    cards.map((s) => "- " + s.nombre + (s.barrio ? " (" + s.barrio + ")" : "") +
-      (s.precioDesde ? " desde " + money(s.precioDesde) : "") + "\n  " + withUtm(s.url)).join("\n") +
-    "\n\nVer más: " + withUtm(proy.url || SITE, "cta") +
-    "\n\nDepartamentos en Pozo — análisis independiente de proyectos en pozo en CABA y GBA. Para dejar de recibir, respondé BAJA.";
-
-  return {
-    emailSubject: cards.length + (cards.length === 1 ? " opción" : " opciones") + " en pozo parecidas a " + (proy.nombre || "el que viste") + (proy.barrio ? " en " + proy.barrio : ""),
-    emailText: text,
-    emailHtml: html,
-  };
+function parseSlugs(v) {
+  return String(v || "").split(/[,\s]+/).map((s) => s.trim().toLowerCase()).filter(Boolean);
 }
 
 export async function GET(req) {
   const url = new URL(req.url);
   const slug = (url.searchParams.get("slug") || "").trim();
   const q = (url.searchParams.get("nombre") || url.searchParams.get("q") || "").trim();
-  const nombreLead = (url.searchParams.get("lead") || "").trim(); // nombre del lead p/ saludo
+  const nombreLead = (url.searchParams.get("lead") || "").trim();
+  const email = (url.searchParams.get("email") || "").trim();
+  const modo = (url.searchParams.get("modo") || "").trim().toLowerCase() === "seguimiento" ? "seguimiento" : "similares";
   const limit = Math.min(Math.max(parseInt(url.searchParams.get("limit") || "4", 10) || 4, 1), 8);
+  const excluir = new Set(parseSlugs(url.searchParams.get("excluir")));
+  const H = { "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" };
+
   const cat = await loadCatalogo();
-  // Resuelve el proyecto objetivo por slug; si no hay, por nombre (para leads que traen el
-  // nombre pero no el slug). Match exacto y, si no, por inclusión normalizada.
+  // Proyecto objetivo por slug; si no hay, por nombre (match exacto y, si no, por inclusión).
   let target = slug ? cat.find((x) => x.slug === slug) : null;
   if (!target && q) {
     const nq = norm(q);
     target = cat.find((x) => norm(x.nombre) === nq) ||
-             cat.find((x) => { const n = norm(x.nombre); return n && (n.includes(nq) || nq.includes(n)); });
+             cat.find((x) => { const n = norm(x.nombre); return n && nq && (n.includes(nq) || nq.includes(n)); });
   }
   if (!target) {
-    return Response.json({ error: "not_found", slug, nombre: q, similares: [] }, { status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
+    return Response.json({ error: "not_found", slug, nombre: q, similares: [], slugs: [] }, { status: 200, headers: H });
   }
+  // FIX: siempre excluir el proyecto consultado (antes, con `nombre` sin slug se comparaba contra "").
+  excluir.add(target.slug);
+  if (slug) excluir.add(slug.toLowerCase());
+
   const ranked = cat
-    .filter((x) => x.slug && x.slug !== slug)
+    .filter((x) => x.slug && !excluir.has(String(x.slug).toLowerCase()) && norm(x.nombre) !== norm(target.nombre))
     .map((c) => ({ c, s: score(target, c) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s)
     .slice(0, limit)
-    .map((x) => cardFrom(x.c));
+    .map((x) => ({ ...cardFrom(x.c), porque: porQue(target, x.c) }));
 
   const proyecto = {
     slug: target.slug, nombre: target.nombre, barrio: target.barrio || "",
     precioDesde: target.precioDesde || null, url: fichaUrl(target.slug),
   };
   const saludo = nombreLead ? nombreLead.split(/\s+/)[0] : "";
-  const email = ranked.length ? buildEmail(proyecto, ranked, saludo) : { emailSubject: "", emailText: "", emailHtml: "" };
+  const bajaUrl = email ? urlBaja(email) : "";
 
-  const out = {
+  // CTA principal: NO volver a la ficha ya vista → landing del barrio (si existe) o catálogo.
+  const landing = landingBarrio(target.barrio, cat);
+  const utm = (content) => ({ medium: modo, campaign: modo, content });
+  const ctaUrl = withUtm(landing ? landing.url : CATALOGO_URL, utm("cta"));
+  const ctaLabel = landing ? "Ver todos los proyectos en " + landing.label : "Ver más proyectos en pozo";
+
+  const n = ranked.length;
+  const pNombre = target.nombre || "el proyecto que viste";
+  const minPrecio = ranked.map((r) => r.precioDesde).filter(Boolean).sort((a, b) => a - b)[0] || null;
+  const minEntrega = ranked.map((r) => {
+    const m = String(r.entregaLabel || "").match(/(20\d\d)/); return m ? Number(m[1]) : null;
+  }).filter(Boolean).sort((a, b) => a - b)[0] || null;
+
+  let subject, preheader, titulo, introHtml, despuesCardsHtml = "";
+  if (modo === "seguimiento") {
+    subject = (saludo ? saludo + ", " : "") + n + (n === 1 ? " opción nueva parecida a " : " opciones nuevas parecidas a ") + pNombre;
+    if (!saludo) subject = subject.charAt(0).toUpperCase() + subject.slice(1);
+    preheader = "¿Ya te contactaron por " + pNombre + "? Si no, avisanos. Y " + n + (n === 1 ? " alternativa" : " alternativas") + " que no viste" + (minPrecio ? ", desde " + money(minPrecio) : "") + ".";
+    titulo = "¿Cómo vas con " + pNombre + "?";
+    introHtml =
+      '<p style="margin:0;font-size:15px;line-height:1.6;color:' + INK + '">' + (saludo ? "Hola " + esc(saludo) + "," : "Hola,") + ' hace unos días consultaste por <b>' + esc(pNombre) + '</b>. ¿Ya te contactaron?</p>' +
+      '<p style="margin:10px 0 0 0;font-size:15px;line-height:1.6;color:' + MUTE + '">Mientras tanto, te dejamos ' + (n === 1 ? "una opción parecida" : n + " opciones parecidas") + ' que todavía no te mostramos:</p>';
+    const asunto = "No me contactaron por " + pNombre;
+    const mailto = "mailto:" + CONTACTO + "?subject=" + encodeURIComponent(asunto);
+    despuesCardsHtml =
+      '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fbf7ee;border:1px solid #ecdcb4;border-radius:12px"><tr><td style="padding:16px 18px">' +
+      '<div style="font-size:16px;font-weight:bold;color:' + NAVY + '">¿No te contactaron todavía?</div>' +
+      '<p style="margin:6px 0 12px 0;font-size:14px;line-height:1.55;color:' + INK + '">Avisanos con un clic y le volvemos a pasar tu consulta a la desarrolladora o comercializadora de ' + esc(pNombre) + '.</p>' +
+      '<a href="' + esc(mailto) + '" style="display:inline-block;background:' + NAVY + ';color:#ffffff;font-size:14px;font-weight:bold;text-decoration:none;padding:11px 18px;border-radius:8px">No me contactaron</a>' +
+      '</td></tr></table><div style="height:14px;line-height:14px">&nbsp;</div>';
+  } else {
+    subject = n + (n === 1 ? " opción" : " opciones") + " en pozo parecidas a " + pNombre + (target.barrio ? " en " + target.barrio : "");
+    preheader = "Mismo barrio y rango de precio" + (minPrecio ? ". El más accesible arranca en " + money(minPrecio) : "") + (minEntrega ? " y entrega " + minEntrega : "") + ".";
+    titulo = "Proyectos similares a " + pNombre;
+    introHtml =
+      '<p style="margin:0;font-size:15px;line-height:1.6;color:' + INK + '">' + (saludo ? "Hola " + esc(saludo) + "," : "Hola,") + ' viste <b>' + esc(pNombre) + '</b>.</p>' +
+      '<p style="margin:10px 0 0 0;font-size:15px;line-height:1.6;color:' + MUTE + '">Seleccionamos estos proyectos en pozo, parecidos en <b>barrio, precio, ambientes y entrega</b>, que también pueden encajar con lo que buscás:</p>';
+  }
+
+  const cardsHtml = ranked.map((r) => emailCard(
+    { ...r, ambientesLabel: r.ambientes },
+    { href: withUtm(r.url, utm("card")), porque: r.porque }
+  )).join("");
+  const ctaHtml = botonPrimario(ctaUrl, ctaLabel) +
+    '<p style="margin:14px 0 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:' + MUTE + '">Comparamos precio por m&sup2;, entrega y desarrolladora de cada proyecto para que decidas con datos.</p>';
+
+  const html = n ? emailLayout({
+    titulo, preheader, introHtml, cardsHtml, despuesCardsHtml, ctaHtml,
+    motivo: "Te escribimos porque consultaste por " + pNombre + " en Departamentos en Pozo.",
+    bajaUrl,
+  }) : "";
+
+  const text = n ? (
+    titulo + "\n\n" +
+    ranked.map((s) => "- " + s.nombre + (s.barrio ? " (" + s.barrio + ")" : "") +
+      (s.precioDesde ? " desde " + money(s.precioDesde) : "") + (s.porque ? " — " + s.porque : "") +
+      "\n  " + withUtm(s.url, utm("card"))).join("\n") +
+    (modo === "seguimiento" ? "\n\n¿No te contactaron todavía? Escribinos a " + CONTACTO + " con el asunto \"No me contactaron por " + pNombre + "\"." : "") +
+    "\n\n" + ctaLabel + ": " + ctaUrl +
+    "\n\nDepartamentos en Pozo — análisis independiente de proyectos en pozo en CABA y GBA." +
+    (bajaUrl ? "\nDarme de baja: " + bajaUrl : "\nPara dejar de recibir, respondé BAJA.")
+  ) : "";
+
+  return Response.json({
     proyecto,
     similares: ranked,
+    slugs: ranked.map((r) => r.slug),
+    modo,
     site: SITE,
-    emailSubject: email.emailSubject,
-    emailText: email.emailText,
-    emailHtml: email.emailHtml,
-  };
-  return Response.json(out, { status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
+    subject: n ? subject : "",
+    preheader: n ? preheader : "",
+    html,
+    text,
+    unsubscribe: bajaUrl || null,
+    ctaUrl,
+    // Alias compat (Apps Script enviarSimilares / leadPipeline actuales).
+    emailSubject: n ? subject : "",
+    emailText: text,
+    emailHtml: html,
+  }, { status: 200, headers: H });
 }

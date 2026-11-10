@@ -6,7 +6,7 @@ import { useState } from "react";
 import AsesorModal from "../../asesor/AsesorModal";
 import { track } from "../../../lib/track";
 
-export default function CTAContextual({ pedido, nombre, slug, label, icon = "forum", variant = "line" }) {
+export default function CTAContextual({ pedido, nombre, slug, label, icon = "forum", variant = "line", barrio = "", precio = null }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -22,7 +22,7 @@ export default function CTAContextual({ pedido, nombre, slug, label, icon = "for
         <span className="material-symbols-outlined text-[18px]">{icon}</span>
         {label}
       </button>
-      {open && <AsesorModal nombre={nombre} slug={slug} pedido={pedido} leadFirst onClose={() => setOpen(false)} />}
+      {open && <AsesorModal nombre={nombre} slug={slug} barrio={barrio} precio={precio} pedido={pedido} leadFirst onClose={() => setOpen(false)} />}
     </>
   );
 }

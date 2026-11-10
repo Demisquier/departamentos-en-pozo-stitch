@@ -539,7 +539,7 @@ export default async function FichaProyecto({ params }) {
                   Referencia sobre datos propios del catálogo; el valor final depende de piso, orientación, amenities y avance de obra.
                 </p>
                 <div className="mt-3">
-                  <CTAContextual nombre={nombre} slug={d.slug} pedido={`un análisis de si el precio de ${nombre} es conveniente para ${precioCtx.barrioLabel}`} label="Pedir análisis de precio" icon="query_stats" />
+                  <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`un análisis de si el precio de ${nombre} es conveniente para ${precioCtx.barrioLabel}`} label="Pedir análisis de precio" icon="query_stats" />
                 </div>
               </div>
             ) : null}
@@ -566,7 +566,7 @@ export default async function FichaProyecto({ params }) {
                       Ver los {devStats.n} proyectos de {constructora} →
                     </Link>
                   )}
-                  <CTAContextual nombre={nombre} slug={d.slug} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
+                  <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
                 </div>
                 <p className="text-[12px] text-on-surface-variant mt-3">
                   Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo.
@@ -683,7 +683,7 @@ export default async function FichaProyecto({ params }) {
                       <span className={it.ok ? 'text-primary' : 'text-on-surface-variant'}>{it.k}</span>
                       {!it.ok && (
                         <span className="block sm:inline sm:ml-2 mt-1 sm:mt-0">
-                          <CTAContextual nombre={nombre} slug={d.slug} pedido={it.pedido} label="Pedir este dato" icon="forum" />
+                          <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={it.pedido} label="Pedir este dato" icon="forum" />
                         </span>
                       )}
                     </span>
@@ -712,6 +712,19 @@ export default async function FichaProyecto({ params }) {
                 </p>
               )}
             </div>
+
+            {/* Alerta contextual (fuente 'ficha'): card clara, debajo de la descripción, para no
+                competir con los CTAs de contacto del sidebar. zonas = barrio, presupuesto ≈ precio. */}
+            <AlertaCTA
+              variant="soft"
+              fuente="ficha"
+              contexto={barrio && barrio !== 'Buenos Aires' ? barrio : ''}
+              presupuesto={precioDesdeNum ? String(Math.round((precioDesdeNum * 1.15) / 1000) * 1000) : ''}
+              referencia={nombre}
+              titulo={`Avisame si baja el precio o salen unidades nuevas${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}`}
+              texto={`Te escribimos sólo si hay novedades de ${nombre} o un lanzamiento parecido${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}. Sin spam, baja con un clic.`}
+              cta="Avisame"
+            />
 
             {/* Legal / Rentabilidad (prose, solo si hay dato) */}
             {legal && (
@@ -771,7 +784,7 @@ export default async function FichaProyecto({ params }) {
                 Síntesis editorial independiente sobre datos propios; no es asesoramiento financiero. — Equipo Departamentos en Pozo
               </p>
               <div className="mt-3">
-                <CTAContextual nombre={nombre} slug={d.slug} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
+                <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
               </div>
             </div>
 
@@ -802,9 +815,6 @@ export default async function FichaProyecto({ params }) {
               pueden variar y no constituyen asesoramiento financiero ni oferta comercial. Verificá precios, plazos y
               condiciones legales antes de invertir. Las imágenes son de referencia, gentileza de la desarrolladora o de fuentes públicas; los derechos pertenecen a sus autores.
             </p>
-
-            {/* Captura de leads: alerta para este perfil de proyecto */}
-            <AlertaCTA titulo="¿Buscás un proyecto así?" texto={`Activá una alerta y te avisamos cuando aparezca un nuevo lanzamiento en ${barrio} o en el barrio que elijas, antes de que salga a los portales.`} cta="Crear alerta" />
 
             {/* Intake: si el que mira es la desarrolladora/comercializadora, que cargue o actualice hablando. */}
             <IntakeLauncher variant="banner" />

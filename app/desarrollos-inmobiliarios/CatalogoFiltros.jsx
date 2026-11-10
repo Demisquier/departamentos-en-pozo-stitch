@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
 import BarrioModal from '../_ui/BarrioModal';
+import GuardarBusqueda from '../_ui/GuardarBusqueda';
 import { leerAfinidad, puntajeAfinidad, grupoPers } from '../../lib/afinidad';
 
 // Normaliza un nombre de barrio (saca acentos, minúsculas) para dedupe/match acento-insensible.
@@ -16,6 +17,8 @@ const PRECIO_TOTAL = {
   '250a400': { label: 'USD 250.000–400.000', chip: 'USD 250k–400k', test: (p) => p > 250000 && p <= 400000 },
   mas400: { label: '+USD 400.000', chip: '+USD 400k', test: (p) => p > 400000 },
 };
+// Tope de presupuesto (USD) por rango, para "Guardar esta búsqueda" (alerta). +400k = sin tope.
+const PRECIO_TOTAL_MAX = { hasta150: '150000', '150a250': '250000', '250a400': '400000', mas400: '' };
 const PRECIO_M2_LBL = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
 
 // Proyectos DESTACADOS (monetizable / editorial): van primero en el orden por defecto
@@ -342,6 +345,17 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   const hayFiltros = activeCount > 0;
   const conCoord = filtered.filter((i) => i.lat != null).length;
 
+  // "Guardar esta búsqueda" → alerta por email con los filtros que la alerta sabe matchear
+  // (barrio, presupuesto total, ambientes). El resto de los filtros va en el resumen.
+  const zonaAlerta = barrio || barrioFijo || '';
+  const busquedaAlerta = {
+    zonas: zonaAlerta,
+    presupuesto: precioTotal !== 'todos' ? (PRECIO_TOTAL_MAX[precioTotal] || '') : '',
+    ambientes: amb || '',
+    resumen: [zonaAlerta, amb ? `${amb} amb` : '', precioTotal !== 'todos' ? PRECIO_TOTAL[precioTotal].chip : ''].filter(Boolean).join(' · '),
+  };
+  const puedeGuardar = hayFiltros || !!barrioFijo;
+
   const activeChips = () => {
     const a = [];
     if (barrio) a.push([barrio, () => setBarrio('')]);
@@ -514,6 +528,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         )}
       </div>
 
+      {puedeGuardar && filtered.length > 0 && (
+        <div className="mb-5">
+          <GuardarBusqueda {...busquedaAlerta} />
+        </div>
+      )}
+
       {/* "Más filtros" (desktop): MODAL centrado (no un panel que se despega al scrollear). */}
       {masOpen && (
         <div className="hidden md:block fixed inset-0 z-[70]" role="dialog" aria-modal="true" aria-label="Más filtros">
@@ -617,6 +637,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
                 </div>
               </>
             )}
+            {puedeGuardar && <GuardarBusqueda destacado {...busquedaAlerta} />}
           </div>
         );
       })()}

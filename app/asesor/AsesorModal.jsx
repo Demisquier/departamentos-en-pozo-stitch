@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import AsesorChat from "./AsesorChat";
 import AsesorIA from "../asesor-ia/AsesorIA";
 
-export default function AsesorModal({ nombre = "", slug = "", pedido = "", leadFirst = false, onClose }) {
+export default function AsesorModal({ nombre = "", slug = "", pedido = "", barrio = "", precio = null, leadFirst = false, onClose }) {
   const [vp, setVp] = useState(null); // { top, height } en mobile, o null en desktop
   const [modo, setModo] = useState(null); // null=chequeando · "ia" · "scripted"
 
@@ -61,7 +61,7 @@ export default function AsesorModal({ nombre = "", slug = "", pedido = "", leadF
         ) : modo === "ia" ? (
           <AsesorIA embedded proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
         ) : (
-          <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} pedido={pedido} onClose={onClose} />
+          <AsesorChat proyectoNombre={nombre} proyectoSlug={slug} proyectoBarrio={barrio} proyectoPrecio={precio} pedido={pedido} onClose={onClose} />
         )}
       </div>
     </div>

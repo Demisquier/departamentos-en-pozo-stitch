@@ -45,7 +45,7 @@ export default function AccionesFicha({
             QUIERO QUE ME CONTACTEN
             <span className="material-symbols-outlined text-[18px]">forum</span>
           </button>}
-          {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="full" />}
+          {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} precio={precioDesdeNum} variant="full" />}
 
           <p className="text-[12px] text-on-surface-variant leading-relaxed mt-4 flex items-start gap-2">
             <span className="material-symbols-outlined text-[16px] text-link-gold">info</span>
@@ -64,10 +64,10 @@ export default function AccionesFicha({
           QUIERO QUE ME CONTACTEN
           <span className="material-symbols-outlined fill-icon text-[18px]">send</span>
         </button>}
-        {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} variant="bar" />}
+        {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} precio={precioDesdeNum} variant="bar" />}
       </div>
 
-      {asesorOpen && <AsesorModal nombre={nombre} slug={slug} leadFirst onClose={() => setAsesorOpen(false)} />}
+      {asesorOpen && <AsesorModal nombre={nombre} slug={slug} barrio={barrio} precio={precioDesdeNum} leadFirst onClose={() => setAsesorOpen(false)} />}
     </>
   );
 }

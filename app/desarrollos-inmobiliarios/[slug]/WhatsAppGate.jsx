@@ -2,12 +2,13 @@
 import { useState, useEffect } from "react";
 import { track } from "../../../lib/track";
 import { postLead } from "../../../lib/leadOnce";
+import AlertaPostLead from "../../_ui/AlertaPostLead";
 
 // Botón de WhatsApp con CAPTURA previa: pide nombre + WhatsApp (email opcional) antes de
 // abrir la conversación. Así el lead queda registrado (Sheet + mail a la desarrolladora vía
 // /api/lead) aunque el usuario después no escriba. Prellenamos con el perfil guardado.
 // Destino: el WhatsApp de la desarrolladora si lo tenemos; si no, la línea del sitio.
-export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, dev, variant = "full" }) {
+export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, dev, precio = null, variant = "full" }) {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ nombre: "", whatsapp: "", email: "" });
   const [err, setErr] = useState("");
@@ -76,7 +77,8 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
     if (esDelDev && phone) {
       const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(mensaje);
       window.open(url, "_blank", "noopener");
-      setOpen(false);
+      // El modal queda abierto en estado de éxito (con la oferta de alerta post-lead).
+      setEnviado(true);
     } else {
       // Sin WhatsApp del dev: NO abrimos wa.me a la linea del sitio (evita que el lead caiga
       // en un WhatsApp personal). El lead ya quedo capturado y ruteado por mail a la
@@ -108,7 +110,8 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
               <div className="text-center py-4">
                 <span className="material-symbols-outlined text-[42px]" style={{ color: "#1FA855" }}>check_circle</span>
                 <h4 className="font-headline-sm text-headline-sm text-primary mt-2">¡Listo, lo tomamos!</h4>
-                <p className="text-[13px] text-on-surface-variant mt-1">Le pasamos tu consulta por <strong>{nombre}</strong> a la desarrolladora y te vamos a contactar. No te soltamos: seguimos acompañándote desde Departamentos en Pozo.</p>
+                <p className="text-[13px] text-on-surface-variant mt-1">{esDelDev && phone ? <>Te abrimos WhatsApp con la comercializadora de <strong>{nombre}</strong>. Si no se abrió, <a href={"https://wa.me/" + phone + "?text=" + encodeURIComponent(mensaje)} target="_blank" rel="noopener" className="underline hover:text-secondary">tocá acá</a>.</> : <>Le pasamos tu consulta por <strong>{nombre}</strong> a la desarrolladora y te vamos a contactar. No te soltamos: seguimos acompañándote desde Departamentos en Pozo.</>}</p>
+                <AlertaPostLead className="mt-4" barrio={barrio} precio={precio} email={form.email} proyecto={nombre} nombre={form.nombre} whatsapp={form.whatsapp} />
                 <button type="button" onClick={() => { setOpen(false); setEnviado(false); }} className="mt-4 w-full py-3 rounded font-label-caps text-label-caps tracking-widest bg-primary-container text-on-primary hover:opacity-90 transition-all">Cerrar</button>
               </div>
             ) : (

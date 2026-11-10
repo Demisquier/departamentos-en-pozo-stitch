@@ -125,6 +125,7 @@ export default function ExplorarConversacional() {
         body: JSON.stringify({ messages: next.slice(-12) }),
       });
       const d = await r.json();
+      if (d?.alerta?.ok) track("alerta_lead", { fuente: "chat", zonas: d.alerta.zonas || "" });
       const sug = Array.isArray(d?.sugeridos) ? d.sugeridos : [];
       setMsgs((m) => {
         const out = [...m, { role: "assistant", content: d?.reply || "Disculpá, no pude responder. Probá reformular en una frase." }];

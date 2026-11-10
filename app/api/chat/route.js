@@ -6,7 +6,9 @@
 // Cuando la consulta menciona un barrio, inyecta DATOS DE MERCADO (precio/m² y desde
 // mediana) para que Valentina responda con datos reales = más confianza y conversión.
 // Sin OPENAI_API_KEY: 200 { needsKey:true } (degrada, no rompe). Errores → 200 { error:true }.
-import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat, detectBarrio, statsBarrio } from "../../../lib/ia";
+import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat, detectBarrio, statsBarrio, parseBudget } from "../../../lib/ia";
+import { guardarAlertaServer } from "../../../lib/alertaServer";
+import { landingDeBarrio, BARRIO_CATALOGO } from "../../../lib/barrios";
 import { SITE } from "../../../lib/wp";
 
 export const runtime = "nodejs";
@@ -23,7 +25,9 @@ Reglas:
 - Sé honesta con los riesgos del pozo: fideicomiso, avance de obra, ajuste por CAC (índice de la construcción), plazos de entrega. No prometas rentabilidad.
 - CONVERSIÓN (value-first): cuando muestres proyectos o la persona pregunte precio, cuota, entrega, financiación o disponibilidad, ofrecé de forma concreta que el desarrollador le pase esos datos actualizados por WhatsApp y pedile NOMBRE y WHATSAPP. Ej: "Si querés, el desarrollador te pasa precio, cuota y disponibilidad de [proyecto] por WhatsApp — ¿me dejás tu nombre y número?". Una sola vez por turno, sin insistir de más.
 - Respuestas breves (máx ~90 palabras). No uses tablas markdown.
-- Escribí SIEMPRE como en un chat de WhatsApp: 1 a 3 frases seguidas, tono charlado. NADA de encabezados, viñetas, listas numeradas, negritas ni "fichas" de texto. Si necesitás un dato de la persona (nombre, WhatsApp, zona, presupuesto), pedilo conversando, uno por vez, dentro de la charla.`;
+- Escribí SIEMPRE como en un chat de WhatsApp: 1 a 3 frases seguidas, tono charlado. NADA de encabezados, viñetas, listas numeradas, negritas ni "fichas" de texto. Si necesitás un dato de la persona (nombre, WhatsApp, zona, presupuesto), pedilo conversando, uno por vez, dentro de la charla.
+- ALERTAS: cuando la persona no encuentra lo que busca (no hay proyectos que matcheen, el presupuesto no alcanza, "nada me convence") o cuando la charla se está cerrando ("gracias", "lo pienso", "después veo"), ofrecé crear una ALERTA por email con su barrio y presupuesto. Ej: "Si querés, te armo una alerta y te aviso por mail apenas salga algo en [barrio] hasta USD [presupuesto]. ¿A qué email te escribo?". Usá la palabra "alerta" y pedí el EMAIL. Una sola vez por conversación; si ya dio el email, no lo vuelvas a pedir.
+- Si en el CONTEXTO aparece "ALERTA CREADA", confirmá en una frase que la alerta quedó activa (barrio y tope si los hay) y que puede darse de baja con un clic desde cualquier mail.`;
 
 export async function GET() {
   return Response.json({ ready: hasKey() });
@@ -68,9 +72,30 @@ export async function POST(req) {
       ? SITE + "/buscar/#q=" + encodeURIComponent(q).slice(0, 300)
       : CATALOGO_URL;
 
+    // Alerta desde el chat (sin tools): si Valentina ofreció una alerta en su último mensaje y
+    // el usuario respondió con un email → alta como lead origen "Alerta" (zonas = barrio detectado
+    // en la charla, presupuesto = el que mencionó). Se le avisa al LLM para que lo confirme.
+    let alerta = null;
+    const idxUser = messages.lastIndexOf(lastUser);
+    const prevAsis = [...messages.slice(0, idxUser)].reverse().find((m) => m?.role === "assistant");
+    const emailUser = String(lastUser?.content || "").match(/[^\s@<>()]+@[^\s@<>()]+\.[a-z]{2,}/i);
+    if (emailUser && prevAsis && /alerta|te aviso|avisarte|avisamos/i.test(String(prevAsis.content || ""))) {
+      const textoUser = messages.filter((m) => m?.role === "user").map((m) => String(m.content || "")).join(" ").replace(/[^\s@]+@[^\s@]+/g, " ");
+      const bDet = detectBarrio(catalogo, textoUser + " " + proyecto);
+      const sl = bDet ? landingDeBarrio(bDet) : null;
+      const zonas = sl ? BARRIO_CATALOGO[sl].label : (bDet || "");
+      const presupuesto = parseBudget(textoUser) || "";
+      const ambM = textoUser.match(/(\d)\s*(?:amb|ambientes|dorm)/i) || (/monoambiente/i.test(textoUser) ? [null, "1"] : null);
+      const r = await guardarAlertaServer({
+        email: emailUser[0], zonas, presupuesto, ambientes: ambM ? ambM[1] : "", fuente: "chat",
+        mensaje: "Alerta creada desde el chat de Valentina" + (proyecto ? " · contexto: " + proyecto : ""),
+      }).catch(() => ({ ok: false }));
+      alerta = { ok: !!r.ok, email: emailUser[0], zonas: zonas || "abierto", presupuesto: presupuesto || null };
+    }
+
     const chat = [
       { role: "system", content: SYSTEM },
-      { role: "system", content: `CONTEXTO — proyectos del catálogo relevantes a la consulta:\n${contexto}${contextoMkt}` },
+      { role: "system", content: `CONTEXTO — proyectos del catálogo relevantes a la consulta:\n${contexto}${contextoMkt}${alerta && alerta.ok ? `\n\nALERTA CREADA para ${alerta.email}: zonas ${alerta.zonas === "abierto" ? "todo CABA" : alerta.zonas}${alerta.presupuesto ? `, hasta USD ${Number(alerta.presupuesto).toLocaleString("es-AR")}` : ""}.` : ""}` },
       ...messages
         .filter((m) => m && (m.role === "user" || m.role === "assistant") && m.content)
         .slice(-10)
@@ -80,7 +105,7 @@ export async function POST(req) {
     const reply = (await openaiChat(chat, { temperature: 0.4 })) ||
       "Disculpá, no pude generar una respuesta. ¿Querés dejarme tu WhatsApp y te contacta un asesor?";
 
-    return Response.json({ reply, sugeridos, verMas });
+    return Response.json({ reply, sugeridos, verMas, alerta });
   } catch {
     return Response.json({
       error: true,

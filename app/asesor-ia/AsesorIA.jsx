@@ -61,6 +61,7 @@ export default function AsesorIA({ embedded = false, proyectoNombre = "", proyec
         body: JSON.stringify({ messages: next.slice(-12), proyecto: proyectoNombre || "" }),
       });
       const d = await r.json();
+      if (d?.alerta?.ok) track("alerta_lead", { fuente: "chat", zonas: d.alerta.zonas || "" });
       setMsgs((m) => [...m, { role: "assistant", content: d?.reply || "Disculpá, no pude responder. Probá de nuevo." }]);
       if (Array.isArray(d?.sugeridos)) setSugeridos(d.sugeridos);
       if (typeof d?.verMas === "string") setVerMas(d.verMas);

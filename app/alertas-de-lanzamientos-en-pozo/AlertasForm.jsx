@@ -1,19 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { crearAlerta } from "../../lib/alertaLead";
+import { BARRIO_CATALOGO, zonaDeBarrio } from "../../lib/barrios";
 
-// Captura de alertas de lanzamientos. Reusa el pipeline de leads existente
-// (/api/contacto → CPT lead) empaquetando los filtros en `mensaje` y
-// etiquetando origen="alerta-lanzamientos". Arranque manual: los envios se
-// disparan a mano hasta automatizar el match desarrollo→suscriptor.
-const BARRIOS = ["Cualquier barrio", "Palermo", "Caballito", "Belgrano", "Nunez", "Puerto Madero", "Villa Urquiza", "Colegiales", "Coghlan", "Otro / no se todavia"];
-const RANGOS = ["Sin definir", "Hasta USD 120.000", "USD 120.000 - 200.000", "USD 200.000 - 350.000", "Mas de USD 350.000"];
-const ETAPAS = ["Cualquier etapa", "Pozo (inicio de obra)", "En construccion", "Proxima a entrega"];
+// Alta de alertas de lanzamientos. Va por /api/lead con el shape ÚNICO de alertas
+// (lib/alertaLead → origen "Alerta", tipo "alerta_lanzamiento") y con zonas / presupuesto /
+// ambientes en COLUMNAS propias, así llega a la planilla que lee el job de alertas
+// (antes posteaba a /api/contacto, otro webhook, con todo metido en "mensaje").
+const ABIERTO = "Cualquier barrio de CABA";
+const BARRIOS = [ABIERTO, ...Object.values(BARRIO_CATALOGO).map((b) => b.label).filter((l) => zonaDeBarrio(l) === "Capital Federal").sort((a, b) => a.localeCompare(b, "es")), "Zona Norte (GBA)", "Zona Oeste (GBA)", "Zona Sur (GBA)", "La Plata"];
+const ZONA_VALOR = { [ABIERTO]: "abierto", "Zona Norte (GBA)": "zona norte", "Zona Oeste (GBA)": "zona oeste", "Zona Sur (GBA)": "zona sur" };
+// Rango → presupuesto máximo (USD). "Más de 350k" no pone tope.
+const RANGOS = [
+  ["Sin definir", ""], ["Hasta USD 120.000", "120000"], ["Hasta USD 200.000", "200000"],
+  ["Hasta USD 350.000", "350000"], ["Más de USD 350.000", ""],
+];
+const AMBIENTES = [["Cualquiera", ""], ["1 amb (monoambiente)", "1"], ["2 amb", "2"], ["3 amb", "3"], ["4 amb o más", "4+"]];
+const ETAPAS = ["Cualquier etapa", "Pozo (inicio de obra)", "En construcción", "Próxima a entrega"];
 
 export default function AlertasForm() {
   const [form, setForm] = useState({
     nombre: "", email: "", whatsapp: "",
-    barrio: BARRIOS[0], rango: RANGOS[0], etapa: ETAPAS[0],
+    barrio: BARRIOS[0], rango: RANGOS[0][0], ambientes: "", etapa: ETAPAS[0],
     _gotcha: "",
   });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -22,26 +31,20 @@ export default function AlertasForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (form._gotcha) { setStatus("sent"); return; }
     setStatus("sending");
-    const payload = {
-      nombre: form.nombre,
-      email: form.email,
-      whatsapp: form.whatsapp,
-      origen: "alerta-lanzamientos",
-      mensaje: `Alta de alerta de lanzamientos | Barrio: ${form.barrio} | Rango: ${form.rango} | Etapa: ${form.etapa}`,
-      _gotcha: form._gotcha,
-    };
-    try {
-      const res = await fetch("/api/contacto", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("bad response");
+    const presupuesto = (RANGOS.find((r) => r[0] === form.rango) || ["", ""])[1];
+    const zonas = ZONA_VALOR[form.barrio] || form.barrio;
+    const r = await crearAlerta({
+      email: form.email, nombre: form.nombre, whatsapp: form.whatsapp,
+      zonas, presupuesto, ambientes: form.ambientes, fuente: "alertas_form",
+      mensaje: `Alta de alerta de lanzamientos | Barrio: ${form.barrio} | Rango: ${form.rango} | Ambientes: ${form.ambientes || "cualquiera"} | Etapa: ${form.etapa}`,
+    });
+    if (r.ok) {
       setStatus("sent");
       setForm((p) => ({ ...p, nombre: "", email: "", whatsapp: "" }));
       setTimeout(() => setStatus("idle"), 5000);
-    } catch {
+    } else {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 5000);
     }
@@ -67,17 +70,23 @@ export default function AlertasForm() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="space-y-2">
-            <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-barrio">Barrio de interes</label>
+            <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-barrio">Barrio de interés</label>
             <select id="a-barrio" name="barrio" value={form.barrio} onChange={handleChange} className={selCls}>
               {BARRIOS.map((b) => <option key={b} value={b}>{b}</option>)}
             </select>
           </div>
           <div className="space-y-2">
-            <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-rango">Rango de inversion</label>
+            <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-rango">Presupuesto</label>
             <select id="a-rango" name="rango" value={form.rango} onChange={handleChange} className={selCls}>
-              {RANGOS.map((r) => <option key={r} value={r}>{r}</option>)}
+              {RANGOS.map(([r]) => <option key={r} value={r}>{r}</option>)}
+            </select>
+          </div>
+          <div className="space-y-2">
+            <label className="font-label-caps text-on-surface-variant uppercase text-[12px]" htmlFor="a-amb">Ambientes</label>
+            <select id="a-amb" name="ambientes" value={form.ambientes} onChange={handleChange} className={selCls}>
+              {AMBIENTES.map(([l, v]) => <option key={l} value={v}>{l}</option>)}
             </select>
           </div>
           <div className="space-y-2">
@@ -103,11 +112,11 @@ export default function AlertasForm() {
           {(status === "idle" || status === "error") && (<>Activar mi alerta <span className="material-symbols-outlined text-[18px]">notifications_active</span></>)}
         </button>
 
-        {status === "sent" && (<p className="text-center text-[13px] text-secondary">Listo. Te vamos a avisar cuando aparezca un proyecto que encaje con tu busqueda.</p>)}
+        {status === "sent" && (<p className="text-center text-[13px] text-secondary">Listo. Te vamos a avisar cuando aparezca un proyecto que encaje con tu búsqueda.</p>)}
         {status === "error" && (<p className="text-center text-[12px] text-error">Hubo un problema. Por favor, intenta de nuevo.</p>)}
 
         <p className="text-center text-[12px] text-on-surface-variant italic">
-          Sin spam. Cuidamos tus datos: no los compartimos ni los vendemos. Podes darte de baja cuando quieras.
+          Sin spam. Cuidamos tus datos: no los compartimos ni los vendemos. Podés darte de baja con un clic desde cualquier mail.
         </p>
       </form>
     </div>

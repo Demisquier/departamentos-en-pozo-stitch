@@ -11,6 +11,8 @@ import Link from "next/link";
 import { supabase, authEnabled } from "../../lib/supabase";
 import { track } from "../../lib/track";
 import { postLead } from "../../lib/leadOnce";
+import { landingDeBarrio, BARRIO_CATALOGO } from "../../lib/barrios";
+import AlertaPostLead from "../_ui/AlertaPostLead";
 
 const BOT = "Valentina";
 
@@ -46,7 +48,7 @@ function camposFaltantes(esLead, k) {
   });
 }
 
-export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", pedido = "", onClose = null }) {
+export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", proyectoBarrio = "", proyectoPrecio = null, pedido = "", onClose = null }) {
   const [msgs, setMsgs] = useState([]);
   const [typing, setTyping] = useState(true);
   const [modo, setModo] = useState(proyectoNombre ? "lead" : "buscador");
@@ -313,6 +315,19 @@ export default function AsesorChat({ proyectoNombre = "", proyectoSlug = "", ped
             <Link href="/mi-seleccion/" className="rounded border border-outline-variant px-5 py-2.5 text-[13px] text-primary hover:border-secondary transition-colors">Ver mi Plan</Link>
           </div>
         )}
+
+        {(fase === "ok" || fase === "okBuscar") && leadRef.current.sent && (() => {
+          // Post-lead: oferta de alerta (1 clic si ya tenemos el email). En modo buscador, la zona
+          // sale de lo que contestó en "interés" si es un barrio con landing.
+          const p = perfilRef.current || {};
+          const sl = !proyectoBarrio && p.interes ? landingDeBarrio(String(p.interes).trim()) : null;
+          const barrioAlerta = proyectoBarrio && proyectoBarrio !== "Buenos Aires" ? proyectoBarrio : (sl ? BARRIO_CATALOGO[sl].label : "");
+          return (
+            <div className="px-4 pt-3">
+              <AlertaPostLead barrio={barrioAlerta} precio={proyectoPrecio} email={p.email || ""} proyecto={proyecto} nombre={p.nombre || ""} whatsapp={p.whatsapp || ""} />
+            </div>
+          );
+        })()}
 
         {fase === "okBuscar" && (
           <div className="p-4 flex items-center justify-center gap-3 flex-wrap">
