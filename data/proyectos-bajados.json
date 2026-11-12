@@ -498,6 +498,11 @@
    "tipo": "no_es_departamentos",
    "revisable": true,
    "motivo": "Aviso de cocheras, no de departamentos en pozo."
+  },
+  "edificio-3-de-febrero-181-san-isidro": {
+   "fecha": "2026-11-12",
+   "pedido_por": "Olivia Vinelli (Vinelli Inmobiliaria)",
+   "motivo": "No tienen unidades disponibles y no autorizaron la publicación. Pidió la baja por mail (respuesta al outreach 12/11)."
   }
  },
  "inmobiliarias": [
