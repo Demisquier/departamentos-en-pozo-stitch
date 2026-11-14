@@ -40,6 +40,7 @@ export default function ProjectCard({
   entrega,
   desarrolladora,
   destacado,     // slot destacado (monetizable) → badge + prioridad de orden
+  sellos,        // tipos de sello verificados de la desarrolladora/inmobiliaria (opcional)
   nuevaPestana,  // abrir en pestaña nueva (se usa desde el catálogo filtrado para no perder los filtros)
 }) {
   const m2 = precioM2 ?? precio;  // compat con llamadas viejas
@@ -98,6 +99,11 @@ export default function ProjectCard({
           <span className="text-secondary font-label-caps text-[11px] tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">VER <span className="material-symbols-outlined text-[16px]">arrow_forward</span></span>
         </div>
         {devLine(desarrolladora) && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">{devLine(desarrolladora)}</p>)}
+        {sellos && sellos.length > 0 && (
+          <p className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider text-green-800 bg-green-700/10 rounded px-2 py-0.5">
+            <span className="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>Sello de confianza
+          </p>
+        )}
       </div>
     </Link>
   );

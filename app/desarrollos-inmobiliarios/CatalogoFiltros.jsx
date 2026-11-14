@@ -144,7 +144,8 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
   const [etapa, setEtapa] = useState('');
   // Secundarios ("Más filtros")
   const [entregaMax, setEntregaMax] = useState('');
-  const [fin, setFin] = useState(false);              // forma de pago: con financiación (cuotas)
+  const [fin, setFin] = useState(false);
+  const [confianza, setConfianza] = useState(false);  // solo desarrolladora/inmobiliaria con sello verificado              // forma de pago: con financiación (cuotas)
   const [desarrolladora, setDesarrolladora] = useState('');
   const [precioTotal, setPrecioTotal] = useState('todos');
   // UI
@@ -171,6 +172,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     if (sp.get('etapa')) setEtapa(sp.get('etapa'));
     if (sp.get('entrega')) setEntregaMax(sp.get('entrega'));
     if (sp.get('fin') === '1') setFin(true);
+    if (sp.get('confianza') === '1') setConfianza(true);
     if (sp.get('dev')) setDesarrolladora(sp.get('dev'));
     if (sp.get('ptot')) setPrecioTotal(sp.get('ptot'));
     if (sp.get('orden')) setOrden(sp.get('orden'));
@@ -211,12 +213,13 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     if (etapa) sp.set('etapa', etapa);
     if (entregaMax) sp.set('entrega', entregaMax);
     if (fin) sp.set('fin', '1');
+    if (confianza) sp.set('confianza', '1');
     if (desarrolladora) sp.set('dev', desarrolladora);
     if (precioTotal !== 'todos') sp.set('ptot', precioTotal);
     if (orden !== 'destacados') sp.set('orden', orden);
     const qs = sp.toString();
     window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
-  }, [barrio, amb, precio, etapa, entregaMax, fin, desarrolladora, precioTotal, orden, barrioFijo]);
+  }, [barrio, amb, precio, etapa, entregaMax, fin, confianza, desarrolladora, precioTotal, orden, barrioFijo]);
 
   // Bloqueo de scroll del body mientras el bottom-sheet mobile está abierto.
   useEffect(() => {
@@ -298,6 +301,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       if (etapa && (i.etapa || '').toLowerCase() !== etapa) return false;
       if (entregaMax && (i.entregaAnio == null || i.entregaAnio > Number(entregaMax))) return false;
       if (fin && !i.financiacion) return false;
+      if (confianza && !(i.sellos && i.sellos.length)) return false;
       if (desarrolladora && i.desarrolladora !== desarrolladora) return false;
       return true;
     });
@@ -329,7 +333,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, desarrolladora, orden, prefBarrios, afinidad]);
+  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, confianza, desarrolladora, orden, prefBarrios, afinidad]);
 
   const chip = (active) =>
     `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
@@ -338,11 +342,12 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
 
   const limpiar = () => {
     setBarrio(''); setAmb(''); setPrecio('todos'); setEtapa('');
-    setEntregaMax(''); setFin(false); setDesarrolladora(''); setPrecioTotal('todos');
+    setEntregaMax(''); setFin(false); setConfianza(false); setDesarrolladora(''); setPrecioTotal('todos');
   };
   const secundariosCount = [entregaMax, fin, desarrolladora, precio !== 'todos'].filter(Boolean).length;
-  const activeCount = [barrio, amb, precioTotal !== 'todos', etapa].filter(Boolean).length + secundariosCount;
+  const activeCount = [barrio, amb, precioTotal !== 'todos', etapa, confianza].filter(Boolean).length + secundariosCount;
   const hayFiltros = activeCount > 0;
+  const nConSello = items.filter((i) => i.sellos && i.sellos.length).length;
   const conCoord = filtered.filter((i) => i.lat != null).length;
 
   // "Guardar esta búsqueda" → alerta por email con los filtros que la alerta sabe matchear
@@ -365,6 +370,7 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     if (etapa) a.push([etapa === 'en pozo' ? 'En pozo' : 'En construcción', () => setEtapa('')]);
     if (entregaMax) a.push([`Entrega hasta ${entregaMax}`, () => setEntregaMax('')]);
     if (fin) a.push(['Con financiación', () => setFin(false)]);
+    if (confianza) a.push(['Con sello de confianza', () => setConfianza(false)]);
     if (desarrolladora) a.push([desarrolladora, () => setDesarrolladora('')]);
     return a;
   };
@@ -397,6 +403,11 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     <>
       <button type="button" aria-pressed={etapa === 'en pozo'} className={chip(etapa === 'en pozo')} onClick={() => setEtapa(etapa === 'en pozo' ? '' : 'en pozo')}>En pozo</button>
       <button type="button" aria-pressed={etapa === 'en construcción'} className={chip(etapa === 'en construcción')} onClick={() => setEtapa(etapa === 'en construcción' ? '' : 'en construcción')}>En construcción</button>
+      {nConSello > 0 && (
+        <button type="button" aria-pressed={confianza} className={chip(confianza)} onClick={() => setConfianza((v) => !v)} title="Desarrolladora o inmobiliaria con sello de confianza verificado">
+          <span className="material-symbols-outlined text-[16px] align-[-3px] mr-0.5" aria-hidden="true">verified</span>Con sello de confianza
+        </button>
+      )}
     </>
   );
 
@@ -606,14 +617,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </p>
           <div className="relative z-10 bg-surface rounded-t-2xl md:rounded-none shadow-[0_-8px_24px_rgba(0,0,0,0.06)] md:shadow-none pt-4 md:pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter mt-4 md:mt-8">
             {filtered.map((i) => (
-              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
+              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
             ))}
           </div>
         </div>
       ) : (
         <div key="v-lista" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filtered.map((i) => (
-            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
+            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
           ))}
         </div>
       )}

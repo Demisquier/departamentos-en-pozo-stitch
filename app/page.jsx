@@ -295,6 +295,8 @@ export default async function HomePage() {
               ["calculate", "Simulador de cuota CAC", "Proyectá cómo evoluciona tu cuota si ajusta por índice de construcción.", "/simulador-cuota-cac-pozo/"],
               ["notifications_active", "Alertas de lanzamientos", "Te avisamos por email cuando aparece un proyecto que encaja con tu búsqueda.", "/alertas-de-lanzamientos-en-pozo/"],
               ["storefront", "Corralones y materiales", "Directorio de corralones, homecenters y fabricantes para tu obra.", "/corralones-y-materiales-de-construccion-en-caba/"],
+              ["verified", "Desarrolladoras confiables", "Ranking con datos verificados: obras entregadas, premios y BCRA. Con fuentes, sin pauta.", "/ranking-desarrolladoras-confiables/"],
+              ["verified_user", "Inmobiliarias confiables", "Matrícula verificada en el padrón oficial de CUCICBA y reconocimientos del sector.", "/ranking-inmobiliarias-confiables/"],
               ["domain", "Desarrolladoras en CABA", "Directorio de desarrolladoras con proyectos y track record.", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
               ["real_estate_agent", "Inmobiliarias en CABA", "Directorio de inmobiliarias con matrícula CUCICBA verificable.", "/mejores-inmobiliarias-caba/"],
               ["menu_book", "Guías para invertir", "Todo lo que necesitás entender antes de comprar en pozo.", "/novedades/"],

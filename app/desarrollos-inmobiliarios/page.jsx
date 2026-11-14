@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getDesarrollos, SITE } from '../../lib/wp';
 import { mapDesarrollos } from '../../lib/catalogo';
+import { conSellos } from '../../lib/sellos';
 import { BARRIO_CATALOGO, matchBarrioCatalogo } from '../../lib/barrios';
 import BuscadorModo from '../_ui/BuscadorModo';
 import Container from '../_ui/Container';
@@ -27,7 +28,7 @@ const FAQ = [
 
 export default async function CatalogoPage() {
   const items = await getDesarrollos();
-  const mapped = mapDesarrollos(items);
+  const mapped = conSellos(mapDesarrollos(items));
   // Stats para el bloque answer-first (dato real, citeable por IA).
   const nBarrios = new Set(mapped.map((i) => i.barrio).filter(Boolean)).size;
   const conFin = mapped.filter((i) => i.financiacion).length;

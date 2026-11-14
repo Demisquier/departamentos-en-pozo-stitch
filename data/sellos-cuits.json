@@ -1,0 +1,59 @@
+{
+ "_doc": "CUIT de sociedades con sello de solidez, para el chequeo mensual automático contra la Central de Deudores del BCRA (/api/cron/sellos).",
+ "cuits": {
+  "adn-developers": {
+   "cuit": "30715403060",
+   "razon_social": "ADN DEVELOPERS S.R.L."
+  },
+  "consultatio": {
+   "cuit": "30587480359",
+   "razon_social": "CONSULTATIO S.A."
+  },
+  "grupo1-desarrollos": {
+   "cuit": "30710572492",
+   "razon_social": "CONSTRUCCIONES GRUPO 1 S.R.L."
+  },
+  "ges-desarrollos": {
+   "cuit": "30710627521",
+   "razon_social": "GES DESARROLLOS S.R.L."
+  },
+  "estudio-kohon": {
+   "cuit": "30630681800",
+   "razon_social": "Komatorre S.A."
+  },
+  "aconif": {
+   "cuit": "33714589399",
+   "razon_social": "ACONIF S.A."
+  },
+  "northbaires": {
+   "cuit": "30712068899",
+   "razon_social": "Northbaires S.A."
+  },
+  "inarch": {
+   "cuit": "30710137710",
+   "razon_social": "In Arch S.R.L."
+  },
+  "hanok": {
+   "cuit": "30717692574",
+   "razon_social": "Hanok S.A."
+  },
+  "irsa": {
+   "cuit": "30525322749",
+   "razon_social": "IRSA Inversiones y Representaciones S.A."
+  }
+ },
+ "cuits_inmobiliarias": {
+  "Interwin": {
+   "cuit": "30711383944"
+  },
+  "Krell Brokers": {
+   "cuit": "30710241380"
+  },
+  "Baigun Realty": {
+   "cuit": "30718390687"
+  },
+  "Lepore Propiedades": {
+   "cuit": "33602342749"
+  }
+ }
+}

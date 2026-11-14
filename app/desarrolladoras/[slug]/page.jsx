@@ -145,6 +145,7 @@ export default async function DesarrolladoraLanding({ params }) {
       </header>
 
       {sellos && <div className="mb-10"><SellosDetalle data={sellos} /></div>}
+      <p className="text-[13px] text-on-surface-variant -mt-6 mb-10">Compará con otras empresas en el <Link href="/ranking-desarrolladoras-confiables/" className="underline text-secondary">ranking de desarrolladoras confiables</Link> y en <Link href="/desarrolladoras-con-obras-entregadas/" className="underline text-secondary">desarrolladoras con obras entregadas</Link>.</p>
 
       {/* Stats verificables (solo si hay proyectos cargados) */}
       {n > 0 && (

@@ -2,14 +2,14 @@ import Link from "next/link";
 import Container from "../_ui/Container";
 import Breadcrumb from "../_ui/Breadcrumb";
 import JsonLd from "../_ui/JsonLd";
-import { SELLOS_DEF, todasConSellos, fechaLarga } from "../../lib/sellos";
+import { SELLOS_DEF, todasConSellos, inmoConSellos, fechaLarga } from "../../lib/sellos";
 import { SITE, CONTACT_EMAIL } from "../../lib/constants";
 
 export const revalidate = 86400;
 const PATH = "/metodologia-sellos-desarrolladoras/";
 
 export const metadata = {
-  title: "Cómo verificamos a las desarrolladoras: metodología de los sellos de confianza",
+  title: "Cómo verificamos desarrolladoras e inmobiliarias: metodología de los sellos de confianza",
   description: "Criterios, fuentes y frecuencia de actualización de los sellos de confianza de Departamentos en Pozo: trayectoria comprobada, premios verificados y situación en el BCRA. Independiente y sin pauta.",
   alternates: { canonical: `${SITE}${PATH}` },
 };
@@ -22,7 +22,7 @@ const FAQ = [
 ];
 
 export default function Page() {
-  const n = todasConSellos().length;
+  const n = todasConSellos().length; const ni = inmoConSellos().length;
   const schema = [
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
@@ -36,9 +36,9 @@ export default function Page() {
       <JsonLd data={schema} />
       <Breadcrumb tone="light" sep="/" className="mb-6"
         items={[{ name: "Inicio", href: "/" }, { name: "Ranking de desarrolladoras", href: "/ranking-desarrolladoras-confiables/" }, { name: "Metodología" }]} />
-      <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-4">Cómo verificamos a las desarrolladoras</h1>
+      <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight mb-4">Cómo verificamos a desarrolladoras e inmobiliarias</h1>
       <div className="text-body-lg text-on-surface-variant space-y-4">
-        <p>Departamentos en Pozo es un portal independiente. Para ayudarte a decidir con confianza, otorgamos <strong>sellos</strong> a las desarrolladoras que pueden demostrar con fuentes públicas lo que dicen. Hoy hay <strong>{n} desarrolladoras</strong> con al menos un sello vigente.</p>
+        <p>Departamentos en Pozo es un portal independiente. Para ayudarte a decidir con confianza, otorgamos <strong>sellos</strong> a las desarrolladoras que pueden demostrar con fuentes públicas lo que dicen. Hoy hay <strong>{n} desarrolladoras</strong> y <strong>{ni} inmobiliarias</strong> con al menos un sello vigente (<Link href="/ranking-desarrolladoras-confiables/" className="underline">ver desarrolladoras</Link> · <Link href="/ranking-inmobiliarias-confiables/" className="underline">ver inmobiliarias</Link>).</p>
         <p>Tres principios: <strong>solo publicamos lo verificado</strong>, <strong>citamos la fuente de cada dato</strong> y <strong>no hablamos mal de nadie</strong> (no existe un "sello negativo" ni una lista de excluidas).</p>
       </div>
 
@@ -58,6 +58,7 @@ export default function Page() {
         <li><strong>Sitios oficiales</strong> de cada empresa (punto de partida, nunca única fuente para un sello).</li>
         <li><strong>Prensa económica e inmobiliaria</strong> y <strong>publicaciones de arquitectura</strong> que documentan obras terminadas.</li>
         <li><strong>Sitios de los organizadores</strong> de cada premio.</li>
+        <li><strong>Padrón público de matriculados de CUCICBA</strong> (corredores inmobiliarios de CABA).</li>
         <li><strong>Central de Deudores del BCRA</strong> (situación crediticia por CUIT), <strong>Boletín Oficial</strong> y <strong>CNV</strong> para identificar la sociedad.</li>
       </ul>
       <p className="text-on-surface-variant mt-4">No usamos como fuente independiente a portales de avisos que replican la información de la propia empresa.</p>

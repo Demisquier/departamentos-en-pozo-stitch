@@ -90,6 +90,11 @@ export default async function InmobiliariasPage() {
       <JsonLd data={[...rmSchema, ...extraSchema]} />
 
       <Container as="main" className="py-10 md:py-14">
+        <nav aria-label="Ranking verificado" className="mb-8 rounded-xl border border-green-700/25 bg-green-700/[0.03] p-4 flex flex-wrap items-center gap-2.5">
+          <span className="material-symbols-outlined text-green-800">verified</span>
+          <span className="text-[14px] text-primary font-medium mr-1">Con matrícula verificada en el padrón oficial:</span>
+          <Link href="/ranking-inmobiliarias-confiables/" className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary">Ranking de inmobiliarias confiables</Link>
+        </nav>
         {html ? (
           <>
             <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: before }} />

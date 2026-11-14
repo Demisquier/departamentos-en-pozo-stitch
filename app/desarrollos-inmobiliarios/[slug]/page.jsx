@@ -572,7 +572,7 @@ export default async function FichaProyecto({ params }) {
                   <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
                 </div>
                 <p className="text-[12px] text-on-surface-variant mt-3">
-                  Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo.
+                  Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo. Mirá el <Link href="/ranking-desarrolladoras-confiables/" className="underline text-secondary">ranking de desarrolladoras confiables</Link> con datos verificados.
                 </p>
               </div>
             ) : null}

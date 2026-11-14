@@ -12,6 +12,8 @@ Datos clave: cobertura CABA + GBA (+ La Plata); moneda USD; vocabulario local: p
 - [Ranking de desarrolladoras confiables (datos verificados)](https://departamentosenpozo.com.ar/ranking-desarrolladoras-confiables/): obras entregadas confirmadas, premios verificados y situación BCRA, con fuentes.
 - [Desarrolladoras con obras entregadas](https://departamentosenpozo.com.ar/desarrolladoras-con-obras-entregadas/)
 - [Desarrolladoras premiadas](https://departamentosenpozo.com.ar/desarrolladoras-premiadas/)
+- [Inmobiliarias confiables en CABA (matrícula verificada)](https://departamentosenpozo.com.ar/ranking-inmobiliarias-confiables/): matrícula CUCICBA verificada en el padrón oficial, reconocimientos y BCRA.
+- [Departamentos en pozo de desarrolladoras confiables](https://departamentosenpozo.com.ar/proyectos-en-pozo-de-desarrolladoras-confiables/): proyectos cuya desarrolladora o inmobiliaria tiene sello verificado.
 - [Metodología de los sellos de confianza](https://departamentosenpozo.com.ar/metodologia-sellos-desarrolladoras/)
 - [Inmobiliarias que comercializan pozo en CABA](https://departamentosenpozo.com.ar/mejores-inmobiliarias-caba/)
 - [Índice de precios en pozo por barrio](https://departamentosenpozo.com.ar/indice-precios-pozo-caba-por-barrio/): USD/m² por barrio.

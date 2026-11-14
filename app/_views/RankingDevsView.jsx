@@ -8,6 +8,8 @@ import { ranking, SELLOS_DEF, METODOLOGIA_URL, fechaLarga } from "../../lib/sell
 import { SITE } from "../../lib/constants";
 
 const OTROS = [
+  ["/proyectos-en-pozo-de-desarrolladoras-confiables/", "Proyectos en pozo de desarrolladoras confiables"],
+  ["/ranking-inmobiliarias-confiables/", "Ranking de inmobiliarias confiables"],
   ["/ranking-desarrolladoras-confiables/", "Ranking de desarrolladoras confiables"],
   ["/desarrolladoras-con-obras-entregadas/", "Desarrolladoras con obras entregadas"],
   ["/desarrolladoras-premiadas/", "Desarrolladoras premiadas"],

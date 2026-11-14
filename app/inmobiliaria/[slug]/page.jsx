@@ -5,6 +5,8 @@ import Container from "../../_ui/Container";
 import Breadcrumb from "../../_ui/Breadcrumb";
 import LogoAvatar from "../../_ui/LogoAvatar";
 import JsonLd from "../../_ui/JsonLd";
+import { SellosChips, SellosDetalle } from "../../_ui/SellosDev";
+import { sellosInmoDeNombre } from "../../../lib/sellos";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -50,9 +52,12 @@ export default async function InmobiliariaLanding({ params }) {
   // La landing solo existe si aporta valor único (≥1 proyecto comercializado).
   if (!r || !r.inmo || !r.proyectos.length) notFound();
   const { inmo, proyectos } = r;
+  const sellos = sellosInmoDeNombre(inmo.nombre);
 
   const zonas = (inmo.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);
-  const matNum = inmo.matricula && !/no\s*public/i.test(inmo.matricula) ? inmo.matricula : "";
+  // Matrícula: solo la verificada en el padrón oficial (sello), nunca el dato sin verificar del directorio.
+  const _selloMat = sellos && sellos.sellos.find((x) => x.tipo === "matricula");
+  const matNum = _selloMat ? ((_selloMat.resumen.match(/N° ([0-9]+)/) || [])[1] ? "CUCICBA " + _selloMat.resumen.match(/N° ([0-9]+)/)[1] : "") : "";
 
   // Barrio real de cada proyecto (título "Nombre — Barrio" > ACF), nunca la zona genérica de la firma.
   const barriosProyectos = [...new Set(proyectos.map((p) => ((p?.title?.rendered || "").split("—")[1] || "").trim() || String(acf(p, "barrio") || "").trim()).filter(Boolean))];
@@ -72,7 +77,7 @@ export default async function InmobiliariaLanding({ params }) {
     },
     matNum && {
       q: `¿${inmo.nombre} tiene matrícula CUCICBA?`,
-      a: `Según nuestro relevamiento, ${inmo.nombre} figura con matrícula ${matNum}. Podés verificarla gratis en el padrón público de CUCICBA antes de operar.`,
+      a: `Sí: verificamos la matrícula ${matNum} de ${inmo.nombre} en el padrón público oficial del colegio. Podés consultarla vos también, gratis, en la guía de matriculados de CUCICBA antes de operar.`,
     },
     barriosMostrar.length > 0 && {
       q: `¿En qué barrios opera ${inmo.nombre}?`,
@@ -125,11 +130,8 @@ export default async function InmobiliariaLanding({ params }) {
             <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight">{inmo.nombre}</h1>
             {inmo.badge ? <span className="text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{inmo.badge}</span> : null}
           </div>
-          <p className="text-on-surface-variant mt-1 text-[14px]">
-            {matNum
-              ? <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="inline-flex items-center gap-1 text-secondary hover:underline" title="Verificar en el padrón público de CUCICBA"><span aria-hidden="true">✓</span> Matrícula CUCICBA {matNum}</a>
-              : <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="text-on-surface-variant hover:text-secondary hover:underline">Matrícula no publicada — verificala en CUCICBA ↗</a>}
-          </p>
+          {/* Solo mostramos lo verificado (sellos); nada de "no publicada". */}
+          <SellosChips data={sellos} className="mt-2" />
           {zonas.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
               {zonas.slice(0, 8).map((b) => <span key={b} className="text-[12px] bg-surface-container text-primary rounded-lg px-2.5 py-1">{b}</span>)}
@@ -141,6 +143,9 @@ export default async function InmobiliariaLanding({ params }) {
           )}
         </div>
       </header>
+
+      {sellos && <div className="mb-10"><SellosDetalle data={sellos} /></div>}
+      <p className="text-[13px] text-on-surface-variant -mt-6 mb-10">Mirá el <Link href="/ranking-inmobiliarias-confiables/" className="underline text-secondary">ranking de inmobiliarias confiables de CABA</Link>, con matrícula verificada en el padrón oficial.</p>
 
       {/* Stats verificables */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">

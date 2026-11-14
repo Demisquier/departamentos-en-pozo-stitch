@@ -1,0 +1,436 @@
+{
+ "_doc": "Sellos de confianza de inmobiliarias (solo datos verificados con fuente; revalidación cada 6 meses).",
+ "inmobiliarias": {
+  "Mel Propiedades": {
+   "nombre": "Mel Propiedades",
+   "web": "https://www.melpropiedades.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 52 vigente en el padrón oficial (corredor/a: María Julia Mel)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 52",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=52&sucursal=0",
+        "https://www.melpropiedades.com.ar/quienes-somos"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Interwin": {
+   "nombre": "Interwin",
+   "web": "https://www.interwin.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 945 vigente en el padrón oficial (corredor/a: Miguel Eduardo Ludmer)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 945",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=945&sucursal=0",
+        "https://www.interwin.com.ar/empresa"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "reconocida",
+     "resumen": "2 reconocimientos sectoriales verificados",
+     "evidencia": [
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - 10mo puesto en brókers residenciales (38,7 puntos) · 2017 · Revista Mercado + Reporte Inmobiliario (estudio de Oh! Panel)",
+       "fuentes": [
+        "https://mercado.com.ar/revista/2017-marzo-no-1190/nueva-evaluacion-del-sector-que-lucha-por-reinventarse/"
+       ]
+      },
+      {
+       "texto": "Mencionada entre los 'top ten' de brókers residenciales del Ranking de Calidad (Reporte Inmobiliario - Mercado - Oh! Panel) · 2014 · Revista Mercado + Reporte Inmobiliario (Oh! Panel)",
+       "fuentes": [
+        "https://mercado.com.ar/revista/2014-diciembre-no1162/claras-definiciones-de-los-destacados-en-el-ranking-i/"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: ITW Marketing Inmobiliario S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Krell Brokers": {
+   "nombre": "Krell Brokers",
+   "web": "https://krellbrokers.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 4490 vigente en el padrón oficial (corredor/a: Damián Krell)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 4490",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=4490&sucursal=0",
+        "https://krellbrokers.com/contacto"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Krell Brokers S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Predial": {
+   "nombre": "Predial",
+   "web": "https://predial.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 3269 vigente en el padrón oficial (corredor/a: Gabriel Alejandro Brodsky)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 3269",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=3269&sucursal=0",
+        "https://predial.ar/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Justevila": {
+   "nombre": "Justevila",
+   "web": "https://www.justevila.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 130 vigente en el padrón oficial (corredor/a: Alejandra Liliana González)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 130",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=130&sucursal=0",
+        "https://www.justevila.com.ar/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Baigun Realty": {
+   "nombre": "Baigun Realty",
+   "web": "https://baigunrealty.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 3047 vigente en el padrón oficial (corredor/a: Damián Víctor Baigún)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 3047",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=3047&sucursal=0",
+        "https://baigunrealty.com/nosotros/"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Dacomat S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Lepore Propiedades": {
+   "nombre": "Lepore Propiedades",
+   "web": "https://lepore.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 931 vigente en el padrón oficial (corredor/a: Francisco Norberto Lepore)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 931",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=931&sucursal=0",
+        "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1347219/20241107"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "reconocida",
+     "resumen": "2 reconocimientos sectoriales verificados",
+     "evidencia": [
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - 4to/5to puesto (empatada, 43 puntos) en servicios inmobiliarios residenciales · 2022 · Revista Mercado + Reporte Inmobiliario",
+       "fuentes": [
+        "https://mercado.com.ar/revista/edicion-febrero-marzo-n1244/liderazgos-que-se-sostienen-en-un-contexto-desafiante/"
+       ]
+      },
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - 7mo puesto en servicios inmobiliarios residenciales (40,1 puntos) · 2023 · Revista Mercado + Reporte Inmobiliario",
+       "fuentes": [
+        "https://mercado.com.ar/revista/edicion-marzo-n1251/empresas-que-se-posicionan-en-una-coyuntura-incierta/"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Lepore Propiedades S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Achával Cornejo": {
+   "nombre": "Achával Cornejo",
+   "web": "https://www.achavalcornejo.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "reconocida",
+     "resumen": "3 reconocimientos sectoriales verificados",
+     "evidencia": [
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - puesto 30 del ranking general (69,4 puntos, bróker residencial) · 2017 · Revista Mercado + Reporte Inmobiliario (estudio de Oh! Panel)",
+       "fuentes": [
+        "https://mercado.com.ar/revista/2017-marzo-no-1190/nueva-evaluacion-del-sector-que-lucha-por-reinventarse/"
+       ]
+      },
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - 4to/5to puesto (empatada, 43 puntos) en servicios inmobiliarios residenciales · 2022 · Revista Mercado + Reporte Inmobiliario",
+       "fuentes": [
+        "https://mercado.com.ar/revista/edicion-febrero-marzo-n1244/liderazgos-que-se-sostienen-en-un-contexto-desafiante/"
+       ]
+      },
+      {
+       "texto": "Ranking de Calidad del Mundo Inmobiliario y de la Construcción - 5to puesto en servicios inmobiliarios residenciales (44,1 puntos) · 2023 · Revista Mercado + Reporte Inmobiliario",
+       "fuentes": [
+        "https://mercado.com.ar/revista/edicion-marzo-n1251/empresas-que-se-posicionan-en-una-coyuntura-incierta/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Click Aparts": {
+   "nombre": "Click Aparts",
+   "web": "https://www.clickaparts.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 6383 vigente en el padrón oficial (corredor/a: Ezequiel Elián Wierzba)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 6383",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Wierzba&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Fera": {
+   "nombre": "Fera",
+   "web": "https://www.ferayasociados.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 671 vigente en el padrón oficial (corredor/a: Karina Mónica Curotto)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 671",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Curotto&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Tizado Propiedades": {
+   "nombre": "Tizado Propiedades",
+   "web": "https://www.tizado.com",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 290 vigente en el padrón oficial (corredor/a: Roberto Oscar Tizado)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 290",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Tizado&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Irujo Bienes Raíces": {
+   "nombre": "Irujo Bienes Raíces",
+   "web": "https://irujo.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 5758 vigente en el padrón oficial (corredor/a: Gonzalo Irujo)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 5758",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Irujo&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "D'Aria Propiedades": {
+   "nombre": "D'Aria Propiedades",
+   "web": "https://www.daria.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 8264 vigente en el padrón oficial (corredor/a: Maximiliano Miguel D'Aria)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 8264",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=D%27ARIA&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Gómez de Montanari": {
+   "nombre": "Gómez de Montanari",
+   "web": "https://www.gomezdemontanari.com.ar",
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 9186 vigente en el padrón oficial (corredor/a: Martín Emanuel Montanari)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 9186",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Montanari&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Yankel Group": {
+   "nombre": "Yankel Group",
+   "web": null,
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 6410 vigente en el padrón oficial (corredor/a: Jonathan Gabriel Saposnik)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 6410",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Saposnik&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Dost Propiedades": {
+   "nombre": "Dost Propiedades",
+   "web": null,
+   "verificado": "2026-11-14",
+   "vence": "2027-05-14",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 9361 vigente en el padrón oficial (corredor/a: Elías Damián Ostrovsky)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 9361",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Ostrovsky&limit=12&offset=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getPageBySlug, getPostBySlug, getAllPages, getPosts, featuredImage, buildMeta, getRankMathSchema, fixImgs, stripEmbeddedSchema, getDesarrolladoras, getInmobiliarias, getDesarrollos, SITE } from "../../lib/wp";
 import { BARRIO_CPT, ZONA_INMO_LABEL, BARRIO_CATALOGO, matchBarrioCatalogo } from "../../lib/barrios";
 import { mapDesarrollos } from "../../lib/catalogo";
+import { conSellos } from '../../lib/sellos';
 import { CATALOGO_BARRIO_INTRO } from "../../lib/catalogoBarrioIntros";
 import PostView from "../_views/PostView";
 import BarrioView from "../_views/BarrioView";
@@ -143,7 +144,7 @@ export default async function SinglePage({ params }) {
     const barrioSlugCat = cm[1];
     const { label } = BARRIO_CATALOGO[barrioSlugCat];
     let mapped = [];
-    try { mapped = mapDesarrollos(await getDesarrollos()); } catch (e) { mapped = []; }
+    try { mapped = conSellos(mapDesarrollos(await getDesarrollos())); } catch (e) { mapped = []; }
     const items = mapped.filter((i) => matchBarrioCatalogo(i.barrio, barrioSlugCat));
     const schema = [
       {
