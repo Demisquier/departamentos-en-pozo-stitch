@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getPageBySlug, getRankMathSchema, getDesarrolladoras, getDesarrollos, acf, buildMeta, SITE } from "../../lib/wp";
 import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
@@ -211,6 +212,13 @@ export default async function HubDesarrolladorasPage() {
       <JsonLd data={[...rmSchema.filter((s) => !["ItemList","FAQPage","BreadcrumbList"].includes(s && s["@type"])), ...extraSchema]} />
 
       <Container as="main" className="py-10 md:py-14">
+        <nav aria-label="Rankings verificados" className="mb-8 rounded-xl border border-green-700/25 bg-green-700/[0.03] p-4 flex flex-wrap items-center gap-2.5">
+          <span className="material-symbols-outlined text-green-800">verified</span>
+          <span className="text-[14px] text-primary font-medium mr-1">Rankings con datos verificados:</span>
+          <Link href="/ranking-desarrolladoras-confiables/" className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary">Desarrolladoras confiables</Link>
+          <Link href="/desarrolladoras-con-obras-entregadas/" className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary">Con obras entregadas</Link>
+          <Link href="/desarrolladoras-premiadas/" className="px-3 py-1.5 rounded-full border border-outline-variant text-[13px] text-primary hover:border-secondary">Premiadas</Link>
+        </nav>
         {html ? (
           <>
             <div

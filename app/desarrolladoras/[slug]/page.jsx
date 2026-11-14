@@ -5,6 +5,8 @@ import Container from "../../_ui/Container";
 import Breadcrumb from "../../_ui/Breadcrumb";
 import LogoAvatar from "../../_ui/LogoAvatar";
 import JsonLd from "../../_ui/JsonLd";
+import { SellosChips, SellosDetalle } from "../../_ui/SellosDev";
+import { sellosDeSlug } from "../../../lib/sellos";
 
 export const dynamicParams = !process.env.EXPORT;
 export const revalidate = 600;
@@ -52,6 +54,7 @@ export default async function DesarrolladoraLanding({ params }) {
   const r = await getDesarrolladoraBySlug(params.slug);
   if (!r || !r.dev) notFound();
   const { dev, proyectos } = r;
+  const sellos = sellosDeSlug(params.slug);
   const barrios = (dev.barrios || "").split(",").map((s) => s.trim()).filter(Boolean);
 
   // --- Stats verificables desde los proyectos cargados (nada inventado) ---
@@ -121,6 +124,7 @@ export default async function DesarrolladoraLanding({ params }) {
             <h1 className="font-headline-md text-headline-md md:text-display-lg text-primary leading-tight">{dev.nombre}</h1>
             {dev.badge ? <span className="text-[11px] font-label-caps uppercase tracking-wider bg-link-gold/15 text-secondary px-2.5 py-1 rounded-lg">{dev.badge}</span> : null}
           </div>
+          <SellosChips data={sellos} className="mt-2" />
           {dev.anios ? <p className="text-on-surface-variant mt-1">{dev.anios}</p> : null}
           {barrios.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-3">
@@ -139,6 +143,8 @@ export default async function DesarrolladoraLanding({ params }) {
           )}
         </div>
       </header>
+
+      {sellos && <div className="mb-10"><SellosDetalle data={sellos} /></div>}
 
       {/* Stats verificables (solo si hay proyectos cargados) */}
       {n > 0 && (

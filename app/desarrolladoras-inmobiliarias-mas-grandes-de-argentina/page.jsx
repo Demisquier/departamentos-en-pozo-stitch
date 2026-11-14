@@ -10,6 +10,8 @@ import JsonLd from "../_ui/JsonLd";
 import Faq from "../_ui/Faq";
 import AlertaCTA from "../_ui/AlertaCTA";
 import GuiasRelacionadas from "../_ui/GuiasRelacionadas";
+import { SellosChips } from "../_ui/SellosDev";
+import { sellosDeSlug } from "../../lib/sellos";
 
 export const revalidate = 86400;
 const PATH = "/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/";
@@ -44,7 +46,6 @@ const RANKING = [
   { slug: "fernandez-prieto", escala: "The Link Towers (US$120M) · pionera en Puerto Madero" },
   { slug: "faena-group", escala: "Faena District (Puerto Madero)" },
   { slug: "estudio-kohon", escala: "28 edificios + 40.000 m² en obra · especialista en pozo" },
-  { slug: "tglt-gcdi", escala: "Ex TGLT, hoy GCDI", alerta: "Según nuestro relevamiento declaró default y concurso preventivo en 2026: verificá la continuidad de obra antes de operar." },
 ];
 
 async function cargar() {
@@ -124,9 +125,9 @@ export default async function RankingDesarrolladoras() {
                 </h2>
                 {x.trayectoria && <span className="text-[13px] text-on-surface-variant">{x.trayectoria}</span>}
               </div>
+              <SellosChips data={sellosDeSlug(x.slug)} className="mt-1.5" />
               <p className="text-[14px] text-primary font-medium mt-1">{x.escala}</p>
               {x.desc && <p className="text-[14px] text-on-surface-variant mt-1">{x.desc}</p>}
-              {x.alerta && <p className="text-[13px] text-red-700 mt-1">⚠ {x.alerta}</p>}
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
                 {x.insignia && <span className="text-on-surface-variant">Insignia: {x.insignia}</span>}
                 {x.estructura && <span className="text-on-surface-variant">Estructura: {x.estructura}</span>}

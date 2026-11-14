@@ -9,6 +9,10 @@ Datos clave: cobertura CABA + GBA (+ La Plata); moneda USD; vocabulario local: p
 - [Búsqueda inteligente](https://departamentosenpozo.com.ar/buscar/): búsqueda en lenguaje natural.
 - [Directorio de desarrolladoras](https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-en-capital-federal/): desarrolladoras con proyectos en pozo en CABA.
 - [Desarrolladoras más grandes de Argentina](https://departamentosenpozo.com.ar/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/)
+- [Ranking de desarrolladoras confiables (datos verificados)](https://departamentosenpozo.com.ar/ranking-desarrolladoras-confiables/): obras entregadas confirmadas, premios verificados y situación BCRA, con fuentes.
+- [Desarrolladoras con obras entregadas](https://departamentosenpozo.com.ar/desarrolladoras-con-obras-entregadas/)
+- [Desarrolladoras premiadas](https://departamentosenpozo.com.ar/desarrolladoras-premiadas/)
+- [Metodología de los sellos de confianza](https://departamentosenpozo.com.ar/metodologia-sellos-desarrolladoras/)
 - [Inmobiliarias que comercializan pozo en CABA](https://departamentosenpozo.com.ar/mejores-inmobiliarias-caba/)
 - [Índice de precios en pozo por barrio](https://departamentosenpozo.com.ar/indice-precios-pozo-caba-por-barrio/): USD/m² por barrio.
 - [Guías y novedades](https://departamentosenpozo.com.ar/novedades/)

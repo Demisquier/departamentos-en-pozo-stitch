@@ -9429,7 +9429,7 @@
    "rendered": "Shaddai II — Berazategui"
   },
   "content": {
-   "rendered": "<p>Emprendimiento en pozo en Berazategui (Calle 146 nº1163). Unidades de 3 amb. Entrega Diciembre 2026. Bernat Buildings.</p>",
+   "rendered": "<p><strong>Shaddai II</strong> es un emprendimiento en pozo de <strong>Bernat Buildings</strong> en Berazategui centro (Calle 146 nº 1163), con unidades de 3 ambientes.</p><p>Según datos informados por la desarrolladora (octubre 2026): precio de referencia <strong>USD 1.750/m²</strong>, financiación con <strong>anticipo de USD 40.000 + 60 cuotas sin interés</strong> y entrega estimada para el <strong>segundo semestre de 2028</strong>.</p><p>Antes de reservar, conviene pedir el boleto modelo, la memoria descriptiva y el plan de pagos por escrito, y confirmar cómo se ajustan las cuotas.</p>",
    "protected": false
   },
   "excerpt": {
@@ -9446,12 +9446,14 @@
    "desarrolladora": "Bernat Buildings",
    "precio_desde": 124700,
    "moneda": "USD",
-   "fecha_entrega": "Diciembre 2026",
+   "fecha_entrega": "2º semestre 2028",
    "tipologias": [
     "3_ambientes"
    ],
    "direccion": "Calle 146 nº1163",
-   "estado_obra": "En pozo"
+   "estado_obra": "En pozo",
+   "precio_m2": 1750,
+   "financiacion": "Anticipo USD 40.000 + 60 cuotas sin interés"
   },
   "_embedded": {
    "wp:featuredmedia": [

@@ -20,6 +20,8 @@ import VistoTracker from './VistoTracker';
 import { inmobiliariaSlugPorNombre } from '../../../lib/content';
 import CTAContextual from './CTAContextual';
 import IntakeLauncher from '../../_ui/IntakeLauncher';
+import { SellosChips } from '../../_ui/SellosDev';
+import { sellosDeNombre } from '../../../lib/sellos';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -161,6 +163,8 @@ export default async function FichaProyecto({ params }) {
   // Texto libre del esquema SOLO si aporta info; los placeholders "A consultar…" no arman sección.
   const cuotasReal = cuotas && !/^\s*(a\s+)?consultar/i.test(String(cuotas)) ? cuotas : null;
 
+  // Sellos de confianza (solo verificados; si no hay, no se muestra nada).
+  const sellosDev = constructora ? sellosDeNombre(constructora) : null;
   // Link a la landing de la desarrolladora, si tiene página propia (match por nombre normalizado).
   let devHref = null;
   if (constructora) {
@@ -220,7 +224,7 @@ export default async function FichaProyecto({ params }) {
           barrios: barriosDev,
           anioMin: anios[0] || null,
           anioMax: anios[anios.length - 1] || null,
-          verificada: suyos.length >= 3,
+          verificada: !!(sellosDev && sellosDev.sellos.some((x) => x.tipo === 'trayectoria')),
         };
       }
     }
@@ -315,7 +319,7 @@ export default async function FichaProyecto({ params }) {
     if (_financiacionReal) para.push('quien necesita pagar en cuotas durante la obra');
     if (!para.length) para.push('inversores que hacen su propia due diligence antes de decidir');
     if (precioCtx && precioCtx.diffPct <= -3) fuerte.push(`entra ${Math.abs(precioCtx.diffPct)}% por debajo de la mediana de ${precioCtx.barrioLabel}`);
-    else if (devStats && devStats.verificada) fuerte.push(`la desarrolladora tiene ${devStats.n} proyectos relevados en nuestro catálogo`);
+    else if (devStats && devStats.verificada) fuerte.push('la desarrolladora tiene trayectoria comprobada (obras entregadas verificadas con fuentes independientes)');
     else if (precioM2Num) fuerte.push('publica precio de referencia, algo que muchos proyectos en pozo no muestran');
     const falt = dueItems.filter((x) => !x.ok).map((x) => x.k.toLowerCase());
     if (falt.length) verificar.push(`todavía faltan datos por confirmar: ${falt.slice(0, 3).join(', ')}`);
@@ -551,10 +555,9 @@ export default async function FichaProyecto({ params }) {
                   <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
                     <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?
                   </h2>
-                  <span className={`text-[12px] font-label-caps uppercase tracking-wider px-2.5 py-1 rounded-md ${devStats.verificada ? 'bg-green-700/10 text-green-800' : 'bg-surface-container text-on-surface-variant'}`}>
-                    {devStats.verificada ? 'Trayectoria verificada' : 'Datos limitados'}
-                  </span>
+
                 </div>
+                <SellosChips data={sellosDev} className="mb-3" />
                 <p className="text-body-md text-on-surface-variant">
                   <strong className="text-primary">{constructora}</strong> tiene <strong className="text-primary">{devStats.n} proyecto{devStats.n === 1 ? '' : 's'}</strong> en pozo relevado{devStats.n === 1 ? '' : 's'} en nuestro catálogo
                   {devStats.barrios.length ? `, en ${devStats.barrios.slice(0, 4).join(', ')}${devStats.barrios.length > 4 ? ' y más' : ''}` : ''}

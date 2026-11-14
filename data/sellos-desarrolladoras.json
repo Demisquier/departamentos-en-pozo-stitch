@@ -1,0 +1,421 @@
+{
+ "_doc": "Sellos de confianza de desarrolladoras. Solo datos verificados con fuente. Se revalida cada 6 meses (campo vence). Ver /metodologia-sellos-desarrolladoras/.",
+ "desarrolladoras": {
+  "cubero-rubio": {
+   "nombre": "Cubero Rubio",
+   "web": "https://www.cuberorubio.com.ar/",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "15 obras entregadas informadas; 6 confirmadas por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "AER Pasaje (Pasaje Mason 4428) — Pasaje Mason 4428, Palermo, CABA (2021)",
+       "fuentes": [
+        "https://archdaily.com/1013123/aer-pasaje-apartments-cubero-rubio",
+        "https://architectureprize.com/winners/winner.php?id=7495",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      },
+      {
+       "texto": "AER La Pampa (La Pampa 4315) — La Pampa 4315, Villa Urquiza / Belgrano R, CABA (2019)",
+       "fuentes": [
+        "https://www.archdaily.com/es/935703/edificio-aer-la-pampa-cubero-rubio",
+        "https://architectureprize.com/winners/winner.php?id=8634",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      },
+      {
+       "texto": "JA1205 (Julian Alvarez 1205) — Julian Alvarez 1205, Palermo, CABA (2018)",
+       "fuentes": [
+        "https://www.archdaily.com/es/911828/edificio-ja1205-cubero-rubio",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      },
+      {
+       "texto": "ATH60 (Alvarez Thomas 60) — Alvarez Thomas 60, Chacarita, CABA (2018)",
+       "fuentes": [
+        "https://www.archdaily.com/1087806/ath60-building-cubero-rubio",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      },
+      {
+       "texto": "JN2678 (Jorge Newbery 2678) — Jorge Newbery 2678, CABA (2016)",
+       "fuentes": [
+        "https://www.archdaily.com/868110/edificio-jn2678-estudio-cubero-rubio",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      },
+      {
+       "texto": "MZ3268 (Mendoza 3268) — Mendoza 3268, Belgrano, CABA (2015)",
+       "fuentes": [
+        "https://www.archdaily.com/es/871632/edificio-mz3268-cubero-rubio",
+        "https://www.cuberorubio.com.ar/"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "premiada",
+     "resumen": "2 premios verificados con el organizador o prensa",
+     "evidencia": [
+      {
+       "texto": "Architecture MasterPrize · 2025 · AER La Pampa",
+       "fuentes": [
+        "https://architectureprize.com/winners/winner.php?id=8634",
+        "https://www.cuberorubio.com.ar/prensa/aer-la-pampa-premiado-en-el-architecture-masterprize-2025/"
+       ]
+      },
+      {
+       "texto": "Architecture MasterPrize · 2024 · AER Pasaje",
+       "fuentes": [
+        "https://architectureprize.com/winners/winner.php?id=7495",
+        "https://www.cuberorubio.com.ar/prensa/architecture-masterprize-2024/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "atv-arquitectos": {
+   "nombre": "ATV Arquitectos",
+   "web": "https://www.atvarquitectos.com/",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "3 obras entregadas informadas; 3 confirmadas por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "SENS Nicaragua — Nicaragua, Palermo, CABA (2020)",
+       "fuentes": [
+        "https://www.archdaily.com/952225/sens-nicaragua-atv-arquitectos",
+        "https://bltawards.com/winner/blt/2023/21417/0",
+        "https://www.atvarquitectos.com/sens"
+       ]
+      },
+      {
+       "texto": "SENS Paraguay — Paraguay, Palermo, CABA (2019)",
+       "fuentes": [
+        "https://www.archdaily.com/925284/sens-paraguay-building-atv-arquitectos",
+        "https://www.atvarquitectos.com/sens"
+       ]
+      },
+      {
+       "texto": "SENS Ravignani (Ravignani 2170) — Ravignani 2170, Palermo, CABA",
+       "fuentes": [
+        "https://www.archdaily.com/772937/ravignani-2170-atv-arquitectos",
+        "https://www.atvarquitectos.com/sens"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "premiada",
+     "resumen": "2 premios verificados con el organizador o prensa",
+     "evidencia": [
+      {
+       "texto": "Premio SCA-CPAU de Arquitectura y Urbanismo (premio mayor) · 2022 · Vivienda Multifamiliar · SENS Nicaragua",
+       "fuentes": [
+        "https://arqa.com/actualidad/noticias/atv-arquitectos-obtuvo-el-premio-sca-cpau-de-arquitectura-y-urbanismo-2022-por-su-obra-sens-nicaragua.html"
+       ]
+      },
+      {
+       "texto": "BLT Built Design Awards - Winner · 2023 · Architectural Design - Residential · SENS Nicaragua",
+       "fuentes": [
+        "https://bltawards.com/winner/blt/2023/21417/0"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "adn-developers": {
+   "nombre": "ADN Developers",
+   "web": "https://adndevelopers.com.ar/",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: ADN DEVELOPERS S.R.L.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "argencons-quartier": {
+   "nombre": "Argencons (Quartier)",
+   "web": "https://argencons.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "21 obras entregadas informadas; 1 confirmada por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "Distrito Quartier Puerto Retiro — Retiro, CABA (2022)",
+       "fuentes": [
+        "https://www.lanacion.com.ar/propiedades/distrito-quartier-el-proyecto-residencial-de-mayor-envergadura-de-la-ciudad-ya-es-una-realidad-nid25032022/",
+        "https://argencons.com/site/proyecto.php?id=dqpr"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "azcuy": {
+   "nombre": "Azcuy",
+   "web": "https://azcuy.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "6 obras entregadas informadas; 2 confirmadas por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "Donna Reggia — Av. Directorio 402 esq. Beauchef, Caballito, CABA (2022)",
+       "fuentes": [
+        "https://azcuy.com.ar/donna/reggia",
+        "https://www.forbesargentina.com/lifestyle/asi-donna-reggia-edificio-inaugurado-azcuy-tres-pisos-exclusivos-amenities-n27237"
+       ]
+      },
+      {
+       "texto": "Donna Terra — Caballito, CABA",
+       "fuentes": [
+        "https://azcuy.com.ar/donna/terra",
+        "https://www.forbesargentina.com/lifestyle/asi-donna-reggia-edificio-inaugurado-azcuy-tres-pisos-exclusivos-amenities-n27237"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "gnv-group": {
+   "nombre": "GNV Group",
+   "web": "https://gnvgroup.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "3 obras entregadas informadas; 3 confirmadas por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "World Trade Center Buenos Aires (4 edificios de oficinas, Madero Harbour) — Madero Harbour, Puerto Madero, CABA",
+       "fuentes": [
+        "https://www.forbesargentina.com/negocios/gnv-group-proyecta-inversiones-us-450-millones-completar-distrito-madero-harbour-n69934",
+        "https://gnvgroup.com/proyectos/world-trade-center/"
+       ]
+      },
+      {
+       "texto": "Harbour Residences — Madero Harbour, Puerto Madero, CABA",
+       "fuentes": [
+        "https://www.forbesargentina.com/negocios/gnv-group-proyecta-inversiones-us-450-millones-completar-distrito-madero-harbour-n69934",
+        "https://gnvgroup.com/proyectos/harbour-residences/"
+       ]
+      },
+      {
+       "texto": "Harbour House — Madero Harbour, Puerto Madero, CABA",
+       "fuentes": [
+        "https://www.forbesargentina.com/negocios/gnv-group-proyecta-inversiones-us-450-millones-completar-distrito-madero-harbour-n69934",
+        "https://gnvgroup.com/proyectos/harbour-house/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "consultatio": {
+   "nombre": "Consultatio",
+   "web": "https://www.consultatio.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: CONSULTATIO S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "grupo1-desarrollos": {
+   "nombre": "Grupo1 Desarrollos",
+   "web": "https://www.grupo1desarrollos.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 2026-09",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: CONSTRUCCIONES GRUPO 1 S.R.L.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "ges-desarrollos": {
+   "nombre": "GES Desarrollos",
+   "web": "https://www.gesdesarrollos.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 2026-09",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: GES DESARROLLOS S.R.L.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "estudio-kohon": {
+   "nombre": "Estudio Kohon",
+   "web": "https://estudiokohon.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Komatorre S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "aconif": {
+   "nombre": "Aconif",
+   "web": "https://aconif.com",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: ACONIF S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "northbaires": {
+   "nombre": "Northbaires",
+   "web": "https://northbaires.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Northbaires S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "inarch": {
+   "nombre": "INARCH",
+   "web": "https://www.inarch.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: In Arch S.R.L.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "hanok": {
+   "nombre": "Hanok",
+   "web": "https://hanok.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: Hanok S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "irsa": {
+   "nombre": "IRSA",
+   "web": "https://www.irsa.com.ar",
+   "verificado": "2026-11-13",
+   "vence": "2027-05-13",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202607",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: IRSA Inversiones y Representaciones S.A.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
