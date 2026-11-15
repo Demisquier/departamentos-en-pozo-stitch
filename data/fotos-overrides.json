@@ -1,0 +1,842 @@
+{
+ "_doc": "Fotos/renders reales por ficha (slug). portada reemplaza la imagen genérica de barrio; galeria se suma a la de la ficha. Fuente: aviso oficial/portal del propio proyecto, verificado 2026-11-14.",
+ "fotos": {
+  "neuhaus-directorio-caballito": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192419.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192403.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192375.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192411.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192348.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192383.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/69/27/28/720x532/2078192361.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-neuhaus-directorio-1302-57692728.html"
+  },
+  "life-caballito-caballito": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2091400163.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2090786077.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2090786094.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2091400176.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2091400171.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/04/10/720x532/2091400153.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-life-caballito-60650410.html"
+  },
+  "met-alto-residences-caballito": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300819.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300810.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300808.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300821.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300845.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300850.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/36/12/01/720x532/2059300836.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-met-alto-residences-59361201.html"
+  },
+  "nice-cordoba-palermo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494684.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494589.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494727.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494627.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494664.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494692.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/63/70/85/720x532/2090494677.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nice-cordoba-palermo-60637085.html"
+  },
+  "nice-hollywood-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/17/04/72/720x532/2027474625.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/17/04/72/720x532/2027474634.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/17/04/72/720x532/2027474653.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/17/04/72/720x532/2027474628.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/17/04/72/720x532/2027474632.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/clasificado/veclapin-cabildo-y-dorrego-nice-hollywood-palermo-hollywood-58170472.html"
+  },
+  "paseo-plaza-thames-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566317.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566313.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566320.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566312.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566315.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566319.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/75/54/93/720x532/1960566314.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-paseo-plaza-thames-54755493.html"
+  },
+  "piet-gascon-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130672.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130670.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/1994107342.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130673.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130674.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130669.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/22/24/720x532/2000130667.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-piet-gascon-56922224.html"
+  },
+  "casa-aer-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797793.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797809.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797800.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797843.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797834.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797787.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/65/09/10/720x532/2090797781.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-casa-aer-60650910.html"
+  },
+  "haaus-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647885.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647887.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647884.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647889.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647883.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647888.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/52/40/79/720x532/1958647886.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-haaus-55524079.html"
+  },
+  "central-acuna-palermo": {
+   "portada": "https://centralacunia.com/assets/images/gallery/gallery_desk_01.jpg",
+   "galeria": [
+    "https://centralacunia.com/assets/images/gallery/gallery_desk_02.jpg",
+    "https://centralacunia.com/assets/images/gallery/gallery_desk_03.jpg",
+    "https://centralacunia.com/assets/images/slider/plaza.jpg",
+    "https://centralacunia.com/assets/images/slider/terraza.jpg",
+    "https://centralacunia.com/assets/images/slider/lobby.jpg",
+    "https://centralacunia.com/assets/images/materialidades/estar.jpg"
+   ],
+   "fuente": "https://www.centralacunia.com/"
+  },
+  "nice-plaza-palermo-botanico": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837075.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837082.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837086.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837076.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837081.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837077.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/92/24/72/720x532/2002837089.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-nice-plaza-56922472.html"
+  },
+  "humboldt-1545-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481780.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481748.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481801.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481762.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481787.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2066481774.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/52/63/720x532/2070453091.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-humbolt-1545-59655263.html"
+  },
+  "haaus-ii-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082299197.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082298959.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082299095.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082299048.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082299124.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082298993.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/30/45/01/720x532/2082299063.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-haaus-ii-60304501.html"
+  },
+  "tenca-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904043620.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904043617.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904043618.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904077932.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904043619.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904077930.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/33/58/47/720x532/1904081853.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-tenca-53335847.html"
+  },
+  "palacio-cabrera-palermo-hollywood": {
+   "portada": "https://palaciocabrera.com.ar/img/portada.jpg",
+   "galeria": [
+    "https://palaciocabrera.com.ar/img/proyecto-1.jpg",
+    "https://palaciocabrera.com.ar/img/proyecto-2.jpg",
+    "https://palaciocabrera.com.ar/img/proyecto-3.jpg",
+    "https://palaciocabrera.com.ar/img/proyecto-4.jpg",
+    "https://palaciocabrera.com.ar/img/proyecto-5.jpg",
+    "https://palaciocabrera.com.ar/img/proyecto-6.jpg"
+   ],
+   "fuente": "https://palaciocabrera.com.ar/"
+  },
+  "sens-luxury-homes-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/1979004921.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/1979004931.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/2044482954.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/2044480647.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/2020375662.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/1979004918.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/36/59/03/720x532/2020375664.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-sens-luxury-homes-56365903.html"
+  },
+  "manuel-ugarte-2504-palermo": {
+   "portada": "https://predial.ar/wp-content/uploads/2026/05/59422_41591898090705310305067752656667220227387952941851297211367357663185031854904.jpg",
+   "galeria": [
+    "https://predial.ar/wp-content/uploads/2026/05/59422_59825476108216487492529307956536508614164771825487115051885665640423431031309.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/59422_75871798639236653436873836539968110471486594013751017463886950591018996884557.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/59422_7433050388513219399179936212959716120070363987711977484571403621262987828121.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/59422_38396287732138190956895638924971529183636680902928215384893097663575936521630.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/59422_69134726502805314332080684114807152590991848498425801518455291840903631346699.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/59422_58526022316165889135401578670928826650475691528478758032131091125903156868259.jpg"
+   ],
+   "fuente": "https://predial.ar/propiedad/59422-2/"
+  },
+  "camargo-915-villa-crespo": {
+   "portada": "https://predial.ar/wp-content/uploads/2026/05/72224_74531371119927835642522157867884342294943676453550265694790547449546917637022.jpg",
+   "galeria": [
+    "https://predial.ar/wp-content/uploads/2026/05/72224_28527834758545358926381641337913706948645532952063237189520180940752581176952.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/72224_95568872136848531908740662348889487577071637783828376908018219033146162841020.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/72224_70087378079798420183214288093786950776079501425154443372080194340300799957479.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/72224_64044342561385231283352975162998568984134099650649278598605460843190646118427.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/72224_65629085352919961760324218796283453531004545060215429287949084848398058715396.jpg",
+    "https://predial.ar/wp-content/uploads/2026/05/72224_95429596879338105826926882739008793368874735458748297610332864546420318225121.jpg"
+   ],
+   "fuente": "https://predial.ar/propiedad/72224-2/"
+  },
+  "smart-point-facultades-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/1974027876.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/2053633242.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/1974027877.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/2053633246.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/2053633258.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/2053633255.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/16/87/86/720x532/2053633249.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-smart-point-facultades-56168786.html"
+  },
+  "ato-paraguay-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/67/59/65/720x532/2066983786.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/59/65/720x532/2066983751.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/59/65/720x532/2066983711.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/59/65/720x532/2066983740.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/59/65/720x532/2066983723.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-ato-paraguay-59675965.html"
+  },
+  "aria-garcia-del-rio-saavedra": {
+   "portada": "https://d1v2p1s05qqabi.cloudfront.net/16520423/1752266963.jpg",
+   "galeria": [
+    "https://d1v2p1s05qqabi.cloudfront.net/16493641/1752180559.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/16493642/1752180559.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/16520425/1752266964.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/16520427/1752266964.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/16520429/1752266965.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/16520431/1752266965.jpg"
+   ],
+   "fuente": "https://grupogalceran.com/propiedad/departamento-saavedra-emprendimiento-aria-garcia-del-rio--4403064"
+  },
+  "vita-pallares-valentin-alsina": {
+   "portada": "https://aconif.com/_astro/fachada-frente.DrDlB5ob_2b0AVs.webp",
+   "galeria": [
+    "https://aconif.com/_astro/02-pallares-terraza-final.VP5QEfPV_1dvw2V.jpeg",
+    "https://aconif.com/_astro/3amb-living.BYfM8v40_Y5j0I.webp",
+    "https://aconif.com/_astro/2amb-comedor.idp6tExY_o6G2K.webp",
+    "https://aconif.com/_astro/mono.BbUPf3Rk_Z22Qrz3.webp",
+    "https://aconif.com/_astro/cowork.Cs12TRs7_Z62e30.webp",
+    "https://aconif.com/_astro/planta-3amb.C8cFTM7y_Z1MKtCY.webp"
+   ],
+   "fuente": "https://aconif.com/departamentos-de-pozo/lanus/vita-pallares-valentin-alsina/"
+  },
+  "solar-french-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/97/25/76/720x532/2049206674.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/97/25/76/720x532/2049206675.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/97/25/76/720x532/2049206676.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/97/25/76/720x532/2049206673.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/97/25/76/720x532/2049206669.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-solar-french-french-2979-58972576.html"
+  },
+  "mexico-4354-almagro": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957429.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957470.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957444.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957422.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957466.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957437.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/46/07/92/720x532/2089957458.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mexico-4354-almagro-capital-federal-58460792.html"
+  },
+  "vo-live-nunez": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/2067325534.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462808.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462811.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462832.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462821.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462800.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/91/13/16/720x532/1917462792.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-vo-live-53911316.html"
+  },
+  "key-residences-belgrano": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443126.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443181.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443155.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443132.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443117.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443138.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/48/72/53/720x532/2062443150.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-key-residences-59487253.html"
+  },
+  "hlm-saavedra": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047103.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047133.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047145.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047182.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047193.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047170.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/15/83/60/720x532/2054047094.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-hlm-59158360.html"
+  },
+  "ecuador-1368-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/71/47/82/720x532/2063047398.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/71/47/82/720x532/2063047391.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/71/47/82/720x532/2063047377.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/71/47/82/720x532/2063047375.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/71/47/82/720x532/2063047395.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-ecuador-1368-70-recoleta-capital-federal-58714782.html"
+  },
+  "boedo-1098-boedo": {
+   "portada": "https://d1acdg20u0pmxj.cloudfront.net/entrepreneurships/8bb399a8-f9e4-43b1-9e31-8e1db8600812/860x440/296a4c9b-5f2f-4545-9b20-46b72fdedc14.jpg",
+   "galeria": [],
+   "fuente": "https://www.remax.com.ar/emprendimientos/venta-emprendimiento-al-pozo-en-boedo"
+  },
+  "san-jose-de-calasanz-1000-parque-chacabuco": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553298.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553292.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553306.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553309.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553303.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2090553300.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/73/94/54/720x532/2068522650.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-san-jose-de-calasanz-1018-parque-chacabuco-capital-59739454.html"
+  },
+  "live-crespo-julian-alvarez-805-villa-crespo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833663.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833633.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833693.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833684.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833648.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833669.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/49/31/25/720x532/2086833652.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-live-crespo-60493125.html"
+  },
+  "solar-cavia-palermo-chico": {
+   "portada": "https://d1v2p1s05qqabi.cloudfront.net/27187562/1790107808.jpg",
+   "galeria": [
+    "https://d1v2p1s05qqabi.cloudfront.net/27187564/1790107809.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/12193852/1729102535.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/12193854/1729102536.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/12193861/1729102538.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/27187567/1790107809.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/14507972/1742587747.jpg"
+   ],
+   "fuente": "https://selectia.net.ar/emprendimiento/solar-cavia-cavia-3094--5291"
+  },
+  "arevalo-1480-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923734.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923528.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923341.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923349.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923508.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923336.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/98/20/56/720x532/2088923646.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-vibe-arevalo-54982056.html"
+  },
+  "carabobo-780-parque-chacabuco": {
+   "portada": "https://d1acdg20u0pmxj.cloudfront.net/entrepreneurships/a4380483-7f5e-4156-a181-82bcf540ee94/860x440/ff92b33c-9d2c-4d6c-a620-a496c5aca7be.jpg",
+   "galeria": [],
+   "fuente": "https://www.remax.com.ar/emprendimientos/venta-emprendimiento-al-pozo-en-parque-chacabuco"
+  },
+  "two-olivos-vicente-lopez-frente-al-rio-de-la-plata": {
+   "portada": "https://d1v2p1s05qqabi.cloudfront.net/10367495/1716401166.jpg",
+   "galeria": [
+    "https://d1v2p1s05qqabi.cloudfront.net/9824166/1712675633.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/9824168/1712675634.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/9824170/1712675634.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/9824172/1712675635.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/9824173/1712675636.jpg",
+    "https://d1v2p1s05qqabi.cloudfront.net/9824175/1712675637.jpg"
+   ],
+   "fuente": "https://salayaromera.com.ar/emprendimiento/two--4306"
+  },
+  "smart-point-caballito-caballito": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/09/79/55/720x532/2077118857.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/09/79/55/720x532/2077118868.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/09/79/55/720x532/2077118883.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/09/79/55/720x532/2077118877.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-smart-point-caballito-60097955.html"
+  },
+  "rio-de-janeiro-645-almagro": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2019845991.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2019845996.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2081587636.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2081587600.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2081587664.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2081587653.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/79/30/39/720x532/2081587598.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-rio-de-janeiro-645-57793039.html"
+  },
+  "maior-recoleta-ii-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883444.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883529.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883473.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883454.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883490.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/63/65/91/720x532/2052883424.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-maior-recoleta-ii-57636591.html"
+  },
+  "charcas-2886-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1972849122.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1925332967.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1925332966.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1925332963.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1925332970.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/21/83/57/720x532/1925332953.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-charcas-y-laprida-1-2-y-3-amb-apto-prof-airbnb-54218357.html"
+  },
+  "niu-mansilla-barrio-norte": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069343064.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069342976.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069343044.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069343037.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069343065.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/77/32/85/720x532/2069343055.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-niu-mansilla-59773285.html"
+  },
+  "baires-devoto-villa-devoto": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674181.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674186.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674222.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674201.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674190.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/45/66/79/720x532/2061674227.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-baires-devoto-59456679.html"
+  },
+  "av-rivadavia-9999-villa-luro": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942090.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942073.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942089.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942079.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942086.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/50/84/69/720x532/2009942088.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-av-rivadavia-9999-en-pozo-57508469.html"
+  },
+  "eco-lascano-versalles": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/46/720x532/2052594193.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/46/720x532/2052594148.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/46/720x532/2052594228.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/46/720x532/2052594237.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/08/98/46/720x532/2052594199.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-eco-lascano-59089846.html"
+  },
+  "bigua-valentin-gomez-3600-almagro": {
+   "portada": "https://www.argenprop.com/static-content/70142731/68e68228-da61-4177-9817-2a2ef13b4963.jpg",
+   "galeria": [
+    "https://www.argenprop.com/static-content/70142731/a907fe3d-c7cd-41d0-98e3-9f561e2d557b.jpg",
+    "https://www.argenprop.com/static-content/70142731/afd42ee0-c449-44bf-857b-a84e769a4c5f.jpg",
+    "https://www.argenprop.com/static-content/70142731/1ab83ec4-c9cf-470b-8491-3a3b945957fa.jpg",
+    "https://www.argenprop.com/static-content/70142731/669be4c3-0c88-4280-a435-b234565f2852.jpg"
+   ],
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-almagro--13724107"
+  },
+  "pringles-1283-villa-crespo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2090114648.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2090104780.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2090114656.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2090107247.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2023734024.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/57/59/94/40/720x532/2029761084.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-smart-point-iii-57599440.html"
+  },
+  "milenia-fitz-roy-2109-palermo-hollywood": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/2038422313.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/1898831562.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/1898832029.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/1898831886.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/1898831491.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/53/10/35/83/720x532/1898831973.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-milenia-fitz-roy-53103583.html"
+  },
+  "serrano-1372-palermo-soho": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436574.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436568.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436549.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436578.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436558.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/85/95/00/720x532/2053436596.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-serrano-1372-56859500.html"
+  },
+  "conde-vista-belgrano": {
+   "portada": "https://static.tokkobroker.com/dev_pictures/71129_2827972716851568814691867978329872891606434511927318421546945877964056261358.jpg",
+   "galeria": [
+    "https://static.tokkobroker.com/dw_pics/71129_112346088594680203742327514302845559940482725734442366943789816267279533860067.jpg",
+    "https://static.tokkobroker.com/dw_pics/71129_110706242607865610468159978450242102928908028074964032193005130717361608872253.jpg",
+    "https://static.tokkobroker.com/dw_pics/71129_50752803527247248045665401628660343726719894213337530849776818392944292968613.jpg",
+    "https://static.tokkobroker.com/dw_pics/71129_2121084656869726623458983948654359410865079115106415200131102735533545565342.jpg"
+   ],
+   "fuente": "https://www.interwin.com.ar/emprendimientos/conde-vista--conde-1553"
+  },
+  "amenabar-2501-belgrano": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799501.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799516.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799500.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799495.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799493.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/27/90/74/720x532/1976799505.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-amenabar-2501-56279074.html"
+  },
+  "black-libertador-nunez": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757803.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757801.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757793.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757789.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757804.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/52/55/76/31/720x532/1911757811.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-black-libertador-52557631.html"
+  },
+  "cramer-3600-saavedra": {
+   "portada": "https://www.argenprop.com/static-content/66017981/4673f607-c94a-42ea-bfb5-fe6002ad1438.jpg",
+   "galeria": [
+    "https://www.argenprop.com/static-content/66017981/623214ff-e35a-4ba4-8e17-36a69d9f2dfe.jpg",
+    "https://www.argenprop.com/static-content/66017981/f4828e60-b584-438e-a9c8-af30bf05126e.jpg",
+    "https://www.argenprop.com/static-content/66017981/e986b40a-cd4b-4868-a74c-749dc3533e6e.jpg",
+    "https://www.argenprop.com/static-content/66017981/53615e6c-9fb5-4cea-93ee-aa64bcb97480.jpg"
+   ],
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-saavedra--18971066"
+  },
+  "arismendi-2608-parque-chas": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523298.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523153.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523042.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523116.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523370.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/70/80/720x532/2066523131.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-arismendi-2608-59657080.html"
+  },
+  "polo-garden-las-canitas": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2075755426.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2075755430.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2075755427.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2075755425.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2073019387.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/68/33/720x532/2075755429.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-polo-garden-emprendimiento-en-pozo-unidades-de-1-59926833.html"
+  },
+  "cramer-2631-belgrano": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1961002694.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1985532625.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1937598052.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1985532627.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1985532621.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/49/89/94/30/720x532/1985532630.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-emprendimiento-1-2-y-3-ambientes-en-pozo-en-belgrano-49899430.html"
+  },
+  "crespo-suites-lavalleja-818-villa-crespo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2041693317.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2041693301.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2041693324.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2041693302.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2068258746.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/68/35/70/720x532/2041693319.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-lavalleja-818-villa-crespo-capital-federal-58683570.html"
+  },
+  "quara-nordelta-nordelta": {
+   "portada": "https://www.viatigre.com.ar/photos/opp/3410/01_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg",
+   "galeria": [
+    "https://www.viatigre.com.ar/photos/opp/3410/02_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg",
+    "https://www.viatigre.com.ar/photos/opp/3410/03_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg",
+    "https://www.viatigre.com.ar/photos/opp/3410/04_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg",
+    "https://www.viatigre.com.ar/photos/opp/3410/05_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg",
+    "https://www.viatigre.com.ar/photos/opp/3410/06_venta-depto-2-amb-en-pozo-quara-nordelta-3410.jpg"
+   ],
+   "fuente": "https://www.viatigre.com.ar/propiedad/venta/proyectos-inversion/departamentos-pozo/venta-depto-2-amb-en-pozo-quara-nordelta-3410/"
+  },
+  "urban-garden-iii-avellaneda": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618570.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618528.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618653.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618590.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618700.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/61/98/03/720x532/2065618632.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-urban-garden-iii-59619803.html"
+  },
+  "iberlucea-3659-edificio-i-19-lanus-oeste": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624388.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624381.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624393.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624396.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624368.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/06/44/80/720x532/2051624374.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-iberlucea-3659-edificio-i-19-59064480.html"
+  },
+  "shaddai-ii-berazategui": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382342.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382332.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382340.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382336.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382341.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/20/25/06/720x532/2028382334.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-shaddai-ii-58202506.html"
+  },
+  "canvas-barracas-suarez-1700-barracas": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106318.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106308.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106310.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106312.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106307.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/55/80/43/49/720x532/1965106317.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-canvas-barracas-55804349.html"
+  },
+  "chacabuco-154-monserrat": {
+   "portada": "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569625679870336_41590188_medium.webp",
+   "galeria": [
+    "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569624871613138_41590196_medium.webp",
+    "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569626494770506_41590195_medium.webp",
+    "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569625569319072_41590187_medium.webp",
+    "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569626196125501_41590182_medium.webp",
+    "https://kkevijpywsidvjgujztg.supabase.co/storage/v1/object/public/property-photos/AR/publications/8264487/photo_1791569627112216097_41590180_medium.webp"
+   ],
+   "fuente": "https://mudafy.com.ar/emprendimientos/chacabuco-100-emprendimiento-en-venta-660173"
+  },
+  "lezzama-defensa-1635-san-telmo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230246.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230258.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230253.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230248.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1984338348.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/72/28/58/720x532/1997230249.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-lezzama-54722858.html"
+  },
+  "balcarce-630-san-telmo": {
+   "portada": "https://www.argenprop.com/static-content/58364161/fb109b22-eb8c-4cf0-a829-157242d830a8.jpg",
+   "galeria": [
+    "https://www.argenprop.com/static-content/58364161/c248965b-5f44-4954-9359-327851a17d89.jpg",
+    "https://www.argenprop.com/static-content/58364161/bd76aa4e-1611-46dc-86f4-8d02e2b392e8.jpg",
+    "https://www.argenprop.com/static-content/58364161/30b5c40c-b476-409b-a674-b54e6427d14e.jpg",
+    "https://www.argenprop.com/static-content/58364161/97338011-5e17-43f8-b6cc-ff3759304b60.jpg"
+   ],
+   "fuente": "https://www.argenprop.com/emprendimientos/emprendimiento-en-san-telmo--16146385"
+  },
+  "pisos-de-tres-ambientes-murature-4810-velez-sarsfield": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016927.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016931.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016930.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016928.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/62/65/720x532/2067016929.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-pisos-de-tres-ambientes-59676265.html"
+  },
+  "jaramillo-4737-saavedra": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570791.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570787.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570807.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570756.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570768.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/34/29/720x532/2058570777.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-jaramillo-4737-59343429.html"
+  },
+  "washington-belgrano-r": {
+   "portada": "https://framerusercontent.com/images/AOKNnSmlqJ2k2rwi98DRKDhEaM.jpg",
+   "galeria": [
+    "https://framerusercontent.com/images/pDgzkHqQ3ibP1bUNohMrZZ8.jpg",
+    "https://framerusercontent.com/images/q8l9Zo5KPVSyYNU3EeilDMdOKo.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/40/94/35/720x532/2034094740.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/40/94/35/720x532/2034094745.jpg"
+   ],
+   "fuente": "https://www.betonbsas.com/washington"
+  },
+  "hol-zapata-207-palermo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/11/70/32/720x532/2077582745.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/11/70/32/720x532/2077582732.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/11/70/32/720x532/2077582730.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-hol-zapata-207-60117032.html"
+  },
+  "serena-hollywood-palermo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015272.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015184.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015221.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015280.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015201.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/92/66/60/720x532/2073015259.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-serena-hollywood-59926660.html"
+  },
+  "maker-crespo-villa-crespo": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1943710954.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1943710957.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1943710951.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1943710956.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1958076894.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/54/92/02/50/720x532/1943710960.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-maker-crespo-54920250.html"
+  },
+  "ricardo-gutierrez-2972-villa-del-parque": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2078602815.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2084233313.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2078602643.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2078602782.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2078602807.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/60/15/77/94/720x532/2078602620.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-ricardo-gutierrez-2972-villa-del-parque-en-60157794.html"
+  },
+  "kick-chacarita-chacarita": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2067479690.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2067093261.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2081680895.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2067093260.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2067093262.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/67/48/06/720x532/2067303253.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-kick-chacarita-59674806.html"
+  },
+  "quo-gutierrez-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526110.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526117.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526079.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526097.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526091.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/34/19/98/720x532/2058526086.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-quo-gutierrez-59341998.html"
+  },
+  "laprida-1432-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720927.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720939.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720933.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720926.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720936.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/56/76/65/86/720x532/1989720932.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-laprida-1432-56766586.html"
+  },
+  "mansilla-2626-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2038141583.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2038141567.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2038141574.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2057408106.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2057408032.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/58/47/54/63/720x532/2057408072.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mansilla-2626-58475463.html"
+  },
+  "feel-recoleta-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823805.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823726.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823815.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823844.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823769.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/27/17/83/720x532/2056823778.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-feel-recoleta-59271783.html"
+  },
+  "mine-ayacucho-recoleta": {
+   "portada": "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066523974.jpg",
+   "galeria": [
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066523760.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066524102.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066524188.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066524383.jpg",
+    "https://imgar.zonapropcdn.com/avisos/1/00/59/65/71/11/720x532/2066524146.jpg"
+   ],
+   "fuente": "https://www.zonaprop.com.ar/propiedades/emprendimiento/ememvein-mine-ayacucho-59657111.html"
+  }
+ }
+}
