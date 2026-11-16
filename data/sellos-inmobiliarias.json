@@ -19,6 +19,18 @@
        ]
       }
      ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: MEL PROPIEDADES S.R.L.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
     }
    ]
   },
@@ -100,27 +112,6 @@
        "texto": "Razón social consultada: Krell Brokers S.A.",
        "fuentes": [
         "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  "Predial": {
-   "nombre": "Predial",
-   "web": "https://predial.ar",
-   "verificado": "2026-11-14",
-   "vence": "2027-05-14",
-   "sellos": [
-    {
-     "tipo": "matricula",
-     "resumen": "Matrícula CUCICBA N° 3269 vigente en el padrón oficial (corredor/a: Gabriel Alejandro Brodsky)",
-     "evidencia": [
-      {
-       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 3269",
-       "fuentes": [
-        "https://cucicba.org.ar/oblea?matricula=3269&sucursal=0",
-        "https://predial.ar/"
        ]
       }
      ]
@@ -324,6 +315,24 @@
        ]
       }
      ]
+    },
+    {
+     "tipo": "reconocida",
+     "resumen": "2 reconocimientos sectoriales verificados",
+     "evidencia": [
+      {
+       "texto": "Ranking de Calidad Inmobiliaria y de la Construcción – 1° en 'Servicios inmobiliarios residenciales' (17° del ranking general de 214 marcas, 63,8 pts) · 2023 · Revista Mercado + Reporte Inmobiliario (implementa Oh! Panel)",
+       "fuentes": [
+        "https://mercado.com.ar/revista/edicion-marzo-n1251/empresas-que-se-posicionan-en-una-coyuntura-incierta/"
+       ]
+      },
+      {
+       "texto": "Ranking de Calidad Inmobiliaria y de la Construcción – 1° en 'Servicios inmobiliarios residenciales' (8° del ranking general de 212 marcas, 89,2 pts) · 2019 · Revista Mercado + Reporte Inmobiliario (implementa Oh! Panel)",
+       "fuentes": [
+        "https://mercado.com.ar/revista/2019-marzo-na1213/vaticinan-recuperacion-en-el-primer-semestre/"
+       ]
+      }
+     ]
     }
    ]
   },
@@ -426,6 +435,47 @@
        "fuentes": [
         "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Ostrovsky&limit=12&offset=0",
         "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "NEMOVI": {
+   "nombre": "NEMOVI",
+   "web": null,
+   "verificado": "2026-11-15",
+   "vence": "2027-05-15",
+   "sellos": [
+    {
+     "tipo": "solidez",
+     "resumen": "Situación 1 (normal) en la Central de Deudores del BCRA, período 202609",
+     "evidencia": [
+      {
+       "texto": "Razón social consultada: NEMOVI S.A.S.",
+       "fuentes": [
+        "https://www.bcra.gob.ar/BCRAyVos/Situacion_Crediticia.asp"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Sarro Pucheta Propiedades": {
+   "nombre": "Sarro Pucheta Propiedades",
+   "web": "https://sarropucheta.com",
+   "verificado": "2026-11-15",
+   "vence": "2027-05-15",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 10091 vigente en el padrón oficial; también matriculado en el Colegio de Martilleros de Morón (N° 2853)",
+     "evidencia": [
+      {
+       "texto": "Padrón público de CUCICBA y del Colegio de Martilleros de Morón",
+       "fuentes": [
+        "https://www.martillerosmoron.org.ar/colegiado.php?act=2&col=2853",
+        "https://cucicba.org.ar/oblea?matricula=10091&sucursal=0"
        ]
       }
      ]

@@ -416,6 +416,55 @@
      ]
     }
    ]
+  },
+  "mmcv": {
+   "nombre": "MMCV",
+   "web": "https://mmcv.com.ar/",
+   "verificado": "2026-11-15",
+   "vence": "2027-05-15",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "5 obras entregadas informadas; 5 confirmadas por fuentes independientes",
+     "evidencia": [
+      {
+       "texto": "Salvador María del Carril 3816 — S. M. del Carril 3816, Villa Devoto, CABA (2012)",
+       "fuentes": [
+        "https://mmcv.com/",
+        "https://www.archdaily.com/607124/salvador-maria-del-carril-3816-mmcv"
+       ]
+      },
+      {
+       "texto": "Mercedes 3880 — Mercedes 3880, Villa Devoto, CABA (2013)",
+       "fuentes": [
+        "https://mmcv.com/single-product.php?prod-id=2",
+        "https://www.archdaily.com/599307/mercedes-3880-mmcv"
+       ]
+      },
+      {
+       "texto": "Pedro Morán 3851 — Pedro Morán 3851, Villa Devoto, CABA (2014)",
+       "fuentes": [
+        "https://mmcv.com/single-product.php?prod-id=7",
+        "https://www.archdaily.com/621458/pedro-moran-3851-mmcv"
+       ]
+      },
+      {
+       "texto": "Pedro Morán 3875 — Pedro Morán 3875, Villa Devoto, CABA (2014)",
+       "fuentes": [
+        "https://mmcv.com/",
+        "https://www.archdaily.com/621437/pedro-moran-3875-mmcv"
+       ]
+      },
+      {
+       "texto": "Edificio Multifuncional Asunción 4125 — Asunción 4125, Villa Devoto, CABA (2022)",
+       "fuentes": [
+        "https://mmcv.com/",
+        "https://www.archdaily.com/1152504/asuncion-4125-multifunctional-building-mmcv"
+       ]
+      }
+     ]
+    }
+   ]
   }
  }
 }

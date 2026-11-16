@@ -258,7 +258,7 @@ export default async function FichaProyecto({ params }) {
   const galeriaRaw = Array.isArray(d.galeria) ? d.galeria : (Array.isArray(acf(d, 'galeria')) ? acf(d, 'galeria') : []);
   const galeriaImgs = galeriaRaw.map((u) => proxyImage(u)).filter(Boolean);
   const contentImgs = [...contenido.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)].map((m) => m[1]);
-  const gallery = [imagen, ...galeriaImgs, ...contentImgs].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 8);
+  const gallery = [imagen, ...galeriaImgs, ...contentImgs].filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 16);
 
   // Campos que se muestran solo si existen.
   const legal = acfAny(d, ['legal', 'confianza_legal', 'estructura_legal']);
