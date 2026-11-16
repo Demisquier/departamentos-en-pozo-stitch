@@ -258,18 +258,23 @@
   "Click Aparts": {
    "nombre": "Click Aparts",
    "web": "https://www.clickaparts.com",
-   "verificado": "2026-11-14",
-   "vence": "2027-05-14",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
    "sellos": [
     {
      "tipo": "matricula",
-     "resumen": "Matrícula CUCICBA N° 6383 vigente en el padrón oficial (corredor/a: Ezequiel Elián Wierzba)",
+     "resumen": "Corredor inmobiliario matriculado en CUCICBA (Ezequiel Elián Wierzba, matrícula N° 6383) a cargo de Click Aparts.",
      "evidencia": [
       {
-       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 6383",
+       "texto": "El sitio oficial declara 'EZEQUIEL WIERZBA CORREDOR INMOBILIARIO, C.U.C.I.C.B.A 6383', contacto buenosaires@clickaparts.com, Armenia y Guatemala, Palermo.",
        "fuentes": [
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Wierzba&limit=12&offset=0",
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+        "https://www.clickaparts.com/s/La-Empresa"
+       ]
+      },
+      {
+       "texto": "Guía de matriculados CUCICBA: Wierzba Ezequiel Elián, matrícula 6383, nombre de fantasía 'CLICK APARTS', email buenosaires@clickaparts.com, domicilio Armenia 2105 4°.",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Wierzba"
        ]
       }
      ]
@@ -279,18 +284,29 @@
   "Fera": {
    "nombre": "Fera",
    "web": "https://www.ferayasociados.com",
-   "verificado": "2026-11-14",
-   "vence": "2027-05-14",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
    "sellos": [
     {
      "tipo": "matricula",
-     "resumen": "Matrícula CUCICBA N° 671 vigente en el padrón oficial (corredor/a: Karina Mónica Curotto)",
+     "resumen": "Inmobiliaria con corredora matriculada en CUCICBA (Lic. Karina Mónica Curotto, matrícula N° 671), vigente hasta 31/12/2026.",
      "evidencia": [
       {
-       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 671",
+       "texto": "El pie del sitio oficial declara 'Lic. Curotto Karina Monica - CUCICBA Matrícula 671'.",
        "fuentes": [
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Curotto&limit=12&offset=0",
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+        "https://www.ferayasociados.com"
+       ]
+      },
+      {
+       "texto": "Guía de matriculados CUCICBA: Curotto Karina Mónica, matrícula 671, nombre de fantasía 'FERA', email info@ferayasociados.com, domicilio Lola Mora 421 piso 7 of. 703.",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Curotto"
+       ]
+      },
+      {
+       "texto": "Oblea CUCICBA 2026: matrícula 671, Karina Mónica Curotto, vencimiento 31/12/2026.",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=671&sucursal=0"
        ]
       }
      ]
@@ -360,18 +376,24 @@
   "D'Aria Propiedades": {
    "nombre": "D'Aria Propiedades",
    "web": "https://www.daria.com.ar",
-   "verificado": "2026-11-14",
-   "vence": "2027-05-14",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
    "sellos": [
     {
      "tipo": "matricula",
-     "resumen": "Matrícula CUCICBA N° 8264 vigente en el padrón oficial (corredor/a: Maximiliano Miguel D'Aria)",
+     "resumen": "Martillero responsable Maximiliano Miguel D'Aria, matrícula CUCICBA N° 8264 vigente (vencimiento 31/12/2026).",
      "evidencia": [
       {
-       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 8264",
+       "texto": "El sitio oficial declara 'Maximiliano M. D'Aria – Matrícula N°8264' (CUCICBA) y en 'Nosotros': 'Maximiliano D'Aria Martillero, CUCICBA N° 8264 CMCPSI N° 6886'.",
        "fuentes": [
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=D%27ARIA&limit=12&offset=0",
-        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados"
+        "https://www.daria.com.ar",
+        "https://www.daria.com.ar/Nosotros"
+       ]
+      },
+      {
+       "texto": "Oblea CUCICBA 2026: MAXIMILIANO MIGUEL D'ARIA, matrícula 8264, Juramento 1775 piso 7 of. A, CABA, vencimiento 31/12/2026.",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=8264&sucursal=0"
        ]
       }
      ]
@@ -476,6 +498,176 @@
        "fuentes": [
         "https://www.martillerosmoron.org.ar/colegiado.php?act=2&col=2853",
         "https://cucicba.org.ar/oblea?matricula=10091&sucursal=0"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Justevila Propiedades": {
+   "nombre": "Justevila Propiedades",
+   "web": "https://www.justevila.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Corredora inmobiliaria matriculada en CUCICBA (matrícula N° 130), vigente hasta 31/12/2026.",
+     "evidencia": [
+      {
+       "texto": "El sitio oficial declara 'C.U.C.I.C.B.A - MATRICULA Nº130' y domicilio en Av. Pedro Goyena 1498, Caballito.",
+       "fuentes": [
+        "https://www.justevila.com.ar/Contacto"
+       ]
+      },
+      {
+       "texto": "Oblea CUCICBA 2026: matrícula 130, Alejandra Liliana González, Av. Pedro Goyena 1498, CABA, vencimiento 31/12/2026 (número y domicilio coinciden con el sitio).",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=130&sucursal=0"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Gomez de Montanari": {
+   "nombre": "Gomez de Montanari",
+   "web": "https://www.gomezdemontanari.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Corredor inmobiliario matriculado en CUCICBA (Martín Emanuel Montanari, matrícula N° 9186), vigente hasta 31/12/2026, registrado con el nombre 'Gómez de Montanari Desarrollos Inmobiliarios'.",
+     "evidencia": [
+      {
+       "texto": "Guía de matriculados CUCICBA: Montanari Martín Emanuel, matrícula 9186, nombre de fantasía 'GOMEZ DE MONTANARI DESARROLLOS INMOBILIARIOS', email @gomezdemontanari.com.ar, domicilio Monroe 5785 PB.",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Montanari"
+       ]
+      },
+      {
+       "texto": "Oblea CUCICBA 2026: matrícula 9186, Monroe 5785 PB, CABA, vencimiento 31/12/2026.",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=9186&sucursal=0"
+       ]
+      },
+      {
+       "texto": "El sitio oficial lista la sucursal Av. Monroe 5785, Villa Urquiza (coincide con el domicilio del padrón).",
+       "fuentes": [
+        "https://www.gomezdemontanari.com.ar"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Emprendimientos Soldati": {
+   "nombre": "Emprendimientos Soldati",
+   "web": "https://soldati.com",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Corredores inmobiliarios matriculados en CUCICBA bajo el nombre 'Soldati' (Leandro Soldati, mat. 1544; Sergio Lucas Soldati, mat. 9733), vigentes hasta 31/12/2026.",
+     "evidencia": [
+      {
+       "texto": "Guía de matriculados CUCICBA: Leandro Soldati (mat. 1544) y Sergio Lucas Soldati (mat. 9733), nombre de fantasía 'SOLDATI', emails @soldati.com, teléfono 7700-1010, domicilio Ortiz de Ocampo 3302 1° 10; Sergio Lucas Soldati con sucursal Juana Manso 1551 (Puerto Madero).",
+       "fuentes": [
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=Soldati"
+       ]
+      },
+      {
+       "texto": "El sitio oficial publica como contacto info@soldati.com y +54 9 11 7700-1010 (mismo dominio de email y número que el padrón).",
+       "fuentes": [
+        "https://soldati.com/contacto"
+       ]
+      },
+      {
+       "texto": "Obleas CUCICBA 2026: matrículas 1544 y 9733, Ortiz de Ocampo 3302 1° 10, CABA, vencimiento 31/12/2026.",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=1544&sucursal=0",
+        "https://cucicba.org.ar/oblea?matricula=9733&sucursal=0"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Barón Inmobiliaria": {
+   "nombre": "Barón Inmobiliaria",
+   "web": "https://baroninmobiliaria.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "Constructora-desarrolladora de Lomas de Zamora con obras informadas como finalizadas (Skyline, Torre Live, Torre White, entre +50 declaradas); la finalización e inauguración de la torre Skyline fue cubierta por la prensa local.",
+     "evidencia": [
+      {
+       "texto": "El sitio oficial (Emprendimientos) declara '+50 proyectos finalizados' y '+3000 unidades entregadas' desde 1998, y lista como sold out Skyline, Torre Live, Torre White y Grand Barón.",
+       "fuentes": [
+        "https://baroninmobiliaria.com.ar/emprendimientos/"
+       ]
+      },
+      {
+       "texto": "Las fichas oficiales de Torre Live y Torre White indican 'Torre finalizada' (con avance de obra hasta junio y octubre de 2024 respectivamente).",
+       "fuentes": [
+        "https://baroninmobiliaria.com.ar/emprendimientos/torre-live-46ee85",
+        "https://baroninmobiliaria.com.ar/emprendimientos/torre-white-46ee91"
+       ]
+      },
+      {
+       "texto": "Política del Sur (15/02/2024): 'Se inauguró Skyline, la torre más alta de zona sur' — 'La inmobiliaria Barón realizó una mega inauguración para festejar junto a los vecinos de Lomas de Zamora la finalización de su flamante obra' (31 pisos, 130 m).",
+       "fuentes": [
+        "https://politicadelsur.com/nota/85104/se-inauguro-skyline-la-torre-mas-alta-de-zona-sur/"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Lanven": {
+   "nombre": "Lanven",
+   "web": "https://lanven.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Corredor responsable con matrícula CUCICBA N° 8145 vigente (vencimiento 31/12/2026).",
+     "evidencia": [
+      {
+       "texto": "El sitio oficial declara 'Alvaro Ignacio Gallo y Kaplan CUCICBA 8145'.",
+       "fuentes": [
+        "https://lanven.com.ar/"
+       ]
+      },
+      {
+       "texto": "Oblea CUCICBA 2026: Nombre ALVARO IGNACIO GALLO, Matrícula 8145, Vencimiento 31/12/2026. Padrón CUCICBA: matrícula 8145, ALVARO IGNACIO GALLO, email agallokaplan@gmail.com.",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=8145&sucursal=0",
+        "https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=GALLO"
+       ]
+      }
+     ]
+    },
+    {
+     "tipo": "solidez",
+     "resumen": "Sociedad identificada (LANVEN S.A., CUIT 30-71761965-6) con situación 1 (normal) en la Central de Deudores del BCRA, período 09/2026.",
+     "evidencia": [
+      {
+       "texto": "Lanven S.A., CUIT 30717619656, sociedad anónima de CABA constituida el 12/05/2022; socios Alvaro Ignacio Gallo y Kaplan y María José González Zudaire (los mismos corredores que declara el sitio).",
+       "fuentes": [
+        "https://indicadores.ar/empresa/30717619656",
+        "https://lanven.com.ar/"
+       ]
+      },
+      {
+       "texto": "BCRA Central de Deudores, período 202609: LANVEN S.A., única entidad en situación 1.",
+       "fuentes": [
+        "https://api.bcra.gob.ar/CentralDeDeudores/v1.0/Deudas/30717619656"
        ]
       }
      ]

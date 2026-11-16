@@ -465,6 +465,170 @@
      ]
     }
    ]
+  },
+  "brodyfriedman": {
+   "nombre": "BrodyFriedman",
+   "web": "https://brodyfriedman.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "16 obras informadas como terminadas en CABA (líneas Quo y Velvet, Palacio Cabrera); entrega de Velvet Casa Campos (Belgrano) confirmada por Forbes Argentina.",
+     "evidencia": [
+      {
+       "texto": "El listado de proyectos del sitio oficial marca como 'Terminado' 16 obras, entre ellas Quo Zapata, Velvet Casa Campos (Av. Luis María Campos 1336), Velvet Sucre, Palacio Cabrera, Quo Style, Quo Quesada, Quo Paraguay, Quo Arenales y Quo Dorrego I-III.",
+       "fuentes": [
+        "https://brodyfriedman.com.ar/proyectos"
+       ]
+      },
+      {
+       "texto": "Forbes Argentina (14/06/2023): BrodyFriedman 'en mayo de este año inauguró con una exclusiva fiesta junto con las primeras entregas' Velvet Casa Campos, sobre Av. Luis María Campos (76 unidades, ya todas vendidas).",
+       "fuentes": [
+        "https://www.forbesargentina.com/lifestyle/asi-nuevo-emprendimiento-inmobiliario-premium-corazon-belgrano-n35349"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "cek": {
+   "nombre": "CEK Group",
+   "web": "https://www.cekgroup.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "20 obras informadas como terminadas (18 en CABA, 2 en Bay Harbor, Miami); iProfesional confirma como finalizado Black Newbery (Las Cañitas) y Black Arce con posesión inmediata.",
+     "evidencia": [
+      {
+       "texto": "El listado de proyectos del sitio oficial marca como 'Terminado' 20 obras, entre ellas Black Newbery, Black Arce, Black Arcos 1167 y 1539, Black Arévalo, Black Juncal, Black Báez, Haaus I, Luis María Campos 559 y Arce 570.",
+       "fuentes": [
+        "https://www.cekgroup.com.ar/proyectos"
+       ]
+      },
+      {
+       "texto": "iProfesional (04/07/2026), sección 'Los edificios terminados que marcan el valor de la zona': 'Black Newbery, desarrollado por CEK Group, es un proyecto finalizado que se ubica sobre Newbery 1890, en su intersección con Báez'; y Black Arce, 'un desarrollo de CEK Group ... ofrece posesión inmediata'.",
+       "fuentes": [
+        "https://www.iprofesional.com/realestate/459121-los-proyectos-inmobiliarios-que-cambiaran-el-barrio-de-las-canitas-para-siempre"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "grupo-portland": {
+   "nombre": "Grupo Portland",
+   "web": "https://grupoportland.com",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "reconocida",
+     "resumen": "3° lugar entre Desarrolladores en el 6° Estudio de Calidad Inmobiliaria y de la Construcción de Revista Mercado y Reporte Inmobiliario (edición 2020).",
+     "evidencia": [
+      {
+       "texto": "Revista Mercado (17/04/2020), estudio con Reporte Inmobiliario sobre 211 compañías: 'Entre los Desarrolladores ... En tercer lugar se coloca Grupo Portland que, con 35,6, suma casi 20 puntos más que en 2019 y escala desde el puesto 9.'",
+       "fuentes": [
+        "https://mercado.com.ar/informes-especiales/sexto-estudio-sobre-calidad-inmobiliaria-y-de-la-construccion-el-valor-de-los-intangibles"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "faena-group": {
+   "nombre": "Faena Group",
+   "web": "https://www.faena.com",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "Desarrolló y terminó en Puerto Madero el Faena Hotel (2004, con 80 unidades residenciales), el Faena Arts Center (2011) y las Faena Aleph Residences de Foster + Partners (completadas en 2013).",
+     "evidencia": [
+      {
+       "texto": "Global Construction Review (10/02/2013): Foster + Partners 'has completed its first project in Latin America with the opening of the Faena Aleph Residences in Buenos Aires'; nueve pisos, 50 departamentos, parte del Faena District en Puerto Madero.",
+       "fuentes": [
+        "https://globalconstructionreview.com/fosters-first-completion-latin-america"
+       ]
+      },
+      {
+       "texto": "Wallpaper* (28/09/2011): Alan Faena lanza el Faena Arts Center en Puerto Madero (ex molino remodelado por McCormack Asociados), dentro del Faena Arts District que incluye el Faena Hotel & Universe y 'various residential projects'.",
+       "fuentes": [
+        "https://wallpaper.com/art/faena-arts-center-buenos-aires"
+       ]
+      },
+      {
+       "texto": "Wikipedia (Faena Hotel Buenos Aires): Alan Faena abrió el Faena Hotel en octubre de 2004 en el ex edificio El Porteño, con 88 habitaciones y 80 unidades residenciales; las Faena Aleph Residences se completaron en enero de 2013.",
+       "fuentes": [
+        "https://en.wikipedia.org/wiki/Faena_Hotel_Buenos_Aires"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "vizora": {
+   "nombre": "Vizora",
+   "web": "https://vizora.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "Más de 20 años desarrollando y gerenciando proyectos (Árboris Las Lomas, Árboris La Horqueta, Zencity, Madero Walk, Torre Banco Macro, entre otros); la torre corporativa de Banco Macro de César Pelli, cuyo desarrollo y gerenciamiento estuvo a cargo de Vizora, está terminada y en funcionamiento.",
+     "evidencia": [
+      {
+       "texto": "El sitio oficial lista como 'Nuestro trabajo' Árboris Las Lomas, Zéncity, Árboris La Horqueta, Banco Macro ('Desarrollamos, dirigimos y gerenciamos la obra de la sede central del Banco Macro'), Madero Walk, Central Tucumano y Mercados del Delta. El perfil de Mudafy informa '8 obras entregadas' y 'Torre Banco Macro – Entregado en 2016'.",
+       "fuentes": [
+        "https://vizora.com.ar",
+        "https://mudafy.com.ar/desarrolladoras/vizora"
+       ]
+      },
+      {
+       "texto": "InfoNegocios (25/09/2015): Milagros Brito, 'presidenta de Vizora, empresa a cargo del desarrollo, la dirección y el gerenciamiento de la futura sede central del Banco Macro' (Av. Madero 1180, 130 m, César Pelli).",
+       "fuentes": [
+        "https://infonegocios.info/y-ademas/la-torre-del-macro-en-la-recta-final-con-el-sello-de-cesar-pelli"
+       ]
+      },
+      {
+       "texto": "Perfil (08/07/2026): la Torre Macro, en Av. Eduardo Madero 1180, es la sede central de Banco Macro, 'alberga a más de dos mil colaboradores' y está en funcionamiento 'desde su inauguración'.",
+       "fuentes": [
+        "https://www.perfil.com/noticias/amp/empresas-y-protagonistas/un-gigante-celeste-y-blanco-la-torre-de-banco-macro-se-aduena-otra-vez-de-las-miradas-en-buenos-aires.phtml"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "abv-arquitectura": {
+   "nombre": "ABV Arquitectura",
+   "web": "https://abv.com.ar",
+   "verificado": "2026-11-16",
+   "vence": "2027-05-16",
+   "sellos": [
+    {
+     "tipo": "trayectoria",
+     "resumen": "Desarrolladora fundada por arquitectos con casi 37 años de historia y 62 desarrollos completados; entre sus obras terminadas, Decó Recoleta (inaugurado en diciembre de 2022) y las torres Eminent en Asunción (inauguradas en abril de 2016).",
+     "evidencia": [
+      {
+       "texto": "Forbes Argentina (04/11/2026): ABV, con casi 37 años de historia, 'ha completado hasta la fecha 62 desarrollos' y acumula 350.000 m² construidos. El perfil de Mudafy lista 9 obras entregadas (Eminent, Decó Recoleta, Be Plaza, Be Libertador, Torres Decó Palermo, Torre Decó Buenos Aires, Libertador Square, Torre del Boulevard, HOM) y 35 obras entregadas en total.",
+       "fuentes": [
+        "https://www.forbesargentina.com/summit/adn-arquitectonico-formula-lujo-ubicaciones-irrepetibles-escala-medida-n101746",
+        "https://mudafy.com.ar/desarrolladoras/abv-arquitectura"
+       ]
+      },
+      {
+       "texto": "La Nación (08/02/2023): 'Decó Recoleta es un proyecto residencial de 16 pisos que se inauguró en diciembre del 2022 ... Desarrollado por el estudio ABV Arquitectos'; unidades 'listas para habitar'. La misma nota indica que las torres Eminent de ABV en Asunción se inauguraron en abril de 2016.",
+       "fuentes": [
+        "https://www.lanacion.com.ar/propiedades/casas-y-departamentos/el-edificio-decorado-por-armani-un-recorrido-exclusivo-por-los-espacios-que-llevan-la-firma-del-nid08022023/"
+       ]
+      }
+     ]
+    }
+   ]
   }
  }
 }
