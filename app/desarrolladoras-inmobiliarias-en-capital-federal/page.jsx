@@ -236,7 +236,7 @@ export default async function HubDesarrolladorasPage() {
             </a>
             {/* Interlinking al ranking nacional (captura "desarrolladoras más grandes de argentina"). */}
             <a href="/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/" className="mb-6 flex items-center justify-between gap-4 rounded-xl border border-outline-variant p-4 hover:border-secondary transition-colors no-underline">
-              <span className="text-[14.5px] text-primary"><strong>Ranking:</strong> las desarrolladoras inmobiliarias más grandes de Argentina, por m² construidos y trayectoria</span>
+              <span className="text-[14.5px] text-primary"><strong>Ranking:</strong> las desarrolladoras inmobiliarias más grandes de Argentina, por escala de obra</span>
               <span className="material-symbols-outlined text-secondary shrink-0">arrow_forward</span>
             </a>
             {useCpt && <DirectorioDevs devs={devs} chipsComoLinks />}

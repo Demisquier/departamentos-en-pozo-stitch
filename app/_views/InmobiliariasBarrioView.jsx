@@ -4,6 +4,7 @@
 // pre-filtrado por zona (DirectorioInmo con zonaFija). Misma lógica de URL/filtros.
 import Link from "next/link";
 import DirectorioInmo from "../mejores-inmobiliarias-caba/DirectorioInmo";
+import { marcarInmoVerificadas } from "../../lib/sellos";
 import { ZONA_INMO_LABEL } from "../../lib/barrios";
 import { INMO_BARRIO_INTRO } from "../../lib/inmoBarrioIntros";
 import Container from "../_ui/Container";
@@ -38,7 +39,7 @@ export default function InmobiliariasBarrioView({ zonaKey, items, schema }) {
           backLabel="Ver todas las inmobiliarias de CABA"
         />
 
-        <DirectorioInmo items={items} zonaFija={zonaKey} />
+        <DirectorioInmo items={marcarInmoVerificadas(items)} zonaFija={zonaKey} />
 
         <p className="text-[13px] text-on-surface-variant mt-10 border-t border-outline-variant pt-6">
           Directorio de inmobiliarias con actividad en {label}, ordenado por matrícula CUCICBA verificable y criterios comprobables — no por opinión ni por pago. Si comprás en pozo, revisá primero la{" "}

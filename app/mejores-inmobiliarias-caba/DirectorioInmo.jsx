@@ -15,12 +15,13 @@ const CUCICBA_URL = "https://colegioinmobiliario.org.ar/servicios/guia-de-matric
 
 function Card({ d }) {
   const zonas = (d.zonas || "").split(",").map((s) => s.trim()).filter(Boolean);
-  // Matrícula con número (verificable) vs "no publicada". Derivado del dato existente.
-  const matNum = d.matricula && !/no\s*public/i.test(d.matricula) ? d.matricula : "";
+  // Solo matrícula verificada por nosotros en el padrón oficial (sello). Sin dato => no se muestra nada.
+  const matNum = d.matVerif || "";
   // Chip "Especialista en pozo": derivado por regex sobre inm_espec (sin dato nuevo).
   const esPozo = /pozo|emprendimiento|fideicomiso|preventa|en\s*construc/i.test(d.espec || "");
   // Badge redundante: si ya se muestra el número + ✓, no repetir "matrícula verificable".
-  const showBadge = d.badge && !(matNum && /matr[íi]cula\s*verificable/i.test(d.badge));
+  // Badges viejos que hablaban de matrícula sin verificar: no se muestran.
+  const showBadge = d.badge && !/matr[íi]cula|verificad/i.test(d.badge);
   return (
     <li className={`rounded-xl p-4 flex flex-col ${d.destacada ? "border-2 border-link-gold ring-1 ring-link-gold/40 shadow-md bg-link-gold/5" : "bg-surface border border-outline-variant"}`}>
       <div className="flex items-start gap-3">
@@ -37,16 +38,10 @@ function Card({ d }) {
           {matNum ? (
             <p className="text-[13px] font-medium mt-1">
               <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="inline-flex items-center gap-1 text-secondary hover:underline" title="Verificar en el padrón público de CUCICBA">
-                <span aria-hidden="true">✓</span> Matrícula {matNum}
+                <span aria-hidden="true">✓</span> Matrícula CUCICBA {matNum} verificada
               </a>
             </p>
-          ) : (
-            <p className="text-[13px] font-medium mt-1">
-              <a href={CUCICBA_URL} target="_blank" rel="nofollow noopener" className="text-on-surface-variant hover:text-secondary hover:underline" title="Verificar matrícula en el padrón público de CUCICBA">
-                Matrícula no publicada — verificala en CUCICBA ↗
-              </a>
-            </p>
-          )}
+          ) : null}
           {esPozo && (
             <span className="mt-1.5 inline-flex w-fit items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider bg-secondary/10 text-secondary px-2 py-0.5 rounded-md">Especialista en pozo</span>
           )}
@@ -118,7 +113,7 @@ export default function DirectorioInmo({ items = [], zonaFija = "", chipsComoLin
       <p className="text-on-surface-variant mb-6">
         {titulo
           ? <>{base.length} inmobiliarias con actividad en {titulo}. Ordenado por criterios comprobables, no por opinión ni pago.</>
-          : <>{base.length} inmobiliarias relevadas en CABA. Las de matrícula CUCICBA verificable aparecen primero. Ordenado por criterios comprobables, no por pago.</>}
+          : <>{base.length} inmobiliarias relevadas en CABA. Primero las que tienen sello verificado por nosotros (matrícula en el padrón oficial, BCRA o reconocimientos). No es un ranking pago.</>}
       </p>
 
       <div className="flex flex-col gap-3 mb-6">

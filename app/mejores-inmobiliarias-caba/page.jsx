@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPageBySlug, getRankMathSchema, getInmobiliarias, buildMeta, SITE } from "../../lib/wp";
 import { ZONA_INMO_LABEL } from "../../lib/barrios";
 import DirectorioInmo from "./DirectorioInmo";
+import { marcarInmoVerificadas } from "../../lib/sellos";
 import Container from "../_ui/Container";
 import JsonLd from "../_ui/JsonLd";
 import SectionTitle from "../_ui/SectionTitle";
@@ -98,7 +99,7 @@ export default async function InmobiliariasPage() {
         {html ? (
           <>
             <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: before }} />
-            {useCpt && <DirectorioInmo items={items} chipsComoLinks />}
+            {useCpt && <DirectorioInmo items={marcarInmoVerificadas(items)} chipsComoLinks />}
             {after && <div className="wp-content prose max-w-none text-body-md text-on-surface-variant" dangerouslySetInnerHTML={{ __html: after }} />}
 
             {/* Cluster interno: links REALES a las páginas por barrio (SEO + navegación). */}

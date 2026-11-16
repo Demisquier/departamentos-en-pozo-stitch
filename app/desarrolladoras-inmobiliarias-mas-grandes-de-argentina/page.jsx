@@ -1,7 +1,7 @@
 // /desarrolladoras-inmobiliarias-mas-grandes-de-argentina/ — Ranking por ESCALA VERIFICABLE.
 // GSC: "desarrolladoras inmobiliarias más grandes de argentina" (+variantes) suma 500+ impr/3m
 // sin página dedicada. No hay ranking oficial por facturación: ordenamos por indicadores públicos
-// (m² construidos/entregados, inversión de masterplans, trayectoria) declarados por cada empresa
+// (proyectos insignia). Sin m²/años declarados no verificados: lo verificado va como sello.
 // y relevados en nuestro directorio. Cada fila linkea a la landing de la desarrolladora.
 import Link from "next/link";
 import { getDesarrolladoras, getDesarrolladoraBySlug, SITE } from "../../lib/wp";
@@ -20,32 +20,32 @@ const ACTUALIZADO = "octubre 2026";
 export const metadata = {
   title: "Las Desarrolladoras Inmobiliarias más Grandes de Argentina (2026): Ranking por Escala",
   description:
-    "Cuáles son las desarrolladoras inmobiliarias más grandes de Argentina según m² construidos, inversión y trayectoria: Consultatio, IRSA, Aisenson, Argencons, GNV y más. Datos verificables, sin ranking pago.",
+    "Cuáles son las desarrolladoras inmobiliarias más grandes de Argentina por escala de obra y proyectos insignia: Consultatio, IRSA, Aisenson, Argencons, GNV y más. Con sellos verificados, sin ranking pago.",
   alternates: { canonical: `${SITE}${PATH}` },
 };
 
 // Orden por escala declarada (m² construidos/entregados, inversión de masterplans, alcance).
 // Los textos salen del directorio propio (campos de cada desarrolladora); "escala" resume el dato duro.
 const RANKING = [
-  { slug: "consultatio", escala: "Mayor desarrolladora urbanística del país (Nordelta, Catalinas Río 185.000 m²)" },
+  { slug: "consultatio", escala: "Nordelta · Catalinas Río" },
   { slug: "irsa", escala: "Mayor desarrolladora pública de Argentina (oficinas, retail y residencial)" },
-  { slug: "aisenson", escala: "+4.000.000 m² construidos" },
-  { slug: "bma-arquitectos", escala: "+1.500.000 m² proyectados" },
-  { slug: "argencons-quartier", escala: "+1.000.000 m² entregados" },
-  { slug: "gnv-group", escala: "Masterplan Madero Harbour (US$750M)" },
-  { slug: "eidico-sur", escala: "+90 barrios privados · +18.000 familias" },
-  { slug: "criba", escala: "Alvear Tower (235 m, el residencial más alto del país)" },
-  { slug: "werthein", escala: "+500.000 m² construidos" },
-  { slug: "grid-desarrollos", escala: "+500.000 m² construidos" },
-  { slug: "abv-arquitectura", escala: "+300.000 m² construidos · alianza con Armani" },
-  { slug: "vizora", escala: "Remeros Beach (US$200M) · The Link Towers" },
+  { slug: "aisenson", escala: "" },
+  { slug: "bma-arquitectos", escala: "" },
+  { slug: "argencons-quartier", escala: "" },
+  { slug: "gnv-group", escala: "Masterplan Madero Harbour" },
+  { slug: "eidico-sur", escala: "Barrios privados en GBA" },
+  { slug: "criba", escala: "Alvear Tower" },
+  { slug: "werthein", escala: "" },
+  { slug: "grid-desarrollos", escala: "" },
+  { slug: "abv-arquitectura", escala: "Alianza con Armani" },
+  { slug: "vizora", escala: "Remeros Beach · The Link Towers" },
   { slug: "raghsa", escala: "Oficinas premium (Torres Catalinas Plaza)" },
-  { slug: "dypsa-group", escala: "Torres Renoir I y II (72.000 m²)" },
+  { slug: "dypsa-group", escala: "Torres Renoir I y II" },
   { slug: "nordelta-sa", escala: "Master developer de Nordelta (Tigre)" },
-  { slug: "grupo-chomer-gch", escala: "Serie Aura (Olivos, Núñez) · +60 años" },
-  { slug: "fernandez-prieto", escala: "The Link Towers (US$120M) · pionera en Puerto Madero" },
+  { slug: "grupo-chomer-gch", escala: "Serie Aura (Olivos, Núñez)" },
+  { slug: "fernandez-prieto", escala: "The Link Towers · pionera en Puerto Madero" },
   { slug: "faena-group", escala: "Faena District (Puerto Madero)" },
-  { slug: "estudio-kohon", escala: "28 edificios + 40.000 m² en obra · especialista en pozo" },
+  { slug: "estudio-kohon", escala: "Especialista en pozo" },
 ];
 
 async function cargar() {
@@ -57,7 +57,7 @@ async function cargar() {
     if (!d) continue;
     let n = 0;
     try { n = ((await getDesarrolladoraBySlug(r.slug))?.proyectos || []).length; } catch { n = 0; }
-    out.push({ ...r, nombre: d.nombre.replace(/\s*\(.*?\)\s*$/, "") || d.nombre, trayectoria: d.anios || "", insignia: d.proyecto || "", estructura: d.estructura || "", desc: d.desc || "", web: d.web || "", n });
+    out.push({ ...r, nombre: d.nombre.replace(/\s*\(.*?\)\s*$/, "") || d.nombre, insignia: d.proyecto || "", estructura: d.estructura || "", desc: d.desc || "", web: d.web || "", n });
   }
   return out;
 }
@@ -72,7 +72,7 @@ export default async function RankingDesarrolladoras() {
     ["¿Cuál es la desarrolladora inmobiliaria más grande de Argentina?",
       `No existe un ranking oficial por facturación. Por escala de obra y proyectos, las de mayor tamaño son ${topTxt}. Consultatio se presenta como la mayor desarrolladora urbanística del país e IRSA como la mayor desarrolladora pública (cotiza en bolsa).`],
     ["¿Cómo se mide qué desarrolladora es más grande?",
-      "Con indicadores verificables: metros cuadrados construidos o entregados, inversión de sus masterplans, cantidad de emprendimientos y años de trayectoria. La facturación de la mayoría no es pública, por eso no la usamos."],
+      "No hay un dato oficial: la facturación de la mayoría no es pública y los m² que informan las empresas no están auditados. Por eso ordenamos por escala de sus proyectos insignia y mostramos aparte, con fuentes, solo lo que pudimos verificar (obras entregadas, premios, situación en el BCRA)."],
     ["¿Conviene comprar en pozo a una desarrolladora grande?",
       "Una desarrolladora grande suele tener más espalda financiera y obras entregadas para mostrar, pero el tamaño no garantiza nada por sí solo. Lo decisivo es el contrato: fideicomiso con fiduciario identificado, índice de ajuste, plazos con penalidades y el avance real de obra."],
     ["¿Qué desarrolladoras grandes tienen proyectos en pozo hoy?",
@@ -110,8 +110,8 @@ export default async function RankingDesarrolladoras() {
       </h1>
       <p id="ranking-resumen" className="mt-3 text-on-surface-variant text-body-md md:text-body-lg max-w-3xl">
         Por escala de obra, las desarrolladoras más grandes de Argentina son <strong>{topTxt}</strong>. Las ordenamos por
-        indicadores verificables —m² construidos o entregados, inversión de sus masterplans y trayectoria—, no por
-        facturación (no es pública) ni por pauta. Actualizado {ACTUALIZADO}.
+        la escala de sus proyectos insignia, no por facturación (no es pública) ni por pauta. Los sellos muestran
+        solo lo que verificamos con fuentes. Actualizado {ACTUALIZADO}.
       </p>
 
       <ol className="mt-8 space-y-3">
@@ -123,10 +123,9 @@ export default async function RankingDesarrolladoras() {
                 <h2 className="font-headline-sm text-[19px] text-primary">
                   <Link href={`/desarrolladoras/${x.slug}/`} className="hover:text-secondary">{x.nombre}</Link>
                 </h2>
-                {x.trayectoria && <span className="text-[13px] text-on-surface-variant">{x.trayectoria}</span>}
               </div>
               <SellosChips data={sellosDeSlug(x.slug)} className="mt-1.5" />
-              <p className="text-[14px] text-primary font-medium mt-1">{x.escala}</p>
+              {x.escala && <p className="text-[14px] text-primary font-medium mt-1">{x.escala}</p>}
               {x.desc && <p className="text-[14px] text-on-surface-variant mt-1">{x.desc}</p>}
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
                 {x.insignia && <span className="text-on-surface-variant">Insignia: {x.insignia}</span>}
@@ -153,8 +152,8 @@ export default async function RankingDesarrolladoras() {
         </p>
         <h2 className="font-headline-sm text-headline-sm text-primary pt-2">Cómo armamos este ranking</h2>
         <p>
-          Usamos los datos que cada empresa publica (m² construidos o entregados, inversión de sus proyectos insignia, años en el
-          mercado) y los que relevamos en nuestro directorio de 190 desarrolladoras. No cobramos por aparecer ni por la posición. Si
+          Ordenamos por la escala de los proyectos insignia de cada empresa. No publicamos m² ni años de trayectoria
+          declarados que no pudimos verificar: lo verificado (obras entregadas, premios, BCRA) aparece como sello, con su fuente. No cobramos por aparecer ni por la posición. Si
           sos una de estas empresas y un dato cambió, escribinos y lo actualizamos.
         </p>
       </section>
@@ -166,8 +165,8 @@ export default async function RankingDesarrolladoras() {
         cta="Crear alerta gratis" />
 
       <p className="text-[12px] text-on-surface-variant mt-8">
-        Contenido informativo. No constituye asesoramiento financiero ni recomendación de inversión. Datos declarados por cada
-        empresa y relevamiento propio; pueden variar.
+        Contenido informativo. No constituye asesoramiento financiero ni recomendación de inversión. Relevamiento propio; los sellos
+        indican la fuente y la fecha de verificación.
       </p>
       <GuiasRelacionadas />
     </Container>

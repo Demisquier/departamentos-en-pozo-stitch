@@ -83,7 +83,7 @@ export async function generateMetadata({ params }) {
     const label = ZONA_INMO_LABEL[im[1]];
     return {
       title: `Mejores inmobiliarias en ${label} 2026 | Departamentos en Pozo`,
-      description: `Directorio de inmobiliarias con actividad en ${label}, CABA, ordenado por matrícula CUCICBA verificable. Análisis independiente, sin ranking pago.`,
+      description: `Directorio de inmobiliarias con actividad en ${label}, CABA, primero las de sello verificado. Análisis independiente, sin ranking pago.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }
