@@ -673,6 +673,46 @@
      ]
     }
    ]
+  },
+  "Pablo Rodriguez Servicios Inmobiliarios": {
+   "nombre": "Pablo Rodriguez Servicios Inmobiliarios",
+   "web": "https://prodriguez.com.ar",
+   "verificado": "2026-11-17",
+   "vence": "2027-05-17",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 7240 vigente en el padrón oficial (corredor/a: Pablo Rodríguez)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 7240, vence 31/12/2026",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=7240&sucursal=0"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Nesnech Inmobiliaria": {
+   "nombre": "Nesnech Inmobiliaria",
+   "web": "",
+   "verificado": "2026-11-17",
+   "vence": "2027-05-17",
+   "sellos": [
+    {
+     "tipo": "matricula",
+     "resumen": "Matrícula CUCICBA N° 424 vigente en el padrón oficial (corredor/a: Diego Enrique Nesnech)",
+     "evidencia": [
+      {
+       "texto": "Padrón público del Colegio Único de Corredores Inmobiliarios de CABA (CUCICBA), matrícula 424, vence 31/12/2026 (Alberti 1746, CABA)",
+       "fuentes": [
+        "https://cucicba.org.ar/oblea?matricula=424&sucursal=0"
+       ]
+      }
+     ]
+    }
+   ]
   }
  }
 }

@@ -664,7 +664,9 @@
   "Pablo Rodriguez Servicios Inmobiliarios": {
    "email": "info@prodriguez.com.ar",
    "web": "https://prodriguez.com.ar",
-   "fuente": "https://prodriguez.com.ar/ 2026-10-27"
+   "fuente": "Alta inmobiliaria 2026-11-17 + https://prodriguez.com.ar/",
+   "whatsapp": "5491161044205",
+   "matricula": "CUCICBA 7240"
   },
   "Ismo Propiedades": {
    "email": "consultas@ismo.ar",
@@ -757,10 +759,11 @@
    "fuente": "https://www.dgsdesarrollosinmobiliarios.com.ar/ 2026-10-27"
   },
   "PREDIAL": {
-   "email": "",
-   "whatsapp": "+5491126717777",
+   "email": "administracion@predial.com.ar",
+   "whatsapp": "5491126717777",
    "web": "https://predial.ar",
-   "fuente": "info@predial.ar rebota (550 no mailbox, 2026-11-11); sitio sin email: sólo WhatsApp"
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=3269",
+   "matricula": "CUCICBA 3269 (Gabriel Brodsky, PREDIAL PROPIEDADES SRL)"
   },
   "MIERES PROPIEDADES": {
    "email": "escobar@mieres.com.ar",
@@ -831,8 +834,10 @@
    "fuente": "web oficial 2026-10-27"
   },
   "Gustavo De Simone Soluciones Inmobiliarias": {
-   "whatsapp": "+5491165252190",
-   "fuente": "web oficial 2026-10-27"
+   "whatsapp": "5491165252190",
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=de%20simone",
+   "email": "gustavo@gustavodesimone.com",
+   "matricula": "CUCICBA 8456"
   },
   "Damico Propiedades": {
    "email": "damicopropiedades@gmail.com",
@@ -937,6 +942,36 @@
   "Lepore San Cristobal": {
    "email": "info@lepore.com.ar",
    "fuente": "web oficial Lepore (email general) 2026-10-27"
+  },
+  "Nesnech Inmobiliaria": {
+   "email": "estudio@nesnech.com.ar",
+   "whatsapp": "5491170005050",
+   "matricula": "CUCICBA 424",
+   "fuente": "Alta inmobiliaria 2026-11-17"
+  },
+  "LOPEZ CASTROMIL PROPIEDADES": {
+   "email": "noticias@lopezcastromil.com",
+   "whatsapp": "5491125676643",
+   "matricula": "CUCICBA 2204",
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=castromil"
+  },
+  "Curcio Propiedades": {
+   "email": "info@curciopropiedades.com",
+   "whatsapp": "5491176405533",
+   "matricula": "CUCICBA 4852 (suc. Caballito)",
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=curcio"
+  },
+  "Morana Propiedades": {
+   "email": "moranaroberto@hotmail.com",
+   "whatsapp": "5491157714579",
+   "matricula": "CUCICBA 4314 (Morana Inmuebles)",
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=morana"
+  },
+  "Gustavo De Simone": {
+   "whatsapp": "5491165252190",
+   "fuente": "Padrón CUCICBA 2026-11-17: https://colegioinmobiliario.org.ar/servicios/guia-de-matriculados/buscar?q=de%20simone",
+   "email": "gustavo@gustavodesimone.com",
+   "matricula": "CUCICBA 8456"
   }
  }
 }
