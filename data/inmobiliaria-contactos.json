@@ -379,10 +379,11 @@
    "fuente": "harvest 2026-10-19: https://www.unbox.com.ar/contactus"
   },
   "Urbanestate": {
-   "email": "contacto@urban.com.ar",
+   "email": "",
    "whatsapp": "",
    "web": "https://www.urbanestate.com.ar",
-   "fuente": "harvest 2026-10-19: https://www.urbanestate.com.ar/"
+   "fuente": "harvest 2026-10-19: https://www.urbanestate.com.ar/",
+   "nota": "contacto@urban.com.ar rebota (17/11/2026); sin mail alternativo publicado"
   },
   "CID": {
    "email": "ventas@cid.com.ar",
@@ -403,10 +404,10 @@
    "fuente": "harvest 2026-10-19: https://connectioninmobiliaria.com.ar/property/7140732-2/"
   },
   "Mateo Brokers": {
-   "email": "info@mateobrokers.com",
-   "whatsapp": "",
+   "email": "valeria@mateobrokers.com",
+   "whatsapp": "5491123513913",
    "web": "https://mateobrokers.com",
-   "fuente": "harvest 2026-10-19: https://mateobrokers.com/comunicate-con-nosotros/"
+   "fuente": "https://mateobrokers.com/nosotros/ 2026-11-17 (info@ rebota)"
   },
   "Bonillo Centro Inmobiliario": {
    "email": "info@bonillopropiedades.com.ar",
@@ -897,8 +898,9 @@
    "fuente": "https://www.afianzarpropiedades.com.ar/Contacto 2026-10-27"
   },
   "Inmobiliaria MEILERMAN Real state": {
-   "email": "a.meilerman@meilerman.com",
-   "fuente": "https://www.facebook.com/Meilerman.Real.Estate 2026-10-27"
+   "email": "",
+   "fuente": "https://www.facebook.com/Meilerman.Real.Estate 2026-10-27",
+   "nota": "a.meilerman@meilerman.com rebota (17/11/2026); sin mail alternativo publicado"
   },
   "Baron Inmobiliaria": {
    "email": "mariainesk@baron-sa.com.ar",
