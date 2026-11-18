@@ -6,6 +6,7 @@
 //    El Apps Script deja de intervenir en los leads → sin doble mail y sin depender de su redeploy.
 //  • Por defecto: reenvía al webhook del Apps Script (comportamiento histórico).
 import { pipelineVercelActivo, procesarLead, SHEET_WEBHOOK } from "../../../lib/leadPipeline";
+import { registrarMetricas } from "../../../lib/metricas";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -70,6 +71,9 @@ export async function POST(req) {
   if (!isIntake && !email && !whatsapp) return Response.json({ ok: false, error: "missing_contact" }, { status: 422 });
   if (!sheet) return Response.json({ ok: true }); // sólo "mail" (legacy FormSubmit, desactivado)
   if (!isIntake && esDuplicado(sheet)) return Response.json({ ok: true, dedup: true });
+
+  // Métrica propia: lead por proyecto (para el panel por desarrolladora/inmobiliaria).
+  if (!isIntake && sheet.proyectoSlug) await registrarMetricas([{ s: String(sheet.proyectoSlug), t: "lead" }]).catch(() => {});
 
   // Modo Vercel: pipeline propio.
   if (pipelineVercelActivo()) {

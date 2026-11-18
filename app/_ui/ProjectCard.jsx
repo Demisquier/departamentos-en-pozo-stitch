@@ -49,6 +49,7 @@ export default function ProjectCard({
   return (
     <Link
       href={`/desarrollos-inmobiliarios/${slug}/`}
+      data-imp-slug={slug}
       {...(nuevaPestana ? { target: "_blank", rel: "noopener" } : {})}
       className={`group relative flex flex-col bg-surface rounded-xl overflow-hidden transition-all duration-300 ${destacado ? 'border-2 border-link-gold ring-1 ring-link-gold/40 shadow-lg hover:shadow-xl' : 'border border-outline-variant hover:shadow-lg'}`}
     >
