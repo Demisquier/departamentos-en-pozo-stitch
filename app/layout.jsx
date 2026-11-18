@@ -3,6 +3,7 @@ import { Libre_Caslon_Text, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import ImgFallback from "./_ui/ImgFallback";
 import BottomNav from "./_components/BottomNav";
 import AuthProvider from "./_auth/AuthProvider";
 import AsesorLauncher from "./asesor/AsesorLauncher";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="bg-background text-on-surface selection:bg-secondary-container font-body-md">
+        <ImgFallback />
         {/* GA a lazyOnload: se carga después del onload para no bloquear el hilo principal
             (el audit medía ~700ms de TBT por GTM). Analytics se registra igual, apenas más tarde. */}
         <Script

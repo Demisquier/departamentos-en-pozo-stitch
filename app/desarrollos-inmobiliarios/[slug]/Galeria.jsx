@@ -3,7 +3,10 @@ import { useState, useEffect, useCallback } from "react";
 
 // Galería mosaico estilo Zillow + lightbox con zoom, navegación y teclado.
 export default function Galeria({ images = [], nombre = "Proyecto" }) {
-  const imgs = (images || []).filter(Boolean);
+  // Fotos que no cargan (aviso dado de baja, hotlink) se sacan de la galería en vez de mostrarse rotas.
+  const [rotas, setRotas] = useState([]);
+  const marcarRota = useCallback((src) => setRotas((r) => (r.includes(src) ? r : [...r, src])), []);
+  const imgs = (images || []).filter(Boolean).filter((u) => !rotas.includes(u));
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
   const [zoom, setZoom] = useState(false);
@@ -28,7 +31,7 @@ export default function Galeria({ images = [], nombre = "Proyecto" }) {
   const Tile = ({ src, alt, i }) =>
     src ? (
       <button type="button" onClick={() => show(i)} className="group w-full h-full block relative overflow-hidden cursor-zoom-in" aria-label={`Ampliar foto ${i + 1}`}>
-        <img src={src} alt={alt} loading={i === 0 ? "eager" : "lazy"} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img src={src} alt={alt} loading={i === 0 ? "eager" : "lazy"} referrerPolicy="no-referrer" onError={() => marcarRota(src)} data-own-fallback="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         <span className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
       </button>
     ) : (

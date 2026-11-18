@@ -14,7 +14,7 @@ const NAV = [
 const DIRECTORIOS = [
   { label: "Desarrolladoras", href: "/desarrolladoras-inmobiliarias-en-capital-federal/" },
   { label: "Inmobiliarias", href: "/mejores-inmobiliarias-caba/" },
-  { label: "Corralones y materiales", href: "/corralones-y-materiales-de-construccion-en-caba/" },
+  { label: "Desarrolladoras confiables (ranking)", href: "/ranking-desarrolladoras-confiables/" },
 ];
 
 const NAV_END = [

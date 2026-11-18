@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { zonificarBarrios, BARRIO_CATALOGO } from '../../lib/barrios';
 
 // Normaliza (saca acentos, minúsculas) para el autocompletado acento-insensible.
@@ -32,6 +33,8 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
   // Zonas expandidas: Capital Federal abierta por defecto (es la mayoría del inventario).
   const [openZonas, setOpenZonas] = useState({ 'Capital Federal': true });
   const inputRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   const grupos = useMemo(() => zonificarBarrios([...LANDING_LABELS, ...barrios]), [barrios]);
   const nq = NORM(q.trim());
@@ -42,6 +45,7 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
       .filter((g) => g.items.length);
   }, [grupos, nq]);
   const totalHits = filtered.reduce((n, g) => n + g.items.length, 0);
+  const firstHit = nq ? (filtered[0] && filtered[0].items[0]) || null : null;
 
   const sel = barrioFijo || value || '';
   const close = () => { setOpen(false); setQ(''); };
@@ -84,10 +88,10 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
         <span className="material-symbols-outlined text-[18px] opacity-70" aria-hidden="true">expand_more</span>
       </button>
 
-      {open && (
+      {open && mounted && createPortal((
         <div className="fixed inset-0 z-[80]" role="dialog" aria-modal="true" aria-label="Elegir ubicación">
           <div className="absolute inset-0 bg-black/50" onClick={close} />
-          <div className="absolute inset-x-0 bottom-0 md:inset-0 md:m-auto md:h-fit md:max-h-[80vh] md:w-[460px] bg-surface rounded-t-2xl md:rounded-2xl shadow-2xl flex flex-col max-h-[88dvh]">
+          <div className="absolute inset-x-0 bottom-0 md:inset-0 md:m-auto md:h-[min(600px,82vh)] md:w-[460px] bg-surface rounded-t-2xl md:rounded-2xl shadow-2xl flex flex-col h-[82dvh] md:max-h-[82vh]">
             <div className="flex items-center justify-between px-4 py-3 border-b border-outline-variant">
               <h2 className="text-[15px] font-medium text-primary">Elegí barrio o zona</h2>
               <button type="button" onClick={close} aria-label="Cerrar" className="p-2 -mr-2 text-on-surface-variant hover:text-primary">
@@ -98,12 +102,13 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
             <div className="p-3 border-b border-outline-variant">
               <div className="flex items-center gap-2 px-3 py-2.5 rounded-full border border-outline-variant focus-within:border-secondary">
                 <span className="material-symbols-outlined text-[18px] text-on-surface-variant" aria-hidden="true">search</span>
-                <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Escribí un barrio o zona…" aria-label="Buscar barrio o zona" className="flex-1 bg-transparent outline-none text-[14px] text-primary" />
+                <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && firstHit) { e.preventDefault(); pick(firstHit); } }} enterKeyHint="search" placeholder="Escribí un barrio o zona…" aria-label="Buscar barrio o zona" className="flex-1 bg-transparent outline-none text-[14px] text-primary" />
                 {q && <button type="button" onClick={() => setQ('')} aria-label="Limpiar" className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-primary">close</button>}
               </div>
+              {firstHit && <p className="mt-1.5 px-1 text-[12px] text-on-surface-variant">Enter para ver <strong className="text-primary">{firstHit.label}</strong> · o elegí de la lista</p>}
             </div>
 
-            <div className="overflow-y-auto flex-1 py-1">
+            <div className="overflow-y-auto flex-1 min-h-0 py-1">
               {!nq && (
                 <button type="button" onClick={() => pick(null)} className="flex items-center gap-2 w-full text-left px-4 py-3 text-[14px] text-primary hover:bg-surface-container border-b border-outline-variant/60">
                   <span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">location_city</span> Todos los barrios
@@ -129,7 +134,7 @@ export default function BarrioModal({ barrios = [], value = '', barrioFijo = nul
             </div>
           </div>
         </div>
-      )}
+      ), document.body)}
     </>
   );
 }

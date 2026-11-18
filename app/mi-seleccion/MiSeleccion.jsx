@@ -867,10 +867,15 @@ function LoginGate({ login }) {
       <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center">
         <span className="material-symbols-outlined text-[30px] text-secondary icon-fill" aria-hidden="true">space_dashboard</span>
       </div>
-      <h2 className="font-headline-md text-headline-md serif text-primary mb-2">Ingresá para ver Mi Plan</h2>
-      <p className="text-on-surface-variant text-[15px] mb-6">
-        Guardá los proyectos que te interesan y tu perfil de búsqueda en tu cuenta, y accedé desde cualquier dispositivo. Es gratis y sin contraseñas.
+      <h2 className="font-headline-md text-headline-md serif text-primary mb-2">Tu lista de proyectos, en un solo lugar</h2>
+      <p className="text-on-surface-variant text-[15px] mb-3">
+        Guardá los proyectos que te gustan, comparalos y recibí aviso cuando aparezca uno nuevo que encaje con lo que buscás. Lo ves desde el celu o la compu.
       </p>
+      <ul className="text-left text-[14px] text-on-surface-variant mb-6 space-y-1.5 max-w-sm mx-auto">
+        <li className="flex gap-2"><span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">check_circle</span>Gratis, sin compromiso.</li>
+        <li className="flex gap-2"><span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">check_circle</span>Entrás con tu cuenta de Google en un clic: no tenés que crear usuario ni clave.</li>
+        <li className="flex gap-2"><span className="material-symbols-outlined text-[18px] text-secondary" aria-hidden="true">check_circle</span>No compartimos tus datos con nadie sin que lo pidas.</li>
+      </ul>
       <button
         type="button"
         onClick={() => login(typeof window !== "undefined" ? window.location.href : undefined)}

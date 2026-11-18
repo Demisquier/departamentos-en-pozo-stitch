@@ -62,7 +62,7 @@ export default function ProjectCard({
             <span className="text-[10px] opacity-60">Render en preparación</span>
           </div>
         )}
-        <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">{(etapa || "EN POZO").toUpperCase()}</span>
+        <span className="absolute top-3 left-3 bg-primary/90 text-white px-2.5 py-1 rounded font-label-caps text-[10px] tracking-widest">EN POZO</span>
         {destacado && <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 bg-link-gold text-white px-3 py-1.5 rounded-md font-label-caps text-[11px] tracking-widest shadow-md">★ DESTACADO</span>}
         <GuardarBtn card={card} />
       </div>
@@ -100,8 +100,13 @@ export default function ProjectCard({
         </div>
         {devLine(desarrolladora) && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">{devLine(desarrolladora)}</p>)}
         {sellos && sellos.length > 0 && (
-          <p className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider text-green-800 bg-green-700/10 rounded px-2 py-0.5">
+          <p className="relative group/sello mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-wider text-green-800 bg-green-700/10 rounded px-2 py-0.5 cursor-help"
+            title="Sello de confianza: verificamos con fuentes públicas a quien desarrolla o comercializa este proyecto (obras entregadas, premios, situación en el BCRA o matrícula). Detalle y fuentes en la ficha.">
             <span className="material-symbols-outlined text-[13px]" aria-hidden="true">verified</span>Sello de confianza
+            <span className="material-symbols-outlined text-[13px] opacity-70" aria-hidden="true">info</span>
+            <span role="tooltip" className="pointer-events-none absolute left-0 bottom-full mb-2 z-20 w-64 normal-case tracking-normal font-body-md text-[12px] leading-snug text-white bg-primary rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover/sello:opacity-100 transition-opacity">
+              Verificamos con fuentes públicas a quien desarrolla o comercializa este proyecto: obras entregadas, premios, situación en el BCRA o matrícula. Entrá a la ficha para ver el detalle y las fuentes.
+            </span>
           </p>
         )}
       </div>

@@ -483,6 +483,25 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
+            {/* BLOQUE 7 — Veredicto del analista (síntesis honesta, E-E-A-T). Cierra la narrativa
+                de independencia: para quién es, su punto fuerte y su punto a verificar. */}
+            <div className="mb-8 rounded-xl border-l-4 border-link-gold bg-surface-container-low p-6">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-3 flex items-center gap-2">
+                <span className="material-symbols-outlined text-link-gold">rate_review</span> Veredicto del analista
+              </h2>
+              <p className="text-body-md text-on-surface-variant leading-relaxed">
+                <strong className="text-primary">Para quién:</strong> {veredicto.para[0]}{veredicto.para[1] ? ` y ${veredicto.para[1]}` : ''}.{' '}
+                {veredicto.fuerte.length ? <><strong className="text-primary">A favor:</strong> {veredicto.fuerte[0]}. </> : null}
+                <strong className="text-primary">A verificar:</strong> {veredicto.verificar[0]}.
+              </p>
+              <p className="text-[12px] text-on-surface-variant mt-3">
+                Síntesis editorial independiente sobre datos propios; no es asesoramiento financiero. — Equipo Departamentos en Pozo
+              </p>
+              <div className="mt-3">
+                <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
+              </div>
+            </div>
+
             {/* BRECHA POZO vs TERMINADO — el dato diferencial del sitio, como conclusión
                 y no como herramienta. Se lee sin tocar nada. Solo se muestra si ambos
                 valores existen; nunca se estima. */}
@@ -547,49 +566,6 @@ export default async function FichaProyecto({ params }) {
                 </div>
               </div>
             ) : null}
-
-            {/* BLOQUE 1 — Panel de confianza de la desarrolladora (la pregunta #1 en pozo). */}
-            {devStats ? (
-              <div className="mb-8 rounded-xl border border-outline-variant p-6">
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
-                    <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?
-                  </h2>
-
-                </div>
-                <SellosChips data={sellosDev} className="mb-3" />
-                <p className="text-body-md text-on-surface-variant">
-                  <strong className="text-primary">{constructora}</strong> tiene <strong className="text-primary">{devStats.n} proyecto{devStats.n === 1 ? '' : 's'}</strong> en pozo relevado{devStats.n === 1 ? '' : 's'} en nuestro catálogo
-                  {devStats.barrios.length ? `, en ${devStats.barrios.slice(0, 4).join(', ')}${devStats.barrios.length > 4 ? ' y más' : ''}` : ''}
-                  {devStats.anioMin ? `. Entregas estimadas entre ${devStats.anioMin} y ${devStats.anioMax}.` : '.'}
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mt-4">
-                  {devHref && (
-                    <Link href={devHref} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-secondary hover:text-primary underline underline-offset-2">
-                      Ver los {devStats.n} proyectos de {constructora} →
-                    </Link>
-                  )}
-                  <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
-                </div>
-                <p className="text-[12px] text-on-surface-variant mt-3">
-                  Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo. Mirá el <Link href="/ranking-desarrolladoras-confiables/" className="underline text-secondary">ranking de desarrolladoras confiables</Link> con datos verificados.
-                </p>
-              </div>
-            ) : null}
-
-            {/* Lo destacado (amenities) */}
-            {amenities.length > 0 && (
-              <div className="mb-8">
-                <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Lo destacado</h2>
-                <div className="flex flex-wrap gap-2.5">
-                  {amenities.map((a, idx) => (
-                    <span key={idx} className="px-3.5 py-2 bg-surface-container border border-outline-variant rounded-full text-[13px] flex items-center gap-1.5 text-primary">
-                      <span className="material-symbols-outlined text-[16px] text-link-gold">check_circle</span> {a}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Datos y características (Facts & features estilo Zillow) */}
             <div className="mb-8">
@@ -663,39 +639,12 @@ export default async function FichaProyecto({ params }) {
               </div>
             </div>
 
-            {/* BLOQUE 3 — Checklist de due diligence del proyecto. El bloque más anti-portal:
-                mostramos qué verificar antes de comprar en pozo y qué dato tenemos de ESTE proyecto.
-                Los "—" (faltantes) son motivos concretos para pedirle al asesor. */}
-            <div className="mb-8 rounded-xl border border-link-gold/40 bg-link-gold/[0.04] p-6">
-              <div className="flex items-center justify-between gap-3 mb-1">
-                <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
-                  <span className="material-symbols-outlined text-link-gold">fact_check</span> Qué verificar antes de comprar
-                </h2>
-                <span className="text-[12px] text-on-surface-variant">{dueOk}/{dueItems.length} con dato</span>
+            {/* Mapa */}
+            <div className="mb-4">
+              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Ubicación</h2>
+              <div className="h-[380px] rounded-xl overflow-hidden border border-outline-variant">
+                <iframe title={`Mapa de ${nombre}`} src={mapSrc} className="w-full h-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>
-              <p className="text-[13px] text-on-surface-variant mb-4">
-                Somos un sitio de análisis independiente: te mostramos lo que hay que chequear en pozo y qué dato tenemos de este proyecto. Lo que falta, lo pedís y te lo conseguimos.
-              </p>
-              <ul className="space-y-2.5">
-                {dueItems.map((it) => (
-                  <li key={it.k} className="flex items-start gap-3 text-[14px]">
-                    <span className={`material-symbols-outlined text-[20px] mt-0.5 ${it.ok ? 'text-green-700' : 'text-on-surface-variant/50'}`}>
-                      {it.ok ? 'check_circle' : 'radio_button_unchecked'}
-                    </span>
-                    <span className="flex-1">
-                      <span className={it.ok ? 'text-primary' : 'text-on-surface-variant'}>{it.k}</span>
-                      {!it.ok && (
-                        <span className="block sm:inline sm:ml-2 mt-1 sm:mt-0">
-                          <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={it.pedido} label="Pedir este dato" icon="forum" />
-                        </span>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-[12px] text-on-surface-variant mt-4">
-                Ver también nuestras guías de <a href="/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/" className="text-secondary hover:underline">due diligence</a> y <a href="/fideicomiso-al-costo-vs-llave-en-mano-departamentos-en-pozo/" className="text-secondary hover:underline">fideicomiso vs. SA</a>.
-              </p>
             </div>
 
             {/* Plan de pago estructurado (diferenciador). Timeline si hay datos; si no, el texto libre. */}
@@ -703,6 +652,20 @@ export default async function FichaProyecto({ params }) {
 
             {/* Tabla de tipologías/unidades (solo si hay datos por unidad cargados). */}
             <TipologiasTabla unidades={unidades} />
+
+            {/* Lo destacado (amenities) */}
+            {amenities.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Lo destacado</h2>
+                <div className="flex flex-wrap gap-2.5">
+                  {amenities.map((a, idx) => (
+                    <span key={idx} className="px-3.5 py-2 bg-surface-container border border-outline-variant rounded-full text-[13px] flex items-center gap-1.5 text-primary">
+                      <span className="material-symbols-outlined text-[16px] text-link-gold">check_circle</span> {a}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Descripción (texto, después de los datos rápidos; colapsable para no saturar) */}
             <div className="mb-8">
@@ -715,19 +678,6 @@ export default async function FichaProyecto({ params }) {
                 </p>
               )}
             </div>
-
-            {/* Alerta contextual (fuente 'ficha'): card clara, debajo de la descripción, para no
-                competir con los CTAs de contacto del sidebar. zonas = barrio, presupuesto ≈ precio. */}
-            <AlertaCTA
-              variant="soft"
-              fuente="ficha"
-              contexto={barrio && barrio !== 'Buenos Aires' ? barrio : ''}
-              presupuesto={precioDesdeNum ? String(Math.round((precioDesdeNum * 1.15) / 1000) * 1000) : ''}
-              referencia={nombre}
-              titulo={`Avisame si baja el precio o salen unidades nuevas${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}`}
-              texto={`Te escribimos sólo si hay novedades de ${nombre} o un lanzamiento parecido${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}. Sin spam, baja con un clic.`}
-              cta="Avisame"
-            />
 
             {/* Legal / Rentabilidad (prose, solo si hay dato) */}
             {legal && (
@@ -755,13 +705,34 @@ export default async function FichaProyecto({ params }) {
               </div>
             )}
 
-            {/* Mapa */}
-            <div className="mb-4">
-              <h2 className="font-headline-sm text-headline-sm text-primary mb-4">Ubicación</h2>
-              <div className="h-[380px] rounded-xl overflow-hidden border border-outline-variant">
-                <iframe title={`Mapa de ${nombre}`} src={mapSrc} className="w-full h-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            {/* BLOQUE 1 — Panel de confianza de la desarrolladora (la pregunta #1 en pozo). */}
+            {devStats ? (
+              <div className="mb-8 rounded-xl border border-outline-variant p-6">
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
+                    <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?
+                  </h2>
+
+                </div>
+                <SellosChips data={sellosDev} className="mb-3" />
+                <p className="text-body-md text-on-surface-variant">
+                  <strong className="text-primary">{constructora}</strong> tiene <strong className="text-primary">{devStats.n} proyecto{devStats.n === 1 ? '' : 's'}</strong> en pozo relevado{devStats.n === 1 ? '' : 's'} en nuestro catálogo
+                  {devStats.barrios.length ? `, en ${devStats.barrios.slice(0, 4).join(', ')}${devStats.barrios.length > 4 ? ' y más' : ''}` : ''}
+                  {devStats.anioMin ? `. Entregas estimadas entre ${devStats.anioMin} y ${devStats.anioMax}.` : '.'}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-4">
+                  {devHref && (
+                    <Link href={devHref} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-secondary hover:text-primary underline underline-offset-2">
+                      Ver los {devStats.n} proyectos de {constructora} →
+                    </Link>
+                  )}
+                  <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`el historial de obras entregadas de ${constructora}`} label="Pedir historial de entregas" icon="history" />
+                </div>
+                <p className="text-[12px] text-on-surface-variant mt-3">
+                  Verificar la trayectoria del desarrollador (obras anteriores terminadas y entregadas) es la mitigación de riesgo central al comprar en pozo. Mirá el <Link href="/ranking-desarrolladoras-confiables/" className="underline text-secondary">ranking de desarrolladoras confiables</Link> con datos verificados.
+                </p>
               </div>
-            </div>
+            ) : null}
 
             {/* Calculadora: bajó del sidebar al cuerpo. Acá es "ajustá los supuestos",
                 el titular ya lo dio el bloque de brecha más arriba. */}
@@ -772,24 +743,55 @@ export default async function FichaProyecto({ params }) {
               </div>
             ) : null}
 
-            {/* BLOQUE 7 — Veredicto del analista (síntesis honesta, E-E-A-T). Cierra la narrativa
-                de independencia: para quién es, su punto fuerte y su punto a verificar. */}
-            <div className="mb-8 rounded-xl border-l-4 border-link-gold bg-surface-container-low p-6">
-              <h2 className="font-headline-sm text-headline-sm text-primary mb-3 flex items-center gap-2">
-                <span className="material-symbols-outlined text-link-gold">rate_review</span> Veredicto del analista
-              </h2>
-              <p className="text-body-md text-on-surface-variant leading-relaxed">
-                <strong className="text-primary">Para quién:</strong> {veredicto.para[0]}{veredicto.para[1] ? ` y ${veredicto.para[1]}` : ''}.{' '}
-                {veredicto.fuerte.length ? <><strong className="text-primary">A favor:</strong> {veredicto.fuerte[0]}. </> : null}
-                <strong className="text-primary">A verificar:</strong> {veredicto.verificar[0]}.
-              </p>
-              <p className="text-[12px] text-on-surface-variant mt-3">
-                Síntesis editorial independiente sobre datos propios; no es asesoramiento financiero. — Equipo Departamentos en Pozo
-              </p>
+            {/* Alerta contextual (fuente 'ficha'): card clara, debajo de la descripción, para no
+                competir con los CTAs de contacto del sidebar. zonas = barrio, presupuesto ≈ precio. */}
+            <AlertaCTA
+              variant="soft"
+              fuente="ficha"
+              contexto={barrio && barrio !== 'Buenos Aires' ? barrio : ''}
+              presupuesto={precioDesdeNum ? String(Math.round((precioDesdeNum * 1.15) / 1000) * 1000) : ''}
+              referencia={nombre}
+              titulo={`Avisame si baja el precio o salen unidades nuevas${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}`}
+              texto={`Te escribimos sólo si hay novedades de ${nombre} o un lanzamiento parecido${barrio && barrio !== 'Buenos Aires' ? ` en ${barrio}` : ''}. Sin spam, baja con un clic.`}
+              cta="Avisame"
+            />
+
+            {/* BLOQUE 3 — Checklist de due diligence del proyecto. El bloque más anti-portal:
+                mostramos qué verificar antes de comprar en pozo y qué dato tenemos de ESTE proyecto.
+                Los "—" (faltantes) son motivos concretos para pedirle al asesor. */}
+            <details className="mb-8 rounded-xl border border-link-gold/40 bg-link-gold/[0.04] p-6 group/dd">
+              <summary className="flex items-center justify-between gap-3 cursor-pointer list-none">
+                <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
+                  <span className="material-symbols-outlined text-link-gold">fact_check</span> Qué verificar antes de comprar
+                </h2>
+                <span className="flex items-center gap-2 text-[12px] text-on-surface-variant">{dueOk}/{dueItems.length} con dato <span className="material-symbols-outlined text-[20px] transition-transform group-open/dd:rotate-180">expand_more</span></span>
+              </summary>
               <div className="mt-3">
-                <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={`una opinión honesta sobre si ${nombre} conviene para mi caso`} label="Consultar con un asesor" icon="forum" />
+              <p className="text-[13px] text-on-surface-variant mb-4">
+                Somos un sitio de análisis independiente: te mostramos lo que hay que chequear en pozo y qué dato tenemos de este proyecto. Lo que falta, lo pedís y te lo conseguimos.
+              </p>
+              <ul className="space-y-2.5">
+                {dueItems.map((it) => (
+                  <li key={it.k} className="flex items-start gap-3 text-[14px]">
+                    <span className={`material-symbols-outlined text-[20px] mt-0.5 ${it.ok ? 'text-green-700' : 'text-on-surface-variant/50'}`}>
+                      {it.ok ? 'check_circle' : 'radio_button_unchecked'}
+                    </span>
+                    <span className="flex-1">
+                      <span className={it.ok ? 'text-primary' : 'text-on-surface-variant'}>{it.k}</span>
+                      {!it.ok && (
+                        <span className="block sm:inline sm:ml-2 mt-1 sm:mt-0">
+                          <CTAContextual nombre={nombre} slug={d.slug} barrio={barrio} precio={precioDesdeNum} pedido={it.pedido} label="Pedir este dato" icon="forum" />
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-[12px] text-on-surface-variant mt-4">
+                Ver también nuestras guías de <a href="/que-revisar-antes-de-comprar-en-pozo-checklist-due-diligence/" className="text-secondary hover:underline">due diligence</a> y <a href="/fideicomiso-al-costo-vs-llave-en-mano-departamentos-en-pozo/" className="text-secondary hover:underline">fideicomiso vs. SA</a>.
+              </p>
               </div>
-            </div>
+            </details>
 
             {/* BLOQUE 8 — Preguntas frecuentes (contenido visible que matchea el schema FAQPage;
                 captura long-tail "{proyecto} precio/quién desarrolla/cuándo entrega" + AEO). */}

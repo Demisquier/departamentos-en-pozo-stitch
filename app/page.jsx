@@ -6,6 +6,8 @@ import { SITE, BRAND, LOGO_URL, CONTACT_EMAIL } from "../lib/constants";
 import Container from "./_ui/Container";
 import ProjectCard from "./_ui/ProjectCard";
 import HomeBuscador from "./_ui/HomeBuscador";
+import SafeImg from "./_ui/SafeImg";
+import FOTOS from "../data/fotos-overrides.json";
 import DestacadosHome from "./_ui/DestacadosHome";
 import JsonLd from "./_ui/JsonLd";
 import MiPlanHome from "./_components/MiPlanHome";
@@ -68,6 +70,11 @@ export default async function HomePage() {
     return { slug: node.slug, nombre, barrio, topBarrio, precio: num(acf(node, "precio_m2")), precioDesde: num(acf(node, "precio_desde")), img: featuredImage(node) };
   });
 
+  // Imagen de tarjeta de barrio: priorizamos proyectos con galería verificada (fotos-overrides,
+  // renders del aviso) y pasamos varias candidatas: si una no carga, SafeImg usa la siguiente.
+  const nFotos = (slug) => (((FOTOS.fotos || {})[slug] || {}).galeria || []).length;
+  const imgsDe = (lista) => [...lista].filter((m) => m.img).sort((a, b) => nFotos(b.slug) - nFotos(a.slug)).slice(0, 4).map((m) => m.img);
+
   // Destacados por PROBABILIDAD DE CONVERSIÓN (no por precio): premiamos las señales que hacen
   // que un proyecto convierta mejor — tiene foto/render, tiene precio de referencia y está en un
   // barrio con inventario profundo (más opciones = mejor experiencia y más chance de lead).
@@ -98,16 +105,14 @@ export default async function HomePage() {
   // Tiles "Desarrolladoras por barrio": links a los directorios de desarrolladoras por barrio.
   const tiles = BARRIO_ORDEN.map((b) => {
     const enBarrio = mapped.filter((m) => m.topBarrio === b);
-    const conImg = enBarrio.find((m) => m.img);
-    return { name: b, count: enBarrio.length, href: BARRIO_PAGE[b], img: conImg ? conImg.img : null };
+    return { name: b, count: enBarrio.length, href: BARRIO_PAGE[b], imgs: imgsDe(enBarrio) };
   }).filter((t) => t.count > 0);
 
   // Tiles "Desarrollos por barrio": links a las landings de CATÁLOGO por barrio
   // (/desarrollos-inmobiliarios-en-{slug}/). Solo barrios con >=3 proyectos.
   const catTiles = Object.keys(BARRIO_CATALOGO).map((k) => {
     const en = mapped.filter((m) => matchBarrioCatalogo(m.barrio, k));
-    const conImg = en.find((m) => m.img);
-    return { slug: k, name: BARRIO_CATALOGO[k].label, count: en.length, img: conImg ? conImg.img : null };
+    return { slug: k, name: BARRIO_CATALOGO[k].label, count: en.length, imgs: imgsDe(en) };
   }).filter((t) => t.count >= 3).sort((a, b) => b.count - a.count);
 
   // Tabla "Departamentos en pozo por barrio" (SEO: ataca "departamentos en pozo" + "{barrio}" con
@@ -166,15 +171,15 @@ export default async function HomePage() {
         <Container className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             ["analytics", `${mapped.length} PROYECTOS RELEVADOS`],
-            ["location_city", `${tiles.length}+ BARRIOS DE CABA`],
+            ["location_city", `${catTiles.length} BARRIOS Y ZONAS`, "#por-barrio"],
             ["verified", "ANÁLISIS INDEPENDIENTE"],
             ["savings", "SIN COSTO PARA EL COMPRADOR"],
-          ].map(([ic, txt]) => (
-            <div key={txt} className="flex items-center gap-3 text-on-primary">
-              <span className="material-symbols-outlined text-link-gold">{ic}</span>
-              <p className="text-label-caps font-label-caps">{txt}</p>
-            </div>
-          ))}
+          ].map(([ic, txt, href]) => {
+            const inner = (<><span className="material-symbols-outlined text-link-gold">{ic}</span><p className="text-label-caps font-label-caps">{txt}</p></>);
+            return href
+              ? <a key={txt} href={href} className="flex items-center gap-3 text-on-primary hover:text-link-gold underline-offset-4 hover:underline">{inner}</a>
+              : <div key={txt} className="flex items-center gap-3 text-on-primary">{inner}</div>;
+          })}
         </Container>
       </section>
 
@@ -232,7 +237,7 @@ export default async function HomePage() {
       </Container>
 
       {/* Desarrollos por barrio: catálogo de PROYECTOS por barrio */}
-      <section className="py-16 md:py-20 bg-surface-container-low">
+      <section id="por-barrio" className="py-16 md:py-20 bg-surface-container-low scroll-mt-20">
         <Container>
           <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Desarrollos por barrio</h2>
           <p className="text-on-surface-variant text-center max-w-2xl mx-auto mb-10 text-body-lg font-body-lg">
@@ -241,11 +246,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {catTiles.map((b) => (
               <Link key={b.slug} href={`/desarrollos-inmobiliarios-en-${b.slug}/`} className="relative group h-44 md:h-56 rounded-xl overflow-hidden block">
-                {b.img ? (
-                  <img src={b.img} alt={b.name} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                ) : (
-                  <div className="absolute inset-0 bg-primary-container" />
-                )}
+                <div className="absolute inset-0 bg-primary-container" />
+                <SafeImg srcs={b.imgs} alt={b.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/40 transition-all duration-300" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
                   <h3 className="font-headline-sm text-headline-sm">{b.name}</h3>
@@ -267,11 +269,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {tiles.map((b) => (
               <Link key={b.name} href={b.href} className="relative group h-44 md:h-56 rounded-xl overflow-hidden block">
-                {b.img ? (
-                  <img src={b.img} alt={b.name} loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                ) : (
-                  <div className="absolute inset-0 bg-primary-container" />
-                )}
+                <div className="absolute inset-0 bg-primary-container" />
+                <SafeImg srcs={b.imgs} alt={b.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-primary/55 group-hover:bg-primary/40 transition-all duration-300" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-2">
                   <h3 className="font-headline-sm text-headline-sm">{b.name}</h3>
@@ -286,21 +285,23 @@ export default async function HomePage() {
       {/* Herramientas y directorios */}
       <section id="herramientas" className="py-16 md:py-20 scroll-mt-24">
         <Container>
-          <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Herramientas y directorios</h2>
+          <h2 className="font-headline-md text-headline-md text-primary mb-2 text-center">Comprá en pozo con información verificada</h2>
           <p className="text-on-surface-variant max-w-2xl mx-auto text-center mb-10 text-body-lg">
-            Recursos independientes para decidir con criterio: simulá tu cuota, recibí alertas de lanzamientos y encontrá proveedores verificados.
+            Antes de señar, mirá quién construye y quién vende. Lo verificamos con fuentes públicas, sin pauta.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            {/* Protagonista: el diferencial del sitio */}
+            <Link href="/ranking-desarrolladoras-confiables/" className="group lg:col-span-2 lg:row-span-2 flex flex-col justify-between rounded-2xl p-7 md:p-9 bg-primary-container text-on-primary hover:opacity-95 transition-opacity">
+              <div>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-label-caps uppercase tracking-widest text-link-gold"><span className="material-symbols-outlined text-[16px]" aria-hidden="true">verified</span>Lo más consultado</span>
+                <h3 className="font-headline-md text-[26px] md:text-[32px] serif mt-3 leading-tight">Ranking de desarrolladoras confiables</h3>
+                <p className="mt-3 text-[15px] md:text-body-lg opacity-90 max-w-xl">Obras entregadas confirmadas por prensa, premios a obra construida y situación en el BCRA. Cada dato con su fuente y fecha de verificación.</p>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 font-label-caps text-label-caps text-link-gold">VER EL RANKING <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_forward</span></span>
+            </Link>
             {[
-              ["calculate", "Simulador de cuota CAC", "Proyectá cómo evoluciona tu cuota si ajusta por índice de construcción.", "/simulador-cuota-cac-pozo/"],
+              ["verified_user", "Inmobiliarias confiables", "Matrícula verificada en el padrón oficial y reconocimientos del sector.", "/ranking-inmobiliarias-confiables/"],
               ["notifications_active", "Alertas de lanzamientos", "Te avisamos por email cuando aparece un proyecto que encaja con tu búsqueda.", "/alertas-de-lanzamientos-en-pozo/"],
-              ["storefront", "Corralones y materiales", "Directorio de corralones, homecenters y fabricantes para tu obra.", "/corralones-y-materiales-de-construccion-en-caba/"],
-              ["verified", "Desarrolladoras confiables", "Ranking con datos verificados: obras entregadas, premios y BCRA. Con fuentes, sin pauta.", "/ranking-desarrolladoras-confiables/"],
-              ["verified_user", "Inmobiliarias confiables", "Matrícula verificada en el padrón oficial de CUCICBA y reconocimientos del sector.", "/ranking-inmobiliarias-confiables/"],
-              ["domain", "Desarrolladoras en CABA", "Directorio de desarrolladoras con proyectos y track record.", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
-              ["real_estate_agent", "Inmobiliarias en CABA", "Directorio de inmobiliarias con matrícula CUCICBA verificable.", "/mejores-inmobiliarias-caba/"],
-              ["menu_book", "Guías para invertir", "Todo lo que necesitás entender antes de comprar en pozo.", "/novedades/"],
-              ["language", "Invertir desde el exterior", "Sos argentino afuera o extranjero: cómo comprar en pozo en CABA a distancia, con acompañamiento remoto.", "/invertir-desde-el-exterior/"],
             ].map(([ic, h, p, href]) => (
               <Link key={href} href={href} className="group block border border-outline-variant rounded-xl p-6 hover:border-secondary transition-colors">
                 <span className="material-symbols-outlined text-3xl text-link-gold">{ic}</span>
@@ -312,6 +313,18 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
+          <nav aria-label="Más herramientas" className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            <span className="font-label-caps text-label-caps text-on-surface-variant mr-1">MÁS HERRAMIENTAS:</span>
+            {[
+              ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],
+              ["Desarrolladoras en CABA", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
+              ["Inmobiliarias en CABA", "/mejores-inmobiliarias-caba/"],
+              ["Invertir desde el exterior", "/invertir-desde-el-exterior/"],
+              ["Guías para comprar en pozo", "/novedades/"],
+            ].map(([t, href]) => (
+              <Link key={href} href={href} className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary hover:text-secondary">{t}</Link>
+            ))}
+          </nav>
         </Container>
       </section>
 
