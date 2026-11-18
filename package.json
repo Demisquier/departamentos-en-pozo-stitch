@@ -13,7 +13,8 @@
     "next": "14.2.35",
     "nodemailer": "^6.9.14",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "imapflow": "^1.7.8"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
