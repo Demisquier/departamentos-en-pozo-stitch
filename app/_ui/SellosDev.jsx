@@ -39,12 +39,12 @@ export function SellosDetalle({ data, titulo = true }) {
           if (!def) return null;
           return (
             <div key={s.tipo}>
-              <p className="font-medium text-primary flex items-center gap-1.5">
+              <p className="font-medium text-primary flex flex-wrap items-center gap-1.5 [overflow-wrap:anywhere]">
                 <span className="material-symbols-outlined text-[18px] text-green-800">{def.icon}</span>
                 <Link href={def.url} className="hover:underline">{def.label}</Link>
                 <span className="text-on-surface-variant font-normal text-[14px]">— {s.resumen}</span>
               </p>
-              <ul className="mt-1.5 ml-7 space-y-1 text-[13px] text-on-surface-variant list-disc">
+              <ul className="mt-1.5 ml-7 space-y-1 text-[13px] text-on-surface-variant list-disc [overflow-wrap:anywhere]">
                 {(s.evidencia || []).map((e, i) => (
                   <li key={i}>
                     {e.texto}
@@ -52,7 +52,7 @@ export function SellosDetalle({ data, titulo = true }) {
                       <span> · Fuente{e.fuentes.length > 1 ? "s" : ""}:{" "}
                         {e.fuentes.slice(0, 3).map((u, j) => {
                           let host = u; try { host = new URL(u).hostname.replace(/^www\./, ""); } catch (x) {}
-                          return <a key={j} href={u} target="_blank" rel="nofollow noopener" className="underline mr-1.5">{host}</a>;
+                          return <a key={j} href={u} target="_blank" rel="nofollow noopener" className="underline mr-1.5 [overflow-wrap:anywhere]">{host}</a>;
                         })}
                       </span>
                     ) : null}
