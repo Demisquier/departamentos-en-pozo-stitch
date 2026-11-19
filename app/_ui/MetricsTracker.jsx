@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { registrarImpresion, registrarRebote, registrarAccion } from '../../lib/afinidad';
 
 // Métricas propias (sin datos personales), en lote cada pocos segundos vía sendBeacon:
 //  - imp: una tarjeta de proyecto (data-imp-slug) estuvo ≥50% visible ≥600 ms (1 vez por página).
@@ -30,6 +31,8 @@ export default function MetricsTracker() {
     const m = FICHA.exec(pathname || '');
     const fichaSlug = m ? m[1] : null;
     if (fichaSlug) push(fichaSlug, 'vis');
+    const t0 = Date.now();
+    let accion = false;
 
     const timers = new Map();
     const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
@@ -37,7 +40,7 @@ export default function MetricsTracker() {
         const s = en.target.getAttribute('data-imp-slug');
         if (!s || vistos.has(s)) continue;
         if (en.isIntersecting && en.intersectionRatio >= 0.5) {
-          if (!timers.has(en.target)) timers.set(en.target, setTimeout(() => { vistos.add(s); push(s, 'imp'); io.unobserve(en.target); }, 600));
+          if (!timers.has(en.target)) timers.set(en.target, setTimeout(() => { vistos.add(s); push(s, 'imp'); if (!fichaSlug || s !== fichaSlug) registrarImpresion(s); io.unobserve(en.target); }, 600));
         } else if (timers.has(en.target)) { clearTimeout(timers.get(en.target)); timers.delete(en.target); }
       }
     }, { threshold: [0.5] }) : null;
@@ -49,11 +52,14 @@ export default function MetricsTracker() {
     const onClick = (e) => {
       const a = e.target && e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="whatsapp.com/send"]');
       if (a && fichaSlug) push(fichaSlug, 'wa');
+      // Cualquier interacción de conversión en la ficha (WhatsApp, consultar, guardar) = interés.
+      if (fichaSlug && (a || (e.target.closest && e.target.closest('button, a[href^="tel:"], a[href^="mailto:"]')))) { accion = true; registrarAccion(fichaSlug); }
     };
     document.addEventListener('click', onClick, true);
-    const onHide = () => { if (document.visibilityState === 'hidden') flush(); };
+    const chequearRebote = () => { if (fichaSlug && !accion && Date.now() - t0 < 10000) registrarRebote(fichaSlug); };
+    const onHide = () => { if (document.visibilityState === 'hidden') { chequearRebote(); flush(); } };
     document.addEventListener('visibilitychange', onHide);
-    return () => { io && io.disconnect(); mo.disconnect(); document.removeEventListener('click', onClick, true); document.removeEventListener('visibilitychange', onHide); timers.forEach(clearTimeout); flush(); };
+    return () => { io && io.disconnect(); mo.disconnect(); document.removeEventListener('click', onClick, true); document.removeEventListener('visibilitychange', onHide); timers.forEach(clearTimeout); chequearRebote(); flush(); };
   }, [pathname]);
 
   return null;

@@ -1,0 +1,6 @@
+{
+  "_doc": "Envío automático de alertas a suscriptores (cron diario). false = solo arma la tanda y manda el resumen a contacto@ para aprobar. true = envía.",
+  "envioAutomatico": false,
+  "capDias": 3,
+  "maxPorCorrida": 60
+}

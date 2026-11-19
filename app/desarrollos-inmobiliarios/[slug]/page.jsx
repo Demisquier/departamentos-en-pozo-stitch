@@ -21,7 +21,7 @@ import { inmobiliariaSlugPorNombre } from '../../../lib/content';
 import CTAContextual from './CTAContextual';
 import IntakeLauncher from '../../_ui/IntakeLauncher';
 import { SellosChips } from '../../_ui/SellosDev';
-import { sellosDeNombre } from '../../../lib/sellos';
+import { sellosDeNombre, sellosInmoDeNombre, SELLOS_DEF, METODOLOGIA_URL } from '../../../lib/sellos';
 
 export const dynamicParams = !process.env.EXPORT;
 // ISR: regenera la página como máximo cada 1h para tomar cambios de datos de WP sin redeploy manual.
@@ -165,6 +165,13 @@ export default async function FichaProyecto({ params }) {
 
   // Sellos de confianza (solo verificados; si no hay, no se muestra nada).
   const sellosDev = constructora ? sellosDeNombre(constructora) : null;
+  // Sellos de la comercializadora (inmobiliaria) — p.ej. matrícula CUCICBA verificada.
+  const sellosInmo = comercializadora ? sellosInmoDeNombre(comercializadora) : null;
+  // Franja de sellos en el hero: lo verificado, arriba y visible (dato clave de confianza en pozo).
+  const sellosHero = [
+    ...((sellosDev && sellosDev.sellos) || []).map((x) => ({ ...x, quien: 'Desarrolladora', nombre: sellosDev.nombre })),
+    ...((sellosInmo && sellosInmo.sellos) || []).map((x) => ({ ...x, quien: 'Inmobiliaria', nombre: sellosInmo.nombre })),
+  ].filter((x) => SELLOS_DEF[x.tipo]);
   // Link a la landing de la desarrolladora, si tiene página propia (match por nombre normalizado).
   let devHref = null;
   if (constructora) {
@@ -457,6 +464,28 @@ export default async function FichaProyecto({ params }) {
                 <span className="material-symbols-outlined text-[18px] text-link-gold">location_on</span>
                 {direccion}
               </p>
+              {sellosHero.length > 0 && (
+                <div className="mt-4 rounded-xl border border-green-700/30 bg-green-700/[0.06] px-4 py-3">
+                  <p className="flex items-center gap-1.5 text-[13px] font-semibold text-green-900">
+                    <span className="material-symbols-outlined text-[18px] text-green-700">verified</span>
+                    Verificado por Departamentos en Pozo
+                  </p>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {sellosHero.map((x) => (
+                      <li key={x.quien + x.tipo} title={x.resumen || SELLOS_DEF[x.tipo].criterio}
+                        className="inline-flex items-center gap-1 rounded-md bg-white/70 border border-green-700/20 px-2.5 py-1 text-[12px] text-green-900 [overflow-wrap:anywhere]">
+                        <span className="material-symbols-outlined text-[15px] text-green-700">{SELLOS_DEF[x.tipo].icon}</span>
+                        <span><span className="text-on-surface-variant">{x.quien}:</span> <strong className="font-semibold">{SELLOS_DEF[x.tipo].label}</strong></span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-2 text-[12px] text-on-surface-variant">
+                    {[sellosDev && sellosDev.nombre, sellosInmo && sellosInmo.nombre].filter(Boolean).join(' · ')} ·{' '}
+                    {devStats ? <><a href="#quien-construye" className="underline underline-offset-2 hover:text-primary">ver evidencia</a> ·{' '}</> : null}
+                    <Link href={METODOLOGIA_URL} className="underline underline-offset-2 hover:text-primary">cómo verificamos</Link>
+                  </p>
+                </div>
+              )}
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-4">
                 {resumen.map((r, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -707,7 +736,7 @@ export default async function FichaProyecto({ params }) {
 
             {/* BLOQUE 1 — Panel de confianza de la desarrolladora (la pregunta #1 en pozo). */}
             {devStats ? (
-              <div className="mb-8 rounded-xl border border-outline-variant p-6">
+              <div id="quien-construye" className="scroll-mt-24 mb-8 rounded-xl border border-outline-variant p-6">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
                     <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?

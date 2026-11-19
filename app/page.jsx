@@ -9,9 +9,11 @@ import HomeBuscador from "./_ui/HomeBuscador";
 import SafeImg from "./_ui/SafeImg";
 import FOTOS from "../data/fotos-overrides.json";
 import DestacadosHome from "./_ui/DestacadosHome";
+import { mapDesarrollos } from "../lib/catalogo";
+import { conSellos } from "../lib/sellos";
 import JsonLd from "./_ui/JsonLd";
 import MiPlanHome from "./_components/MiPlanHome";
-import MiPlanHeroBanner from "./_components/MiPlanHeroBanner";
+import MiPlanInicio from "./_components/MiPlanInicio";
 import { AI_FAQ } from "./_lib_geo/ai";
 
 // Schema de ENTIDAD para el home: consolida "Departamentos en Pozo" como Organization/WebSite
@@ -82,9 +84,12 @@ export default async function HomePage() {
   // para los usuarios que reingresan, priorizando SUS barrios (perfil + guardados). Ver DestacadosHome.
   const barrioCount = {};
   mapped.forEach((m) => { const b = m.topBarrio || m.barrio; if (b) barrioCount[b] = (barrioCount[b] || 0) + 1; });
+  // Destacados = proyectos con sellos verificados (desarrolladora/inmobiliaria) y buena ficha.
+  let selloPor = new Map();
+  try { conSellos(mapDesarrollos(items || [])).forEach((i) => { if (i.sellos && i.sellos.length) selloPor.set(i.slug, i.sellos); }); } catch (e) {}
   const scored = mapped
     .filter((x) => x.img && x.precio)
-    .map((x) => ({ ...x, _score: 3 + 2 + Math.min(2, (barrioCount[x.topBarrio || x.barrio] || 0) / 10) }))
+    .map((x) => ({ ...x, sellos: selloPor.get(x.slug) || null, _score: (selloPor.has(x.slug) ? 10 : 0) + 3 + 2 + Math.min(2, (barrioCount[x.topBarrio || x.barrio] || 0) / 10) }))
     .sort((a, b) => (b._score - a._score) || (b.precio - a.precio));
 
   const pool = [];
@@ -94,7 +99,7 @@ export default async function HomePage() {
     if ((porBarrio[b] || 0) >= 2) continue;
     porBarrio[b] = (porBarrio[b] || 0) + 1;
     pool.push(m);
-    if (pool.length === 9) break;
+    if (pool.length === 12) break;
   }
   while (pool.length < 3) {
     const extra = scored.find((x) => !pool.includes(x)) || mapped.find((x) => x.img && !pool.includes(x));
@@ -164,7 +169,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <MiPlanHeroBanner />
+      <MiPlanInicio />
 
       {/* Stats Bar */}
       <section className="bg-primary-container py-6 md:py-8 border-y border-on-primary-fixed-variant">
@@ -200,9 +205,9 @@ export default async function HomePage() {
         </div>
         <DestacadosHome
           cards={pool.map((d) => (
-            <ProjectCard key={d.slug} slug={d.slug} nombre={d.nombre} barrio={d.barrio} precio={d.precio} img={d.img} />
+            <ProjectCard key={d.slug} slug={d.slug} nombre={d.nombre} barrio={d.barrio} precio={d.precio} img={d.img} sellos={d.sellos} destacado={!!d.sellos} />
           ))}
-          meta={pool.map((d) => ({ slug: d.slug, barrio: d.topBarrio || d.barrio, precioDesde: d.precioDesde || null }))}
+          meta={pool.map((d) => ({ slug: d.slug, barrio: d.topBarrio || d.barrio, precioDesde: d.precioDesde || null, sellado: !!d.sellos }))}
         />
       </Container>
 

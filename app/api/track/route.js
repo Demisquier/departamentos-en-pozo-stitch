@@ -1,5 +1,5 @@
 // /api/track — recibe eventos de métricas del navegador (impresiones de cards, visitas a ficha,
-// clics de WhatsApp) en lote y los suma en Supabase. Sin datos personales: sólo slug + tipo.
+// clics de WhatsApp) en lote y los guarda en la planilla (pestaña Metricas). Sin datos personales: sólo slug + tipo.
 import { registrarMetricas } from "../../../lib/metricas";
 
 export const runtime = "nodejs";

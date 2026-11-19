@@ -1,4 +1,4 @@
-// Datos del panel: métricas de Supabase + catálogo (para saber a qué empresa pertenece cada ficha).
+// Datos del panel: métricas (Google Sheets) + catálogo (para saber a qué empresa pertenece cada ficha).
 import { getDesarrollos } from "../../lib/wp";
 import { mapDesarrollos } from "../../lib/catalogo";
 import { leerMetricas, leerSerie, empresaDe, empresaSlug, tokenEmpresa, hoyAR } from "../../lib/metricas";

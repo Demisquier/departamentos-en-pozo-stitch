@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Container from "../../../_ui/Container";
 import { cargarEmpresa, RANGOS } from "../../_datos";
 import { Kpis, Rangos, TablaProyectos, Serie } from "../../_ui";
-import { tokenEmpresa } from "../../../../lib/metricas";
+import { tokenEmpresa, panelKey } from "../../../../lib/metricas";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Reporte de rendimiento — Departamentos en Pozo", robots: { index: false, follow: false } };
@@ -12,7 +12,7 @@ export const metadata = { title: "Reporte de rendimiento — Departamentos en Po
 export default async function ReporteEmpresa({ params, searchParams }) {
   const slug = params.empresa;
   const t = searchParams && searchParams.t;
-  if (!process.env.PANEL_KEY || !t || t !== tokenEmpresa(slug)) notFound();
+  if (!panelKey() || !t || t !== tokenEmpresa(slug)) notFound();
   const dias = RANGOS[searchParams.d] || 30;
   let data;
   try { data = await cargarEmpresa(slug, dias); } catch (e) { data = null; }

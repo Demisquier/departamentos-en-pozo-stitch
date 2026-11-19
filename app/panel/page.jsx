@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Container from "../_ui/Container";
 import { cargarPanel, RANGOS, fmtPct } from "./_datos";
 import { Kpis, Rangos, TablaProyectos } from "./_ui";
+import { panelKey } from "../../lib/metricas";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Panel — Departamentos en Pozo", robots: { index: false, follow: false } };
@@ -11,7 +12,8 @@ const n = (v) => Number(v || 0).toLocaleString("es-AR");
 
 export default async function Panel({ searchParams }) {
   const k = searchParams && searchParams.k;
-  if (!process.env.PANEL_KEY || k !== process.env.PANEL_KEY) notFound();
+  const pk = panelKey();
+  if (!pk || k !== pk) notFound();
   const dias = RANGOS[searchParams.d] || 30;
   let data;
   try { data = await cargarPanel(dias); } catch (e) {

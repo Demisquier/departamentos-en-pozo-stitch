@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import ProjectCard from '../_ui/ProjectCard';
 import BarrioModal from '../_ui/BarrioModal';
 import GuardarBusqueda from '../_ui/GuardarBusqueda';
-import { leerAfinidad, puntajeAfinidad, grupoPers } from '../../lib/afinidad';
+import { leerAfinidad, puntajeAfinidad, grupoPers, encajaPerfil } from '../../lib/afinidad';
 
 // Normaliza un nombre de barrio (saca acentos, minúsculas) para dedupe/match acento-insensible.
 const NORM = (s) => String(s || '').normalize('NFD').split('').filter((c) => { const k = c.charCodeAt(0); return k < 768 || k > 879; }).join('').toLowerCase().trim();
@@ -21,9 +21,9 @@ const PRECIO_TOTAL = {
 const PRECIO_TOTAL_MAX = { hasta150: '150000', '150a250': '250000', '250a400': '400000', mas400: '' };
 const PRECIO_M2_LBL = { hasta3000: 'Hasta USD 3.000/m²', '3000a4500': 'USD 3.000–4.500/m²', mas4500: '+USD 4.500/m²' };
 
-// Proyectos DESTACADOS (monetizable / editorial): van primero en el orden por defecto
-// y llevan el badge "Destacado". Editar esta lista para vender/rotar slots.
-const DESTACADOS = ['arcadia-art-residence-coghlan', 'newbery-place-colegiales', 'vibe-deheza-saavedra'];
+// Destacados = proyectos con sellos verificados (desarrolladora/inmobiliaria). Para quien ya tiene
+// perfil, sólo suben si encajan con lo que busca (barrio/precio): no empujamos lo que no le interesa.
+const esSellado = (i) => !!(i && i.sellos && i.sellos.length);
 
 // --- Mapa (Leaflet cargado por CDN, sin dependencias de build). Muestra pines con precio. ---
 function MapaListado({ items, heightClass = "h-[560px] md:h-[640px]" }) {
@@ -313,8 +313,8 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
       const topB = (b) => { const n = NORM(b); return n.startsWith('palermo') ? 'palermo' : n; };
       const score = (i) => {
         let s = 0;
-        if (DESTACADOS.includes(i.slug)) s += 1000;
-        // Reingresantes: proyectos en los barrios de interés del usuario suben (bajo los DESTACADOS pagos).
+        if (esSellado(i)) s += afinidad && afinidad.senales ? (encajaPerfil(i, afinidad) ? 300 : 0) : 600;
+        // Reingresantes: proyectos en los barrios de interés del usuario suben .
         // Afinidad del usuario (barrio, precio, ambientes; penaliza ya vistas). Si no hay, fallback a sus barrios declarados.
         if (afinidad) s += puntajeAfinidad(i, afinidad);
         else if (prefBarrios.length && prefBarrios.includes(topB(i.barrio))) s += 500;
@@ -617,14 +617,14 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
           </p>
           <div className="relative z-10 bg-surface rounded-t-2xl md:rounded-none shadow-[0_-8px_24px_rgba(0,0,0,0.06)] md:shadow-none pt-4 md:pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter mt-4 md:mt-8">
             {filtered.map((i) => (
-              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
+              <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={esSellado(i)} nuevaPestana />
             ))}
           </div>
         </div>
       ) : (
         <div key="v-lista" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
           {filtered.map((i) => (
-            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={DESTACADOS.includes(i.slug)} nuevaPestana />
+            <ProjectCard key={i.slug} slug={i.slug} nombre={i.nombre} barrio={i.barrio} direccion={i.direccion} precioDesde={i.precioDesde} precioM2={i.precioM2} img={i.imagen} etapa={i.etapa} ambientes={i.ambientes} entrega={i.entrega} desarrolladora={i.desarrolladora} sellos={i.sellos} destacado={esSellado(i)} nuevaPestana />
           ))}
         </div>
       )}

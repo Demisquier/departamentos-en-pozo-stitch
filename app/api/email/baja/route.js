@@ -9,6 +9,7 @@
 // Token inválido → 400.
 import { verificarBaja, normEmail } from "../../../../lib/emailBaja";
 import { SHEET_WEBHOOK } from "../../../../lib/leadPipeline";
+import { registrarBajaSheet } from "../../../../lib/alertasEnvio";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,6 +18,7 @@ const esc = (s) => String(s == null ? "" : s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 async function registrarBaja(email, via) {
+  try { await registrarBajaSheet(email, via); } catch (e) {}
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 8000);
   try {
