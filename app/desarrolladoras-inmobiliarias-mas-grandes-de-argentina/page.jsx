@@ -17,6 +17,13 @@ export const revalidate = 86400;
 const PATH = "/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/";
 const ACTUALIZADO = "octubre 2026";
 
+// Saca cifras declaradas no auditadas (m², unidades, años) del texto que viene del CMS.
+const sinCifras = (t) => String(t || "")
+  .replace(/[^.]*\b[\d.,]+\s*m²[^.]*\.\s*/g, (m) => (/insignia/i.test(m) ? m : " "))
+  .replace(/\s*\((?:[^()]*?,\s*)?\+?[\d.,]+\s*m²\)/g, (m) => (m.includes(",") ? m.replace(/,\s*\+?[\d.,]+\s*m²/, "") : ""))
+  .replace(/\+?[\d.,]+\s*m²/g, "")
+  .replace(/\s{2,}/g, " ").trim();
+
 export const metadata = {
   title: "Las Desarrolladoras Inmobiliarias más Grandes de Argentina (2026): Ranking por Escala",
   description:
@@ -57,7 +64,7 @@ async function cargar() {
     if (!d) continue;
     let n = 0;
     try { n = ((await getDesarrolladoraBySlug(r.slug))?.proyectos || []).length; } catch { n = 0; }
-    out.push({ ...r, nombre: d.nombre.replace(/\s*\(.*?\)\s*$/, "") || d.nombre, insignia: d.proyecto || "", estructura: d.estructura || "", desc: d.desc || "", web: d.web || "", n });
+    out.push({ ...r, nombre: d.nombre.replace(/\s*\(.*?\)\s*$/, "") || d.nombre, insignia: sinCifras(d.proyecto), estructura: d.estructura || "", desc: sinCifras(d.desc), web: d.web || "", n });
   }
   return out;
 }

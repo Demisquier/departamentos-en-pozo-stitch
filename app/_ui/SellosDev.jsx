@@ -11,8 +11,8 @@ export function SellosChips({ data, className = "" }) {
         if (!def) return null;
         return (
           <Link key={s.tipo} href={METODOLOGIA_URL} title={`${def.label}: ${s.resumen}`}
-            className="inline-flex items-center gap-1 text-[11px] font-label-caps uppercase tracking-wider bg-green-700/10 text-green-800 px-2.5 py-1 rounded-md hover:bg-green-700/20">
-            <span className="material-symbols-outlined text-[15px]">{def.icon}</span>{def.label}
+            className="inline-flex items-center gap-1 text-[11px] font-label-caps uppercase tracking-wider border border-link-gold/50 bg-link-gold/10 text-primary px-2.5 py-1 rounded-md hover:bg-link-gold/20">
+            <span className="material-symbols-outlined text-[15px] text-link-gold">{def.icon}</span>{def.label}
           </Link>
         );
       })}
@@ -24,10 +24,10 @@ export function SellosChips({ data, className = "" }) {
 export function SellosDetalle({ data, titulo = true }) {
   if (!data || !data.sellos || !data.sellos.length) return null;
   return (
-    <section className="rounded-xl border border-green-700/25 bg-green-700/[0.03] p-5 md:p-6">
+    <section className="rounded-xl border border-outline-variant border-t-2 border-t-link-gold bg-surface-container-low p-5 md:p-6">
       {titulo && (
         <h2 className="font-headline-sm text-[19px] text-primary flex items-center gap-2 mb-1">
-          <span className="material-symbols-outlined text-green-800">verified</span> Sellos de confianza de {data.nombre}
+          <span className="material-symbols-outlined icon-fill text-link-gold">verified</span> Sellos de confianza de {data.nombre}
         </h2>
       )}
       <p className="text-[12px] text-on-surface-variant mb-4">
@@ -40,7 +40,7 @@ export function SellosDetalle({ data, titulo = true }) {
           return (
             <div key={s.tipo}>
               <p className="font-medium text-primary flex flex-wrap items-center gap-1.5 [overflow-wrap:anywhere]">
-                <span className="material-symbols-outlined text-[18px] text-green-800">{def.icon}</span>
+                <span className="material-symbols-outlined text-[18px] text-link-gold">{def.icon}</span>
                 <Link href={def.url} className="hover:underline">{def.label}</Link>
                 <span className="text-on-surface-variant font-normal text-[14px]">— {s.resumen}</span>
               </p>

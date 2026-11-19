@@ -139,7 +139,7 @@ export default function MiPlanInicio() {
                   <div className="relative aspect-[4/3] bg-surface-container">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={x.img} alt={x.n} loading="lazy" className="w-full h-full object-cover" />
-                    {x.sel && <span className="absolute top-2 left-2 inline-flex items-center gap-0.5 rounded bg-green-700 text-white text-[10px] px-1.5 py-0.5"><span className="material-symbols-outlined text-[12px]">verified</span>Verificado</span>}
+                    {x.sel && <span className="absolute top-2 left-2 inline-flex items-center gap-0.5 rounded bg-primary/90 text-white font-label-caps tracking-wider text-[10px] px-1.5 py-0.5"><span className="material-symbols-outlined icon-fill text-[12px] text-link-gold">verified</span>Verificado</span>}
                     {x.nuevo && <span className="absolute top-2 right-2 rounded bg-link-gold text-white text-[10px] px-1.5 py-0.5">Nuevo</span>}
                   </div>
                   <div className="p-2.5">

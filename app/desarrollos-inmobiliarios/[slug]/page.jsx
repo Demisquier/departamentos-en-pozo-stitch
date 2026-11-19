@@ -465,24 +465,29 @@ export default async function FichaProyecto({ params }) {
                 {direccion}
               </p>
               {sellosHero.length > 0 && (
-                <div className="mt-4 rounded-xl border border-green-700/30 bg-green-700/[0.06] px-4 py-3">
-                  <p className="flex items-center gap-1.5 text-[13px] font-semibold text-green-900">
-                    <span className="material-symbols-outlined text-[18px] text-green-700">verified</span>
+                <div className="mt-5 border-y border-outline-variant py-4">
+                  <p className="flex items-center gap-1.5 font-label-caps text-[11px] tracking-widest uppercase text-link-gold">
+                    <span className="material-symbols-outlined icon-fill text-[16px]">verified</span>
                     Verificado por Departamentos en Pozo
                   </p>
-                  <ul className="mt-2 flex flex-wrap gap-2">
+                  <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                     {sellosHero.map((x) => (
-                      <li key={x.quien + x.tipo} title={x.resumen || SELLOS_DEF[x.tipo].criterio}
-                        className="inline-flex items-center gap-1 rounded-md bg-white/70 border border-green-700/20 px-2.5 py-1 text-[12px] text-green-900 [overflow-wrap:anywhere]">
-                        <span className="material-symbols-outlined text-[15px] text-green-700">{SELLOS_DEF[x.tipo].icon}</span>
-                        <span><span className="text-on-surface-variant">{x.quien}:</span> <strong className="font-semibold">{SELLOS_DEF[x.tipo].label}</strong></span>
+                      <li key={x.quien + x.tipo} title={x.resumen || SELLOS_DEF[x.tipo].criterio} className="flex items-center gap-3 min-w-0">
+                        <span className="shrink-0 w-9 h-9 rounded-full border border-link-gold/50 bg-link-gold/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-[18px] text-link-gold">{SELLOS_DEF[x.tipo].icon}</span>
+                        </span>
+                        <span className="min-w-0 leading-tight">
+                          <span className="block font-label-caps text-[10px] tracking-widest uppercase text-on-surface-variant">{x.quien}</span>
+                          <span className="block text-[14px] text-primary font-medium [overflow-wrap:anywhere]">{SELLOS_DEF[x.tipo].label}</span>
+                        </span>
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-2 text-[12px] text-on-surface-variant">
-                    {[sellosDev && sellosDev.nombre, sellosInmo && sellosInmo.nombre].filter(Boolean).join(' · ')} ·{' '}
-                    {devStats ? <><a href="#quien-construye" className="underline underline-offset-2 hover:text-primary">ver evidencia</a> ·{' '}</> : null}
-                    <Link href={METODOLOGIA_URL} className="underline underline-offset-2 hover:text-primary">cómo verificamos</Link>
+                  <p className="mt-3 text-[12.5px] text-on-surface-variant">
+                    {[sellosDev && sellosDev.nombre, sellosInmo && sellosInmo.nombre].filter(Boolean).join(' · ')}
+                    <span className="mx-2 text-outline-variant">|</span>
+                    {devStats ? <><a href="#quien-construye" className="text-secondary font-medium hover:underline">Ver evidencia</a><span className="mx-2 text-outline-variant">|</span></> : null}
+                    <Link href={METODOLOGIA_URL} className="text-secondary font-medium hover:underline">Cómo verificamos</Link>
                   </p>
                 </div>
               )}
