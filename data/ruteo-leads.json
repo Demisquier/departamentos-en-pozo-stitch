@@ -2317,6 +2317,90 @@
   "par-3957-saavedra": {
    "comercial": "info@crecer.com.ar",
    "comNombre": "Crecer"
+  },
+  "artemisa-banfield-lomas-de-zamora-gba-sur": {
+   "email": "constantinoosso@hotmail.com",
+   "comercial": "constantinoosso@hotmail.com",
+   "comNombre": "Constantino Osso Negocios Inmobiliarios",
+   "dev": "Constantino Osso Negocios Inmobiliarios",
+   "proyecto": "Artemisa"
+  },
+  "baron-unico-lomas-de-zamora-las-lomitas-gba-sur": {
+   "email": "mariainesk@baron-sa.com.ar",
+   "comercial": "mariainesk@baron-sa.com.ar",
+   "comNombre": "Barón Inmobiliaria",
+   "dev": "Barón Constructora (com. Barón Inmobiliaria)",
+   "proyecto": "Barón Único"
+  },
+  "punto-baron-lomas-de-zamora-las-lomitas-gba-sur": {
+   "email": "mariainesk@baron-sa.com.ar",
+   "comercial": "mariainesk@baron-sa.com.ar",
+   "comNombre": "Barón Inmobiliaria",
+   "dev": "Barón Constructora (com. Barón Inmobiliaria)",
+   "proyecto": "Punto Barón"
+  },
+  "uno-blv-balvanera": {
+   "email": "emprendimientos@tizado.com",
+   "comercial": "emprendimientos@tizado.com",
+   "comNombre": "Tizado Propiedades",
+   "dev": "Tizado Propiedades",
+   "proyecto": "Uno BLV"
+  },
+  "torre-notre-maipu-vicente-lopez": {
+   "email": "info@o-duch.com.ar",
+   "comercial": "info@o-duch.com.ar",
+   "comNombre": "O'Duch Negocios Inmobiliarios",
+   "dev": "O'Duch Negocios Inmobiliarios",
+   "proyecto": "Torre Notre Maipú"
+  },
+  "shulbius-rio-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Shulbius (Bellagamba) (com. Bellagamba Marketing Inmobiliario)",
+   "proyecto": "Shulbius Río"
+  },
+  "elevia-rio-vicente-lopez": {
+   "email": "info@salayaromera.com",
+   "comercial": "info@salayaromera.com",
+   "comNombre": "Salaya Romera",
+   "dev": "Salaya Romera",
+   "proyecto": "Elevia Río"
+  },
+  "belgrano-2369-munro-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Belgrano 2369"
+  },
+  "antartida-argentina-2160-munro-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Antártida Argentina 2160"
+  },
+  "peru-1147-florida-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Perú 1147"
+  },
+  "edificio-2222-florida-vicente-lopez": {
+   "email": "info@lopez.com.ar",
+   "comercial": "info@lopez.com.ar",
+   "comNombre": "Grupo López",
+   "dev": "Grupo López",
+   "proyecto": "Edificio 2222"
+  },
+  "edificio-mora-la-lucila": {
+   "email": "info@castrofeijoo.com.ar",
+   "comercial": "info@castrofeijoo.com.ar",
+   "comNombre": "Castro Feijoo Propiedades",
+   "dev": "Castro Feijoo Propiedades",
+   "proyecto": "Edificio Mora"
   }
  },
  "devs": {
