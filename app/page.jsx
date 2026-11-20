@@ -142,6 +142,7 @@ export default async function HomePage() {
       {/* Preload del hero: arranca la descarga de la imagen LCP lo antes posible. */}
       <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
+      <MiPlanInicio />
       <section className="relative h-[620px] md:h-[700px] flex items-center justify-center overflow-hidden">
         {/* Imagen LCP como <img> (no background-image): descubrible por el navegador y
             priorizable con fetchPriority. Antes tardaba ~12 s en pintar. */}
@@ -154,7 +155,7 @@ export default async function HomePage() {
           <p className="text-on-primary text-body-lg font-body-lg opacity-90 max-w-2xl mb-8">
             {mapped.length} proyectos en pozo con precio, desarrolladora y entrega. Te acompañamos en tu próxima inversión o en tu nuevo hogar.
           </p>
-          <HomeBuscador barrios={barriosUniverse} />
+          <div id="buscar" className="scroll-mt-24"><HomeBuscador barrios={barriosUniverse} /></div>
           {/* #203 — La caja principal es el buscador por barrio. Las otras dos formas de buscar
               (catálogo con TODOS los filtros y búsqueda conversacional con IA) quedan como LINKS
               secundarios debajo, para que no compitan visualmente con la caja ni confundan. */}
@@ -169,7 +170,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <MiPlanInicio />
 
       {/* Stats Bar */}
       <section className="bg-primary-container py-6 md:py-8 border-y border-on-primary-fixed-variant">

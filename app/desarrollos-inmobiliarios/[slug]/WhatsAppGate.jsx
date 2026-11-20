@@ -42,6 +42,10 @@ export default function WhatsAppGate({ phone, esDelDev, nombre, slug, barrio, de
       setErr("Necesitamos tu nombre y WhatsApp para conectarte.");
       return;
     }
+    if (form.nombre.trim().split(/\s+/).length > 4 || /\b(quiero|consult|precio|info|compra|pozo)/i.test(form.nombre)) {
+      setErr("En “Tu nombre” poné solo tu nombre (la consulta se la mandamos nosotros).");
+      return;
+    }
     setErr("");
     setSending(true);
     try {

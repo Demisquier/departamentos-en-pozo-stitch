@@ -101,10 +101,8 @@ export default function ProjectCard({
         </div>
         {devLine(desarrolladora) && (<p className="text-[11px] text-on-surface-variant mt-2 truncate">{devLine(desarrolladora)}</p>)}
         {sellos && sellos.length > 0 && (
-          <p className="relative group/sello mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-widest text-primary border border-link-gold/50 bg-link-gold/10 rounded px-2 py-0.5 cursor-help"
-            title="Sello de confianza: verificamos con fuentes públicas a quien desarrolla o comercializa este proyecto (obras entregadas, premios, situación en el BCRA o matrícula). Detalle y fuentes en la ficha.">
+          <p className="relative group/sello mt-1.5 inline-flex items-center gap-1 text-[10px] font-label-caps uppercase tracking-widest text-primary border border-link-gold/50 bg-link-gold/10 rounded px-2 py-0.5 cursor-help">
             <span className="material-symbols-outlined icon-fill text-[13px] text-link-gold" aria-hidden="true">verified</span>Sello de confianza
-            <span className="material-symbols-outlined text-[13px] opacity-70" aria-hidden="true">info</span>
             <span role="tooltip" className="pointer-events-none absolute left-0 bottom-full mb-2 z-20 w-64 normal-case tracking-normal font-body-md text-[12px] leading-snug text-white bg-primary rounded-lg px-3 py-2 shadow-xl opacity-0 group-hover/sello:opacity-100 transition-opacity">
               Verificamos con fuentes públicas a quien desarrolla o comercializa este proyecto: obras entregadas, premios, situación en el BCRA o matrícula. Entrá a la ficha para ver el detalle y las fuentes.
             </span>

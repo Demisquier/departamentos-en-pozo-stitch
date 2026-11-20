@@ -58,6 +58,21 @@ export default function MiPlanInicio() {
       .slice(0, 6);
   }, [catalogo, st, guardados]);
 
+  // "Empezar de cero": borra lo que inferimos de tu navegación (barrios, precio, vistas, descartes).
+  // NO borra tus guardados ni tus consultas. Es como armar un plan nuevo.
+  const empezarDeCero = () => {
+    if (!window.confirm("¿Empezar una búsqueda nueva? Olvidamos los barrios, precios y fichas vistas. Tus guardados y consultas quedan.")) return;
+    try {
+      ["dpp_vistos_v1", "dpp_imp_v1", "dpp_rebote_v1", "dpp_accion_v1", "dpp_respuesta_v1"].forEach((k) => localStorage.removeItem(k));
+      const p = JSON.parse(localStorage.getItem("dpp_perfil_v1") || "{}");
+      delete p.zonas; delete p.presupuesto; delete p.ambientes;
+      localStorage.setItem("dpp_perfil_v1", JSON.stringify(p));
+    } catch {}
+    try { window.gtag && window.gtag("event", "mi_plan_reset"); } catch {}
+    window.location.hash = "buscar";
+    window.location.reload();
+  };
+
   if (!activo) return null;
 
   const pendientes = st.consultas.filter((c) => c.s && Date.now() - c.t > 2 * DIA && !resp[c.s]).slice(0, 2);
@@ -86,10 +101,18 @@ export default function MiPlanInicio() {
               </p>
             )}
           </div>
-          <Link href="/mi-seleccion/" className="inline-flex items-center gap-2 self-start md:self-auto rounded-full bg-primary text-on-primary px-6 py-2.5 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90">
-            <span className="material-symbols-outlined text-[18px]">space_dashboard</span>
-            {nGuard ? `Ver mi Plan (${nGuard})` : logged ? "Ver mi Plan" : "Guardar mi plan"}
-          </Link>
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <Link href="/mi-seleccion/" className="inline-flex items-center gap-2 rounded-full bg-primary text-on-primary px-5 py-2.5 font-label-caps text-label-caps uppercase tracking-wider hover:opacity-90">
+              <span className="material-symbols-outlined text-[18px]">space_dashboard</span>
+              {nGuard ? `Ver mi Plan (${nGuard})` : logged ? "Ver mi Plan" : "Guardar mi plan"}
+            </Link>
+            <a href="#buscar" className="inline-flex items-center gap-2 rounded-full border border-primary text-primary px-5 py-2.5 font-label-caps text-label-caps uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-colors">
+              <span className="material-symbols-outlined text-[18px]">search</span> Nueva búsqueda
+            </a>
+            <button type="button" onClick={empezarDeCero} className="inline-flex items-center gap-1 px-2 py-2.5 text-[13px] text-on-surface-variant underline underline-offset-2 hover:text-primary">
+              <span className="material-symbols-outlined text-[16px]">refresh</span> Empezar de cero
+            </button>
+          </div>
         </div>
 
         {/* Resumen de lo hecho: seguimiento */}

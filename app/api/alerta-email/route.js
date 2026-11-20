@@ -165,9 +165,10 @@ export async function GET(req) {
     ambientes ? ambientes.map((a) => a.n + (a.plus ? "+" : "")).join(" o ") + " amb." : "",
   ].filter(Boolean).join(" · ");
 
-  const titulo = digest ? "Tu semana en pozo" : (count === 1 && total === 1 ? "Nuevo proyecto en " + barrioLabel(p0.barrio) : "Nuevos proyectos en " + (barrioUnico || "tus barrios"));
+  const bienvenida = !digest && !(Number(url.searchParams.get("desde")) > 0);
+  const titulo = digest ? "Tu semana en pozo" : bienvenida ? "Tu alerta está activa" : (count === 1 && total === 1 ? "Nuevo proyecto en " + barrioLabel(p0.barrio) : "Nuevos proyectos en " + (barrioUnico || "tus barrios"));
   const introHtml =
-    '<p style="margin:0;font-size:15px;line-height:1.6;color:' + INK + '">Hola, ' + (digest ? "estas son las novedades de la semana" : (total === 1 ? "entró un proyecto nuevo" : "entraron " + total + " proyectos nuevos")) + ' que encajan con tu alerta.</p>' +
+    '<p style="margin:0;font-size:15px;line-height:1.6;color:' + INK + '">Hola, ' + (digest ? "estas son las novedades de la semana" : bienvenida ? (total === 1 ? "este es el proyecto en pozo" : "estos son los " + total + " proyectos en pozo") + " que hoy encajan con tu búsqueda. Te avisamos cuando entre uno nuevo" : (total === 1 ? "entró un proyecto nuevo" : "entraron " + total + " proyectos nuevos")) + (bienvenida ? '.</p>' : ' que encajan con tu alerta.</p>') +
     (motivoBusqueda ? '<p style="margin:8px 0 0 0;font-size:13px;line-height:1.6;color:' + MUTE + '">Tu búsqueda: <b>' + esc(motivoBusqueda) + '</b> · <a href="' + esc(prefsUrl) + '" style="color:' + MUTE + ';text-decoration:underline">Editar</a></p>' : "");
 
   const cardsHtml = items.map((p) => {
