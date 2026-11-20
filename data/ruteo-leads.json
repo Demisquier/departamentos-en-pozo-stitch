@@ -2401,6 +2401,188 @@
    "comNombre": "Castro Feijoo Propiedades",
    "dev": "Castro Feijoo Propiedades",
    "proyecto": "Edificio Mora"
+  },
+  "petit-palais-palermo": {
+   "email": "info@ocampopropiedades.com",
+   "comercial": "info@ocampopropiedades.com",
+   "comNombre": "Ocampo Propiedades",
+   "dev": "Ocampo Propiedades",
+   "proyecto": "Petit Palais"
+  },
+  "diverso-nunez-nunez": {
+   "email": "info@ocampopropiedades.com",
+   "comercial": "info@ocampopropiedades.com",
+   "comNombre": "Ocampo Propiedades",
+   "dev": "Ocampo Propiedades",
+   "proyecto": "Diverso Núñez"
+  },
+  "mit-palermo-palermo": {
+   "email": "info@ocampopropiedades.com",
+   "comercial": "info@ocampopropiedades.com",
+   "comNombre": "Ocampo Propiedades",
+   "dev": "Ocampo Propiedades",
+   "proyecto": "MIT Palermo"
+  },
+  "vincent-florida-vicente-lopez": {
+   "email": "contacto@daria.com.ar",
+   "comercial": "contacto@daria.com.ar",
+   "comNombre": "D'Aria Propiedades",
+   "dev": "D'Aria Propiedades",
+   "proyecto": "Vincent"
+  },
+  "atlikum-florida-vicente-lopez": {
+   "email": "contacto@daria.com.ar",
+   "comercial": "contacto@daria.com.ar",
+   "comNombre": "D'Aria Propiedades",
+   "dev": "D'Aria Propiedades",
+   "proyecto": "Atlikum"
+  },
+  "skyway-martinez": {
+   "email": "contacto@daria.com.ar",
+   "comercial": "contacto@daria.com.ar",
+   "comNombre": "D'Aria Propiedades",
+   "dev": "D'Aria Propiedades",
+   "proyecto": "Skyway"
+  },
+  "tempus-hipodromo-san-isidro": {
+   "email": "contacto@daria.com.ar",
+   "comercial": "contacto@daria.com.ar",
+   "comNombre": "D'Aria Propiedades",
+   "dev": "D'Aria Propiedades",
+   "proyecto": "Tempus Hipódromo"
+  },
+  "esmeralda-4520-florida-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Esmeralda 4520"
+  },
+  "shulbius-emme-olivos": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Shulbius (Bellagamba) (com. Bellagamba Marketing Inmobiliario)",
+   "proyecto": "Shulbius Emme"
+  },
+  "ugarte-3869-munro-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Ugarte 3869"
+  },
+  "melo-3465-villa-martelli-vicente-lopez": {
+   "email": "info@bellagamba.com",
+   "comercial": "info@bellagamba.com",
+   "comNombre": "Bellagamba Marketing Inmobiliario",
+   "dev": "Bellagamba Marketing Inmobiliario",
+   "proyecto": "Melo 3465"
+  },
+  "molino-haus-martinez": {
+   "email": "info@narvaez.com.ar",
+   "comercial": "info@narvaez.com.ar",
+   "comNombre": "Narváez",
+   "dev": "Narváez",
+   "proyecto": "Molino Haus"
+  },
+  "lebris-martinez": {
+   "email": "info@narvaez.com.ar",
+   "comercial": "info@narvaez.com.ar",
+   "comNombre": "Narváez",
+   "dev": "Narváez",
+   "proyecto": "Lebris"
+  },
+  "horqueta-yards-la-horqueta-san-isidro": {
+   "email": "info@toribioachaval.com",
+   "comercial": "info@toribioachaval.com",
+   "comNombre": "Toribio Achával",
+   "dev": "Toribio Achával",
+   "proyecto": "Horqueta Yards"
+  },
+  "santa-clara-residences-villanueva-tigre": {
+   "email": "info@toribioachaval.com",
+   "comercial": "info@toribioachaval.com",
+   "comNombre": "Toribio Achával",
+   "dev": "Toribio Achával",
+   "proyecto": "Santa Clara Residences"
+  },
+  "tigrevista-albanueva-rincon-de-milberg-tigre": {
+   "email": "info@toribioachaval.com",
+   "comercial": "info@toribioachaval.com",
+   "comNombre": "Toribio Achával",
+   "dev": "Toribio Achával",
+   "proyecto": "Tigrevista Albanueva"
+  },
+  "oliden-joven-etapa-ii-pilar": {
+   "email": "info@toribioachaval.com",
+   "comercial": "info@toribioachaval.com",
+   "comNombre": "Toribio Achával",
+   "dev": "Toribio Achával",
+   "proyecto": "Oliden Joven Etapa II"
+  },
+  "palmera-de-los-remeros-rincon-de-milberg-tigre": {
+   "email": "info@achavalcornejo.com",
+   "comercial": "info@achavalcornejo.com",
+   "comNombre": "Achaval Cornejo",
+   "dev": "Grupo Portland (com. Achaval Cornejo)",
+   "proyecto": "Palmera de los Remeros"
+  },
+  "mas-joven-by-brickell-tigre": {
+   "email": "info@achavalcornejo.com",
+   "comercial": "info@achavalcornejo.com",
+   "comNombre": "Achaval Cornejo",
+   "dev": "Achaval Cornejo",
+   "proyecto": "Más Joven by Brickell"
+  },
+  "sls-pilar-residences-pilar": {
+   "email": "hola@dost.com.ar",
+   "comercial": "hola@dost.com.ar",
+   "comNombre": "Döst Propiedades",
+   "dev": "Döst Propiedades",
+   "proyecto": "SLS Pilar Residences"
+  },
+  "dome-puertos-del-lago-escobar": {
+   "email": "info@ferayasociados.com",
+   "comercial": "info@ferayasociados.com",
+   "comNombre": "Fera Propiedades",
+   "dev": "ADN Developers (com. Fera Propiedades)",
+   "proyecto": "DOME Puertos del Lago"
+  },
+  "q4tro-liniers-1954-tigre": {
+   "email": "casacentral@vallier.com.ar",
+   "comercial": "casacentral@vallier.com.ar",
+   "comNombre": "Vallier",
+   "dev": "+Q4tro (com. Vallier)",
+   "proyecto": "+Q4tro Liniers 1954"
+  },
+  "nidus-don-torcuato-tigre": {
+   "email": "luisramos@ljramos.com",
+   "comercial": "luisramos@ljramos.com",
+   "comNombre": "L.J. Ramos Brokers Inmobiliarios",
+   "dev": "L.J. Ramos Brokers Inmobiliarios",
+   "proyecto": "Nidus"
+  },
+  "alto-pilar-pilar": {
+   "email": "luisramos@ljramos.com",
+   "comercial": "luisramos@ljramos.com",
+   "comNombre": "L.J. Ramos Brokers Inmobiliarios",
+   "dev": "L.J. Ramos Brokers Inmobiliarios",
+   "proyecto": "Alto Pilar"
+  },
+  "tortugas-woods-garin-escobar": {
+   "email": "luisramos@ljramos.com",
+   "comercial": "luisramos@ljramos.com",
+   "comNombre": "L.J. Ramos Brokers Inmobiliarios",
+   "dev": "L.J. Ramos Brokers Inmobiliarios",
+   "proyecto": "Tortugas Woods"
+  },
+  "dome-paseo-bahia-puertos-del-lago-escobar": {
+   "email": "luisramos@ljramos.com",
+   "comercial": "luisramos@ljramos.com",
+   "comNombre": "L.J. Ramos Brokers Inmobiliarios",
+   "dev": "ADN Developers (com. L.J. Ramos Brokers Inmobiliarios)",
+   "proyecto": "DOME Paseo Bahía"
   }
  },
  "devs": {
