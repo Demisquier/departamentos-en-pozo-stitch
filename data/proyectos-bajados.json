@@ -1,732 +1,737 @@
 {
- "_doc": "Proyectos dados de baja a pedido de la desarrolladora o de quien los comercializa. NO volver a publicar (ni por scraping ni por import) hasta que el titular lo pida explicitamente por escrito. lib/content.js los filtra del catalogo, fichas, sitemap, landings y ruteo. Entradas con tipo 'sin_contacto_verificable' (revisable: true) NO son bajas pedidas por el titular: se pueden republicar apenas se verifique comercializadora + contacto.",
- "slugs": {
-  "obispo-san-alberto-2205-villa-pueyrredon": {
-   "fecha": "2026-10-15",
-   "pedido_por": "Gonzalo Olivera (dice tenerlo en exclusiva)",
-   "motivo": "Pide la baja: no hay autorizacion de la desarrolladora ni de su oficina para publicarlo.",
-   "direccion": "Obispo San Alberto 2205, Villa Pueyrredon"
-  },
-  "suka-caballito": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "Estudio Bagdadi"
-  },
-  "monroe-4443-villa-urquiza": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "slow-home-villa-urquiza-villa-urquiza": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "Big Wall"
-  },
-  "san-isidro-labrador-4556-saavedra": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "urban-designer-saavedra": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "bahia-villa-devoto": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "olivera-95-floresta": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "nitium-floresta": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "miralla-745-villa-luro": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "carabobo-782-parque-chacabuco": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "nahuel-huapi-5212-villa-urquiza": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "montes-de-oca-1526-barracas": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "avenida-caseros-2900-parque-patricios": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "albor-nordelta-nordelta": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "emprendimiento-florida-16-unidades-vias-maipu-vicente-lopez": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "virrey-aviles-3863-villa-ortuzar": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "REMAX"
-  },
-  "complejo-juan-b-justo-olivos": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "Marcelo Hernández Propiedades"
-  },
-  "mexico-1288-monserrat": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "emprendimiento-en-pozo-monserrat-monoambiente-divisible-monserrat": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "tacuari-946-san-telmo": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "avenida-corrientes-2800-corrientes-y-pueyrredon-balvanera-once": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "albor-nordelta-la-reconquista-2400-rincon-de-milberg-tigre": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "jochy-puertos-puertos-del-lago-escobar": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "arenales-146-ramos-mejia-la-matanza-gba-oeste": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "residencial-espora-espora-840-ramos-mejia-la-matanza-gba-oeste": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "edificio-lavalle-3-general-lavalle-1049-ituzaingo-norte-gba-oeste": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "emprendimiento-en-lanus-oeste-3-amb-72-m2-lanus-oeste-gba-sur": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "emprendimiento-en-temperley-17-unidades-temperley-lomas-de-zamora-gba-sur": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": ""
-  },
-  "nouvel-horizon-saavedra": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "inred"
-  },
-  "neuquen-2001-flores": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
-   "firma_conocida": "Rithner Propiedades"
-  },
-  "9-de-julio-estudios-3-san-telmo": {
-   "fecha": "2026-10-20",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Obra terminada (ya no es pozo); se venden unidades a estrenar. Verificado 2026-10-20."
-  },
-  "jose-pedro-varela-3273-villa-del-parque": {
-   "fecha": "2026-10-20",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Obra terminada (ya no es pozo); se venden unidades a estrenar. Verificado 2026-10-20."
-  },
-  "her-humboldt-1344-palermo-hollywood": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "hills-freire-coghlan": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "astor-san-telmo-san-telmo": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "balcarce-i-san-telmo": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "emehome-acuna-1587-palermo": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "blanco-encalada-4448-villa-urquiza": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "casa-rivera-villa-urquiza": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "proyecto-bambu-vilela-saavedra": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "bonpland-y-aguirre-chacarita": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "urban-cramer-belgrano": {
-   "fecha": "2026-10-20",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
-  },
-  "campus-village-pilar": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Posesión inmediata: ya no es pozo"
-  },
-  "los-molinos-building-puerto-madero": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Edificio terminado, sólo reventas"
-  },
-  "la-portena-ii-residences-puerto-madero": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Edificio terminado, sólo reventas"
-  },
-  "fitz-roy-2027-palermo-hollywood": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Ficha oficial de Home54 dada de baja y aviso no publicado"
-  },
-  "edificio-elyon-ezpeleta-centro-quilmes-gba-sur": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin contacto oficial de quien lo comercializa (Ricci) y Abriola ya no lo tiene"
-  },
-  "cuenca-4586-villa-pueyrredon": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "El único email era de un portal (Argenprop) y no hay WhatsApp oficial de Enrique García."
-  },
-  "viaviva-libertador-belgrano": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "ViaViva es un corredor comercial/urbano bajo el viaducto (locales), no un edificio de departamentos; no hay unidades residenciales en venta. Revisar si corresponde al catálogo."
-  },
-  "catalinas-rio-retiro": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Consultatio lista 'Catalinas Río' solo en su sección Landmark (cartera de tierras / futuros proyectos), sin unidades en venta ni datos. No aparece en Zonaprop."
-  },
-  "link-towers-puerto-madero": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "El sitio de Fernández Prieto hoy solo muestra un video de 'Link Diamond Tower I', sin datos de precio, entrega ni tipologías. No figura 'Link Towers' en Zonaprop. Confirmar si es el mismo proyecto."
-  },
-  "godoy-cruz-1724-palermo-soho": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "No aparece en el listado de emprendimientos CABA de Toribio Achával ni en Zonaprop (búsqueda 'godoy cruz 1724/1700'). Sin evidencia de que siga en venta."
-  },
-  "obra-campillo-campillo-3093-99-parque-chas": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "INGCAN lista 'Campillo' entre sus obras, pero con texto de relleno (lorem ipsum) y sin link de detalle; no hay precio ni entrega. No figura en Zonaprop ni Argenprop (Parque Chas)."
-  },
-  "southpoint-premium-parque-patricios": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Web oficial (página 'Jujuy 1779'): 11 pisos, 18 deptos de 3 y 4 amb, sin precio ni fecha. La home dice '6 Proyectos Terminados' bajo 'Proyectos finalizados' y lista 6 edificios, incluido Jujuy 1779. Conviene confirmarlo."
-  },
-  "moca-2-dr-e-finochietto-900-barracas": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Zonaprop: 'Terminado · Entrega Inmediata', con unidades aún en venta. Ya no es pozo."
-  },
-  "crystall-5-av-patricios-100-barracas": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Argenprop: 'Edificio a estrenar', entrega oct-2025; unidades remanentes (mono, 1 y 2 dorm)."
-  },
-  "palestina-500-almagro": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Argenprop (MAE-MAE-41): entrega nov-2025, 1 monoambiente remanente. La altura '500' es aproximada (el aviso dice 'Palestina 500')."
-  },
-  "sarmiento-4088-almagro": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Lepore (LEP-L10-476): entrega mar-2025, quedan 2 unidades remanentes."
-  },
-  "melincue-3200-villa-del-parque": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "REAL AIRES: 'Melincue 3200 Tower I', 'Terminado · Entrega Inmediata', 4 unidades en venta."
-  },
-  "elcano-palm-villa-ortuzar": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Lincoln (comercializadora): Elcano 3875, 34 UF de 1, 2 y 3 amb, fecha de entrega Diciembre 2025 (ya vencida; la ficha original decía 'entrega inmediata'). Sección Unidades = 0 publicadas, sin precio. Probablemente termin"
-  },
-  "aora-puertos-puertos-del-lago-escobar": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "MMCV (estudio/desarrollador) muestra AORA Puertos como proyecto de usos mixtos (oficinas, viviendas, comercios) en herradura en Puertos, Escobar, con renders. No publica dirección, precio, fecha ni estado comercial; no h"
-  },
-  "green-palmers-ingeniero-maschwitz-escobar": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "La web de Mieres Propiedades (mierespropiedades.com.ar) no respondió y el cupo de búsquedas web se agotó antes de poder buscar en portales. Sin datos verificados."
-  },
-  "spazio-parque-bartolome-mitre-865-ramos-mejia-sur-la-matanza-gba-oeste": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "La web de Spazios no lista 'Spazio Parque' entre sus proyectos activos (solo Hidalgo, Fader, Vivanti San Pedro, Vivant, Black, Poetas, Golf; zonas CABA/Ituzaingó/3 de Febrero). Ficha decía entrega Agosto 2026 (ya pasada)"
-  },
-  "genesis-avellaneda-espana-200-avellaneda-gba-sur": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "Real Props ya no publica 'Genesis Avellaneda (España 200)'; su único emprendimiento es 'Neo Génesis Avellaneda', España 275, 1-3 amb, entrega Diciembre 2027, sin precios (render: https://static.tokkobroker.com/dev_pictur"
-  },
-  "olv-342-av-mitre-y-olavarria-quilmes-centro-gba-sur": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "No se encontró en la primera página del listado de O'Keefe (186 emprendimientos, 19 páginas, sin buscador por palabra clave funcional) y el cupo de búsquedas web se agotó. Pendiente: revisar okeefe.com.ar/emprendimientos"
-  },
-  "naza-i-lomas-de-zamora-gba-sur": {
-   "fecha": "2026-10-27",
-   "tipo": "sin_evidencia_vigencia",
-   "revisable": true,
-   "motivo": "bosquepropiedades.com.ar no respondió y el cupo de búsquedas web se agotó antes de buscar en portales. Sin datos verificados."
-  },
-  "plaza-brown-29-edificio-en-adrogue-adrogue-almirante-brown-gba-sur": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Gazda Rossi: Estado 'Construcción Terminada'. Edificio 'Aldariz' (estudio Martínez y Hermida), 4 plantas, 17 UF de 1 y 2 amb, frente a Plaza Brown, Adrogué. No publica calle/altura ni precios."
-  },
-  "bosque-urbano-nunez": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Estado 'Terminados', entrega inmediata; aún con unidades en venta (desde USD 108.000, mono 34 m2). Duplex 3 amb en pisos 12-13."
-  },
-  "callao-clasico-recoleta": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Estado 'Terminados', entrega inmediata. Unidades de 1 a 4 dormitorios (=2 a 5 amb). Sin tabla de precios publicada. Dirección figura como Av. Callao 1834/56."
-  },
-  "cassa-solis-monserrat": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Terminado con final de obra, entrega inmediata; quedan monoambientes desde USD 90.000."
-  },
-  "spot-studios-retiro": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Estado 'Terminados', entrega inmediata; quedan unidades 1 amb desde USD 149.000."
-  },
-  "vilo-colegiales": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Terminado, entrega inmediata; queda 1 unidad PB USD 109.000."
-  },
-  "vizion-juncal-recoleta": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Terminado, entrega inmediata; disponible sólo 2 amb USD 230.000."
-  },
-  "kasa-nunez-etapa-i-belgrano": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA' (Etapa I, posesión estimada feb-2026). Etapa II posesión est. julio 2028 (otra ficha). Tabla de precios vacía."
-  },
-  "bnh-oro-palermo": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
-  },
-  "jbj-829-palermo": {
-   "fecha": "2026-10-27",
-   "tipo": "entregado",
-   "revisable": true,
-   "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
-  },
-  "mosconi-2885-cocheras-disponibles-villa-pueyrredon": {
-   "fecha": "2026-10-27",
-   "tipo": "no_es_departamentos",
-   "revisable": true,
-   "motivo": "Aviso de cocheras, no de departamentos en pozo."
-  },
-  "edificio-3-de-febrero-181-san-isidro": {
-   "fecha": "2026-11-12",
-   "pedido_por": "Olivia Vinelli (Vinelli Inmobiliaria)",
-   "motivo": "No tienen unidades disponibles y no autorizaron la publicación. Pidió la baja por mail (respuesta al outreach 12/11)."
-  },
-  "torre-muniz-230-almagro": {
-   "fecha": "2026-11-17",
-   "pedido_por": "Ing. Julio E. Polack (ICONURBAN S.A.)",
-   "motivo": "Pide la baja: no autorizaron la publicación y comercializan exclusivamente ellos.",
-   "direccion": "Muñiz 230, Almagro"
-  },
-  "torre-muniz-230-muniz-200-almagro": {
-   "fecha": "2026-11-17",
-   "pedido_por": "Ing. Julio E. Polack (ICONURBAN S.A.)",
-   "motivo": "Pide la baja: no autorizaron la publicación y comercializan exclusivamente ellos.",
-   "direccion": "Muñiz 230, Almagro"
-  },
-  "alvarez-thomas-892-colegiales": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Gustavo De Simone"
-  },
-  "ato-paraguay-recoleta": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "CF Propiedades"
-  },
-  "nogoya-4019-villa-devoto": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Alton Desarrollos"
-  },
-  "puerta-del-sol-villa-luro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Morana Propiedades"
-  },
-  "sommar-caballito": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Urban DNA Group"
-  },
-  "boho-botanico-palermo-botanico": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "LOPEZ CASTROMIL PROPIEDADES"
-  },
-  "conde-4885-saavedra": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Gustavo De Simone Soluciones Inmobiliarias"
-  },
-  "av-maipu-3872-olivos": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "DIC PROPIEDADES S.A."
-  },
-  "helguera-3298-villa-del-parque": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "PRODIGY"
-  },
-  "jacinto-diaz-la-calabria-176-la-calabria-san-isidro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Nueva Vista Propiedades"
-  },
-  "torres-zafiro-nordelta": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Inmobiliaria MEILERMAN Real state"
-  },
-  "alberti-1205-monserrat": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "PREDIAL"
-  },
-  "mirabilia-hype-chacarita": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Meier S.A."
-  },
-  "blanco-encalada-5656-villa-urquiza": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "atacalco-1765-palermo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "lavalle-4018-palermo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "ciudad-de-la-paz-3299-belgrano": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "manuel-ugarte-2504-palermo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "camargo-915-villa-crespo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "vila-by-urban-villa-urquiza": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Urbanestate"
-  },
-  "dr-luis-belaustegui-924-villa-crespo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "lambare-851-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "sarmiento-4282-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "pringles-787-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "billinghurst-425-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "green-line-sarmiento-4242-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "lambare-847-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "estado-de-palestina-528-almagro": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Predial"
-  },
-  "muniz-1345-boedo": {
-   "fecha": "2026-11-17",
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
-   "firma_conocida": "Curcio Propiedades"
-  },
-  "brix-loyola-villa-crespo": {
-   "tipo": "sin_contacto_verificable",
-   "revisable": true,
-   "fecha": "2026-11-20",
-   "motivo": "Dominio de mariokeiniger.com.ar no recibe correo; sin email verificable de Mario Keiniger Propiedades"
-  }
- },
- "inmobiliarias": [
-  "remax-data-gold"
- ]
+  "_doc": "Proyectos dados de baja a pedido de la desarrolladora o de quien los comercializa. NO volver a publicar (ni por scraping ni por import) hasta que el titular lo pida explicitamente por escrito. lib/content.js los filtra del catalogo, fichas, sitemap, landings y ruteo. Entradas con tipo 'sin_contacto_verificable' (revisable: true) NO son bajas pedidas por el titular: se pueden republicar apenas se verifique comercializadora + contacto.",
+  "slugs": {
+    "obispo-san-alberto-2205-villa-pueyrredon": {
+      "fecha": "2026-10-15",
+      "pedido_por": "Gonzalo Olivera (dice tenerlo en exclusiva)",
+      "motivo": "Pide la baja: no hay autorizacion de la desarrolladora ni de su oficina para publicarlo.",
+      "direccion": "Obispo San Alberto 2205, Villa Pueyrredon"
+    },
+    "suka-caballito": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "Estudio Bagdadi"
+    },
+    "monroe-4443-villa-urquiza": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "slow-home-villa-urquiza-villa-urquiza": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "Big Wall"
+    },
+    "san-isidro-labrador-4556-saavedra": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "urban-designer-saavedra": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "bahia-villa-devoto": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "olivera-95-floresta": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "nitium-floresta": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "miralla-745-villa-luro": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "carabobo-782-parque-chacabuco": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "nahuel-huapi-5212-villa-urquiza": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "montes-de-oca-1526-barracas": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "avenida-caseros-2900-parque-patricios": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "albor-nordelta-nordelta": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "emprendimiento-florida-16-unidades-vias-maipu-vicente-lopez": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "virrey-aviles-3863-villa-ortuzar": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "REMAX"
+    },
+    "complejo-juan-b-justo-olivos": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "Marcelo Hernández Propiedades"
+    },
+    "mexico-1288-monserrat": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "emprendimiento-en-pozo-monserrat-monoambiente-divisible-monserrat": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "tacuari-946-san-telmo": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "avenida-corrientes-2800-corrientes-y-pueyrredon-balvanera-once": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "albor-nordelta-la-reconquista-2400-rincon-de-milberg-tigre": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "jochy-puertos-puertos-del-lago-escobar": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "arenales-146-ramos-mejia-la-matanza-gba-oeste": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "residencial-espora-espora-840-ramos-mejia-la-matanza-gba-oeste": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "edificio-lavalle-3-general-lavalle-1049-ituzaingo-norte-gba-oeste": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "emprendimiento-en-lanus-oeste-3-amb-72-m2-lanus-oeste-gba-sur": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "emprendimiento-en-temperley-17-unidades-temperley-lomas-de-zamora-gba-sur": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": ""
+    },
+    "nouvel-horizon-saavedra": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "inred"
+    },
+    "neuquen-2001-flores": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "No se pudo verificar quién lo comercializa ni un contacto publicado (o el aviso está dado de baja). Se republica cuando haya comercializadora y contacto verificados.",
+      "firma_conocida": "Rithner Propiedades"
+    },
+    "9-de-julio-estudios-3-san-telmo": {
+      "fecha": "2026-10-20",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Obra terminada (ya no es pozo); se venden unidades a estrenar. Verificado 2026-10-20."
+    },
+    "jose-pedro-varela-3273-villa-del-parque": {
+      "fecha": "2026-10-20",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Obra terminada (ya no es pozo); se venden unidades a estrenar. Verificado 2026-10-20."
+    },
+    "her-humboldt-1344-palermo-hollywood": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "hills-freire-coghlan": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "astor-san-telmo-san-telmo": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "balcarce-i-san-telmo": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "emehome-acuna-1587-palermo": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "blanco-encalada-4448-villa-urquiza": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "casa-rivera-villa-urquiza": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "proyecto-bambu-vilela-saavedra": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "bonpland-y-aguirre-chacarita": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "urban-cramer-belgrano": {
+      "fecha": "2026-10-20",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Aviso dado de baja y sin evidencia actual de que siga en venta. Se republica si la comercializadora confirma vigencia."
+    },
+    "campus-village-pilar": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Posesión inmediata: ya no es pozo"
+    },
+    "los-molinos-building-puerto-madero": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Edificio terminado, sólo reventas"
+    },
+    "la-portena-ii-residences-puerto-madero": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Edificio terminado, sólo reventas"
+    },
+    "fitz-roy-2027-palermo-hollywood": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Ficha oficial de Home54 dada de baja y aviso no publicado"
+    },
+    "edificio-elyon-ezpeleta-centro-quilmes-gba-sur": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin contacto oficial de quien lo comercializa (Ricci) y Abriola ya no lo tiene"
+    },
+    "cuenca-4586-villa-pueyrredon": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "El único email era de un portal (Argenprop) y no hay WhatsApp oficial de Enrique García."
+    },
+    "viaviva-libertador-belgrano": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "ViaViva es un corredor comercial/urbano bajo el viaducto (locales), no un edificio de departamentos; no hay unidades residenciales en venta. Revisar si corresponde al catálogo."
+    },
+    "catalinas-rio-retiro": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Consultatio lista 'Catalinas Río' solo en su sección Landmark (cartera de tierras / futuros proyectos), sin unidades en venta ni datos. No aparece en Zonaprop."
+    },
+    "link-towers-puerto-madero": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "El sitio de Fernández Prieto hoy solo muestra un video de 'Link Diamond Tower I', sin datos de precio, entrega ni tipologías. No figura 'Link Towers' en Zonaprop. Confirmar si es el mismo proyecto."
+    },
+    "godoy-cruz-1724-palermo-soho": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "No aparece en el listado de emprendimientos CABA de Toribio Achával ni en Zonaprop (búsqueda 'godoy cruz 1724/1700'). Sin evidencia de que siga en venta."
+    },
+    "obra-campillo-campillo-3093-99-parque-chas": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "INGCAN lista 'Campillo' entre sus obras, pero con texto de relleno (lorem ipsum) y sin link de detalle; no hay precio ni entrega. No figura en Zonaprop ni Argenprop (Parque Chas)."
+    },
+    "southpoint-premium-parque-patricios": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Web oficial (página 'Jujuy 1779'): 11 pisos, 18 deptos de 3 y 4 amb, sin precio ni fecha. La home dice '6 Proyectos Terminados' bajo 'Proyectos finalizados' y lista 6 edificios, incluido Jujuy 1779. Conviene confirmarlo."
+    },
+    "moca-2-dr-e-finochietto-900-barracas": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Zonaprop: 'Terminado · Entrega Inmediata', con unidades aún en venta. Ya no es pozo."
+    },
+    "crystall-5-av-patricios-100-barracas": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Argenprop: 'Edificio a estrenar', entrega oct-2025; unidades remanentes (mono, 1 y 2 dorm)."
+    },
+    "palestina-500-almagro": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Argenprop (MAE-MAE-41): entrega nov-2025, 1 monoambiente remanente. La altura '500' es aproximada (el aviso dice 'Palestina 500')."
+    },
+    "sarmiento-4088-almagro": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Lepore (LEP-L10-476): entrega mar-2025, quedan 2 unidades remanentes."
+    },
+    "melincue-3200-villa-del-parque": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "REAL AIRES: 'Melincue 3200 Tower I', 'Terminado · Entrega Inmediata', 4 unidades en venta."
+    },
+    "elcano-palm-villa-ortuzar": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Lincoln (comercializadora): Elcano 3875, 34 UF de 1, 2 y 3 amb, fecha de entrega Diciembre 2025 (ya vencida; la ficha original decía 'entrega inmediata'). Sección Unidades = 0 publicadas, sin precio. Probablemente termin"
+    },
+    "aora-puertos-puertos-del-lago-escobar": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "MMCV (estudio/desarrollador) muestra AORA Puertos como proyecto de usos mixtos (oficinas, viviendas, comercios) en herradura en Puertos, Escobar, con renders. No publica dirección, precio, fecha ni estado comercial; no h"
+    },
+    "green-palmers-ingeniero-maschwitz-escobar": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "La web de Mieres Propiedades (mierespropiedades.com.ar) no respondió y el cupo de búsquedas web se agotó antes de poder buscar en portales. Sin datos verificados."
+    },
+    "spazio-parque-bartolome-mitre-865-ramos-mejia-sur-la-matanza-gba-oeste": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "La web de Spazios no lista 'Spazio Parque' entre sus proyectos activos (solo Hidalgo, Fader, Vivanti San Pedro, Vivant, Black, Poetas, Golf; zonas CABA/Ituzaingó/3 de Febrero). Ficha decía entrega Agosto 2026 (ya pasada)"
+    },
+    "genesis-avellaneda-espana-200-avellaneda-gba-sur": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "Real Props ya no publica 'Genesis Avellaneda (España 200)'; su único emprendimiento es 'Neo Génesis Avellaneda', España 275, 1-3 amb, entrega Diciembre 2027, sin precios (render: https://static.tokkobroker.com/dev_pictur"
+    },
+    "olv-342-av-mitre-y-olavarria-quilmes-centro-gba-sur": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "No se encontró en la primera página del listado de O'Keefe (186 emprendimientos, 19 páginas, sin buscador por palabra clave funcional) y el cupo de búsquedas web se agotó. Pendiente: revisar okeefe.com.ar/emprendimientos"
+    },
+    "naza-i-lomas-de-zamora-gba-sur": {
+      "fecha": "2026-10-27",
+      "tipo": "sin_evidencia_vigencia",
+      "revisable": true,
+      "motivo": "bosquepropiedades.com.ar no respondió y el cupo de búsquedas web se agotó antes de buscar en portales. Sin datos verificados."
+    },
+    "plaza-brown-29-edificio-en-adrogue-adrogue-almirante-brown-gba-sur": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Gazda Rossi: Estado 'Construcción Terminada'. Edificio 'Aldariz' (estudio Martínez y Hermida), 4 plantas, 17 UF de 1 y 2 amb, frente a Plaza Brown, Adrogué. No publica calle/altura ni precios."
+    },
+    "bosque-urbano-nunez": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Estado 'Terminados', entrega inmediata; aún con unidades en venta (desde USD 108.000, mono 34 m2). Duplex 3 amb en pisos 12-13."
+    },
+    "callao-clasico-recoleta": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Estado 'Terminados', entrega inmediata. Unidades de 1 a 4 dormitorios (=2 a 5 amb). Sin tabla de precios publicada. Dirección figura como Av. Callao 1834/56."
+    },
+    "cassa-solis-monserrat": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Terminado con final de obra, entrega inmediata; quedan monoambientes desde USD 90.000."
+    },
+    "spot-studios-retiro": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Estado 'Terminados', entrega inmediata; quedan unidades 1 amb desde USD 149.000."
+    },
+    "vilo-colegiales": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Terminado, entrega inmediata; queda 1 unidad PB USD 109.000."
+    },
+    "vizion-juncal-recoleta": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Terminado, entrega inmediata; disponible sólo 2 amb USD 230.000."
+    },
+    "kasa-nunez-etapa-i-belgrano": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA' (Etapa I, posesión estimada feb-2026). Etapa II posesión est. julio 2028 (otra ficha). Tabla de precios vacía."
+    },
+    "bnh-oro-palermo": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
+    },
+    "jbj-829-palermo": {
+      "fecha": "2026-10-27",
+      "tipo": "entregado",
+      "revisable": true,
+      "motivo": "Interwin: 'TERMINADO | POSESIÓN INMEDIATA'. Sin precios publicados."
+    },
+    "mosconi-2885-cocheras-disponibles-villa-pueyrredon": {
+      "fecha": "2026-10-27",
+      "tipo": "no_es_departamentos",
+      "revisable": true,
+      "motivo": "Aviso de cocheras, no de departamentos en pozo."
+    },
+    "edificio-3-de-febrero-181-san-isidro": {
+      "fecha": "2026-11-12",
+      "pedido_por": "Olivia Vinelli (Vinelli Inmobiliaria)",
+      "motivo": "No tienen unidades disponibles y no autorizaron la publicación. Pidió la baja por mail (respuesta al outreach 12/11)."
+    },
+    "torre-muniz-230-almagro": {
+      "fecha": "2026-11-17",
+      "pedido_por": "Ing. Julio E. Polack (ICONURBAN S.A.)",
+      "motivo": "Pide la baja: no autorizaron la publicación y comercializan exclusivamente ellos.",
+      "direccion": "Muñiz 230, Almagro"
+    },
+    "torre-muniz-230-muniz-200-almagro": {
+      "fecha": "2026-11-17",
+      "pedido_por": "Ing. Julio E. Polack (ICONURBAN S.A.)",
+      "motivo": "Pide la baja: no autorizaron la publicación y comercializan exclusivamente ellos.",
+      "direccion": "Muñiz 230, Almagro"
+    },
+    "alvarez-thomas-892-colegiales": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Gustavo De Simone"
+    },
+    "ato-paraguay-recoleta": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "CF Propiedades"
+    },
+    "nogoya-4019-villa-devoto": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Alton Desarrollos"
+    },
+    "puerta-del-sol-villa-luro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Morana Propiedades"
+    },
+    "sommar-caballito": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Urban DNA Group"
+    },
+    "boho-botanico-palermo-botanico": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "LOPEZ CASTROMIL PROPIEDADES"
+    },
+    "conde-4885-saavedra": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Gustavo De Simone Soluciones Inmobiliarias"
+    },
+    "av-maipu-3872-olivos": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "DIC PROPIEDADES S.A."
+    },
+    "helguera-3298-villa-del-parque": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "PRODIGY"
+    },
+    "jacinto-diaz-la-calabria-176-la-calabria-san-isidro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Nueva Vista Propiedades"
+    },
+    "torres-zafiro-nordelta": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Inmobiliaria MEILERMAN Real state"
+    },
+    "alberti-1205-monserrat": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "PREDIAL"
+    },
+    "mirabilia-hype-chacarita": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Meier S.A."
+    },
+    "blanco-encalada-5656-villa-urquiza": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "atacalco-1765-palermo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "lavalle-4018-palermo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "ciudad-de-la-paz-3299-belgrano": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "manuel-ugarte-2504-palermo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "camargo-915-villa-crespo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "vila-by-urban-villa-urquiza": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Urbanestate"
+    },
+    "dr-luis-belaustegui-924-villa-crespo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "lambare-851-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "sarmiento-4282-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "pringles-787-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "billinghurst-425-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "green-line-sarmiento-4242-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "lambare-847-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "estado-de-palestina-528-almagro": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Predial"
+    },
+    "muniz-1345-boedo": {
+      "fecha": "2026-11-17",
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "motivo": "Sin email que reciba leads de quien comercializa/desarrolla (rebote o no publicado). Se republica cuando haya email verificado.",
+      "firma_conocida": "Curcio Propiedades"
+    },
+    "brix-loyola-villa-crespo": {
+      "tipo": "sin_contacto_verificable",
+      "revisable": true,
+      "fecha": "2026-11-20",
+      "motivo": "Dominio de mariokeiniger.com.ar no recibe correo; sin email verificable de Mario Keiniger Propiedades"
+    },
+    "arribenos-3750-nunez": {
+      "tipo": "pedido_titular",
+      "fecha": "2026-11-22",
+      "motivo": "Coronel Fernández Real Estate informa que no comercializa este proyecto y pidió la baja (fuente original: aviso de Argenprop 16162232)."
+    }
+  },
+  "inmobiliarias": [
+    "remax-data-gold"
+  ]
 }
