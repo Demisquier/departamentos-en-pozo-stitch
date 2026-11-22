@@ -744,11 +744,16 @@ export default async function FichaProyecto({ params }) {
               <div id="quien-construye" className="scroll-mt-24 mb-8 rounded-xl border border-outline-variant p-6">
                 <div className="flex items-center justify-between gap-3 mb-3">
                   <h2 className="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
-                    <span className="material-symbols-outlined text-link-gold">verified</span> ¿Quién construye?
+                    <span className="material-symbols-outlined text-link-gold">verified</span> ¿Es confiable {constructora}?
                   </h2>
 
                 </div>
                 <SellosChips data={sellosDev} className="mb-3" />
+                <p className="text-body-md text-on-surface-variant mb-2">
+                  {devStats.verificada
+                    ? <>Sí tiene <strong className="text-primary">obras entregadas verificadas</strong> con fuentes independientes (ver sellos y evidencia).</>
+                    : <>Todavía no verificamos obras entregadas de {constructora} con fuentes independientes. Eso no implica nada negativo: pedile el historial de entregas antes de reservar.</>}
+                </p>
                 <p className="text-body-md text-on-surface-variant">
                   <strong className="text-primary">{constructora}</strong> tiene <strong className="text-primary">{devStats.n} proyecto{devStats.n === 1 ? '' : 's'}</strong> en pozo relevado{devStats.n === 1 ? '' : 's'} en nuestro catálogo
                   {devStats.barrios.length ? `, en ${devStats.barrios.slice(0, 4).join(', ')}${devStats.barrios.length > 4 ? ' y más' : ''}` : ''}

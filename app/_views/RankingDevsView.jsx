@@ -61,6 +61,15 @@ export default function RankingDevsView({ tipo = null, path, h1, intro, faq = []
       <p className="text-[13px] text-on-surface-variant mb-5">
         Actualizado: {fechaLarga(verif || "2026-11-13")} · Próxima revisión cada 6 meses · {lista.length} desarrolladora{lista.length === 1 ? "" : "s"} con datos verificados
       </p>
+      {lista.length > 0 && (
+        <div id="respuesta" className="border-l-4 border-link-gold bg-surface-container-low p-5 rounded-r-xl mb-8 max-w-3xl">
+          <p className="text-body-lg text-primary">
+            <strong>Respuesta rápida:</strong> a {fechaLarga(verif || "2026-11-13")}, las desarrolladoras con más evidencia verificada son{" "}
+            {lista.slice(0, 5).map((d, i) => <span key={d.slug}>{i ? (i === Math.min(4, lista.length - 1) ? " y " : ", ") : ""}<Link href={`/desarrolladoras/${d.slug}/`} className="underline">{d.nombre}</Link></span>)}.
+            {" "}El criterio es público: obras entregadas, premios a obra construida y situación normal en el BCRA, cada uno con su fuente.
+          </p>
+        </div>
+      )}
       <div className="text-body-lg text-on-surface-variant max-w-3xl space-y-3 mb-8">{intro}</div>
 
       <div className="rounded-xl border border-outline-variant bg-surface-container-low p-4 text-[14px] text-on-surface-variant mb-10">

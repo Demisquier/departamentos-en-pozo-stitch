@@ -1,3 +1,4 @@
+import { zonaDeBarrio } from "../../lib/barrios";
 import Link from "next/link";
 import { SITE } from "../../lib/wp";
 import { NEARBY_CATALOGO, BARRIO_CATALOGO, BARRIO_URL } from "../../lib/barrios";
@@ -121,6 +122,9 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
           <Link href={`/precio-departamentos-en-pozo-caba/#${slug}`} className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Precio m² en pozo en {label} vs. otros barrios</Link>
           <Link href="/departamentos-en-pozo-en-cuotas/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Departamentos en pozo en cuotas</Link>
           <Link href="/inmobiliarias-que-venden-proyectos-en-pozo/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Inmobiliarias que venden pozo</Link>
+          <Link href="/rentabilidad-alquiler-caba-por-barrio/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Rentabilidad del alquiler por barrio</Link>
+          <Link href="/monoambientes-en-pozo/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Monoambientes en pozo</Link>
+          {zonaDeBarrio(label) === "GBA · Zona Norte" && <Link href="/departamentos-en-pozo-zona-norte/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Todo Zona Norte</Link>}
         </nav>
         <Faq items={faqBarrio} title={`Preguntas frecuentes — departamentos en pozo en ${label}`} />
 
