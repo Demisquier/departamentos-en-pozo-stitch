@@ -6,7 +6,7 @@ import { mapDesarrollos } from "../lib/catalogo";
 /* Sitemap dinámico: mantiene TODAS las URLs indexadas (preservación SEO).
  * Resiliente: si WP no responde, al menos devuelve las rutas fijas. */
 export default async function sitemap() {
-  const fixed = ["/", "/desarrollos-inmobiliarios/", "/buscar/", "/contacto/", "/sobre-nosotros/", "/novedades/", "/simulador-cuota-cac-pozo/", "/alertas-de-lanzamientos-en-pozo/", "/invertir-desde-el-exterior/", "/corralones-y-materiales-de-construccion-en-caba/", "/videos-de-emprendimientos-en-pozo/", "/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/", "/ranking-desarrolladoras-confiables/", "/desarrolladoras-con-obras-entregadas/", "/desarrolladoras-premiadas/", "/metodologia-sellos-desarrolladoras/", "/ranking-inmobiliarias-confiables/", "/proyectos-en-pozo-de-desarrolladoras-confiables/", "/politica-de-privacidad/", "/creditos-y-fuentes/", "/soy-inmobiliaria/"].map((u) => ({
+  const fixed = ["/", "/desarrollos-inmobiliarios/", "/buscar/", "/contacto/", "/sobre-nosotros/", "/novedades/", "/simulador-cuota-cac-pozo/", "/alertas-de-lanzamientos-en-pozo/", "/invertir-desde-el-exterior/", "/corralones-y-materiales-de-construccion-en-caba/", "/videos-de-emprendimientos-en-pozo/", "/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/", "/ranking-desarrolladoras-confiables/", "/desarrolladoras-con-obras-entregadas/", "/desarrolladoras-premiadas/", "/metodologia-sellos-desarrolladoras/", "/ranking-inmobiliarias-confiables/", "/proyectos-en-pozo-de-desarrolladoras-confiables/", "/politica-de-privacidad/", "/creditos-y-fuentes/", "/soy-inmobiliaria/", "/precio-departamentos-en-pozo-caba/", "/departamentos-en-pozo-en-cuotas/", "/inmobiliarias-que-venden-proyectos-en-pozo/"].map((u) => ({
     url: BASE + u,
     lastModified: new Date(),
   }));
@@ -22,7 +22,9 @@ export default async function sitemap() {
     const mappedCat = mapDesarrollos(desa || []);
     for (const k of Object.keys(BARRIO_CATALOGO)) if (mappedCat.filter((i) => matchBarrioCatalogo(i.barrio, k)).length >= 3) out.push({ url: BASE + `/desarrollos-inmobiliarios-en-${k}/`, lastModified: new Date() });
     for (const p of pages || []) out.push({ url: BASE + rel(p.link), lastModified: new Date() });
-    for (const p of posts || []) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
+    // Guías fusionadas con 301 (next.config.js): no van al sitemap.
+    const REDIR = new Set(["contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", "precios-de-departamentos-en-pozo-por-barrio-en-caba-2026", "indice-precios-pozo-caba-por-barrio", "8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados", "desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir", "como-elegir-escribano-para-comprar-en-pozo"]);
+    for (const p of (posts || []).filter((x) => !REDIR.has(x.slug))) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
     for (const c of cats || []) if (c.slug && c.slug !== "uncategorized" && (c.count || 0) > 0) out.push({ url: BASE + `/category/${c.slug}/`, lastModified: new Date() });
     // Landings de desarrolladora: TODAS (cada dev tiene su perfil, con o sin proyectos cargados).

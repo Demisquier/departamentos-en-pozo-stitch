@@ -117,6 +117,11 @@ export default function CatalogoBarrioView({ slug, label, items, intro, schema }
         })()}
 
         {/* FAQ visible por barrio (matchea el FAQPage schema de arriba). */}
+        <nav aria-label="Datos de mercado" className="mt-10 flex flex-wrap gap-2">
+          <Link href={`/precio-departamentos-en-pozo-caba/#${slug}`} className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Precio m² en pozo en {label} vs. otros barrios</Link>
+          <Link href="/departamentos-en-pozo-en-cuotas/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Departamentos en pozo en cuotas</Link>
+          <Link href="/inmobiliarias-que-venden-proyectos-en-pozo/" className="px-4 py-2 rounded-full border border-outline-variant text-primary text-[14px] hover:border-secondary">Inmobiliarias que venden pozo</Link>
+        </nav>
         <Faq items={faqBarrio} title={`Preguntas frecuentes — departamentos en pozo en ${label}`} />
 
         {/* Captura de alertas contextual al barrio. */}

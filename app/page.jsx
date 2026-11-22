@@ -42,13 +42,13 @@ export const revalidate = 600;
 
 // Metadata propia de la home (antes heredaba el título genérico del layout).
 export const metadata = {
-  title: { absolute: "Departamentos en Pozo en CABA y GBA 2026: +700 Proyectos con Precio" },
+  title: { absolute: "Departamentos en Pozo en CABA y GBA: +730 con Precio 2026" },
   description:
-    "Departamentos en pozo en CABA y GBA: +700 proyectos en preventa con precio desde, financiación, desarrolladora y entrega. Compará por barrio y consultá directo, sin costo.",
+    "Encontrá departamentos en pozo en CABA y GBA: +730 proyectos con precio, cuotas y entrega, de desarrolladoras verificadas. Consultá sin intermediarios.",
   alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
-    title: "Departamentos en Pozo en CABA y GBA 2026: +700 Proyectos con Precio",
+    title: "Departamentos en Pozo en CABA y GBA: +730 con Precio 2026",
     description:
       "Directorio de desarrolladoras, proyectos en pozo, precios por m² y guías. Análisis independiente para inversores.",
     url: `${SITE}/`,
@@ -321,6 +321,9 @@ export default async function HomePage() {
           <nav aria-label="Más herramientas" className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
             <span className="font-label-caps text-label-caps text-on-surface-variant mr-1">MÁS HERRAMIENTAS:</span>
             {[
+              ["Precio m² en pozo por barrio", "/precio-departamentos-en-pozo-caba/"],
+              ["Departamentos en pozo en cuotas", "/departamentos-en-pozo-en-cuotas/"],
+              ["Inmobiliarias que venden pozo", "/inmobiliarias-que-venden-proyectos-en-pozo/"],
               ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],
               ["Desarrolladoras en CABA", "/desarrolladoras-inmobiliarias-en-capital-federal/"],
               ["Inmobiliarias en CABA", "/mejores-inmobiliarias-caba/"],

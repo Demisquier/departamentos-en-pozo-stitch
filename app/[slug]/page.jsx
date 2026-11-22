@@ -82,8 +82,8 @@ export async function generateMetadata({ params }) {
   if (im && ZONA_INMO_LABEL[im[1]]) {
     const label = ZONA_INMO_LABEL[im[1]];
     return {
-      title: `Mejores inmobiliarias en ${label} 2026 | Departamentos en Pozo`,
-      description: `Directorio de inmobiliarias con actividad en ${label}, CABA, primero las de sello verificado. Análisis independiente, sin ranking pago.`,
+      title: `Inmobiliarias en ${label}: Verificadas y con Proyectos (2026)`,
+      description: `Inmobiliarias que operan en ${label}: matrícula CUCICBA verificada, proyectos en pozo que comercializan y contacto directo. Sin ranking pago.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }
@@ -91,11 +91,21 @@ export async function generateMetadata({ params }) {
   const cm = params.slug.match(/^desarrollos-inmobiliarios-en-(.+)$/);
   if (cm && BARRIO_CATALOGO[cm[1]]) {
     const label = BARRIO_CATALOGO[cm[1]].label;
-    let nB = 0;
-    try { nB = mapDesarrollos(await getDesarrollos(5000)).filter((i) => matchBarrioCatalogo(i.barrio, cm[1])).length; } catch (e) { nB = 0; }
+    let nB = 0, minDesde = null, medM2 = null;
+    try {
+      const enB = mapDesarrollos(await getDesarrollos(5000)).filter((i) => matchBarrioCatalogo(i.barrio, cm[1]));
+      nB = enB.length;
+      const desdes = enB.map((i) => i.precioDesde).filter((v) => v && v > 15000).sort((a, b) => a - b);
+      const m2s = enB.map((i) => i.precio).filter((v) => v && v > 400 && v < 20000).sort((a, b) => a - b);
+      minDesde = desdes[0] || null;
+      medM2 = m2s.length >= 3 ? m2s[Math.floor(m2s.length / 2)] : null;
+    } catch (e) { nB = 0; }
+    const usd = (n) => "USD " + Math.round(n).toLocaleString("es-AR");
+    const partes = [minDesde ? `desde ${usd(minDesde)}` : "", medM2 ? `${usd(medM2)}/m² promedio` : ""].filter(Boolean).join(", ");
     return {
-      title: { absolute: nB >= 3 ? `Desarrollos Inmobiliarios en ${label}: ${nB} Departamentos en Pozo (2026)` : `Departamentos en Pozo en ${label}: Desarrollos Inmobiliarios (2026)` },
-      description: `Desarrollos inmobiliarios en pozo (preventa) en ${label}, CABA: precio desde, financiación, desarrolladora, tipologías y entrega. Compará departamentos en pozo por proyecto con análisis independiente.`,
+      // Title ≤60c orientado a la búsqueda real ("departamentos en pozo {barrio}").
+      title: { absolute: nB >= 3 ? `Departamentos en Pozo en ${label}: ${nB} Proyectos 2026` : `Departamentos en Pozo en ${label} (2026)` },
+      description: `${nB >= 3 ? nB + " departamentos" : "Departamentos"} en pozo en ${label}${partes ? " " + partes : ""}: cuotas, entrega y desarrolladora. Compará desarrollos y consultá directo.`,
       alternates: { canonical: `${SITE}/${params.slug}/` },
     };
   }

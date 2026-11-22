@@ -130,9 +130,9 @@ export async function generateMetadata() {
   // Meta description propia (antes se derivaba del contenido).
   return {
     ...m,
-    title: "Desarrolladoras Inmobiliarias y Constructoras en CABA (2026)",
+    title: "190 Desarrolladoras y Constructoras en CABA (Nov 2026)",
     description:
-      "Directorio de 190 desarrolladoras y constructoras de Capital Federal: obras entregadas, proyectos en pozo con precio y contacto directo por WhatsApp o email. Independiente, sin ranking pago.",
+      "Directorio de desarrolladoras y constructoras de Capital Federal: obras entregadas verificadas, proyectos en pozo con precio y contacto directo.",
   };
 }
 

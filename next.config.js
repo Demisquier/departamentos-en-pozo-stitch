@@ -60,6 +60,19 @@ const nextConfig = {
       // --- Barrios: las viejas taxonomías /barrio/{x}/ del WP daban 404 en el front
       // headless pero seguían indexadas y con tráfico en Google. Las mandamos 301 a la
       // página curada de desarrolladoras de ese barrio (recupera tráfico + link equity). ---
+      // --- SEO nov-2026: guías duplicadas que competían entre sí → 301 a la canónica ---
+      { source: "/contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", destination: "/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/", permanent: true },
+      { source: "/contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar/", destination: "/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/", permanent: true },
+      { source: "/precios-de-departamentos-en-pozo-por-barrio-en-caba-2026", destination: "/precio-departamentos-en-pozo-caba/", permanent: true },
+      { source: "/precios-de-departamentos-en-pozo-por-barrio-en-caba-2026/", destination: "/precio-departamentos-en-pozo-caba/", permanent: true },
+      { source: "/indice-precios-pozo-caba-por-barrio", destination: "/precio-departamentos-en-pozo-caba/", permanent: true },
+      { source: "/indice-precios-pozo-caba-por-barrio/", destination: "/precio-departamentos-en-pozo-caba/", permanent: true },
+      { source: "/8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados", destination: "/10-desarrolladoras-de-departamentos-en-pozo-con-proyectos-finalizados-en-argentina/", permanent: true },
+      { source: "/8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados/", destination: "/10-desarrolladoras-de-departamentos-en-pozo-con-proyectos-finalizados-en-argentina/", permanent: true },
+      { source: "/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir", destination: "/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/", permanent: true },
+      { source: "/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/", destination: "/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags/", permanent: true },
+      { source: "/como-elegir-escribano-para-comprar-en-pozo", destination: "/escribano-en-pozo-que-hace-cuando-interviene-y-por-que-lo-necesitas/", permanent: true },
+      { source: "/como-elegir-escribano-para-comprar-en-pozo/", destination: "/escribano-en-pozo-que-hace-cuando-interviene-y-por-que-lo-necesitas/", permanent: true },
       { source: "/reels", destination: "/videos-de-emprendimientos-en-pozo/", permanent: true },
       { source: "/reels/", destination: "/videos-de-emprendimientos-en-pozo/", permanent: true },
       { source: "/barrio/palermo", destination: "/desarrolladoras-inmobiliarias-en-palermo/", permanent: true },

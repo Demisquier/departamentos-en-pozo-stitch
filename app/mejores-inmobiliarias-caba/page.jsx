@@ -33,9 +33,9 @@ export async function generateMetadata() {
   // cubre "mejores inmobiliarias caba", "listado de inmobiliarias en capital federal" y "por barrio".
   return {
     ...m,
-    title: "Mejores Inmobiliarias de CABA 2026: Listado por Barrio",
+    title: "Mejores Inmobiliarias de CABA 2026: con Matrícula Verificada",
     description:
-      "Listado de inmobiliarias de Capital Federal por barrio, con matrícula CUCICBA verificable y los proyectos en pozo que comercializa cada una. Compará y contactalas directo, sin costo.",
+      "Listado de inmobiliarias de Capital Federal por barrio, con matrícula CUCICBA verificada y los proyectos en pozo que venden. Compará y contactá gratis.",
   };
 }
 

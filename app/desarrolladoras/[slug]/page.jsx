@@ -29,10 +29,10 @@ export async function generateMetadata({ params }) {
   const enB = barrios.length ? ` en ${barrios.join(" y ")}` : "";
   return {
     title: n > 0
-      ? `${nombre}: proyectos en pozo, precios y contacto (2026)`
-      : `${nombre} — desarrolladora inmobiliaria: proyectos y obras | Departamentos en Pozo`,
+      ? `${nombre}: Obras, Proyectos en Pozo y Opiniones (2026)`
+      : `${nombre}: Desarrolladora, Obras y Opiniones (2026)`,
     description: n > 0
-      ? `${n} proyecto${n === 1 ? "" : "s"} en pozo de ${nombre}${enB}: precio desde, tipologías, entrega y contacto directo por WhatsApp o email. Compará con otras desarrolladoras.`
+      ? `${nombre}: ${n} proyecto${n === 1 ? "" : "s"} en pozo${enB} con precio, entrega y obras verificadas. ¿Es confiable? Mirá sus sellos y contactá directo, sin intermediarios.`
       : `${nombre}: proyectos, obras entregadas y trayectoria como desarrolladora en CABA. Análisis independiente, sin pauta.`,
     alternates: { canonical: `/desarrolladoras/${params.slug}/` },
   };
