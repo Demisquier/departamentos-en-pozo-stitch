@@ -33,7 +33,7 @@ export default async function CuotasPage() {
   const faq = [
     ["¿Se puede comprar un departamento en pozo en cuotas?", `Sí. ${conCuotas.length} de los proyectos del catálogo publican un plan de pagos: un anticipo al firmar y el saldo en cuotas durante la obra, con un pago final contra entrega o escritura.`],
     ["¿Las cuotas son en pesos o en dólares?", "Las dos modalidades existen. En pesos, la cuota suele ajustarse mes a mes por el índice CAC (Cámara Argentina de la Construcción); en dólares, la cuota es fija en USD. Algunas desarrolladoras ofrecen cuotas fijas en pesos por un tramo corto."],
-    ["¿Cuánto anticipo piden?", "Lo más habitual en CABA va del 30% al 50% del precio; hay planes con anticipos menores a cambio de más cuotas o de un saldo mayor a la entrega. Cada ficha detalla el esquema que publica la desarrolladora."],
+    ["¿Cuánto anticipo piden?", "Según el proyecto, va habitualmente del 20% al 50% del precio; hay planes con anticipos menores a cambio de más cuotas o de un saldo mayor a la entrega. Cada ficha detalla el esquema que publica la desarrolladora."],
     ["¿Qué riesgo tienen las cuotas ajustadas por CAC?", "Si el costo de la construcción sube más que tus ingresos o que el dólar, la cuota en pesos crece en términos reales. Por eso conviene simular el ajuste antes de firmar."],
   ];
   const schema = [

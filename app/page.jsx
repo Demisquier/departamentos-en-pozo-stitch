@@ -326,6 +326,7 @@ export default async function HomePage() {
               ["Inmobiliarias que venden pozo", "/inmobiliarias-que-venden-proyectos-en-pozo/"],
               ["Monoambientes en pozo", "/monoambientes-en-pozo/"],
               ["Pozo en Zona Norte", "/departamentos-en-pozo-zona-norte/"],
+              ["En construcción y próximos a entregar", "/departamentos-en-construccion/"],
               ["Rentabilidad por barrio", "/rentabilidad-alquiler-caba-por-barrio/"],
               ["Invertir en ladrillo", "/invertir-en-ladrillo/"],
               ["Simulador de cuota CAC", "/simulador-cuota-cac-pozo/"],

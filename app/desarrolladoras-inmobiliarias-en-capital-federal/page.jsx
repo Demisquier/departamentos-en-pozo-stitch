@@ -132,7 +132,7 @@ export async function generateMetadata() {
     ...m,
     title: "190 Desarrolladoras y Constructoras en CABA (Nov 2026)",
     description:
-      "Directorio de desarrolladoras y constructoras de Capital Federal: obras entregadas verificadas, proyectos en pozo con precio y contacto directo.",
+      "Las mejores empresas de desarrollo inmobiliario y constructoras de Buenos Aires: 190 desarrolladoras con obras entregadas verificadas, proyectos en pozo con precio y contacto directo.",
   };
 }
 
