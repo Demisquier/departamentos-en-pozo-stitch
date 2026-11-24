@@ -10,6 +10,8 @@ import Breadcrumb from "../_ui/Breadcrumb";
 import Button from "../_ui/Button";
 import PageHeader from "../_ui/PageHeader";
 import AlertaCTA from "../_ui/AlertaCTA";
+import ProyectosDestacados from "../_ui/ProyectosDestacados";
+import { BARRIO_CATALOGO } from "../../lib/barrios";
 
 export default async function PostView({ node, slug, content, img, title, rmSchema }) {
   const { html: postHtml, toc } = addHeadingIds(content);
@@ -171,6 +173,9 @@ export default async function PostView({ node, slug, content, img, title, rmSche
               </p>
             </div>
           </aside>
+
+          {/* Puente guía → proyectos (las guías convertían ~0,5%): si la guía es de un barrio, proyectos de ese barrio. */}
+          {(() => { const b = Object.keys(BARRIO_CATALOGO).sort((x, y) => y.length - x.length).find((k) => slug && slug.endsWith("-" + k)); return <ProyectosDestacados titulo={b ? `Proyectos en pozo en ${BARRIO_CATALOGO[b].label}` : "Proyectos en pozo para empezar a comparar"} barrioSlug={b || null} verMas={b ? `/desarrollos-inmobiliarios-en-${b}/` : "/desarrollos-inmobiliarios/"} />; })()}
 
           {/* Captura de leads: alertas de lanzamientos al cierre de la guía */}
           <AlertaCTA />

@@ -3,6 +3,7 @@ import { getPageBySlug, getRankMathSchema, getDesarrolladoras, getDesarrollos, a
 import DirectorioDevs from "./DirectorioDevs";
 import DirEnhancer from "./DirEnhancer";
 import Container from "../_ui/Container";
+import ProyectosDestacados from "../_ui/ProyectosDestacados";
 import JsonLd from "../_ui/JsonLd";
 
 // FAQ del hub para el FAQPage schema (RankMath no detecta las <h3> del contenido WP).
@@ -234,6 +235,7 @@ export default async function HubDesarrolladorasPage() {
               </span>
               <span className="shrink-0 hidden sm:inline-flex items-center gap-1 text-secondary font-label-caps text-label-caps group-hover:underline whitespace-nowrap">Buscá conversando <span className="material-symbols-outlined text-[18px]">arrow_forward</span></span>
             </a>
+            <ProyectosDestacados titulo="Proyectos en pozo de desarrolladoras verificadas" verMas="/proyectos-en-pozo-de-desarrolladoras-confiables/" />
             {/* Interlinking al ranking nacional (captura "desarrolladoras más grandes de argentina"). */}
             <a href="/desarrolladoras-inmobiliarias-mas-grandes-de-argentina/" className="mb-6 flex items-center justify-between gap-4 rounded-xl border border-outline-variant p-4 hover:border-secondary transition-colors no-underline">
               <span className="text-[14.5px] text-primary"><strong>Ranking:</strong> las desarrolladoras inmobiliarias más grandes de Argentina, por escala de obra</span>
