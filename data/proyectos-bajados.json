@@ -723,6 +723,20 @@
    "tipo": "pedido_titular",
    "fecha": "2026-11-22",
    "motivo": "Coronel Fernández Real Estate informa que no comercializa este proyecto y pidió la baja (fuente original: aviso de Argenprop 16162232)."
+  },
+  "wow-charcas-barrio-norte": {
+   "tipo": "sin_contacto_verificable",
+   "revisable": true,
+   "fecha": "2026-11-24",
+   "motivo": "info@capitalbrokers.com.ar no recibe correo (dominio sin MX); no hay email publicado de Capital Brokers ni de la desarrolladora. Se republica cuando haya email verificado.",
+   "firma_conocida": "Wow Charcas (NOVA Desarrollos / Capital Brokers)"
+  },
+  "suelo-armenia-palermo": {
+   "tipo": "sin_contacto_verificable",
+   "revisable": true,
+   "fecha": "2026-11-24",
+   "motivo": "info@capitalbrokers.com.ar no recibe correo (dominio sin MX); no hay email publicado de Capital Brokers ni de la desarrolladora. Se republica cuando haya email verificado.",
+   "firma_conocida": "Suelo Armenia (Capital Brokers)"
   }
  },
  "inmobiliarias": [
