@@ -1,13 +1,12 @@
 // Chequeo diario único: corre en serie
 //  1) /api/cron/leads-destino — que cada ficha tenga a quién derivarle el lead.
-//  2) /api/cron/mails-diario  — revisión de la bandeja contacto@ (accionables).
+//  2) (la bandeja contacto@ la revisa el Apps Script revisarBandeja: IMAP desde Vercel fallaba)
 //  3) compacta las métricas (una fila por día+slug+tipo).
 // Cada paso manda mail SOLO a contacto@ si encuentra algo para hacer.
 // Por qué es público: el cron de Vercel (legacy) no estaba ejecutando. Se puede disparar con
 // cualquier visita/trigger externo; tiene enfriamiento de 6 h y la respuesta no expone datos
 // (solo conteos), así que no hay riesgo de abuso ni de filtrar información.
 import { GET as leadsDestino } from "../leads-destino/route";
-import { GET as mailsDiario } from "../mails-diario/route";
 import { compactarMetricas } from "../../../../lib/metricas";
 
 export const dynamic = "force-dynamic";
@@ -43,7 +42,7 @@ export async function GET(req) {
   ultimo = ahora;
   const r = reqInterno(req);
   const out = { corrio: new Date().toISOString() };
-  for (const [k, fn] of [["leadsDestino", leadsDestino], ["mailsDiario", mailsDiario]]) {
+  for (const [k, fn] of [["leadsDestino", leadsDestino]]) {
     try { const x = await fn(r); out[k] = resumen(await x.json()); } catch (e) { out[k] = { ok: false, error: e.message }; }
   }
   try { out.metricas = resumen(await compactarMetricas()); } catch (e) { out.metricas = { ok: false, error: e.message }; }
