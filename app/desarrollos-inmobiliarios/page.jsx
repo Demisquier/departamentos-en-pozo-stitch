@@ -14,9 +14,9 @@ import GuiasRelacionadas from '../_ui/GuiasRelacionadas';
 export const revalidate = 600;
 
 export const metadata = {
-  title: 'Desarrollos Inmobiliarios en Pozo: +730 en CABA y GBA',
+  title: 'Desarrollos Inmobiliarios en Pozo: +600 en CABA y GBA',
   description:
-    'Compará +730 desarrollos inmobiliarios y emprendimientos en pozo: precio desde, USD/m², anticipo, cuotas y entrega. Filtrá por barrio y consultá directo.',
+    'Compará +600 desarrollos inmobiliarios y emprendimientos en pozo: precio desde, USD/m², anticipo, cuotas y entrega. Filtrá por barrio y consultá directo.',
   alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/` },
 };
 

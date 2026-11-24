@@ -42,13 +42,13 @@ export const revalidate = 600;
 
 // Metadata propia de la home (antes heredaba el título genérico del layout).
 export const metadata = {
-  title: { absolute: "Departamentos en Pozo en CABA y GBA: +730 con Precio 2026" },
+  title: { absolute: "Departamentos en Pozo en CABA y GBA: +600 con Precio 2026" },
   description:
-    "Encontrá departamentos en pozo en CABA y GBA: +730 proyectos con precio, cuotas y entrega, de desarrolladoras verificadas. Consultá sin intermediarios.",
+    "Encontrá departamentos en pozo en CABA y GBA: +600 proyectos con precio, cuotas y entrega, de desarrolladoras verificadas. Consultá sin intermediarios.",
   alternates: { canonical: `${SITE}/` },
   openGraph: {
     type: "website",
-    title: "Departamentos en Pozo en CABA y GBA: +730 con Precio 2026",
+    title: "Departamentos en Pozo en CABA y GBA: +600 con Precio 2026",
     description:
       "Directorio de desarrolladoras, proyectos en pozo, precios por m² y guías. Análisis independiente para inversores.",
     url: `${SITE}/`,

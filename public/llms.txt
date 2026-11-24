@@ -1,6 +1,6 @@
 # Departamentos en Pozo
 
-> Portal independiente de análisis de departamentos en pozo (preventa / pre-construcción) en CABA y GBA, Argentina. más de 700 proyectos relevados con precio, entrega, desarrolladora y comercializadora; las consultas se derivan sin costo a quien comercializa cada proyecto. No cobramos por aparecer ni vendemos posiciones.
+> Portal independiente de análisis de departamentos en pozo (preventa / pre-construcción) en CABA y GBA, Argentina. más de 600 proyectos relevados con precio, entrega, desarrolladora y comercializadora; las consultas se derivan sin costo a quien comercializa cada proyecto. No cobramos por aparecer ni vendemos posiciones.
 
 Datos clave: cobertura CABA + GBA (+ La Plata); moneda USD; vocabulario local: pozo/preventa, fideicomiso al costo, boleto de compraventa, ajuste CAC. Contenido informativo, no es asesoramiento financiero. Contacto: contacto@departamentosenpozo.com.ar
 
