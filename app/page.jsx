@@ -142,7 +142,11 @@ export default async function HomePage() {
       {/* Preload del hero: arranca la descarga de la imagen LCP lo antes posible. */}
       <link rel="preload" as="image" href={HERO_IMG} fetchPriority="high" />
       {/* Hero */}
-      <MiPlanInicio />
+      {/* QA nov-2026: Mi Plan se pinta en el cliente y empujaba el hero (CLS 0,52 en usuarios que vuelven).
+          Un script inline marca <html> antes del primer pintado si hay señales de plan y se reserva el alto. */}
+      <script dangerouslySetInnerHTML={{ __html: "try{var v=JSON.parse(localStorage.getItem('dpp_vistos_v1')||'[]'),c=JSON.parse(localStorage.getItem('dpp_consultas_v1')||'[]');if((v&&v.length>=3)||(c&&c.length>0))document.documentElement.classList.add('dpp-plan')}catch(e){}" }} />
+      <style>{`html.dpp-plan .mi-plan-slot{min-height:744px}@media(min-width:768px){html.dpp-plan .mi-plan-slot{min-height:580px}}`}</style>
+      <div className="mi-plan-slot"><MiPlanInicio /></div>
       <section className="relative h-[620px] md:h-[700px] flex items-center justify-center overflow-hidden">
         {/* Imagen LCP como <img> (no background-image): descubrible por el navegador y
             priorizable con fetchPriority. Antes tardaba ~12 s en pintar. */}

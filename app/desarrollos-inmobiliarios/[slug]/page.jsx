@@ -86,7 +86,8 @@ function fmtTipologias(v) {
   if (!v) return '';
   const arr = Array.isArray(v) ? v : String(v).split(',');
   const map = { '1_ambiente': '1', '2_ambientes': '2', '3_ambientes': '3', '4_ambientes': '4', '4_mas': '4+', '5_mas': '5+' };
-  const nums = arr.map((x) => map[String(x).trim()] || String(x).replace(/_/g, ' ').trim()).filter(Boolean);
+  const norm = (x) => { const t = String(x).trim(); if (map[t]) return map[t]; const r = t.replace(/_/g, ' ').trim(); if (/^mono/i.test(r)) return 'Mono'; return r.replace(/\s*(ambientes?|amb\.?)\s*$/i, '').trim(); };
+  const nums = arr.map(norm).filter(Boolean);
   return nums.length ? nums.join(', ') + ' amb' : '';
 }
 
@@ -104,7 +105,16 @@ export async function generateMetadata({ params }) {
   if (entregaMeta) partes.push(`entrega ${entregaMeta}`);
   const desc = `${nombre}${barrio ? ` en ${barrio}` : ''}: ${partes.length ? partes.join(', ') + '. ' : ''}Precio, desarrolladora, financiación, avance de obra y análisis independiente vs. la zona.`;
   return {
-    title: `${nombre}${barrio ? ' — ' + barrio : ''}: precio, desarrolladora y entrega | Departamentos en Pozo`,
+    // QA nov-2026: el título anterior rondaba 80 caracteres y Google lo cortaba. Se apunta a ≤60:
+    // la marca solo se agrega si entra.
+    title: (() => {
+      const n0 = (x) => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      let b = String(barrio || '').split(/[,(]/)[0].trim();
+      if (b && n0(nombre).includes(n0(b))) b = '';
+      const base = `${nombre}${b ? ' en ' + b : ''}: precio y entrega en pozo`;
+      const corto = base.length > 60 ? `${nombre}${b ? ' en ' + b : ''}: precio y entrega` : base;
+      return corto.length + 24 <= 62 ? `${corto} | Departamentos en Pozo` : corto;
+    })(),
     description: desc.slice(0, 320),
     alternates: { canonical: `${SITE}/desarrollos-inmobiliarios/${params.slug}/` },
   };

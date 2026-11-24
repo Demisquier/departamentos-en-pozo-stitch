@@ -23,15 +23,23 @@ export default async function sitemap() {
     for (const k of Object.keys(BARRIO_CATALOGO)) if (mappedCat.filter((i) => matchBarrioCatalogo(i.barrio, k)).length >= 3) out.push({ url: BASE + `/desarrollos-inmobiliarios-en-${k}/`, lastModified: new Date() });
     for (const p of pages || []) out.push({ url: BASE + rel(p.link), lastModified: new Date() });
     // Guías fusionadas con 301 (next.config.js): no van al sitemap.
-    const REDIR = new Set(["contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", "precios-de-departamentos-en-pozo-por-barrio-en-caba-2026", "indice-precios-pozo-caba-por-barrio", "8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados", "desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir", "como-elegir-escribano-para-comprar-en-pozo"]);
+    const REDIR = new Set(["contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", "precios-de-departamentos-en-pozo-por-barrio-en-caba-2026", "indice-precios-pozo-caba-por-barrio", "8-desarrolladoras-de-departamentos-en-pozo-en-caba-con-proyectos-entregados", "desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir", "como-elegir-escribano-para-comprar-en-pozo", "mejores-barrios-para-invertir-en-pozo-en-caba-como-elegir-zona-sin-equivocarte", "tendencias-en-departamentos-en-pozo-tipologias-amenities-y-que-se-vende-mas-facil", "estrategia-alquiler-en-pozo-que-tipologia-comprar-y-como-asegurar-demanda", "estrategia-reventa-en-pozo-cuando-entrar-cuando-salir-y-como-maximizar-ganancia", "como-elegir-un-emprendimiento-en-pozo-guia-completa-para-reducir-riesgo"]);
     for (const p of (posts || []).filter((x) => !REDIR.has(x.slug))) out.push({ url: BASE + `/${p.slug}/`, lastModified: new Date(p.modified || Date.now()) });
     for (const d of desa || []) out.push({ url: BASE + `/desarrollos-inmobiliarios/${d.slug}/`, lastModified: new Date(d.modified || Date.now()) });
     for (const c of cats || []) if (c.slug && c.slug !== "uncategorized" && (c.count || 0) > 0) out.push({ url: BASE + `/category/${c.slug}/`, lastModified: new Date() });
     // Landings de desarrolladora: TODAS (cada dev tiene su perfil, con o sin proyectos cargados).
     for (const d of devs || []) if (d.slug) out.push({ url: BASE + `/desarrolladoras/${d.slug}/`, lastModified: new Date() });
     // Landings de inmobiliaria: solo las que tienen proyectos comercializados cargados (evita thin content).
-    for (const d of inmo || []) if (d.slug && d.landeable) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
-    for (const d of inmoExtra || []) if (d.slug && d.landeable && (d.proyectosSlug || []).length >= 2) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
+    // Se valida con la misma función que usa la página: si sus proyectos quedaron ocultos (bajas, <6 fotos)
+    // la landing da 404 y no debe ir al sitemap (QA nov-2026: 6 URLs 404 en el sitemap).
+    const candInmo = [...(inmo || []).filter((d) => d.slug && d.landeable), ...(inmoExtra || []).filter((d) => d.slug && d.landeable && (d.proyectosSlug || []).length >= 2)];
+    const vistos = new Set();
+    const publicados = new Set((desa || []).map((x) => x.slug));
+    for (const d of candInmo) {
+      if (vistos.has(d.slug)) continue; vistos.add(d.slug);
+      const ok = (d.proyectosSlug || []).some((s) => publicados.has(s));
+      if (ok) out.push({ url: BASE + `/inmobiliaria/${d.slug}/`, lastModified: new Date() });
+    }
   } catch (e) {
     // WP no disponible en build: devolvemos al menos las rutas fijas
   }

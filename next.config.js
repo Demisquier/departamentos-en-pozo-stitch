@@ -115,8 +115,7 @@ const nextConfig = {
       { source: "/como-elegir-un-emprendimiento-en-pozo-guia-completa-para-reducir-riesgo", destination: "/emprendimientos-en-pozo-en-buenos-aires-como-elegir-el-mejor-proyecto-y-no-equivocarte/", permanent: true },
       // 167 → 192 (dos guías de contrato; 192 tiene mejor cuerpo y es la ganadora).
       { source: "/contrato-de-pozo-en-argentina-clausulas-clave-que-deberias-entender-antes-de-firmar", destination: "/contrato-de-pozo-12-clausulas-clave-que-deberias-entender-antes-de-firmar/", permanent: true },
-      // 183 → 98 (dos guías "evaluar desarrolladora / red flags"; 98 es la ganadora).
-      { source: "/como-evaluar-una-desarrolladora-de-pozo-senales-de-confianza-y-red-flags", destination: "/desarrolladoras-de-departamentos-en-pozo-como-evaluarlas-y-reducir-riesgos-al-invertir/", permanent: true },
+      // (QA nov-2026) Se quitó "183 → 98": chocaba con el 301 previo 98 → 183 y generaba un loop. Queda 183 como canónica.
 
       // --- Fix link interno roto: el slug real es plural (…vs-usados). Varias guías
       // enlazan al singular (…vs-usado) → 301 al plural para no generar 404. ---

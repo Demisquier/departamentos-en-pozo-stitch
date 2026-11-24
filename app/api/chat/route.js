@@ -6,7 +6,7 @@
 // Cuando la consulta menciona un barrio, inyecta DATOS DE MERCADO (precio/m² y desde
 // mediana) para que Valentina responda con datos reales = más confianza y conversión.
 // Sin OPENAI_API_KEY: 200 { needsKey:true } (degrada, no rompe). Errores → 200 { error:true }.
-import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat, detectBarrio, statsBarrio, parseBudget } from "../../../lib/ia";
+import { hasKey, loadCatalogo, prefiltrarHits, lineaProyecto, cardFrom, dedupeBySlug, openaiChat, detectBarrio, statsBarrio, parseBudget, filtroDuro } from "../../../lib/ia";
 import { guardarAlertaServer } from "../../../lib/alertaServer";
 import { landingDeBarrio, BARRIO_CATALOGO } from "../../../lib/barrios";
 import { SITE } from "../../../lib/wp";
@@ -53,7 +53,7 @@ export async function POST(req) {
     const q = ((lastUser?.content || "") + " " + proyecto).trim();
     const catalogo = await loadCatalogo();
     const { hit, hits } = prefiltrarHits(catalogo, q, 15);
-    const top = dedupeBySlug(hits); // nunca el mismo proyecto 2 veces
+    const top = dedupeBySlug(hit ? filtroDuro(hits, q, catalogo) : hits); // sin duplicados y respetando barrio/tope
     // Si NO hubo match real (cayó al fallback), no le damos proyectos al LLM ni pintamos
     // cards: mejor orientar sin nombrar fichas random.
     const contexto = hit ? top.map(lineaProyecto).join("\n") : "(sin proyectos que matcheen la consulta)";

@@ -18,7 +18,8 @@
    "precio_m2",
    "precio_desde",
    "comparable_terminado"
-  ]
+  ],
+  "precio_desde_ok": 311335
  },
  "9812": {
   "amenities": "SUM con parrilla, terraza con solárium y parrilla, gimnasio, bicicletero"
@@ -173,7 +174,8 @@
  },
  "10167": {
   "render_url": "https://images.ctfassets.net/384t5rgvotiw/3aDCVqOAdFG6F6efPaUC80/066ba047e35ed7254f7a96bfcf0d5a40/C16_-_Grupo_Briones_-_Cabildo_4987_-_Terraza.jpg",
-  "desarrolladora": "Grupo Briones"
+  "desarrolladora": "Grupo Briones",
+  "precio_desde": 109000
  },
  "10168": {
   "precio_desde": 250000
@@ -807,5 +809,14 @@
  },
  "41003": {
   "desarrolladora": "IRSA"
+ },
+ "10198": {
+  "precio_desde": 123567
+ },
+ "30010": {
+  "precio_desde": 183323
+ },
+ "41008": {
+  "precio_desde": 111024
  }
 }

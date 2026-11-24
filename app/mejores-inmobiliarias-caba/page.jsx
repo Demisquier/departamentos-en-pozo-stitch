@@ -33,6 +33,8 @@ export async function generateMetadata() {
   // cubre "mejores inmobiliarias caba", "listado de inmobiliarias en capital federal" y "por barrio".
   return {
     ...m,
+    // og:image: la página WP no tiene imagen destacada → usar la OG por defecto del sitio.
+    openGraph: { ...(m.openGraph || {}), images: (m.openGraph && m.openGraph.images && m.openGraph.images.length) ? m.openGraph.images : ["/opengraph-image"] },
     title: "Mejores Inmobiliarias de CABA 2026: con Matrícula Verificada",
     description:
       "Listado de inmobiliarias de Capital Federal por barrio, con matrícula CUCICBA verificada y los proyectos en pozo que venden. Compará y contactá gratis.",

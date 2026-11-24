@@ -179,6 +179,17 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
     hydrated.current = true;
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // QA nov-2026 (CLS): la personalización llega después de montar y reordenaba las primeras cards
+  // (CLS 0,48 en reingresantes). Hasta que el usuario toca un filtro, las primeras 6 quedan fijas
+  // en el orden base y se personaliza del 7 en adelante.
+  const filtKey = JSON.stringify([barrio, amb, precio, precioTotal, etapa, entregaMax, fin, confianza, desarrolladora, orden]);
+  const firstKey = useRef(null);
+  const [interactuo, setInteractuo] = useState(false);
+  useEffect(() => {
+    if (firstKey.current === null) { firstKey.current = filtKey; return; }
+    if (filtKey !== firstKey.current) setInteractuo(true);
+  }, [filtKey]);
+
   // Reingresantes: leer barrios de interés del localStorage (perfil + favoritos) tras montar.
   useEffect(() => {
     const topB = (b) => { const n = NORM(b); return n.startsWith('palermo') ? 'palermo' : n; };
@@ -326,14 +337,33 @@ export default function CatalogoFiltros({ items, barrioFijo = null, toggle = nul
         if (i.entregaAnio) s += 3;
         return s;
       };
-      out = [...out].sort((a, b) => score(b) - score(a));
+      const personalizado = !!afinidad || prefBarrios.length > 0;
+      if (personalizado && !interactuo) {
+        const scoreBase = (i) => {
+          let s = 0;
+          if (esSellado(i)) s += 600;
+          if (i.imagen) s += 40;
+          if (i.precioDesde != null || i.precio != null) s += 30;
+          if (i.financiacion) s += 20;
+          if (i.desarrolladora) s += 10;
+          if (i.ambientesNums && i.ambientesNums.length) s += 5;
+          if (i.entregaAnio) s += 3;
+          return s;
+        };
+        const base = [...out].sort((a, b) => scoreBase(b) - scoreBase(a));
+        const fijos = base.slice(0, 6);
+        const setFijos = new Set(fijos.map((i) => i.slug));
+        out = [...fijos, ...out.filter((i) => !setFijos.has(i.slug)).sort((a, b) => score(b) - score(a))];
+      } else {
+        out = [...out].sort((a, b) => score(b) - score(a));
+      }
     }
     else if (orden === 'precio_asc') out = [...out].sort((a, b) => (a.precio ?? Infinity) - (b.precio ?? Infinity));
     else if (orden === 'precio_desc') out = [...out].sort((a, b) => (b.precio ?? -Infinity) - (a.precio ?? -Infinity));
     else if (orden === 'entrega') out = [...out].sort((a, b) => entregaKey(a.entrega) - entregaKey(b.entrega));
     else if (orden === 'nombre') out = [...out].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
     return out;
-  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, confianza, desarrolladora, orden, prefBarrios, afinidad]);
+  }, [items, barrio, amb, precio, precioTotal, etapa, entregaMax, fin, confianza, desarrolladora, orden, prefBarrios, afinidad, interactuo]);
 
   const chip = (active) =>
     `inline-flex items-center justify-center min-h-[44px] px-3.5 py-2 border rounded-full text-[13px] font-body-md transition-all ${
