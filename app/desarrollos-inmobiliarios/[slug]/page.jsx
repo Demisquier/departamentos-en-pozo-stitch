@@ -101,7 +101,7 @@ export async function generateMetadata({ params }) {
   const entregaMeta = fmtFecha(acfAny(d, ['fecha_entrega', 'entrega']));
   const partes = [];
   if (m2) partes.push(`valor de referencia USD ${m2.toLocaleString('es-AR')}/m²`);
-  if (dev) partes.push(`desarrollado por ${dev}`);
+  if (dev && !/^\s*(a\s+confirmar|sin\s+dato|consultar|a\s+consultar)/i.test(String(dev))) partes.push(`desarrollado por ${dev}`);
   if (entregaMeta) partes.push(`entrega ${entregaMeta}`);
   const desc = `${nombre}${barrio ? ` en ${barrio}` : ''}: ${partes.length ? partes.join(', ') + '. ' : ''}Precio, desarrolladora, financiación, avance de obra y análisis independiente vs. la zona.`;
   return {
@@ -135,7 +135,9 @@ export default async function FichaProyecto({ params }) {
   const ajuste = acfAny(d, ['ajuste', 'ajuste_cuotas']);
   // Dev vs. inmobiliaria por separado (la ficha muestra las dos). Comercializadora: override > ACF > parseo.
   const _rawDev = acfAny(d, ['desarrolladora', 'constructora']) || '';
-  const constructora = expandComercializa(parseDevCom(_rawDev).dev || '');
+  const _devParsed = expandComercializa(parseDevCom(_rawDev).dev || '');
+  // Placeholders ("A confirmar", "Sin dato", "Consultar") no son una desarrolladora: no arman bloques con su nombre.
+  const constructora = /^\s*(a\s+confirmar|sin\s+dato|consultar|a\s+consultar|n\/?d)\b/i.test(_devParsed) ? '' : _devParsed;
   const comercializadora = resolveComercializadora(d.slug, _rawDev, acfAny(d, ['comercializadora']) || '');
   // Contactabilidad (misma regla que el ruteo de leads por mail): primero la comercializadora /
   // inmobiliaria; si no tiene WhatsApp cargado, la desarrolladora; si ninguna, la línea del sitio.
@@ -164,7 +166,9 @@ export default async function FichaProyecto({ params }) {
   const cuotaEstim = acfAny(d, ['cuota_estimada']);
   const anticipoRaw = acfAny(d, ['anticipo']);
   const anticipoNum = toNumber(anticipoRaw);
-  const anticipoLabel = anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : null);
+  // Anticipo: valores chicos (≤ 100) o con "%" son porcentaje, no USD (ej. "40" = 40% al boleto).
+  const anticipoEsPct = anticipoRaw != null && (/%/.test(String(anticipoRaw)) || (anticipoNum && anticipoNum <= 100));
+  const anticipoLabel = anticipoEsPct ? (/%/.test(String(anticipoRaw)) ? String(anticipoRaw).trim() : `${anticipoNum}%`) : anticipoNum ? `USD ${anticipoNum.toLocaleString('es-AR')}` : (anticipoRaw ? String(anticipoRaw) : null);
   const cuotas = acfAny(d, ['esquema_cuotas']);
   const comparableNum = toNumber(acf(d, 'comparable_terminado'));
   // Plan de pago estructurado (timeline) y tabla de unidades — datos reales; si no hay, degradan solos.

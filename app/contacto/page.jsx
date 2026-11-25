@@ -63,9 +63,9 @@ export default function ContactoPage() {
           <span className="font-label-caps text-secondary-fixed tracking-widest block mb-4 uppercase">
             Tu próxima inversión comienza aquí
           </span>
-          <h2 className="text-display-lg-mobile md:text-display-lg font-display-lg text-white max-w-2xl mx-auto">
+          <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg text-white max-w-2xl mx-auto">
             Hablemos de tu próxima inversión
-          </h2>
+          </h1>
         </div>
       </section>
 
