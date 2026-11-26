@@ -22,7 +22,8 @@
   "precio_desde_ok": 311335
  },
  "9812": {
-  "amenities": "SUM con parrilla, terraza con solárium y parrilla, gimnasio, bicicletero"
+  "amenities": "SUM con parrilla, terraza con solárium y parrilla, gimnasio, bicicletero",
+  "precio_desde": 133748
  },
  "10102": {
   "amenities": "pileta, solárium, deck, parrillas"
@@ -520,7 +521,8 @@
   "desarrolladora": "SKY Desarrollos (comercializa Interwin)"
  },
  "30161": {
-  "render_url": "https://blacklibertador.com/images/module/64d2851786ecd797930843.jpeg"
+  "render_url": "https://blacklibertador.com/images/module/64d2851786ecd797930843.jpeg",
+  "precio_desde": 365000
  },
  "30162": {
   "desarrolladora": "Grupo Portland"
@@ -784,7 +786,8 @@
    "2_ambientes",
    "3_ambientes"
   ],
-  "direccion": "Av. Hipólito Yrigoyen 9416"
+  "direccion": "Av. Hipólito Yrigoyen 9416",
+  "precio_desde": 120000
  },
  "40303": {
   "render_url": "https://api.wbsuite.app/public/d493a3b06992b78.jpg",
@@ -818,5 +821,35 @@
  },
  "41008": {
   "precio_desde": 111024
+ },
+ "43001": {
+  "precio_desde": 132143,
+  "tipologias": [
+   "1_ambiente",
+   "2_ambientes",
+   "3_ambientes"
+  ]
+ },
+ "30185": {
+  "precio_desde": 105000
+ },
+ "43003": {
+  "precio_desde": 296595,
+  "tipologias": [
+   "2_ambientes",
+   "3_ambientes",
+   "4_ambientes"
+  ]
+ },
+ "43005": {
+  "precio_desde": 178000,
+  "tipologias": [
+   "1_ambiente",
+   "2_ambientes",
+   "4_ambientes"
+  ]
+ },
+ "44001": {
+  "precio_desde": 338000
  }
 }

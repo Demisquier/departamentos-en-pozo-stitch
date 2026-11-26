@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { track } from "../../../lib/track";
 import AsesorModal from "../../asesor/AsesorModal";
 import WhatsAppGate from "./WhatsAppGate";
@@ -13,6 +13,20 @@ export default function AccionesFicha({
   waPhone, waEsDelDev, barrio, dev, soloWhatsApp = false,
 }) {
   const [asesorOpen, setAsesorOpen] = useState(false);
+  // A/B test de copy del CTA principal (nov-2026). 50/50 persistente por navegador.
+  // A = control ("Quiero que me contacten" / "Pedir info"); B = promesa concreta ("Ver precios y disponibilidad").
+  // Se mide en GA4: user_property ab_cta + evento cta_ficha_click {variante} → tasa de lead por variante.
+  const [abCta, setAbCta] = useState("A");
+  useEffect(() => {
+    let v = null;
+    try { v = localStorage.getItem("dpp_ab_cta_v1"); } catch {}
+    if (v !== "A" && v !== "B") { v = Math.random() < 0.5 ? "A" : "B"; try { localStorage.setItem("dpp_ab_cta_v1", v); } catch {} }
+    setAbCta(v);
+    try { window.gtag && window.gtag("set", "user_properties", { ab_cta: v }); } catch {}
+  }, []);
+  const abrirAsesor = (ubic) => { track("cta_ficha_click", { variante: abCta, ubicacion: ubic, slug }); setAsesorOpen(true); };
+  const ctaDesk = abCta === "B" ? "VER PRECIOS Y DISPONIBILIDAD" : "QUIERO QUE ME CONTACTEN";
+  const ctaMob = abCta === "B" ? "VER PRECIOS" : "PEDIR INFO";
 
   return (
     <>
@@ -40,9 +54,9 @@ export default function AccionesFicha({
             <span className="material-symbols-outlined text-[15px] text-green-700">bolt</span>
             Respondemos en el día · Sin costo · Análisis independiente
           </p>
-          {!soloWhatsApp && <button type="button" onClick={() => setAsesorOpen(true)}
+          {!soloWhatsApp && <button type="button" onClick={() => abrirAsesor("sidebar")}
             className="w-full py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest hover:opacity-90 transition-all flex justify-center items-center gap-2">
-            QUIERO QUE ME CONTACTEN
+            {ctaDesk}
             <span className="material-symbols-outlined text-[18px]">forum</span>
           </button>}
           {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} precio={precioDesdeNum} variant="full" />}
@@ -59,9 +73,9 @@ export default function AccionesFicha({
 
       {/* Barra fija móvil */}
       <div className="fixed bottom-0 left-0 w-full z-[60] p-3 bg-surface/90 backdrop-blur-md border-t border-outline-variant lg:hidden flex gap-2">
-        {!soloWhatsApp && <button type="button" onClick={() => setAsesorOpen(true)}
+        {!soloWhatsApp && <button type="button" onClick={() => abrirAsesor("barra_mobile")}
           className="flex-1 px-4 py-3.5 bg-primary-container text-on-primary rounded font-label-caps text-label-caps tracking-widest shadow-lg flex items-center justify-center gap-2">
-          PEDIR INFO
+          {ctaMob}
           <span className="material-symbols-outlined fill-icon text-[18px]">send</span>
         </button>}
         {waPhone && <WhatsAppGate phone={waPhone} esDelDev={waEsDelDev} nombre={nombre} slug={slug} barrio={barrio} dev={dev} precio={precioDesdeNum} variant="bar" />}

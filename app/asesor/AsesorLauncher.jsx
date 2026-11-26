@@ -18,7 +18,7 @@ export default function AsesorLauncher() {
   // FAB global: visible en home, catálogo y fichas. Oculto SOLO donde ya hay un chat
   // propio (/asesor, /asesor-ia) o el panel Mi Plan (/mi-seleccion). Antes se ocultaba
   // también en la ficha; ahora se muestra (la ficha tiene su CTA + el FAB no molesta).
-  const oculto = path.startsWith("/asesor") || path.startsWith("/mi-seleccion");
+  const oculto = path.startsWith("/asesor") || path.startsWith("/mi-seleccion") || path.startsWith("/explorar");
 
   // Visibilidad dinamica: verdadero SOLO mientras estas debajo del hero (>420px).
   useEffect(() => {
@@ -45,16 +45,17 @@ export default function AsesorLauncher() {
   return (
     <>
       {nudge && !open && (
-        <div className="fixed bottom-36 md:bottom-20 right-4 z-[91] max-w-[240px] bg-surface border border-outline-variant shadow-xl rounded-2xl rounded-br-sm p-3.5 text-[13px] text-on-surface leading-snug">
+        <div className="fixed bottom-40 md:bottom-20 right-3 md:right-4 z-[91] max-w-[240px] bg-surface border border-outline-variant shadow-xl rounded-2xl rounded-br-sm p-3.5 text-[13px] text-on-surface leading-snug">
           <button type="button" onClick={cerrarNudge} aria-label="Cerrar" className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-surface border border-outline-variant text-[13px] leading-none text-on-surface-variant hover:text-primary">✕</button>
           ¿Querés el precio y la cuota de algún proyecto? Te lo consigo en 1 minuto, gratis.
           <button type="button" onClick={abrir} className="block mt-2 text-secondary font-medium underline hover:no-underline">Sí, dale →</button>
         </div>
       )}
       <button type="button" onClick={abrir} aria-label="¿Te ayudo a elegir? con Valentina"
-        className="fixed bottom-20 md:bottom-5 right-4 z-[90] inline-flex items-center gap-2 rounded-full bg-primary text-white ring-1 ring-white/20 shadow-2xl px-4 py-3 hover:bg-primary/90 transition-all">
+        className="fixed bottom-24 md:bottom-5 right-3 md:right-4 z-[90] inline-flex items-center justify-center gap-2 rounded-full bg-primary text-white ring-1 ring-white/20 shadow-2xl w-12 h-12 md:w-auto md:h-auto md:px-4 md:py-3 hover:bg-primary/90 transition-all">
+        {/* Mobile: solo ícono (no tapa el texto ni la barra fija de CTAs). Desktop: con texto. */}
         <span className="material-symbols-outlined text-[22px] text-link-gold">forum</span>
-        <span className="text-[13px] font-medium">¿Te ayudo a elegir?</span>
+        <span className="hidden md:inline text-[13px] font-medium">¿Te ayudo a elegir?</span>
       </button>
       {open && <AsesorModal onClose={() => setOpen(false)} />}
     </>
