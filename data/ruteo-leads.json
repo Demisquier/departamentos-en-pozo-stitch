@@ -919,13 +919,6 @@
    "dev": "Gomez de Montanari Desarrollos Inmobiliarios",
    "proyecto": "Amenábar 2501"
   },
-  "dealcorta-bajo-belgrano": {
-   "email": "contacto@imarval.com",
-   "dev": "Grupo Marval",
-   "proyecto": "DeAlcorta",
-   "comercial": "contacto@imarval.com",
-   "comNombre": "GRUPO MARVAL Servicios Inmobiliarios"
-  },
   "cabildo-boulevard-belgrano": {
    "email": "contacto@daria.com.ar",
    "dev": "D'Aria",
@@ -3075,10 +3068,6 @@
   "kwzarquitecturadesarrollos": {
    "email": "info@kwzarq.com.ar",
    "nombre": "KWZ Arquitectura & Desarrollos"
-  },
-  "grupomarval": {
-   "email": "contacto@imarval.com",
-   "nombre": "Grupo Marval"
   },
   "nadlanpropiedades": {
    "email": "nadlanprop@gmail.com",

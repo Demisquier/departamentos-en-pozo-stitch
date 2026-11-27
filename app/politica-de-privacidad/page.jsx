@@ -123,14 +123,28 @@ export default function PrivacidadPage() {
 
         <Bloque icon="gavel" titulo="Conservación y seguridad">
           <p>
-            Conservamos tus datos solo durante el tiempo necesario para la finalidad para la que los diste y aplicamos
-            medidas razonables para protegerlos. Si pedís la baja, los eliminamos de nuestros registros activos.
+            Conservamos tus datos de contacto como máximo <strong className="text-primary">24 meses</strong> desde tu
+            última consulta o alerta, y después los eliminamos. Si pedís la baja antes, los eliminamos de nuestros
+            registros activos dentro de los 10 días hábiles. Aplicamos medidas razonables para protegerlos (acceso
+            restringido y proveedores con cifrado en tránsito).
+          </p>
+        </Bloque>
+
+        <Bloque icon="forum" titulo="App de Departamentos en Pozo en ChatGPT y otros asistentes de IA">
+          <p>
+            Si usás nuestra app desde ChatGPT u otro asistente compatible (conector MCP), las búsquedas devuelven datos
+            públicos de proyectos y no requieren datos personales. Solo recibimos datos personales si vos pedís que el
+            responsable de un proyecto te contacte: en ese caso recibimos tu <strong className="text-primary">nombre,
+            email y/o número de WhatsApp</strong> y el proyecto elegido, y los usamos y compartimos exactamente como se
+            describe en esta política (con la inmobiliaria o desarrolladora de ese proyecto). No guardamos el contenido
+            de tus conversaciones con el asistente.
           </p>
         </Bloque>
 
         <p className="text-[13px] text-on-surface-variant max-w-[70ch]">
           Esta política puede actualizarse; la versión vigente es siempre la publicada en esta página. Última
-          actualización: octubre 2026. Para conocer de dónde provienen las imágenes y los datos de los proyectos, visitá{" "}
+          actualización: noviembre 2026. Ver también los{" "}
+          <Link href="/terminos-y-condiciones/" className="text-secondary hover:underline">Términos y condiciones</Link>. Para conocer de dónde provienen las imágenes y los datos de los proyectos, visitá{" "}
           <Link href="/creditos-y-fuentes/" className="text-secondary hover:underline">Créditos y fuentes</Link>.
         </p>
 

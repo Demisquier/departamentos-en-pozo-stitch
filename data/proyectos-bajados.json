@@ -737,9 +737,17 @@
    "fecha": "2026-11-24",
    "motivo": "info@capitalbrokers.com.ar no recibe correo (dominio sin MX); no hay email publicado de Capital Brokers ni de la desarrolladora. Se republica cuando haya email verificado.",
    "firma_conocida": "Suelo Armenia (Capital Brokers)"
+  },
+  "dealcorta-bajo-belgrano": {
+   "fecha": "2026-11-27",
+   "pedido_por": "Grupo Marval (Jimena Macri, contacto@imarval.com)",
+   "motivo": "Pide la baja de todos sus emprendimientos: no autoriza la publicación. Incluye cualquier proyecto futuro de Grupo Marval.",
+   "direccion": "Av. Figueroa Alcorta 6400, Belgrano Chico"
   }
  },
  "inmobiliarias": [
-  "remax-data-gold"
+  "remax-data-gold",
+  "grupo-marval",
+  "grupo-marval-servicios-inmobiliarios"
  ]
 }

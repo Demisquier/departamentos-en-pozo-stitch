@@ -1,16 +1,21 @@
 // app/api/mcp/route.js — Servidor MCP (Model Context Protocol) del catálogo de Departamentos en Pozo.
 // Transporte: Streamable HTTP (JSON-RPC 2.0 por POST). Sin auth (catálogo público).
-// Sirve para: ChatGPT (Developer Mode / Responses API), Claude, y cualquier cliente MCP.
-// Tools: search (con parsing de la consulta), fetch, filtrar, comparar, mercado, capturar_lead.
-import { getDesarrollos, acf } from "../../../lib/wp";
-import { toNumber } from "../../../lib/format";
+// v2 (nov-2026): adaptado a las guías del directorio de plugins de ChatGPT (OpenAI):
+//  - nombres de tools en inglés tipo verbo + alias de compatibilidad para los nombres viejos;
+//  - annotations explícitas (readOnly/destructive/openWorld) y outputSchema en cada tool;
+//  - widget de tarjetas (MCP Apps: resource ui:// con mimeType text/html;profile=mcp-app);
+//  - request_contact (lead) con datos mínimos, side effect explícito y dedupe.
+import { getDesarrollos } from "../../../lib/wp";
 import { mapDesarrollos } from "../../../lib/catalogo";
 
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
-const SITE = "https://www.departamentosenpozo.com.ar";
+const SITE = "https://departamentosenpozo.com.ar";
 const PROTOCOL_DEFAULT = "2025-06-18";
+const VERSION = "2.0.0";
+const WIDGET_URI = "ui://widget/proyectos-v1.html";
+const UTM = "utm_source=chatgpt&utm_medium=app&utm_campaign=mcp";
 
 let _cache = null, _cacheAt = 0;
 async function catalogo() {
@@ -25,10 +30,18 @@ async function catalogo() {
 function norm(s) {
   return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
-function fichaUrl(slug) { return `${SITE}/desarrollos-inmobiliarios/${slug}/`; }
+function fichaUrl(slug, utm) { return `${SITE}/desarrollos-inmobiliarios/${slug}/${utm ? "?" + UTM : ""}`; }
+// Imágenes: todo pasa por un único proxy (images.weserv.nl) → CSP del widget acotada a 2 dominios.
+function imgUrl(u) {
+  if (!u) return null;
+  let s = String(u);
+  if (s.startsWith("/")) s = SITE + s;
+  if (/images\.weserv\.nl/.test(s)) return s;
+  return "https://images.weserv.nl/?url=" + encodeURIComponent(s.replace(/^https?:\/\//, "")) + "&w=640&output=webp&q=75";
+}
 
 function fichaTexto(m) {
-  const partes = [
+  return [
     m.nombre,
     m.barrio ? `Barrio: ${m.barrio}` : "",
     m.direccion ? `Dirección: ${m.direccion}` : "",
@@ -37,40 +50,33 @@ function fichaTexto(m) {
     m.entrega ? `Entrega: ${m.entrega}` : "",
     m.etapa ? `Estado: ${m.etapa}` : "",
     m.desarrolladora ? `Desarrolladora/Comercializadora: ${m.desarrolladora}` : "",
-    m.financiacion ? "Ofrece financiación / cuotas." : "",
-  ].filter(Boolean);
-  return partes.join(". ");
+    m.financiacion ? "Ofrece financiación en cuotas." : "",
+  ].filter(Boolean).join(". ");
 }
 
-// Parseo de la consulta en lenguaje natural → filtros estructurados (razonamiento de inversión pozo).
-// barriosSet = set de barrios reales del catálogo (para detectar zona sin listas hardcodeadas).
+// Consulta en lenguaje natural → filtros estructurados.
 function parseQuery(q, barriosSet) {
   const s = norm(q || "");
   const f = {};
-  // Barrio: el nombre de barrio real más largo que aparezca en la consulta.
   let mejor = "";
   for (const b of barriosSet) { const nb = norm(b); if (nb && s.includes(nb) && nb.length > mejor.length) mejor = b; }
   if (mejor) f.barrio = mejor;
-  // Ambientes: monoambiente / N ambientes / N amb.
   if (/mono ?ambiente|monoamb/.test(s)) f.ambientes = "1";
   const pal = { un: 1, una: 1, dos: 2, tres: 3, cuatro: 4 };
-  let ma = s.match(/\b(\d)\s*(?:amb|ambientes?|dorm|dormitorios?)\b/) || s.match(/\b(un|una|dos|tres|cuatro)\s+ambientes?\b/);
+  const ma = s.match(/\b(\d)\s*(?:amb|ambientes?|dorm|dormitorios?)\b/) || s.match(/\b(un|una|dos|tres|cuatro)\s+ambientes?\b/);
   if (ma) f.ambientes = String(pal[ma[1]] || ma[1]);
-  // Precio: "hasta 200000", "menos de 200k", "200.000 usd", "desde 150000".
   function toUsd(numStr, suf) {
     let n = Number(String(numStr).replace(/[.,]/g, ""));
     if (/k|mil/.test(suf || "")) n = Number(String(numStr).replace(/,/g, ".")) * 1000;
     return isFinite(n) ? n : null;
   }
-  let mx = s.match(/(?:hasta|menos de|maximo|máximo|tope|<=?)\s*u?\$?s?\s*([\d.,]+)\s*(k|mil)?/);
+  const mx = s.match(/(?:hasta|menos de|maximo|tope|<=?)\s*u?\$?s?\s*([\d.,]+)\s*(k|mil)?/);
   if (mx) { const v = toUsd(mx[1], mx[2]); if (v) f.precio_max = v; }
-  let mn = s.match(/(?:desde|mas de|más de|minimo|mínimo|>=?)\s*u?\$?s?\s*([\d.,]+)\s*(k|mil)?/);
+  const mn = s.match(/(?:desde|mas de|minimo|>=?)\s*u?\$?s?\s*([\d.,]+)\s*(k|mil)?/);
   if (mn) { const v = toUsd(mn[1], mn[2]); if (v) f.precio_min = v; }
-  // Entrega: "entrega 2027", "antes de 2027", "listo en 2027".
-  let me = s.match(/(?:entrega|entregar|listo|terminado|posesion|antes de)\s*(?:en\s*)?(20[23]\d)(?!\d)/);
+  const me = s.match(/(?:entrega|entregar|listo|terminado|posesion|antes de)\s*(?:en\s*)?(20[23]\d)(?!\d)/);
   if (me) f.entrega_hasta_anio = Number(me[1]);
-  // Financiación / cuotas.
-  if (/financ|cuotas?|en pozo con cuota|plan de pago/.test(s)) f.financiacion = true;
+  if (/financ|cuotas?|plan de pago/.test(s)) f.financiacion = true;
   return f;
 }
 
@@ -82,9 +88,9 @@ function pasaFiltros(m, f) {
   if (f.precio_max != null && !(m.precioDesde && m.precioDesde <= Number(f.precio_max))) return false;
   if (f.entrega_hasta_anio != null && !(m.entregaAnio && m.entregaAnio <= Number(f.entrega_hasta_anio))) return false;
   if (f.financiacion === true && !m.financiacion) return false;
-  if (f.ambientes != null) {
+  if (f.ambientes != null && f.ambientes !== "") {
     const want = String(f.ambientes).replace(/\D/g, "");
-    const has = (m.ambientesNums || []).some((n) => String(n).replace(/\D/g, "") === want || (String(n).includes("+") && want >= String(n).replace(/\D/g, "")));
+    const has = (m.ambientesNums || []).some((n) => String(n).replace(/\D/g, "") === want || (String(n).includes("+") && Number(want) >= Number(String(n).replace(/\D/g, ""))));
     if (want && !has) return false;
   }
   return true;
@@ -106,36 +112,61 @@ function buscar(mapped, query, filtros, limit) {
     })
     .filter((x) => x.s > 0);
   scored.sort((a, b) => b.s - a.s);
-  return scored.slice(0, limit || 15).map((x) => x.m);
+  return scored.slice(0, Math.min(Number(limit) || 15, 25)).map((x) => x.m);
 }
 
 function itemLite(m) {
   return {
     id: m.slug, title: `${m.nombre}${m.barrio ? " — " + m.barrio : ""}`, url: fichaUrl(m.slug),
     precio_desde_usd: m.precioDesde || null, precio_m2_usd: m.precioM2 || null,
-    ambientes: m.ambientes, barrio: m.barrio, entrega: m.entrega,
-    desarrolladora: m.desarrolladora, etapa: m.etapa, financiacion: !!m.financiacion,
+    ambientes: m.ambientes || null, barrio: m.barrio || null, entrega: m.entrega || null,
+    desarrolladora: m.desarrolladora || null, etapa: m.etapa || null, financiacion: !!m.financiacion,
   };
 }
+function cardItem(m) {
+  return {
+    id: m.slug, nombre: m.nombre, barrio: m.barrio || null, precio_desde_usd: m.precioDesde || null,
+    ambientes: m.ambientes || null, entrega: m.entrega || null, url: fichaUrl(m.slug, true), imagen: imgUrl(m.imagen),
+  };
+}
+
+// --- Schemas ---
+const RO = { readOnlyHint: true, destructiveHint: false, openWorldHint: false, idempotentHint: true };
+const ITEM_SCHEMA = {
+  type: "object",
+  properties: {
+    id: { type: "string" }, title: { type: "string" }, url: { type: "string" },
+    precio_desde_usd: { type: ["number", "null"] }, precio_m2_usd: { type: ["number", "null"] },
+    ambientes: { type: ["string", "null"] }, barrio: { type: ["string", "null"] }, entrega: { type: ["string", "null"] },
+    desarrolladora: { type: ["string", "null"] }, etapa: { type: ["string", "null"] }, financiacion: { type: "boolean" },
+  },
+};
+const STATS_SCHEMA = { type: ["object", "null"], properties: { n: { type: "number" }, avg: { type: "number" }, min: { type: "number" }, max: { type: "number" }, median: { type: "number" } } };
 
 const TOOLS = [
   {
     name: "search",
+    title: "Search pre-construction projects",
     description:
-      "Busca proyectos de departamentos en pozo (pre-construcción) en Buenos Aires (CABA y GBA). " +
-      "Entiende consultas de inversión en lenguaje natural: extrae barrio, precio (ej 'hasta 200000 usd', '200k'), " +
-      "ambientes ('monoambiente','2 ambientes'), año de entrega ('antes de 2027') y financiación/cuotas, y los aplica como filtros. " +
-      "Devuelve resultados con id, título, URL de ficha, precio, ambientes, barrio y entrega.",
-    inputSchema: { type: "object", properties: { query: { type: "string", description: "Consulta en lenguaje natural." } }, required: ["query"] },
+      "Search pre-construction apartment projects ('departamentos en pozo') in Buenos Aires, Argentina (CABA and Greater Buenos Aires). " +
+      "Accepts a natural-language query in Spanish or English and extracts neighborhood (barrio), price cap/floor in USD, number of rooms (ambientes), delivery year and installment financing. " +
+      "Returns up to 15 matching projects with id, title, project page URL and key data. Use fetch for full details of one project.",
+    inputSchema: { type: "object", properties: { query: { type: "string", description: "Natural-language query, e.g. '2 ambientes en Palermo hasta 200 mil dólares'." } }, required: ["query"] },
+    outputSchema: { type: "object", properties: { results: { type: "array", items: { type: "object" } }, filtros_detectados: { type: "object" } }, required: ["results"] },
+    annotations: RO,
   },
   {
     name: "fetch",
-    description: "Devuelve el detalle completo de un proyecto en pozo a partir de su id (slug).",
-    inputSchema: { type: "object", properties: { id: { type: "string", description: "id (slug) del proyecto." } }, required: ["id"] },
+    title: "Get project details",
+    description: "Get the full details of one pre-construction project by its id (slug, as returned by search or filter_projects): neighborhood, address, list price from (USD), USD per m², room types, delivery date, construction stage, developer/sales agent and financing.",
+    inputSchema: { type: "object", properties: { id: { type: "string", description: "Project id (slug)." } }, required: ["id"] },
+    outputSchema: { type: "object", properties: { id: { type: "string" }, title: { type: "string" }, url: { type: "string" }, text: { type: "string" }, metadata: { type: "object" } }, required: ["id", "title", "url"] },
+    annotations: RO,
   },
   {
-    name: "filtrar",
-    description: "Búsqueda estructurada por filtros (AND). Todos opcionales: barrio, precio_min, precio_max (USD desde), ambientes, entrega_hasta_anio, financiacion, desarrolladora, query (texto libre), limit.",
+    name: "filter_projects",
+    title: "Filter projects",
+    description: "Structured search of pre-construction projects in Buenos Aires using explicit filters combined with AND. All filters are optional: barrio (neighborhood), precio_min / precio_max (list price from, in USD), ambientes (number of rooms, '1' = studio), entrega_hasta_anio (delivery year at the latest), financiacion (true = offers installments), desarrolladora (developer name), query (free text) and limit (max 25).",
     inputSchema: {
       type: "object",
       properties: {
@@ -144,35 +175,126 @@ const TOOLS = [
         desarrolladora: { type: "string" }, query: { type: "string" }, limit: { type: "number" },
       },
     },
+    outputSchema: { type: "object", properties: { count: { type: "number" }, results: { type: "array", items: ITEM_SCHEMA } }, required: ["count", "results"] },
+    annotations: RO,
   },
   {
-    name: "comparar",
-    description: "Compara 2 a 4 proyectos lado a lado (precio/m², precio desde, ambientes, entrega, barrio, desarrolladora, financiación) para ayudar a decidir. Recibe la lista de ids (slugs).",
-    inputSchema: { type: "object", properties: { ids: { type: "array", items: { type: "string" }, description: "ids (slugs) de los proyectos a comparar." } }, required: ["ids"] },
+    name: "compare_projects",
+    title: "Compare projects",
+    description: "Compare 2 to 4 pre-construction projects side by side (USD per m², list price from, room types, delivery, neighborhood, developer, financing) to help the user decide. Takes the list of project ids (slugs).",
+    inputSchema: { type: "object", properties: { ids: { type: "array", items: { type: "string" }, minItems: 2, maxItems: 4, description: "Project ids (slugs)." } }, required: ["ids"] },
+    outputSchema: { type: "object", properties: { count: { type: "number" }, comparacion: { type: "array", items: ITEM_SCHEMA } }, required: ["count", "comparacion"] },
+    annotations: RO,
   },
   {
-    name: "mercado",
-    description: "Estadísticas de mercado del catálogo en pozo: cantidad de proyectos y precio/m² (promedio, mínimo, máximo, mediana) y precio 'desde'. Opcional: filtrar por barrio. Sin barrio, devuelve el top de barrios por cantidad.",
-    inputSchema: { type: "object", properties: { barrio: { type: "string", description: "Barrio para acotar (opcional)." } } },
+    name: "get_market_stats",
+    title: "Get pre-construction price stats",
+    description: "Price statistics of the pre-construction catalog: number of projects and USD per m² and list price from (average, min, max, median). Optionally scoped to one neighborhood (barrio); without barrio it also returns the neighborhoods with most projects. Figures are list prices published by developers, for reference only (not financial advice).",
+    inputSchema: { type: "object", properties: { barrio: { type: "string", description: "Neighborhood to scope the stats (optional)." } } },
+    outputSchema: { type: "object", properties: { barrio: { type: "string" }, proyectos: { type: "number" }, precio_m2_usd: STATS_SCHEMA, precio_desde_usd: STATS_SCHEMA, top_barrios: { type: "array", items: { type: "object" } } }, required: ["barrio", "proyectos"] },
+    annotations: RO,
   },
   {
-    name: "capturar_lead",
+    name: "show_projects",
+    title: "Show projects as cards",
+    description: "Display 1 to 8 projects as visual cards (photo, name, neighborhood, price from, rooms, delivery and a link to the project page). Call search or filter_projects first and pass the ids of the projects to show.",
+    inputSchema: { type: "object", properties: { ids: { type: "array", items: { type: "string" }, minItems: 1, maxItems: 8, description: "Project ids (slugs) to display." } }, required: ["ids"] },
+    outputSchema: { type: "object", properties: { projects: { type: "array", items: { type: "object" } } }, required: ["projects"] },
+    annotations: RO,
+    _meta: {
+      ui: { resourceUri: WIDGET_URI },
+      "openai/outputTemplate": WIDGET_URI,
+      "openai/toolInvocation/invoking": "Buscando proyectos…",
+      "openai/toolInvocation/invoked": "Proyectos listos",
+    },
+  },
+  {
+    name: "request_contact",
+    title: "Ask the developer to contact me",
     description:
-      "Registra un interesado (lead) para que la desarrolladora/comercializadora lo contacte. Usar SOLO si la persona quiere ser contactada y dejó al menos email o WhatsApp. " +
-      "El lead se rutea al responsable del proyecto (con copia a contacto@departamentosenpozo.com.ar).",
+      "Side effect: sends the user's name and email and/or WhatsApp number to the developer or sales agent of ONE project so they contact the user about it (a copy goes to Departamentos en Pozo). " +
+      "Only call this when the user explicitly asks to be contacted about a specific project and has provided the contact details themselves in the conversation; confirm the project and the details with the user before calling. " +
+      "Not idempotent: calling it again sends another request (duplicates within 24 h for the same contact and project are ignored).",
     inputSchema: {
       type: "object",
       properties: {
-        nombre: { type: "string" }, email: { type: "string" }, whatsapp: { type: "string" },
-        proyecto_slug: { type: "string", description: "id (slug) del proyecto de interés, si lo hay." },
-        mensaje: { type: "string" },
-        objetivo: { type: "string", description: "'vivir' o 'invertir', si se sabe." },
-        presupuesto: { type: "string", description: "Presupuesto en USD, si se sabe." },
+        project_id: { type: "string", description: "Project id (slug) the user wants to be contacted about." },
+        name: { type: "string", description: "User's first name." },
+        email: { type: "string", description: "User's email (email or whatsapp required)." },
+        whatsapp: { type: "string", description: "User's WhatsApp number (email or whatsapp required)." },
       },
-      required: [],
+      required: ["project_id"],
     },
+    outputSchema: { type: "object", properties: { ok: { type: "boolean" }, mensaje: { type: "string" } }, required: ["ok"] },
+    annotations: { readOnlyHint: false, destructiveHint: true, openWorldHint: true, idempotentHint: false },
   },
 ];
+// Compatibilidad con clientes que ya usaban los nombres anteriores.
+const ALIAS = { filtrar: "filter_projects", comparar: "compare_projects", mercado: "get_market_stats", capturar_lead: "request_contact" };
+
+// --- Widget (MCP Apps / ChatGPT): tarjetas de proyectos. Sin dependencias, fuente del sistema. ---
+const WIDGET_HTML = `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{color-scheme:light dark;--fg:#0b1a34;--mut:#5b6474;--bd:#e3e6ec;--bg:#fff;--acc:#8a6a1f}
+@media (prefers-color-scheme:dark){:root{--fg:#eef1f6;--mut:#a9b1bf;--bd:#2c3340;--bg:#161a21;--acc:#d8b25a}}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--fg);background:transparent}
+.row{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x mandatory}
+.card{flex:0 0 240px;scroll-snap-align:start;border:1px solid var(--bd);border-radius:14px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+.img{width:100%;height:150px;object-fit:cover;background:#ccd2dc;display:block}
+.b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.n{font-weight:600;font-size:15px;line-height:1.25;margin:0}
+.m{font-size:13px;color:var(--mut);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p{font-size:15px;font-weight:600;margin:4px 0 0}
+.cta{margin-top:auto;padding-top:8px}
+button{width:100%;border:1px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:8px 10px;font:600 13px system-ui,sans-serif;cursor:pointer}
+button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.empty{font-size:14px;color:var(--mut);padding:8px}
+</style></head><body><div id="root" class="row" role="list" aria-label="Proyectos en pozo"></div>
+<script>
+(function(){
+  var root=document.getElementById('root');
+  function money(n){return n?('Desde USD '+Number(n).toLocaleString('es-AR')):'Consultar precio';}
+  function open(url){try{if(window.openai&&window.openai.openExternal){window.openai.openExternal({href:url});return;}}catch(e){} window.open(url,'_blank','noopener');}
+  function render(data){
+    var ps=(data&&data.projects)||[]; root.innerHTML='';
+    if(!ps.length){root.innerHTML='<div class="empty">No hay proyectos para mostrar.</div>';return;}
+    ps.slice(0,8).forEach(function(p){
+      var c=document.createElement('div');c.className='card';c.setAttribute('role','listitem');
+      var meta=[p.barrio,p.ambientes,p.entrega?('Entrega '+p.entrega):null].filter(Boolean).join(' · ');
+      c.innerHTML=(p.imagen?'<img class="img" alt="" loading="lazy">':'<div class="img"></div>')+'<div class="b"><p class="n"></p><p class="m"></p><p class="p"></p><div class="cta"><button type="button">Ver proyecto</button></div></div>';
+      if(p.imagen){var im=c.querySelector('img');im.src=p.imagen;im.alt='Render de '+p.nombre;}
+      c.querySelector('.n').textContent=p.nombre||'';c.querySelector('.m').textContent=meta;c.querySelector('.p').textContent=money(p.precio_desde_usd);
+      c.querySelector('button').addEventListener('click',function(){open(p.url);});
+      root.appendChild(c);
+    });
+  }
+  function fromOpenai(){try{return window.openai&&window.openai.toolOutput;}catch(e){return null;}}
+  var d=fromOpenai(); if(d) render(d);
+  window.addEventListener('openai:set_globals',function(){var x=fromOpenai(); if(x) render(x);},{passive:true});
+  // MCP Apps (estándar): el host envía el resultado de la tool por postMessage.
+  window.addEventListener('message',function(ev){var m=ev&&ev.data; if(!m||typeof m!=='object')return;
+    if(m.method==='ui/notifications/tool-result'&&m.params){render(m.params.structuredContent||m.params);} });
+  try{window.parent.postMessage({jsonrpc:'2.0',method:'ui/notifications/initialized',params:{}},'*');}catch(e){}
+})();
+</script></body></html>`;
+
+const RESOURCES = [{ uri: WIDGET_URI, name: "proyectos-cards", title: "Tarjetas de proyectos", mimeType: "text/html;profile=mcp-app", description: "Tarjetas visuales de proyectos en pozo." }];
+function widgetResource() {
+  return {
+    uri: WIDGET_URI,
+    mimeType: "text/html;profile=mcp-app",
+    text: WIDGET_HTML,
+    _meta: {
+      ui: {
+        prefersBorder: false,
+        csp: { connectDomains: [], resourceDomains: ["https://images.weserv.nl", SITE] },
+      },
+      "openai/widgetCSP": { connect_domains: [], resource_domains: ["https://images.weserv.nl", SITE], redirect_domains: [SITE, "https://www.departamentosenpozo.com.ar"] },
+      "openai/widgetDescription": "Tarjetas de proyectos en pozo con foto, barrio, precio desde y link a la ficha.",
+      "openai/widgetPrefersBorder": false,
+    },
+  };
+}
 
 function stats(nums) {
   const a = nums.filter((n) => n && isFinite(n)).sort((x, y) => x - y);
@@ -181,80 +303,89 @@ function stats(nums) {
   const median = a.length % 2 ? a[(a.length - 1) / 2] : Math.round((a[a.length / 2 - 1] + a[a.length / 2]) / 2);
   return { n: a.length, avg, min: a[0], max: a[a.length - 1], median };
 }
+const ok = (out, text) => ({ structuredContent: out, content: [{ type: "text", text: text || JSON.stringify(out) }] });
+const fail = (out) => ({ structuredContent: out, content: [{ type: "text", text: JSON.stringify(out) }], isError: true });
 
-async function callTool(name, args, req) {
+// Dedupe de contactos (por instancia): mismo contacto + proyecto en 24 h → no se reenvía.
+const _sent = new Map();
+
+async function callTool(rawName, args, req) {
+  const name = ALIAS[rawName] || rawName;
   const mapped = await catalogo();
   if (name === "search") {
     const barriosSet = new Set(mapped.map((m) => m.barrio).filter(Boolean));
     const f = parseQuery(args && args.query, barriosSet);
     const res = buscar(mapped, args && args.query, f, 15).map((m) => ({
       id: m.slug, title: `${m.nombre}${m.barrio ? " — " + m.barrio : ""}`, url: fichaUrl(m.slug),
-      text: fichaTexto(m), precio_desde_usd: m.precioDesde || null, ambientes: m.ambientes, barrio: m.barrio, entrega: m.entrega,
+      text: fichaTexto(m), precio_desde_usd: m.precioDesde || null, ambientes: m.ambientes || null, barrio: m.barrio || null, entrega: m.entrega || null,
     }));
-    const out = { results: res, filtros_detectados: f };
-    return { structuredContent: out, content: [{ type: "text", text: JSON.stringify(out) }] };
+    return ok({ results: res, filtros_detectados: f });
   }
   if (name === "fetch") {
     const id = args && (args.id || args.slug);
     const m = mapped.find((x) => x.slug === id);
-    if (!m) return { content: [{ type: "text", text: JSON.stringify({ error: "not_found", id }) }], isError: true };
-    const doc = {
+    if (!m) return fail({ error: "not_found", id: id || null });
+    return ok({
       id: m.slug, title: `${m.nombre}${m.barrio ? " — " + m.barrio : ""}`, url: fichaUrl(m.slug), text: fichaTexto(m),
       metadata: {
-        barrio: m.barrio, direccion: m.direccion, precio_desde_usd: m.precioDesde || null, precio_m2_usd: m.precioM2 || null,
-        ambientes: m.ambientes, entrega: m.entrega, entrega_anio: m.entregaAnio, etapa: m.etapa,
-        desarrolladora: m.desarrolladora, financiacion: !!m.financiacion, imagen: m.imagen || null,
+        barrio: m.barrio || null, direccion: m.direccion || null, precio_desde_usd: m.precioDesde || null, precio_m2_usd: m.precioM2 || null,
+        ambientes: m.ambientes || null, entrega: m.entrega || null, entrega_anio: m.entregaAnio || null, etapa: m.etapa || null,
+        desarrolladora: m.desarrolladora || null, financiacion: !!m.financiacion, imagen: imgUrl(m.imagen),
       },
-    };
-    return { structuredContent: doc, content: [{ type: "text", text: JSON.stringify(doc) }] };
+    });
   }
-  if (name === "filtrar") {
+  if (name === "filter_projects") {
     const f = args || {};
     const res = buscar(mapped, f.query || "", f, f.limit || 15).map(itemLite);
-    const out = { count: res.length, results: res };
-    return { structuredContent: out, content: [{ type: "text", text: JSON.stringify(out) }] };
+    return ok({ count: res.length, results: res });
   }
-  if (name === "comparar") {
-    const ids = (args && args.ids) || [];
+  if (name === "compare_projects") {
+    const ids = Array.isArray(args && args.ids) ? args.ids : [];
     const items = ids.map((id) => mapped.find((x) => x.slug === id)).filter(Boolean).slice(0, 4).map(itemLite);
-    const out = { count: items.length, comparacion: items };
-    return { structuredContent: out, content: [{ type: "text", text: JSON.stringify(out) }] };
+    return ok({ count: items.length, comparacion: items });
   }
-  if (name === "mercado") {
+  if (name === "get_market_stats") {
     const b = args && args.barrio ? norm(args.barrio) : "";
     const sel = b ? mapped.filter((m) => norm(m.barrio).includes(b)) : mapped;
-    const out = {
-      barrio: (args && args.barrio) || "(todos)",
-      proyectos: sel.length,
-      precio_m2_usd: stats(sel.map((m) => m.precioM2)),
-      precio_desde_usd: stats(sel.map((m) => m.precioDesde)),
-    };
+    const out = { barrio: (args && args.barrio) || "(todos)", proyectos: sel.length, precio_m2_usd: stats(sel.map((m) => m.precioM2)), precio_desde_usd: stats(sel.map((m) => m.precioDesde)) };
     if (!b) {
       const porBarrio = {};
       for (const m of mapped) if (m.barrio) porBarrio[m.barrio] = (porBarrio[m.barrio] || 0) + 1;
       out.top_barrios = Object.entries(porBarrio).sort((a, c) => c[1] - a[1]).slice(0, 12).map(([barrio, n]) => ({ barrio, proyectos: n }));
     }
-    return { structuredContent: out, content: [{ type: "text", text: JSON.stringify(out) }] };
+    return ok(out);
   }
-  if (name === "capturar_lead") {
+  if (name === "show_projects") {
+    const ids = Array.isArray(args && args.ids) ? args.ids.slice(0, 8) : [];
+    const projects = ids.map((id) => mapped.find((x) => x.slug === id)).filter(Boolean).map(cardItem);
+    const out = { projects };
+    return { structuredContent: out, content: [{ type: "text", text: projects.length ? `Mostrando ${projects.length} proyecto(s): ${projects.map((p) => p.nombre).join(", ")}.` : "No se encontraron esos proyectos." }] };
+  }
+  if (name === "request_contact") {
     const a = args || {};
-    const email = (a.email || "").toString().trim();
-    const whatsapp = (a.whatsapp || "").toString().trim();
-    if (!email && !whatsapp) return { content: [{ type: "text", text: JSON.stringify({ ok: false, error: "Falta email o WhatsApp del interesado." }) }], isError: true };
-    let proyNombre = "";
-    if (a.proyecto_slug) { const m = mapped.find((x) => x.slug === a.proyecto_slug); if (m) proyNombre = m.nombre; }
+    const slug = String(a.project_id || a.proyecto_slug || "").trim();
+    const email = String(a.email || "").trim().slice(0, 120);
+    const whatsapp = String(a.whatsapp || "").replace(/[^\d+ ]/g, "").trim().slice(0, 25);
+    const nombre = String(a.name || a.nombre || "").trim().slice(0, 60);
+    if (!email && !whatsapp) return fail({ ok: false, mensaje: "Falta un email o WhatsApp para que te contacten." });
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail({ ok: false, mensaje: "El email no parece válido." });
+    const m = mapped.find((x) => x.slug === slug);
+    if (!m) return fail({ ok: false, mensaje: "No encontré ese proyecto en el catálogo." });
+    const key = `${(email || whatsapp).toLowerCase()}|${slug}`;
+    const prev = _sent.get(key);
+    if (prev && Date.now() - prev < 24 * 3600 * 1000) return ok({ ok: true, mensaje: `La consulta por ${m.nombre} ya había sido enviada; el responsable del proyecto te va a contactar.` });
     const sheet = {
-      origen: "ChatGPT (MCP)", tipo: "lead_mcp", nombre: a.nombre || "(sin nombre)", email, whatsapp,
-      proyecto: proyNombre, proyectoSlug: a.proyecto_slug || "", mensaje: a.mensaje || "",
-      objetivo: a.objetivo || "", presupuesto: a.presupuesto || "", zonas: "", ambientes: "",
+      origen: "ChatGPT (MCP)", tipo: "lead_mcp", nombre: nombre || "(sin nombre)", email, whatsapp,
+      proyecto: m.nombre, proyectoSlug: slug, mensaje: "", objetivo: "", presupuesto: "", zonas: "", ambientes: "",
     };
     try {
       const r = await fetch(new URL("/api/lead", req.url).toString(), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sheet }) });
       const j = await r.json().catch(() => ({}));
-      return { content: [{ type: "text", text: JSON.stringify({ ok: !!(j && j.ok), mensaje: j && j.ok ? "Lead registrado; el responsable del proyecto lo contactará." : "No se pudo registrar el lead." }) }] };
-    } catch { return { content: [{ type: "text", text: JSON.stringify({ ok: false, error: "network" }) }], isError: true }; }
+      if (j && j.ok) { _sent.set(key, Date.now()); return ok({ ok: true, mensaje: `Listo: le pasamos tu contacto al responsable de ${m.nombre}, que te va a escribir.` }); }
+      return fail({ ok: false, mensaje: "No se pudo enviar la consulta. Probá desde la ficha del proyecto." });
+    } catch { return fail({ ok: false, mensaje: "No se pudo enviar la consulta (error de red)." }); }
   }
-  return { content: [{ type: "text", text: JSON.stringify({ error: "unknown_tool", name }) }], isError: true };
+  return fail({ error: "unknown_tool", name: rawName || null });
 }
 
 function rpcResult(id, result) { return { jsonrpc: "2.0", id, result }; }
@@ -266,13 +397,24 @@ async function handleRpc(msg, req) {
     const pv = (params && params.protocolVersion) || PROTOCOL_DEFAULT;
     return rpcResult(id, {
       protocolVersion: pv,
-      capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: "departamentos-en-pozo", version: "1.1.0" },
-      instructions: "Catálogo de departamentos en pozo (pre-construcción) en Buenos Aires. Usá 'search' (entiende barrio, precio, ambientes, entrega, financiación) o 'filtrar'; 'fetch' para el detalle; 'comparar' para enfrentar proyectos; 'mercado' para estadísticas de precio/m² por barrio. Cada resultado trae la URL de la ficha.",
+      capabilities: { tools: { listChanged: false }, resources: { listChanged: false } },
+      serverInfo: { name: "departamentos-en-pozo", title: "Departamentos en Pozo", version: VERSION },
+      instructions:
+        "Catalog of pre-construction apartment projects ('departamentos en pozo') in Buenos Aires, Argentina. " +
+        "Use search (natural language) or filter_projects to find projects, fetch for details, compare_projects to compare, get_market_stats for USD/m² by neighborhood, and show_projects to display results as cards. " +
+        "Prices are developers' published list prices in USD and may change; always share the project page URL. This is information, not financial advice. " +
+        "Only use request_contact when the user explicitly asks to be contacted about a specific project and has given their contact details.",
     });
   }
   if (method === "tools/list") return rpcResult(id, { tools: TOOLS });
   if (method === "tools/call") return rpcResult(id, await callTool(params && params.name, (params && params.arguments) || {}, req));
+  if (method === "resources/list") return rpcResult(id, { resources: RESOURCES });
+  if (method === "resources/templates/list") return rpcResult(id, { resourceTemplates: [] });
+  if (method === "resources/read") {
+    if (params && params.uri === WIDGET_URI) return rpcResult(id, { contents: [widgetResource()] });
+    return rpcError(id, -32002, "Resource not found");
+  }
+  if (method === "prompts/list") return rpcResult(id, { prompts: [] });
   if (method === "ping") return rpcResult(id, {});
   if (id === undefined || id === null) return null;
   return rpcError(id, -32601, "Method not found: " + method);
@@ -287,7 +429,7 @@ const CORS = {
 export async function OPTIONS() { return new Response(null, { status: 204, headers: CORS }); }
 
 export async function GET() {
-  return new Response(JSON.stringify({ name: "departamentos-en-pozo MCP", version: "1.1.0", transport: "streamable-http", tools: TOOLS.map((t) => t.name) }), {
+  return new Response(JSON.stringify({ name: "departamentos-en-pozo MCP", version: VERSION, transport: "streamable-http", tools: TOOLS.map((t) => t.name) }), {
     status: 200, headers: { "Content-Type": "application/json", ...CORS },
   });
 }

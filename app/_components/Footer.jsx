@@ -60,13 +60,14 @@ export default function Footer() {
             ["About (EN)", "/about/"],
             ["Créditos y fuentes", "/creditos-y-fuentes/"],
             ["Política de privacidad", "/politica-de-privacidad/"],
+            ["Términos y condiciones", "/terminos-y-condiciones/"],
           ]} />
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/10 text-on-primary-fixed-variant text-xs flex flex-col md:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} Departamentos en Pozo. Todos los derechos reservados.</span>
           <span className="flex flex-wrap gap-x-3 gap-y-1">
-            <Link href="/politica-de-privacidad/" className="hover:text-white transition-colors">Privacidad</Link>
+            <Link href="/politica-de-privacidad/" className="hover:text-white transition-colors">Privacidad</Link>{" · "}<Link href="/terminos-y-condiciones/" className="hover:text-white transition-colors">Términos</Link>
             <Link href="/creditos-y-fuentes/" className="hover:text-white transition-colors">Créditos y fuentes</Link>
             <span>Contenido informativo · No constituye asesoramiento financiero.</span>
           </span>
